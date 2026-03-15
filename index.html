@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>edzola.ai | Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg-1: #051015;
+      --bg-2: #07171c;
+      --bg-3: #020709;
+      --panel: rgba(8, 22, 28, 0.7);
+      --panel-strong: rgba(10, 25, 31, 0.9);
+      --stroke: rgba(84, 214, 209, 0.3);
+      --stroke-strong: rgba(84, 214, 209, 0.62);
+      --node: #27d3ca;
+      --node-soft: rgba(39, 211, 202, 0.26);
+      --text: #edf8f7;
+      --muted: #9db3b5;
+      --muted-strong: #bfd1d2;
+      --accent: #d8f17a;
+      --input: rgba(8, 22, 28, 0.92);
+      --border: rgba(127, 197, 194, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(15, 53, 55, 0.36), transparent 28%),
+        radial-gradient(circle at 16% 76%, rgba(8, 48, 47, 0.22), transparent 34%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 52%, var(--bg-3) 100%);
+    }
+
+    body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(111, 199, 195, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(111, 199, 195, 0.04) 1px, transparent 1px);
+      background-size: 112px 112px;
+      mask-image: radial-gradient(circle at center, black 50%, transparent 92%);
+      opacity: 0.42;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      padding: 28px;
+      overflow-x: hidden;
+      isolation: isolate;
+    }
+
+    .network-stage {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      mask-image: linear-gradient(180deg, black 0%, black 58%, rgba(0, 0, 0, 0.3) 76%, transparent 88%);
+    }
+
+    .brand-grid,
+    .network-grid {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1480px, 118vw);
+    }
+
+    .brand-grid {
+      top: 3.5vh;
+      opacity: 0.98;
+    }
+
+    .network-grid {
+      top: 0;
+      opacity: 1;
+    }
+
+    .brand-grid svg,
+    .network-grid svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .wordmark-outline {
+      fill: rgba(120, 206, 205, 0.035);
+      stroke: rgba(105, 213, 210, 0.14);
+      stroke-width: 1;
+    }
+
+    .wordmark-trace {
+      fill: none;
+      stroke: rgba(84, 214, 209, 0.2);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .network-line {
+      fill: none;
+      stroke: rgba(84, 214, 209, 0.2);
+      stroke-width: 1.7;
+      stroke-linecap: round;
+    }
+
+    .network-line.strong {
+      stroke: rgba(110, 236, 228, 0.5);
+      stroke-width: 2.2;
+    }
+
+    .flow {
+      fill: none;
+      stroke: rgba(168, 255, 248, 0.95);
+      stroke-width: 1.9;
+      stroke-dasharray: 5 18;
+      animation: stream 18s linear infinite;
+      opacity: 0.6;
+    }
+
+    .node {
+      fill: rgba(74, 226, 218, 0.92);
+      stroke: rgba(127, 255, 245, 0.08);
+      stroke-width: 10;
+      filter:
+        drop-shadow(0 0 5px rgba(39, 211, 202, 0.52))
+        drop-shadow(0 0 12px rgba(39, 211, 202, 0.16));
+      animation: pulse 7s ease-in-out infinite;
+    }
+
+    .node.major {
+      fill: #57efe8;
+      stroke: rgba(87, 239, 232, 0.12);
+    }
+
+    .node.accent {
+      fill: #d8f17a;
+      stroke: rgba(216, 241, 122, 0.2);
+      stroke-width: 14;
+      filter:
+        drop-shadow(0 0 12px rgba(216, 241, 122, 0.95))
+        drop-shadow(0 0 26px rgba(216, 241, 122, 0.28));
+    }
+
+    .node-label {
+      fill: rgba(230, 245, 246, 0.9);
+      font-size: 17px;
+      font-family: "Manrope", sans-serif;
+      letter-spacing: 0.01em;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      margin: 0 auto;
+      padding-top: min(60vh, 620px);
+      padding-bottom: 56px;
+      padding-inline: 14px;
+      text-align: center;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(7, 20, 26, 0.5);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 22px auto 0;
+      max-width: 9ch;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.9rem, 5.6vw, 5.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+      font-weight: 500;
+    }
+
+    .summary {
+      margin: 18px auto 0;
+      max-width: 28rem;
+      color: var(--muted-strong);
+      font-size: clamp(1.02rem, 1.55vw, 1.18rem);
+      line-height: 1.6;
+    }
+
+    .explain {
+      margin: 14px auto 0;
+      max-width: 40rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.75;
+    }
+
+    .crm-shell {
+      margin: 34px auto 0;
+      width: min(100%, 760px);
+      max-width: 760px;
+      border: 1px solid rgba(120, 198, 196, 0.16);
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(9, 22, 29, 0.84), rgba(6, 16, 21, 0.92));
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(233, 252, 250, 0.05);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .crm-shell-header {
+      padding: 18px 22px 0;
+      text-align: left;
+    }
+
+    .crm-shell-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .crm-shell-footer {
+      padding: 0 22px 22px;
+      text-align: left;
+    }
+
+    .credibility {
+      margin: 16px 0 0;
+      color: var(--muted-strong);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .about-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #9ce8e1;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(156, 232, 225, 0.25);
+      padding-bottom: 2px;
+    }
+
+    #crmWebToEntityForm.crmWebToEntityForm {
+      background: transparent !important;
+      color: var(--text) !important;
+      max-width: none !important;
+      width: 100%;
+      padding: 18px 22px 22px !important;
+      margin: 0;
+      font-family: "Manrope", sans-serif !important;
+    }
+
+    #crmWebToEntityForm .zcwf_title {
+      padding: 0 0 10px !important;
+      color: var(--text) !important;
+      font-family: "Space Grotesk", sans-serif !important;
+      font-size: 1.02rem;
+      font-weight: 600 !important;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+    }
+
+    #crmWebToEntityForm .zcwf_row {
+      margin: 0 0 16px !important;
+    }
+
+    #crmWebToEntityForm .zcwf_col_lab,
+    #crmWebToEntityForm .zcwf_col_fld {
+      float: none !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      max-width: none !important;
+      text-align: left;
+    }
+
+    #crmWebToEntityForm .zcwf_col_lab label {
+      display: block;
+      margin-bottom: 8px;
+      color: rgba(227, 245, 244, 0.86);
+      font-size: 0.9rem !important;
+      font-family: "Manrope", sans-serif !important;
+    }
+
+    #crmWebToEntityForm .zcwf_col_fld input[type=text],
+    #crmWebToEntityForm .zcwf_col_fld input[ftype=email],
+    #crmWebToEntityForm .zcwf_col_fld input[type=email],
+    #crmWebToEntityForm .zcwf_col_fld select,
+    #crmWebToEntityForm .zcwf_col_fld textarea {
+      width: 100% !important;
+      padding: 18px 18px !important;
+      border-radius: 18px !important;
+      border: 1px solid rgba(116, 199, 196, 0.16) !important;
+      background: var(--input) !important;
+      color: var(--text) !important;
+      font-size: 1rem !important;
+      font-family: "Manrope", sans-serif !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      appearance: none;
+    }
+
+    #crmWebToEntityForm .zcwf_col_fld input:focus,
+    #crmWebToEntityForm .zcwf_col_fld textarea:focus {
+      outline: none;
+      border-color: rgba(87, 239, 232, 0.46) !important;
+      box-shadow:
+        0 0 0 4px rgba(39, 211, 202, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    #crmWebToEntityForm .zcwf_col_help {
+      display: none !important;
+    }
+
+    #crmWebToEntityForm .zcwf_button,
+    #crmWebToEntityForm .formsubmit.zcwf_button {
+      min-width: 0 !important;
+      max-width: none !important;
+      padding: 16px 24px !important;
+      border-radius: 16px !important;
+      border: 1px solid transparent !important;
+      font-family: "Space Grotesk", sans-serif !important;
+      font-size: 0.98rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.01em;
+    }
+
+    #crmWebToEntityForm .formsubmit.zcwf_button {
+      color: #072022 !important;
+      background: linear-gradient(135deg, #57efe8, #d8f17a) !important;
+      box-shadow:
+        0 14px 30px rgba(39, 211, 202, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    #crmWebToEntityForm .zcwf_col_fld input[type=submit],
+    #crmWebToEntityForm .zcwf_col_fld input[type=reset] {
+      width: calc(50% - 8px);
+      margin-top: 6px;
+    }
+
+    #crmWebToEntityForm .zcwf_col_fld input[type=submit] {
+      width: 100%;
+      min-height: 56px;
+    }
+
+    #crmWebToEntityForm .zcwf_col_fld > .zcwf_button,
+    #crmWebToEntityForm .zcwf_col_fld > .formsubmit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bottom-mark {
+      margin-top: 26px;
+      color: rgba(182, 202, 204, 0.86);
+      font-size: 0.94rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .bottom-mark strong {
+      display: block;
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -0.03em;
+      text-transform: none;
+      font-size: 1.18rem;
+      font-weight: 500;
+    }
+
+    .wf_customMessageBox {
+      font-family: "Manrope", sans-serif !important;
+      color: #d8fff8 !important;
+      background: rgba(7, 27, 25, 0.92) !important;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.32) !important;
+      border-radius: 14px !important;
+      border: 1px solid rgba(87, 239, 232, 0.24) !important;
+      padding: 12px 16px !important;
+    }
+
+    .wf_customCircle {
+      background-color: #27d3ca !important;
+    }
+
+    .wf_customClose::after,
+    .wf_customClose::before {
+      background: #89b2b3 !important;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.92;
+      }
+      50% {
+        transform: scale(1.12);
+        opacity: 1;
+      }
+    }
+
+    @keyframes stream {
+      from {
+        stroke-dashoffset: 0;
+      }
+      to {
+        stroke-dashoffset: -220;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .page {
+        padding: 18px;
+      }
+
+      .brand-grid,
+      .network-grid {
+        width: 138vw;
+      }
+
+      .brand-grid {
+        top: 1vh;
+      }
+
+      .network-grid {
+        top: -18px;
+      }
+
+      .content {
+        padding-top: min(52vh, 430px);
+      }
+
+      .node-label {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .brand-grid,
+      .network-grid {
+        width: 132vw;
+      }
+
+      .network-stage {
+        mask-image: linear-gradient(180deg, black 0%, black 42%, rgba(0, 0, 0, 0.12) 58%, transparent 72%);
+      }
+
+      .content {
+        max-width: 100%;
+        padding-top: 380px;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: clamp(2.5rem, 11vw, 4rem);
+      }
+
+      .summary {
+        max-width: 22rem;
+        font-size: 1rem;
+      }
+
+      .node-label {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .node,
+      .flow {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="network-stage" aria-hidden="true">
+      <div class="brand-grid">
+        <svg viewBox="0 0 1560 520" role="presentation">
+          <text
+            x="58"
+            y="316"
+            class="wordmark-outline"
+            font-family="Space Grotesk, sans-serif"
+            font-size="270"
+            font-weight="700"
+            letter-spacing="-16"
+          >
+            edzola.ai
+          </text>
+
+          <path class="wordmark-trace" d="M148 260h104" />
+          <path class="wordmark-trace" d="M292 166v157" />
+          <path class="wordmark-trace" d="M475 183l-68 128h141" />
+          <path class="wordmark-trace" d="M664 170a77 77 0 1 0 0 154a77 77 0 1 0 0 -154" />
+          <path class="wordmark-trace" d="M816 168v156h103" />
+          <path class="wordmark-trace" d="M1024 170a77 77 0 1 0 0 154a77 77 0 1 0 0 -154" />
+          <path class="wordmark-trace" d="M1147 170v154" />
+          <path class="wordmark-trace" d="M1242 228h73" />
+          <path class="wordmark-trace" d="M1352 168v156" />
+        </svg>
+      </div>
+
+      <div class="network-grid">
+        <svg viewBox="0 0 1560 760" role="presentation">
+          <path class="network-line strong" d="M262 218C440 218 612 238 804 302" />
+          <path class="network-line strong" d="M252 346C430 336 612 320 804 302" />
+          <path class="network-line strong" d="M274 478C452 438 628 366 804 302" />
+          <path class="network-line strong" d="M1124 218C1014 222 914 248 804 302" />
+          <path class="network-line strong" d="M1142 420C1034 404 924 366 804 302" />
+
+          <path class="flow" d="M262 218C440 218 612 238 804 302" />
+          <path class="flow" d="M1124 218C1014 222 914 248 804 302" style="animation-duration: 21s; animation-delay: -6s;" />
+
+          <circle class="node major" cx="262" cy="218" r="7" />
+          <circle class="node major" cx="252" cy="346" r="7" style="animation-delay: 0.7s;" />
+          <circle class="node major" cx="274" cy="478" r="7" style="animation-delay: 1.3s;" />
+          <circle class="node accent" cx="804" cy="302" r="9" style="animation-delay: 1.1s;" />
+          <circle class="node major" cx="1124" cy="218" r="7" style="animation-delay: 1.5s;" />
+          <circle class="node major" cx="1142" cy="420" r="7" style="animation-delay: 0.5s;" />
+
+          <text class="node-label" x="112" y="224">Consulting / Advisory</text>
+          <text class="node-label" x="94" y="352">Systems Engineering</text>
+          <text class="node-label" x="106" y="484">MIS / M&amp;E / ImpactOS</text>
+          <text class="node-label" x="736" y="276">edzola.ai</text>
+          <text class="node-label" x="926" y="224">RAG AI / Zolabs / Workflows</text>
+          <text class="node-label" x="966" y="426">Sector Intelligence</text>
+        </svg>
+      </div>
+    </div>
+
+    <section class="content">
+      <p class="sr-only">
+        edzola.ai connects consulting and advisory, development and product build, MIS and impact operating systems,
+        RAG AI workflows, and playbooks for nonprofit intelligence.
+      </p>
+      <span class="kicker">Coming Soon</span>
+      <h1>Design systems for social impact.</h1>
+      <p class="summary">
+        The intelligence layer for the social impact sector.
+      </p>
+      <p class="explain">
+        From programme strategy to data systems and AI workflows, edzola.ai helps organisations design and run the systems behind their impact.
+      </p>
+
+      <div class="crm-shell">
+        <div class="crm-shell-header">
+          <p>Join the early access list.</p>
+        </div>
+
+        <!-- Note :
+           - You can modify the font style and form style to suit your website.
+           - Code lines with comments Do not remove this code are required for the form to work properly, make sure that you do not remove these lines of code.
+           - The Mandatory check script can modified as to suit your business needs.
+           - It is important that you test the modified form before going live.-->
+        <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='background-color: white;color: black;max-width: 600px;'>
+          <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js'></script>
+          <style>
+            .wf_customMessageBox{
+              font-family: Arial, Helvetica, sans-serif;
+              color: #132C14;
+              background: #F5FAF5;
+              box-shadow: 0 2px 6px 0 rgba(0,0,0,0.25);
+              max-width: 90%;
+              width: max-content;
+              word-break: break-word;
+              z-index: 11000;
+              border-radius: 6px;
+              border: 1px solid #A9D3AB;
+              min-width: 100px;
+              padding: 10px 15px;
+              display: flex;
+              align-items: center;
+              position: fixed;
+              top: 20px;
+              left: 50%;
+              transform: translate(-50%, 0);
+            }
+            .wf_customCircle{
+              position: relative;
+              background-color: #12AA67;
+              border-radius: 100%;
+              width: 20px;
+              height: 20px;
+              flex: none;
+              margin-right: 7px;
+            }
+            .wf_customCheckMark{
+              box-sizing: unset !important;
+              position: absolute;
+              transform: rotate(45deg)translate(-50%, -50%);
+              left: 6px;
+              top: 9px;
+              height: 8px;
+              width: 3px;
+              border-bottom: 2px solid #fff;
+              border-right: 2px solid #fff;
+            }
+            .wf_customClose{
+              box-sizing: border-box;
+              position: relative;
+              width: 18px;
+              height: 18px;
+            }
+            .wf_customClose::after,
+            .wf_customClose::before{
+              content: '';
+              display: block;
+              box-sizing: border-box;
+              position: absolute;
+              width: 12px;
+              height: 1.5px;
+              background: #616E88;
+              transform: rotate(45deg);
+              border-radius: 5px;
+              top: 8px;
+              left: 3px;
+            }
+            .wf_customClose::after{
+              transform: rotate(-45deg);
+            }
+          </style>
+          <div class='wf_customMessageBox' id='wf_splash' style='display:none'>
+            <div class='wf_customCircle'>
+              <div class='wf_customCheckMark'></div>
+            </div>
+            <span id='wf_splash_info'></span>
+          </div>
+          <form
+            id='webform4805054000012881581'
+            name='WebToLeads4805054000012881581'
+            accept-charset='UTF-8'
+            action='https://crm.zoho.com/crm/WebToLeadForm'
+            method='POST'
+          >
+            <input type='text' style='display:none;' name='xnQsjsdp' value='3f7d9826973aa4d125e634b330e5e42d7063eaadeebefba2c5de8b0dfe37e286'>
+            <input type='hidden' name='zc_gad' id='zc_gad' value=''>
+            <input type='text' style='display:none;' name='xmIwtLD' value='1fd81be8a4829faea018092a02430e58de7b28c322b7e7614449412e4dc52925c8dce1d2d4bdcbc4cca9bd8342ca2f12'>
+            <input type='text' style='display:none;' name='actionType' value='TGVhZHM='>
+            <input type='text' style='display:none;' name='returnURL' value='null'>
+            <!-- Do not remove this code. -->
+            <style>
+              html,body{
+                margin: 0px;
+              }
+              .formsubmit.zcwf_button{
+                color: white !important;
+                background: transparent linear-gradient(0deg, #0279FF 0%, #00A3F3 100%);
+              }
+              #crmWebToEntityForm.zcwf_lblLeft{
+                width: 100%;
+                padding: 25px;
+                margin: 0 auto;
+                box-sizing: border-box;
+              }
+              #crmWebToEntityForm.zcwf_lblLeft *{
+                box-sizing: border-box;
+              }
+              #crmWebToEntityForm {
+                text-align: left;
+              }
+              #crmWebToEntityForm *{
+                direction: ltr;
+              }
+              .zcwf_lblLeft .zcwf_title{
+                word-wrap: break-word;
+                padding: 0px 6px 10px;
+                font-weight: bold;
+              }
+              .zcwf_lblLeft.cpT_primaryBtn:hover{
+                background: linear-gradient(#02acff 0,#006be4 100%) no-repeat padding-box !important;
+                box-shadow: 0 -2px 0 0 #0159b9 inset !important;
+                border: 0 !important;
+                color: #fff !important;
+                outline: 0 !important;
+              }
+              .zcwf_lblLeft .zcwf_col_fld input[type=text], input[type=password], .zcwf_lblLeft .zcwf_col_fld textarea{
+                width: 60%;
+                border: 1px solid #c0c6cc !important;
+                resize: vertical;
+                border-radius: 2px;
+                float: left;
+              }
+              .zcwf_lblLeft .zcwf_col_lab{
+                width: 30%;
+                word-break: break-word;
+                padding: 0px 6px 0px;
+                margin-right: 10px;
+                margin-top: 5px;
+                float: left;
+                min-height: 1px;
+              }
+              .zcwf_lblLeft .zcwf_col_fld{
+                float: left;
+                width: 68%;
+                padding: 0px 6px 0px;
+                position: relative;
+                margin-top: 5px;
+              }
+              .zcwf_lblLeft .zcwf_privacy {
+                padding: 6px;
+              }
+              .zcwf_lblLeft .wfrm_fld_dpNn {
+                display: none;
+              }
+              .dIB {
+                display: inline-block;
+              }
+              .zcwf_lblLeft .zcwf_col_fld_slt{
+                width: 60%;
+                border: 1px solid #ccc;
+                background: #fff;
+                border-radius: 4px;
+                font-size: 12px;
+                float: left;
+                resize: vertical;
+                padding: 2px 5px;
+              }
+              .zcwf_lblLeft .zcwf_row:after, .zcwf_lblLeft .zcwf_col_fld:after{
+                content: '';
+                display: table;
+                clear: both;
+              }
+              .zcwf_lblLeft .zcwf_col_help{
+                float: left;
+                margin-left: 7px;
+                font-size: 12px;
+                max-width: 35%;
+                word-break: break-word;
+              }
+              .zcwf_lblLeft .zcwf_help_icon{
+                cursor: pointer;
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+                background: #fff;
+                border: 1px solid #c0c6cc;
+                color: #c1c1c1;
+                text-align: center;
+                font-size: 11px;
+                line-height: 16px;
+                font-weight: bold;
+                border-radius: 50%;
+              }
+              .zcwf_lblLeft .zcwf_row {
+                margin: 15px 0px;
+              }
+              .zcwf_lblLeft .formsubmit{
+                margin-right: 5px;
+                cursor: pointer;
+                color: #313949;
+                font-size: 12px;
+              }
+              .zcwf_lblLeft .zcwf_privacy_txt{
+                width: 90%;
+                color: rgb(0, 0, 0);
+                font-size: 12px;
+                font-family: Arial;
+                display: inline-block;
+                vertical-align: top;
+                color: #313949;
+                padding-top: 2px;
+                margin-left: 6px;
+              }
+              .zcwf_lblLeft .zcwf_button{
+                font-size: 12px;
+                color: #313949;
+                border: 1px solid #c0c6cc;
+                padding: 3px 9px;
+                border-radius: 4px;
+                cursor: pointer;
+                max-width: 120px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              .zcwf_lblLeft .zcwf_tooltip_over{
+                position: relative;
+              }
+              .zcwf_lblLeft .zcwf_tooltip_ctn{
+                position: absolute;
+                background: #dedede;
+                padding: 3px 6px;
+                top: 3px;
+                border-radius: 4px;
+                word-break: break-word;
+                min-width: 100px;
+                max-width: 150px;
+                color: #313949;
+                z-index: 100;
+              }
+              .zcwf_lblLeft .zcwf_ckbox{
+                float: left;
+              }
+              .zcwf_lblLeft .zcwf_file{
+                width: 55%;
+                box-sizing: border-box;
+                float: left;
+              }
+              .cBoth:after{
+                content: '';
+                display: block;
+                clear: both;
+              }
+              @media all and (max-width: 600px){
+                .zcwf_lblLeft .zcwf_col_lab, .zcwf_lblLeft .zcwf_col_fld{
+                  width: auto;
+                  float: none !important;
+                }
+                .zcwf_lblLeft .zcwf_col_help {
+                  width: 40%;
+                }
+              }
+            </style>
+            <div class='zcwf_title' style='max-width: 600px;color: black; font-family:Arial;'>edzola.ai</div>
+            <div class='zcwf_row'>
+              <div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+                <label for='Last_Name'>Name
+                  <span style='color:red;'>*</span>
+                </label>
+              </div>
+              <div class='zcwf_col_fld'>
+                <input type='text' id='Last_Name' aria-required='true' aria-label='Last Name' name='Last Name' aria-valuemax='80' maxlength='80'>
+                <div class='zcwf_col_help'></div>
+              </div>
+            </div>
+            <div class='zcwf_row'>
+              <div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'>
+                <label for='Email'>Email
+                  <span style='color:red;'>*</span>
+                </label>
+              </div>
+              <div class='zcwf_col_fld'>
+                <input type='text' ftype='email' autocomplete='false' id='Email' aria-required='true' aria-label='Email' name='Email' aria-valuemax='100' crmlabel='' maxlength='100'>
+                <div class='zcwf_col_help'></div>
+              </div>
+            </div>
+            <input type='text' style='display: none;' name='aG9uZXlwb3Q' value='' />
+            <div class='zcwf_row'>
+              <div class='zcwf_col_lab'></div>
+              <div class='zcwf_col_fld'>
+                <input type='submit' id='formsubmit' role='button' class='formsubmit zcwf_button' value='Request Early Access' aria-label='Submit' title='Submit'>
+              </div>
+            </div>
+            <script>
+              function validateEmail4805054000012881581(){
+                var form = document.forms['WebToLeads4805054000012881581'];
+                var emailFld = form.querySelectorAll('[ftype=email]');
+                var i;
+                for(i = 0; i < emailFld.length; i++ ) {
+                  var emailVal = emailFld[i].value;
+                  if ((emailVal.replace(/^\s+|\s+$/g,'')).length != 0) {
+                    var atpos = emailVal.indexOf('@');
+                    var dotpos = emailVal.lastIndexOf('.');
+                    if(atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
+                      alert('Please enter a valid email address. ');
+                      emailFld[i].focus();
+                      return false;
+                    }
+                  }
+                }
+                return true;
+              }
+              function checkMandatory4805054000012881581(){
+                var mndFileds = new Array('Last Name', 'Email');
+                var fldLangVal = new Array('Name', 'Email');
+                for (i = 0; i < mndFileds.length; i++ ) {
+                  var fieldObj = document.forms['WebToLeads4805054000012881581'][mndFileds[i]];
+                  if (fieldObj) {
+                    if(((fieldObj.value).replace(/^\s+|\s+$/g,'')).length == 0) {
+                      if (fieldObj.type == 'file') {
+                        alert('Please select a file to upload.');
+                        fieldObj.focus();
+                        return false;
+                      }
+                      alert(fldLangVal[i] + ' cannot be empty.');
+                      fieldObj.focus();
+                      return false;
+                    } else if (fieldObj.nodeName == 'SELECT') {
+                      if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') {
+                        alert(fldLangVal[i] + ' cannot be none.');
+                        fieldObj.focus();
+                        return false;
+                      }
+                    } else if (fieldObj.type == 'checkbox') {
+                      if (fieldObj.checked == false) {
+                        alert('Please accept ' + fldLangVal[i]);
+                        fieldObj.focus();
+                        return false;
+                      }
+                    }
+                    try{
+                      if (fieldObj.name == 'Last Name') {
+                        name = fieldObj.value;
+                      }
+                    } catch (e){}
+                  }
+                }
+                if (!validateEmail4805054000012881581()) {
+                  return false;
+                }
+                var urlparams = new URLSearchParams(window.location.search);
+                if (urlparams.has('service') && (urlparams.get('service') === 'smarturl')) {
+                  var webform = document.getElementById('webform4805054000012881581');
+                  var service = urlparams.get('service');
+                  var smarturlfield = document.createElement('input');
+                  smarturlfield.setAttribute('type', 'hidden');
+                  smarturlfield.setAttribute('value', service);
+                  smarturlfield.setAttribute('name', 'service');
+                  webform.appendChild(smarturlfield);
+                }
+                document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled', true);
+                return true;
+              }
+              document.addEventListener('DOMContentLoaded', function(){
+                var form = document.getElementById('webform4805054000012881581');
+                var submitButton = document.querySelector('.crmWebToEntityForm .formsubmit');
+                var splashdom = document.getElementById('wf_splash');
+                var splashinfodom = document.getElementById('wf_splash_info');
+
+                form.addEventListener('submit', function(e){
+                  var ismandatory = checkMandatory4805054000012881581();
+                  e.preventDefault();
+
+                  if (!ismandatory) {
+                    return;
+                  }
+
+                  if (typeof _wfa_track != 'undefined' && _wfa_track.wfa_submit) {
+                    _wfa_track.wfa_submit(e);
+                  }
+
+                  fetch('https://crm.zoho.com/crm/WebToLeadForm', {
+                    method: 'POST',
+                    body: new FormData(form),
+                    mode: 'no-cors'
+                  }).then(function(){
+                    splashinfodom.innerText = 'Thanks. Your early access request has been received.';
+                    form.reset();
+                    splashdom.style.display = '';
+                    setTimeout(function(){
+                      splashdom.style.display = 'none';
+                    }, 5000);
+                  }).catch(function(){
+                    alert('We could not submit the form right now. Please try again in a moment.');
+                  }).finally(function(){
+                    submitButton.removeAttribute('disabled');
+                  });
+                });
+              });
+              function tooltipShow4805054000012881581(el){
+                var tooltip = el.nextElementSibling;
+                var tooltipDisplay = tooltip.style.display;
+                if (tooltipDisplay == 'none') {
+                  var allTooltip = document.getElementsByClassName('zcwf_tooltip_over');
+                  for (i = 0; i < allTooltip.length; i++ ) {
+                    allTooltip[i].style.display = 'none';
+                  }
+                  tooltip.style.display = 'block';
+                } else {
+                  tooltip.style.display = 'none';
+                }
+              }
+            </script>
+            <script src='https://crm.zohopublic.com/crm/WebFormServlet?rid=63c762ec700c7fb69bc5e1275ffc37f760542dffdf467bd6d51ac56b257e6d87'></script>
+            <!-- Do not remove this --- Analytics Tracking code starts -->
+            <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=2d508c7da4dd636c564499ff06df8774d9e093a09e46eea70b11af8d492371060653309c6245410d96d3eb5355d2f8aagidbce080fcf0ee693472f2334b60ad5e2dedcda20dce50332a3868f15e70e5a2f8gided2674fa8515a044a869bc6b03937456ed4be8a539fcc00bd0a7237a7fea4a20gidcc89c33bb3aa2ae050c196bdb28adc89237c6c0deea41c191bbf0570a669ce94&tw=99541863a1c15aa8f6c9aa0f7065b5b4743f4600176b25b1ac921f03bba06252'></script>
+            <!-- Do not remove this --- Analytics Tracking code ends. -->
+          </form>
+        </div>
+        <div class="crm-shell-footer">
+          <p class="credibility">Built by the team behind EdZola - trusted by 100+ impact organisations across 5 countries.</p>
+          <a class="about-link" href="https://edzola.com" target="_blank" rel="noreferrer">About EdZola</a>
+        </div>
+      </div>
+
+      <div class="bottom-mark">
+        <strong>edzola.ai</strong>
+        Coming Soon
+      </div>
+    </section>
+  </main>
+</body>
+</html>
