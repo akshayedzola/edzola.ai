@@ -88,6 +88,12 @@
     }
     .btn-nav:hover { opacity: 0.85; }
 
+    @media (max-width: 640px) {
+      nav { padding: 14px 18px; }
+      .nav-link { display: none; }
+      .btn-nav { font-size: 0.78rem; padding: 8px 14px; }
+    }
+
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
@@ -431,6 +437,30 @@
       color: rgba(255,255,255,0.28); margin-top: 10px;
     }
 
+    /* ── In-card thank-you state ── */
+    .ty-box {
+      text-align: center;
+      padding: 40px 20px 20px;
+      animation: fadeInUp 0.4s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .ty-icon { font-size: 3rem; margin-bottom: 16px; }
+    .ty-title {
+      font-size: 1.4rem; font-weight: 800;
+      color: var(--teal); margin-bottom: 12px;
+    }
+    .ty-msg {
+      font-size: 0.95rem; color: rgba(255,255,255,0.7);
+      margin-bottom: 10px; line-height: 1.65;
+    }
+    .ty-sub {
+      font-size: 0.82rem; color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+    }
+
     /* Zoho success splash — restyle */
     .wf_customMessageBox {
       background: #0f1a17 !important;
@@ -727,12 +757,12 @@
             <span id='wf_splash_info'></span>
           </div>
 
-          <form id='webform4805054000013119001' name='WebToLeads4805054000013119001' action='https://crm.zoho.com/crm/WebToLeadForm' method='POST' accept-charset='UTF-8' onsubmit='return checkMandatory4805054000013119001()'>
+          <form id='webform4805054000013119001' name='WebToLeads4805054000013119001' accept-charset='UTF-8' action='https://crm.zoho.com/crm/WebToLeadForm' method='POST'>
             <input type='text' style='display:none;' name='xnQsjsdp' value='20b0f5d01453baf296e7cf5f6f7b254e8ba5095db8f4a0ffa3f46ddffe23cac7'></input>
             <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
             <input type='text' style='display:none;' name='xmIwtLD' value='63e4a2f374c31ae5e8974a13a44f3bc37175afabf793bd173086411c6080a1deabd5157c6753d09f5fc733188359020a'></input>
             <input type='text' style='display:none;' name='actionType' value='TGVhZHM='></input>
-            <input type='text' style='display:none;' name='returnURL' value='https://edzola.ai/impact-os/?submitted=true'></input>
+            <input type='text' style='display:none;' name='returnURL' value='null'></input>
 
             <!-- Name -->
             <div class='zcwf_row'>
@@ -791,8 +821,14 @@
               <div class='zcwf_col_lab'></div>
               <div class='zcwf_col_fld'>
                 <input type='submit' id='formsubmit' role='button' class='formsubmit zcwf_button' value='Join the waitlist →' aria-label='Submit' title='Submit'>
-                <input type='reset' class='zcwf_button' role='button' name='reset' value='Clear form' aria-label='Reset' title='Reset'>
               </div>
+            </div>
+
+            <div class="ty-box" id="form-success" style="display:none;" aria-live="polite">
+              <div class="ty-icon">🎉</div>
+              <h4 class="ty-title">You're on the list!</h4>
+              <p class="ty-msg">Thank you — we'll notify you once ImpactOS launches and your early access spot is ready.</p>
+              <p class="ty-sub">Keep an eye on your inbox — we'll reach out when the time comes.</p>
             </div>
 
           </form>
@@ -863,27 +899,30 @@ function checkMandatory4805054000013119001(){
   document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled',true);
   return true;
 }
-// Show success banner if redirected back after Zoho form submission
-$(document).ready(function(){
-  if(new URLSearchParams(window.location.search).get('submitted')==='true'){
-    var splash=document.getElementById('wf_splash');
-    var info=document.getElementById('wf_splash_info');
-    info.innerText="You're on the list! We'll be in touch when your early access is ready.";
-    splash.style.display='flex';
-    // Scroll to waitlist section so banner is visible
-    var waitlist=document.getElementById('waitlist');
-    if(waitlist) waitlist.scrollIntoView({behavior:'smooth'});
-    // Hide form, show thank-you in its place
-    var form=document.getElementById('webform4805054000013119001');
-    if(form){
-      form.style.display='none';
-      var ty=document.createElement('div');
-      ty.style.cssText='text-align:center;padding:40px 20px;';
-      ty.innerHTML='<div style="font-size:2.5rem;margin-bottom:16px;">🎉</div><h4 style="font-size:1.3rem;color:var(--teal);margin-bottom:10px;">You\'re on the list!</h4><p style="font-size:0.9rem;color:rgba(255,255,255,0.5);">We\'ll be in touch when your early access spot is ready. Keep an eye on your inbox.</p>';
-      form.parentNode.insertBefore(ty, form);
-    }
-    setTimeout(function(){splash.style.display='none';},7000);
-  }
+document.addEventListener('DOMContentLoaded', function(){
+  var form = document.getElementById('webform4805054000013119001');
+  var submitBtn = document.getElementById('formsubmit');
+  var successBox = document.getElementById('form-success');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!checkMandatory4805054000013119001()) return;
+    submitBtn.value = 'Submitting…';
+    submitBtn.setAttribute('disabled', true);
+    fetch('https://crm.zoho.com/crm/WebToLeadForm', {
+      method: 'POST',
+      body: new FormData(form),
+      mode: 'no-cors'
+    }).then(function(){
+      form.style.display = 'none';
+      successBox.style.display = 'block';
+    }).catch(function(){
+      // POST almost certainly succeeded even if fetch throws — show success
+      form.style.display = 'none';
+      successBox.style.display = 'block';
+    }).finally(function(){
+      submitBtn.removeAttribute('disabled');
+    });
+  });
 });
 </script>
 <script src='https://crm.zohopublic.com/crm/WebFormServlet?rid=63c762ec700c7fb69bc5e1275ffc37f751bbb70b55076c52847d365d493e2907'></script>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>zolabs.ai — AI Voice Data Collection for Social Impact</title>
+  <meta name="description" content="Zolabs turns your surveys into intelligent phone conversations — reaching beneficiaries where they are, in the language they speak, and capturing the stories behind your numbers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --bg: #041015;
+      --bg-soft: #07171d;
+      --panel: rgba(7,21,29,0.72);
+      --text: #edf6f5;
+      --muted: #9ab1b3;
+      --muted-strong: #c7d9d9;
+      --line: rgba(82,196,193,0.12);
+      --line-strong: rgba(94,223,216,0.24);
+      --border: rgba(110,189,187,0.16);
+      --teal: #58dfd8;
+      --mint: #7cf0c7;
+      --lime: #d0ef75;
+      --warm: #d8ef7a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: #041015; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top center, rgba(12,54,60,0.22), transparent 30%),
+        linear-gradient(180deg, #071218 0%, var(--bg) 50%, #02090c 100%);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(80,168,165,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80,168,165,0.04) 1px, transparent 1px);
+      background-size: 112px 112px;
+      opacity: 0.5;
+      z-index: 0;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { position: relative; min-height: 100vh; z-index: 1; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* ── Nav ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      background: linear-gradient(180deg, rgba(4,16,21,0.88), rgba(4,16,21,0.24), transparent);
+      backdrop-filter: blur(10px);
+    }
+    .site-header .container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0 12px;
+    }
+    .wordmark {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.9rem; font-weight: 700; letter-spacing: -0.04em; color: #f2f8f7;
+    }
+    .wordmark .accent { color: var(--warm); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .header-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px;
+      color: var(--muted-strong); background: rgba(7,21,28,0.28); font-size: 0.9rem;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+    .header-link:hover { background: rgba(12,29,36,0.54); border-color: rgba(104,214,208,0.24); transform: translateY(-1px); }
+    .header-link.demo {
+      background: linear-gradient(90deg, rgba(88,223,216,0.12), rgba(208,239,117,0.08));
+      border-color: rgba(208,239,117,0.28); color: var(--lime);
+    }
+
+    /* ── Hero ── */
+    .hero { position: relative; padding: 80px 0 100px; text-align: center; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0 0 auto; height: 640px; pointer-events: none;
+      background: radial-gradient(circle at 50% 38%, rgba(39,107,107,0.18), transparent 34%);
+      z-index: -1;
+    }
+    .hero-stage {
+      position: absolute; inset: 14px 0 auto; height: 320px; overflow: hidden;
+      pointer-events: none;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.92), rgba(0,0,0,0.8) 70%, transparent);
+    }
+    .hero-stage svg { width: 100%; height: 100%; display: block; }
+    .stage-line { fill: none; stroke: var(--line); stroke-width: 1.4; stroke-linecap: round; }
+    .stage-line.strong { stroke: var(--line-strong); stroke-width: 1.8; }
+    .stage-flow {
+      fill: none; stroke: rgba(142,243,231,0.45); stroke-width: 1.6;
+      stroke-dasharray: 4 18; animation: stream 20s linear infinite;
+    }
+    .stage-node {
+      fill: rgba(88,223,216,0.8);
+      filter: drop-shadow(0 0 4px rgba(88,223,216,0.42)) drop-shadow(0 0 10px rgba(88,223,216,0.12));
+      animation: pulse 8s ease-in-out infinite;
+    }
+    .stage-node.center {
+      fill: rgba(216,239,122,0.92);
+      filter: drop-shadow(0 0 7px rgba(216,239,122,0.62)) drop-shadow(0 0 14px rgba(216,239,122,0.18));
+    }
+    .hero-copy {
+      position: relative; z-index: 1; max-width: 980px; margin: 0 auto;
+      padding-top: 200px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 16px; border-radius: 999px; border: 1px solid var(--border);
+      background: rgba(7,20,27,0.46); color: var(--muted-strong);
+      letter-spacing: 0.16em; font-size: 0.78rem; text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: ""; width: 9px; height: 9px; border-radius: 50%;
+      background: rgba(216,239,122,0.72); box-shadow: 0 0 16px rgba(216,239,122,0.22);
+    }
+    .hero h1 {
+      margin: 24px auto 0; max-width: 16ch;
+      font-size: clamp(2.8rem, 6.5vw, 5.4rem);
+      line-height: 1.02; letter-spacing: -0.055em; font-weight: 800;
+    }
+    .hero h1 .line { display: block; }
+    .gradient {
+      background: linear-gradient(90deg, var(--teal), var(--lime));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-body {
+      margin: 28px auto 0; max-width: 44rem;
+      font-size: clamp(1.05rem, 1.6vw, 1.28rem); line-height: 1.74; color: var(--muted-strong);
+    }
+    .hero-actions {
+      margin-top: 36px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 17px 30px; border: 0; border-radius: 999px;
+      background: linear-gradient(90deg, var(--teal), var(--lime));
+      color: #082022; font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 16px 36px rgba(83,222,203,0.2), inset 0 1px 0 rgba(255,255,255,0.4);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 20px 40px rgba(83,222,203,0.26), inset 0 1px 0 rgba(255,255,255,0.44); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 17px 26px; border: 1px solid var(--border); border-radius: 999px;
+      color: var(--muted-strong); background: rgba(7,21,28,0.32);
+      font-size: 1rem; font-family: "Space Grotesk", sans-serif; font-weight: 600;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+    .btn-secondary:hover { background: rgba(12,29,36,0.54); border-color: rgba(104,214,208,0.28); transform: translateY(-1px); }
+
+    /* ── Sections ── */
+    .section { padding: 88px 0; }
+    .section-head { max-width: 820px; margin: 0 auto 40px; text-align: center; }
+    .section-kicker {
+      display: inline-block; margin-bottom: 14px; color: var(--warm);
+      font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+    }
+    .section-title {
+      margin: 0; font-size: clamp(2rem, 4.5vw, 4.2rem);
+      line-height: 1.06; letter-spacing: -0.045em;
+    }
+    .section-intro {
+      margin: 16px auto 0; max-width: 42rem; color: var(--muted);
+      font-size: 1rem; line-height: 1.72;
+    }
+
+    /* ── Pain cards ── */
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px;
+    }
+    .pain-card {
+      padding: 30px 32px; border-radius: 26px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(8,24,31,0.82), rgba(6,18,24,0.92));
+      box-shadow: inset 0 1px 0 rgba(241,252,251,0.04), 0 18px 40px rgba(0,0,0,0.16);
+    }
+    .pain-card-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      border: 1px solid rgba(92,198,194,0.14); background: rgba(12,44,50,0.5);
+      display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .pain-card-icon svg { width: 24px; height: 24px; stroke-width: 1.8; stroke: var(--teal); fill: none; }
+    .pain-card-icon.lime svg { stroke: var(--lime); }
+    .pain-card h3 { margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: -0.02em; }
+    .pain-card p { margin: 12px 0 0; color: var(--muted); font-size: 0.96rem; line-height: 1.74; }
+
+    /* ── How it works ── */
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px; }
+    .step {
+      padding: 32px 28px; border-radius: 26px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(8,24,31,0.82), rgba(6,18,24,0.92));
+      position: relative;
+    }
+    .step-num {
+      font-family: "Space Grotesk", sans-serif; font-size: 3rem; font-weight: 700;
+      letter-spacing: -0.06em; line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--lime));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 18px;
+    }
+    .step h3 { margin: 0; font-size: 1.12rem; font-weight: 700; letter-spacing: -0.02em; }
+    .step p { margin: 12px 0 0; color: var(--muted); font-size: 0.94rem; line-height: 1.74; }
+
+    /* ── Features ── */
+    .features { display: grid; gap: 40px; }
+    .feature-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+      padding: 40px; border-radius: 28px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(8,24,31,0.82), rgba(6,18,24,0.92));
+    }
+    .feature-block.reverse { direction: rtl; }
+    .feature-block.reverse > * { direction: ltr; }
+    .feature-copy h3 { margin: 0 0 16px; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; }
+    .feature-copy p { margin: 0 0 20px; color: var(--muted); font-size: 0.97rem; line-height: 1.76; }
+    .feature-bullets { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .feature-bullets li {
+      display: flex; gap: 10px; align-items: flex-start;
+      color: var(--muted-strong); font-size: 0.92rem; line-height: 1.6;
+    }
+    .feature-bullets li::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--lime); margin-top: 6px; flex-shrink: 0;
+    }
+    .feature-visual {
+      border-radius: 20px; background: rgba(8,28,36,0.7);
+      border: 1px solid rgba(92,198,194,0.1); padding: 28px;
+      display: flex; flex-direction: column; gap: 14px; justify-content: center; min-height: 220px;
+    }
+    .visual-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px; font-size: 0.82rem;
+      background: rgba(88,223,216,0.08); border: 1px solid rgba(88,223,216,0.16);
+      color: var(--teal); font-weight: 600;
+    }
+    .visual-tag.lime { background: rgba(208,239,117,0.08); border-color: rgba(208,239,117,0.16); color: var(--lime); }
+    .visual-bar { height: 6px; border-radius: 999px; background: rgba(88,223,216,0.12); overflow: hidden; }
+    .visual-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--lime)); }
+    .visual-label { font-size: 0.78rem; color: var(--muted); margin-top: -6px; }
+    .visual-stat {
+      font-family: "Space Grotesk", sans-serif; font-size: 2.6rem; font-weight: 700;
+      letter-spacing: -0.05em;
+      background: linear-gradient(90deg, var(--teal), var(--lime));
+      -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1;
+    }
+    .visual-stat-label { font-size: 0.84rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── Use cases ── */
+    .use-cases-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px;
+    }
+    .use-case-pill {
+      padding: 20px 22px; border-radius: 18px; border: 1px solid var(--border);
+      background: rgba(8,24,31,0.72);
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .uc-dot {
+      width: 10px; height: 10px; border-radius: 50%; background: var(--teal);
+      flex-shrink: 0; margin-top: 5px;
+      box-shadow: 0 0 10px rgba(88,223,216,0.4);
+    }
+    .uc-dot.lime { background: var(--lime); box-shadow: 0 0 10px rgba(208,239,117,0.4); }
+    .use-case-pill span { font-size: 0.95rem; color: var(--muted-strong); line-height: 1.55; }
+
+    /* ── Integrations ── */
+    .integrations-bar {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px;
+    }
+    .int-chip {
+      padding: 10px 18px; border-radius: 999px; border: 1px solid var(--border);
+      background: rgba(8,20,27,0.5); color: var(--muted-strong);
+      font-size: 0.88rem; font-weight: 600; letter-spacing: 0.01em;
+    }
+
+    /* ── Pull quote ── */
+    .quote-section {
+      padding: 80px 0; border-top: 1px solid rgba(102,175,173,0.12);
+      border-bottom: 1px solid rgba(102,175,173,0.12);
+    }
+    .quote-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+    .quote-kicker {
+      display: inline-block; margin-bottom: 28px; color: var(--warm);
+      font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+    }
+    .quote-text {
+      font-size: clamp(1.3rem, 2.6vw, 2rem); line-height: 1.55; font-weight: 700;
+      letter-spacing: -0.025em; color: var(--text); quotes: "\201C" "\201D";
+    }
+    .quote-text::before { content: open-quote; color: var(--teal); }
+    .quote-text::after { content: close-quote; color: var(--teal); }
+    .quote-attr {
+      margin-top: 24px; color: var(--muted); font-size: 0.9rem; line-height: 1.6;
+    }
+    .quote-attr strong { color: var(--muted-strong); }
+
+    /* ── CTA / Demo ── */
+    .cta-section { padding: 96px 0; text-align: center; }
+    .cta-inner { max-width: 640px; margin: 0 auto; }
+    .cta-inner .section-title { font-size: clamp(2rem, 4vw, 3.4rem); }
+    .cta-inner p { margin: 20px auto 0; max-width: 36rem; color: var(--muted); font-size: 1rem; line-height: 1.72; }
+    .cta-actions { margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .cta-micro { font-size: 0.86rem; color: var(--muted); }
+    .cta-micro a { color: var(--teal); border-bottom: 1px solid rgba(88,223,216,0.24); }
+
+    /* ── Footer ── */
+    .site-footer { padding: 28px 0 42px; border-top: 1px solid rgba(102,175,173,0.12); }
+    .site-footer .container {
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 24px; align-items: center;
+    }
+    .footer-nav { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .footer-link {
+      display: inline-flex; align-items: center; padding: 10px 16px;
+      border: 1px solid var(--border); border-radius: 999px;
+      color: var(--muted-strong); background: rgba(7,21,28,0.28);
+      font-size: 0.92rem;
+      transition: background 160ms ease, border-color 160ms ease;
+    }
+    .footer-link:hover { background: rgba(12,29,36,0.54); border-color: rgba(104,214,208,0.24); }
+    .footer-tagline { color: var(--muted); font-size: 0.88rem; text-align: right; line-height: 1.55; }
+
+    /* ── Animations ── */
+    @keyframes pulse {
+      0%, 100% { opacity: 0.66; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+    @keyframes stream { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -160; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Responsive ── */
+    @media (max-width: 1080px) {
+      .pain-grid, .steps { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .feature-block { grid-template-columns: 1fr; }
+      .feature-block.reverse { direction: ltr; }
+      .use-cases-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 760px) {
+      .hero-copy { padding-top: 150px; }
+      .hero h1 { font-size: clamp(2.4rem, 9.5vw, 3.4rem); max-width: 14ch; }
+      .hero-body { font-size: 0.97rem; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .pain-grid, .steps, .use-cases-grid { grid-template-columns: 1fr; }
+      .feature-block { grid-template-columns: 1fr; padding: 28px 22px; }
+      .feature-block.reverse { direction: ltr; }
+      .section { padding: 64px 0; }
+      .site-footer .container { grid-template-columns: 1fr; text-align: center; }
+      .footer-tagline { text-align: left; }
+      .nav-right .header-link:not(.demo) { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .stage-flow, .stage-node { animation: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="#">zolabs<span class="accent">.ai</span></a>
+      <div class="nav-right">
+        <a class="header-link" href="https://edzola.ai" target="_blank" rel="noreferrer">edzola.ai</a>
+        <a class="header-link demo" href="#demo">Book a demo
+          <svg viewBox="0 0 16 16" fill="none" style="width:13px;height:13px;" aria-hidden="true">
+            <path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-stage" aria-hidden="true">
+          <svg viewBox="0 0 1280 380" role="presentation">
+            <!-- Sound-wave / voice lines -->
+            <path class="stage-line" d="M80 190C220 175 380 160 540 190" />
+            <path class="stage-line strong" d="M540 190C680 215 820 165 1000 148" />
+            <path class="stage-line" d="M80 230C230 245 390 248 540 190" />
+            <path class="stage-line strong" d="M540 190C700 220 860 258 1040 272" />
+            <path class="stage-line" d="M70 140C140 190 140 240 70 290" />
+            <path class="stage-line" d="M1060 148C1090 218 1090 252 1060 278" />
+            <path class="stage-flow" d="M80 190C220 175 380 160 540 190C680 215 820 165 1000 148" />
+            <circle class="stage-node" cx="120" cy="200" r="6" />
+            <circle class="stage-node" cx="280" cy="168" r="5" style="animation-delay:0.8s" />
+            <circle class="stage-node" cx="460" cy="174" r="5" style="animation-delay:0.3s" />
+            <circle class="stage-node center" cx="540" cy="190" r="8" style="animation-delay:0.6s" />
+            <circle class="stage-node" cx="760" cy="178" r="5" style="animation-delay:1.1s" />
+            <circle class="stage-node" cx="940" cy="155" r="5" style="animation-delay:1.4s" />
+            <circle class="stage-node" cx="980" cy="250" r="5" style="animation-delay:0.5s" />
+          </svg>
+        </div>
+
+        <div class="hero-copy">
+          <span class="eyebrow">AI-Powered Voice Data Collection for Social Impact</span>
+          <h1>
+            <span class="line">Your data tells you</span>
+            <span class="line"><span class="gradient">what happened.</span></span>
+            <span class="line">Zolabs helps you</span>
+            <span class="line">understand <span class="gradient">why.</span></span>
+          </h1>
+          <p class="hero-body">Most monitoring data is flat — checklists, attendance sheets, form fields ticked because "the project needs it." Zolabs turns your surveys into intelligent phone conversations, reaching beneficiaries where they actually are, in the language they actually speak, and capturing the stories behind your numbers.</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#demo">
+              Book a 15-min demo
+              <svg viewBox="0 0 24 24" fill="none" style="width:17px;height:17px;" aria-hidden="true">
+                <path d="M5 12h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a class="btn-secondary" href="#how-it-works">
+              See how it works
+              <svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px;opacity:0.6;" aria-hidden="true">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">The gap you already feel</span>
+          <h2 class="section-title">Between having nothing and doing a formal evaluation — there's Zolabs.</h2>
+          <p class="section-intro">You have dashboards. You have reports. What you don't have is an honest answer to the harder question: did anything actually shift for the person on the other side?</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain-card">
+            <div class="pain-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+            </div>
+            <h3>Forms fail at last mile</h3>
+            <p>A significant part of the communities you work with don't have a stable smartphone, consistent internet, or the comfort to type long answers on a small screen. They do have access to a basic phone — and they know how to pick up a call.</p>
+          </article>
+          <article class="pain-card">
+            <div class="pain-card-icon lime">
+              <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <h3>Checklists can't capture agency</h3>
+            <p>"How many attended?" is an important question. But it tells you nothing about whether the intervention built confidence, changed behaviour, or left someone feeling more heard — or less. That nuance lives in conversation, not in a tick-box.</p>
+          </article>
+          <article class="pain-card">
+            <div class="pain-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </div>
+            <h3>The analysis layer is a black box</h3>
+            <p>Most "AI for social impact" tools collect narratives and then run a magic prompt. The analytical rigour isn't visible, isn't explainable, and can't be trusted when your donor asks hard questions.</p>
+          </article>
+          <article class="pain-card">
+            <div class="pain-card-icon lime">
+              <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <h3>Data arrives late and disconnected</h3>
+            <p>By the time field responses are cleaned, translated, and entered, the moment for course-correction has passed. Your frontline workers, your beneficiaries, and your dashboards are all speaking different languages.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">The Zolabs model</span>
+          <h2 class="section-title">Listen at scale. Without losing the human texture.</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h3>Design your listening</h3>
+            <p>Describe what you need to understand — not just what you need to count. Zolabs helps you build a form that blends structured fields with open narrative questions. You even note why you're collecting each field. That shifts the mindset from "collect everything" to "collect only what truly matters."</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h3>AI calls your people</h3>
+            <p>Natural, multilingual conversations — not IVR menus, not WhatsApp bots. Zolabs reaches beneficiaries on any phone, in 25+ Indian and international languages, with dynamic branching that follows the person rather than the script. A hesitant pause on a call tells you something a ticked box never could.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h3>Structure emerges from conversation</h3>
+            <p>Every call produces a structured insight alongside a full transcript and audio recording. Quantitative fields and qualitative narratives, together — synced automatically into your CRM, MIS, or data warehouse. You own the raw data. Always.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE DIFFERENCE / FEATURES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Why it's different</span>
+          <h2 class="section-title">Data is fluid. Your tools should be too.</h2>
+          <p class="section-intro">Most systems force the world into neat boxes — dropdowns, dates, tick-marks. Real life refuses to behave that neatly. Zolabs is designed around that distinction — collecting the minimum that enables a good decision, in whatever form it arrives: a number, a story, a hesitation, a tone.</p>
+        </div>
+        <div class="features">
+
+          <!-- Feature 1 -->
+          <div class="feature-block">
+            <div class="feature-copy">
+              <h3>Reach where your beneficiaries are — not where your software assumes they are.</h3>
+              <p>Voice calls on any phone. No app install. No data pack required. No literacy barrier. In 25+ languages, with the dynamic branching to follow a pregnant woman across her entire care journey, or check in on a first-time mother at the exact right moment — automatically, at scale.</p>
+              <ul class="feature-bullets">
+                <li>Works on feature phones and smartphones alike</li>
+                <li>25+ Indian and international languages</li>
+                <li>Event-triggered or milestone-based calls</li>
+                <li>Tone, pauses and hesitations captured — not just words</li>
+              </ul>
+            </div>
+            <div class="feature-visual">
+              <div class="visual-tag">📞 Voice call in progress</div>
+              <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+                <div style="font-size:0.8rem;color:var(--muted);">Language detected</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <span class="visual-tag" style="font-size:0.76rem;padding:6px 10px;">Hindi</span>
+                  <span class="visual-tag lime" style="font-size:0.76rem;padding:6px 10px;">Marathi</span>
+                  <span class="visual-tag" style="font-size:0.76rem;padding:6px 10px;">Kannada</span>
+                  <span class="visual-tag lime" style="font-size:0.76rem;padding:6px 10px;">Bengali</span>
+                </div>
+              </div>
+              <div style="margin-top:8px;">
+                <div class="visual-stat">25+</div>
+                <div class="visual-stat-label">languages supported</div>
+              </div>
+              <div>
+                <div class="visual-bar"><div class="visual-bar-fill" style="width:82%;"></div></div>
+                <div class="visual-label">Call completion rate: 82%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-block reverse">
+            <div class="feature-copy">
+              <h3>Both the summary trend and the live testimony. Not one or the other.</h3>
+              <p>The goal isn't to replace qualitative research. It's to sit in the middle — structured enough to aggregate, honest enough to preserve nuance. Zolabs gives you a cleaned-up quantitative view and the raw transcript for deeper analysis, so you can answer both your M&E dashboard and your next board question.</p>
+              <ul class="feature-bullets">
+                <li>Qualitative and quantitative captured in a single call</li>
+                <li>AI follows up when an answer is incomplete or unclear</li>
+                <li>Full transcript and audio stored alongside structured data</li>
+                <li>A growing repository of community experiences you can keep learning from</li>
+              </ul>
+            </div>
+            <div class="feature-visual">
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div>
+                  <div class="visual-tag lime" style="margin-bottom:10px;">📊 Structured output</div>
+                  <div style="font-size:0.8rem;color:var(--muted);margin-bottom:6px;">Confidence in programme: Positive</div>
+                  <div class="visual-bar"><div class="visual-bar-fill" style="width:74%;"></div></div>
+                </div>
+                <div style="padding:14px;border-radius:12px;background:rgba(88,223,216,0.05);border:1px solid rgba(88,223,216,0.1);">
+                  <div style="font-size:0.72rem;color:var(--muted);margin-bottom:6px;">Transcript excerpt</div>
+                  <div style="font-size:0.84rem;color:var(--muted-strong);line-height:1.6;font-style:italic;">"…I feel like someone is finally asking. Not just ticking a box."</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-block">
+            <div class="feature-copy">
+              <h3>Capture is not analysis. We're very deliberate about that.</h3>
+              <p>Zolabs is a layer — a bridge. Not the entire universe. We're focused on listening well: clean capture, honest transcripts, transparent structure. The analytical layer is visible, explainable and tweakable — not a magic black box. And your raw data can be exported into any academic tool, qualitative framework, or custom analysis pipeline you trust.</p>
+              <ul class="feature-bullets">
+                <li>Transparent, explainable analytics — not a black prompt</li>
+                <li>Export and own your transcripts, always</li>
+                <li>Plug into your own sense-making methods</li>
+                <li>Designed for organisations that need rigour, not just speed</li>
+              </ul>
+            </div>
+            <div class="feature-visual">
+              <div class="visual-tag lime">🔍 Explainable AI</div>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:0.8rem;color:var(--muted);">Raw audio</span>
+                  <span class="visual-tag" style="font-size:0.72rem;padding:4px 10px;">✓ Owned by you</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:0.8rem;color:var(--muted);">Full transcript</span>
+                  <span class="visual-tag" style="font-size:0.72rem;padding:4px 10px;">✓ Exportable</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:0.8rem;color:var(--muted);">Structured fields</span>
+                  <span class="visual-tag lime" style="font-size:0.72rem;padding:4px 10px;">✓ API / CSV / CRM</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:0.8rem;color:var(--muted);">Analysis logic</span>
+                  <span class="visual-tag lime" style="font-size:0.72rem;padding:4px 10px;">✓ Visible & tweakable</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Built for the communities and programmes you serve</span>
+          <h2 class="section-title">Every touchpoint where a real conversation matters.</h2>
+        </div>
+        <div class="use-cases-grid">
+          <div class="use-case-pill"><div class="uc-dot"></div><span><strong>Beneficiary onboarding</strong> — Register last-mile communities with zero drop-off</span></div>
+          <div class="use-case-pill"><div class="uc-dot lime"></div><span><strong>Impact surveys</strong> — Mixed-method data at programme scale, without a field team</span></div>
+          <div class="use-case-pill"><div class="uc-dot"></div><span><strong>Journey-based follow-ups</strong> — Check in with mothers, patients, students at the right moment</span></div>
+          <div class="use-case-pill"><div class="uc-dot lime"></div><span><strong>Respectful Maternity Care</strong> — Understand what happens when you're not in the room</span></div>
+          <div class="use-case-pill"><div class="uc-dot"></div><span><strong>Compliance &amp; accountability</strong> — Reach district stakeholders quickly, get 100 responses by morning</span></div>
+          <div class="use-case-pill"><div class="uc-dot lime"></div><span><strong>Alumni &amp; cohort tracking</strong> — Understand long-term outcomes in the words of the people who lived them</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTEGRATIONS -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:0;">
+          <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.6rem);">A voice layer on top of the systems you already have.</h2>
+          <p class="section-intro">Zolabs doesn't replace what you've built. It adds an intelligent listening layer on top — syncing structured data and transcripts directly into your stack the moment each call completes.</p>
+        </div>
+        <div class="integrations-bar">
+          <span class="int-chip">Zoho CRM</span>
+          <span class="int-chip">Zoho Creator</span>
+          <span class="int-chip">Salesforce</span>
+          <span class="int-chip">KoboToolbox</span>
+          <span class="int-chip">Google Sheets</span>
+          <span class="int-chip">Custom APIs</span>
+          <span class="int-chip">Data Warehouses</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <section class="quote-section">
+      <div class="container">
+        <div class="quote-inner">
+          <span class="quote-kicker">Why we built this</span>
+          <p class="quote-text">Most of what we call data in the social sector is a bit dead. Checklists. Spreadsheets. Form fields ticked because the project needs it. Zolabs was my attempt to do something about that — to build a grammar for listening that sounds less like a spreadsheet and a little more like a person.</p>
+          <p class="quote-attr"><strong>Akshay, Founder</strong> — Zolabs · EdZola Technologies</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / DEMO -->
+    <section class="cta-section" id="demo">
+      <div class="container">
+        <div class="cta-inner">
+          <span class="section-kicker">Get started</span>
+          <h2 class="section-title">See Zolabs with your use case — not ours.</h2>
+          <p>15 minutes. We'll walk through how it works with your forms, your language, your stack. No pitch decks. Just a working demo on a real scenario from your programme.</p>
+          <div class="cta-actions">
+            <a class="btn-primary" href="mailto:support@zolabs.ai?subject=Demo%20Request%20-%20Zolabs" style="font-size:1.05rem;padding:18px 36px;">
+              Book a demo
+              <svg viewBox="0 0 24 24" fill="none" style="width:17px;height:17px;" aria-hidden="true">
+                <path d="M5 12h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <p class="cta-micro">Or write to us at <a href="mailto:support@zolabs.ai">support@zolabs.ai</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <a class="wordmark" href="#">zolabs<span class="accent">.ai</span></a>
+      <nav class="footer-nav" aria-label="Footer">
+        <a class="footer-link" href="https://edzola.ai" target="_blank" rel="noreferrer">edzola.ai</a>
+        <a class="footer-link" href="https://edzola.com" target="_blank" rel="noreferrer">About EdZola</a>
+        <a class="footer-link" href="mailto:support@zolabs.ai">support@zolabs.ai</a>
+      </nav>
+      <p class="footer-tagline">A product by EdZola Technologies<br>Helping social impact organisations listen at scale — since 2024.</p>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Particle canvas background -->
+<script>
+(function(){
+  var canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.55;';
+  document.body.insertBefore(canvas, document.body.firstChild);
+  var ctx = canvas.getContext('2d');
+  var W, H, nodes = [], edges = [];
+  var NODE_COUNT = 52, EDGE_DIST = 165;
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  function init(){
+    nodes = [];
+    for(var i=0;i<NODE_COUNT;i++){
+      nodes.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-0.5)*0.28, vy: (Math.random()-0.5)*0.28,
+        r: Math.random()*1.8+0.7
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){
+      var a=nodes[i]; a.x+=a.vx; a.y+=a.vy;
+      if(a.x<0||a.x>W) a.vx*=-1;
+      if(a.y<0||a.y>H) a.vy*=-1;
+    }
+    for(var i=0;i<nodes.length;i++){
+      for(var j=i+1;j<nodes.length;j++){
+        var dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        var d=Math.sqrt(dx*dx+dy*dy);
+        if(d<EDGE_DIST){
+          var alpha=(1-d/EDGE_DIST)*0.18;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x,nodes[i].y);
+          ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.strokeStyle='rgba(88,223,216,'+alpha+')';
+          ctx.lineWidth=0.7;
+          ctx.stroke();
+        }
+      }
+    }
+    for(var i=0;i<nodes.length;i++){
+      ctx.beginPath();
+      ctx.arc(nodes[i].x,nodes[i].y,nodes[i].r,0,Math.PI*2);
+      ctx.fillStyle='rgba(88,223,216,0.55)';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', function(){ resize(); init(); });
+  resize(); init(); draw();
+})();
+</script>
+
+</body>
+</html>
