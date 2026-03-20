@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>edzola.ai — Founding Manifesto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #041015;
+    --bg-soft: #07171d;
+    --text: #edf6f5;
+    --muted: #9ab1b3;
+    --muted-strong: #c7d9d9;
+    --line: rgba(82, 196, 193, 0.12);
+    --line-strong: rgba(94, 223, 216, 0.24);
+    --border: rgba(110, 189, 187, 0.16);
+    --teal: #58dfd8;
+    --lime: #d0ef75;
+    --warm: #d8ef7a;
+  }
+
+  html {
+    background: var(--bg);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(12, 54, 60, 0.28), transparent 40%),
+      linear-gradient(180deg, #071218 0%, var(--bg) 60%, #02090c 100%);
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(rgba(80, 168, 165, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(80, 168, 165, 0.04) 1px, transparent 1px);
+    background-size: 112px 112px;
+    opacity: 0.45;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 64px 56px 80px;
+  }
+
+  .doc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-strong);
+    margin-bottom: 52px;
+  }
+
+  .wordmark {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #f2f8f7;
+  }
+
+  .wordmark .accent { color: var(--warm); }
+
+  .doc-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(7, 20, 27, 0.46);
+    color: var(--muted-strong);
+    letter-spacing: 0.14em;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(216, 239, 122, 0.85);
+    box-shadow: 0 0 12px rgba(216, 239, 122, 0.35);
+  }
+
+  .hero-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2.5rem, 5.5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.055em;
+    margin-bottom: 18px;
+  }
+
+  .hero-title .gradient {
+    background: linear-gradient(90deg, var(--teal), var(--lime));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.78;
+    color: var(--muted-strong);
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+
+  .rule {
+    width: 100%;
+    height: 1px;
+    background: var(--line-strong);
+    margin: 36px 0;
+  }
+
+  .section {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0 18px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    padding-top: 3px;
+    opacity: 0.8;
+  }
+
+  .section-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.82;
+    color: var(--muted);
+  }
+
+  .section-body strong {
+    color: var(--muted-strong);
+    font-weight: 600;
+  }
+
+  .section-body a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  .pullquote {
+    border-left: 2px solid var(--teal);
+    padding: 2px 0 2px 16px;
+    margin: 14px 0 2px;
+    font-size: 0.97rem;
+    font-style: italic;
+    color: var(--muted-strong);
+    line-height: 1.65;
+  }
+
+  .closing {
+    margin-top: 44px;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: linear-gradient(160deg, rgba(8, 24, 31, 0.9), rgba(5, 16, 22, 0.96));
+    box-shadow: inset 0 1px 0 rgba(241, 252, 251, 0.04), 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  .closing-statement {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.58;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+
+  .closing-meta {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  .doc-footer {
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .doc-footer .wordmark { font-size: 1.05rem; }
+
+  .footer-url {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  @media print {
+    html { font-size: 13.5px; }
+    body {
+      background: #041015 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body::before { display: none; }
+    .page { padding: 36px 44px 52px; max-width: 100%; }
+    .section { page-break-inside: avoid; }
+    .closing { page-break-inside: avoid; }
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <div class="wordmark">edzola<span class="accent">.ai</span></div>
+    <div class="doc-label">Founding Manifesto · 2026</div>
+  </div>
+
+  <div class="eyebrow">A declaration of how we build</div>
+
+  <h1 class="hero-title">
+    Intelligence built for the<br>
+    <span class="gradient">world's hardest work.</span>
+  </h1>
+
+  <p class="hero-sub">Why we build openly, what we believe about impact, and what edzola.ai exists to do.</p>
+
+  <div class="rule"></div>
+
+  <div class="section">
+    <div class="section-num">I</div>
+    <div>
+      <h2 class="section-title">The problem isn't talent. It's access.</h2>
+      <p class="section-body">Across India and every low- and middle-income country, organisations doing extraordinary work are held back — not by lack of ambition or skill, but by lack of access to the systems thinking, tools, and intelligence that well-resourced institutions take for granted. <strong>That gap is a design failure, not an inevitability.</strong> edzola.ai exists to close it.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">II</div>
+    <div>
+      <h2 class="section-title">We are not digitising EdZola. We are transforming it.</h2>
+      <p class="section-body">For five years, EdZola has worked alongside 100+ nonprofits — building systems, learning what breaks, understanding what the sector actually needs. edzola.ai is not that consulting practice with AI features bolted on. It is <strong>EdZola reimagined assuming AI existed from day one</strong> — no booking-first workflows, no consultant dependency, no rigid service packages. Everything dynamic, generated, adaptive.</p>
+      <div class="pullquote">Sector expertise is the input. Accessible intelligence is the output.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">III</div>
+    <div>
+      <h2 class="section-title">An ecosystem, not a platform.</h2>
+      <p class="section-body">edzola.ai is not one product. It is a network of tools — from a simple Theory of Change generator to a large-scale qualitative analysis engine — united by a shared brand and a growing commons of sector knowledge. Some tools are India-specific. Some are built for the EU. Many are global. <strong>Each carries the context it was built for.</strong> The roof is the same; the rooms serve different purposes.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">IV</div>
+    <div>
+      <h2 class="section-title">Thinking → Artifact. Always.</h2>
+      <p class="section-body">People don't want advice. They want something usable. Every interaction on edzola.ai moves toward a tangible output — a framework, a blueprint, a report, a prototype. <strong>No endless chat. No abstract insight loops.</strong> Sophistication behind the scenes; clarity on the screen.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">V</div>
+    <div>
+      <h2 class="section-title">Open knowledge compounds impact.</h2>
+      <p class="section-body">The sector's best thinking disappears into PDFs and project drives, never to be found again. We build differently. Playbooks, frameworks, and models — the MAP framework, skilling guides, social enterprise blueprints — are <strong>published freely</strong>, contributed to openly, and improved by the community. Our code is open. Our funding needs are declared via <a href="https://floss.fund">funding.json</a>. We are building a living commons of practice, not a private knowledge vault.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">VI</div>
+    <div>
+      <h2 class="section-title">Capital is not only money.</h2>
+      <p class="section-body">A MEL leader sharing a tool with their network. A programme director citing a framework in a funder report. A developer contributing a playbook translation. These are not soft gestures — they are <strong>real capital</strong>: reputational, relational, knowledge-based, and community-built. We measure and value all of it. Financial sustainability matters; it is not the only thing that matters.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">VII</div>
+    <div>
+      <h2 class="section-title">You pay when something becomes worth acting on.</h2>
+      <p class="section-body">Preview the intelligence freely. Pay for the structured deliverable. Invest in the implementation-ready output. <strong>Not before.</strong> We charge when value becomes concrete — not for access, not for presence, not for the privilege of a conversation.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">VIII</div>
+    <div>
+      <h2 class="section-title">Built for real operating conditions.</h2>
+      <p class="section-body">Messy data. Evolving programmes. Donor constraints. Small teams. High mission complexity. <strong>We grew up here.</strong> edzola.ai does not adapt impact work to fit the tool. It adapts the tool to fit impact work. We are not a Western tech firm parachuting into LMICs. We are the infrastructure that should have existed already.</p>
+    </div>
+  </div>
+
+  <div class="closing">
+    <p class="closing-statement">Instead of helping one organisation at a time, we help thousands think better simultaneously. That is the direction. That is the work.</p>
+    <p class="closing-meta">edzola.ai is a product of EdZola Technologies Private Limited · Coimbatore, India<br>Built openly for the global impact sector · edzolatechnologies.com</p>
+    <div class="tags">
+      <span class="tag">Open source</span>
+      <span class="tag">Self-serve</span>
+      <span class="tag">Global from day one</span>
+      <span class="tag">Thinking → Artifact</span>
+      <span class="tag">Built for LMICs</span>
+      <span class="tag">Sector-first AI</span>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <div class="wordmark">edzola<span class="accent">.ai</span></div>
+    <div class="footer-url">edzola.ai · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
