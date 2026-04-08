@@ -1,1 +1,764 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZolaShield — DPDP Risk Assessment Platform</title>
+  <meta name="description" content="ZolaShield helps organisations identify every personal data system they hold, assess risk, and generate audit-ready DPDP compliance reports — through AI-conducted interviews, not spreadsheets." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --bg: #041015;
+      --bg-soft: #07171d;
+      --panel: rgba(7,21,29,0.72);
+      --text: #edf6f5;
+      --muted: #9ab1b3;
+      --muted-strong: #c7d9d9;
+      --line: rgba(82,196,193,0.12);
+      --line-strong: rgba(94,223,216,0.24);
+      --border: rgba(110,189,187,0.16);
+      --teal: #58dfd8;
+      --mint: #7cf0c7;
+      --lime: #d0ef75;
+      --warm: #d8ef7a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: #041015; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top center, rgba(12,54,60,0.22), transparent 30%),
+        linear-gradient(180deg, #071218 0%, var(--bg) 50%, #02090c 100%);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(80,168,165,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80,168,165,0.04) 1px, transparent 1px);
+      background-size: 112px 112px;
+      opacity: 0.5;
+      z-index: 0;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { position: relative; min-height: 100vh; z-index: 1; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 
+    /* ── Nav ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      background: linear-gradient(180deg, rgba(4,16,21,0.88), rgba(4,16,21,0.24), transparent);
+      backdrop-filter: blur(10px);
+    }
+    .site-header .container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0 12px;
+    }
+    .wordmark {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.6rem; font-weight: 700; letter-spacing: -0.04em; color: #f2f8f7;
+    }
+    .wordmark .accent { color: var(--warm); }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .header-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px;
+      color: var(--muted-strong); background: rgba(7,21,28,0.28); font-size: 0.9rem;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+    .header-link:hover { background: rgba(12,29,36,0.54); border-color: rgba(104,214,208,0.24); transform: translateY(-1px); }
+    .header-link.cta {
+      background: linear-gradient(90deg, rgba(88,223,216,0.12), rgba(208,239,117,0.08));
+      border-color: rgba(208,239,117,0.28); color: var(--lime);
+    }
+
+    /* ── Hero ── */
+    .hero { position: relative; padding: 80px 0 100px; text-align: center; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0 0 auto; height: 640px; pointer-events: none;
+      background: radial-gradient(circle at 50% 38%, rgba(39,107,107,0.18), transparent 34%);
+      z-index: -1;
+    }
+    .hero-stage {
+      position: absolute; inset: 14px 0 auto; height: 320px; overflow: hidden;
+      pointer-events: none;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.92), rgba(0,0,0,0.8) 70%, transparent);
+    }
+    .hero-stage svg { width: 100%; height: 100%; display: block; }
+    .stage-line { fill: none; stroke: var(--line); stroke-width: 1.4; stroke-linecap: round; }
+    .stage-line.strong { stroke: var(--line-strong); stroke-width: 1.8; }
+    .stage-flow {
+      fill: none; stroke: rgba(142,243,231,0.45); stroke-width: 1.6;
+      stroke-dasharray: 4 18; animation: stream 20s linear infinite;
+    }
+    @keyframes stream { to { stroke-dashoffset: -200; } }
+    .stage-node {
+      fill: rgba(88,223,216,0.8);
+      filter: drop-shadow(0 0 4px rgba(88,223,216,0.42)) drop-shadow(0 0 10px rgba(88,223,216,0.12));
+      animation: pulse 8s ease-in-out infinite;
+    }
+    .stage-node.center {
+      fill: rgba(216,239,122,0.92);
+      filter: drop-shadow(0 0 7px rgba(216,239,122,0.62)) drop-shadow(0 0 14px rgba(216,239,122,0.18));
+    }
+    @keyframes pulse { 0%,100%{opacity:.8} 50%{opacity:1} }
+    .hero-copy {
+      position: relative; z-index: 1; max-width: 980px; margin: 0 auto;
+      padding-top: 180px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 16px; border-radius: 999px; border: 1px solid var(--border);
+      background: rgba(7,20,27,0.46); color: var(--muted-strong);
+      letter-spacing: 0.16em; font-size: 0.78rem; text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: ""; width: 9px; height: 9px; border-radius: 50%;
+      background: rgba(216,239,122,0.72); box-shadow: 0 0 16px rgba(216,239,122,0.22);
+    }
+    .hero h1 {
+      margin: 24px auto 0; max-width: 18ch;
+      font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+      line-height: 1.02; letter-spacing: -0.055em; font-weight: 800;
+    }
+    .hero h1 .line { display: block; }
+    .gradient {
+      background: linear-gradient(90deg, var(--teal), var(--lime));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-body {
+      margin: 28px auto 0; max-width: 44rem;
+      font-size: clamp(1.05rem, 1.6vw, 1.22rem); line-height: 1.74; color: var(--muted-strong);
+    }
+    .hero-actions {
+      margin-top: 36px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 17px 30px; border: 0; border-radius: 999px;
+      background: linear-gradient(90deg, var(--teal), var(--lime));
+      color: #082022; font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 16px 36px rgba(83,222,203,0.2), inset 0 1px 0 rgba(255,255,255,0.4);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 20px 40px rgba(83,222,203,0.26), inset 0 1px 0 rgba(255,255,255,0.44); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 17px 26px; border: 1px solid var(--border); border-radius: 999px;
+      color: var(--muted-strong); background: rgba(7,21,28,0.32);
+      font-size: 1rem; font-family: "Space Grotesk", sans-serif; font-weight: 600;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+    .btn-secondary:hover { background: rgba(12,29,36,0.54); border-color: rgba(104,214,208,0.28); transform: translateY(-1px); }
+
+    /* ── Stat strip ── */
+    .stat-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden; margin-top: 72px;
+    }
+    .stat-cell {
+      background: rgba(6,18,24,0.82); padding: 28px 32px; text-align: center;
+    }
+    .stat-num {
+      font-family: "Space Grotesk", sans-serif; font-size: 2.6rem; font-weight: 700;
+      letter-spacing: -0.05em;
+      background: linear-gradient(90deg, var(--teal), var(--lime));
+      -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1;
+    }
+    .stat-label { font-size: 0.88rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+    /* ── Sections ── */
+    .section { padding: 88px 0; }
+    .section-head { max-width: 820px; margin: 0 auto 40px; text-align: center; }
+    .section-kicker {
+      display: inline-block; margin-bottom: 14px; color: var(--warm);
+      font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+    }
+    .section-title {
+      margin: 0; font-size: clamp(2rem, 4.5vw, 4rem);
+      line-height: 1.06; letter-spacing: -0.045em;
+    }
+    .section-intro {
+      margin: 16px auto 0; max-width: 42rem; color: var(--muted);
+      font-size: 1rem; line-height: 1.72;
+    }
+
+    /* ── Pain cards ── */
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px;
+    }
+    .pain-card {
+      padding: 30px 32px; border-radius: 26px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(8,24,31,0.82), rgba(6,18,24,0.92));
+      box-shadow: inset 0 1px 0 rgba(241,252,251,0.04), 0 18px 40px rgba(0,0,0,0.16);
+    }
+    .pain-card-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      border: 1px solid rgba(92,198,194,0.14); background: rgba(12,44,50,0.5);
+      display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .pain-card-icon svg { width: 24px; height: 24px; stroke-width: 1.8; stroke: var(--teal); fill: none; }
+    .pain-card-icon.lime svg { stroke: var(--lime); }
+    .pain-card h3 { margin: 0; font-size: 1.18rem; font-weight: 700; letter-spacing: -0.02em; }
+    .pain-card p { margin: 12px 0 0; color: var(--muted); font-size: 0.96rem; line-height: 1.74; }
+
+    /* ── Steps ── */
+    .steps { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; }
+    .step {
+      padding: 32px 28px; border-radius: 26px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(8,24,31,0.82), rgba(6,18,24,0.92));
+      position: relative;
+    }
+    .step-num {
+      font-family: "Space Grotesk", sans-serif; font-size: 2.8rem; font-weight: 700;
+      letter-spacing: -0.06em; line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--lime));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 18px;
+    }
+    .step h3 { margin: 0; font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; }
+    .step p { margin: 12px 0 0; color: var(--muted); font-size: 0.9rem; line-height: 1.74; }
+
+    /* ── Features ── */
+    .features { display: grid; gap: 40px; }
+    .feature-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+      padding: 40px; border-radius: 28px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(8,24,31,0.82), rgba(6,18,24,0.92));
+    }
+    .feature-block.reverse { direction: rtl; }
+    .feature-block.reverse > * { direction: ltr; }
+    .feature-copy h3 { margin: 0 0 16px; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; }
+    .feature-copy p { margin: 0 0 20px; color: var(--muted); font-size: 0.97rem; line-height: 1.76; }
+    .feature-bullets { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .feature-bullets li {
+      display: flex; gap: 10px; align-items: flex-start;
+      color: var(--muted-strong); font-size: 0.92rem; line-height: 1.6;
+    }
+    .feature-bullets li::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--lime); margin-top: 6px; flex-shrink: 0;
+    }
+    .feature-visual {
+      border-radius: 20px; background: rgba(8,28,36,0.7);
+      border: 1px solid rgba(92,198,194,0.1); padding: 28px;
+      display: flex; flex-direction: column; gap: 14px; justify-content: center; min-height: 240px;
+    }
+    .visual-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px; font-size: 0.82rem;
+      background: rgba(88,223,216,0.08); border: 1px solid rgba(88,223,216,0.16);
+      color: var(--teal); font-weight: 600;
+    }
+    .visual-tag.lime { background: rgba(208,239,117,0.08); border-color: rgba(208,239,117,0.16); color: var(--lime); }
+    .visual-tag.red { background: rgba(255,100,100,0.08); border-color: rgba(255,100,100,0.2); color: #f87171; }
+    .visual-bar { height: 6px; border-radius: 999px; background: rgba(88,223,216,0.12); overflow: hidden; }
+    .visual-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--teal), var(--lime)); }
+    .visual-label { font-size: 0.78rem; color: var(--muted); margin-top: -6px; }
+    .visual-stat {
+      font-family: "Space Grotesk", sans-serif; font-size: 2.6rem; font-weight: 700;
+      letter-spacing: -0.05em;
+      background: linear-gradient(90deg, var(--teal), var(--lime));
+      -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1;
+    }
+    .visual-stat-label { font-size: 0.84rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── Report cards ── */
+    .report-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; margin-top: 40px;
+    }
+    .report-card {
+      padding: 32px; border-radius: 26px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(8,24,31,0.82), rgba(6,18,24,0.92));
+    }
+    .report-card-icon { font-size: 2rem; margin-bottom: 16px; }
+    .report-card h3 { margin: 0 0 12px; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+    .report-card p { margin: 0; color: var(--muted); font-size: 0.94rem; line-height: 1.7; }
+
+    /* ── Use cases ── */
+    .use-cases-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px;
+    }
+    .use-case-pill {
+      padding: 20px 22px; border-radius: 18px; border: 1px solid var(--border);
+      background: rgba(8,24,31,0.72);
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .uc-dot {
+      width: 10px; height: 10px; border-radius: 50%; background: var(--teal);
+      flex-shrink: 0; margin-top: 5px; box-shadow: 0 0 10px rgba(88,223,216,0.4);
+    }
+    .uc-dot.lime { background: var(--lime); box-shadow: 0 0 10px rgba(208,239,117,0.4); }
+    .use-case-pill span { font-size: 0.95rem; color: var(--muted-strong); line-height: 1.55; }
+
+    /* ── Pull quote ── */
+    .quote-section {
+      padding: 80px 0; border-top: 1px solid rgba(102,175,173,0.12);
+      border-bottom: 1px solid rgba(102,175,173,0.12);
+    }
+    .quote-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+    .quote-kicker {
+      display: inline-block; margin-bottom: 28px; color: var(--warm);
+      font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+    }
+    .quote-text {
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.55; font-weight: 700;
+      letter-spacing: -0.025em; color: var(--text);
+    }
+    .quote-attr { margin-top: 24px; color: var(--muted); font-size: 0.92rem; }
+
+    /* ── CTA ── */
+    .cta-section { padding: 100px 0; }
+    .cta-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .cta-inner p { color: var(--muted); font-size: 1rem; line-height: 1.7; margin: 16px 0 0; }
+    .cta-actions { margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .cta-micro { font-size: 0.88rem; color: var(--muted); margin: 0; }
+    .cta-micro a { color: var(--teal); text-decoration: underline; text-underline-offset: 2px; }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 1px solid rgba(102,175,173,0.1);
+      padding: 40px 0;
+    }
+    .site-footer .container {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-link { font-size: 0.9rem; color: var(--muted); transition: color 160ms; }
+    .footer-link:hover { color: var(--teal); }
+    .footer-tagline { font-size: 0.82rem; color: var(--muted); line-height: 1.6; text-align: right; }
+
+    /* ── DPDP badge row ── */
+    .dpdp-bar {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px;
+    }
+    .dpdp-chip {
+      padding: 10px 18px; border-radius: 999px; border: 1px solid var(--border);
+      background: rgba(8,20,27,0.5); color: var(--muted-strong);
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.01em;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="#">ZolaShield<span class="accent">.ai</span></a>
+      <nav class="nav-links">
+        <a class="header-link" href="#how-it-works">How it works</a>
+        <a class="header-link" href="#reports">Reports</a>
+        <a class="header-link cta" href="mailto:reachus@edzola.com">Request a demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-stage">
+        <svg viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <!-- grid lines -->
+          <line class="stage-line" x1="0" y1="160" x2="1200" y2="160"/>
+          <line class="stage-line" x1="0" y1="80" x2="1200" y2="80"/>
+          <line class="stage-line" x1="0" y1="240" x2="1200" y2="240"/>
+          <line class="stage-line strong" x1="600" y1="0" x2="600" y2="320"/>
+          <line class="stage-line" x1="300" y1="0" x2="300" y2="320"/>
+          <line class="stage-line" x1="900" y1="0" x2="900" y2="320"/>
+          <!-- system nodes -->
+          <circle class="stage-node" cx="180" cy="80" r="5"/>
+          <circle class="stage-node" cx="420" cy="120" r="4"/>
+          <circle class="stage-node" cx="780" cy="100" r="4"/>
+          <circle class="stage-node" cx="1020" cy="80" r="5"/>
+          <circle class="stage-node" cx="260" cy="200" r="3.5"/>
+          <circle class="stage-node" cx="880" cy="200" r="3.5"/>
+          <!-- flow lines from nodes to centre -->
+          <path class="stage-flow" d="M180,80 Q380,160 600,160"/>
+          <path class="stage-flow" d="M420,120 Q510,140 600,160" style="animation-delay:-4s"/>
+          <path class="stage-flow" d="M780,100 Q690,130 600,160" style="animation-delay:-8s"/>
+          <path class="stage-flow" d="M1020,80 Q820,160 600,160" style="animation-delay:-12s"/>
+          <path class="stage-flow" d="M260,200 Q430,180 600,160" style="animation-delay:-6s"/>
+          <path class="stage-flow" d="M880,200 Q740,180 600,160" style="animation-delay:-10s"/>
+          <!-- ZolaShield centre node -->
+          <circle class="stage-node center" cx="600" cy="160" r="9"/>
+        </svg>
+      </div>
+      <div class="hero-copy">
+        <span class="eyebrow">DPDP Act 2023 · India · Built by EdZola</span>
+        <h1>
+          <span class="line">Your organisation holds</span>
+          <span class="line gradient">personal data.</span>
+          <span class="line">Do you know where?</span>
+        </h1>
+        <p class="hero-body">ZolaShield finds every system, classifies every data type, and generates a risk-scored, audit-ready DPDP compliance report — through AI-conducted phone interviews, not spreadsheets.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="mailto:reachus@edzola.com">
+            Request a demo
+            <svg viewBox="0 0 24 24" fill="none" style="width:17px;height:17px;" aria-hidden="true">
+              <path d="M5 12h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="btn-secondary" href="#how-it-works">See how it works</a>
+        </div>
+
+        <!-- Stat strip -->
+        <div class="stat-strip">
+          <div class="stat-cell">
+            <div class="stat-num">10<span style="font-size:1.4rem">min</span></div>
+            <div class="stat-label">Average AI interview per team member — voice, no forms</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num">23</div>
+            <div class="stat-label">Structured questions covering every DPDP-relevant dimension</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num">2</div>
+            <div class="stat-label">Report levels — individual and organisation-wide</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">The problem</span>
+          <h2 class="section-title">DPDP compliance starts with knowing what data you hold. Most organisations don't.</h2>
+          <p class="section-intro">Before consent, retention policies, or rights management can happen — you need a data inventory. Building one manually is where most compliance programmes quietly stall.</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain-card">
+            <div class="pain-card-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h3>Personal data lives in places no one mapped</h3>
+            <p>HR systems, field tools, WhatsApp groups, Google Sheets, and partner portals all hold personal data. IT audits catch the obvious systems. The rest — where the real risk lives — stays invisible.</p>
+          </article>
+          <article class="pain-card">
+            <div class="pain-card-icon lime">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3>Staff won't fill a 40-column spreadsheet</h3>
+            <p>Manual data discovery templates get completion rates below 20%. Compliance officers end up chasing people, filling in guesses, and producing inventories that are immediately out of date.</p>
+          </article>
+          <article class="pain-card">
+            <div class="pain-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </div>
+            <h3>No risk prioritisation means no starting point</h3>
+            <p>Even when data is mapped, teams can't answer "where do we start?" Without a risk score on each data type — sensitivity, volume, third-party transfers — resource allocation is guesswork.</p>
+          </article>
+          <article class="pain-card">
+            <div class="pain-card-icon lime">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Consultants don't scale</h3>
+            <p>A consultant-led data audit is expensive, slow, and produces a point-in-time snapshot. As your systems change, the inventory goes stale. There's no repeatable, scalable process built underneath.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">The ZolaShield model</span>
+          <h2 class="section-title">From unknown to audit-ready in four steps.</h2>
+          <p class="section-intro">Every step is automated. Every output is structured. Your team completes a phone call — ZolaShield handles everything else.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h3>Set up your organisation</h3>
+            <p>Register your organisation and add the team members who handle personal data across departments. Takes under 10 minutes. No technical setup required.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h3>AI calls your team</h3>
+            <p>Each team member receives a phone call from ZolaShield's AI interviewer. 23 structured questions covering every DPDP dimension — systems, data types, purpose, retention, access, transfers. Around 10 minutes. No app, no form.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h3>Review and fill gaps</h3>
+            <p>Every conversation is logged automatically. Team members can review their transcript, correct any misheard detail, and add anything they missed before the analysis runs.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <h3>Generate your reports</h3>
+            <p>One click triggers the AI analysis engine. Individual risk reports per team member. An aggregated organisation-level DPDP compliance view. Both audit-ready and shareable with leadership.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Why it works</span>
+          <h2 class="section-title">Designed around how people actually know what data they hold.</h2>
+        </div>
+        <div class="features">
+
+          <!-- Feature 1 -->
+          <div class="feature-block">
+            <div class="feature-copy">
+              <h3>A phone call gets what a spreadsheet never will.</h3>
+              <p>When a compliance officer sends a 40-column Excel template, it gets ignored. When someone receives a phone call that asks clear, conversational questions — they answer. ZolaShield uses the same AI voice technology as Zolabs.ai, structured specifically around DPDP's data discovery requirements.</p>
+              <ul class="feature-bullets">
+                <li>No app to install, no form to navigate</li>
+                <li>Questions adapt based on the systems described</li>
+                <li>Captures shadow IT — WhatsApp, Google Sheets, personal tools</li>
+                <li>Non-punitive framing so staff disclose accurately</li>
+              </ul>
+            </div>
+            <div class="feature-visual">
+              <div class="visual-tag">📞 AI interview in progress</div>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+                <div style="font-size:0.8rem;color:var(--muted);">Systems surfaced in this session</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <span class="visual-tag" style="font-size:0.76rem;padding:6px 10px;">HRMS</span>
+                  <span class="visual-tag lime" style="font-size:0.76rem;padding:6px 10px;">Google Sheets</span>
+                  <span class="visual-tag" style="font-size:0.76rem;padding:6px 10px;">WhatsApp</span>
+                  <span class="visual-tag lime" style="font-size:0.76rem;padding:6px 10px;">Zoho CRM</span>
+                </div>
+              </div>
+              <div style="margin-top:4px;">
+                <div class="visual-stat">23</div>
+                <div class="visual-stat-label">questions · ~10 min · any phone</div>
+              </div>
+              <div>
+                <div class="visual-bar"><div class="visual-bar-fill" style="width:88%;"></div></div>
+                <div class="visual-label">Interview completion rate across pilot orgs: 88%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-block reverse">
+            <div class="feature-copy">
+              <h3>Every data type classified and risk-scored automatically.</h3>
+              <p>ZolaShield maps what your team describes against DPDP's sensitive data categories — health records, financial information, biometric data, children's data, and more. Each data record gets a risk score across five weighted factors, so your compliance team can prioritise immediately rather than read through raw responses.</p>
+              <ul class="feature-bullets">
+                <li>P1 (sensitive) · P2 (personal) · P3 (pseudonymous) · P0 (non-personal) classification</li>
+                <li>Risk scoring across sensitivity, volume, transfers, retention, and access controls</li>
+                <li>Children's data automatically flagged under DPDP Section 9</li>
+                <li>Manual correction available before analysis is run</li>
+              </ul>
+            </div>
+            <div class="feature-visual">
+              <div class="visual-tag lime" style="margin-bottom:4px;">🏷 Risk classification</div>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:0.82rem;color:var(--muted);">Health records (HRMS)</span>
+                  <span class="visual-tag red" style="font-size:0.72rem;padding:4px 10px;">P1 · High Risk</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:0.82rem;color:var(--muted);">Beneficiary contact list</span>
+                  <span class="visual-tag" style="font-size:0.72rem;padding:4px 10px;">P2 · Medium</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:0.82rem;color:var(--muted);">Donor database</span>
+                  <span class="visual-tag red" style="font-size:0.72rem;padding:4px 10px;">P1 · PAN data</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:0.82rem;color:var(--muted);">Programme attendance</span>
+                  <span class="visual-tag lime" style="font-size:0.72rem;padding:4px 10px;">P3 · Low Risk</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-block">
+            <div class="feature-copy">
+              <h3>Two reports, one source of truth — ready for leadership and auditors.</h3>
+              <p>ZolaShield generates compliance reports at two levels. Every team member gets an individual risk report based on their systems and practices. Leadership gets an organisation-wide view — aggregated across every conversation, showing coverage gaps, highest-risk data systems, and priority actions. No manual consolidation.</p>
+              <ul class="feature-bullets">
+                <li>Individual reports generated per team member post-interview</li>
+                <li>Organisation report aggregates all department inputs automatically</li>
+                <li>Coverage tracking — see which departments are still outstanding</li>
+                <li>Shareable with boards, auditors, and legal counsel</li>
+              </ul>
+            </div>
+            <div class="feature-visual">
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div>
+                  <div class="visual-tag" style="margin-bottom:10px;">📄 Organisation Report</div>
+                  <div style="font-size:0.8rem;color:var(--muted);margin-bottom:6px;">Department coverage</div>
+                  <div class="visual-bar"><div class="visual-bar-fill" style="width:78%;"></div></div>
+                  <div class="visual-label" style="margin-top:4px;">7 of 9 departments complete</div>
+                </div>
+                <div style="padding:14px;border-radius:12px;background:rgba(88,223,216,0.05);border:1px solid rgba(88,223,216,0.1);">
+                  <div style="font-size:0.72rem;color:var(--muted);margin-bottom:6px;">Highest priority gap identified</div>
+                  <div style="font-size:0.84rem;color:var(--muted-strong);line-height:1.6;">HR system holds health data for 340 employees with no documented retention policy — DPDP Section 8(7) risk.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IT COVERS -->
+    <section class="section" id="reports">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">DPDP coverage</span>
+          <h2 class="section-title">Every interview question maps to a specific compliance requirement.</h2>
+          <p class="section-intro">ZolaShield's 23 questions aren't generic. Each one is designed to extract a field that DPDP requires organisations to know, document, and act on.</p>
+        </div>
+        <div class="dpdp-bar">
+          <span class="dpdp-chip">S.4 — Lawful processing purpose</span>
+          <span class="dpdp-chip">S.5 — Notice obligations</span>
+          <span class="dpdp-chip">S.8(7) — Retention limits</span>
+          <span class="dpdp-chip">S.9 — Children's data</span>
+          <span class="dpdp-chip">S.16 — Cross-border transfers</span>
+          <span class="dpdp-chip">Schedule — Sensitive categories</span>
+          <span class="dpdp-chip">S.8(4) — Access controls</span>
+          <span class="dpdp-chip">S.8(2) — Processor obligations</span>
+        </div>
+        <div class="report-grid">
+          <div class="report-card">
+            <div class="report-card-icon">👤</div>
+            <h3>Individual Risk Report</h3>
+            <p>Reflects the DPDP risk posture of a single team member based on the systems they manage and their data handling practices. Flags specific gaps — missing retention policies, undocumented transfers, unencrypted sensitive data.</p>
+          </div>
+          <div class="report-card">
+            <div class="report-card-icon">🏢</div>
+            <h3>Organisation Risk Report</h3>
+            <p>Aggregates findings from every department into a single compliance view. Shows coverage progress, highest-risk data systems, and prioritised recommendations — structured for boards, legal teams, and DPDP auditors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Who it's for</span>
+          <h2 class="section-title">Any organisation that holds personal data has a DPDP obligation.</h2>
+        </div>
+        <div class="use-cases-grid">
+          <div class="use-case-pill"><div class="uc-dot"></div><span><strong>NGOs and nonprofits</strong> — Beneficiary, donor, and volunteer data across multiple programmes and field teams</span></div>
+          <div class="use-case-pill"><div class="uc-dot lime"></div><span><strong>Healthcare organisations</strong> — Patient records, referral data, and community health worker systems</span></div>
+          <div class="use-case-pill"><div class="uc-dot"></div><span><strong>Education institutions</strong> — Student data, fee records, and outcomes tracking across campuses</span></div>
+          <div class="use-case-pill"><div class="uc-dot lime"></div><span><strong>SMEs and mid-sized companies</strong> — Without a dedicated DPO but facing full DPDP obligations</span></div>
+          <div class="use-case-pill"><div class="uc-dot"></div><span><strong>Social enterprises</strong> — Managing beneficiary, partner, and funder data across geographies</span></div>
+          <div class="use-case-pill"><div class="uc-dot lime"></div><span><strong>Multi-location networks</strong> — Franchise or chapter structures where data practices vary by site</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-section">
+      <div class="container">
+        <div class="quote-inner">
+          <span class="quote-kicker">Why we built this</span>
+          <p class="quote-text">Most organisations we work with know they have a DPDP obligation. What they don't know is where to start. The answer is always the same: find out what data you actually hold, in which systems, for what purpose. ZolaShield automates that first, hardest step.</p>
+          <p class="quote-attr"><strong>Akshay, Founder</strong> — ZolaShield · EdZola</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="demo">
+      <div class="container">
+        <div class="cta-inner">
+          <span class="section-kicker">Get started</span>
+          <h2 class="section-title" style="font-size:clamp(2rem,4vw,3.4rem);">See ZolaShield with your organisation — not a generic demo.</h2>
+          <p>We'll walk through how it works using your systems, your departments, and your compliance questions. 20 minutes. No pitch deck. Just a working session on a real scenario from your organisation.</p>
+          <div class="cta-actions">
+            <a class="btn-primary" href="mailto:reachus@edzola.com" style="font-size:1.05rem;padding:18px 36px;">
+              Request a demo
+              <svg viewBox="0 0 24 24" fill="none" style="width:17px;height:17px;" aria-hidden="true">
+                <path d="M5 12h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <p class="cta-micro">Or write to us at <a href="mailto:reachus@edzola.com">reachus@edzola.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <a class="wordmark" href="#">ZolaShield<span class="accent">.ai</span></a>
+      <nav class="footer-nav" aria-label="Footer">
+        <a class="footer-link" href="https://edzola.ai" target="_blank" rel="noreferrer">edzola.ai</a>
+        <a class="footer-link" href="https://zolabs.ai" target="_blank" rel="noreferrer">zolabs.ai</a>
+        <a class="footer-link" href="mailto:reachus@edzola.com">reachus@edzola.com</a>
+      </nav>
+      <p class="footer-tagline">Built by EdZola<br>DPDP compliance infrastructure for India's organisations.</p>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Particle canvas background -->
+<script>
+(function(){
+  var canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.55;';
+  document.body.insertBefore(canvas, document.body.firstChild);
+  var ctx = canvas.getContext('2d');
+  var W, H, nodes = [];
+  var NODE_COUNT = 52, EDGE_DIST = 165;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  function init(){
+    nodes = [];
+    for(var i=0;i<NODE_COUNT;i++){
+      nodes.push({ x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-0.5)*0.28, vy:(Math.random()-0.5)*0.28, r:Math.random()*1.8+0.7 });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){
+      var a=nodes[i]; a.x+=a.vx; a.y+=a.vy;
+      if(a.x<0||a.x>W) a.vx*=-1;
+      if(a.y<0||a.y>H) a.vy*=-1;
+    }
+    for(var i=0;i<nodes.length;i++){
+      for(var j=i+1;j<nodes.length;j++){
+        var dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        var d=Math.sqrt(dx*dx+dy*dy);
+        if(d<EDGE_DIST){
+          var alpha=(1-d/EDGE_DIST)*0.18;
+          ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.strokeStyle='rgba(88,223,216,'+alpha+')'; ctx.lineWidth=0.7; ctx.stroke();
+        }
+      }
+      ctx.beginPath(); ctx.arc(nodes[i].x,nodes[i].y,nodes[i].r,0,Math.PI*2);
+      ctx.fillStyle='rgba(88,223,216,0.38)'; ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', function(){ resize(); init(); });
+  resize(); init(); draw();
+})();
+</script>
+
+</body>
+</html>
