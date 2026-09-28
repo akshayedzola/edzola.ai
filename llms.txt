@@ -1,0 +1,29 @@
+# EdZola
+
+> EdZola (EdZola Technologies, Coimbatore, India) builds programme data systems (MIS) for nonprofits, using the MAP approach: Model the data, Align it to field work, then Power it with AI under human checks. Contact: reachus@edzola.com
+
+## Products and initiatives
+
+- [ImpactOS](https://edzola.ai/impact-os/): Programme intelligence infrastructure for impact organisations.
+- [Zolabs](https://edzola.ai/zolabs/): AI-powered voice data collection for social impact.
+- [FundZola](https://edzola.ai/fundzola/): Funding intelligence initiative by EdZola.
+- [ZolaShield](https://edzola.ai/zolashield/): Data-protection and responsible technology initiative by EdZola.
+
+## Sector pages
+
+- [Education](https://edzola.ai/education/): Know which child can read, and which one quietly stopped coming.
+- [Youth Development & Employability](https://edzola.ai/youth-employability/): Placement letters are easy. Month-six retention is the real test.
+- [Livelihoods & Economic Empowerment](https://edzola.ai/livelihoods/): From wealth ranking to graduation, know which households actually moved.
+- [Health & Wellbeing](https://edzola.ai/health/): From the household visit to cured: every patient counted, none lost.
+- [Mental Health](https://edzola.ai/mental-health/): Care that's measured gently, kept private, and never loses someone.
+- [Maternal & Child Health](https://edzola.ai/maternal-child-health/): One mother, one baby, tracked from first trimester to first birthday.
+- [Child Rights & Protection](https://edzola.ai/child-protection/): Every decision on a child's file, made in their best interest
+- [Gender Equality & Women's Empowerment](https://edzola.ai/gender/): Counting what women decide, not only what women receive
+- [Disability & Inclusion](https://edzola.ai/disability/): Count functioning, remove barriers, track inclusion. Nothing about us without us.
+- [Human Rights & Access to Justice](https://edzola.ai/justice/): From grievance to enforced remedy, with every deadline tracked
+- [Environment & Climate](https://edzola.ai/environment/): Restoration counted in surviving trees and working institutions, not saplings planted
+- [Waste Management](https://edzola.ai/waste/): Every kilo recovered traced to a ward, a worker and a wage
+- [Food Systems](https://edzola.ai/food-systems/): From seed on credit to a hot meal, tracked per plate
+- [Community Development](https://edzola.ai/community-development/): Villages own the plan. The data should prove who was heard.
+- [Media & Journalism](https://edzola.ai/media/): From the tip to the correction to the policy that changed
+- [Arts & Culture](https://edzola.ai/arts/): Follow the artist from open call to archive to career

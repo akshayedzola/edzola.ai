@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Education Data Systems for Nonprofits | EdZola</title>
+<meta name="description" content="EdZola for education nonprofits: one Student ID from household survey to the next school, with AI where it saves real hours.">
+<link rel="canonical" href="https://edzola.ai/education/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdZola">
+<meta property="og:title" content="Every Child, One Record">
+<meta property="og:description" content="EdZola for education nonprofits: one Student ID from household survey to the next school, with AI where it saves real hours.">
+<meta property="og:url" content="https://edzola.ai/education/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Every Child, One Record">
+<meta name="twitter:description" content="EdZola for education nonprofits: one Student ID from household survey to the next school, with AI where it saves real hours.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://edzola.ai/#org", "name": "EdZola", "legalName": "EdZola Technologies Private Limited", "url": "https://edzola.ai/", "email": "reachus@edzola.com", "address": {"@type": "PostalAddress", "addressLocality": "Coimbatore", "addressRegion": "Tamil Nadu", "addressCountry": "IN"}, "description": "Technology consultancy that builds data systems for nonprofits, from first system to AI."}, {"@type": "WebPage", "@id": "https://edzola.ai/education/#page", "url": "https://edzola.ai/education/", "name": "Education Data Systems for Nonprofits | EdZola", "description": "EdZola for education nonprofits: one Student ID from household survey to the next school, with AI where it saves real hours.", "inLanguage": "en-GB", "dateModified": "2026-09-28", "isPartOf": {"@id": "https://edzola.ai/#site"}, "about": {"@id": "https://edzola.ai/education/#service"}}, {"@type": "Service", "@id": "https://edzola.ai/education/#service", "name": "Education programme data systems (MIS)", "serviceType": "Programme MIS and data system implementation", "provider": {"@id": "https://edzola.ai/#org"}, "url": "https://edzola.ai/education/", "description": "We build your programme's system around one Student ID. The household survey, the baseline, every attendance mark and the move to the next school sit in one record. Your field team sees who's slipping this week, while there's still time to act.", "audience": {"@type": "Audience", "audienceType": "Education nonprofits, foundations and programme teams"}, "areaServed": ["India", "United Kingdom", "United States", "East Africa"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Stages covered", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Outreach & Enrolment"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Baseline & Grouping"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Instruction & Support"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Progress & Transition"}}]}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sectors", "item": "https://edzola.ai/"}, {"@type": "ListItem", "position": 2, "name": "Education", "item": "https://edzola.ai/education/"}]}, {"@type": "WebSite", "@id": "https://edzola.ai/#site", "url": "https://edzola.ai/", "name": "EdZola", "publisher": {"@id": "https://edzola.ai/#org"}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FDF8F4;--surface:#FFFFFF;--sunk:#F6EDE5;--ink:#1A1A1A;--muted:#6B6360;--line:#EADFD6;
+  --coral:#E8967A;--coral-ink:#B4553A;--peach:#FAE8DC;--teal:#8ECFCA;--teal-ink:#2C7771;--teal-soft:#E2F3F1;
+  --yellow:#F7C948;--yellow-soft:#FCF0C8;--risk:#C2412D;--risk-soft:#FBE3DD;--paper:#FFFBEA;--rule:#C9D9EE;
+  --wa:#DCF8C6;--shadow:0 14px 40px rgba(74,48,32,.10);
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --sans:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --hand:"Caveat","Segoe Print","Comic Sans MS",cursive;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#1A1613;--surface:#241F1B;--sunk:#2C2621;--ink:#F4EDE7;--muted:#B5A9A1;--line:#3A322C;
+  --coral:#EFA48A;--coral-ink:#F2AF97;--peach:#3A2A22;--teal:#8ECFCA;--teal-ink:#93D6D0;--teal-soft:#1F3533;
+  --yellow:#F7C948;--yellow-soft:#3A321B;--risk:#F08A76;--risk-soft:#3D231E;--paper:#2E2A1E;--rule:#3E4A5A;--wa:#26382A;--shadow:0 14px 40px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#1A1613;--surface:#241F1B;--sunk:#2C2621;--ink:#F4EDE7;--muted:#B5A9A1;--line:#3A322C;
+  --coral:#EFA48A;--coral-ink:#F2AF97;--peach:#3A2A22;--teal:#8ECFCA;--teal-ink:#93D6D0;--teal-soft:#1F3533;
+  --yellow:#F7C948;--yellow-soft:#3A321B;--risk:#F08A76;--risk-soft:#3D231E;--paper:#2E2A1E;--rule:#3E4A5A;--wa:#26382A;--shadow:0 14px 40px rgba(0,0,0,.35)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:6px}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:13px 22px;font-weight:700;text-decoration:none;transition:transform .15s,background .15s}
+.pill.primary{background:var(--coral);color:#1A1A1A}
+.pill.primary:hover{background:#E07F60;transform:translateY(-1px)}
+.pill.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.pill.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font:700 21px var(--display);letter-spacing:-.03em;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--coral);box-shadow:14px 0 0 var(--teal)}
+.logo small{font:500 13px var(--sans);color:var(--muted);margin-left:18px;letter-spacing:0}
+.top nav{margin-left:auto;display:flex;gap:4px}
+.top nav a{text-decoration:none;color:var(--muted);font-size:14px;padding:8px 12px;border-radius:999px}
+.top nav a:hover{color:var(--ink);background:var(--sunk)}
+.top .pill{padding:10px 18px;font-size:14px}
+
+/* hero */
+.hero{padding-block:64px 72px;display:grid;grid-template-columns:1fr 1.02fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(38px,4.6vw,58px);line-height:1.02;font-weight:700;margin:18px 0 22px}
+.hero h1 em{font-style:normal;color:var(--coral-ink);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:.16em;background:var(--yellow);opacity:.55;z-index:-1;border-radius:3px}
+.hero .lead{font-size:19px;color:var(--muted);max-width:34em}
+.hero .lead b{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-note{margin-top:22px;font-size:13px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap}
+.hero-note span::before{content:"✓";color:var(--teal-ink);font-weight:700;margin-right:6px}
+
+/* thread visual */
+.stage-box{position:relative;background:var(--sunk);border-radius:28px;padding:18px;box-shadow:var(--shadow)}
+.switch{display:flex;background:var(--surface);border-radius:999px;padding:4px;gap:4px;width:fit-content;margin:0 auto 14px;box-shadow:0 1px 0 var(--line)}
+.switch button{border:0;background:transparent;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--muted)}
+.switch button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.board{position:relative;height:520px;overflow:hidden;border-radius:18px}
+.thread-line{position:absolute;left:28px;top:70px;bottom:40px;width:2px;background:repeating-linear-gradient(var(--coral) 0 8px,transparent 8px 13px);opacity:0;transition:opacity .5s .5s}
+.thread-head{position:absolute;left:0;right:0;top:4px;display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--ink);color:var(--bg);border-radius:14px;opacity:0;transform:translateY(-12px);transition:.5s .4s}
+.thread-head .av{width:36px;height:36px;border-radius:10px;background:var(--coral);color:#1A1A1A;display:grid;place-items:center;font:700 17px var(--display)}
+.thread-head b{display:block;font-size:14px}
+.thread-head small{font:400 11px var(--mono);opacity:.75}
+.thread-head .live{margin-left:auto;font:500 10px var(--mono);letter-spacing:.06em;background:color-mix(in srgb,var(--bg) 18%,transparent);padding:4px 8px;border-radius:99px}
+.frag{position:absolute;width:min(78%,360px);left:var(--sx);top:var(--sy);transform:rotate(var(--sr));transition:left .75s cubic-bezier(.6,.05,.25,1),top .75s cubic-bezier(.6,.05,.25,1),transform .75s cubic-bezier(.6,.05,.25,1),width .75s;transition-delay:calc(var(--i) * 70ms);display:grid}
+.frag>div{grid-area:1/1;transition:opacity .35s}
+.frag .clean{opacity:0;pointer-events:none}
+.board.on .thread-line,.board.on .thread-head{opacity:1;transform:none}
+.board.on .frag{left:52px;top:var(--cy);transform:none;width:calc(100% - 56px)}
+.board.on .frag .raw{opacity:0;pointer-events:none}
+.board.on .frag .clean{opacity:1}
+.board.on .frag::before{content:"";position:absolute;left:-29px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--node,var(--teal-ink))}
+
+/* raw fragment looks */
+.raw{font-size:12px;box-shadow:0 8px 22px rgba(60,40,25,.14);border-radius:10px;overflow:hidden}
+.xls{background:var(--surface);border:1px solid var(--line)}
+.xls .bar{background:#1F7244;color:#fff;font:500 11px var(--mono);padding:6px 10px;display:flex;justify-content:space-between}
+.xls table{border-collapse:collapse;width:100%;font:11px var(--mono)}
+.xls td{border:1px solid var(--line);padding:4px 6px;color:var(--muted)}
+.xls td.hl{background:var(--yellow-soft);color:var(--ink)}
+.note{background:var(--paper);background-image:repeating-linear-gradient(transparent 0 21px,var(--rule) 21px 22px);font:600 20px/22px var(--hand);color:#2E4A87;padding:10px 14px 12px 34px;border-left:2px solid #E7A1A1;position:relative}
+:root[data-theme="dark"] .note{color:#A9C0F0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .note{color:#A9C0F0}}
+.reg{background:var(--surface);border:1px solid var(--line);padding:10px 12px}
+.reg .h{font:500 10px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.reg-row{display:grid;grid-template-columns:1fr repeat(6,22px);gap:3px;align-items:center;font:12px var(--mono)}
+.reg-row span{text-align:center;border:1px solid var(--line);border-radius:3px;padding:1px 0}
+.reg-row .a{color:var(--risk);font-weight:600}
+.wa{background:var(--wa);padding:10px 12px;border-radius:12px 12px 12px 2px;font-size:13px;color:var(--ink)}
+.wa small{display:block;font:11px var(--mono);color:var(--muted);margin-top:4px;text-align:right}
+.doc{background:var(--surface);border:1px solid var(--line);padding:10px 12px;display:flex;gap:10px;align-items:center}
+.doc .ic{width:30px;height:36px;border-radius:4px;background:#2B579A;color:#fff;font:700 10px var(--mono);display:grid;place-items:center;flex:none}
+.doc b{font:500 12px var(--mono);word-break:break-all}
+.doc small{display:block;color:var(--risk);font-size:11px}
+
+/* clean record */
+.clean{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:12px;min-height:66px}
+.clean .step{font:500 10px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.clean b{display:block;font-size:14px;line-height:1.3}
+.clean small{display:block;font-size:12px;color:var(--muted)}
+.clean .tag{margin-left:auto;flex:none;font:600 11px var(--sans);padding:4px 9px;border-radius:99px;background:var(--teal-soft);color:var(--teal-ink)}
+.clean.alert{background:var(--risk-soft);border-color:color-mix(in srgb,var(--risk) 45%,transparent)}
+.clean.alert .tag{background:var(--risk);color:#fff}
+.clean.later .tag{background:var(--sunk);color:var(--muted)}
+.dots{display:inline-flex;gap:3px;margin-top:3px}
+.dots i{font:600 10px var(--mono);font-style:normal;width:16px;text-align:center;border-radius:3px;background:var(--teal-soft);color:var(--teal-ink)}
+.dots i.a{background:var(--risk-soft);color:var(--risk)}
+.caption{margin-top:12px;font-size:13px;color:var(--muted);text-align:center;min-height:21px}
+
+/* sections */
+section.band{padding-block:88px}
+.sec-head{max-width:720px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(32px,3.8vw,48px);line-height:1.06;font-weight:700;margin-top:14px}
+.sec-head p{font-size:18px;color:var(--muted);margin-top:16px}
+
+/* pains */
+.pains{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pain{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.pain q{display:block;font:600 21px/1.25 var(--display);quotes:none;letter-spacing:-.01em}
+.pain p{margin-top:14px;font-size:14px;color:var(--muted)}
+.pain .who{margin-top:18px;font:500 11px var(--mono);color:var(--coral-ink);text-transform:uppercase;letter-spacing:.06em}
+
+/* explorer */
+.dark-band{background:var(--ink);color:var(--bg)}
+.dark-band .sec-head p{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.dark-band .eyebrow{color:var(--coral)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid color-mix(in srgb,var(--bg) 20%,transparent);margin-bottom:36px}
+.tab{border:0;background:transparent;color:color-mix(in srgb,var(--bg) 62%,transparent);text-align:left;padding:14px 16px 16px 0;border-bottom:3px solid transparent;margin-bottom:-2px}
+.tab .n{font:500 12px var(--mono);display:block;margin-bottom:4px}
+.tab b{font:600 17px var(--display);display:block;color:inherit}
+.tab[aria-selected="true"]{color:var(--bg);border-color:var(--coral)}
+.tab:hover{color:var(--bg)}
+.panel{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start}
+.panel h3{font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:700}
+.panel .why{margin-top:14px;font-size:17px;color:color-mix(in srgb,var(--bg) 72%,transparent)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:32px}
+.cols h4{margin:0 0 12px;font:600 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.cols ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;font-size:14.5px;line-height:1.5;color:color-mix(in srgb,var(--bg) 86%,transparent)}
+.cols li{padding-left:18px;position:relative}
+.cols li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--coral)}
+.cols .auto li::before{background:var(--teal);border-radius:2px}
+.ai-strip{margin-top:30px;padding:18px;border-radius:16px;background:color-mix(in srgb,var(--bg) 8%,transparent);border:1px solid color-mix(in srgb,var(--bg) 14%,transparent)}
+.ai-strip h4{margin:0 0 10px;font:600 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--yellow)}
+.ai-strip ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+.ai-strip li::before{content:"✦ ";color:var(--yellow)}
+/* mock app */
+.app{background:var(--bg);color:var(--ink);border-radius:18px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.app-top{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--surface)}
+.app-top b{font-size:14px}
+.app-top small{display:block;font:11px var(--mono);color:var(--muted)}
+.app-top .ex{margin-left:auto;font:500 10px var(--mono);letter-spacing:.06em;color:var(--muted);border:1px dashed var(--line);padding:3px 8px;border-radius:99px}
+.app-body{padding:14px;display:grid;gap:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px}
+.kpi small{display:block;font-size:11px;color:var(--muted);line-height:1.3;min-height:2.6em}
+.kpi strong{display:block;font:700 22px var(--display);margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11px;color:var(--teal-ink)}
+.kpi.warn span{color:var(--risk)}
+.queue{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+.queue table{border-collapse:collapse;width:100%;min-width:430px;font-size:12.5px}
+.queue th{text-align:left;font:500 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:9px 10px;border-bottom:1px solid var(--line);background:var(--sunk)}
+.queue td{padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.queue tr:last-child td{border-bottom:0}
+.queue td:first-child{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.st{display:inline-block;padding:3px 8px;border-radius:99px;font-size:11px;font-weight:600;background:var(--teal-soft);color:var(--teal-ink)}
+.st.warn{background:var(--yellow-soft);color:#8A6206}
+.st.risk{background:var(--risk-soft);color:var(--risk)}
+:root[data-theme="dark"] .st.warn{color:var(--yellow)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .st.warn{color:var(--yellow)}}
+.signal{display:flex;gap:10px;background:var(--peach);border-radius:10px;padding:12px 14px;font-size:13.5px;line-height:1.5}
+.signal b{flex:none;font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-ink);padding-top:3px}
+.fade{animation:fade .4s ease}
+@keyframes fade{from{opacity:.3;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* MAP */
+.map{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.map article{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;position:relative;overflow:hidden}
+.map .L{font:700 88px/0.8 var(--display);color:var(--c);opacity:.9}
+.map .word{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:18px}
+.map h3{font-size:24px;line-height:1.15;margin-top:8px}
+.map p{margin-top:12px;color:var(--muted);font-size:15px}
+.map ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:7px;font-size:14px}
+.map li{padding-left:16px;position:relative}
+.map li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--c)}
+.order{margin-top:22px;font-size:15px;color:var(--muted);max-width:720px}
+.order b{color:var(--ink)}
+
+/* AI */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .c{font:500 11px var(--mono);opacity:.6;margin-left:4px}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ai-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.ai-card[hidden]{display:none!important}
+.ai-meta{display:flex;justify-content:space-between;gap:8px;font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.ai-meta .b{color:var(--coral-ink)}
+.ai-card h3{font:600 18px/1.3 var(--display);letter-spacing:-.01em}
+.ai-card .keep{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted)}
+.ai-card .keep b{color:var(--teal-ink);font-weight:600}
+.never{margin-top:36px;display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;background:var(--peach);border-radius:22px;padding:32px}
+.never h3{font-size:28px;line-height:1.1}
+.never>div>p{margin-top:12px;color:var(--muted)}
+.never ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;font-size:14.5px}
+.never li{padding-left:26px;position:relative}
+.never li::before{content:"✕";position:absolute;left:0;top:0;color:var(--risk);font-weight:700}
+.never li b{display:block}
+.never li span{color:var(--muted);font-size:13.5px}
+
+/* roles */
+.roles{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--line)}
+.role{padding:22px 18px 8px 0;border-right:1px solid var(--line);margin-right:18px}
+.role:last-child{border-right:0;margin-right:0}
+.role .who{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--coral-ink)}
+.role h3{font:600 19px/1.25 var(--display);margin-top:10px}
+.role p{font-size:14px;color:var(--muted);margin-top:8px}
+.honest{margin-top:40px;display:flex;gap:18px;align-items:flex-start;border-left:4px solid var(--yellow);padding:6px 0 6px 20px;max-width:780px}
+.honest p{font:500 20px/1.4 var(--display);letter-spacing:-.01em}
+.honest small{display:block;margin-top:8px;font:14px var(--sans);color:var(--muted)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.stp{counter-increment:s;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.stp::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--coral);color:#1A1A1A;font:700 16px var(--display);margin-bottom:16px}
+.stp h3{font:600 19px var(--display)}
+.stp p{font-size:14px;color:var(--muted);margin-top:8px}
+.proof{display:flex;flex-wrap:wrap;gap:12px 48px;margin-top:48px;padding-top:32px;border-top:1px solid var(--line);align-items:baseline}
+.proof div{display:flex;flex-direction:column}
+.proof strong{font:700 40px/1 var(--display);letter-spacing:-.03em}
+.proof span{font-size:13px;color:var(--muted);margin-top:6px}
+
+/* final */
+.final{background:var(--coral);color:#1A1A1A;border-radius:32px;padding:56px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.final h2{font-size:clamp(30px,3.6vw,46px);line-height:1.05;font-weight:700}
+.final p{margin-top:14px;font-size:17px;max-width:32em;color:#3B2A22}
+.contact{background:#FDF8F4;border-radius:20px;padding:22px;display:grid;gap:12px;color:#1A1A1A}
+.contact small{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#6B6360}
+.addr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.addr code{font:500 16px var(--mono);user-select:all;word-break:break-all}
+.copy{border:0;background:#1A1A1A;color:#FDF8F4;border-radius:99px;padding:6px 12px;font-size:12px;font-weight:600}
+.contact .pill{justify-content:center;background:#1A1A1A;color:#FDF8F4}
+footer{padding-block:40px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* responsive */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:40px;padding-top:44px}
+  .pains{grid-template-columns:1fr 1fr}
+  .panel{grid-template-columns:1fr}
+  .map{grid-template-columns:1fr}
+  .ai-grid{grid-template-columns:1fr 1fr}
+  .never{grid-template-columns:1fr}
+  .roles{grid-template-columns:1fr 1fr}
+  .role{border-right:0;margin-right:0;border-bottom:1px solid var(--line);padding-bottom:18px}
+  .steps{grid-template-columns:1fr 1fr}
+  .final{grid-template-columns:1fr;padding:36px}
+  .top nav{display:none}
+  .top .pill{margin-left:auto}
+}
+@media (max-width:620px){
+  .wrap{padding-inline:16px}
+  section.band{padding-block:64px}
+  .logo small{display:none}
+  .pains,.ai-grid,.steps,.roles,.cols,.never ul{grid-template-columns:1fr}
+  .tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .tab{padding-right:6px}
+  .tab b{font-size:13px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .board{height:590px}
+  .board.on .frag{left:40px;width:calc(100% - 42px);top:calc(var(--cy) * 1.2)}
+  .thread-line{left:18px}
+  .board.on .frag::before{left:-28px}
+  .clean .tag{display:none}
+  .final{padding:28px 22px;border-radius:24px}
+  .proof strong{font-size:32px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+.skip-link{position:absolute;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-weight:600;text-decoration:none}
+.skip-link:focus{top:12px}
+.crumbs{font-size:13px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;padding-top:22px}
+.crumbs a{color:var(--muted)}
+.hero{padding-top:28px}
+.note{font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive;font-size:15px;font-weight:500}
+.stage-panel[hidden]{display:none}
+.stage-panel .eyebrow{margin-bottom:12px}
+.stage-panel .n2{display:none}
+.updated{font-size:12px;color:var(--muted);margin-top:16px}
+.qual{font-size:13px;color:var(--muted);margin-top:14px;max-width:720px}
+
+.steps{grid-template-columns:repeat(5,1fr)}
+.board.on .frag{top:var(--cy)!important}
+.thread-line{bottom:24px}
+.clean.warn .tag{background:var(--yellow-soft);color:#8A6206}
+:root[data-theme="dark"] .clean.warn .tag{color:var(--yellow)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .clean.warn .tag{color:var(--yellow)}}
+.clean.alert .step{color:var(--risk)}
+.back{font-size:13px;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:99px;box-shadow:inset 0 0 0 1px var(--line);white-space:nowrap}
+.back:hover{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.more{padding-block:56px;border-top:1px solid var(--line)}
+.more h2{font-size:24px;margin-bottom:6px}
+.more p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.more-list{display:flex;flex-wrap:wrap;gap:8px}
+.more-list a{text-decoration:none;font-size:14px;font-weight:600;padding:8px 14px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.more-list a:hover{border-color:var(--ink)}
+.more-list .g{flex-basis:100%;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+@media (max-width:980px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.steps{grid-template-columns:1fr}.back{display:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="top"><div class="wrap"><a class="logo" href="/"><span class="dot" aria-hidden="true"></span><span style="margin-left:14px">EdZola</span><small>for education programmes</small></a><nav aria-label="Page sections"><a href="#how">How it works</a><a href="#ai">Where AI helps</a><a href="#start">Getting started</a><a class="back" href="/">All sectors</a></nav><a class="pill primary" href="#talk">Email us</a></div></header>
+<main id="main-content">
+<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Sectors</a><span aria-hidden="true">/</span><span aria-current="page">Education</span></nav>
+<section class="wrap hero" id="top"><div>
+<div class="eyebrow">Data systems for education nonprofits</div>
+<h1>You know how many children enrolled. Do you know which ones <em>can read?</em></h1>
+<p class="lead">We build your programme's system around <b>one Student ID</b>. The household survey, the baseline, every attendance mark and the move to the next school sit in one record. Your field team sees who's slipping this week, while there's still time to act.</p>
+<div class="hero-cta"><a class="pill primary" href="#talk">Email us your pain points</a><a class="pill ghost" href="#how">See it work, stage by stage ↓</a></div>
+<div class="hero-note"><span>Works offline, in the local language</span><span>Built on Zoho</span><span>Your data stays yours</span></div></div>
+<div class="stage-box"><div class="switch" role="group" aria-label="Compare views"><button id="btnBefore" aria-pressed="true">How it looks today</button><button id="btnAfter" aria-pressed="false">With one Student ID</button></div>
+<div class="board" id="board"><div class="thread-line" aria-hidden="true"></div>
+<div class="thread-head"><div class="av">M</div><div><b>Meera Kumari</b><small>ED-1042 · Age 10 · Brick Kiln Cluster</small></div><span class="live">ONE RECORD</span></div>
+<div class="frag" style="--i:0;--sx:2%;--sy:4%;--sr:-4deg;--cy:66px"><div class="raw xls"><div class="bar"><span>Household_survey_Kalyanpur_FINAL.xlsx</span><span>Sheet3</span></div><table><tr><td>Meera K.</td><td>10</td><td class="hl">not enrolled??</td></tr><tr><td>Meera Kumari</td><td>9</td><td>dup?</td></tr></table></div><div class="clean"><div><div class="step">01 · Found and enrolled</div><b>Enrolled 12 Jun, Kalyanpur Govt PS</b><small class="mono">UDISE+ 09120400803</small></div><span class="tag">Done</span></div></div><div class="frag" style="--i:1;--sx:36%;--sy:21%;--sr:3deg;--cy:146px"><div class="raw note">Baseline grp ?<br>Meera: reads words, not para</div><div class="clean"><div><div class="step">02 · Baseline</div><b>Reads words · Maths: subtraction</b><small>Placed in Reading group B with Asha</small></div><span class="tag">Grouped</span></div></div><div class="frag" style="--i:2;--sx:6%;--sy:43%;--sr:-2deg;--cy:226px"><div class="raw reg"><div class="h">Attendance register · Sept · pg 14</div><div class="reg-row"><b>Meera K.</b><span>P</span><span>P</span><span>P</span><span class="a">A</span><span class="a">A</span><span class="a">A</span></div></div><div class="clean warn"><div><div class="step">03 · This week</div><b>Three absences in a row</b><span class="dots"><i>P</i><i>P</i><i>P</i><i class="a">A</i><i class="a">A</i><i class="a">A</i></span></div><span class="tag">Flagged</span></div></div><div class="frag" style="--i:3;--sx:30%;--sy:62%;--sr:4deg;--cy:306px"><div class="raw wa">Sir Meera not coming since Monday. Family maybe going to kiln 🙏<small>WhatsApp · 9:41 pm · 147 unread</small></div><div class="clean alert"><div><div class="step">Action today</div><b>Home visit assigned to Sunita</b><small>Before the family leaves for seasonal work</small></div><span class="tag">Due today</span></div></div><div class="frag" style="--i:4;--sx:8%;--sy:80%;--sr:-3deg;--cy:386px"><div class="raw doc"><span class="ic">DOC</span><div><b>Funder_report_v4_FINAL_final.docx</b><small>Due Friday · numbers don&#x27;t match</small></div></div><div class="clean later"><div><div class="step">04 · Next school</div><b>Class 6 admission tracked</b><small>Stays open until she&#x27;s on the new register</small></div><span class="tag">Jul 2027</span></div></div></div><p class="caption" id="caption" role="status" aria-live="polite">Five places, one child. Nobody can see she&#x27;s about to leave.</p></div>
+</section>
+<section class="band" style="padding-top:40px"><div class="wrap"><div class="sec-head"><div class="eyebrow">Sound familiar?</div><h2>Your programme runs on good people and scattered data.</h2><p>These come up in almost every first conversation we have with education teams.</p></div><div class="pains"><article class="pain"><q>"We found out she&#x27;d dropped out when the endline came."</q><p>Attendance is tallied monthly, so a child who stops coming in week two shows up as a number in week eight.</p><div class="who">Programme manager</div></article><article class="pain"><q>"The baseline is in forty notebooks."</q><p>Grouping children by level means someone sits with paper sheets for a week before teaching can start.</p><div class="who">Cluster mentor</div></article><article class="pain"><q>"Twelve facilitators, twelve versions of the sheet."</q><p>Names spelt three ways. Duplicate children. Nobody&#x27;s sure which file is current.</p><div class="who">M&amp;E lead</div></article><article class="pain"><q>"The funder report takes three weeks."</q><p>Chasing Excel files, reconciling totals, and still unable to say how many children reached Class 6.</p><div class="who">Founder / CEO</div></article></div></div></section>
+<section class="band dark-band" id="how"><div class="wrap"><div class="sec-head"><div class="eyebrow">One Student ID, four moments</div><h2>At every stage, the system answers one question your team is already asking.</h2><p>Pick a stage. You'll see what your team does, what the system handles on its own, and what shows up on the manager's screen.</p></div>
+<div class="tabs" role="tablist" aria-label="Programme stages" id="tabs"><button class="tab" role="tab" id="tab-find-every-child" aria-controls="find-every-child" aria-selected="true" tabindex="0"><span class="n">01</span><b>Find every child</b></button><button class="tab" role="tab" id="tab-group-by-level" aria-controls="group-by-level" aria-selected="false" tabindex="-1"><span class="n">02</span><b>Group by level</b></button><button class="tab" role="tab" id="tab-catch-who-slips" aria-controls="catch-who-slips" aria-selected="false" tabindex="-1"><span class="n">03</span><b>Catch who slips</b></button><button class="tab" role="tab" id="tab-prove-it-follow-through" aria-controls="prove-it-follow-through" aria-selected="false" tabindex="-1"><span class="n">04</span><b>Prove it &amp; follow through</b></button></div><article class="stage-panel" id="find-every-child" role="tabpanel" aria-labelledby="tab-find-every-child" tabindex="0"><div class="panel"><div><p class="eyebrow" style="color:var(--teal)">Stage 01 · Find every child</p><h3>Who&#x27;s missing from the school register?</h3><p class="why">Seasonal migrants, girls kept home after Class 5, children working in the fields. If the survey stops at the main road, so does your enrolment drive.</p><div class="cols"><div><h4>Your team does</h4><ul><li>Volunteers survey every household on a shared phone, offline, in the local language.</li><li>The coordinator reviews flagged children each evening and assigns visits.</li><li>Head teachers confirm admission. SMC members get their hamlet&#x27;s list on WhatsApp.</li></ul></div><div class="auto"><h4>The system does on its own</h4><ul><li>No visit in 14 days? The volunteer gets a reminder.</li><li>A duplicate check runs before any new Student ID is issued.</li><li>Once admission is confirmed, the SMC list updates itself.</li></ul></div></div><div class="ai-strip"><h4>Where AI helps at this stage</h4><ul><li>A voice note in Hindi becomes a tagged &#x27;reason not in school&#x27;</li><li>A plain-language hamlet summary for the block manager, every week</li><li>The survey form translated into Marathi or Kannada from the agreed list</li></ul></div></div><figure class="app" style="margin:0" aria-label="Example screen, illustrative data"><div class="app-top"><div><b>Field coordinator · Enrolment drive</b><small>Education · Stage 01</small></div><span class="ex">EXAMPLE DATA</span></div><div class="app-body"><div class="kpis"><div class="kpi"><small>Households mapped</small><strong>1,284</strong><span>↑ 12% this week</span></div><div class="kpi"><small>Children identified</small><strong>326</strong><span>42 out of school</span></div><div class="kpi"><small>Enrolment confirmed</small><strong>78%</strong><span>Target 85%</span></div><div class="kpi warn"><small>Visits overdue</small><strong>14</strong><span>Needs action</span></div></div><div class="queue"><table><thead><tr><th>ID</th><th>Child</th><th>Habitation</th><th>Status</th></tr></thead><tbody><tr><td>ED-1042</td><td>Meera Kumari</td><td>Brick Kiln Cluster</td><td><span class="st warn">Visit due today</span></td></tr><tr><td>ED-1029</td><td>Pooja Devi</td><td>New Colony</td><td><span class="st risk">Overdue</span></td></tr><tr><td>ED-1038</td><td>Rafiq Ansari</td><td>Bhata Tola</td><td><span class="st warn">Visit booked</span></td></tr><tr><td>ED-1016</td><td>Arjun Singh</td><td>Kalyanpur</td><td><span class="st ">Enrolled</span></td></tr></tbody></table></div><div class="signal"><b>Do next</b><span>Seven of the 14 overdue visits are in Brick Kiln Cluster, where survey coverage is also lowest. Send two volunteers there first.</span></div></div></figure></div></article><article class="stage-panel" id="group-by-level" role="tabpanel" aria-labelledby="tab-group-by-level" tabindex="0" hidden><div class="panel"><div><p class="eyebrow" style="color:var(--teal)">Stage 02 · Group by level</p><h3>Which group should each child sit in?</h3><p class="why">A grade label hides the learning level. A Class 5 child reading at letter level needs a different room from one reading stories.</p><div class="cols"><div><h4>Your team does</h4><ul><li>Facilitators assess each child one-on-one in the first two weeks.</li><li>Mentors re-check one in ten children with a different assessor.</li><li>The system suggests a group. The facilitator confirms it.</li></ul></div><div class="auto"><h4>The system does on its own</h4><ul><li>Saving a baseline proposes a group by level and school.</li><li>A big back-check disagreement alerts the mentor.</li><li>Support requests waiting over 10 days escalate.</li></ul></div></div><div class="ai-strip"><h4>Where AI helps at this stage</h4><ul><li>Reading fluency estimated while a child reads a passage aloud</li><li>A first draft of learning groups, balanced by level and size</li><li>A baseline summary for the district office, by cluster</li></ul></div></div><figure class="app" style="margin:0" aria-label="Example screen, illustrative data"><div class="app-top"><div><b>Cluster mentor · Baseline week</b><small>Education · Stage 02</small></div><span class="ex">EXAMPLE DATA</span></div><div class="app-body"><div class="kpis"><div class="kpi"><small>Children assessed</small><strong>298</strong><span>91% of enrolled</span></div><div class="kpi"><small>Reading at story level</small><strong>34%</strong><span>↑ 6 points</span></div><div class="kpi warn"><small>Support pending</small><strong>23</strong><span>8 urgent</span></div><div class="kpi"><small>Groups ready</small><strong>18</strong><span>Across 7 centres</span></div></div><div class="queue"><table><thead><tr><th>ID</th><th>Child</th><th>Reading</th><th>Group</th></tr></thead><tbody><tr><td>ED-1029</td><td>Pooja Devi</td><td>Letter</td><td><span class="st risk">Vision referral</span></td></tr><tr><td>ED-1042</td><td>Meera Kumari</td><td>Word</td><td><span class="st ">Reading B</span></td></tr><tr><td>ED-1038</td><td>Rafiq Ansari</td><td>Paragraph</td><td><span class="st ">Reading C</span></td></tr><tr><td>ED-1016</td><td>Arjun Singh</td><td>Story</td><td><span class="st ">Reading C</span></td></tr></tbody></table></div><div class="signal"><b>Do next</b><span>Reading A is over the planned size in three centres. Move two trained facilitators before classes begin, not after week one.</span></div></div></figure></div></article><article class="stage-panel" id="catch-who-slips" role="tabpanel" aria-labelledby="tab-catch-who-slips" tabindex="0" hidden><div class="panel"><div><p class="eyebrow" style="color:var(--teal)">Stage 03 · Catch who slips</p><h3>Who&#x27;s slipping this week?</h3><p class="why">A monthly attendance total arrives too late. By then, the family has already left for the kiln.</p><div class="cols"><div><h4>Your team does</h4><ul><li>Facilitators mark attendance at the end of each session.</li><li>Mentors use the same short observation rubric on every visit.</li><li>Volunteers log absence calls and home visits in the same app.</li></ul></div><div class="auto"><h4>The system does on its own</h4><ul><li>Three absences in a row create a follow-up task.</li><li>Attendance under 60% for two weeks alerts the mentor.</li><li>No observation in 30 days puts a facilitator on the visit list.</li></ul></div></div><div class="ai-strip"><h4>Where AI helps at this stage</h4><ul><li>A photo of a paper register turned into digital attendance</li><li>Two coaching points suggested from a facilitator&#x27;s last three observations</li><li>A weekly digest of groups where attendance is falling, and why</li></ul></div></div><figure class="app" style="margin:0" aria-label="Example screen, illustrative data"><div class="app-top"><div><b>Programme manager · This week</b><small>Education · Stage 03</small></div><span class="ex">EXAMPLE DATA</span></div><div class="app-body"><div class="kpis"><div class="kpi warn"><small>Attendance today</small><strong>86%</strong><span>↓ 2 points</span></div><div class="kpi"><small>Children to call</small><strong>17</strong><span>After 3 absences</span></div><div class="kpi"><small>Mentor visits due</small><strong>6</strong><span>2 high priority</span></div><div class="kpi"><small>Support delivered</small><strong>92%</strong><span>31 of 34</span></div></div><div class="queue"><table><thead><tr><th>Group</th><th>Facilitator</th><th>Attendance</th><th>Action</th></tr></thead><tbody><tr><td>Reading C</td><td>Rina Das</td><td>76%</td><td><span class="st risk">Priority visit</span></td></tr><tr><td>Reading A</td><td>Asha Sharma</td><td>82%</td><td><span class="st warn">Mentor visit</span></td></tr><tr><td>Maths B</td><td>Kabir Ali</td><td>88%</td><td><span class="st warn">Parent calls</span></td></tr><tr><td>Reading B</td><td>Joseph Mathew</td><td>91%</td><td><span class="st ">On track</span></td></tr></tbody></table></div><div class="signal"><b>Do next</b><span>Reading C has the lowest attendance and the oldest observation. Send the mentor and a community volunteer together.</span></div></div></figure></div></article><article class="stage-panel" id="prove-it-follow-through" role="tabpanel" aria-labelledby="tab-prove-it-follow-through" tabindex="0" hidden><div class="panel"><div><p class="eyebrow" style="color:var(--teal)">Stage 04 · Prove it &amp; follow through</p><h3>Did they learn, and did they reach the next school?</h3><p class="why">Endline scores only count if they stay connected to the child. Keep the case open until she&#x27;s on the next school&#x27;s register.</p><div class="cols"><div><h4>Your team does</h4><ul><li>Facilitators repeat the same tool at midline and endline.</li><li>External assessors retest a random 10 to 15% sample.</li><li>Coordinators verify admissions at the new school in June and July.</li></ul></div><div class="auto"><h4>The system does on its own</h4><ul><li>Children moving to Class 6 or 9 get a July tracking task.</li><li>No status by 31 July? The child goes on a volunteer visit list.</li><li>Large gaps between assessors flag a school for review.</li></ul></div></div><div class="ai-strip"><h4>Where AI helps at this stage</h4><ul><li>The year-end outcomes report drafted from matched baseline and endline</li><li>Children flagged for low attendance, no gain and a transition coming up</li><li>Consented WhatsApp or IVRS check-ins with alumni families</li></ul></div></div><figure class="app" style="margin:0" aria-label="Example screen, illustrative data"><div class="app-top"><div><b>Leadership · Year-end</b><small>Education · Stage 04</small></div><span class="ex">EXAMPLE DATA</span></div><div class="app-body"><div class="kpis"><div class="kpi"><small>Matched endlines</small><strong>282</strong><span>95% of assessed</span></div><div class="kpi"><small>Average reading gain</small><strong>1.6</strong><span>levels</span></div><div class="kpi"><small>Transitions confirmed</small><strong>84%</strong><span>Target 90%</span></div><div class="kpi warn"><small>Not yet traced</small><strong>11</strong><span>Needs action</span></div></div><div class="queue"><table><thead><tr><th>ID</th><th>Child</th><th>Reading gain</th><th>Next school</th></tr></thead><tbody><tr><td>ED-1029</td><td>Pooja Devi</td><td>+2 levels</td><td><span class="st risk">Not traced</span></td></tr><tr><td>ED-1038</td><td>Rafiq Ansari</td><td>+1 level</td><td><span class="st warn">Admission pending</span></td></tr><tr><td>ED-1042</td><td>Meera Kumari</td><td>+2 levels</td><td><span class="st ">Confirmed</span></td></tr><tr><td>ED-1016</td><td>Arjun Singh</td><td>No change</td><td><span class="st ">Confirmed</span></td></tr></tbody></table></div><div class="signal"><b>Do next</b><span>Gains are strong, but transitions trail in two migration-prone habitations. Keep those cases open until admission is verified.</span></div></div></figure></div></article><noscript><style>.stage-panel[hidden]{display:block!important;margin-top:48px}</style></noscript></div></section>
+<section class="band" id="map"><div class="wrap"><div class="sec-head"><div class="eyebrow">How we build it · the MAP approach</div><h2>We fix the data first. AI comes last, and it's better for it.</h2><p>Most AI projects stall because the records underneath are messy. So we work in a fixed order.</p></div>
+<div class="map">
+<article style="--c:var(--coral)"><div class="L">M</div><div class="word">Model</div><h3>Start with the decisions you need to make.</h3><p>Every field has to earn its place by helping someone decide something. If nobody uses it, we don't collect it.</p><ul><li>Seven connected records: child, household, school, group, assessment, facilitator, session</li><li>Mapped to UDISE+ codes so you can match against government data</li><li>Indicators your funder asks for, defined before the first form goes out</li></ul></article>
+<article style="--c:var(--teal-ink)"><div class="L">A</div><div class="word">Align</div><h3>Fit it to how your field team already works.</h3><p>A system people avoid is worse than a spreadsheet. We design around shared phones, patchy signal and WhatsApp.</p><ul><li>Offline forms in Hindi, Marathi, Kannada or your language</li><li>A different screen for the volunteer, the mentor and the manager</li><li>Reminders and follow-ups that fire on their own</li><li>Something useful flows back to the frontline, every week</li></ul></article>
+<article style="--c:#C99A12"><div class="L">P</div><div class="word">Power with AI</div><h3>Then add AI where it saves real hours.</h3><p>On clean, connected records, AI can read paperwork, draft reports and flag who needs attention. A person always checks.</p><ul><li>12 tested use cases across the four stages</li><li>A human check written into every one</li><li>Clear lines on where AI doesn't belong</li></ul></article>
+</div><p class="order"><b>Where you start depends on where you are.</b> If your records are already in good shape, we can move to AI quickly. If they're in notebooks, we start there, and we don't start from zero.</p><p class="qual">Offline forms, local languages, government ID mapping and AI features are configured to each programme's needs and consent rules, so not every build includes all of them.</p></div></section>
+<section class="band" id="ai" style="background:var(--sunk)"><div class="wrap"><div class="sec-head"><div class="eyebrow">Where AI helps</div><h2>Twelve jobs AI can take off your team&#x27;s plate.</h2><p>Each one is specific to education work, and each one keeps a person in charge of the decision.</p></div>
+<div class="chips" id="chips" role="group" aria-label="Filter AI use cases"></div><div class="ai-grid" id="aiGrid"><article class="ai-card" data-b="collect"><div class="ai-meta"><span class="b">Collect faster</span><span>Find every child</span></div><h3>Turn a volunteer&#x27;s voice note in the local language into a tagged reason a child isn&#x27;t in school.</h3><p class="keep"><b>Your team still decides:</b> The coordinator confirms every tag before a visit is assigned.</p></article><article class="ai-card" data-b="know"><div class="ai-meta"><span class="b">Know sooner</span><span>Find every child</span></div><h3>Write a weekly plain-language summary of out-of-school children by hamlet for the block manager.</h3><p class="keep"><b>Your team still decides:</b> The manager checks survey coverage before trusting a zero.</p></article><article class="ai-card" data-b="build"><div class="ai-meta"><span class="b">Build faster</span><span>Find every child</span></div><h3>Generate the household survey in Hindi, Marathi or Kannada from the agreed English field list.</h3><p class="keep"><b>Your team still decides:</b> Two volunteers field-test it in one hamlet first.</p></article><article class="ai-card" data-b="collect"><div class="ai-meta"><span class="b">Collect faster</span><span>Group by level</span></div><h3>Estimate reading fluency while a child reads a passage aloud.</h3><p class="keep"><b>Your team still decides:</b> The facilitator listens too and can override the level.</p></article><article class="ai-card" data-b="smart"><div class="ai-meta"><span class="b">Work smarter</span><span>Group by level</span></div><h3>Draft learning groups that balance level, school and group size.</h3><p class="keep"><b>Your team still decides:</b> The facilitator adjusts for siblings, safety and distance.</p></article><article class="ai-card" data-b="know"><div class="ai-meta"><span class="b">Know sooner</span><span>Group by level</span></div><h3>Draft the baseline summary for the district education office, by cluster and level.</h3><p class="keep"><b>Your team still decides:</b> The programme manager approves it after back-checks are done.</p></article><article class="ai-card" data-b="collect"><div class="ai-meta"><span class="b">Collect faster</span><span>Catch who slips</span></div><h3>Read a photo of a paper attendance register into digital records.</h3><p class="keep"><b>Your team still decides:</b> A volunteer checks every extracted tick.</p></article><article class="ai-card" data-b="smart"><div class="ai-meta"><span class="b">Work smarter</span><span>Catch who slips</span></div><h3>Suggest two coaching points for a facilitator from their last three observations.</h3><p class="keep"><b>Your team still decides:</b> The mentor edits or discards them.</p></article><article class="ai-card" data-b="know"><div class="ai-meta"><span class="b">Know sooner</span><span>Catch who slips</span></div><h3>Send the programme manager a weekly digest of groups with falling attendance and the reasons logged.</h3><p class="keep"><b>Your team still decides:</b> It shows which groups haven&#x27;t reported, before any trend.</p></article><article class="ai-card" data-b="know"><div class="ai-meta"><span class="b">Know sooner</span><span>Prove it &amp; follow through</span></div><h3>Draft the year-end learning outcomes report from matched baseline and endline data.</h3><p class="keep"><b>Your team still decides:</b> Your M&amp;E lead puts attrition on page one.</p></article><article class="ai-card" data-b="smart"><div class="ai-meta"><span class="b">Work smarter</span><span>Prove it &amp; follow through</span></div><h3>Flag children with low attendance, no learning gain and a school move coming up.</h3><p class="keep"><b>Your team still decides:</b> The coordinator adds children the data missed.</p></article><article class="ai-card" data-b="collect"><div class="ai-meta"><span class="b">Collect faster</span><span>Prove it &amp; follow through</span></div><h3>Run consented WhatsApp or IVRS check-ins with alumni families about school status.</h3><p class="keep"><b>Your team still decides:</b> Unclear replies go to a personal call.</p></article></div>
+<div class="never"><div><h3>Where we won't use AI.</h3><p>Children&#x27;s data needs care. These lines don&#x27;t move, whoever&#x27;s asking.</p></div><ul><li><b>Deciding which child to skip</b><span>Enrolment is a right. Every child identified gets a visit.</span></li><li><b>Guessing a disability from scores</b><span>That&#x27;s a screening by a trained professional.</span></li><li><b>Facial recognition for attendance</b><span>Not on children. A tick on a phone works fine.</span></li><li><b>Rating facilitators for appraisals</b><span>Observations exist to help people teach better.</span></li><li><b>Filling in missing endline scores</b><span>A gap gets reported as a gap.</span></li><li><b>Children&#x27;s details in public chatbots</b><span>Names, phones and locations stay in your private system.</span></li></ul></div></div></section>
+<section class="band"><div class="wrap"><div class="sec-head"><div class="eyebrow">What changes, and for whom</div><h2>Everyone enters less and gets something back.</h2></div><div class="roles"><article class="role"><div class="who">Volunteer</div><h3>Watches their hamlet list shrink.</h3><p>As children get enrolled, they drop off the list. Progress you can see on your own phone.</p></article><article class="role"><div class="who">Facilitator</div><h3>Gets a ready group list.</h3><p>Children by level, today&#x27;s absences and the mentor&#x27;s last feedback, on one screen.</p></article><article class="role"><div class="who">Cluster mentor</div><h3>Knows where to go this week.</h3><p>Groups ranked by falling attendance and time since the last visit.</p></article><article class="role"><div class="who">Programme manager</div><h3>Sees what&#x27;s working by cluster.</h3><p>Learning gain by baseline level, facilitator and cluster, with support budget alongside.</p></article><article class="role"><div class="who">Leadership &amp; funders</div><h3>Get numbers they can stand behind.</h3><p>Matched baseline to endline, externally checked, with dropout by gender and grade.</p></article></div>
+<div class="honest"><div><p>If 30% of children left before the endline, your average gain looks better than your programme is. We report the gain and the attrition, side by side.</p><small>Funders notice. It&#x27;s the kind of honesty that gets you renewed.</small></div></div></div></section>
+<section class="band" id="start" style="padding-top:24px"><div class="wrap"><div class="sec-head"><div class="eyebrow">How we work with you</div><h2>From your first email to a system your team actually runs.</h2></div><div class="steps"><article class="stp"><h3>Email us what hurts</h3><p>Tell us where the work gets stuck today. Spreadsheets, notebooks, WhatsApp groups, all of it.</p></article><article class="stp"><h3>A walkthrough together</h3><p>Thirty minutes where you show us how the programme runs today. We ask a lot of questions.</p></article><article class="stp"><h3>We run the MAP process</h3><p>Model your records and decisions, align them to how your field team works, then find where AI helps.</p></article><article class="stp"><h3>Prototype, then build</h3><p>Your team tries real screens with your terms first. Then we build it properly and take it live.</p></article><article class="stp"><h3>Handover and handholding</h3><p>Training in the field, support after go-live, and a hand on the shoulder until your team runs it.</p></article></div><div class="proof"><div><strong>100+</strong><span>organisations worked with</span></div><div><strong>150+</strong><span>systems built</span></div><div><strong>5+</strong><span>countries</span></div><div><strong>Zoho</strong><span>Advanced Partner</span></div><div><strong>75%</strong><span>of our work is with nonprofits</span></div></div></div></section>
+<section class="band" id="talk" style="padding-top:24px"><div class="wrap"><div class="final"><div><h2>Bring us your attendance sheet. We&#x27;ll show you what it could become.</h2><p>Email us what&#x27;s hurting today. We&#x27;ll book a 30-minute walkthrough, no slides.</p><p style="margin-top:10px;font-size:15px">If budget is tight, ask about the Built for Impact Programme. The same work, made accessible.</p></div><div class="contact"><small>Email us your pain points</small><div class="addr"><code id="mail">reachus@edzola.com</code><button class="copy" id="copyBtn" aria-describedby="copyStatus">Copy</button><span id="copyStatus" role="status" aria-live="polite" class="mono" style="font-size:12px"></span></div><a class="pill" href="mailto:reachus@edzola.com?subject=Our%20pain%20points">Write to us</a></div></div></div></section>
+</main>
+<section class="more"><div class="wrap"><h2>Other sectors we build for</h2><p>The same approach, shaped to each kind of work.</p><div class="more-list"><span class="g">Direct services to people</span><a href="/youth-employability/">Youth &amp; Employability</a><a href="/livelihoods/">Livelihoods</a><a href="/health/">Health &amp; Wellbeing</a><a href="/mental-health/">Mental Health</a><a href="/maternal-child-health/">Maternal &amp; Child Health</a><a href="/child-protection/">Child Protection</a><a href="/gender/">Gender Equality</a><a href="/disability/">Disability &amp; Inclusion</a><a href="/justice/">Access to Justice</a><span class="g">Place &amp; planet</span><a href="/environment/">Environment &amp; Climate</a><a href="/waste/">Waste Management</a><a href="/food-systems/">Food Systems</a><a href="/community-development/">Community Development</a><span class="g">Voice &amp; culture</span><a href="/media/">Media &amp; Journalism</a><a href="/arts/">Arts &amp; Culture</a></div><p style="margin-top:22px"><a href="/" style="font-weight:600">See all 16 sectors on one page →</a></p></div></section>
+<footer><div class="wrap"><span>EdZola Technologies · Coimbatore, India · Systems built for the world's hardest work.<br><a href="/">All sectors</a> · <a href="/impact-os/">ImpactOS</a> · <a href="/zolabs/">Zolabs</a> · <a href="https://edzola.com" rel="noreferrer">About EdZola</a> · <a href="mailto:reachus@edzola.com">reachus@edzola.com</a></span><span>Screens, names and figures on this page are illustrative examples.<br>Last updated 2026-09-28</span></div></footer>
+<script>
+(function(){
+var P={"before": "Five places, one child. Nobody can see she's about to leave.", "after": "One record. The home visit is booked before she leaves.", "ai": [{"bucket": "collect"}, {"bucket": "know"}, {"bucket": "build"}, {"bucket": "collect"}, {"bucket": "smart"}, {"bucket": "know"}, {"bucket": "collect"}, {"bucket": "smart"}, {"bucket": "know"}, {"bucket": "know"}, {"bucket": "smart"}, {"bucket": "collect"}]};
+var board=document.getElementById('board'),b1=document.getElementById('btnBefore'),b2=document.getElementById('btnAfter'),cap=document.getElementById('caption');
+function layout(){var head=board.querySelector('.thread-head'),mob=window.innerWidth<=620,w=board.clientWidth-(mob?42:56),top=head.offsetHeight+14,probe=document.createElement('div');
+ probe.style.cssText='position:absolute;visibility:hidden;left:-9999px;top:0;width:'+w+'px';document.body.appendChild(probe);
+ board.querySelectorAll('.frag').forEach(function(f){var c=f.querySelector('.clean').cloneNode(true);c.style.opacity=1;probe.innerHTML='';probe.appendChild(c);
+  f.style.setProperty('--cy',top+'px');top+=c.offsetHeight+10});probe.remove();board.style.height=Math.max(mob?560:520,top+16)+'px'}
+layout();window.addEventListener('resize',layout);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+function setOn(on){board.classList.toggle('on',on);b1.setAttribute('aria-pressed',!on);b2.setAttribute('aria-pressed',on);cap.textContent=on?P.after:P.before;}
+var touched=false;
+b1.addEventListener('click',function(){touched=true;setOn(false)});
+b2.addEventListener('click',function(){touched=true;setOn(true)});
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){setTimeout(function(){if(!touched)setOn(true)},2600)}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+var tabs=[].slice.call(document.querySelectorAll('#tabs [role=tab]')),panels=[].slice.call(document.querySelectorAll('.stage-panel'));
+function show(i,focus){tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1});
+ panels.forEach(function(p,j){p.hidden=j!==i});if(focus)tabs[i].focus()}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){show(i)});t.addEventListener('keydown',function(e){var n=null,L=tabs.length;
+ if(e.key==='ArrowRight')n=(i+1)%L;else if(e.key==='ArrowLeft')n=(i+L-1)%L;else if(e.key==='Home')n=0;else if(e.key==='End')n=L-1;
+ if(n!==null){e.preventDefault();show(n,true)}})});
+var h=location.hash.slice(1);show(Math.max(0,panels.findIndex(function(p){return p.id===h})));
+var B={collect:'Collect faster',know:'Know sooner',smart:'Work smarter',build:'Build faster'};
+var grid=document.getElementById('aiGrid'),chips=document.getElementById('chips');
+var opts=[['all','All',P.ai.length]];Object.keys(B).forEach(function(k){var n=P.ai.filter(function(a){return a.bucket===k}).length;if(n)opts.push([k,B[k],n])});
+opts.forEach(function(o){var b=document.createElement('button');b.className='chip';b.setAttribute('aria-pressed',o[0]==='all');b.innerHTML=esc(o[1])+'<span class="c">'+o[2]+'</span>';
+ b.addEventListener('click',function(){chips.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b)});
+ grid.querySelectorAll('.ai-card').forEach(function(c){c.hidden=!(o[0]==='all'||c.dataset.b===o[0])})});chips.appendChild(b)});
+})();
+var cb=document.getElementById('copyBtn');if(cb)cb.addEventListener('click',function(){var el=document.getElementById('mail');
+function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);document.getElementById('copyStatus').textContent='Address selected. Press Ctrl+C or Cmd+C to copy.';}
+try{navigator.clipboard.writeText(el.textContent).then(function(){document.getElementById('copyStatus').textContent='Copied to clipboard'},sel)}catch(x){sel()}
+setTimeout(function(){document.getElementById('copyStatus').textContent=''},3000)});</script>
+
+</body>
+</html>

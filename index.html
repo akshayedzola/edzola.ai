@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>edzola.ai | Coming soon</title>
+  <title>EdZola AI — Data Systems, AI Workflows &amp; Impact Technology</title>
+  <meta name="description" content="EdZola designs custom MIS and data systems, AI workflows, voice research, compliance infrastructure, and finance tools for social impact organisations." />
+  <link rel="canonical" href="https://edzola.ai/" />
+  <meta property="og:title" content="EdZola AI — The intelligence layer for social impact" />
+  <meta property="og:description" content="Custom impact systems and practical AI products for nonprofits, funders, CSR teams, and social enterprises." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://edzola.ai/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -123,6 +130,9 @@
       border-color: rgba(104, 214, 208, 0.24);
       transform: translateY(-1px);
     }
+
+    .header-nav { display: flex; align-items: center; gap: 8px; }
+    .header-nav .header-link { padding: 9px 14px; font-size: 0.84rem; }
 
     .hero {
       position: relative;
@@ -256,6 +266,56 @@
 
     .hero-copy p {
       margin: 0 auto;
+    }
+
+    .secondary-button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 52px; padding: 0 24px; border: 1px solid var(--border);
+      border-radius: 999px; color: var(--muted-strong); font-weight: 700;
+      background: rgba(7, 21, 28, 0.42);
+    }
+
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px; margin-top: 36px;
+    }
+
+    .portfolio-card {
+      position: relative; display: flex; flex-direction: column; min-height: 260px;
+      padding: 30px; border: 1px solid var(--border); border-radius: 24px;
+      background: linear-gradient(145deg, rgba(11, 31, 39, 0.82), rgba(5, 18, 24, 0.72));
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+    .portfolio-card:hover { transform: translateY(-3px); border-color: var(--line-strong); background: rgba(11, 31, 39, 0.92); }
+    .portfolio-card.primary { grid-column: span 2; min-height: 300px; }
+    .portfolio-label { color: var(--teal); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+    .portfolio-card.primary .portfolio-label { color: var(--lime); }
+    .portfolio-title { margin: 18px 0 10px; font-family: "Space Grotesk", sans-serif; font-size: clamp(1.75rem, 3vw, 2.7rem); letter-spacing: -0.04em; }
+    .portfolio-copy { max-width: 700px; margin: 0; color: var(--muted); line-height: 1.75; }
+    .portfolio-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 28px; color: var(--text); font-weight: 700; }
+    .portfolio-link span { color: var(--teal); }
+    .portfolio-card.primary .portfolio-link span { color: var(--lime); }
+
+    .sector-band {
+      margin-top: 24px; padding: 30px; display: grid; grid-template-columns: 1.3fr 0.7fr;
+      gap: 28px; align-items: center; border: 1px solid rgba(216, 239, 122, 0.18);
+      border-radius: 24px; background: rgba(216, 239, 122, 0.035);
+    }
+    .sector-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .sector-list span { padding: 8px 11px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted-strong); font-size: 0.78rem; }
+
+    @media (max-width: 860px) {
+      .header-nav .nav-secondary { display: none; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-card.primary { grid-column: auto; }
+      .sector-band { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .header-nav .product-pill { display: none; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .secondary-button { width: 100%; }
+      .portfolio-card, .sector-band { padding: 24px; }
     }
 
     .hero-body {
@@ -789,21 +849,18 @@
   <div class="page">
     <header class="site-header">
       <div class="container">
-        <a class="wordmark" href="#">
+        <a class="wordmark" href="/" aria-label="EdZola AI home">
           edzola<span class="accent">.ai</span>
         </a>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <a class="header-link" href="/zolabs" style="border-color:rgba(88,223,216,0.22);color:var(--teal);font-size:0.85rem;padding:9px 14px;gap:7px;">
+        <nav class="header-nav" aria-label="Primary navigation">
+          <a class="header-link nav-secondary" href="#portfolio">Products</a>
+          <a class="header-link nav-secondary" href="/sectors/">Sectors</a>
+          <a class="header-link product-pill" href="/zolabs/" style="border-color:rgba(88,223,216,0.22);color:var(--teal);gap:7px;">
             <span style="width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 7px rgba(88,223,216,0.55);flex-shrink:0;display:inline-block;animation:pulse 2.5s ease-in-out infinite;"></span>
             zolabs.ai is live
           </a>
-          <a class="header-link impactos-pill" href="/impact-os" style="border-color:rgba(208,239,117,0.28);color:var(--lime);font-size:0.88rem;padding:10px 16px;gap:8px;">
-            <span style="width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px rgba(208,239,117,0.5);flex-shrink:0;display:inline-block;"></span>
-            Now launching: ImpactOS
-            <svg viewBox="0 0 16 16" fill="none" style="width:13px;height:13px;opacity:0.7;" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a class="header-link" href="https://edzola.com" target="_blank" rel="noreferrer">About EdZola</a>
-        </div>
+          <a class="header-link" href="https://edzola.com/contact" target="_blank" rel="noreferrer">Talk to us</a>
+        </nav>
       </div>
     </header>
 
@@ -843,7 +900,7 @@
           </div>
 
           <div class="hero-copy">
-            <span class="eyebrow">Coming soon</span>
+            <span class="eyebrow">Technology for social impact</span>
             <h1>
               <span class="line">The <span class="gradient">intelligence</span></span>
               <span class="line"><span class="gradient">layer</span> for social</span>
@@ -856,19 +913,20 @@
               Built by the team behind EdZola — trusted by 100+ impact organisations across 5 countries.
             </p>
             <div class="hero-actions">
-              <a class="primary-button" href="#early-access">
-                Request Early Access
+              <a class="primary-button" href="#portfolio">
+                Explore the portfolio
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M5 12h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                   <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
               </a>
+              <a class="secondary-button" href="/sectors/">Find your sector</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="capabilities">
         <div class="container">
           <div class="section-head">
             <span class="section-kicker">What we’re building</span>
@@ -913,9 +971,9 @@
                   <path d="M4 13h4l2-6 4 12 2-6h4"></path>
                 </svg>
               </div>
-              <h3 class="card-title">Sector Intelligence</h3>
+              <h3 class="card-title">Responsible Data &amp; AI</h3>
               <p class="card-copy">
-                Real-time visibility across your portfolio — grant evaluation, impact monitoring, and reporting that helps funders and operators stay aligned and make faster decisions.
+                Put privacy, consent, governance, and human oversight into the system from the start — not as a compliance exercise after launch.
               </p>
             </article>
           </div>
@@ -929,12 +987,71 @@
                 <div style="font-size:0.86rem;color:var(--muted);margin-top:3px;">AI-powered voice data collection for social impact — reaching last-mile communities in 25+ languages.</div>
               </div>
             </div>
-            <a href="/zolabs" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;border:1px solid rgba(88,223,216,0.28);color:var(--teal);font-size:0.88rem;font-weight:600;background:rgba(88,223,216,0.06);white-space:nowrap;transition:background 160ms ease;">
+            <a href="/zolabs/" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;border:1px solid rgba(88,223,216,0.28);color:var(--teal);font-size:0.88rem;font-weight:600;background:rgba(88,223,216,0.06);white-space:nowrap;transition:background 160ms ease;">
               Visit zolabs.ai
               <svg viewBox="0 0 16 16" fill="none" style="width:12px;height:12px;" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
 
+        </div>
+      </section>
+
+      <section class="section" id="portfolio">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-kicker">The EdZola portfolio</span>
+            <h2 class="section-title">One team. Multiple ways to strengthen your impact infrastructure.</h2>
+            <p class="section-intro">Start with a programme challenge, a data system, an AI workflow, or a compliance need. Each offering can stand alone or connect into a wider operating system.</p>
+          </div>
+
+          <div class="portfolio-grid">
+            <a class="portfolio-card primary" href="/impact-os/">
+              <span class="portfolio-label">ImpactOS · Programme and data systems</span>
+              <h3 class="portfolio-title">Turn how your programme works into a system your team can actually run.</h3>
+              <p class="portfolio-copy">Design the blueprint for a custom MIS, from Theory of Change and workflows to data models, dashboards, and implementation specifications. Then build the right system for the context—not a generic template.</p>
+              <span class="portfolio-link">Explore ImpactOS <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a class="portfolio-card" href="/zolabs/">
+              <span class="portfolio-label">Zolabs · Voice research</span>
+              <h3 class="portfolio-title">Listen at scale without losing the human texture.</h3>
+              <p class="portfolio-copy">AI-powered phone conversations help teams collect and structure qualitative data in the languages people speak.</p>
+              <span class="portfolio-link">Explore Zolabs <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a class="portfolio-card" href="/zolashield/">
+              <span class="portfolio-label">ZolaShield · Privacy infrastructure</span>
+              <h3 class="portfolio-title">Move from unknown data risk to an audit-ready view.</h3>
+              <p class="portfolio-copy">Map personal data, assess risk, and produce practical DPDP compliance outputs through guided, AI-assisted interviews.</p>
+              <span class="portfolio-link">Explore ZolaShield <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a class="portfolio-card" href="#capabilities">
+              <span class="portfolio-label">Custom AI · Applied workflows</span>
+              <h3 class="portfolio-title">Use AI where it removes real operational friction.</h3>
+              <p class="portfolio-copy">Purpose-built assistants, document and qualitative analysis, field workflows, reporting tools, and decision support—grounded in your programme.</p>
+              <span class="portfolio-link">See our capabilities <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a class="portfolio-card" href="/fundzola/">
+              <span class="portfolio-label">FundZola · Finance operations</span>
+              <h3 class="portfolio-title">Make the finance stack work for nonprofits.</h3>
+              <p class="portfolio-copy">An AI layer for Zoho Books that supports donor receipts, expense tagging, fund utilisation reporting, and compliance workflows.</p>
+              <span class="portfolio-link">Explore FundZola <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+
+          <div class="sector-band">
+            <div>
+              <span class="section-kicker">Built for your context</span>
+              <h3 class="portfolio-title">See what a fit-for-purpose system looks like in your sector.</h3>
+              <p class="portfolio-copy">Explore practical system blueprints across education, health, livelihoods, climate, gender, child protection, and more.</p>
+              <a class="portfolio-link" href="/sectors/">Explore all sector solutions <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="sector-list" aria-label="Featured sectors">
+              <span>Education</span><span>Health</span><span>Livelihoods</span><span>Gender</span><span>Environment</span><span>Child protection</span><span>Mental health</span><span>Food systems</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -964,10 +1081,10 @@
       <section class="section" id="early-access">
         <div class="container early-access">
           <div class="early-copy">
-            <span class="section-kicker">Early access</span>
-            <h2 class="section-title">Be among the first to experience edzola.ai</h2>
+            <span class="section-kicker">Work with EdZola</span>
+            <h2 class="section-title">Tell us what your programme needs to do better.</h2>
             <p class="section-intro">
-              We’re building the intelligence layer that connects programme strategy, data systems, and AI — purpose-built for the social impact sector. Join our early access list to get a first look.
+              Whether you need a complete MIS, a focused AI workflow, better qualitative evidence, or safer data practices, we can help you find the right starting point.
             </p>
 
             <ul class="trust-list">
@@ -1405,12 +1522,15 @@
 
     <footer class="site-footer">
       <div class="container">
-        <a class="wordmark" href="#">
+        <a class="wordmark" href="/">
           edzola<span class="accent">.ai</span>
         </a>
         <nav class="footer-nav" aria-label="Footer">
-          <a class="footer-link" href="/zolabs" style="color:var(--teal);border-color:rgba(88,223,216,0.2);">zolabs.ai</a>
-          <a class="footer-link" href="/impact-os" style="color:var(--lime);border-color:rgba(208,239,117,0.2);">ImpactOS</a>
+          <a class="footer-link" href="/impact-os/" style="color:var(--lime);border-color:rgba(208,239,117,0.2);">ImpactOS</a>
+          <a class="footer-link" href="/zolabs/" style="color:var(--teal);border-color:rgba(88,223,216,0.2);">Zolabs</a>
+          <a class="footer-link" href="/zolashield/">ZolaShield</a>
+          <a class="footer-link" href="/fundzola/">FundZola</a>
+          <a class="footer-link" href="/sectors/">Sectors</a>
           <a class="footer-link" href="https://edzola.com" target="_blank" rel="noreferrer">About EdZola</a>
           <a class="footer-link" href="https://edzola.com/case-studies" target="_blank" rel="noreferrer">Case Studies</a>
           <a class="footer-link" href="https://edzola.com/contact" target="_blank" rel="noreferrer">Contact</a>
