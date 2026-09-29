@@ -2,53 +2,755 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<link rel="canonical" href="https://edzola.ai/">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>EdZola — Data Systems and AI for Social Impact</title>
-<meta name="description" content="EdZola builds programme data systems and practical AI workflows for nonprofits, funders, CSR teams, and social enterprises.">
+<title>EdZola — AI-native operations for social impact</title>
+<meta name="description" content="EdZola designs, builds and runs the systems behind social-impact programmes. AI workers handle the volume, your people keep the judgement, and the person you serve stays at the centre.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-:root{--bg:#FDF8F4;--surface:#fff;--sunk:#F6EDE5;--ink:#1A1A1A;--muted:#6B6360;--line:#EADFD6;--coral:#E8967A;--coral-dark:#B4553A;--peach:#FAE8DC;--teal:#8ECFCA;--teal-dark:#2C7771;--teal-soft:#E2F3F1;--yellow:#F7C948;--shadow:0 14px 40px rgba(74,48,32,.10);--display:"Bricolage Grotesque",sans-serif;--sans:"Figtree",sans-serif;--mono:"JetBrains Mono",monospace}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin:auto}h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;margin:0}p{margin:0}:focus-visible{outline:3px solid var(--coral);outline-offset:3px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark)}.pill{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 21px;border:0;border-radius:999px;font-weight:700;text-decoration:none}.pill.primary{background:var(--coral);color:var(--ink)}.pill.ghost{box-shadow:inset 0 0 0 1.5px var(--line)}
-.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.top .wrap{height:66px;display:flex;align-items:center;gap:24px}.logo{display:flex;align-items:center;font:700 22px var(--display);letter-spacing:-.035em;text-decoration:none;color:#1A1A1A}.top nav{margin-left:auto;display:flex;align-items:center;gap:3px}.top nav a{padding:8px 12px;color:var(--muted);font-size:14px;text-decoration:none;border-radius:99px}.top nav a:hover{background:var(--sunk);color:var(--ink)}.top .pill{min-height:42px;margin-left:8px;padding:0 17px;font-size:14px}
-.hero{display:grid;grid-template-columns:1.04fr .96fr;gap:62px;align-items:center;padding:78px 0 96px}.hero h1{font-size:clamp(50px,6.4vw,82px);line-height:.97;margin:18px 0 26px}.hero h1 em{font-style:normal;color:var(--coral-dark);position:relative;white-space:nowrap}.hero h1 em:after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:.15em;background:var(--yellow);opacity:.55;z-index:-1;border-radius:3px}.hero-copy{max-width:620px;font-size:20px;line-height:1.6;color:var(--muted)}.hero-copy strong{color:var(--ink)}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.proof-line{display:flex;gap:24px;flex-wrap:wrap;margin-top:26px;color:var(--muted);font:13px var(--mono)}.proof-line span:before{content:"✓";color:var(--teal-dark);font-weight:700;margin-right:7px}
-.system-map{position:relative;min-height:550px;padding:22px;border-radius:28px;background:var(--sunk);box-shadow:var(--shadow);overflow:hidden}.map-head{padding:15px 18px;border-radius:15px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:space-between}.map-head strong{font:600 15px var(--display)}.map-head span{font:10px var(--mono);opacity:.72}.map-body{position:relative;height:450px}.map-line{position:absolute;left:50%;top:30px;bottom:35px;border-left:2px dashed var(--coral)}.map-node{position:absolute;width:44%;padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:0 8px 22px rgba(60,40,25,.07)}.map-node b{display:block;font:600 15px var(--display);margin-bottom:4px}.map-node small{color:var(--muted)}.map-node:after{content:"";position:absolute;top:22px;width:12px;height:12px;border:3px solid var(--teal-dark);border-radius:50%;background:var(--surface)}.map-node.left{left:0}.map-node.left:after{right:-23px}.map-node.right{right:0}.map-node.right:after{left:-23px}.n1{top:28px}.n2{top:132px}.n3{top:236px}.n4{top:340px}.n4:after{border-color:var(--coral-dark)}
-.section{padding:96px 0}.section.sunk{background:var(--sunk);border-block:1px solid var(--line)}.section-head{max-width:780px;margin-bottom:42px}.section h2{font-size:clamp(38px,5vw,62px);line-height:1.03;margin:15px 0 18px}.lead{font-size:18px;line-height:1.7;color:var(--muted)}
-.paths{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--surface)}.path{padding:42px;min-height:440px;display:flex;flex-direction:column}.path+ .path{border-left:1px solid var(--line)}.path.systems{border-top:6px solid var(--teal)}.path.ai{border-top:6px solid var(--coral)}.path-num{font:500 12px var(--mono);color:var(--muted)}.path h3{font-size:clamp(31px,4vw,46px);line-height:1.05;margin:38px 0 17px}.path p{color:var(--muted);font-size:17px}.path ul{list-style:none;padding:0;margin:28px 0;color:var(--ink)}.path li{padding:9px 0;border-bottom:1px solid var(--line)}.path-link{margin-top:auto;font-weight:700;text-decoration:none;color:var(--teal-dark)}.path.ai .path-link{color:var(--coral-dark)}
-.sectors-shell{display:grid;grid-template-columns:.72fr 1.28fr;gap:58px;align-items:start}.sector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.sector{display:flex;justify-content:space-between;gap:15px;padding:16px 17px;border:1px solid var(--line);background:var(--surface);text-decoration:none;border-radius:12px}.sector:hover{border-color:var(--teal-dark);background:var(--teal-soft)}.sector span:last-child{color:var(--teal-dark)}
-.products{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:16px}.product{min-height:360px;padding:30px;border:1px solid var(--line);border-radius:20px;background:var(--surface);display:flex;flex-direction:column}.product.featured{background:var(--peach);border-color:#E6CBBE}.product-tag{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--coral-dark)}.product:not(.featured) .product-tag{color:var(--teal-dark)}.product h3{font-size:30px;line-height:1.08;margin:26px 0 14px}.product p{color:var(--muted)}.product a{margin-top:auto;padding-top:30px;font-weight:700;text-decoration:none}
-.method{display:grid;grid-template-columns:.78fr 1.22fr;gap:56px;align-items:start}.steps{border-top:1px solid var(--line)}.step{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}.step span{font:500 12px var(--mono);color:var(--coral-dark)}.step h3{font-size:23px;margin-bottom:5px}.step p{color:var(--muted)}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface)}.metric{padding:28px}.metric+.metric{border-left:1px solid var(--line)}.metric strong{display:block;font:700 38px var(--display);letter-spacing:-.04em}.metric span{color:var(--muted);font-size:14px}
-.cta-box{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;padding:48px;border-radius:26px;background:var(--teal-soft);border:1px solid #C9E5E2}.cta-box h2{font-size:clamp(34px,4.6vw,58px);line-height:1.03}.cta-box p{margin-top:14px;color:var(--muted);font-size:18px}.cta-box .pill{white-space:nowrap}
-.footer{padding:42px 0;border-top:1px solid var(--line);background:var(--surface)}.footer .wrap{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}.footer-nav{display:flex;gap:15px;flex-wrap:wrap}.footer-nav a{color:var(--muted);font-size:14px;text-decoration:none}
-@media(max-width:920px){.hero,.sectors-shell,.method{grid-template-columns:1fr}.system-map{min-height:520px}.products{grid-template-columns:1fr 1fr}.product.featured{grid-column:span 2}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(3){border-left:0;border-top:1px solid var(--line)}.metric:nth-child(4){border-top:1px solid var(--line)}}
-@media(max-width:680px){.wrap{width:min(calc(100% - 28px),1160px)}.top nav a{display:none}.top .pill{display:inline-flex;width:auto}.hero{padding:58px 0 72px;gap:46px}.hero>*{min-width:0}.hero h1{font-size:clamp(43px,14vw,62px);overflow-wrap:anywhere}.hero h1 em{white-space:normal}.hero-copy{font-size:18px}.hero-actions{flex-direction:column}.hero-actions .pill,.cta-box .pill{width:100%}.proof-line{gap:10px 17px}.system-map{min-height:570px;padding:14px}.map-body{height:490px}.map-node{width:calc(100% - 44px)}.map-node.left,.map-node.right{left:44px;right:auto}.map-node:after,.map-node.left:after,.map-node.right:after{left:-27px;right:auto}.map-line{left:21px}.n1{top:26px}.n2{top:138px}.n3{top:250px}.n4{top:362px}.section{padding:72px 0}.paths,.products{grid-template-columns:1fr}.path{padding:28px;min-height:auto}.path+.path{border-left:0;border-top:1px solid var(--line)}.product.featured{grid-column:auto}.sector-grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.metric{padding:22px}.cta-box{grid-template-columns:1fr;padding:30px}.footer .wrap{grid-template-columns:1fr}.footer-nav{gap:10px 15px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:root{--bg:#FDF8F4;--surface:#fff;--sunk:#F6EDE5;--ink:#1A1A1A;--night:#161311;--muted:#6B6360;--line:#EADFD6;--coral:#E8967A;--coral-dark:#B4553A;--peach:#FAE8DC;--teal:#8ECFCA;--teal-dark:#2C7771;--teal-soft:#E2F3F1;--yellow:#F7C948;--shadow:0 14px 40px rgba(74,48,32,.10);--display:"Bricolage Grotesque",sans-serif;--sans:"Figtree",sans-serif;--mono:"JetBrains Mono",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}.wrap{width:min(1200px,calc(100% - 48px));margin:auto}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;margin:0}p{margin:0}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark)}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:0;border-radius:999px;font:700 15px var(--sans);text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
+.pill:hover{transform:translateY(-1px)}.pill.primary{background:var(--coral);color:var(--ink)}.pill.ghost{box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface)}.pill.dark{background:var(--ink);color:var(--bg)}
+
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{height:66px;display:flex;align-items:center;gap:24px}
+.logo{font:700 22px var(--display);letter-spacing:-.035em;text-decoration:none}
+.top nav{margin-left:auto;display:flex;gap:2px}.top nav a{padding:8px 12px;color:var(--muted);font-size:14px;text-decoration:none;border-radius:99px}.top nav a:hover{background:var(--sunk);color:var(--ink)}
+.top .pill{min-height:42px;padding:0 18px;font-size:14px}
+
+/* ---------- HERO ---------- */
+.hero{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center;padding:56px 0 40px}
+.hero h1{font-size:clamp(44px,5.4vw,74px);line-height:.98;margin:18px 0 22px}
+.hero h1 em{font-style:normal;color:var(--coral-dark);position:relative}
+.hero h1 em:after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;background:var(--yellow);opacity:.55;z-index:-1;border-radius:3px}
+.hero-copy{font-size:19px;line-height:1.6;color:var(--muted)}.hero-copy strong{color:var(--ink);font-weight:600}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.modes{display:flex;gap:8px;margin-top:26px;flex-wrap:wrap}
+.modes span{font:500 12px var(--mono);padding:6px 11px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.modes b{color:var(--coral-dark);font-weight:600}
+
+.stage{position:relative;border-radius:28px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.stage-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px 0}
+.stage-top span{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stage-top .live{display:flex;align-items:center;gap:8px}.stage-top .live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--coral);animation:blink 2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.3}}
+.ctrl{background:var(--sunk);color:var(--muted);border:0;border-radius:99px;padding:6px 12px;font:500 11px var(--mono);cursor:pointer}.ctrl:hover{color:var(--ink)}
+.stage canvas{display:block;width:100%;height:480px}
+.acts{padding:14px 18px 18px;border-top:1px solid var(--line);background:var(--bg)}
+.act-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.act{all:unset;cursor:pointer;display:block;color:var(--muted);font:600 13px var(--sans)}
+.act i{display:block;height:3px;border-radius:2px;background:var(--line);margin-bottom:8px;overflow:hidden}
+.act i b{display:block;height:100%;width:0;background:var(--coral)}
+.act.on{color:var(--ink)}.act:focus-visible{outline:2px solid var(--coral);outline-offset:4px;border-radius:4px}
+.caption{margin-top:9px;min-height:62px;color:var(--muted);font-size:14px;line-height:1.5}
+
+/* ---------- LOGO CLOUD ---------- */
+.cloud{padding:34px 0 38px;border-block:1px solid var(--line);background:var(--sunk);overflow:hidden}
+.cloud-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+.cloud-head b{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cloud-head span{font-size:14px;color:var(--muted)}
+.lane{display:flex;width:max-content;gap:14px;padding:10px 0;animation:slide 70s linear infinite}
+.lane.rev{animation-direction:reverse;animation-duration:85s}
+.cloud:hover .lane{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.org{flex:none;height:72px;min-width:120px;padding:0 22px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 20px rgba(74,48,32,.07);font:600 15px var(--display);letter-spacing:-.01em;color:#3d3633;white-space:nowrap;animation:bob 6s ease-in-out infinite}
+.org img{max-height:44px;max-width:150px;display:block}
+.org:nth-child(3n){animation-delay:-2s}.org:nth-child(3n+1){animation-delay:-4s}.org:nth-child(4n){animation-duration:7.5s}
+@keyframes bob{50%{transform:translateY(-6px)}}
+
+/* ---------- SECTIONS ---------- */
+.section{padding:96px 0}.section.sunk{background:var(--sunk);border-block:1px solid var(--line)}
+.section-head{max-width:780px;margin-bottom:44px}
+.section h2{font-size:clamp(36px,4.8vw,58px);line-height:1.04;margin:14px 0 16px}
+.lead{font-size:18px;line-height:1.7;color:var(--muted)}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pillar{position:relative;display:flex;flex-direction:column;padding:30px;border-radius:24px;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c,var(--coral))}
+.pillar.build{--c:var(--teal-dark)}.pillar.listen{--c:var(--teal)}.pillar.protect{--c:var(--ink)}.pillar.run{--c:var(--coral)}
+.pillar .tag{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pillar h3{font-size:clamp(30px,3.2vw,40px);line-height:1.02;margin:14px 0 4px}
+.pillar .sub{font:600 16px var(--display);color:var(--coral-dark);letter-spacing:-.01em}
+.pillar p{color:var(--muted);margin-top:12px;font-size:15.5px}
+.pillar .badge{position:absolute;top:26px;right:26px;font:600 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:99px;background:var(--peach);color:var(--coral-dark)}
+.pillar .go{margin-top:auto;padding-top:20px;font-weight:700;text-decoration:none;color:var(--teal-dark)}
+.pillar .also{margin-top:14px;font-size:13.5px;color:var(--muted);padding-top:12px;border-top:1px dashed var(--line)}
+.viz{margin-top:20px;border-radius:16px;background:var(--bg);border:1px solid var(--line);padding:16px;font-size:13px}
+.viz .row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line)}.viz .row:first-of-type{border-top:0}
+.viz .hd{font:600 10.5px var(--mono);color:var(--teal-dark);letter-spacing:.04em;margin-bottom:6px}
+.t{font:600 10px var(--mono);padding:2px 8px;border-radius:99px;background:var(--teal-soft);color:var(--teal-dark);white-space:nowrap}
+.t.w{background:var(--peach);color:var(--coral-dark)}.t.h{background:#F3D6CC;color:#8E3A22}.t.l{background:var(--sunk);color:var(--muted)}
+.wave{display:flex;align-items:center;gap:3px;height:34px;margin-bottom:10px}
+.wave i{flex:1;background:var(--teal);border-radius:2px;animation:wv 1.4s ease-in-out infinite}
+@keyframes wv{50%{transform:scaleY(.35)}}
+.quote-line{font-style:italic;color:var(--ink)}
+.arrow-to{display:flex;align-items:center;gap:8px;margin-top:8px;color:var(--muted);font-size:12.5px}
+.steps-mini{counter-reset:m}.steps-mini .row{justify-content:flex-start}.steps-mini .row:before{counter-increment:m;content:"0" counter(m);font:500 10.5px var(--mono);color:var(--coral-dark);width:22px}
+.steps-mini .row .t{margin-left:auto}
+.platform{margin-top:22px;font-size:14.5px;color:var(--muted);max-width:760px}
+@media(prefers-reduced-motion:reduce){.wave i{animation:none}}
+
+/* picker */
+.picker{display:grid;grid-template-columns:330px 1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--surface)}
+.tabs{display:flex;flex-direction:column;background:var(--sunk);border-right:1px solid var(--line);padding:10px}
+.tab{all:unset;cursor:pointer;display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:14px;font:600 15.5px var(--sans);color:var(--muted)}
+.tab .n{font:500 11px var(--mono);color:var(--coral-dark);width:20px}
+.tab:hover{color:var(--ink)}.tab[aria-selected=true]{background:var(--surface);color:var(--ink);box-shadow:0 4px 14px rgba(60,40,25,.07)}
+.tab:focus-visible{outline:3px solid var(--coral)}
+.panel{padding:40px 46px}.panel[hidden]{display:none}
+.panel .kicker{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dark)}
+.panel h3{font-size:clamp(27px,3.2vw,38px);line-height:1.1;margin:14px 0 14px}
+.panel>p{color:var(--muted);font-size:17px;max-width:640px}
+.panel-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px}
+.panel ul{list-style:none;padding:0;margin:0}.panel li{padding:9px 0 9px 24px;border-bottom:1px solid var(--line);position:relative;font-size:15px}
+.panel li:before{content:"→";position:absolute;left:0;color:var(--coral-dark)}
+.proofbox{background:var(--teal-soft);border:1px solid #C9E5E2;border-radius:16px;padding:20px}
+.proofbox .o{font:600 12px var(--mono);color:var(--teal-dark);letter-spacing:.06em;text-transform:uppercase}
+.proofbox strong{display:block;font:700 32px var(--display);letter-spacing:-.04em;margin:6px 0 2px}
+.proofbox p{font-size:14px;color:var(--muted)}
+.proofbox.p{background:var(--peach);border-color:#E6CBBE}.proofbox.p .o{color:var(--coral-dark)}
+.panel-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px}.panel-links a{font-weight:700;text-decoration:none;color:var(--teal-dark)}
+
+/* proof */
+.cases{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.case{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;text-decoration:none;transition:border-color .2s,transform .2s}
+.case:hover{border-color:var(--teal-dark);transform:translateY(-2px)}
+.case img{height:34px;width:auto;max-width:140px;object-fit:contain;object-position:left;mix-blend-mode:multiply}
+.case strong{font:700 44px/1 var(--display);letter-spacing:-.045em;margin:20px 0 6px}
+.case .unit{font-weight:600}.case p{color:var(--muted);font-size:14.5px;margin-top:12px}
+.case .go{margin-top:auto;padding-top:18px;font-weight:700;color:var(--teal-dark);font-size:14px}
+.case .live{align-self:flex-start;margin-top:14px;font:600 10.5px var(--mono);padding:3px 8px;border-radius:99px;background:var(--peach);color:var(--coral-dark)}
+.honest{margin-top:22px;font-size:15px;color:var(--muted);max-width:760px}.honest a{color:var(--teal-dark);font-weight:700}
+
+/* sectors */
+.sectors-shell{display:grid;grid-template-columns:.75fr 1.25fr;gap:56px;align-items:start}
+.sector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.sector{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 16px;border:1px solid var(--line);background:var(--surface);text-decoration:none;border-radius:12px}
+.sector:hover{border-color:var(--teal-dark);background:var(--teal-soft)}
+.sector b{font-weight:600}.sector .id{font:500 11px var(--mono);color:var(--teal-dark);align-self:center}
+.sector small{grid-column:1/-1;color:var(--muted);font-size:13px;line-height:1.4}
+
+/* method */
+.method{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.steps{border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--line)}
+.step span{font:500 12px var(--mono);color:var(--coral-dark)}.step h3{font-size:22px;margin-bottom:4px}.step p{color:var(--muted)}
+.promises{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.promise{padding:18px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.promise b{display:block;font:600 16px var(--display);margin-bottom:4px}.promise span{font-size:14px;color:var(--muted)}
+
+
+.people{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.founder{background:var(--night);color:var(--bg);border-radius:24px;padding:40px}
+.founder blockquote{margin:0;font:500 clamp(22px,2.6vw,30px)/1.3 var(--display);letter-spacing:-.02em}
+.founder cite{display:block;margin-top:22px;font:normal 14px var(--sans);opacity:.75}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:28px}
+.facts div{background:var(--surface);padding:20px}.facts strong{display:block;font:700 32px var(--display);letter-spacing:-.04em}.facts span{font-size:13.5px;color:var(--muted)}
+
+.reads{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.read{display:flex;flex-direction:column;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--surface);text-decoration:none}
+.read:hover{border-color:var(--coral)}
+.read span{font:500 11px var(--mono);color:var(--coral-dark);letter-spacing:.08em;text-transform:uppercase}
+.read h3{font-size:22px;line-height:1.2;margin:14px 0 8px}.read p{color:var(--muted);font-size:14.5px}
+
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:52px;border-radius:28px;background:var(--teal-soft);border:1px solid #C9E5E2}
+.cta h2{font-size:clamp(34px,4.4vw,54px);line-height:1.03}.cta p{margin-top:14px;color:var(--muted);font-size:18px}
+.cta .pill{margin-top:26px}
+.next{counter-reset:n;display:grid;gap:10px}
+.next div{counter-increment:n;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--surface);border-radius:14px;padding:16px 18px;border:1px solid #C9E5E2}
+.next div:before{content:counter(n);width:30px;height:30px;border-radius:50%;background:var(--teal-dark);color:#fff;display:grid;place-items:center;font:700 14px var(--display)}
+.next b{display:block}.next span{font-size:14px;color:var(--muted)}
+.pii{margin-top:12px;font-size:12.5px;color:var(--muted)}
+
+.footer{padding:44px 0;border-top:1px solid var(--line);background:var(--surface)}
+.footer .wrap{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:32px}
+.footer h4{margin:0 0 10px;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.footer a{display:block;color:var(--ink);font-size:14px;text-decoration:none;padding:3px 0}.footer a:hover{color:var(--coral-dark)}
+.footer p{font-size:14px;color:var(--muted);margin-top:10px;max-width:300px}
+
+@media(max-width:1040px){
+ .hero{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}
+ .sectors-shell,.method,.people,.cta{grid-template-columns:1fr}
+ .cases{grid-template-columns:1fr 1fr}.reads{grid-template-columns:1fr}
+ .picker{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);scrollbar-width:none}
+ .tab{white-space:nowrap;padding:12px 14px;font-size:14px}.footer .wrap{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+ .wrap{width:calc(100% - 32px)}.top nav{display:none}.top .pill{margin-left:auto}
+ .hero{padding:40px 0 30px;gap:30px}.hero h1{font-size:clamp(40px,11.5vw,54px)}.hero-copy{font-size:17.5px}
+ .hero-actions .pill{width:100%}
+ .stage canvas{height:600px}.caption{font-size:13px;min-height:96px}.act{font-size:11.5px}.pillar{padding:24px}
+ .section{padding:68px 0}.cases,.panel-grid,.promises,.sector-grid,.facts{grid-template-columns:1fr}
+ .panel{padding:28px 22px}.cta{padding:28px 22px}.founder{padding:28px}.footer .wrap{grid-template-columns:1fr}
+ .org{height:60px;min-width:100px;padding:0 16px;font-size:14px}.org img{max-height:36px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.lane,.org{animation:none}.lane{flex-wrap:wrap;width:auto}.lane.dup{display:none}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="logo" href="/">edzola.ai</a><nav aria-label="Primary"><a href="#systems">What we build</a><a href="/sectors/">Sectors</a><a href="#products">Products</a><a href="#method">How we work</a><a href="/thinking/">Thinking</a></nav><a class="pill primary" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a></div></header>
-<main>
-  <section class="wrap hero">
-    <div><span class="eyebrow">Technology for social impact</span><h1>Build the system. Put AI to work. <em>See the whole picture.</em></h1><p class="hero-copy">EdZola helps social-impact organisations turn programme complexity into <strong>connected data systems and practical AI workflows</strong> that teams can actually use.</p><div class="hero-actions"><a class="pill primary" href="#systems">See what we build →</a><a class="pill ghost" href="/sectors/">Find your sector</a></div><div class="proof-line"><span>100+ organisations</span><span>150+ systems</span><span>5+ countries</span></div></div>
-    <div class="system-map" aria-label="Programme work connected into one system"><div class="map-head"><strong>One connected programme thread</strong><span>LIVE SYSTEM</span></div><div class="map-body"><div class="map-line"></div><div class="map-node left n1"><b>Programme delivery</b><small>People, activities, services, milestones</small></div><div class="map-node right n2"><b>Evidence</b><small>Forms, documents, voice, outcomes</small></div><div class="map-node left n3"><b>Decisions</b><small>Flags, follow-ups, approvals, learning</small></div><div class="map-node right n4"><b>AI execution</b><small>Repeatable work completed, exceptions escalated</small></div></div></div>
-  </section>
 
-  <section class="section sunk" id="systems"><div class="wrap"><div class="section-head"><span class="eyebrow">Two ways we help</span><h2>Your programme needs a system. Your team needs less operational drag.</h2><p class="lead">We work on both sides of that problem: build the information infrastructure, then use AI where it can responsibly complete work.</p></div><div class="paths">
-    <article class="path systems"><span class="path-num">01 / SYSTEMS</span><h3>Programme data systems built around how your work actually runs.</h3><p>Move beyond disconnected spreadsheets and generic CRMs. We design and build connected systems around the central record in your programme.</p><ul><li>Custom MIS and case-management systems</li><li>Monitoring, dashboards, and donor reporting</li><li>Programme workflows and integrations</li></ul><a class="path-link" href="/sectors/">Explore systems by sector →</a></article>
-    <article class="path ai"><span class="path-num">02 / AI EXECUTION</span><h3>AI teammates and missions that complete real nonprofit work.</h3><p>DozAI coordinates documents, voice, rules, follow-ups, analysis, and systems, while routing consequential decisions to people.</p><ul><li>Outcome-oriented DozAI Missions</li><li>Specialised AI teammates</li><li>Expert-guided skills and human escalation</li></ul><a class="path-link" href="/dozai/">Explore DozAI →</a></article>
-  </div></div></section>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#top">edzola.ai</a>
+  <nav aria-label="Primary">
+    <a href="#model">What we do</a><a href="#fix">What we fix</a><a href="#work">Our work</a><a href="#sectors">Sectors</a><a href="https://edzola.ai/thinking/">Thinking</a>
+  </nav>
+  <a class="pill primary" href="#start">Talk to us</a>
+</div></header>
 
-  <section class="section"><div class="wrap sectors-shell"><div class="section-head"><span class="eyebrow">Built for context</span><h2>Every sector has a different thread.</h2><p class="lead">An education system follows a learner. A health system follows care. A livelihoods system follows a household or enterprise. We start there.</p><a class="pill ghost" style="margin-top:26px;width:auto" href="/sectors/">See all 16 sectors →</a></div><div class="sector-grid"><a class="sector" href="/education/"><span>Education</span><span>→</span></a><a class="sector" href="/health/"><span>Health &amp; wellbeing</span><span>→</span></a><a class="sector" href="/livelihoods/"><span>Livelihoods</span><span>→</span></a><a class="sector" href="/child-protection/"><span>Child protection</span><span>→</span></a><a class="sector" href="/gender/"><span>Gender equality</span><span>→</span></a><a class="sector" href="/environment/"><span>Environment &amp; climate</span><span>→</span></a><a class="sector" href="/mental-health/"><span>Mental health</span><span>→</span></a><a class="sector" href="/food-systems/"><span>Food systems</span><span>→</span></a></div></div></section>
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="wrap hero">
+  <div>
+    <span class="eyebrow">AI-native operations for social impact</span>
+    <h1>From the field to the funder, <em>nothing gets lost.</em></h1>
+    <p class="hero-copy">EdZola <strong>designs, builds and runs</strong> the systems behind your programmes, with AI and people working together. So the person you serve stays at the centre, whether you reach a hundred people or a hundred thousand.</p>
+    <div class="hero-actions">
+      <a class="pill primary" href="#start">Start a conversation →</a>
+      <a class="pill ghost" href="#model">See what we do</a>
+    </div>
+    <div class="modes"><span><b>Build</b> data systems</span><span><b>Listen</b> with Zolabs</span><span><b>Protect</b> with ZolaShield</span><span><b>Run</b> with AI</span></div>
+  </div>
 
-  <section class="section sunk" id="products"><div class="wrap"><div class="section-head"><span class="eyebrow">Focused products</span><h2>Purpose-built where a general system is not enough.</h2></div><div class="products"><article class="product featured"><span class="product-tag">DozAI</span><h3>AI that gets nonprofit work done.</h3><p>Deploy missions and AI teammates that handle operational volume across documents, voice, rules, follow-ups, and data.</p><a href="/dozai/">Explore DozAI →</a></article><article class="product"><span class="product-tag">Zolabs</span><h3>Listen at scale without losing human texture.</h3><p>Multilingual AI voice conversations for qualitative data collection and insight.</p><a href="/zolabs/">Explore Zolabs →</a></article><article class="product"><span class="product-tag">ZolaShield</span><h3>Understand and reduce personal-data risk.</h3><p>Map data systems, assess risk, and prepare practical DPDP compliance outputs.</p><a href="/zolashield/">Explore ZolaShield →</a></article></div></div></section>
+  <div class="stage" id="stage">
+    <div class="stage-top"><span class="live">One person, one thread</span><button class="ctrl" id="ctrl" type="button">Pause</button></div>
+    <canvas id="gap" role="img" aria-label="Animation: one child's information is scattered between the field and the funder. EdZola steps in and brings it into one record connected to the funder, then the same clarity scales to thousands of people."></canvas>
+    <div class="acts">
+      <div class="act-btns" role="group" aria-label="Animation chapters">
+        <button class="act on" data-act="0" type="button"><i><b></b></i>01 · The gap</button>
+        <button class="act" data-act="1" type="button"><i><b></b></i>02 · EdZola steps in</button>
+        <button class="act" data-act="2" type="button"><i><b></b></i>03 · At scale</button>
+      </div>
+      <p class="caption" id="caption" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
 
-  <section class="section" id="method"><div class="wrap method"><div class="section-head"><span class="eyebrow">How we work</span><h2>Start with the programme, not the software.</h2><p class="lead">Our delivery method stays behind the work. You experience a clear path from operating reality to a system your team owns.</p></div><div class="steps"><div class="step"><span>01</span><div><h3>Map the programme</h3><p>Understand people, decisions, evidence, responsibilities, and the workarounds your team uses today.</p></div></div><div class="step"><span>02</span><div><h3>Design the operating system</h3><p>Turn that reality into connected records, workflows, permissions, dashboards, and AI boundaries.</p></div></div><div class="step"><span>03</span><div><h3>Build and embed</h3><p>Ship in usable stages, migrate carefully, train teams, and adapt through real programme use.</p></div></div><div class="step"><span>04</span><div><h3>Learn and improve</h3><p>Use the system’s evidence to strengthen decisions, reporting, and programme delivery over time.</p></div></div></div></div></section>
+<!-- ================= LOGO CLOUD ================= -->
+<section class="cloud" aria-label="Organisations we have worked with">
+  <div class="wrap cloud-head"><b>Trusted by 100+ organisations</b><span>A few of the teams we've built and run systems with</span></div>
+  <div class="lane" id="lane1"></div>
+  <div class="lane rev" id="lane2"></div>
+</section>
 
-  <section class="section sunk"><div class="wrap"><div class="metrics"><div class="metric"><strong>100+</strong><span>organisations supported</span></div><div class="metric"><strong>150+</strong><span>systems built</span></div><div class="metric"><strong>5+</strong><span>countries reached</span></div><div class="metric"><strong>2020</strong><span>building since</span></div></div></div></section>
-  <section class="section"><div class="wrap cta-box"><div><h2>Bring us the programme complexity your current tools cannot handle.</h2><p>We’ll help you identify whether the right answer is a system, an AI workflow, or both.</p></div><a class="pill primary" href="mailto:reachus@edzola.com?subject=EdZola%20programme%20systems">Start a conversation →</a></div></section>
+<!-- ================= WHAT WE DO ================= -->
+<section class="section" id="model"><div class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">What we do</span>
+    <h2>Four ways we close the gap.</h2>
+    <p class="lead">Most partners start with one and grow into the others. Where you start depends on where you are.</p>
+  </div>
+  <div class="pillars">
+    <article class="pillar build">
+      <span class="tag">01 · Build</span><h3>Data systems</h3><span class="sub">The system your programme runs on</span>
+      <p>Programme MIS, case management, donor CRM and HR, designed around your Theory of Change and how your field team actually works. One record per person, from first visit to funder report.</p>
+      <div class="viz"><div class="hd">ED-1042 · MEERA, 10</div>
+        <div class="row"><span>Enrolled · Govt PS</span><span class="t">Done</span></div>
+        <div class="row"><span>Attendance</span><span class="t w">3 absent</span></div>
+        <div class="row"><span>Home visit</span><span class="t w">Today</span></div>
+        <div class="row"><span>Funder report</span><span class="t">Auto</span></div></div>
+      <a class="go" href="#fix">What we build →</a>
+    </article>
+    <article class="pillar listen">
+      <span class="tag">02 · Listen</span><h3>Zolabs</h3><span class="sub">Voice AI evaluation, in any language</span>
+      <p>AI-led phone interviews for evaluations, beneficiary feedback and follow-ups. Reach people forms leave out, and keep every finding traceable to what was actually said.</p>
+      <div class="viz"><div class="wave" aria-hidden="true"></div>
+        <div class="quote-line">"The money comes every month now, so I decide what we buy."</div>
+        <div class="arrow-to">→ <span class="t">Theme: income stability</span><span class="t w">Reviewed</span></div></div>
+      <a class="go" href="https://edzola.ai/zolabs/">Explore Zolabs →</a>
+    </article>
+    <article class="pillar protect">
+      <span class="tag">03 · Protect</span><h3>ZolaShield</h3><span class="sub">DPDP readiness, by phone call</span>
+      <p>Find where beneficiary and donor data really lives. A 10-minute AI interview per staff member becomes a risk-scored, board-ready data inventory. 88% completion across pilots.</p>
+      <div class="viz"><div class="hd">DATA INVENTORY · 7 OF 9 TEAMS</div>
+        <div class="row"><span>Health records · HRMS</span><span class="t h">P1 · High</span></div>
+        <div class="row"><span>Donor database · PAN</span><span class="t h">P1 · High</span></div>
+        <div class="row"><span>Beneficiary contacts · WhatsApp</span><span class="t w">P2 · Medium</span></div>
+        <div class="row"><span>Programme attendance</span><span class="t l">P3 · Low</span></div></div>
+      <a class="go" href="https://edzola.ai/zolashield/">Explore ZolaShield →</a>
+    </article>
+    <article class="pillar run"><span class="badge">DozAI · pilots open</span>
+      <span class="tag">04 · Run</span><h3>AI that gets the work done</h3><span class="sub">Outcomes, not another tool to operate</span>
+      <p>DozAI missions and AI teammates handle the operational volume across documents, voice, rules and follow-ups. People keep the decisions that carry consequence.</p>
+      <div class="viz steps-mini"><div class="hd">MISSION · SCHOLARSHIP SCREENING</div>
+        <div class="row"><span>Collect applications</span><span class="t">5,000</span></div>
+        <div class="row"><span>Check eligibility &amp; evidence</span><span class="t">AI</span></div>
+        <div class="row"><span>Follow up by voice</span><span class="t">AI</span></div>
+        <div class="row"><span>Review the shortlist</span><span class="t w">Your team</span></div></div>
+      <p class="also">We also build custom AI for harder problems: multimodal intelligence, secure local models, and Claude-managed agents as a Claude partner.</p>
+      <a class="go" href="https://edzola.ai/dozai/">Explore DozAI →</a>
+    </article>
+  </div>
+  <p class="platform">We pick the platform to fit the problem. Often that's Zoho, where we're an Advanced Partner. Sometimes it's custom code. Either way, your data stays yours.</p>
+</div></section>
+
+<!-- ================= WHAT DO YOU NEED TO FIX ================= -->
+<section class="section sunk" id="fix"><div class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Start with the problem</span>
+    <h2>What do you need to fix first?</h2>
+    <p class="lead">Pick the one that keeps your team up at night. We'll show you what we'd do and where we've done it before.</p>
+  </div>
+  <div class="picker">
+    <div class="tabs" role="tablist" aria-label="Problems we solve">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="p1" id="t1"><span class="n">01</span>Track our programme</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2" tabindex="-1"><span class="n">02</span>Manage donors &amp; funds</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p3" id="t3" tabindex="-1"><span class="n">03</span>Run HR across locations</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p4" id="t4" tabindex="-1"><span class="n">04</span>Hear from the people we serve</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p5" id="t5" tabindex="-1"><span class="n">05</span>Get ready for DPDP</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p6" id="t6" tabindex="-1"><span class="n">06</span>Hand off high-volume work</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p7" id="t7" tabindex="-1"><span class="n">07</span>Build custom AI</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+      <span class="kicker">Build · Programme MIS</span>
+      <h3>One ID for every child, patient or household. Every visit and outcome attached.</h3>
+      <p>Your field team sees who needs attention this week. Your leadership sees what's working. Your funder report stops taking three weeks.</p>
+      <div class="panel-grid">
+        <ul><li>Offline field forms in the local language</li><li>Alerts when someone slips, while there's time to act</li><li>Dashboards field teams can actually read</li><li>Separate access for field, partners and managers</li></ul>
+        <div class="proofbox"><span class="o">TAP India Foundation</span><strong>16,000+</strong><p>out-of-school children tracked from identification to retention, in one system.</p></div>
+      </div>
+      <div class="panel-links"><a href="#sectors">Find your sector →</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+      <span class="kicker">Build · Fundraising CRM</span>
+      <h3>Every donor, grant and rupee in one place, with compliance built in.</h3>
+      <p>From first conversation to fund utilisation report. CSR, foundations, HNIs and retail donors, each with the pipeline and paperwork they need.</p>
+      <div class="panel-grid">
+        <ul><li>Donor and grant pipelines</li><li>Bulk 80G receipts, FCRA tagging, full audit trail</li><li>Expenses mapped to the right grant by AI, approved by you</li><li>Fund utilisation reports in minutes</li></ul>
+        <div class="proofbox"><span class="o">One view</span><strong>Donor → report</strong><p>Every donor and grant, from first conversation to the utilisation report, in one place.</p></div>
+      </div>
+      <div class="panel-links"><a href="#start">Talk to us about fundraising systems →</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+      <span class="kicker">Build · HRMS</span>
+      <h3>Leave, attendance and payroll for teams spread across states and sites.</h3>
+      <p>Different leave rules per location. Field staff who never sit at a desk. We set up core HR, then add only what you need.</p>
+      <div class="panel-grid">
+        <ul><li>Role-based access by state and team</li><li>Payroll, expenses and recruitment when you need them</li><li>Mobile attendance with location</li><li>Data migrated, staff trained, adoption tracked</li></ul>
+        <div class="proofbox"><span class="o">Aangan Trust · 7 states</span><strong>6h → 2h</strong><p>a month spent on attendance, for 100+ staff on one HR system.</p></div>
+      </div>
+      <div class="panel-links"><a href="https://www.edzola.com/post/edg-aangan-trust-streamlining-hr-operations-and-employee-data-management-through-zoho-people">Read the Aangan case study →</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+      <span class="kicker">Listen · Zolabs</span>
+      <h3>Hear the story behind the score, in the language people speak.</h3>
+      <p>AI-led phone interviews for evaluations, beneficiary feedback and alumni follow-ups. No app for participants. Every finding links back to what was actually said.</p>
+      <div class="panel-grid">
+        <ul><li>Multilingual voice interviews at programme scale</li><li>Transcripts kept in the original language</li><li>Themes reviewed by a researcher before they become claims</li><li>Combined with your programme data</li></ul>
+        <div class="proofbox p"><span class="o">Zolabs.ai · by EdZola</span><strong>Any phone</strong><p>Reaches people forms leave out: low literacy, no smartphone, weak connectivity.</p></div>
+      </div>
+      <div class="panel-links"><a href="https://edzola.ai/zolabs/">Explore Zolabs →</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+      <span class="kicker">Protect · ZolaShield</span>
+      <h3>Find out where your beneficiary and donor data actually lives.</h3>
+      <p>Before consent and retention policies, you need an inventory. ZolaShield gets it by calling your team, not by sending a 40-column spreadsheet nobody fills in.</p>
+      <div class="panel-grid">
+        <ul><li>~10-minute AI phone interview per staff member</li><li>Catches WhatsApp groups and personal Sheets</li><li>Every data type classified and risk-scored</li><li>Board-ready individual and organisation reports</li></ul>
+        <div class="proofbox p"><span class="o">ZolaShield · pilots</span><strong>88%</strong><p>interview completion rate across pilot organisations.</p></div>
+      </div>
+      <div class="panel-links"><a href="https://edzola.ai/zolashield/">Explore ZolaShield →</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p6" aria-labelledby="t6" hidden>
+      <span class="kicker">Run · DozAI · pilots open</span>
+      <h3>5,000 applications. Your team reviews only the ones that need a person.</h3>
+      <p>DozAI delivers the outcome, not a tool to operate. AI workers collect, check, follow up and escalate, with the evidence attached to every case.</p>
+      <div class="panel-grid">
+        <ul><li>Collect applications and documents</li><li>Extract evidence and check eligibility</li><li>Chase missing information, including by voice</li><li>Escalate exceptions for human judgement</li></ul>
+        <div class="proofbox p"><span class="o">DozAI mission · scholarship screening</span><strong>5,000 → shortlist</strong><p>A focused set of review-ready cases, instead of a mountain of forms.</p></div>
+      </div>
+      <div class="panel-links"><a href="https://edzola.ai/dozai/">Discuss a DozAI pilot →</a></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p7" aria-labelledby="t7" hidden>
+      <span class="kicker">Run · Custom AI</span>
+      <h3>AI built around your programmes, your data and your rules.</h3>
+      <p>For problems no product covers. We start with your leadership, find where AI genuinely helps, then build it into the systems and data you already have.</p>
+      <div class="panel-grid">
+        <ul><li>Multimodal intelligence across images, audio, text and video</li><li>Secure local intelligence: retrieval and open-weight models on your own infrastructure</li><li>Claude practice: as a Claude partner, we build Claude-managed agents</li><li>Leadership coaching and hands-on team training</li></ul>
+        <div class="proofbox p"><span class="o">How it starts</span><strong>One workflow</strong><p>We pick one real workflow, build it, measure it, then decide together what's next.</p></div>
+      </div>
+      <div class="panel-links"><a href="#start">Talk to us about custom AI →</a></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= PROOF ================= -->
+<section class="section" id="work"><div class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Proof, not promises</span>
+    <h2>Real systems. Real numbers.</h2>
+    <p class="lead">Each write-up says what we built and how long it took.</p>
+  </div>
+  <div class="cases">
+    <a class="case" href="https://www.edzola.com/post/compass-mis-transforming-state-wide-teacher-training-with-tech"><img src="/assets/logos/logo-sef.png" alt="Simple Education Foundation"><strong>20,000+</strong><span class="unit">teachers across four states</span><p>Teacher training, classroom observations and multilingual assessments. A new-state pilot logged 2 million interactions in week one.</p><span class="go">Read the case study →</span></a>
+    <a class="case" href="https://www.edzola.com/post/edg-trust-for-retailers-retail-associates-of-india-streamlining-program-management"><img src="/assets/logos/logo-trrain.png" alt="TRRAIN"><strong>10,000+</strong><span class="unit">trainees a year</span><p>Skilling for women and persons with disability on one hierarchy, from zone to trainee, with automatic certificates.</p><span class="live">Live in four months</span><span class="go">Read the case study →</span></a>
+    <a class="case" href="https://www.edzola.com/post/tap-india-foundation-tracking-out-of-school-children-data-with-zoho-creator"><img src="/assets/logos/logo-tap.png" alt="TAP India Foundation"><strong>16,000+</strong><span class="unit">out-of-school children tracked</span><p>Identification, enrolment, attendance and retention in one system, with separate access for field, partners and managers.</p><span class="go">Read the case study →</span></a>
+    <a class="case" href="https://www.edzola.com/the-nudge-future-perfect"><img src="/assets/logos/logo-nudge.png" alt="The/Nudge Institute"><strong>10+</strong><span class="unit">tools in one record</span><p>Admissions, payments, the LMS, Zoom and WhatsApp through one system, with screens for trainers, telecallers and verifiers.</p><span class="go">Read the case study →</span></a>
+  </div>
+  <p class="honest">We'll also tell you where we haven't built before. Each sector page says plainly which parts are proven and which would be new. <a href="https://edzola.ai/field-guides/technology-that-sticks/why-we-name-our-limits/">Why we name our limits →</a></p>
+</div></section>
+
+<!-- ================= SECTORS ================= -->
+<section class="section sunk" id="sectors"><div class="wrap sectors-shell">
+  <div class="section-head">
+    <span class="eyebrow">Built for context</span>
+    <h2>Every programme follows one thread.</h2>
+    <p class="lead">A school follows a child. A clinic follows a patient. A livelihoods programme follows a household. We give that thread one ID and build everything around it.</p>
+    <a class="pill ghost" style="margin-top:26px" href="https://edzola.ai/sectors/">See all 16 sectors →</a>
+  </div>
+  <div class="sector-grid">
+    <a class="sector" href="https://edzola.ai/education/"><b>Education</b><span class="id">Student ID</span><small>Which children can actually read?</small></a>
+    <a class="sector" href="https://edzola.ai/youth-employability/"><b>Youth &amp; employability</b><span class="id">Candidate ID</span><small>Who's still working at month six?</small></a>
+    <a class="sector" href="https://edzola.ai/livelihoods/"><b>Livelihoods</b><span class="id">Household ID</span><small>Which households moved out of poverty?</small></a>
+    <a class="sector" href="https://edzola.ai/health/"><b>Health &amp; wellbeing</b><span class="id">Patient ID</span><small>How many finished treatment?</small></a>
+    <a class="sector" href="https://edzola.ai/maternal-child-health/"><b>Maternal &amp; child health</b><span class="id">Mother + Child ID</span><small>Whose BP was actually checked?</small></a>
+    <a class="sector" href="https://edzola.ai/child-protection/"><b>Child protection</b><span class="id">Case ID</span><small>Who's still safe after restoration?</small></a>
+    <a class="sector" href="https://edzola.ai/gender/"><b>Gender equality</b><span class="id">Member ID</span><small>Who decides how the loan is spent?</small></a>
+    <a class="sector" href="https://edzola.ai/environment/"><b>Environment &amp; climate</b><span class="id">Parcel ID</span><small>How many saplings are still alive?</small></a>
+  </div>
+</div></section>
+
+<!-- ================= HOW WE WORK ================= -->
+<section class="section" id="how"><div class="wrap method">
+  <div>
+    <div class="section-head" style="margin-bottom:0">
+      <span class="eyebrow">How we work</span>
+      <h2>Programme first. Software last. AI where it earns its place.</h2>
+      <p class="lead">Refined across 60+ nonprofit implementations. So we don't start from zero, and neither do you.</p>
+    </div>
+    <div class="promises">
+      <div class="promise"><b>No jargon, no upselling</b><span>If a spreadsheet is enough, we'll say so.</span></div>
+      <div class="promise"><b>Your data stays yours</b><span>Whatever the platform, you own it.</span></div>
+      <div class="promise"><b>Humans decide</b><span>AI handles volume. People handle consequence.</span></div>
+      <div class="promise"><b>We stay</b><span>We don't leave until your team is actually using it.</span></div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step"><span>01</span><div><h3>Understand how the work really runs</h3><p>Who you serve, what your field team does each day, which decisions need evidence, and the workarounds holding it together.</p></div></div>
+    <div class="step"><span>02</span><div><h3>Design it with you</h3><p>Records, workflows, permissions, dashboards and AI boundaries, tied to your Theory of Change. You see the blueprint before we build.</p></div></div>
+    <div class="step"><span>03</span><div><h3>Build, migrate, train</h3><p>Ship in usable stages. Move old data carefully. Train the people who'll use it, in their language.</p></div></div>
+    <div class="step"><span>04</span><div><h3>Run and improve</h3><p>AI workers take on the repeatable work. We watch quality, adjust, and keep the system learning with your programme.</p></div></div>
+  </div>
+</div></section>
+
+<section class="section sunk"><div class="wrap people">
+  <div>
+    <span class="eyebrow">Who you'll work with</span>
+    <h2 style="font-size:clamp(34px,4.4vw,52px);line-height:1.05;margin:14px 0 16px">Part technologists. Part sector practitioners.</h2>
+    <p class="lead">A team in Coimbatore, India, building with the impact sector since 2020, and running our own work AI-first. We use what we sell, every day.</p>
+    <div class="facts">
+      <div><strong>100+</strong><span>organisations supported</span></div>
+      <div><strong>150+</strong><span>systems built</span></div>
+      <div><strong>16</strong><span>sectors we've mapped</span></div>
+      <div><strong>5+</strong><span>countries reached</span></div>
+    </div>
+  </div>
+  <div class="founder">
+    <blockquote>"Automate a confused workflow and you get a confused workflow at scale. The order in which technology does its jobs matters more than the tool."</blockquote>
+    <cite>Akshay · Founder &amp; CEO, EdZola · from <a href="https://edzola.ai/field-guides/technology-that-sticks/technology-three-jobs/" style="color:inherit">Technology has three jobs</a></cite>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Before you talk to anyone</span>
+    <h2>Read how we think.</h2>
+    <p class="lead">Free field guides from six years of building with the sector. Useful whether or not you ever work with us.</p>
+  </div>
+  <div class="reads">
+    <a class="read" href="https://edzola.ai/field-guides/technology-that-sticks/"><span>Field guide · 7 lessons</span><h3>Building technology that sticks</h3><p>Readiness, trust, delivery and leadership lessons from real implementations.</p></a>
+    <a class="read" href="https://edzola.ai/why/"><span>Founding philosophy</span><h3>Intelligence built for the world's hardest work</h3><p>Why edzola.ai exists, and what we believe about AI and impact.</p></a>
+    <a class="read" href="https://edzola.ai/thinking/how-nonprofits-operate/"><span>Field guide · 6 chapters</span><h3>How nonprofits actually work</h3><p>Follow the people, the money and the evidence through any organisation.</p></a>
+  </div>
+</div></section>
+
+<section class="section" id="start" style="padding-top:0"><div class="wrap">
+  <div class="cta">
+    <div>
+      <span class="eyebrow">Start small</span>
+      <h2 style="margin-top:14px">Bring us the messiest part of your work.</h2>
+      <p>A tracker, a form, a report nobody enjoys making, or a workflow that eats your team's week.</p>
+      <!-- TODO: replace mailto with CRM web form -->
+      <a class="pill primary" href="mailto:reachus@edzola.com?subject=Starting%20a%20conversation%20with%20EdZola">Start a conversation →</a>
+      <p class="pii">If you share a file, remove names, phone numbers and IDs of the people you serve first. Column headers and a few dummy rows are enough.</p>
+    </div>
+    <div class="next">
+      <div><p><b>Tell us what's going wrong</b><span>Two lines is enough. A sample file helps.</span></p></div>
+      <div><p><b>Someone who's built it looks</b><span>A practitioner from your sector, not a sales rep.</span></p></div>
+      <div><p><b>30-minute call</b><span>Build, run, custom AI, a mix, or nothing yet.</span></p></div>
+      <div><p><b>A clear next step</b><span>You pay only when something's worth acting on.</span></p></div>
+    </div>
+  </div>
+</div></section>
 </main>
-<footer class="footer"><div class="wrap"><a class="logo" href="/">edzola.ai</a><nav class="footer-nav" aria-label="Footer"><a href="/sectors/">Sectors</a><a href="/dozai/">DozAI</a><a href="/zolabs/">Zolabs</a><a href="/zolashield/">ZolaShield</a><a href="/thinking/">Thinking</a><a href="https://edzola.com">About EdZola</a><a href="mailto:reachus@edzola.com">Contact</a></nav></div></footer>
+
+<footer class="footer"><div class="wrap">
+  <div><a class="logo" href="#top">edzola.ai</a><p>AI-native operations for social impact. EdZola Technologies · Coimbatore, India.</p></div>
+  <div><h4>What we do</h4><a href="#model">Data systems</a><a href="https://edzola.ai/zolabs/">Zolabs</a><a href="https://edzola.ai/zolashield/">ZolaShield</a><a href="https://edzola.ai/dozai/">DozAI</a></div>
+  <div><h4>Explore</h4><a href="https://edzola.ai/sectors/">Sectors</a><a href="#work">Case studies</a><a href="#fix">What we fix</a></div>
+  <div><h4>Learn</h4><a href="https://edzola.ai/thinking/">Thinking</a><a href="https://edzola.ai/why/">Founding philosophy</a><a href="https://www.edzola.com">About EdZola</a><a href="mailto:reachus@edzola.com">Contact</a></div>
+</div></footer>
+
+<script>
+/* ---------- smooth anchor links (works in file/data previews too) ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const el=document.querySelector(a.getAttribute('href'));
+  if(el){e.preventDefault();el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+}));
+
+/* ---------- logo cloud ---------- */
+(()=>{
+  const logos={"Simple Education Foundation":"sef","TAP India Foundation":"tap","TRRAIN":"trrain","Avanti Fellows":"avanti","The/Nudge Institute":"nudge","Aangan Trust":"aangan","The Antara Foundation":"antara","MukkaMaar":"mukkamaar","Mitti Cafe":"mitti"};
+  const a=["Simple Education Foundation","CRY","TAP India Foundation","The Better India","TRRAIN","Navgurukul","Avanti Fellows","Bhumi","The/Nudge Institute","Global School Leaders","Aangan Trust","Koita Foundation","Waste Warriors","ATREE","Adhyayan","The Antara Foundation","Antarang Foundation","Mindhug"];
+  const b=["MukkaMaar","FMCH","Tapasya Foundation","RightWalk","Mitti Cafe","The Circle India Foundation","NGO Story","Kizazi","Vidhya Vidhai","Yein Udaan","Caring with Colours","Mudita","Earth Focus","Atma","CVHR","Stray Dog Institute","Center for Exponential Change"];
+  const card=n=>logos[n]?`<div class="org"><img src="/assets/logos/logo-${logos[n]}.png" alt="${n}" loading="lazy"></div>`:`<div class="org">${n}</div>`;
+  const fill=(id,list)=>{document.getElementById(id).innerHTML=list.map(card).join('')+`<span class="dup" style="display:contents" aria-hidden="true">${list.map(card).join('')}</span>`;};
+  fill('lane1',a);fill('lane2',b);
+})();
+
+/* ---------- zolabs wave ---------- */
+document.querySelectorAll('.wave').forEach(w=>{for(let i=0;i<34;i++){const b=document.createElement('i');b.style.height=(25+Math.abs(Math.sin(i*1.7))*75)+'%';b.style.animationDelay=(-i*.09)+'s';w.appendChild(b);}});
+
+/* ---------- picker tabs ---------- */
+(()=>{
+  const tabs=[...document.querySelectorAll('.tab')];
+  const select=t=>tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
+  tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(t));t.addEventListener('keydown',e=>{let k=null;if(e.key==='ArrowDown'||e.key==='ArrowRight')k=(i+1)%tabs.length;if(e.key==='ArrowUp'||e.key==='ArrowLeft')k=(i-1+tabs.length)%tabs.length;if(k!==null){e.preventDefault();tabs[k].focus();select(tabs[k]);}})});
+})();
+
+/* =====================================================================
+   ONE THREAD, THEN THOUSANDS — hero animation
+   01 The gap: one person's story scattered; the funder's question has no answer.
+   02 EdZola steps in: the system is designed, pieces land in one record,
+      a clean line connects field → record → funder (and back).
+   03 At scale: the same thread for thousands; the person stays highlighted.
+   ===================================================================== */
+(()=>{
+  const cv=document.getElementById('gap'),ctx=cv.getContext('2d'),stage=document.getElementById('stage');
+  const cap=document.getElementById('caption'),actBtns=[...document.querySelectorAll('.act')],ctrl=document.getElementById('ctrl');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const K={ink:'26,26,26',muted:'107,99,96',line:'234,223,214',coral:'232,150,122',coralD:'180,85,58',peach:'250,232,220',teal:'142,207,202',tealD:'44,119,113',tealS:'226,243,241',yellow:'247,201,72',white:'255,255,255',sunk:'246,237,229'};
+  const c=(k,a=1)=>`rgba(${K[k]},${a})`;
+  const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+  const ss=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const ACT=[0,5.5,11.5],END=18.5,HOLD=4.5;
+  const CAPS=[
+    "Meera's story is spread across a survey sheet, a paper register, a voice note and a WhatsApp thread. Two of the pieces that matter most are already slipping away. The funder asks a simple question nobody can answer.",
+    "EdZola steps in. We design the system around Meera, build it, and run it with AI and people. Every piece lands in one record, and a clean line connects the field to the funder, and back.",
+    "Then it scales. Thousands of people, each with one clear thread. Evidence flows up to funders, alerts flow back to the field, and Meera is still one person, not a number."
+  ];
+  const FR=[
+    {s:"Survey_sheet3.xlsx",row:"Enrolled · Govt PS",tag:"Done",u:.30,v:.16},
+    {s:"Register · pg 14",row:"Attendance",tag:"3 absent",warn:1,lost:1,u:.46,v:.78},
+    {s:"Voice note · Hindi",row:"Family check-in",tag:"Logged",u:.64,v:.22},
+    {s:"WhatsApp · 147 unread",row:"Moving for kiln work?",tag:"Flagged",warn:1,lost:1,u:.70,v:.64},
+    {s:"Baseline · on paper",row:"Reads words",tag:"Group B",u:.36,v:.36},
+    {s:"Report_v4_FINAL.docx",row:"Funder report",tag:"Auto",u:.57,v:.93}
+  ];
+  FR.forEach((f,i)=>{f.cap=5.9+i*.42;f.ph=i*1.7;f.rot=((i%2)?1:-1)*(.04+.02*i%3);});
+  let W,H,horiz,dpr,t=0,last=null,playing=!reduce,seen=true,G={},dots=[],pulses=[],meera=0;
+
+  const P=(u,v)=>horiz?[lerp(W*.05,W*.95,u),lerp(H*.06,H*.94,v)]:[lerp(W*.06,W*.94,v),lerp(H*.04,H*.96,u)];
+  function geo(){
+    const band=horiz?{cx:W*.5,cy:H*.5,w:Math.min(250,W*.35),h:H*.88}:{cx:W/2,cy:H*.5,w:W*.92,h:222};
+    band.x=band.cx-band.w/2;band.y=band.cy-band.h/2;
+    const cw=Math.min(214,band.w-22),ch=38+6*21;
+    const card={w:cw,h:ch,x:band.cx-cw/2,y:horiz?band.cy-ch/2+12:band.y+46};
+    const field=P(.08,.5);
+    const fw=horiz?Math.min(160,W*.23):Math.min(260,W*.8),fh=horiz?118:98;
+    const fc=P(.915,.5);
+    const funder={w:fw,h:fh,x:clamp(fc[0]-fw/2,6,W-fw-6),y:fc[1]-fh/2};
+    const zone=horiz?{x0:10,x1:band.x-16,y0:H*.08,y1:H*.92}:{x0:W*.05,x1:W*.95,y0:8,y1:band.y-14};
+    G={band,card,field,funder,zone};
+    // grid of people
+    dots=[];const s=horiz?11:11;
+    const cols=Math.floor((zone.x1-zone.x0)/s),rows=Math.floor((zone.y1-zone.y0)/s);
+    const ox=zone.x0+((zone.x1-zone.x0)-cols*s)/2+s/2,oy=zone.y0+((zone.y1-zone.y0)-rows*s)/2+s/2;
+    for(let r=0;r<rows;r++)for(let q=0;q<cols;q++)dots.push({x:ox+q*s,y:oy+r*s,rk:Math.random(),flash:-9});
+    // Meera = dot nearest the field avatar
+    let best=1e9;dots.forEach((d,i)=>{const dd=(d.x-field[0])**2+(d.y-field[1])**2;if(dd<best){best=dd;meera=i;}});
+    dots[meera].rk=0;
+    pulses=[];for(let i=0;i<(horiz?34:22);i++)pulses.push({d:(Math.random()*dots.length)|0,ph:Math.random(),sp:.28+Math.random()*.22,back:i%5===0,jy:(Math.random()-.5)});
+  }
+  function resize(){
+    const r=cv.getBoundingClientRect();dpr=Math.min(2,devicePixelRatio||1);
+    cv.width=r.width*dpr;cv.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    W=r.width;H=r.height;horiz=W>=600;geo();draw();
+  }
+  function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+  function txt(s,x,y,font,col,align='left'){ctx.font=font;ctx.fillStyle=col;ctx.textAlign=align;ctx.fillText(s,x,y);}
+  function pill(s,x,y,warn,a){ctx.font='600 9.5px "JetBrains Mono",monospace';const w=ctx.measureText(s).width+12;rr(x-w,y-8,w,16,8);ctx.fillStyle=c(warn?'peach':'tealS',a);ctx.fill();txt(s,x-w+6,y+3.5,ctx.font,c(warn?'coralD':'tealD',a));}
+  function person(x,y,r,a){
+    ctx.beginPath();ctx.arc(x,y,r,0,6.283);ctx.fillStyle=c('peach',a);ctx.fill();ctx.lineWidth=2;ctx.strokeStyle=c('coral',a);ctx.stroke();
+    if(r>9){ctx.fillStyle=c('ink',.85*a);ctx.beginPath();ctx.arc(x,y-r*.26,r*.26,0,6.283);ctx.fill();ctx.beginPath();ctx.ellipse(x,y+r*.46,r*.45,r*.32,0,Math.PI,0);ctx.fill();}
+  }
+  const along=(pts,f)=>{ // position along polyline
+    let L=0;const seg=[];for(let i=1;i<pts.length;i++){const l=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);seg.push(l);L+=l;}
+    let d=f*L;for(let i=0;i<seg.length;i++){if(d<=seg[i]){const k=seg[i]?d/seg[i]:0;return [lerp(pts[i][0],pts[i+1][0],k),lerp(pts[i][1],pts[i+1][1],k)];}d-=seg[i];}
+    return pts[pts.length-1];
+  };
+  function line(a,b,prog,col,w,dash){ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(lerp(a[0],b[0],prog),lerp(a[1],b[1],prog));ctx.setLineDash(dash||[]);ctx.strokeStyle=col;ctx.lineWidth=w;ctx.stroke();ctx.setLineDash([]);}
+
+  function draw(){
+    if(!W)return;const T=t;const {band,card,field,funder,zone}=G;
+    const bandIn=ss(5.2,6.1,T),recDone=ss(8.6,9.2,T),l1=ss(9.0,9.6,T),l2=ss(9.5,10.2,T),sc=ss(11.4,13,T);
+    const fade=1-ss(END+HOLD-.7,END+HOLD,T);
+    ctx.clearRect(0,0,W,H);ctx.globalAlpha=fade;
+
+    // dotted paper
+    ctx.fillStyle=c('line',.8);for(let x=11;x<W;x+=22)for(let y=11;y<H;y+=22)ctx.fillRect(x,y,1.2,1.2);
+
+    // zone labels
+    const zl=horiz?[[field[0],H*.045,'THE FIELD'],[funder.x+funder.w/2,H*.045,'THE FUNDER']]:[[W*.5,0,'']];
+    if(horiz&&sc<.5){zl.forEach(([x,y,s])=>txt(s,x,y+8,'500 10px "JetBrains Mono",monospace',c('muted',.8*(1-sc*2)),'center'));}
+
+    const fL=[field[0]+28,field[1]],fR=horiz?[funder.x,funder.y+funder.h/2]:[funder.x+funder.w/2,funder.y];
+    const cL=horiz?[card.x,card.y+card.h/2]:[card.x+card.w/2,card.y],cR=horiz?[card.x+card.w,card.y+card.h/2]:[card.x+card.w/2,card.y+card.h];
+    const fTop=horiz?fL:[field[0],field[1]+28];
+
+    // ---- ACT 1: broken line with a question mark
+    const broken=1-bandIn;
+    if(broken>0){
+      const a=fTop,b=fR,m1=[lerp(a[0],b[0],.36),lerp(a[1],b[1],.36)],m2=[lerp(a[0],b[0],.64),lerp(a[1],b[1],.64)];
+      line(a,m1,1,c('muted',.35*broken),1.5,[4,6]);line(m2,b,1,c('muted',.35*broken),1.5,[4,6]);
+      const q=[lerp(a[0],b[0],.5),lerp(a[1],b[1],.5)];
+      ctx.beginPath();ctx.arc(q[0],q[1],14,0,6.283);ctx.fillStyle=c('white',broken);ctx.fill();ctx.strokeStyle=c('coral',.8*broken);ctx.lineWidth=1.5;ctx.stroke();
+      txt('?',q[0],q[1]+6,'700 17px "Bricolage Grotesque",sans-serif',c('coralD',broken),'center');
+    }
+
+    // ---- ACT 2: the EdZola band
+    if(bandIn>0){
+      const h=band.h*bandIn,w=band.w;const x=band.x,y=band.cy-h/2;
+      ctx.save();ctx.shadowColor=c('coral',.25);ctx.shadowBlur=30*bandIn;
+      rr(x,y,w,h,22);ctx.fillStyle=c('peach',.9*bandIn);ctx.fill();ctx.restore();
+      rr(x,y,w,h,22);ctx.strokeStyle=c('coral',bandIn);ctx.lineWidth=1.5;ctx.stroke();
+      const hy=horiz?y+30:y+22;
+      if(bandIn>.6){const a=ss(.6,1,bandIn);
+        txt('edzola',band.cx,hy,'700 19px "Bricolage Grotesque",sans-serif',c('ink',a),'center');
+        const sub=sc>.3?'design · build · run · every day':'design · build · run';
+        txt(sub,band.cx,hy+15,'500 9.5px "JetBrains Mono",monospace',c('coralD',a),'center');}
+    }
+
+    // connecting lines (act 2/3)
+    if(l1>0){line(sc>0?[lerp(fL[0],dots[meera].x+5,sc),lerp(fL[1],dots[meera].y,sc)]:fTop,cL,l1,c('tealD',.9),2.2);}
+    if(l2>0){line(cR,fR,l2,c('tealD',.9),2.2);}
+    // funnel lines from the crowd (act 3)
+    if(sc>0){const n=horiz?9:7;for(let i=0;i<n;i++){const f=i/(n-1);const a=horiz?[zone.x1,lerp(zone.y0+20,zone.y1-20,f)]:[lerp(zone.x0+20,zone.x1-20,f),zone.y1];line(a,cL,1,c('teal',.45*sc),1);}}
+
+    // ---- the record card
+    if(bandIn>.3){
+      const a=ss(.3,.9,bandIn);const chh=lerp(card.h,horiz?104:96,sc);const cy0=card.y+(horiz?(card.h-chh)/2:0);
+      if(sc>0){for(let k=2;k>=1;k--){rr(card.x+k*5,cy0+k*5,card.w,chh,12);ctx.fillStyle=c('white',.7*sc);ctx.fill();ctx.strokeStyle=c('line',sc);ctx.lineWidth=1;ctx.stroke();}}
+      ctx.save();ctx.shadowColor='rgba(74,48,32,.14)';ctx.shadowBlur=18;ctx.shadowOffsetY=6;rr(card.x,cy0,card.w,chh,12);ctx.fillStyle=c('white',a);ctx.fill();ctx.restore();
+      rr(card.x,cy0,card.w,chh,12);ctx.strokeStyle=c('line',a);ctx.lineWidth=1;ctx.stroke();
+      const rowsA=a*(1-ss(0,.35,sc));
+      txt('ED-1042 · Meera, 10',card.x+12,cy0+22,'600 10.5px "JetBrains Mono",monospace',c('tealD',rowsA),'left');
+      FR.forEach((f,i)=>{const fi=ss(f.cap+.45,f.cap+.75,T)*rowsA;if(fi<=0)return;const y=cy0+38+i*21+8;
+        ctx.beginPath();ctx.moveTo(card.x+10,y-12);ctx.lineTo(card.x+card.w-10,y-12);ctx.strokeStyle=c('line',fi);ctx.stroke();
+        txt(f.row,card.x+12,y+2,'500 11.5px "Figtree",sans-serif',c('ink',fi));pill(f.tag,card.x+card.w-10,y-2,f.warn,fi);});
+      if(sc>0){const ca=ss(.3,.8,sc);const n=Math.round(lerp(1,10000,Math.pow(ss(12.2,15.6,T),2)));
+        txt(n>=10000?'10,000+':n.toLocaleString('en-IN'),card.x+card.w/2,cy0+chh/2+4,'700 30px "Bricolage Grotesque",sans-serif',c('ink',ca),'center');
+        txt('records · one per person',card.x+card.w/2,cy0+chh/2+24,'500 10px "JetBrains Mono",monospace',c('muted',ca),'center');}
+    }
+
+    // ---- the crowd (act 3)
+    if(sc>0){
+      dots.forEach((d,i)=>{const ap=12.1+d.rk*3.4;const a=ss(ap,ap+.4,T);if(a<=0||i===meera)return;
+        const fl=clamp(1-(T-d.flash)/1.2);ctx.beginPath();ctx.arc(d.x,d.y,fl>0?3.4:2.6,0,6.283);ctx.fillStyle=fl>0?c('yellow',a):c('tealD',.5*a);ctx.fill();});
+      // pulses
+      pulses.forEach(p=>{const d=dots[p.d];const ap=12.1+d.rk*3.4;if(T<ap+.4)return;
+        let f=(T*p.sp+p.ph)%1;const mid=horiz?[cL[0],cL[1]+p.jy*40]:[cL[0]+p.jy*60,cL[1]];
+        if(!p.back){const pt=along([[d.x,d.y],mid,[cR[0],cR[1]],fR],f);ctx.beginPath();ctx.arc(pt[0],pt[1],2.4,0,6.283);ctx.fillStyle=c('tealD',.85*sc);ctx.fill();}
+        else{const pt=along([mid,[d.x,d.y]],f);ctx.beginPath();ctx.arc(pt[0],pt[1],2.8,0,6.283);ctx.fillStyle=c('yellow',sc);ctx.fill();if(f>.96)d.flash=T;}
+        if((T*p.sp+p.ph)%1<.02&&p.back===false&&Math.random()<.3)p.d=(Math.random()*dots.length)|0;
+      });
+      const fa=ss(15.2,15.8,T);
+      if(fa>0){const s='38 need a visit this week';ctx.font='600 11px "Figtree",sans-serif';const w=ctx.measureText(s).width+18;
+        const x=horiz?(zone.x0+zone.x1)/2-w/2:W/2-w/2,y=horiz?zone.y0-14:zone.y1-4;
+        rr(x,y-11,w,22,11);ctx.fillStyle=c('yellow',fa);ctx.fill();txt(s,x+9,y+4,ctx.font,c('ink',fa));}
+    }
+
+    // ---- act 1/2 pulses along the single thread
+    if(l2>=1&&sc<1){const a=1-sc;for(let k=0;k<3;k++){const f=(T*.35+k/3)%1;const pt=along([fTop,cL,cR,fR],f);ctx.beginPath();ctx.arc(pt[0],pt[1],3,0,6.283);ctx.fillStyle=c('tealD',a);ctx.fill();}
+      const f=(T*.3)%1;const pt=along([cL,fTop],f);ctx.beginPath();ctx.arc(pt[0],pt[1],3.2,0,6.283);ctx.fillStyle=c('yellow',a);ctx.fill();
+      const ba=ss(10.2,10.7,T)*a;if(ba>0){const s='Home visit today · Sunita';ctx.font='600 11px "Figtree",sans-serif';const w=ctx.measureText(s).width+18;
+        const x=horiz?clamp(field[0]-w/2,6,W-w-6):clamp(field[0]+36,6,W-w-6),y=horiz?field[1]-56:field[1];rr(x,y-11,w,22,11);ctx.fillStyle=c('yellow',ba);ctx.fill();txt(s,x+9,y+4,ctx.font,c('ink',ba));}}
+
+    // ---- Meera
+    {const d=dots[meera];const x=lerp(field[0],d.x,sc),y=lerp(field[1],d.y,sc),r=lerp(26,5.5,sc);
+      const pulse=sc>0?1+.25*Math.sin(T*3):1;
+      if(sc>0){ctx.beginPath();ctx.arc(x,y,12*pulse,0,6.283);ctx.strokeStyle=c('coral',.8*sc);ctx.lineWidth=2;ctx.stroke();}
+      person(x,y,r,1);
+      const la=1-ss(0,.4,sc);
+      if(la>0){txt('Meera, 10',x,y+(horiz?46:44),'700 13px "Figtree",sans-serif',c('ink',la),'center');txt('the person you serve',x,y+(horiz?61:59),'500 10.5px "Figtree",sans-serif',c('muted',la),'center');}
+      if(sc>.5){const a=ss(.5,1,sc);ctx.font='700 11px "Figtree",sans-serif';const w=ctx.measureText('Meera').width+14;rr(x+12,y-9,w,18,9);ctx.fillStyle=c('coral',a);ctx.fill();txt('Meera',x+19,y+4,ctx.font,c('ink',a));}
+    }
+
+    // ---- fragments (act 1 → fly into record in act 2)
+    FR.forEach((f,i)=>{
+      const fl=ss(f.cap,f.cap+.7,T);if(fl>=1)return;
+      let [x,y]=P(f.u,f.v);x+=Math.sin(T*.9+f.ph)*5;y+=Math.cos(T*.8+f.ph)*4;
+      let a=1,lostA=0;
+      if(f.lost){lostA=ss(1.4,4.2,T)*(1-ss(f.cap-.3,f.cap,T));const dir=horiz?(f.v>.5?1:-1):(f.u>.5?1:-1);if(horiz)y+=dir*22*lostA;else x+=(f.v>.5?1:-1)*18*lostA;a=1-.55*lostA;}
+      ctx.font='500 11.5px "Figtree",sans-serif';const w=ctx.measureText(f.s).width+32,h=28;
+      x=clamp(x,w/2+6,W-w/2-6);
+      const tx=card.x+card.w/2,ty=card.y+38+i*21+8;
+      x=lerp(x,tx,fl);y=lerp(y,ty,fl);const s=lerp(1,.55,fl);a*=1-ss(.75,1,fl);
+      ctx.save();ctx.translate(x,y);ctx.rotate(f.rot*(1-fl));ctx.scale(s,s);
+      ctx.shadowColor='rgba(74,48,32,.12)';ctx.shadowBlur=12;ctx.shadowOffsetY=4;
+      rr(-w/2,-h/2,w,h,9);ctx.fillStyle=c('white',a);ctx.fill();ctx.shadowColor='transparent';
+      if(lostA>.05){ctx.setLineDash([3,3]);ctx.strokeStyle=c('coral',a);}else ctx.strokeStyle=c('line',a);
+      ctx.lineWidth=1.2;ctx.stroke();ctx.setLineDash([]);
+      rr(-w/2+9,-5,10,10,2);ctx.fillStyle=c(f.warn?'coral':'muted',.55*a);ctx.fill();
+      txt(f.s,-w/2+24,4,'500 11.5px "Figtree",sans-serif',c('ink',a));
+      if(lostA>.3)txt('slipping away',0,h/2+13,'600 9.5px "JetBrains Mono",monospace',c('coralD',a*ss(.3,.8,lostA)),'center');
+      ctx.restore();
+    });
+
+    // ---- the funder panel
+    {const {x,y,w,h}=funder;
+      ctx.save();ctx.shadowColor='rgba(74,48,32,.12)';ctx.shadowBlur=18;ctx.shadowOffsetY=6;rr(x,y,w,h,14);ctx.fillStyle=c('white');ctx.fill();ctx.restore();
+      rr(x,y,w,h,14);ctx.strokeStyle=c(recDone>.5?'tealD':'line',recDone>.5?.6:1);ctx.lineWidth=1.2;ctx.stroke();
+      txt(sc>.5?'FUNDER · LIVE':'FUNDER',x+12,y+20,'600 9.5px "JetBrains Mono",monospace',c('muted'));
+      const a1=1-recDone,a2=recDone*(1-sc),a3=sc;
+      if(a1>0){txt('How many children',x+12,y+44,'600 12.5px "Figtree",sans-serif',c('ink',a1));txt('can actually read?',x+12,y+60,'600 12.5px "Figtree",sans-serif',c('ink',a1));
+        txt('No one can say.',x+12,y+(horiz?84:82),'italic 500 11px "Figtree",sans-serif',c('coralD',a1));}
+      if(a2>0){txt('Meera, 10',x+12,y+42,'700 12.5px "Figtree",sans-serif',c('ink',a2));txt('Reads words · Group B',x+12,y+59,'500 11.5px "Figtree",sans-serif',c('muted',a2));
+        txt('✓ Visit booked',x+12,y+(horiz?80:78),'600 11.5px "Figtree",sans-serif',c('tealD',a2));}
+      if(a3>0){const bars=[.42,.55,.61,.7,.78];const bw=(w-24-4*6)/5,bh=h-(horiz?64:54);
+        bars.forEach((b,i)=>{const g=ss(13+i*.25,14.6+i*.25,T);const hh=bh*b*g;rr(x+12+i*(bw+6),y+30+bh-hh,bw,Math.max(hh,1),3);ctx.fillStyle=c(i===4?'coral':'teal',a3);ctx.fill();});
+        txt('Reading at grade level ↑',x+12,y+h-12,'600 11px "Figtree",sans-serif',c('ink',a3));}
+    }
+    ctx.globalAlpha=1;
+
+    // UI
+    const act=T<ACT[1]?0:T<ACT[2]?1:2;
+    actBtns.forEach((b,i)=>{b.classList.toggle('on',i===act);const s=ACT[i],e=i<2?ACT[i+1]:END;b.querySelector('b').style.width=(clamp((T-s)/(e-s))*100)+'%';b.setAttribute('aria-pressed',i===act);});
+    if(cap.dataset.a!=act){cap.dataset.a=act;cap.textContent=CAPS[act];}
+  }
+
+  function frame(now){
+    if(last===null)last=now;const dt=Math.min(.05,(now-last)/1000);last=now;
+    if(playing&&seen){t+=dt;if(t>END+HOLD){t=0;dots.forEach(d=>d.flash=-9);}}
+    draw();requestAnimationFrame(frame);
+  }
+  actBtns.forEach((b,i)=>b.addEventListener('click',()=>{t=reduce?[3.5,10.6,17][i]:ACT[i]+.01;dots.forEach(d=>d.flash=-9);draw();}));
+  ctrl.addEventListener('click',()=>{playing=!playing;ctrl.textContent=playing?'Pause':'Play';});
+  new IntersectionObserver(es=>es.forEach(e=>{seen=e.isIntersecting})).observe(stage);
+  addEventListener('resize',resize);
+  resize();
+  if(reduce){t=17;ctrl.hidden=true;draw();}else requestAnimationFrame(frame);
+  document.fonts&&document.fonts.ready.then(()=>draw());
+})();
+</script>
 </body>
 </html>
