@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DozAI — AI That Gets Nonprofit Work Done | EdZola</title>
+  <meta name="description" content="DozAI gives nonprofits AI teammates and end-to-end missions that complete operational work, with expert methodology and human judgement built in." />
+  <link rel="canonical" href="https://edzola.ai/dozai/" />
+  <meta property="og:title" content="DozAI — AI that gets nonprofit work done" />
+  <meta property="og:description" content="Deploy AI teammates and complete missions built for nonprofit operations, with human judgement where it matters." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://edzola.ai/dozai/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#041015; --soft:#07171d; --panel:rgba(8,25,32,.78); --text:#edf6f5; --muted:#9ab1b3; --strong:#c7d9d9; --border:rgba(110,189,187,.17); --teal:#58dfd8; --mint:#7cf0c7; --lime:#d0ef75; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; background:var(--bg); }
+    body { margin:0; color:var(--text); font-family:"Manrope",sans-serif; background:radial-gradient(circle at 50% 4%,rgba(37,116,114,.18),transparent 25%),linear-gradient(180deg,#071218,var(--bg) 55%,#02090c); overflow-x:hidden; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; background:linear-gradient(rgba(80,168,165,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(80,168,165,.035) 1px,transparent 1px); background-size:112px 112px; }
+    a { color:inherit; text-decoration:none; }
+    .page { position:relative; z-index:1; }
+    .container { width:min(1160px,calc(100% - 40px)); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:linear-gradient(180deg,rgba(4,16,21,.92),rgba(4,16,21,.62),transparent); backdrop-filter:blur(12px); }
+    header .container { display:flex; align-items:center; justify-content:space-between; padding:22px 0 16px; }
+    .wordmark { font-family:"Space Grotesk",sans-serif; font-size:1.65rem; font-weight:700; letter-spacing:-.04em; }
+    .wordmark i { color:var(--lime); font-style:normal; }
+    nav { display:flex; align-items:center; gap:8px; }
+    .nav-link,.button { display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:0 18px; border:1px solid var(--border); border-radius:999px; color:var(--strong); font-weight:700; font-size:.88rem; background:rgba(7,21,28,.3); }
+    .nav-link:hover,.button:hover { border-color:rgba(208,239,117,.35); transform:translateY(-1px); }
+    .hero { padding:100px 0 94px; }
+    .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:72px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--strong); font-size:.76rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+    .eyebrow::before { content:""; width:9px; height:9px; border-radius:50%; background:var(--lime); box-shadow:0 0 16px rgba(208,239,117,.4); }
+    h1,h2,h3 { font-family:"Space Grotesk",sans-serif; letter-spacing:-.045em; }
+    h1 { max-width:10ch; margin:26px 0; font-size:clamp(3.6rem,7vw,6.5rem); line-height:.95; }
+    .gradient { background:linear-gradient(90deg,var(--teal),var(--lime)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero-copy { max-width:650px; color:var(--strong); font-size:1.16rem; line-height:1.75; }
+    .hero-actions { display:flex; gap:12px; margin-top:34px; }
+    .button.primary { min-height:54px; padding:0 24px; color:#041015; background:linear-gradient(90deg,var(--teal),var(--lime)); border:0; }
+    .button.secondary { min-height:54px; padding:0 24px; }
+    .work-map { position:relative; min-height:510px; padding:32px; border:1px solid var(--border); border-radius:28px; background:linear-gradient(145deg,rgba(11,37,45,.86),rgba(4,17,23,.8)); overflow:hidden; }
+    .work-map::after { content:""; position:absolute; width:260px; height:260px; right:-100px; top:-100px; border:1px solid rgba(88,223,216,.12); border-radius:50%; box-shadow:0 0 0 45px rgba(88,223,216,.025),0 0 0 90px rgba(88,223,216,.018); }
+    .map-label { color:var(--lime); font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; font-weight:800; }
+    .mission-title { margin:14px 0 30px; font-size:1.7rem; }
+    .step { position:relative; display:flex; align-items:center; gap:14px; padding:13px 0; color:var(--strong); }
+    .step:not(:last-child)::after { content:""; position:absolute; left:17px; top:46px; width:1px; height:14px; background:var(--border); }
+    .step-num { display:grid; place-items:center; flex:0 0 34px; height:34px; border-radius:50%; border:1px solid rgba(88,223,216,.28); color:var(--teal); font-size:.75rem; font-weight:800; }
+    .step.human .step-num { color:#071218; background:var(--lime); border-color:var(--lime); }
+    .result { margin-top:22px; padding:18px; border-left:3px solid var(--lime); background:rgba(208,239,117,.05); color:var(--strong); line-height:1.6; }
+    section { padding:92px 0; }
+    .section-head { max-width:760px; margin-bottom:42px; }
+    .kicker { color:var(--teal); font-size:.74rem; letter-spacing:.15em; font-weight:800; text-transform:uppercase; }
+    h2 { margin:16px 0; font-size:clamp(2.3rem,5vw,4.4rem); line-height:1.02; }
+    .lead { color:var(--muted); font-size:1.05rem; line-height:1.75; }
+    .contrast { display:grid; grid-template-columns:1fr auto 1fr; border:1px solid var(--border); border-radius:26px; overflow:hidden; background:rgba(7,23,29,.72); }
+    .contrast > div { padding:38px; }
+    .contrast .divider { width:1px; padding:0; background:var(--border); }
+    .contrast h3 { margin:0 0 18px; font-size:1.45rem; }
+    .contrast p { margin:0; color:var(--muted); line-height:1.7; }
+    .contrast .better { background:linear-gradient(135deg,rgba(88,223,216,.065),rgba(208,239,117,.035)); }
+    .better h3 { color:var(--lime); }
+    .offer-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .offer { min-height:285px; padding:30px; border:1px solid var(--border); border-radius:24px; background:var(--panel); display:flex; flex-direction:column; }
+    .offer-tag { color:var(--teal); font-size:.72rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+    .offer h3 { margin:18px 0 10px; font-size:1.75rem; }
+    .offer p { margin:0; color:var(--muted); line-height:1.7; }
+    .examples { margin-top:auto; padding-top:26px; color:var(--strong); font-size:.86rem; }
+    .mission-band { display:grid; grid-template-columns:.78fr 1.22fr; gap:44px; padding:44px; border:1px solid rgba(208,239,117,.19); border-radius:28px; background:rgba(208,239,117,.035); }
+    .mission-band h2 { font-size:clamp(2.3rem,4vw,3.8rem); }
+    .mission-list { display:grid; gap:10px; }
+    .mission { display:flex; justify-content:space-between; gap:20px; padding:16px 0; border-bottom:1px solid var(--border); color:var(--strong); }
+    .mission span:last-child { color:var(--muted); text-align:right; }
+    .trust-flow { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+    .trust-step { position:relative; padding:25px 18px; border-top:2px solid var(--border); color:var(--muted); line-height:1.55; }
+    .trust-step strong { display:block; margin-bottom:8px; color:var(--text); font-family:"Space Grotesk",sans-serif; font-size:1.15rem; }
+    .trust-step:nth-child(4) { border-color:var(--lime); }
+    .quote { max-width:900px; margin:90px auto 0; text-align:center; font-family:"Space Grotesk",sans-serif; font-size:clamp(2rem,4vw,3.6rem); line-height:1.15; letter-spacing:-.04em; }
+    .quote em { color:var(--lime); font-style:normal; }
+    .cta { padding:70px 0 100px; }
+    .cta-box { display:flex; justify-content:space-between; align-items:center; gap:30px; padding:42px; border:1px solid var(--border); border-radius:28px; background:linear-gradient(100deg,rgba(13,45,51,.9),rgba(7,22,29,.82)); }
+    .cta-box h2 { max-width:680px; margin:0; font-size:clamp(2.1rem,4vw,3.5rem); }
+    footer { border-top:1px solid var(--border); padding:34px 0; color:var(--muted); }
+    footer .container { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    :focus-visible { outline:3px solid var(--lime); outline-offset:4px; }
+    @media (max-width:900px) { .hero-grid,.mission-band { grid-template-columns:1fr; } .work-map { min-height:auto; } .trust-flow { grid-template-columns:1fr 1fr; } }
+    @media (max-width:650px) { .container { width:min(100% - 28px,1160px); } nav .hide-mobile { display:none; } .hero { padding:70px 0; } h1 { font-size:clamp(3.2rem,16vw,4.7rem); } .hero-actions,.cta-box { flex-direction:column; align-items:stretch; } .button { width:100%; } .offer-grid,.contrast { grid-template-columns:1fr; } .contrast .divider { width:auto; height:1px; } .mission-band,.cta-box { padding:26px; } .mission { flex-direction:column; gap:5px; } .mission span:last-child { text-align:left; } .trust-flow { grid-template-columns:1fr; } footer .container { align-items:flex-start; flex-direction:column; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none!important; } }
+  </style>
+  <style>
+    :root { --bg:#FDF8F4; --soft:#F6EDE5; --panel:#FFFFFF; --text:#1A1A1A; --muted:#6B6360; --strong:#393330; --border:#EADFD6; --teal:#8ECFCA; --mint:#8ECFCA; --lime:#E8967A; }
+    body { color:var(--text); font-family:"Figtree",sans-serif; background:var(--bg); }
+    body::before { display:none; }
+    h1,h2,h3,.wordmark { font-family:"Bricolage Grotesque",sans-serif; }
+    header { background:color-mix(in srgb,var(--bg) 92%,transparent); border-bottom:1px solid var(--border); }
+    header .container { padding:10px 0; min-height:64px; }
+    .wordmark { color:#1A1A1A; }
+    .nav-link,.button { color:var(--strong); background:transparent; border-color:var(--border); }
+    .nav-link:hover,.button:hover { border-color:var(--text); }
+    .hero { padding:76px 0 86px; }
+    .hero-grid { grid-template-columns:1fr 1.02fr; gap:56px; }
+    .eyebrow,.kicker,.offer-tag,.map-label { color:#B4553A; }
+    .eyebrow::before { background:#E8967A; box-shadow:14px 0 0 #8ECFCA; border-radius:50%; }
+    h1 { max-width:11ch; font-size:clamp(3.3rem,6.5vw,5.8rem); }
+    .gradient { color:#B4553A; background:none; position:relative; }
+    .gradient::after { content:""; position:absolute; z-index:-1; left:0; right:0; bottom:.02em; height:.15em; border-radius:3px; background:#F7C948; opacity:.55; }
+    .hero-copy,.lead,.offer p,.contrast p,.trust-step,footer { color:var(--muted); }
+    .button.primary { color:#1A1A1A; background:#E8967A; }
+    .button.primary:hover { background:#E07F60; }
+    .work-map { border:0; background:#F6EDE5; box-shadow:0 14px 40px rgba(74,48,32,.10); }
+    .work-map::after { border-color:rgba(142,207,202,.34); box-shadow:0 0 0 45px rgba(142,207,202,.08),0 0 0 90px rgba(142,207,202,.045); }
+    .step-num { color:#2C7771; border-color:#8ECFCA; background:#E2F3F1; }
+    .step.human .step-num { color:#1A1A1A; background:#E8967A; border-color:#E8967A; }
+    .result { border-color:#E8967A; background:#FAE8DC; color:var(--strong); }
+    section { padding:84px 0; }
+    .contrast { background:#FFFFFF; }
+    .contrast .better { background:#E2F3F1; }
+    .better h3 { color:#2C7771; }
+    .offer { background:#FFFFFF; border-radius:18px; box-shadow:none; }
+    .offer:nth-child(1),.offer:nth-child(4) { border-top:5px solid #E8967A; }
+    .offer:nth-child(2),.offer:nth-child(3) { border-top:5px solid #8ECFCA; }
+    .mission-band { background:#FAE8DC; border-color:#E6CBBE; }
+    .trust-step { border-color:var(--border); }
+    .trust-step:nth-child(4) { border-color:#E8967A; }
+    .quote em { color:#B4553A; background:linear-gradient(transparent 76%,rgba(247,201,72,.48) 0); }
+    .cta-box { background:#E2F3F1; border-color:#C9E5E2; }
+    footer { background:#FFFFFF; }
+    @media (prefers-color-scheme:dark) {
+      :root { --bg:#FDF8F4; --soft:#F6EDE5; --panel:#FFFFFF; --text:#1A1A1A; --muted:#6B6360; --strong:#393330; --border:#EADFD6; }
+    }
+    @media (max-width:900px) {
+      .hero-grid,.mission-band { grid-template-columns:1fr; }
+      .hero-grid { gap:48px; }
+    }
+    @media (max-width:650px) {
+      .hero { padding:54px 0 66px; }
+      h1 { font-size:clamp(3.05rem,15vw,4.4rem); }
+      .work-map { padding:24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="container">
+      <a class="wordmark" href="/">edzola.ai</a>
+      <nav aria-label="Primary navigation">
+        <a class="nav-link hide-mobile" href="#missions">Missions</a>
+        <a class="nav-link hide-mobile" href="#how">How it works</a>
+        <a class="nav-link" href="mailto:reachus@edzola.com?subject=DozAI%20pilot">Discuss a pilot</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Introducing DozAI by EdZola</span>
+          <h1>AI that gets nonprofit <span class="gradient">work done.</span></h1>
+          <p class="hero-copy">Don’t give your team another AI tool to operate. Give them AI teammates and complete missions that handle the volume, while people retain consequential decisions.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#missions">See what DozAI can do →</a>
+            <a class="button secondary" href="mailto:reachus@edzola.com?subject=DozAI%20pilot">Bring us a workflow</a>
+          </div>
+        </div>
+        <div class="work-map" aria-label="Example scholarship screening mission">
+          <div class="map-label">Example mission</div>
+          <h2 class="mission-title">Scholarship screening</h2>
+          <div class="step"><span class="step-num">01</span><span>Collect applications and documents</span></div>
+          <div class="step"><span class="step-num">02</span><span>Extract evidence and check eligibility</span></div>
+          <div class="step"><span class="step-num">03</span><span>Follow up on missing information</span></div>
+          <div class="step"><span class="step-num">04</span><span>Run multilingual voice screening</span></div>
+          <div class="step human"><span class="step-num">05</span><span>Escalate exceptions for human judgement</span></div>
+          <div class="result"><strong>5,000 applications</strong> become a focused set of cases your team needs to review, with the evidence attached.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">A different starting point</span>
+          <h2>Start with the work. Not the prompt.</h2>
+        </div>
+        <div class="contrast">
+          <div>
+            <h3>Another AI tool</h3>
+            <p>Your team learns prompts, moves data between apps, checks every response, and still owns the workflow.</p>
+          </div>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="better">
+            <h3>DozAI</h3>
+            <p>You define the outcome, rules, evidence, and decisions. DozAI plans and executes the repeatable work, then escalates what needs a person.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="missions">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">The DozAI system</span>
+          <h2>Choose the shape of work you need completed.</h2>
+          <p class="lead">A focused mission, a persistent AI teammate, a reusable capability, or hands-on help designing where AI belongs in your organisation.</p>
+        </div>
+        <div class="offer-grid">
+          <article class="offer"><span class="offer-tag">DozAI Missions</span><h3>Complete an outcome-oriented workflow.</h3><p>Give DozAI the goal, programme rules, evidence requirements, and human decision points. It coordinates the steps from intake to review-ready output.</p><div class="examples">Scholarship screening · Grant due diligence · Placement verification</div></article>
+          <article class="offer"><span class="offer-tag">DozAI Workforce</span><h3>Add an AI teammate to a recurring role.</h3><p>Deploy a specialised teammate that understands the function, works across tools, remembers context, and knows when to ask for help.</p><div class="examples">MEL associate · Programme analyst · Fundraising associate</div></article>
+          <article class="offer"><span class="offer-tag">DozAI Skills</span><h3>Turn expertise into a reusable capability.</h3><p>Skills combine knowledge, method, rubrics, tools, boundaries, and escalation rules. They are executable expertise, not prompt templates.</p><div class="examples">Theory of Change · Survey design · Outcome analysis</div></article>
+          <article class="offer"><span class="offer-tag">Voice + Advisory</span><h3>Reach people, then design the system around them.</h3><p>Use multilingual AI voice for last-mile conversations, with EdZola’s team helping assess readiness, shape workflows, and build responsible controls.</p><div class="examples">Voice follow-up · Readiness assessment · Workflow design</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container mission-band">
+        <div>
+          <span class="kicker">Built for social impact</span>
+          <h2>Common infrastructure. Sector-specific work.</h2>
+          <p class="lead">Forms, voice, documents, rules, workflows, systems, and human review combine differently for each programme.</p>
+        </div>
+        <div class="mission-list">
+          <div class="mission"><strong>Scholarships</strong><span>Application → verification → interview → shortlist</span></div>
+          <div class="mission"><strong>Skilling</strong><span>Enrolment → placement → retention follow-up</span></div>
+          <div class="mission"><strong>Grantmaking</strong><span>Application → due diligence → assessment → monitoring</span></div>
+          <div class="mission"><strong>MEL</strong><span>ToC → indicators → tools → analysis → report</span></div>
+          <div class="mission"><strong>Fundraising</strong><span>Prospects → qualification → outreach → proposal</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Human judgement by design</span>
+          <h2>AI handles volume. People handle consequence.</h2>
+          <p class="lead">DozAI is designed around explicit boundaries, evidence, evaluation, and escalation. The aim is not to hide humans inside every task. It is to use their judgement where it changes the outcome.</p>
+        </div>
+        <div class="trust-flow">
+          <div class="trust-step"><strong>Configure</strong>Set methods, rules, examples, permissions, and quality standards.</div>
+          <div class="trust-step"><strong>Calibrate</strong>Review early executions and correct recurring behaviour.</div>
+          <div class="trust-step"><strong>Execute</strong>Let DozAI complete repeatable work across the workflow.</div>
+          <div class="trust-step"><strong>Escalate</strong>Route uncertainty, high-risk cases, and decisions to people.</div>
+          <div class="trust-step"><strong>Audit</strong>Sample outputs, evaluate quality, and improve the capability.</div>
+        </div>
+        <p class="quote">AI should not make expertise less valuable. It should make the <em>best expertise available to more people.</em></p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-box">
+        <h2>Bring us one workflow your team should not have to do manually at this scale.</h2>
+        <a class="button primary" href="mailto:reachus@edzola.com?subject=DozAI%20workflow%20pilot">Discuss a DozAI pilot →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><a class="wordmark" href="/">edzola.ai</a><span>DozAI is being built by EdZola Technologies.</span></div>
+  </footer>
+</div>
+</body>
+</html>

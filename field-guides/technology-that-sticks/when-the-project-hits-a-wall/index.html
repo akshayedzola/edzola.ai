@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>When the project hits a wall | EdZola Field Guides</title>
+<meta name="description" content="Nonprofit tech projects fail even when the code works. Five delivery instincts and a five-step blocker protocol that keep trust intact when reality changes.">
+<link rel="canonical" href="https://edzola.ai/field-guides/technology-that-sticks/when-the-project-hits-a-wall/">
+<meta property="og:type" content="article"><meta property="og:title" content="When the project hits a wall"><meta property="og:description" content="Nonprofit tech projects fail even when the code works. Five delivery instincts and a five-step blocker protocol that keep trust intact when reality changes."><meta property="og:url" content="https://edzola.ai/field-guides/technology-that-sticks/when-the-project-hits-a-wall/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/thinking/reading.css">
+</head>
+<body>
+<header class="reading-header"><div class="reading-wrap"><a class="reading-logo" href="/">edzola.ai</a><nav aria-label="Breadcrumb"><a href="/thinking/">Thinking</a><span>/</span><a href="/field-guides/technology-that-sticks/">Technology that sticks</a></nav></div></header>
+<main>
+  <article class="essay">
+    <header class="essay-head"><span class="kicker">Field Essays, part 5 of 7 · 8 min read</span><h1>When the project hits a wall</h1><p class="dek">Five delivery instincts and a blocker protocol for nonprofit technology</p><p class="byline">By Akshay, Founder &amp; CEO, EdZola</p></header>
+    <div class="essay-body"><p>We once inherited a dashboard where every number was correct. Nobody used it. The documentation had been skipped to save time, and when a new director joined and wanted to understand the metrics, nobody left could explain them. The system worked. The knowledge didn't survive.</p>
+<p>Another time we met an organisation whose enrolment process was a three-email exchange between three departments, a phone call to a regional office and a spreadsheet where one person tracked approvals. Someone had automated the formal process in the procedure manual, which was five years out of date. The new system was elegant and completely useless.</p>
+<p>In both cases the code was fine. The delivery failed.</p>
+<h2 id="why-nonprofit-delivery-is-harder">Why nonprofit delivery is harder</h2>
+<p>Nonprofit projects work under conditions that make technical excellence necessary and nowhere near enough.</p>
+<p><strong>Requirements move mid-project.</strong> A funder shifts priorities. A programme finds the population it serves has changed. A merger forces two organisations to integrate systems nobody fully understood. That's the organisation paying attention to real people. Projects have to be built to bend.</p>
+<p><strong>Ownership is fragmented.</strong> A donor database belongs partly to fundraising, partly to programmes, partly to finance, partly to the executive director and partly to whichever funder asked for it. Each speaks a different language about the same records.</p>
+<p><strong>Data quality becomes a delivery problem.</strong> A participant's phone number is in one system, the address in another, enrolment in a spreadsheet last updated eight months ago. A perfect system can't fix bad data. It exposes it, usually on day one.</p>
+<p><strong>There's no budget for rework.</strong> Commercial projects often plan a second pass. Nonprofit projects have to work the first time or get abandoned.</p>
+<p><strong>Failure costs more than revenue.</strong> When a case management system fails, participants go unsupported and staff spend nights recovering data.</p>
+<h2 id="five-instincts">Five instincts</h2>
+<p>Requirements will change, stakeholders will disagree and data will be worse than expected. So delivery excellence here means just enough clarity to build safely, transparency when things change and a written record of what matters. We work from five instincts.</p>
+<p><strong>1. Clarity before code.</strong> The strongest predictor of rework is starting to build before the decision rule or data logic is clear. We pause, long enough to write down what the user is trying to do, what data they need at each step, what happens when it's missing and who validates it. A two-hour conversation before a sprint costs a fraction of rework halfway through.</p>
+<p><strong>2. Specificity before commitment.</strong> &quot;The report is slow&quot; or &quot;the data looks wrong&quot; starts a guessing game. We ask: what time did you run it, with which filters, what did you see, what did you expect? Can you share a screenshot? Can we reproduce it together now? This almost always finds the real problem faster, and it leaves no room to argue about what &quot;broken&quot; means. The same applies inside the team. We don't promise a feature &quot;this week&quot; until it's in the sprint plan with its dependencies and an estimate from the person doing the work.</p>
+<p><strong>3. Documentation before memory.</strong> Decisions and the reasons for them, action items and owners, screenshots with the problem circled, reproduction steps, the fix and the date the partner confirmed it. Written down as it happens, somewhere findable, so knowledge survives people moving on.</p>
+<p><strong>4. Parallel momentum.</strong> Projects depend on things outside the team's control. When an integration can't be tested because API access hasn't arrived, we build the scaffolding, write the logic and prepare the test cases so everything runs the moment access lands. Waiting drains a team. Parallel work keeps it engaged.</p>
+<p><strong>5. Recovery before blame.</strong> Surface the blocker the moment it's real, involve the partner, agree a concrete next step. &quot;We add an index to the main query and test performance on Thursday.&quot; &quot;We hold this feature for the next phase and launch on the planned date without it.&quot; Then change the next project so the same blocker doesn't surprise us twice.</p>
+<h2 id="week-one-sets-the-trajectory">Week one sets the trajectory</h2>
+<p>Most of a project's future is decided in its first week. Ours always includes:</p>
+<ul><li>A kickoff with stakeholders and decision-makers that confirms the problem, walks through acceptance criteria, names risks and sets the governance cadence. Documented, with owners.</li><li>A sprint planning call against an estimated backlog. If the estimates aren't ready, planning waits.</li><li>One shared tracker where every piece of work is visible, estimated and assigned. When a partner asks &quot;where are we?&quot;, they can look.</li><li>A cadence already on everyone's calendar: standups, demos, refinement and an escalation path.</li></ul>
+<p>When week three brings a hard problem, the partner remembers that week one was solid and solves it with you. When week one is vague, they assume every update will be bad news.</p>
+<h2 id="the-blocker-protocol">The blocker protocol</h2>
+<p>Silence about blockers kills projects. The sprint plan becomes fiction, the partner assumes the team is slow, and workarounds harden into hidden technical debt. Our protocol has five steps.</p>
+<p>1. <strong>Name it the day it appears.</strong> Not at the next status meeting. 2. <strong>State the impact in specifics.</strong> &quot;Without the full dataset loaded by Friday, we can't build the intake validation planned for this sprint. We have the schema and sample records.&quot; 3. <strong>Name the person who can unblock.</strong> A specific decision-maker and a date. 4. <strong>Bring the partner into the solve.</strong> Lay out the options. They often know the data exists elsewhere or that a constraint can be waived. 5. <strong>Write down what happened.</strong> Next time a partner uses the same system, the plan accounts for it.</p>
+<h2 id="specificity-is-the-antidote-to-blame">Specificity is the antidote to blame</h2>
+<p>&quot;The client is slow to respond&quot; is a judgement, and once it's said it's hard to take back. &quot;We sent the data schema on Monday and need confirmation by Wednesday to load the test database&quot; is a fact with a deadline.</p>
+<p>&quot;The API is broken&quot; could mean anything. &quot;We can make 500 calls a day to the payment processor, the current workflow needs 800, so we either raise the limit or restructure the reconciliation logic&quot; is a constraint with options.</p>
+<p>One status update we sent during a busy stretch read: 14 showstopper issues. None open, one in progress, seven waiting for user acceptance testing, six on hold for more information. It told the whole story without blaming anyone, and it made the partner's next step obvious.</p>
+<p>When blockers are named early, described precisely and solved together, they become the moments trust gets built.</p>
+<hr>
+<p><em>Previous: <strong>Problem first, tool last.</strong> Next: <strong>Warmth is how standards travel.</strong></em></p></div>
+  </article>
+  <nav class="essay-nav" aria-label="Field essay navigation">
+    <a href="/field-guides/technology-that-sticks/problem-first-tool-last/"><span>Previous essay</span><strong>← Problem first, tool last</strong></a>
+    <a class="next" href="/field-guides/technology-that-sticks/warmth-is-how-standards-travel/"><span>Next essay</span><strong>Warmth is how standards travel →</strong></a>
+  </nav>
+</main>
+<footer class="reading-footer"><div class="reading-wrap"><span>EdZola Technologies · Systems built for the world's hardest work.</span><a href="/thinking/">Explore how we think →</a></div></footer>
+</body>
+</html>
