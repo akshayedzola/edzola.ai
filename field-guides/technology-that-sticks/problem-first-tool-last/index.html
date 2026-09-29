@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Problem first, tool last | EdZola Field Guides</title>
+<meta name="description" content="Tool-first thinking causes scope creep, feature bloat and quiet implementation failure. How EdZola decides: problem first, early prototypes, small tests.">
+<link rel="canonical" href="https://edzola.ai/field-guides/technology-that-sticks/problem-first-tool-last/">
+<meta property="og:type" content="article"><meta property="og:title" content="Problem first, tool last"><meta property="og:description" content="Tool-first thinking causes scope creep, feature bloat and quiet implementation failure. How EdZola decides: problem first, early prototypes, small tests."><meta property="og:url" content="https://edzola.ai/field-guides/technology-that-sticks/problem-first-tool-last/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/thinking/reading.css">
+</head>
+<body>
+<header class="reading-header"><div class="reading-wrap"><a class="reading-logo" href="/">edzola.ai</a><nav aria-label="Breadcrumb"><a href="/thinking/">Thinking</a><span>/</span><a href="/field-guides/technology-that-sticks/">Technology that sticks</a></nav></div></header>
+<main>
+  <article class="essay">
+    <header class="essay-head"><span class="kicker">Field Essays, part 4 of 7 · 7 min read</span><h1>Problem first, tool last</h1><p class="dek">How we make decisions when the answer isn't clear yet</p><p class="byline">By Akshay, Founder &amp; CEO, EdZola</p></header>
+    <div class="essay-body"><p>A nonprofit leader goes to a conference, sees a demo and thinks: that could work for us. Within weeks a tool is chosen. Within months it's clear the tool doesn't fit the problem, and the organisation is managing sunk costs.</p>
+<p>Our decision discipline starts by refusing that sequence. Clarify the problem before choosing any tool. It sounds obvious. In practice it's rare.</p>
+<h2 id="why-tool-first-thinking-is-so-tempting">Why tool-first thinking is so tempting</h2>
+<p>The impact sector is especially exposed to it, for understandable reasons. Budgets are tight, teams are lean, and when someone hears about a platform that claims to solve a problem, the instinct is to move. Tools also carry narrative authority. They're tangible, they come with case studies, and they promise to compress complexity. A problem is messy and needs sustained conversation to understand.</p>
+<p>Tools feel like progress. Problems feel like delay.</p>
+<p>The damage follows a predictable sequence:</p>
+<p>1. <strong>Scope creep starts early.</strong> The tool enables capabilities nobody asked for. The partner sees them and persuades itself they belong in scope. The timeline slips and nobody can point to when the agreement changed. 2. <strong>Feature bloat sets in.</strong> The team builds things adjacent to the problem because the problem was never defined crisply enough to say no. 3. <strong>Implementation fails quietly.</strong> The system is delivered and not used as intended. The partner is unhappy but can't say why. The build team thinks the technical work was right. Both are correct, and it doesn't matter.</p>
+<h2 id="the-questions-we-ask-first">The questions we ask first</h2>
+<p>When a partner arrives sure they need a data platform, our first move isn't a feature spec. It's three questions:</p>
+<ul><li>What's happening today that shouldn't be?</li><li>What does success look like, in concrete terms?</li><li>Is this a software problem, or a process, conversation or role problem that software would only expose?</li></ul>
+<p>These conversations can be uncomfortable. A partner who's already imagined the solution may resist the reframing. A team member who could move faster by accepting it may be tempted to. The discipline holds until the problem is visible. Then tool selection becomes a real decision.</p>
+<p>The same goes for scope and price. When there's pressure to agree a discount on work that hasn't been defined, we clarify the work first. Documenting three real scenarios with sample files feels slow in week one. It prevents months of rework.</p>
+<h2 id="decide-early-refine-in-the-open">Decide early, refine in the open</h2>
+<p>Problem-first doesn't mean slow. The opposite failure is waiting for certainty that never arrives.</p>
+<p>Our rhythm is: name the problem, make a first attempt, put it in front of people, listen hard, adjust, move. When we needed to validate a new diagnostic tool for a partner, we skipped the six-month specification and asked one engineer for a working prototype by the end of the week, knowing it would be shaped by user feedback. What emerged over the next few weeks was better than any spec would have produced.</p>
+<p>For a complex ERP requirement, we consolidated months of conversations into one requirements sheet, asked the partner to mark what was essential and what was missing, and only then ran technical validation. What the partner wants and what's technically feasible are separate conversations. Both happen, in that order, with clear gates.</p>
+<p>A prototype that reveals a mismatch in week two is a gift. The same mismatch discovered in month five is a disaster.</p>
+<h2 id="uncertainty-is-a-design-signal">Uncertainty is a design signal</h2>
+<p>In a lot of organisations, uncertainty triggers delay. People wait for more information or clearer direction. We treat it as a cue to test.</p>
+<p>When something is large and unclear, we break it into one narrow question and a test that can run in days. When we needed a web-scraping approach, the first step was researching and testing existing open-source tools locally, with a tight goal, before committing to build anything. Scope could grow later. Inside the test, it couldn't.</p>
+<p>That boundary matters. Uncertainty doesn't mean &quot;do whatever feels right&quot;. It means a small test that answers one question, run fast, followed by a decision about what's next.</p>
+<h2 id="say-what-you-don-t-know">Say what you don't know</h2>
+<p>It's hard to name uncertainty with a partner and stay credible. The framing we use is simple:</p>
+<blockquote>Here's what we know. Here's what we need to test. Here's how we'll test it in the next two weeks.</blockquote>
+<p>Partners respond to that. They'd rather hear &quot;we need to prototype this first&quot; than a guarantee on a feature nobody has built before. The first signals respect for the work. The second signals inexperience.</p>
+<h2 id="hold-boundaries-while-moving-fast">Hold boundaries while moving fast</h2>
+<p>The partners we qualify tend to be ready to move. Speed without boundaries is how good partnerships turn into scope creep, margin erosion and exhausted teams.</p>
+<p>So scope changes are deliberate decisions. When a partner asks for changes after a call, we list them with effort estimates: two days for this, one day for that, five days for the other. The conversation shifts from &quot;can you do this?&quot; to &quot;what does this cost in time?&quot; People become more selective once they can see the weight of their requests.</p>
+<p>Pricing works the same way. Discounting reflexively erodes margins and signals the work isn't worth much. It also takes away the team's room to do good work and push back when scope drifts. If a price only works with a steep discount, the fit is usually wrong.</p>
+<p>None of this needs coldness. The message to partners is warm and clear at once: we want this to succeed, and we won't get there by being vague about what we're building, what it costs or who owns what.</p>
+<p>Problem first. Tool second. Implementation third.</p>
+<hr>
+<p><em>Previous: <strong>Why we tell prospects what we can't do.</strong> Next: <strong>When the project hits a wall.</strong></em></p></div>
+  </article>
+  <nav class="essay-nav" aria-label="Field essay navigation">
+    <a href="/field-guides/technology-that-sticks/why-we-name-our-limits/"><span>Previous essay</span><strong>← Why we tell prospects what we can't do</strong></a>
+    <a class="next" href="/field-guides/technology-that-sticks/when-the-project-hits-a-wall/"><span>Next essay</span><strong>When the project hits a wall →</strong></a>
+  </nav>
+</main>
+<footer class="reading-footer"><div class="reading-wrap"><span>EdZola Technologies · Systems built for the world's hardest work.</span><a href="/thinking/">Explore how we think →</a></div></footer>
+</body>
+</html>
