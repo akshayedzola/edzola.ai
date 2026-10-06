@@ -176,9 +176,25 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
 .footer a{display:block;color:var(--ink);font-size:14px;text-decoration:none;padding:3px 0}.footer a:hover{color:var(--coral-dark)}
 .footer p{font-size:14px;color:var(--muted);margin-top:10px;max-width:300px}
 
+/* get involved */
+.notice{display:block;background:var(--night);color:var(--bg);text-align:center;font-size:13.5px;padding:9px 16px;text-decoration:none}
+.notice b{color:var(--yellow);font-weight:600}.notice span{text-decoration:underline;text-underline-offset:3px}
+.give{display:grid;grid-template-columns:1.25fr 1fr;gap:14px}
+.patron{position:relative;display:grid;gap:16px;align-content:start;padding:36px;border-radius:24px;background:var(--peach);border:1px solid #F1D3C1;text-decoration:none;overflow:hidden}
+.patron h3{font-size:clamp(28px,3vw,38px);line-height:1.05}.patron p{color:var(--muted);font-size:16.5px;max-width:46ch}
+.split{display:flex;height:12px;border-radius:99px;overflow:hidden;max-width:420px}
+.split-key{display:flex;flex-wrap:wrap;gap:6px 16px;font:500 12px var(--mono);color:var(--muted)}
+.split-key i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.patron .pill{justify-self:start}
+.ways{display:grid;gap:10px}
+.way{display:grid;grid-template-columns:1fr auto;gap:4px 14px;align-items:center;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:var(--surface);text-decoration:none}
+.way:hover{border-color:var(--coral)}
+.way b{font:600 18px var(--display);letter-spacing:-.02em}.way small{grid-column:1;color:var(--muted);font-size:14px;line-height:1.45}
+.way .amt{grid-row:1/3;grid-column:2;font:500 13px var(--mono);color:var(--coral-dark);white-space:nowrap}
+
 @media(max-width:1040px){
  .hero{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}
- .sectors-shell,.method,.people,.cta{grid-template-columns:1fr}
+ .sectors-shell,.method,.people,.cta,.give{grid-template-columns:1fr}
  .cases{grid-template-columns:1fr 1fr}.reads{grid-template-columns:1fr}
  .picker{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);scrollbar-width:none}
  .tab{white-space:nowrap;padding:12px 14px;font-size:14px}.footer .wrap{grid-template-columns:1fr 1fr}
@@ -189,7 +205,7 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
  .hero-actions .pill{width:100%}
  .stage canvas{height:600px}.caption{font-size:13px;min-height:96px}.act{font-size:11.5px}.pillar{padding:24px}
  .section{padding:68px 0}.cases,.panel-grid,.promises,.sector-grid,.facts{grid-template-columns:1fr}
- .panel{padding:28px 22px}.cta{padding:28px 22px}.founder{padding:28px}.footer .wrap{grid-template-columns:1fr}
+ .panel{padding:28px 22px}.cta{padding:28px 22px}.patron{padding:26px 22px}.way .amt{grid-row:auto;grid-column:1}.founder{padding:28px}.footer .wrap{grid-template-columns:1fr}
  .org{height:60px;min-width:100px;padding:0 16px;font-size:14px}.org img{max-height:36px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.lane,.org{animation:none}.lane{flex-wrap:wrap;width:auto}.lane.dup{display:none}}
@@ -197,10 +213,11 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
 </head>
 <body>
 
+<a class="notice" href="https://edzola.ai/patrons/"><b>New</b> · Built for Impact Fund: <span>become one of 100 Founding Digital Patrons</span> →</a>
 <header class="top"><div class="wrap">
   <a class="logo" href="#top">edzola.ai</a>
   <nav aria-label="Primary">
-    <a href="#model">What we do</a><a href="#fix">What we fix</a><a href="#work">Our work</a><a href="#sectors">Sectors</a><a href="https://edzola.ai/thinking/">Thinking</a>
+    <a href="#model">What we do</a><a href="#fix">What we fix</a><a href="#work">Our work</a><a href="#sectors">Sectors</a><a href="https://edzola.ai/thinking/">Thinking</a><a href="#give">Get involved</a>
   </nav>
   <a class="pill primary" href="#start">Talk to us</a>
 </div></header>
@@ -472,6 +489,30 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
   </div>
 </div></section>
 
+<section class="section sunk" id="give"><div class="wrap">
+  <div class="section-head">
+    <span class="eyebrow">Get involved</span>
+    <h2>Help a nonprofit get systems that work.</h2>
+    <p class="lead">The organisations closest to communities are often the last to get good tools. The Built for Impact Fund pays for the systems they can't afford, and you can be part of it.</p>
+  </div>
+  <div class="give">
+    <a class="patron" href="https://edzola.ai/patrons/">
+      <span class="eyebrow">Built for Impact Fund · First campaign</span>
+      <h3>Become a Founding Digital Patron.</h3>
+      <p>100 people. $1,000 each. 100 nonprofits with a CRM or MIS that's built, adopted and supported for a year. You follow one of them from baseline to before-and-after report.</p>
+      <div class="split" aria-hidden="true"><span style="flex:40;background:var(--coral)"></span><span style="flex:30;background:var(--ink)"></span><span style="flex:20;background:var(--teal)"></span><span style="flex:10;background:var(--yellow)"></span></div>
+      <div class="split-key"><span><i style="background:var(--coral)"></i>Patron $1,000</span><span><i style="background:var(--ink)"></i>EdZola $750</span><span><i style="background:var(--teal)"></i>Partners $500</span><span><i style="background:var(--yellow)"></i>Nonprofit $250</span></div>
+      <span class="pill primary">See how it works →</span>
+    </a>
+    <div class="ways">
+      <a class="way" href="https://edzola.ai/patrons/#join"><b>Pledge as a Patron</b><small>Say you're in by email. No payment until the fund opens with its fiscal sponsor.</small><span class="amt">$1,000</span></a>
+      <a class="way" href="https://edzola.ai/patrons/#tiers"><b>Fund five nonprofits, or a cohort</b><small>Digital Champion for individuals and families. Transformation Partner for foundations and companies.</small><span class="amt">$5k–$25k+</span></a>
+      <a class="way" href="mailto:reachus@edzola.com?subject=Technology%20credits%20for%20the%20Built%20for%20Impact%20Fund"><b>Offer technology credits</b><small>Software licences or cloud credits that cover part of every nonprofit's system.</small><span class="amt">In kind</span></a>
+      <a class="way" href="mailto:reachus@edzola.com?subject=Recommending%20someone%20for%20the%20Built%20for%20Impact%20Fund"><b>Bring one more person</b><small>Know someone who should back this, or a nonprofit that needs it? Tell us.</small><span class="amt">Free</span></a>
+    </div>
+  </div>
+</div></section>
+
 <section class="section" id="start" style="padding-top:0"><div class="wrap">
   <div class="cta">
     <div>
@@ -496,7 +537,7 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
   <div><a class="logo" href="#top">edzola.ai</a><p>AI-native operations for social impact. EdZola Technologies · Coimbatore, India.</p></div>
   <div><h4>What we do</h4><a href="#model">Data systems</a><a href="https://edzola.ai/zolabs/">Zolabs</a><a href="https://edzola.ai/zolashield/">ZolaShield</a><a href="https://edzola.ai/dozai/">DozAI</a></div>
   <div><h4>Explore</h4><a href="https://edzola.ai/sectors/">Sectors</a><a href="#work">Case studies</a><a href="#fix">What we fix</a></div>
-  <div><h4>Learn</h4><a href="https://edzola.ai/thinking/">Thinking</a><a href="https://edzola.ai/why/">Founding philosophy</a><a href="https://www.edzola.com">About EdZola</a><a href="mailto:reachus@edzola.com">Contact</a></div>
+  <div><h4>Learn</h4><a href="https://edzola.ai/thinking/">Thinking</a><a href="https://edzola.ai/why/">Founding philosophy</a><a href="https://edzola.ai/patrons/">Become a Patron</a><a href="https://www.edzola.com">About EdZola</a><a href="mailto:reachus@edzola.com">Contact</a></div>
 </div></footer>
 
 <script>
