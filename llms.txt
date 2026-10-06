@@ -1,22 +1,35 @@
 # EdZola
 
-> EdZola (EdZola Technologies, Coimbatore, India) builds programme data systems (MIS) for nonprofits, using the MAP approach: Model the data, Align it to field work, then Power it with AI under human checks. Contact: reachus@edzola.com
+> EdZola (EdZola Technologies Private Limited, Coimbatore, India) designs, builds and runs the systems behind nonprofit programmes: programme MIS, case management, donor CRM, voice AI evaluation, DPDP readiness and AI agents. AI handles the volume; people keep the decisions that carry consequence. 100+ organisations, 150+ systems, 16 sectors and 5+ countries since 2020. Zoho Advanced Partner and Claude partner. Contact: reachus@edzola.com
 
-## Products and initiatives
+Key facts:
+- Founded in 2020 in Coimbatore, India. Around 75% of the work is with nonprofits and the wider impact sector.
+- Every project is delivered on ImpactOS, EdZola's method: fixed stages and sign-off gates, reusable sector knowledge, and AI tools that always have a named person reviewing their output.
+- Platform follows the problem: often Zoho (Creator, CRM, People), sometimes custom code. Partners own their data on any platform.
+- Beneficiary and donor data is never used to train models or shared openly.
 
-- [ImpactOS](https://edzola.ai/impact-os/): The method behind everything EdZola builds: stages and sign-off gates, reusable sector knowledge, and AI tools with a person checking.
-- [DozAI](https://edzola.ai/dozai/): AI teammates and missions that complete operational work for nonprofit teams.
-- [Zolabs](https://edzola.ai/zolabs/): AI-powered voice data collection for social impact.
-- [ZolaShield](https://edzola.ai/zolashield/): Data-protection and responsible technology initiative by EdZola.
+## What EdZola does
+
+- [Data systems](https://edzola.ai/#model): Programme MIS, case management, donor CRM and HR, built around one ID per person, household or case, from first visit to funder report.
+- [Zolabs](https://edzola.ai/zolabs/): Voice AI evaluation. AI-led phone interviews in local languages for evaluations, beneficiary feedback and follow-ups, with every finding traceable to what was said.
+- [ZolaShield](https://edzola.ai/zolashield/): DPDP Act readiness for Indian nonprofits. A 15-minute voice assessment produces a data map, a scored risk report and a 180-day action plan. Assess from ₹10,000; Comply and Sustain tiers for implementation.
+- [DozAI](https://edzola.ai/dozai/): AI teammates and end-to-end missions (for example scholarship screening) that handle operational volume, with people deciding exceptions. Pilots open.
+- [ImpactOS](https://edzola.ai/impact-os/): The delivery method behind all of the above: method, knowledge and tools, so no project starts from zero.
+
+## Get involved
+
+- [Founding Digital Patrons](https://edzola.ai/patrons/): The Built for Impact Fund's first campaign. 100 patrons at $1,000 each fund 100 nonprofits with a CRM or MIS that is built, adopted and supported for a year.
 
 ## Thinking and field guides
 
-- [How EdZola thinks](https://edzola.ai/thinking/): Founding beliefs and practical lessons from the work.
-- [Founding thesis](https://edzola.ai/why/): Six commitments behind how EdZola builds systems, uses AI and decides what to make open.
-- [Building technology that sticks](https://edzola.ai/field-guides/technology-that-sticks/): Seven field lessons from building data systems with the impact sector.
+- [How EdZola thinks](https://edzola.ai/thinking/): Founding thesis, field guides and selected essays.
+- [Founding thesis](https://edzola.ai/why/): Six commitments: systems are still the foundation; every project must compound; AI handles volume, people handle consequence; judgement should become accessible; the people closest to communities deserve serious infrastructure; build openly where possible.
+- [Building technology that sticks](https://edzola.ai/field-guides/technology-that-sticks/): Seven field essays on readiness, trust, delivery, leadership and shared infrastructure from six years of nonprofit implementations.
+- [How nonprofits actually work](https://edzola.ai/thinking/how-nonprofits-operate/): A six-chapter guide to the people, money, evidence and systems inside any nonprofit.
 
 ## Sector pages
 
+- [All 16 sectors](https://edzola.ai/sectors/): Programme data systems by sector, each built around one connected record.
 - [Education](https://edzola.ai/education/): Know which child can read, and which one quietly stopped coming.
 - [Youth Development & Employability](https://edzola.ai/youth-employability/): Placement letters are easy. Month-six retention is the real test.
 - [Livelihoods & Economic Empowerment](https://edzola.ai/livelihoods/): From wealth ranking to graduation, know which households actually moved.
