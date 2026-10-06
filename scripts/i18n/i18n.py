@@ -181,10 +181,18 @@ HINT_JS = '''<script id="lang-hint">
 </script>'''
 
 
+def strip_lang_ui(html):
+    html = re.sub(r'<div class="gh-lang"[^>]*>.*?</div>', '', html)
+    html = re.sub(r'<style id="gh-lang-css">.*?</style>\n?', '', html, flags=re.S)
+    html = re.sub(r'<link rel="alternate" hreflang[^>]*>\n?', '', html)
+    html = re.sub(r'<script id="lang-hint">.*?</script>\n?', '', html, flags=re.S)
+    return html
+
+
 def add_lang_ui(html, dst, current, label):
     sw = switcher(dst, current, label)
-    html = html.replace('<a class="gh-cta"', sw + '<a class="gh-cta"', 1)
-    html = re.sub(r'(<div class="gh-drop"[^>]*>)', r'\1' + sw.replace('\\', '\\\\'), html, count=1)
+    html = re.sub(r'(<a [^>]*class="gh-cta")', lambda m: sw + m.group(1), html, count=1)
+    html = re.sub(r'(<div [^>]*class="gh-drop"[^>]*>)', lambda m: m.group(1) + sw, html, count=1)
     html = html.replace('</head>', LANG_CSS + '\n' + alternates(dst) + '\n</head>', 1)
     html = html.replace('</body>', HINT_JS % json.dumps(dst) + '\n</body>', 1)
     return html
@@ -197,7 +205,7 @@ def build():
         tr = json.load(open(os.path.join(HERE, f'{lang}.json')))
         missing = set()
         for src, dst in PAGES.items():
-            raw = open(os.path.join(ROOT, src), encoding='utf-8').read()
+            raw = strip_lang_ui(open(os.path.join(ROOT, src), encoding='utf-8').read())
             soup = BeautifulSoup(raw, 'html.parser')
             T = lambda k: tr.get(k) or (missing.add(k) or k)
             if soup.title and soup.title.string:
@@ -220,6 +228,10 @@ def build():
                         el[a] = tr[el[a]]
                 if el.name == 'a' and el.get('href'):
                     el['href'] = localise_href(el['href'], lang)
+            if lang == 'pt':  # Brazilian digit grouping: 10,000 -> 10.000
+                for t in soup.body.find_all(string=re.compile(r'\d,\d{3}')):
+                    if not t.find_parent(['script', 'style']):
+                        t.replace_with(re.sub(r'(?<=\d),(?=\d{3}(?!\d))', '.', str(t)))
             for l in soup.find_all('link', rel='canonical'):
                 l['href'] = f'https://edzola.ai/{lang}/{dst}'
             soup.html['lang'] = conf['html']
@@ -246,11 +258,7 @@ def build():
         report[lang] = sorted(missing)
     # English originals get the switcher, hreflang links and the suggestion banner
     for src, dst in PAGES.items():
-        p = os.path.join(ROOT, src); html = open(p, encoding='utf-8').read()
-        html = re.sub(r'<div class="gh-lang"[^>]*>.*?</div>', '', html)
-        html = re.sub(r'<style id="gh-lang-css">.*?</style>\n?', '', html, flags=re.S)
-        html = re.sub(r'<link rel="alternate" hreflang[^>]*>\n?', '', html)
-        html = re.sub(r'<script id="lang-hint">.*?</script>\n?', '', html, flags=re.S)
+        p = os.path.join(ROOT, src); html = strip_lang_ui(open(p, encoding='utf-8').read())
         open(p, 'w', encoding='utf-8').write(add_lang_ui(html, dst, 'en', 'Language'))
     for lang, miss in report.items():
         print(f'{lang}: built {len(PAGES)} pages, {len(miss)} strings left in English')
