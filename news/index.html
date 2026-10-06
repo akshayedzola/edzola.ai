@@ -218,6 +218,26 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   .pod{grid-template-columns:1fr}
   .clip{grid-template-columns:96px 1fr}
 }
+.reels{margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.reels-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.reels-head .clips-label{margin:0}
+.reels-head a{font-size:var(--step--1);font-weight:600}
+.reel-window{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.reel-track{display:flex;gap:14px;width:max-content;animation:reelroll 60s linear infinite}
+.reel-window:hover .reel-track,.reel-window:focus-within .reel-track{animation-play-state:paused}
+@keyframes reelroll{to{transform:translateX(-50%)}}
+.reel{position:relative;flex:none;width:180px;aspect-ratio:9/16;padding:0;border:0;border-radius:16px;overflow:hidden;background:#000;cursor:pointer;box-shadow:0 10px 24px rgba(60,40,30,.16)}
+.reel img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.reel:hover img{transform:scale(1.04)}
+.reel .play{width:48px;height:48px;margin:-24px 0 0 -24px;opacity:.92}
+.reel .play::after{left:18px;top:14px;border-width:10px 0 10px 15px}
+.reel-modal{border:0;padding:0;background:transparent;max-width:none;max-height:none;overflow:visible}
+.reel-modal::backdrop{background:rgba(20,15,12,.82)}
+.reel-modal .frame{width:min(380px,86vw);aspect-ratio:9/16;max-height:86vh;border-radius:18px;overflow:hidden;background:#000}
+.reel-modal iframe{width:100%;height:100%;border:0;display:block}
+.reel-modal .close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;border:0;background:var(--coral);color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion: reduce){.reel-track{animation:none}.reel-window{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.reel[aria-hidden="true"]{display:none}}
+@media (max-width:620px){.reel{width:140px}}
 </style>
 <style id="gh-css">
 html{scroll-padding-top:76px}
@@ -275,10 +295,9 @@ html{scroll-padding-top:76px}
           <p class="when">Full episode · September 2026</p>
         </div>
       </div>
-      <div class="clips">
-        <p class="clips-label">Clips from the episode</p>
-        <div class="clip"><button class="yt short " data-id="CbAGWKLhcQM" aria-label="Play video: Short: how to choose a technology partner"><img src="https://i.ytimg.com/vi/CbAGWKLhcQM/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button><div><h3>How do you choose a tech partner without a tech team?</h3><p>Sajidali on seeking independent advice, and why empathy matters as much as expertise.</p></div></div>
-        <div class="clip"><button class="yt short " data-id="G78TI-5VUrY" aria-label="Play video: Short: Impact Dialogues with TRRAIN"><img src="https://i.ytimg.com/vi/G78TI-5VUrY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button><div><h3>From fragmented processes to one system</h3><p>The TRRAIN journey in under a minute.</p></div></div>
+      <div class="reels">
+        <div class="reels-head"><p class="clips-label">Shorts from EdZola</p><a href="https://www.youtube.com/@edzola/shorts" rel="noopener">All Shorts on YouTube →</a></div>
+        <div class="reel-window"><div class="reel-track"><button class="reel" data-id="CbAGWKLhcQM" aria-label="Play short: Impact Dialogues: choosing a technology partner"><img src="https://i.ytimg.com/vi/CbAGWKLhcQM/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="G78TI-5VUrY" aria-label="Play short: Impact Dialogues with TRRAIN"><img src="https://i.ytimg.com/vi/G78TI-5VUrY/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="HlynsDt1tJ0" aria-label="Play short: Mainak Roy (SEF) shares two tips for NGO digital success"><img src="https://i.ytimg.com/vi/HlynsDt1tJ0/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="8hPWWhcZroA" aria-label="Play short: Finding the right partner for impactful success"><img src="https://i.ytimg.com/vi/8hPWWhcZroA/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="zx9sJNAFtNc" aria-label="Play short: Technology for better decisions"><img src="https://i.ytimg.com/vi/zx9sJNAFtNc/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="k1sfGGiIcbs" aria-label="Play short: Can low-code platforms like Zoho Creator handle complex nonprofit challenges?"><img src="https://i.ytimg.com/vi/k1sfGGiIcbs/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="b4-keRZwhAo" aria-label="Play short: Helping out-of-school children get back into education"><img src="https://i.ytimg.com/vi/b4-keRZwhAo/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="AC_7_yRUgHk" aria-label="Play short: Stuck, burned out, unsure? Watch this before you give up"><img src="https://i.ytimg.com/vi/AC_7_yRUgHk/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="V7hcB7MBRsY" aria-label="Play short: Using tech for social good: EdZola x Chevening"><img src="https://i.ytimg.com/vi/V7hcB7MBRsY/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="oFISxxZb5Do" aria-label="Play short: Empowering out-of-school children with technology"><img src="https://i.ytimg.com/vi/oFISxxZb5Do/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="CbAGWKLhcQM" aria-label="Play short: Impact Dialogues: choosing a technology partner" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/CbAGWKLhcQM/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="G78TI-5VUrY" aria-label="Play short: Impact Dialogues with TRRAIN" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/G78TI-5VUrY/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="HlynsDt1tJ0" aria-label="Play short: Mainak Roy (SEF) shares two tips for NGO digital success" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/HlynsDt1tJ0/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="8hPWWhcZroA" aria-label="Play short: Finding the right partner for impactful success" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/8hPWWhcZroA/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="zx9sJNAFtNc" aria-label="Play short: Technology for better decisions" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/zx9sJNAFtNc/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="k1sfGGiIcbs" aria-label="Play short: Can low-code platforms like Zoho Creator handle complex nonprofit challenges?" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/k1sfGGiIcbs/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="b4-keRZwhAo" aria-label="Play short: Helping out-of-school children get back into education" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/b4-keRZwhAo/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="AC_7_yRUgHk" aria-label="Play short: Stuck, burned out, unsure? Watch this before you give up" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/AC_7_yRUgHk/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="V7hcB7MBRsY" aria-label="Play short: Using tech for social good: EdZola x Chevening" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/V7hcB7MBRsY/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="oFISxxZb5Do" aria-label="Play short: Empowering out-of-school children with technology" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/oFISxxZb5Do/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button></div></div>
       </div>
     </div>
   </section>
@@ -387,6 +406,25 @@ document.querySelectorAll('.yt').forEach(function(b){
     b.replaceWith(w); f.focus();
   },{once:true});
 });
+</script>
+<dialog class="reel-modal" id="reelModal" aria-label="Short video"><button class="close" aria-label="Close">×</button><div class="frame"></div></dialog>
+<script>
+(function(){
+  var d=document.getElementById('reelModal'), fr=d.querySelector('.frame');
+  function close(){ d.close(); }
+  d.addEventListener('close',function(){ fr.replaceChildren(); });
+  d.querySelector('.close').addEventListener('click',close);
+  d.addEventListener('click',function(e){ if(e.target===d) close(); });
+  document.querySelectorAll('.reel').forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0&playsinline=1';
+      f.title=b.getAttribute('aria-label').replace('Play short: ','');
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      f.allowFullscreen=true; fr.replaceChildren(f); d.showModal();
+    });
+  });
+})();
 </script>
 </body>
 </html>
