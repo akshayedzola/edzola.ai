@@ -4,6 +4,7 @@
 
 ## Products and initiatives
 
+- [ImpactOS](https://edzola.ai/impact-os/): The method behind everything EdZola builds: stages and sign-off gates, reusable sector knowledge, and AI tools with a person checking.
 - [DozAI](https://edzola.ai/dozai/): AI teammates and missions that complete operational work for nonprofit teams.
 - [Zolabs](https://edzola.ai/zolabs/): AI-powered voice data collection for social impact.
 - [ZolaShield](https://edzola.ai/zolashield/): Data-protection and responsible technology initiative by EdZola.
