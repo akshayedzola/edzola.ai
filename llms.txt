@@ -16,6 +16,11 @@ Key facts:
 - [DozAI](https://edzola.ai/dozai/): AI teammates and end-to-end missions (for example scholarship screening) that handle operational volume, with people deciding exceptions. Pilots open.
 - [ImpactOS](https://edzola.ai/impact-os/): The delivery method behind all of the above: method, knowledge and tools, so no project starts from zero.
 
+## About EdZola
+
+- [About and team](https://edzola.ai/about/): Origin story (Zoho, Teach For India, founded 2020), values, the team, and careers. Open roles: https://go.edzola.com/hiring
+- [News and media](https://edzola.ai/news/): Impact Dialogues by EdZola (fireside conversations with nonprofit leaders), partner stories, the quarterly EdZola Chronicle newsletter and press coverage.
+
 ## Get involved
 
 - [Founding Digital Patrons](https://edzola.ai/patrons/): The Built for Impact Fund's first campaign. 100 patrons at $1,000 each fund 100 nonprofits with a CRM or MIS that is built, adopted and supported for a year.

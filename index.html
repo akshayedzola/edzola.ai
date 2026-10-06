@@ -171,7 +171,9 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
 .pii{margin-top:12px;font-size:12.5px;color:var(--muted)}
 
 .footer{padding:44px 0;border-top:1px solid var(--line);background:var(--surface)}
-.footer .wrap{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:32px}
+.footer .wrap{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:28px}
+.footer .social{display:flex;gap:8px;margin-top:16px}.footer .social a{display:grid;place-items:center;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:50%;color:var(--muted)}.footer .social a:hover{color:var(--coral-dark);border-color:var(--coral)}
+.footer .wrap.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.footer .legal a{display:inline;font-size:13px;color:var(--muted);margin-left:16px}
 .footer h4{margin:0 0 10px;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .footer a{display:block;color:var(--ink);font-size:14px;text-decoration:none;padding:3px 0}.footer a:hover{color:var(--coral-dark)}
 .footer p{font-size:14px;color:var(--muted);margin-top:10px;max-width:300px}
@@ -529,7 +531,7 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
   <div>
     <span class="eyebrow">Who you'll work with</span>
     <h2 style="font-size:clamp(34px,4.4vw,52px);line-height:1.05;margin:14px 0 16px">Part technologists. Part sector practitioners.</h2>
-    <p class="lead">A team in Coimbatore, India, building with the impact sector since 2020, and running our own work AI-first. We use what we sell, every day.</p>
+    <p class="lead">A team in Coimbatore, India, building with the impact sector since 2020, and running our own work AI-first. We use what we sell, every day. <a href="https://edzola.ai/about/">Meet the team →</a></p>
     <div class="facts">
       <div><strong>100+</strong><span>organisations supported</span></div>
       <div><strong>150+</strong><span>systems built</span></div>
@@ -601,11 +603,13 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
 </main>
 
 <footer class="footer"><div class="wrap">
-  <div><a class="logo" href="#top">edzola.ai</a><p>AI-native operations for social impact. EdZola Technologies · Coimbatore, India.</p></div>
+  <div><a class="logo" href="#top">edzola.ai</a><p>AI-native operations for social impact. EdZola Technologies · Coimbatore, India.</p><div class="social"><a href="https://in.linkedin.com/company/edzola" rel="noopener" aria-label="EdZola on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a><a href="https://www.youtube.com/@edzola" rel="noopener" aria-label="EdZola on YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg></a><a href="https://instagram.com/edzolatech" rel="noopener" aria-label="EdZola on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 3.6c2.7 0 3 0 4.1.1 2.7.1 4 1.4 4.1 4.1.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 2.7-1.4 4-4.1 4.1-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-2.7-.1-4-1.4-4.1-4.1-.1-1.1-.1-1.4-.1-4.1s0-3 .1-4.1c.1-2.7 1.4-4 4.1-4.1 1.1-.1 1.4-.1 4.1-.1zM12 2c-2.7 0-3.1 0-4.1.1C4.2 2.3 2.3 4.2 2.1 7.9 2 8.9 2 9.3 2 12s0 3.1.1 4.1c.2 3.7 2.1 5.6 5.8 5.8 1 .1 1.4.1 4.1.1s3.1 0 4.1-.1c3.7-.2 5.6-2.1 5.8-5.8.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.2-3.7-2.1-5.6-5.8-5.8C15.1 2 14.7 2 12 2z"/></svg></a><a href="https://twitter.com/edzolatech" rel="noopener" aria-label="EdZola on X"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.2l-7 8 8.2 10h-6.4l-5-6.2L5 21H1.8l7.5-8.6L1.5 3h6.6l4.5 5.7zm-1.1 16.2h1.8L7.4 4.7H5.5z"/></svg></a></div></div>
   <div><h4>What we do</h4><a href="#model">Data systems</a><a href="https://edzola.ai/zolabs/">Zolabs</a><a href="https://edzola.ai/zolashield/">ZolaShield</a><a href="https://edzola.ai/dozai/">DozAI</a></div>
   <div><h4>Explore</h4><a href="https://edzola.ai/sectors/">Sectors</a><a href="#work">Case studies</a><a href="#fix">What we fix</a></div>
-  <div><h4>Learn</h4><a href="https://edzola.ai/thinking/">Thinking</a><a href="https://edzola.ai/why/">Founding thesis</a><a href="https://edzola.ai/impact-os/">ImpactOS</a><a href="https://edzola.ai/patrons/">Become a Patron</a><a href="https://www.edzola.com">About EdZola</a><a href="mailto:reachus@edzola.com">Contact</a></div>
-</div></footer>
+  <div><h4>Learn</h4><a href="https://edzola.ai/thinking/">Thinking</a><a href="https://edzola.ai/why/">Founding thesis</a><a href="https://edzola.ai/impact-os/">ImpactOS</a><a href="https://edzola.ai/news/">News &amp; media</a></div>
+  <div><h4>EdZola</h4><a href="https://edzola.ai/about/">About &amp; team</a><a href="https://go.edzola.com/hiring">Careers</a><a href="https://edzola.ai/patrons/">Become a Patron</a><a href="mailto:reachus@edzola.com">Contact</a></div>
+</div>
+<div class="wrap legal"><span>© EdZola Technologies Private Limited</span><span><a href="https://www.edzola.com/privacy-policy-edzola">Privacy policy</a><a href="https://www.edzola.com/terms-of-use">Terms of use</a></span></div></footer>
 
 <script>
 /* ---------- smooth anchor links (works in file/data previews too) ---------- */
