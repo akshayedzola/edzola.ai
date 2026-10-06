@@ -171,7 +171,9 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
 .pii{margin-top:12px;font-size:12.5px;color:var(--muted)}
 
 .footer{padding:44px 0;border-top:1px solid var(--line);background:var(--surface)}
-.footer .wrap{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:32px}
+.footer .wrap{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:28px}
+.footer .social{display:flex;gap:8px;margin-top:16px}.footer .social a{display:grid;place-items:center;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:50%;color:var(--muted)}.footer .social a:hover{color:var(--coral-dark);border-color:var(--coral)}
+.footer .wrap.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.footer .legal a{display:inline;font-size:13px;color:var(--muted);margin-left:16px}
 .footer h4{margin:0 0 10px;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .footer a{display:block;color:var(--ink);font-size:14px;text-decoration:none;padding:3px 0}.footer a:hover{color:var(--coral-dark)}
 .footer p{font-size:14px;color:var(--muted);margin-top:10px;max-width:300px}
@@ -209,6 +211,32 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
  .org{height:60px;min-width:100px;padding:0 16px;font-size:14px}.org img{max-height:36px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.lane,.org{animation:none}.lane{width:auto;overflow-x:auto;padding-inline:20px;scrollbar-width:thin}.lane .dup{display:none!important}}
+
+/* partner voices */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.voice-card{margin:0;background:var(--peach);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px}
+.voice-card img{height:34px;width:auto;max-width:150px;object-fit:contain;object-position:left;mix-blend-mode:multiply}
+.voice-card blockquote{margin:0;font:600 17px/1.45 var(--display);letter-spacing:-.01em;color:var(--ink)}
+.voice-card figcaption{margin-top:auto;font-size:13px;color:var(--muted)}
+.voice-card figcaption b{display:block;color:var(--ink);font-size:14px}
+/* who we work with */
+.partners{background:var(--night);color:var(--bg);padding:96px 0}
+.partners-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.partners .eyebrow{color:var(--coral)}
+.partners h2{color:var(--bg);margin-top:14px}
+.partners-grid>div>p{margin-top:16px;color:rgba(253,248,244,.72);max-width:46ch}
+.partners-photo{margin:28px 0 0;border-radius:20px;overflow:hidden;aspect-ratio:3/2}
+.partners-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.partners-list{display:grid;gap:12px}
+.partners-list article{border:1px solid rgba(253,248,244,.14);border-radius:18px;padding:24px;background:rgba(253,248,244,.04)}
+.partners-list span{font:500 12px var(--mono);color:var(--coral)}
+.partners-list h3{color:var(--bg);margin:6px 0 8px;font-size:21px}
+.partners-list p{color:rgba(253,248,244,.72);font-size:15px}
+.partners-list a{display:inline-block;margin-top:12px;color:var(--coral);font-weight:600;text-decoration:none}
+.partners-list a:hover{text-decoration:underline}
+.founder cite{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.founder-pic{width:44px;height:44px;border-radius:50%;object-fit:cover}
+@media(max-width:900px){.voices{grid-template-columns:1fr}.partners-grid{grid-template-columns:1fr}.partners{padding:68px 0}}
 </style>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -277,17 +305,41 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
  ]
 }
 </script>
+<style id="gh-css">
+html{scroll-padding-top:76px}
+.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
+.gh.gh-static{position:relative}
+.gh *{box-sizing:border-box}
+.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.gh a{text-decoration:none;color:inherit}
+.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
+.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
+.gh-nav{margin-left:auto;display:flex;gap:2px}
+.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
+.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
+.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
+.gh-cta:hover{filter:brightness(.96)}
+.gh-menu{display:none;position:relative}
+.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.gh-menu summary::-webkit-details-marker{display:none}
+.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
+.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
+.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
+.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
+.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
+.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
+:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
+@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
+@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
+</style>
 </head>
 <body>
 
 <a class="notice" href="https://edzola.ai/patrons/"><b>New</b> · Built for Impact Fund: <span>become one of 100 Founding Digital Patrons</span> →</a>
-<header class="top"><div class="wrap">
-  <a class="logo" href="#top">edzola.ai</a>
-  <nav aria-label="Primary">
-    <a href="#model">What we do</a><a href="#fix">What we fix</a><a href="#work">Our work</a><a href="#sectors">Sectors</a><a href="https://edzola.ai/thinking/">Thinking</a><a href="#give">Get involved</a>
-  </nav>
-  <a class="pill primary" href="#start">Talk to us</a>
-</div></header>
+<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="#start">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="#start">Talk to us</a></div></details></div></div>
 
 <main id="top">
 <!-- ================= HERO ================= -->
@@ -480,6 +532,11 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
     <a class="case" href="https://www.edzola.com/the-nudge-future-perfect"><img src="/assets/logos/logo-nudge.png" alt="The/Nudge Institute"><strong>10+</strong><span class="unit">tools in one record</span><p>Admissions, payments, the LMS, Zoom and WhatsApp through one system, with screens for trainers, telecallers and verifiers.</p><span class="go">Read the case study →</span></a>
   </div>
   <p class="honest">We'll also tell you where we haven't built before. Each sector page says plainly which parts are proven and which would be new. <a href="https://edzola.ai/field-guides/technology-that-sticks/why-we-name-our-limits/">Why we name our limits →</a></p>
+  <div class="voices" aria-label="What partners say">
+    <figure class="voice-card"><img src="/assets/logos/logo-sef.png" alt="Simple Education Foundation" loading="lazy"><blockquote>"Everyone was slightly blown away by what the portal can do and what potential it has. The team is highly collaborative and extremely responsive."</blockquote><figcaption><b>Shinjinee Pal</b>Simple Education Foundation</figcaption></figure>
+    <figure class="voice-card"><img src="/assets/logos/logo-avanti.png" alt="Avanti Fellows" loading="lazy"><blockquote>"They took the time to understand our specific requirements and provided valuable insights that helped us refine our vision."</blockquote><figcaption><b>Akshay Saxena</b>Co-CEO and Co-Founder, Avanti Fellows</figcaption></figure>
+    <figure class="voice-card"><img src="/assets/logos/logo-aangan.png" alt="Aangan Trust" loading="lazy"><blockquote>"From weekly meetings to prompt availability and quick resolution of issues, their team has been reliable, proactive and true to their word."</blockquote><figcaption><b>Mansi Kanv</b>Lead, Human Resources, Aangan Trust</figcaption></figure>
+  </div>
 </div></section>
 
 <!-- ================= SECTORS ================= -->
@@ -503,6 +560,20 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
 </div></section>
 
 <!-- ================= HOW WE WORK ================= -->
+<section class="partners" id="who"><div class="wrap partners-grid">
+  <div>
+    <span class="eyebrow">Who we work with</span>
+    <h2>From the field to the funder, and everyone in between.</h2>
+    <p>The systems we build only work if the people funding and supporting a programme can see what's happening too. So we work across the whole chain.</p>
+    <figure class="partners-photo"><img src="/assets/photos/sic-panel.jpg" alt="Nonprofit leaders and funders in a panel discussion at Social Impact Circle" loading="lazy"></figure>
+  </div>
+  <div class="partners-list">
+    <article><span>01</span><h3>Nonprofits and social enterprises</h3><p>Programme MIS, case management, fundraising CRM and AI, built around how your field team actually works.</p><a href="#model">What we build →</a></article>
+    <article><span>02</span><h3>Funders, foundations and CSR teams</h3><p>Grant and portfolio monitoring, shared data views across grantees, and impact reporting you can trust. We also make your grantees digitally ready, so their data reaches you without a three-week scramble.</p><a href="mailto:reachus@edzola.com?subject=Funder%20and%20portfolio%20systems">Talk to us about your portfolio →</a></article>
+    <article><span>03</span><h3>Ecosystem partners</h3><p>Intermediaries, capacity builders and networks. We run tech workshops for nonprofit cohorts, unlock software credits through partner programmes, and build shared platforms for knowledge exchange.</p><a href="mailto:reachus@edzola.com?subject=Ecosystem%20partnership">Partner with us →</a></article>
+  </div>
+</div></section>
+
 <section class="section" id="how"><div class="wrap method">
   <div>
     <div class="section-head" style="margin-bottom:0">
@@ -529,7 +600,7 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
   <div>
     <span class="eyebrow">Who you'll work with</span>
     <h2 style="font-size:clamp(34px,4.4vw,52px);line-height:1.05;margin:14px 0 16px">Part technologists. Part sector practitioners.</h2>
-    <p class="lead">A team in Coimbatore, India, building with the impact sector since 2020, and running our own work AI-first. We use what we sell, every day.</p>
+    <p class="lead">A team in Coimbatore, India, building with the impact sector since 2020, and running our own work AI-first. We use what we sell, every day. <a href="https://edzola.ai/about/">Meet the team →</a></p>
     <div class="facts">
       <div><strong>100+</strong><span>organisations supported</span></div>
       <div><strong>150+</strong><span>systems built</span></div>
@@ -539,7 +610,7 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
   </div>
   <div class="founder">
     <blockquote>"Automate a confused workflow and you get a confused workflow at scale. The order in which technology does its jobs matters more than the tool."</blockquote>
-    <cite>Akshay · Founder &amp; CEO, EdZola · from <a href="https://edzola.ai/field-guides/technology-that-sticks/technology-three-jobs/" style="color:inherit">Technology has three jobs</a></cite>
+    <cite><img class="founder-pic" src="/assets/team/akshay-v.jpg" alt="" width="44" height="44" loading="lazy">Akshay · Founder &amp; CEO, EdZola · from <a href="https://edzola.ai/field-guides/technology-that-sticks/technology-three-jobs/" style="color:inherit">Technology has three jobs</a></cite>
   </div>
 </div></section>
 
@@ -601,11 +672,13 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;mar
 </main>
 
 <footer class="footer"><div class="wrap">
-  <div><a class="logo" href="#top">edzola.ai</a><p>AI-native operations for social impact. EdZola Technologies · Coimbatore, India.</p></div>
+  <div><a class="logo" href="#top">edzola.ai</a><p>AI-native operations for social impact. EdZola Technologies · Coimbatore, India.</p><div class="social"><a href="https://in.linkedin.com/company/edzola" rel="noopener" aria-label="EdZola on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a><a href="https://www.youtube.com/@edzola" rel="noopener" aria-label="EdZola on YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg></a><a href="https://instagram.com/edzolatech" rel="noopener" aria-label="EdZola on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 3.6c2.7 0 3 0 4.1.1 2.7.1 4 1.4 4.1 4.1.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 2.7-1.4 4-4.1 4.1-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-2.7-.1-4-1.4-4.1-4.1-.1-1.1-.1-1.4-.1-4.1s0-3 .1-4.1c.1-2.7 1.4-4 4.1-4.1 1.1-.1 1.4-.1 4.1-.1zM12 2c-2.7 0-3.1 0-4.1.1C4.2 2.3 2.3 4.2 2.1 7.9 2 8.9 2 9.3 2 12s0 3.1.1 4.1c.2 3.7 2.1 5.6 5.8 5.8 1 .1 1.4.1 4.1.1s3.1 0 4.1-.1c3.7-.2 5.6-2.1 5.8-5.8.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.2-3.7-2.1-5.6-5.8-5.8C15.1 2 14.7 2 12 2z"/></svg></a><a href="https://twitter.com/edzolatech" rel="noopener" aria-label="EdZola on X"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.2l-7 8 8.2 10h-6.4l-5-6.2L5 21H1.8l7.5-8.6L1.5 3h6.6l4.5 5.7zm-1.1 16.2h1.8L7.4 4.7H5.5z"/></svg></a></div></div>
   <div><h4>What we do</h4><a href="#model">Data systems</a><a href="https://edzola.ai/zolabs/">Zolabs</a><a href="https://edzola.ai/zolashield/">ZolaShield</a><a href="https://edzola.ai/dozai/">DozAI</a></div>
   <div><h4>Explore</h4><a href="https://edzola.ai/sectors/">Sectors</a><a href="#work">Case studies</a><a href="#fix">What we fix</a></div>
-  <div><h4>Learn</h4><a href="https://edzola.ai/thinking/">Thinking</a><a href="https://edzola.ai/why/">Founding thesis</a><a href="https://edzola.ai/impact-os/">ImpactOS</a><a href="https://edzola.ai/patrons/">Become a Patron</a><a href="https://www.edzola.com">About EdZola</a><a href="mailto:reachus@edzola.com">Contact</a></div>
-</div></footer>
+  <div><h4>Learn</h4><a href="https://edzola.ai/thinking/">Thinking</a><a href="https://edzola.ai/why/">Founding thesis</a><a href="https://edzola.ai/impact-os/">ImpactOS</a><a href="https://edzola.ai/news/">News &amp; media</a></div>
+  <div><h4>EdZola</h4><a href="https://edzola.ai/about/">About &amp; team</a><a href="https://go.edzola.com/hiring">Careers</a><a href="https://edzola.ai/patrons/">Become a Patron</a><a href="mailto:reachus@edzola.com">Contact</a></div>
+</div>
+<div class="wrap legal"><span>© EdZola Technologies Private Limited</span><span><a href="https://www.edzola.com/privacy-policy-edzola">Privacy policy</a><a href="https://www.edzola.com/terms-of-use">Terms of use</a></span></div></footer>
 
 <script>
 /* ---------- smooth anchor links (works in file/data previews too) ---------- */

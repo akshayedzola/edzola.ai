@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>News &amp; Media | EdZola</title>
+<meta name="description" content="Podcasts, videos and press from EdZola: Impact Dialogues conversations with nonprofit leaders, partner stories, our quarterly newsletter and media coverage.">
+<link rel="canonical" href="https://edzola.ai/news/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdZola">
+<meta property="og:title" content="News &amp; Media | EdZola">
+<meta property="og:description" content="Podcasts, videos and press from EdZola: Impact Dialogues conversations with nonprofit leaders, partner stories, our quarterly newsletter and media coverage.">
+<meta property="og:url" content="https://edzola.ai/news/">
+<meta property="og:image" content="https://edzola.ai/assets/og-edzola.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://edzola.ai/#org",
+   "name": "EdZola",
+   "url": "https://edzola.ai/",
+   "sameAs": [
+    "https://www.edzola.com/",
+    "https://in.linkedin.com/company/edzola",
+    "https://www.youtube.com/@edzola",
+    "https://twitter.com/edzolatech",
+    "https://www.facebook.com/edzolatech",
+    "https://instagram.com/edzolatech"
+   ]
+  },
+  {
+   "@type": "CollectionPage",
+   "@id": "https://edzola.ai/news/#page",
+   "url": "https://edzola.ai/news/",
+   "name": "News & Media",
+   "description": "Podcasts, videos and press from EdZola: Impact Dialogues conversations with nonprofit leaders, partner stories, our quarterly newsletter and media coverage.",
+   "inLanguage": "en-GB",
+   "publisher": {
+    "@id": "https://edzola.ai/#org"
+   }
+  },
+  {
+   "@type": "VideoObject",
+   "name": "Impact Dialogues by EdZola, Episode 1: TRRAIN",
+   "description": "Akshay V, Founder & CEO of EdZola, speaks with Sajidali Pathan, Chief of Digital Initiatives at TRRAIN, about TRRAIN's journey from fragmented processes to integrated digital systems.",
+   "thumbnailUrl": "https://i.ytimg.com/vi/J1OhJa5T3VI/hqdefault.jpg",
+   "uploadDate": "2026-09-22",
+   "embedUrl": "https://www.youtube.com/embed/J1OhJa5T3VI",
+   "url": "https://www.youtube.com/watch?v=J1OhJa5T3VI",
+   "publisher": {
+    "@id": "https://edzola.ai/#org"
+   }
+  }
+ ]
+}
+</script>
+<style>
+/* Layout concept: a newsroom shelf. Newest conversation first and largest, then partner stories, then where to follow, then the archive. */
+:root{
+  --bg:#FDF8F4;
+  --surface:#FFFFFF;
+  --sunk:#F6EDE5;
+  --peach:#FAE8DC;
+  --coral:#E8967A;
+  --coral-ink:#A9492C;
+  --teal:#8ECFCA;
+  --teal-soft:#E2F3F1;
+  --teal-ink:#2C6F6A;
+  --yellow:#F7C948;
+  --yellow-soft:#FDF1CC;
+  --risk:#C2412D;
+  --risk-soft:#FBE3DD;
+  --ink:#1A1A1A;
+  --muted:#6B6360;
+  --line:#EADBD0;
+  --on-accent:#1A1A1A;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Hanken Grotesk","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --step--1:clamp(.82rem,.8rem + .1vw,.88rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.09rem);
+  --step-1:clamp(1.2rem,1.1rem + .45vw,1.45rem);
+  --step-2:clamp(1.5rem,1.3rem + .9vw,2.1rem);
+  --step-3:clamp(2rem,1.6rem + 2vw,3.2rem);
+  --step-4:clamp(2.4rem,1.7rem + 3.4vw,4.6rem);
+  --radius:14px;
+}
+:root[data-theme="dark"]{
+  --bg:#181412;--surface:#221C19;--sunk:#1F1916;--peach:#33251F;--coral:#EE9F84;--coral-ink:#F4AE95;
+  --teal:#79BFB9;--teal-soft:#1D2B29;--teal-ink:#8FD3CD;--yellow:#E8BE45;--yellow-soft:#2E2715;
+  --risk:#F08A76;--risk-soft:#3D231E;--ink:#F4EDE8;--muted:#B4A8A2;--line:#3A2E28;--on-accent:#1A1A1A;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+a{color:var(--coral-ink)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--teal-ink);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:var(--step-3);font-weight:700}
+h3{font-size:var(--step-1);font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--font-mono);font-size:var(--step--1);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-ink);margin-bottom:16px}
+.lede{font-size:var(--step-1);color:var(--muted);line-height:1.5;max-width:60ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:1.5px solid transparent;text-align:center}
+.btn-primary{background:var(--coral);color:var(--on-accent)}
+.btn-primary:hover{filter:brightness(.96)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.btn-ghost:hover{border-color:var(--coral)}
+section{padding-block:clamp(56px,8vw,104px)}
+.sunk{background:var(--sunk)}
+.section-head{max-width:760px;margin-bottom:40px}
+.section-head p{color:var(--muted);margin-top:14px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--font-display);font-size:1.3rem;letter-spacing:-.04em}
+.brand span{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.nav-links{margin-left:auto;display:flex;gap:2px}
+.nav-links a{padding:8px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.94rem}
+.nav-links a:hover{background:var(--sunk);color:var(--ink)}
+.nav .btn{min-height:40px;padding:8px 18px;font-size:.92rem}
+
+
+.hero{padding-top:clamp(48px,7vw,88px);padding-bottom:clamp(40px,6vw,72px)}
+.hero h1{font-size:var(--step-4);font-weight:800;letter-spacing:-.045em;line-height:.98;margin-bottom:20px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--coral-ink)}
+/* video */
+.yt{position:relative;display:block;width:100%;padding:0;border:0;border-radius:18px;overflow:hidden;background:#000;cursor:pointer;aspect-ratio:16/9}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.yt:hover img{transform:scale(1.03)}
+.yt.short{aspect-ratio:9/16}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.play{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:var(--coral);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.play::after{content:"";position:absolute;left:27px;top:21px;border-style:solid;border-width:13px 0 13px 21px;border-color:transparent transparent transparent var(--ink)}
+.featured{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center}
+.meta .sub{font-family:var(--font-display);font-size:var(--step-1);font-weight:600;color:var(--ink);margin-bottom:12px;line-height:1.3}
+.meta .when{margin-top:14px;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.clips{margin-top:40px;padding-top:28px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.clips-label{grid-column:1/-1;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.clip{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px}
+.clip .yt.short{border-radius:12px}
+.clip .play{width:44px;height:44px;margin:-22px 0 0 -22px}
+.clip .play::after{left:17px;top:13px;border-width:9px 0 9px 14px}
+.clip h3{font-size:1.08rem;margin-bottom:6px}
+.clip p{color:var(--muted);font-size:var(--step--1)}
+.events{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center}
+.events p{color:var(--muted);margin-top:14px}
+.ev-photos{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+.ev-photos figure{margin:0;border-radius:16px;overflow:hidden}
+.ev-photos figure:first-child{grid-row:1/3}
+.ev-photos img{width:100%;height:100%;object-fit:cover;display:block}
+.meta .tag{font-family:var(--font-mono);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-ink)}
+.meta h2{font-size:var(--step-3);margin:6px 0 8px;letter-spacing:-.03em}
+.meta p{color:var(--muted);max-width:70ch}
+.vids{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.vid h3{font-size:1.1rem;margin:12px 0 4px}
+.vid p{color:var(--muted);font-size:var(--step--1)}
+/* follow */
+.follow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.f{display:flex;flex-direction:column;gap:6px;padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);text-decoration:none;color:var(--ink)}
+.f:hover{border-color:var(--coral)}
+.f svg{color:var(--coral-ink)}
+.f b{font-family:var(--font-display);font-size:1.15rem;margin-top:4px}
+.f span{color:var(--muted);font-size:var(--step--1)}
+.f em{font-style:normal;font-weight:700;color:var(--teal-ink);margin-top:auto;padding-top:8px}
+.f.main{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.f.main svg,.f.main em{color:var(--coral)}
+.f.main span{color:color-mix(in srgb,var(--bg) 75%,transparent)}
+/* newsletter */
+.chron{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.ed{display:block;padding:26px;border-radius:20px;background:var(--peach);text-decoration:none;color:var(--ink)}
+.ed small{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--coral-ink)}
+.ed h3{font-size:var(--step-2);margin:8px 0 10px}
+.ed p{color:var(--muted)}
+.ed b{display:inline-block;margin-top:14px;color:var(--teal-ink)}
+/* press */
+.press{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.press a{display:grid;grid-template-columns:90px 220px 1fr auto;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.press a:hover .t{color:var(--coral-ink)}
+.press .d{font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.press b{font-family:var(--font-display)}
+.press .t{color:var(--muted)}
+.press .v{font-size:var(--step--1);color:var(--teal-ink);font-weight:600;white-space:nowrap}
+.pod{margin-top:28px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:20px 22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.pod .d{font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.pod p{color:var(--muted)}
+.pod p b{color:var(--ink);font-family:var(--font-display)}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:var(--step--1);color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media (max-width:900px){
+  .featured,.events{grid-template-columns:1fr}
+  .clips{grid-template-columns:1fr}
+  .vids,.follow{grid-template-columns:1fr 1fr}
+  .press a{grid-template-columns:80px 1fr;gap:4px 14px}
+  .press .t{grid-column:2}
+  .press .v{grid-column:2}
+}
+@media (max-width:620px){
+  .nav-links{display:none}
+  .nav .btn{margin-left:auto}
+  .brand span{display:none}
+  .vids,.follow,.chron{grid-template-columns:1fr}
+  .pod{grid-template-columns:1fr}
+  .clip{grid-template-columns:96px 1fr}
+}
+.reels{margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.reels-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.reels-head .clips-label{margin:0}
+.reels-head a{font-size:var(--step--1);font-weight:600}
+.reel-window{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.reel-track{display:flex;gap:14px;width:max-content;animation:reelroll 60s linear infinite}
+.reel-window:hover .reel-track,.reel-window:focus-within .reel-track{animation-play-state:paused}
+@keyframes reelroll{to{transform:translateX(-50%)}}
+.reel{position:relative;flex:none;width:180px;aspect-ratio:9/16;padding:0;border:0;border-radius:16px;overflow:hidden;background:#000;cursor:pointer;box-shadow:0 10px 24px rgba(60,40,30,.16)}
+.reel img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.reel:hover img{transform:scale(1.04)}
+.reel .play{width:48px;height:48px;margin:-24px 0 0 -24px;opacity:.92}
+.reel .play::after{left:18px;top:14px;border-width:10px 0 10px 15px}
+.reel-modal{border:0;padding:0;background:transparent;max-width:none;max-height:none;overflow:visible}
+.reel-modal::backdrop{background:rgba(20,15,12,.82)}
+.reel-modal .frame{width:min(380px,86vw);aspect-ratio:9/16;max-height:86vh;border-radius:18px;overflow:hidden;background:#000}
+.reel-modal iframe{width:100%;height:100%;border:0;display:block}
+.reel-modal .close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;border:0;background:var(--coral);color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion: reduce){.reel-track{animation:none}.reel-window{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.reel[aria-hidden="true"]{display:none}}
+@media (max-width:620px){.reel{width:140px}}
+</style>
+<style id="gh-css">
+html{scroll-padding-top:76px}
+.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
+.gh.gh-static{position:relative}
+.gh *{box-sizing:border-box}
+.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.gh a{text-decoration:none;color:inherit}
+.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
+.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
+.gh-nav{margin-left:auto;display:flex;gap:2px}
+.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
+.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
+.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
+.gh-cta:hover{filter:brightness(.96)}
+.gh-menu{display:none;position:relative}
+.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.gh-menu summary::-webkit-details-marker{display:none}
+.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
+.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
+.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
+.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
+.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
+.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
+:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
+@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
+@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
+</style>
+</head>
+<body>
+
+<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b><span>News &amp; media</span></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a></div><a class="gh-cta" href="https://in.linkedin.com/company/edzola" target="_blank" rel="noopener">Follow on LinkedIn</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a><a class="gh-drop-cta" href="https://in.linkedin.com/company/edzola" target="_blank" rel="noopener">Follow on LinkedIn</a></div></details></div></div>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">News &amp; media</p>
+      <h1>EdZola, <em>in conversation.</em></h1>
+      <p class="lede">Conversations with nonprofit leaders, stories from our partners, and what we're learning as we build. We post most often on LinkedIn.</p>
+    </div>
+  </section>
+
+  <section class="sunk" id="watch" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="wrap">
+      <div class="featured">
+        <div class="feat-video"><button class="yt " data-id="J1OhJa5T3VI" aria-label="Play video: Impact Dialogues by EdZola, Episode 1 with TRRAIN"><img src="https://i.ytimg.com/vi/J1OhJa5T3VI/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button></div>
+        <div class="meta">
+          <span class="tag">New series · Episode 1</span>
+          <h2>Impact Dialogues by EdZola</h2>
+          <p class="sub">From fragmented processes to integrated systems, with TRRAIN.</p>
+          <p>A fireside conversation series where social-impact leaders share how they use technology, data and AI. In the first episode, Akshay V speaks with Sajidali Pathan, Chief of Digital Initiatives at TRRAIN, about leadership, change, choosing tech partners and TRRAIN's approach to AI.</p>
+          <p class="when">Full episode · September 2026</p>
+        </div>
+      </div>
+      <div class="reels">
+        <div class="reels-head"><p class="clips-label">Shorts from EdZola</p><a href="https://www.youtube.com/@edzola/shorts" rel="noopener">All Shorts on YouTube →</a></div>
+        <div class="reel-window"><div class="reel-track"><button class="reel" data-id="CbAGWKLhcQM" aria-label="Play short: Impact Dialogues: choosing a technology partner"><img src="https://i.ytimg.com/vi/CbAGWKLhcQM/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="G78TI-5VUrY" aria-label="Play short: Impact Dialogues with TRRAIN"><img src="https://i.ytimg.com/vi/G78TI-5VUrY/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="HlynsDt1tJ0" aria-label="Play short: Mainak Roy (SEF) shares two tips for NGO digital success"><img src="https://i.ytimg.com/vi/HlynsDt1tJ0/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="8hPWWhcZroA" aria-label="Play short: Finding the right partner for impactful success"><img src="https://i.ytimg.com/vi/8hPWWhcZroA/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="zx9sJNAFtNc" aria-label="Play short: Technology for better decisions"><img src="https://i.ytimg.com/vi/zx9sJNAFtNc/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="k1sfGGiIcbs" aria-label="Play short: Can low-code platforms like Zoho Creator handle complex nonprofit challenges?"><img src="https://i.ytimg.com/vi/k1sfGGiIcbs/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="b4-keRZwhAo" aria-label="Play short: Helping out-of-school children get back into education"><img src="https://i.ytimg.com/vi/b4-keRZwhAo/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="AC_7_yRUgHk" aria-label="Play short: Stuck, burned out, unsure? Watch this before you give up"><img src="https://i.ytimg.com/vi/AC_7_yRUgHk/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="V7hcB7MBRsY" aria-label="Play short: Using tech for social good: EdZola x Chevening"><img src="https://i.ytimg.com/vi/V7hcB7MBRsY/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="oFISxxZb5Do" aria-label="Play short: Empowering out-of-school children with technology"><img src="https://i.ytimg.com/vi/oFISxxZb5Do/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="CbAGWKLhcQM" aria-label="Play short: Impact Dialogues: choosing a technology partner" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/CbAGWKLhcQM/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="G78TI-5VUrY" aria-label="Play short: Impact Dialogues with TRRAIN" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/G78TI-5VUrY/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="HlynsDt1tJ0" aria-label="Play short: Mainak Roy (SEF) shares two tips for NGO digital success" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/HlynsDt1tJ0/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="8hPWWhcZroA" aria-label="Play short: Finding the right partner for impactful success" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/8hPWWhcZroA/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="zx9sJNAFtNc" aria-label="Play short: Technology for better decisions" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/zx9sJNAFtNc/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="k1sfGGiIcbs" aria-label="Play short: Can low-code platforms like Zoho Creator handle complex nonprofit challenges?" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/k1sfGGiIcbs/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="b4-keRZwhAo" aria-label="Play short: Helping out-of-school children get back into education" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/b4-keRZwhAo/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="AC_7_yRUgHk" aria-label="Play short: Stuck, burned out, unsure? Watch this before you give up" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/AC_7_yRUgHk/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="V7hcB7MBRsY" aria-label="Play short: Using tech for social good: EdZola x Chevening" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/V7hcB7MBRsY/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button><button class="reel" data-id="oFISxxZb5Do" aria-label="Play short: Empowering out-of-school children with technology" aria-hidden="true" tabindex="-1"><img src="https://i.ytimg.com/vi/oFISxxZb5Do/oar2.jpg" alt="" loading="lazy" width="216" height="384"><span class="play" aria-hidden="true"></span></button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Partner stories and talks</p>
+        <h2>Hear it from the people we work with.</h2>
+      </div>
+      <div class="vids">
+        <div class="vid"><button class="yt " data-id="0vVWjxsvOGA" aria-label="Play video: U&amp;I Trust on DPDP readiness with ZolaShield"><img src="https://i.ytimg.com/vi/0vVWjxsvOGA/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button><h3>U&amp;I Trust on getting DPDP-ready</h3><p>How the ZolaShield assessment surfaced their data-protection gaps. July 2026.</p></div>
+        <div class="vid"><button class="yt " data-id="GMK1gPFI2T8" aria-label="Play video: Auroville Language Laboratory: from zero to DPDP-ready"><img src="https://i.ytimg.com/vi/GMK1gPFI2T8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button><h3>Auroville Language Laboratory, from zero to DPDP-ready</h3><p>Mita, Co-Director, on building a clear, prioritised roadmap. August 2026.</p></div>
+        <div class="vid"><button class="yt " data-id="z7z1YJpG1yo" aria-label="Play video: From Excel to AI: building nonprofit data systems"><img src="https://i.ytimg.com/vi/z7z1YJpG1yo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button><h3>From Excel to AI</h3><p>Akshay's webinar on moving from spreadsheets to decision-ready data systems. July 2026.</p></div>
+      </div>
+      <p style="margin-top:24px"><a href="https://www.youtube.com/@edzola" rel="noopener">See everything on our YouTube channel →</a></p>
+    </div>
+  </section>
+
+  <section class="sunk" id="follow">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Follow along</p>
+        <h2>Where to find us.</h2>
+      </div>
+      <div class="follow">
+        <a class="f main" href="https://in.linkedin.com/company/edzola" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg><b>LinkedIn</b><span>Where we post most: field notes, launches and conversations.</span><em>Follow on LinkedIn →</em></a>
+        <a class="f" href="https://www.youtube.com/@edzola?sub_confirmation=1" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg><b>YouTube</b><span>Impact Dialogues, partner stories, webinars and walkthroughs.</span><em>Subscribe →</em></a>
+        <a class="f" href="https://instagram.com/edzolatech" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 3.6c2.7 0 3 0 4.1.1 2.7.1 4 1.4 4.1 4.1.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 2.7-1.4 4-4.1 4.1-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-2.7-.1-4-1.4-4.1-4.1-.1-1.1-.1-1.4-.1-4.1s0-3 .1-4.1c.1-2.7 1.4-4 4.1-4.1 1.1-.1 1.4-.1 4.1-.1zM12 2c-2.7 0-3.1 0-4.1.1C4.2 2.3 2.3 4.2 2.1 7.9 2 8.9 2 9.3 2 12s0 3.1.1 4.1c.2 3.7 2.1 5.6 5.8 5.8 1 .1 1.4.1 4.1.1s3.1 0 4.1-.1c3.7-.2 5.6-2.1 5.8-5.8.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.2-3.7-2.1-5.6-5.8-5.8C15.1 2 14.7 2 12 2z"/></svg><b>Instagram</b><span>Reels and moments from the team.</span><em>Follow →</em></a>
+        <a class="f" href="https://twitter.com/edzolatech" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M17.8 3h3.2l-7 8 8.2 10h-6.4l-5-6.2L5 21H1.8l7.5-8.6L1.5 3h6.6l4.5 5.7zm-1.1 16.2h1.8L7.4 4.7H5.5z"/></svg><b>X</b><span>Short updates from EdZola.</span><em>Follow →</em></a>
+        <a class="f" href="https://go.edzola.com/wa" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.4-.3z"/></svg><b>WhatsApp community</b><span>Resources and events for nonprofit teams.</span><em>Join →</em></a>
+        <a class="f" href="https://www.edzola.com/newsletter" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="currentColor"><path d="M3 5h18v14H3zm2 2v.5l7 4.5 7-4.5V7zm14 2.9-7 4.5-7-4.5V17h14z"/></svg><b>The EdZola Chronicle</b><span>Our quarterly newsletter, in your inbox.</span><em>Subscribe →</em></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The EdZola Chronicle</p>
+        <h2>Our quarterly newsletter.</h2>
+        <p>What we built, what we learned and who we built it with, every quarter. <a href="https://www.edzola.com/newsletter">Subscribe →</a></p>
+      </div>
+      <div class="chron">
+        <a class="ed" href="https://go.edzola.com/EdZola-Newsletter-Q2" rel="noopener"><small>July–September 2026</small><h3>Six years, and looking ahead.</h3><p>We marked six years of EdZola, explored practical uses of AI and strengthened our work on data protection.</p><b>Read this edition →</b></a>
+        <a class="ed" href="https://go.edzola.com/edzola-newsletter-Q1" rel="noopener"><small>April–June 2026</small><h3>Listening, learning, building.</h3><p>Strengthening the systems partners rely on, exploring where AI helps, and new partnerships across the sector.</p><b>Read this edition →</b></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sunk" id="press">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">In the press</p>
+        <h2>Articles and features.</h2>
+        <p>For media enquiries, write to <a href="mailto:reachus@edzola.com">reachus@edzola.com</a>.</p>
+      </div>
+      <ul class="press">
+          <li><a href="https://www.linkedin.com/posts/edzola_ai-accessibility-inclusivity-activity-7089529715513847808--VMK" rel="noopener"><span class="d">Jul 2023</span><b>Hindustan Times</b><span class="t">How edtech can make learning more diverse and inclusive.</span><span class="v">via LinkedIn ↗</span></a></li>
+          <li><a href="https://timesofindia.indiatimes.com/blogs/voices/affordable-technological-solutions-a-way-ahead-for-indias-social-sector/" rel="noopener"><span class="d">Jul 2023</span><b>The Times of India</b><span class="t">Affordable technological solutions: a way ahead for India's social sector.</span><span class="v">Read ↗</span></a></li>
+          <li><a href="https://www.linkedin.com/posts/edzola_education-techforgood-edtech-activity-7085836095585714176-cBNN" rel="noopener"><span class="d">Jul 2023</span><b>The Pioneer</b><span class="t">Using technology in education to advance the country's progress.</span><span class="v">via LinkedIn ↗</span></a></li>
+          <li><a href="https://epaper.thedailyguardian.com/view/318/13-jul-2023/14" rel="noopener"><span class="d">Jul 2023</span><b>The Daily Guardian</b><span class="t">Why education needs faster technology adoption across nonprofits and government.</span><span class="v">e-paper ↗</span></a></li>
+          <li><a href="https://epaper.thestatesman.com/3732236/Delhi-The-Statesman/12-07-2023#page/11/1" rel="noopener"><span class="d">Jul 2023</span><b>The Statesman</b><span class="t">Why the growing nonprofit sector needs to embrace technology.</span><span class="v">e-paper ↗</span></a></li>
+          <li><a href="https://timesofindia.indiatimes.com/blogs/voices/digital-empowerment-revolutionizing-nonprofits-through-technology/" rel="noopener"><span class="d">Jun 2023</span><b>The Times of India</b><span class="t">Digital empowerment: revolutionising nonprofits through technology.</span><span class="v">Read ↗</span></a></li>
+          <li><a href="https://analyticsindiamag.com/the-secret-weapon-for-indian-edtech-firms-survival-in-the-industry/" rel="noopener"><span class="d">Jun 2023</span><b>Analytics India Magazine</b><span class="t">The secret weapon for Indian edtech firms' survival in the industry.</span><span class="v">Read ↗</span></a></li>
+          <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7070261489445597184" rel="noopener"><span class="d">Jun 2023</span><b>The New Indian Express</b><span class="t">EdZola's digital solutions for nonprofits across India.</span><span class="v">via LinkedIn ↗</span></a></li>
+          <li><a href="https://epaper.thestatesman.com/3701046/Delhi-The-Statesman/09-05-2023#page/11/1" rel="noopener"><span class="d">May 2023</span><b>The Statesman</b><span class="t">The challenges and future of implementing edtech.</span><span class="v">e-paper ↗</span></a></li>
+      </ul>
+      <div class="pod"><span class="d">Mar 2022</span><p><b>Podcast · InnovatEd</b> &nbsp;Contextualising tech for impact: Akshay V on distributive technology in the change and impact ecosystem.</p><a href="https://open.spotify.com/episode/6QXU83hTnzPz9LyiuIw7pF" rel="noopener">Listen on Spotify ↗</a></div>
+    </div>
+  </section>
+  <section id="events">
+    <div class="wrap events">
+      <div>
+        <p class="eyebrow">Events</p>
+        <h2>Social Impact Circle.</h2>
+        <p>Our community for tech-forward nonprofits and Tech4Good builders: a room to learn what's changing, share what worked and what didn't, and find partners for collective action.</p>
+        <p><a href="mailto:reachus@edzola.com?subject=Social%20Impact%20Circle">Ask about the next circle →</a></p>
+      </div>
+      <div class="ev-photos">
+        <figure><img src="/assets/photos/sic-networking.jpg" alt="Attendees networking at Social Impact Circle" width="1400" height="930" loading="lazy"></figure>
+        <figure><img src="/assets/photos/sic-table-talk.jpg" alt="A table discussion at Social Impact Circle" width="1400" height="930" loading="lazy"></figure>
+        <figure><img src="/assets/photos/sic-writing.jpg" alt="A participant writing notes during a session" width="1400" height="930" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>EdZola Technologies Private Limited · Coimbatore, India</span>
+    <span><a href="/">edzola.ai</a> · <a href="/about/">About</a> · <a href="mailto:reachus@edzola.com">reachus@edzola.com</a></span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(b){
+  b.addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';
+    f.title=b.getAttribute('aria-label').replace('Play video: ','');
+    f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen=true;
+    var w=document.createElement('div');
+    w.className=b.className; w.appendChild(f);
+    b.replaceWith(w); f.focus();
+  },{once:true});
+});
+</script>
+<dialog class="reel-modal" id="reelModal" aria-label="Short video"><button class="close" aria-label="Close">×</button><div class="frame"></div></dialog>
+<script>
+(function(){
+  var d=document.getElementById('reelModal'), fr=d.querySelector('.frame');
+  function close(){ d.close(); }
+  d.addEventListener('close',function(){ fr.replaceChildren(); });
+  d.querySelector('.close').addEventListener('click',close);
+  d.addEventListener('click',function(e){ if(e.target===d) close(); });
+  document.querySelectorAll('.reel').forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0&playsinline=1';
+      f.title=b.getAttribute('aria-label').replace('Play short: ','');
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      f.allowFullscreen=true; fr.replaceChildren(f); d.showModal();
+    });
+  });
+})();
+</script>
+</body>
+</html>
