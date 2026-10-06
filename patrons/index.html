@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Founding Digital Patrons — Built for Impact Fund · EdZola</title>
+<meta name="description" content="100 people. $1,000 each. 100 nonprofits with systems that work. Become a Founding Digital Patron of EdZola's Built for Impact Fund.">
+<link rel="canonical" href="https://edzola.ai/patrons/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: one $2,500 system split four ways is the spine; every section explains a piece of it. */
+:root{
+  --bg:#FDF8F4;
+  --surface:#FFFFFF;
+  --peach:#FAE8DC;
+  --coral:#E8967A;
+  --coral-ink:#A9492C;
+  --teal:#8ECFCA;
+  --teal-ink:#2C6F6A;
+  --yellow:#F7C948;
+  --ink:#1A1A1A;
+  --muted:#6B6360;
+  --line:#EADBD0;
+  --on-accent:#1A1A1A;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Hanken Grotesk","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --step--1:clamp(.82rem,.8rem + .1vw,.88rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.09rem);
+  --step-1:clamp(1.2rem,1.1rem + .45vw,1.45rem);
+  --step-2:clamp(1.5rem,1.3rem + .9vw,2.1rem);
+  --step-3:clamp(2rem,1.6rem + 2vw,3.2rem);
+  --step-4:clamp(2.5rem,1.8rem + 3.6vw,4.9rem);
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#181412;--surface:#221C19;--peach:#33251F;--coral:#EE9F84;--coral-ink:#F4AE95;
+    --teal:#79BFB9;--teal-ink:#8FD3CD;--yellow:#E8BE45;--ink:#F4EDE8;--muted:#B4A8A2;--line:#3A2E28;
+    --on-accent:#1A1A1A;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181412;--surface:#221C19;--peach:#33251F;--coral:#EE9F84;--coral-ink:#F4AE95;
+  --teal:#79BFB9;--teal-ink:#8FD3CD;--yellow:#E8BE45;--ink:#F4EDE8;--muted:#B4A8A2;--line:#3A2E28;
+  --on-accent:#1A1A1A;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+a{color:var(--coral-ink)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--teal-ink);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:var(--step-3);font-weight:700}
+h3{font-size:var(--step-1);font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--font-mono);font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-ink);font-weight:500}
+.lede{font-size:var(--step-1);line-height:1.5;color:var(--muted);max-width:60ch}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+section{padding-block:clamp(56px,8vw,104px)}
+.section-head{display:grid;gap:14px;max-width:760px;margin-bottom:clamp(28px,4vw,48px)}
+
+/* Pills */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 22px;font:600 var(--step-0)/1 var(--font-body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--coral);color:var(--on-accent)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--coral)}
+
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--font-display);font-size:1.25rem;font-weight:800}
+.brand span{font-size:var(--step--1);color:var(--muted)}
+.nav .btn{padding:10px 18px;font-size:.92rem}
+
+/* Hero */
+.hero{padding-block:clamp(40px,7vw,88px) clamp(48px,7vw,80px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{font-size:var(--step-4);font-weight:800;margin-block:16px 22px}
+.hero h1 em{font-style:normal;color:var(--coral-ink)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;gap:18px}
+.burst{position:absolute;top:-26px;right:-14px;width:72px;height:72px}
+.hero-price{font-size:var(--step-3);font-weight:600;line-height:1}
+.hero-bar{display:flex;height:16px;border-radius:999px;overflow:hidden}
+.hero-key{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:var(--step--1);color:var(--muted)}
+.hero-key span{display:inline-flex;align-items:center;gap:6px}
+.hero-key .swatch,.legend .swatch{display:inline-block}
+.progress{background:var(--peach);border-radius:12px;padding:14px;display:grid;gap:8px}
+.progress-top{display:flex;justify-content:space-between;gap:12px;font-size:.92rem;font-weight:600}
+.progress-track{height:8px;border-radius:999px;background:var(--surface);overflow:hidden}
+.progress-track span{display:block;height:100%;background:var(--coral);border-radius:999px;min-width:6px}
+.hero-card small{color:var(--muted);font-size:var(--step--1);line-height:1.45}
+
+/* Problem */
+.problem{background:var(--peach)}
+.problem-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.quote-block{font-family:var(--font-display);font-size:var(--step-2);font-weight:700;line-height:1.2;text-wrap:balance}
+.quote-block span{color:var(--coral-ink)}
+.stats{display:grid;gap:14px}
+.stat{background:var(--surface);border-radius:var(--radius);padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center}
+.stat .big{font-family:var(--font-mono);font-size:var(--step-3);font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.stat p{font-size:.98rem;line-height:1.45}
+.stat cite{display:block;font-style:normal;font-size:var(--step--1);color:var(--muted);margin-top:4px}
+
+/* Rupee */
+.rupee-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.rupee-copy{display:grid;gap:18px;max-width:56ch}
+.stack-table{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.stack-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:16px 22px;border-bottom:1px solid var(--line);align-items:center}
+.stack-row .who{display:flex;gap:12px;align-items:center;min-width:0}
+.swatch{width:12px;height:12px;border-radius:3px;flex:none}
+.stack-row .who small{display:block;color:var(--muted);font-size:var(--step--1);line-height:1.35}
+.stack-row .amt{font-family:var(--font-mono);font-weight:600;font-variant-numeric:tabular-nums}
+.stack-total{background:var(--ink);color:var(--bg);border-bottom:0}
+.stack-total .who small{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.stack-bar{display:flex;height:14px;margin:18px 22px 4px;border-radius:999px;overflow:hidden}
+.stack-note{padding:8px 22px 18px;font-size:var(--step--1);color:var(--muted)}
+
+/* Grant */
+.grant{background:var(--surface);border-block:1px solid var(--line)}
+.phases{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;counter-reset:ph}
+.phase{border-top:3px solid var(--coral);padding-top:16px;display:grid;gap:8px;align-content:start}
+.phase .days{font-family:var(--font-mono);font-size:var(--step--1);color:var(--muted)}
+.phase p{font-size:.96rem;line-height:1.5;color:var(--muted)}
+.covers{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:7px 14px;font-size:.92rem}
+.callout{background:var(--peach);border-radius:var(--radius);padding:20px 22px;display:grid;gap:8px}
+
+/* Patron journey */
+.journey{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:start}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.steps li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.steps .k{font-family:var(--font-mono);white-space:nowrap;color:var(--coral-ink);font-weight:600;padding-top:2px}
+.steps p{color:var(--muted);font-size:.98rem;line-height:1.5;margin-top:4px}
+.report{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:18px;box-shadow:0 18px 40px -28px rgba(80,40,20,.35)}
+.report-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.tag{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;background:var(--yellow);color:var(--on-accent);border-radius:6px;padding:4px 8px;white-space:nowrap}
+.ba{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.ba div{border-radius:12px;padding:14px;font-size:.94rem;line-height:1.45}
+.ba .before{background:var(--bg);border:1px dashed var(--line)}
+.ba .after{background:color-mix(in srgb,var(--teal) 22%,var(--surface))}
+.ba b{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;color:var(--muted)}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{border-top:1px solid var(--line);padding-top:10px}
+.metric .v{font-family:var(--font-mono);font-weight:600;font-size:var(--step-1);font-variant-numeric:tabular-nums}
+.metric .d{font-size:var(--step--1);color:var(--muted);line-height:1.35}
+.report-foot{font-size:var(--step--1);color:var(--muted)}
+
+/* Ledger */
+.ledger-sec{background:var(--peach)}
+.ledger-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:start}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:var(--step--1);color:var(--muted)}
+.legend .swatch{display:inline-block}.legend span{display:inline-flex;align-items:center;gap:6px}
+.reserve{background:var(--surface);border-radius:18px;padding:26px;display:grid;gap:16px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px)}
+.reserve p{color:var(--muted);font-size:.98rem;line-height:1.5}
+.copyrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.copyrow code{font-family:var(--font-mono);font-size:.92rem;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 12px;user-select:all;overflow-wrap:anywhere}
+.copybtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:9px 12px;font:500 .9rem var(--font-body);cursor:pointer}
+.status{font-size:var(--step--1);color:var(--teal-ink);min-height:1.2em}
+.nominate{border-top:1px dashed var(--line);padding-top:14px;font-size:.95rem}
+
+/* Flow */
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;align-items:stretch;margin-bottom:40px}
+.node{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;margin-inline:12px;display:grid;gap:6px;align-content:start}
+.node:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:14px;height:14px;border-top:2px solid var(--coral);border-right:2px solid var(--coral);transform:translateY(-50%) rotate(45deg)}
+.node .cur{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-ink)}
+.node h3{font-size:1.05rem}
+.node p{font-size:.9rem;color:var(--muted);line-height:1.45}
+.node.edz{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.node.edz p{color:color-mix(in srgb,var(--bg) 72%,transparent)}
+.node.edz .cur{color:var(--yellow)}
+.honest{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,4vw,40px)}
+.honest ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.honest li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;line-height:1.5}
+.honest li::before{content:"";width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--teal)}
+
+/* Tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tier{border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:12px;align-content:start;background:var(--surface)}
+.tier.feature{background:var(--coral);border-color:var(--coral);color:var(--on-accent)}
+.tier.feature .tier-note,.tier.feature p{color:var(--on-accent)}
+.tier .price{font-family:var(--font-mono);font-size:var(--step-2);font-weight:600;font-variant-numeric:tabular-nums}
+.tier p{color:var(--muted);font-size:.97rem;line-height:1.5}
+.tier-note{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-ink)}
+
+/* Founder */
+.founder{background:var(--ink);color:var(--bg)}
+.founder .wrap{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(24px,5vw,72px);align-items:start}
+.founder .eyebrow{color:var(--yellow)}
+.letter{display:grid;gap:16px;font-size:var(--step-1);line-height:1.55;max-width:62ch}
+.letter .sig{font-family:var(--font-display);font-weight:700;font-size:var(--step-1)}
+.letter .sig small{display:block;font-family:var(--font-body);font-weight:400;font-size:var(--step--1);color:color-mix(in srgb,var(--bg) 65%,transparent)}
+.proof{display:flex;flex-wrap:wrap;gap:22px;margin-top:22px}
+.proof div{font-family:var(--font-mono);font-size:var(--step-1);font-weight:600}
+.proof small{display:block;font-family:var(--font-body);font-size:var(--step--1);font-weight:400;color:color-mix(in srgb,var(--bg) 65%,transparent)}
+
+/* FAQ */
+.faq{display:grid;gap:10px;max-width:820px}
+details{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:0 20px}
+summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--font-mono);color:var(--coral-ink);font-size:1.2rem;line-height:1}
+details[open] summary::after{content:"\2013"}
+details p{padding-bottom:18px;color:var(--muted);line-height:1.6}
+
+/* Closing */
+.closing{text-align:left}
+.closing .box{background:var(--peach);border-radius:26px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:center}
+.closing h2{font-size:var(--step-3)}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:var(--step--1);color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-grid,.problem-grid,.rupee-grid,.journey,.ledger-grid,.honest,.founder .wrap,.closing .box,.covers{grid-template-columns:minmax(0,1fr)}
+  .phases{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}
+  .flow{grid-template-columns:minmax(0,1fr);gap:22px}
+  .node{margin-inline:0}
+  .node:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%) rotate(135deg)}
+  .tiers{grid-template-columns:minmax(0,1fr)}
+  .reserve{position:static}
+}
+@media (max-width:520px){
+  .wrap{padding-inline:16px}
+  .phases{grid-template-columns:minmax(0,1fr)}
+  .nav .brand span{display:none}
+      .ba,.metrics,.counter{grid-template-columns:minmax(0,1fr)}
+  .stat{grid-template-columns:minmax(0,1fr);gap:8px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><b>edzola.ai</b><span>Built for Impact Fund</span></a>
+    <a class="btn btn-primary" href="#join">Join the movement</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Built for Impact Fund · First campaign · 2027 cohort</p>
+        <h1>100 people. $1,000 each. <em>100 nonprofits</em> with systems that work.</h1>
+        <p class="lede">Some of the most important organisations in India and East Africa run on spreadsheets, WhatsApp and someone's memory. $1,000 goes a long way here. Join 100 Founding Digital Patrons and fund the systems that change that.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#join">Join the movement</a>
+          <a class="btn btn-ghost" href="#how">See where the money goes</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="What one nonprofit system costs">
+        <svg class="burst" viewBox="0 0 100 100" aria-hidden="true"><g fill="var(--yellow)"><path d="M50 4 58 36 92 22 66 48 96 62 60 62 66 96 50 68 34 96 40 62 4 62 34 48 8 22 42 36Z"/></g><circle cx="50" cy="52" r="9" fill="var(--coral)"/></svg>
+        <div style="display:grid;gap:6px">
+          <p class="eyebrow">One nonprofit system</p>
+          <div class="hero-price mono">$2,500</div>
+          <p style="color:var(--muted);font-size:.96rem;line-height:1.45">What it takes to build a nonprofit CRM or MIS properly and stay until it's used. Your $1,000 is the biggest share.</p>
+        </div>
+        <div class="hero-bar" aria-hidden="true">
+          <span style="flex:40;background:var(--coral)"></span><span style="flex:30;background:var(--ink)"></span><span style="flex:20;background:var(--teal)"></span><span style="flex:10;background:var(--yellow)"></span>
+        </div>
+        <div class="hero-key">
+          <span><i class="swatch" style="background:var(--coral)"></i>Patron $1,000</span>
+          <span><i class="swatch" style="background:var(--ink)"></i>EdZola $750</span>
+          <span><i class="swatch" style="background:var(--teal)"></i>Partners $500</span>
+          <span><i class="swatch" style="background:var(--yellow)"></i>Nonprofit $250</span>
+        </div>
+        <div class="progress">
+          <div class="progress-top"><span>Founding Patrons</span><span class="mono" id="pCount">0 of 100</span></div>
+          <div class="progress-track"><span id="pBar" style="width:0%"></span></div>
+        </div>
+        <small>Pledges are non-binding until the fund opens with its fiscal sponsor.</small>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="wrap problem-grid">
+      <div style="display:grid;gap:22px">
+        <p class="eyebrow">Sound familiar?</p>
+        <p class="quote-block">A women's collective supporting 1,800 members across 24 villages. Case records in six spreadsheets. Donor report due Friday. <span>Nobody trusts the numbers.</span></p>
+        <p class="lede">Technology isn't their mission. But weak technology quietly caps it. Funders want outcomes and rarely pay for the systems that produce them. So the smallest organisations, often the ones closest to the community, are the last to get good tools.</p>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="big">1/500</div>
+          <p>Indian nonprofits surveyed in 2026 reached advanced digital maturity. The average score was 4.4 out of 10.<cite>State of Nonprofits Digitisation Report 2026, Digital for Nonprofits</cite></p>
+        </div>
+        <div class="stat">
+          <div class="big">83%</div>
+          <p>of Indian nonprofits struggle to raise money for indirect costs, which is where systems and technology live.<cite>Bridgespan Group, 2022 (388 nonprofits)</cite></p>
+        </div>
+        <div class="stat">
+          <div class="big">25%</div>
+          <p>of nonprofits using GenAI have assessed its impact or put data safeguards in place.<cite>State of Nonprofits Digitisation Report 2026</cite></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RUPEE -->
+  <section>
+    <div class="wrap rupee-grid">
+      <div class="rupee-copy">
+        <p class="eyebrow">Raised in dollars and pounds. Spent in rupees.</p>
+        <h2>A nonprofit system costs about $2,500. Your $1,000 is the biggest share.</h2>
+        <p class="lede">In New York or London, $1,000 buys a few hours of a technology consultant. Built in Coimbatore, $2,500 pays for a working CRM or MIS, the data migration, the training, and a year of support.</p>
+        <p>We've built 150+ systems for 100+ organisations, so we don't start from zero. Sector templates and our ImpactOS delivery method mean each nonprofit gets a system configured to its work in weeks. Four parties put money or time into every system, and the nonprofit is one of them.</p>
+      </div>
+      <div class="stack-table" role="table" aria-label="How one nonprofit system is funded">
+        <div class="stack-bar" aria-hidden="true">
+          <span style="flex:40;background:var(--coral)"></span>
+          <span style="flex:30;background:var(--ink)"></span>
+          <span style="flex:20;background:var(--teal)"></span>
+          <span style="flex:10;background:var(--yellow)"></span>
+        </div>
+        <div class="stack-row" role="row"><div class="who"><span class="swatch" style="background:var(--coral)"></span><div>Your contribution<small>Pooled in the fund</small></div></div><div class="amt">$1,000</div></div>
+        <div class="stack-row" role="row"><div class="who"><span class="swatch" style="background:var(--ink)"></span><div>EdZola matched hours<small>Delivery we put in at no charge</small></div></div><div class="amt">$750</div></div>
+        <div class="stack-row" role="row"><div class="who"><span class="swatch" style="background:var(--teal)"></span><div>Technology partner credits<small>Licences and cloud credits we're seeking</small></div></div><div class="amt">$500</div></div>
+        <div class="stack-row" role="row"><div class="who"><span class="swatch" style="background:var(--yellow)"></span><div>The nonprofit's own share<small>Paid in rupees, scaled to their size. Having a stake is what makes adoption stick.</small></div></div><div class="amt">$250</div></div>
+        <div class="stack-row stack-total" role="row"><div class="who"><div>Full cost of one nonprofit system<small>Built, migrated, adopted and supported for a year</small></div></div><div class="amt">$2,500</div></div>
+        <p class="stack-note">Pilot targets. We'll publish the real numbers from the first cohort, including what didn't go to plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRANT -->
+  <section class="grant" id="grant">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What a nonprofit receives</p>
+        <h2>The Digital Transformation Grant</h2>
+        <p class="lede">Not a software licence. A structured piece of work worth about $2,500, around 120 days long, followed by a year of support. The nonprofit puts in a small share of its own.</p>
+      </div>
+      <ol class="phases">
+        <li class="phase"><span class="days">Weeks 1–2</span><h3>Discover</h3><p>We map how money, people and data actually move today, and agree what "better" looks like.</p></li>
+        <li class="phase"><span class="days">Weeks 3–4</span><h3>Design</h3><p>One high-value system, scoped to what the team can adopt. Prototype first, then sign-off.</p></li>
+        <li class="phase"><span class="days">Weeks 5–10</span><h3>Build</h3><p>Configured on proven templates, with their real data migrated in.</p></li>
+        <li class="phase"><span class="days">Weeks 11–16</span><h3>Adopt</h3><p>Field staff trained in their language. We don't leave until the team is actually using it.</p></li>
+        <li class="phase"><span class="days">Day 120 + 12 months</span><h3>Measure</h3><p>Baseline against after. Support for a year, and licence costs planned before go-live so nothing breaks in year two.</p></li>
+      </ol>
+      <div class="covers">
+        <div class="callout">
+          <h3>The nonprofit doesn't pick software.</h3>
+          <p>We diagnose the organisation and build the single change that will matter most and that we can deliver well. Sometimes that's a CRM. Sometimes it's a field app that replaces paper forms.</p>
+        </div>
+        <div style="display:grid;gap:14px">
+          <p class="eyebrow">A grant can cover</p>
+          <div class="chips">
+            <span class="chip">Beneficiary MIS</span><span class="chip">Case management</span><span class="chip">Donor CRM and receipts</span><span class="chip">Field data collection</span><span class="chip">Monitoring and evaluation</span><span class="chip">Donor reporting dashboards</span><span class="chip">Workflow automation</span><span class="chip">Practical AI use cases</span><span class="chip">Data protection basics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATRON JOURNEY -->
+  <section>
+    <div class="wrap journey">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">What you get as a Patron</p>
+          <h2>Pooled money. Personal impact.</h2>
+          <p class="lede">Your $1,000 joins the fund. Once a cohort is funded, every Patron is matched with one of the nonprofits their collective money reached, and follows it from start to finish.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="k">Join</span><div><h3>You're in</h3><p>One of the first 100 people backing this, named on the Founding Patrons list unless you'd rather not be.</p></div></li>
+          <li><span class="k">Match</span><div><h3>Your nonprofit</h3><p>Who they are, where they work and who they serve.</p></div></li>
+          <li><span class="k">Day 0</span><div><h3>Their baseline</h3><p>A one-page picture of how they run today.</p></div></li>
+          <li><span class="k">Day 60</span><div><h3>The build</h3><p>A short update from the team doing the work.</p></div></li>
+          <li><span class="k">Day 120</span><div><h3>The outcome</h3><p>A one-page report: before, what changed, after, and the people it reaches.</p></div></li>
+        </ol>
+      </div>
+      <article class="report" aria-label="Example Digital Transformation Report">
+        <div class="report-top">
+          <div>
+            <p class="eyebrow">Digital Transformation Report</p>
+            <h3 style="margin-top:6px">A women's livelihoods collective, Tamil Nadu</h3>
+          </div>
+          <span class="tag">Illustrative example</span>
+        </div>
+        <div class="ba">
+          <div class="before"><b>Before</b>1,800 members across 24 villages. Records in six spreadsheets and WhatsApp groups. Donor reports took three days.</div>
+          <div class="after"><b>After</b>One member register. Field staff log visits on a phone app that works offline. Reports pull themselves.</div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="v">1,842</div><div class="d">member records cleaned and migrated</div></div>
+          <div class="metric"><div class="v">14</div><div class="d">field workers onboarded</div></div>
+          <div class="metric"><div class="v">3 days → 2 hrs</div><div class="d">monthly reporting time</div></div>
+          <div class="metric"><div class="v">10%</div><div class="d">of the cost paid by the collective itself</div></div>
+        </div>
+        <p class="report-foot">One page. Short enough to forward. Every figure confirmed by the nonprofit, not just by us.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section class="ledger-sec" id="join">
+    <div class="wrap ledger-grid">
+      <div style="display:grid;gap:22px;align-content:start">
+        <div class="section-head" style="margin-bottom:0">
+          <p class="eyebrow">Join the movement</p>
+          <h2>Become a Founding Digital Patron.</h2>
+          <p class="lede">$1,000 goes a long way toward giving a nonprofit technology that works. Joined by 99 others, it gives 100 of them a system they'll use for years.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="k">Now</span><div><h3>Pledge</h3><p>Write to us and say you're in. No payment yet.</p></div></li>
+          <li><span class="k">Launch</span><div><h3>Give</h3><p>When the fund opens with its fiscal sponsor, we send you the giving details and your tax receipt follows.</p></div></li>
+          <li><span class="k">Then</span><div><h3>Bring one more</h3><p>We'll ask you one thing: who else should be part of this? One person you'd vouch for.</p></div></li>
+        </ol>
+      </div>
+      <div class="reserve">
+        <p class="eyebrow">Pledge by email</p>
+        <h3 style="font-size:var(--step-2)">Say you're in.</h3>
+        <p>Send us a line with your name and where you're based. We'll reply personally.</p>
+        <div class="copyrow">
+          <code id="mail">reachus@edzola.com</code>
+          <button class="copybtn" id="copyMail" type="button">Copy email</button>
+        </div>
+        <div class="copyrow">
+          <code id="subject">I'd like to be a Founding Digital Patron</code>
+          <button class="copybtn" id="copySubject" type="button">Copy subject</button>
+        </div>
+        <a class="btn btn-primary" id="mailBtn" href="mailto:reachus@edzola.com?subject=I'd%20like%20to%20be%20a%20Founding%20Digital%20Patron">Open in your email app</a>
+        <p class="status" id="status" role="status"></p>
+        <p class="nominate">Want to give more? See the Champion and Partner levels below.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW THE MONEY MOVES -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How the money moves</p>
+        <h2>Five steps from your card to their field team.</h2>
+        <p class="lede">The fund pays for delivered work, never cash handed to the nonprofit. The nonprofit pays its own small share directly. That keeps it simple for grassroots organisations, and keeps every rupee traceable.</p>
+      </div>
+      <div class="flow">
+        <div class="node"><span class="cur">USD · GBP</span><h3>Patrons</h3><p>Give $1,000 or more. US donors receive a tax receipt.</p></div>
+        <div class="node"><span class="cur">US 501(c)(3)</span><h3>Fiscal sponsor</h3><p>Holds the fund and signs every contract. Partner being finalised.</p></div>
+        <div class="node"><span class="cur">Independent</span><h3>Selection committee</h3><p>Picks nonprofits against published criteria. Majority not connected to EdZola.</p></div>
+        <div class="node edz"><span class="cur">INR</span><h3>EdZola delivers</h3><p>Paid at published nonprofit rates, plus matched hours of our own.</p></div>
+        <div class="node"><span class="cur">About 10%</span><h3>Nonprofit</h3><p>Pays a small share and gets the system, the training and a year of support.</p></div>
+      </div>
+      <div class="honest">
+        <div style="display:grid;gap:14px;align-content:start">
+          <p class="eyebrow">The conflict, said plainly</p>
+          <h3 style="font-size:var(--step-2)">EdZola runs this fund and is paid to deliver the work.</h3>
+          <p class="lede" style="font-size:var(--step-0)">You should know that up front. Here's how we keep it honest.</p>
+        </div>
+        <ul>
+          <li><span>An independent committee chooses the nonprofits. EdZola staff can't outvote it.</span></li>
+          <li><span>Organisations already paying EdZola aren't eligible. This is for those who can't afford us.</span></li>
+          <li><span>Our rates are published and benchmarked against other implementation partners.</span></li>
+          <li><span>Each nonprofit signs off its own before-and-after figures.</span></li>
+          <li><span>Once a year we publish the fund's books: money in, sponsor fees, delivery cost, matched hours.</span></li>
+          <li><span>No lock-in. Nonprofits own their data and system, and aren't required to buy anything from us afterwards.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section id="tiers" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Beyond the first 100</p>
+        <h2>Fund one nonprofit, or a whole cohort.</h2>
+      </div>
+      <div class="tiers">
+        <div class="tier feature"><span class="tier-note">First 100 only</span><h3>Founding Digital Patron</h3><div class="price">$1,000</div><p>One of the original 100. Matched with one nonprofit and its before-and-after report.</p></div>
+        <div class="tier"><span class="tier-note">Individuals and families</span><h3>Digital Champion</h3><div class="price">$5,000</div><p>Covers the Patron share for five nonprofits. Choose a theme: education, health, livelihoods, women-led organisations.</p></div>
+        <div class="tier"><span class="tier-note">Foundations and companies</span><h3>Transformation Partner</h3><div class="price">$25,000+</div><p>Funds a full cohort, for example 25 grassroots education nonprofits in one state, with a cohort-level impact report.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Why we're doing this</p>
+        <h2 style="margin-top:14px">Every nonprofit deserves good technology.</h2>
+        <div class="proof">
+          <div>100+<small>organisations</small></div>
+          <div>150+<small>systems built</small></div>
+          <div>5+<small>countries</small></div>
+        </div>
+      </div>
+      <div class="letter">
+        <p>I started EdZola in 2020, in the middle of lockdown, after years as an engineer at Zoho and a classroom teacher with Teach For India.</p>
+        <p>Since then we've built systems for more than a hundred nonprofits. The ones that could pay us got better at their work. The ones that couldn't kept running remarkable programmes out of spreadsheets and WhatsApp, and we kept saying no to them.</p>
+        <p>I don't want to keep saying no. A thousand dollars from someone in Boston or London, spent by a team in Coimbatore, can change how a small organisation works for years. Technology shouldn't be a privilege of scale.</p>
+        <p>If that idea makes sense to you, join us.</p>
+        <p class="sig">Akshay<small>Founder, EdZola · Chevening Scholar (LSE) · FRSA</small></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Questions</p>
+        <h2>The things people ask first.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is my gift tax-deductible?</summary><p>For US donors, yes. Gifts will go through a US 501(c)(3) fiscal sponsor that owns the fund, which is the arrangement we're finalising now. For UK donors we're setting up a Gift Aid route. Until the fund opens, a pledge is non-binding and no money changes hands.</p></details>
+        <details><summary>Do I get to choose the nonprofit?</summary><p>No, and that's deliberate. An independent committee selects nonprofits against published criteria, and the fund decides how money is spent. You're then matched with one of the transformations your cohort paid for. It keeps the selection fair and keeps your gift deductible.</p></details>
+        <details><summary>Why not just give the money to the nonprofits directly?</summary><p>Two reasons. Many small Indian nonprofits aren't registered to receive money from abroad. And cash alone rarely produces a working system; the hard part is the design, migration and training. The fund pays for that delivered work, and the nonprofit pays only a small share of its own.</p></details>
+        <details><summary>Does EdZola make money from this?</summary><p>EdZola is paid for delivery at its published nonprofit rates and adds matched hours on every project at no charge. The yearly report shows exactly how much went to delivery, fees and matched time.</p></details>
+        <details><summary>What happens after 120 days?</summary><p>Each nonprofit gets 12 months of support. Before go-live we agree how licence and running costs will be covered in year two, so the system doesn't fall over when free credits end.</p></details>
+        <details><summary>Which countries?</summary><p>The first cohort is in India. Kenya follows in the second cohort, with other East African countries after we've tested the model there.</p></details>
+        <details><summary>Can I pay in pounds?</summary><p>Yes. UK Patrons pledge the pound equivalent of $1,000. We'll confirm the route and exact amount when the fund opens.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing" style="padding-top:0">
+    <div class="wrap">
+      <div class="box">
+        <div style="display:grid;gap:14px">
+          <h2>100 people can give 100 nonprofits a system that lasts.</h2>
+          <p class="lede">Join the first 100. Then tell one person who should be next.</p>
+        </div>
+        <div style="display:grid;gap:12px;justify-items:start">
+          <a class="btn btn-primary" href="#join">Join the movement</a>
+          <span style="font-size:var(--step--1);color:var(--muted)">Or write to <span class="mono" style="user-select:all">reachus@edzola.com</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Built for Impact Fund · an <a href="/">EdZola</a> initiative · Coimbatore, India</span>
+    <span>Draft for pilot. Pledges are non-binding until the fund opens with its fiscal sponsor.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Update as pledges are confirmed.
+  var PATRONS = 0;
+  var EMAIL = "reachus@edzola.com";
+  document.getElementById("pCount").textContent=PATRONS+" of 100";
+  document.getElementById("pBar").style.width=Math.min(PATRONS,100)+"%";
+  var status=document.getElementById("status"), subj=document.getElementById("subject");
+  function copy(txt,msg){
+    var fail=function(){status.textContent="Copy didn't work here. Select the text and copy it.";};
+    try{navigator.clipboard.writeText(txt).then(function(){status.textContent=msg;},fail);}catch(e){fail();}
+  }
+  document.getElementById("copyMail").addEventListener("click",function(){copy(EMAIL,"Email address copied.");});
+  document.getElementById("copySubject").addEventListener("click",function(){copy(subj.textContent,"Subject line copied.");});
+})();
+</script>
+
+</body></html>
