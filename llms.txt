@@ -11,7 +11,7 @@
 ## Thinking and field guides
 
 - [How EdZola thinks](https://edzola.ai/thinking/): Founding beliefs and practical lessons from the work.
-- [Founding philosophy](https://edzola.ai/why/): Eight principles behind how edzola.ai builds and shares intelligence.
+- [Founding thesis](https://edzola.ai/why/): Six commitments behind how EdZola builds systems, uses AI and decides what to make open.
 - [Building technology that sticks](https://edzola.ai/field-guides/technology-that-sticks/): Seven field lessons from building data systems with the impact sector.
 
 ## Sector pages
