@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Inside EdZola | Team Hub</title>
+  <meta name="description" content="The EdZola team hub: the employee guidebook, our operating model and the NGO operations course, in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root{--bg:#FDF8F4;--surface:#fff;--sunk:#F6EDE5;--ink:#1A1A1A;--muted:#6B6360;--line:#EADFD6;--coral:#E8967A;--coral-dark:#B4553A;--peach:#FAE8DC;--teal:#8ECFCA;--teal-dark:#2C7771;--teal-soft:#E2F3F1;--yellow:#F7C948;--yellow-soft:#FFF6CF;--forest:#2E5C45;--forest-soft:#DAE7DD;--shadow:0 14px 40px rgba(74,48,32,.10);--display:"Bricolage Grotesque",sans-serif;--sans:"Figtree",sans-serif;--mono:"JetBrains Mono",monospace}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+    h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;margin:0;line-height:1.05}p{margin:0}
+    :focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+    .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark)}
+    .icon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+    .top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .top .wrap{height:64px;display:flex;align-items:center;gap:14px}
+    .logo{font:700 22px var(--display);letter-spacing:-.035em;text-decoration:none}
+    .tag{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:99px;background:var(--teal-soft);color:var(--teal-dark)}
+    .top .back{margin-left:auto;font-size:14px;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:99px}
+    .top .back:hover{background:var(--sunk);color:var(--ink)}
+
+    .hero{padding:64px 0 36px;max-width:760px}
+    .hero h1{font-size:clamp(40px,6vw,68px);margin:16px 0 18px}
+    .hero h1 em{font-style:normal;color:var(--coral-dark);position:relative}
+    .hero h1 em:after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;background:var(--yellow);opacity:.55;z-index:-1;border-radius:3px}
+    .hero p{font-size:19px;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:28px}
+    .card{position:relative;display:flex;flex-direction:column;gap:14px;padding:26px;border-radius:24px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;transition:transform .18s,box-shadow .18s}
+    .card:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(74,48,32,.14)}
+    .card .badge{width:52px;height:52px;border-radius:16px;display:grid;place-items:center}
+    .card .badge .icon{width:26px;height:26px}
+    .card .kicker{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .card h2{font-size:28px}
+    .card p{color:var(--muted)}
+    .card ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px}
+    .card li{display:flex;gap:8px}.card li:before{content:"→";color:var(--coral-dark);font-weight:700}
+    .card .go{margin-top:auto;padding-top:8px;display:flex;justify-content:space-between;align-items:center;font-weight:700;border-top:1px solid var(--line)}
+    .card .go span:last-child{font:500 12px var(--mono);color:var(--muted)}
+    .grove .badge{background:var(--forest-soft);color:var(--forest)}
+    .ios .badge{background:var(--peach);color:var(--coral-dark)}
+    .ngo .badge{background:var(--teal-soft);color:var(--teal-dark)}
+
+    .start{margin:8px 0 56px;padding:24px 26px;border-radius:20px;background:var(--yellow-soft);border:1px solid #EFDC94;display:flex;gap:16px;align-items:flex-start}
+    .start h3{font-size:20px;margin-bottom:6px}.start p{color:#5a4f3a}
+    .start ol{margin:8px 0 0;padding-left:20px;color:#5a4f3a}
+
+    .more{padding:0 0 64px}
+    .more h3{font-size:22px;margin:10px 0 18px}
+    .links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .links a{display:block;padding:16px 18px;border-radius:16px;background:var(--surface);border:1px solid var(--line);text-decoration:none}
+    .links a:hover{border-color:var(--coral)}
+    .links b{display:block;font-weight:700}.links span{font-size:14px;color:var(--muted)}
+
+    footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:14px}
+    footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+    @media (max-width:900px){.grid,.links{grid-template-columns:1fr}.hero{padding-top:44px}}
+    @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 22v-7"/><path d="M8 15h8a4 4 0 0 0 1-7.9A5 5 0 0 0 7.1 6 4.5 4.5 0 0 0 8 15z"/></symbol>
+    <symbol id="i-os" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/><path d="M8 7h7M8 11h5"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></symbol>
+  </svg>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="/team/">edzola.ai</a>
+      <span class="tag">Team hub</span>
+      <a class="back" href="/">Public site ↗</a>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <section class="hero">
+      <span class="eyebrow">For EdZolans</span>
+      <h1>Everything you need to <em>work the EdZola way.</em></h1>
+      <p>How we work, how we deliver, and how the nonprofits we serve actually run. Three resources, one place. Bookmark this page.</p>
+    </section>
+
+    <section class="grid" aria-label="Team resources">
+      <a class="card grove" href="/team/grove/">
+        <span class="badge"><svg class="icon"><use href="#i-tree"/></svg></span>
+        <span class="kicker">Employee guidebook · 2026</span>
+        <h2>The EdZola Grove</h2>
+        <p>Why we exist, what we believe, how work gets done, how we grow, and the policies that keep it fair. Nine stops, a short quiz at each.</p>
+        <ul>
+          <li>Values, rhythms and AI-native working</li>
+          <li>Growth, leave, POSH and other policies</li>
+          <li>Bingo, Seed Bank and the Library</li>
+        </ul>
+        <span class="go"><span>Walk the trail →</span><span>~90 min</span></span>
+      </a>
+
+      <a class="card ios" href="/team/impactos/">
+        <span class="badge"><svg class="icon"><use href="#i-os"/></svg></span>
+        <span class="kicker">Operating model · draft v0.1</span>
+        <h2>ImpactOS</h2>
+        <p>How EdZola qualifies, converts, delivers, closes and learns across every service vertical, from CRM and data systems to Zolabs and ZolaShield.</p>
+        <ul>
+          <li>Entry points and qualification</li>
+          <li>Convert and deliver, per vertical</li>
+          <li>The learning loop</li>
+        </ul>
+        <span class="go"><span>Open the playbook →</span><span>Draft</span></span>
+      </a>
+
+      <a class="card ngo" href="/thinking/how-nonprofits-operate/">
+        <span class="badge"><svg class="icon"><use href="#i-book"/></svg></span>
+        <span class="kicker">NGO operations · course</span>
+        <h2>How Nonprofits Operate</h2>
+        <p>The context before any code: how nonprofits are structured, how money moves, the programme and beneficiary journey, data, M&amp;E and technology.</p>
+        <ul>
+          <li>Actors, funding and compliance</li>
+          <li>Programmes, data and M&amp;E</li>
+          <li>Where technology and AI fit</li>
+        </ul>
+        <span class="go"><span>Start the course →</span><span>~3 hrs</span></span>
+      </a>
+    </section>
+
+    <aside class="start">
+      <svg class="icon" style="color:var(--coral-dark);margin-top:3px"><use href="#i-flag"/></svg>
+      <div>
+        <h3>New here? Go in this order.</h3>
+        <ol>
+          <li><b>The EdZola Grove</b> in your first week. It's how the company works.</li>
+          <li><b>How Nonprofits Operate</b> before your first partner project.</li>
+          <li><b>ImpactOS</b> once you're on a deal or delivery, to see the full lifecycle.</li>
+        </ol>
+      </div>
+    </aside>
+
+    <section class="more">
+      <span class="eyebrow">Also worth a look</span>
+      <h3>Public guides we use every week</h3>
+      <div class="links">
+        <a href="/field-guides/technology-that-sticks/"><b>Technology That Sticks</b><span>Our field guide: lessons from six years of projects.</span></a>
+        <a href="/thinking/"><b>Thinking</b><span>Essays, the founding philosophy and our writing.</span></a>
+        <a href="/sectors/"><b>Sector pages</b><span>How we pitch EdZola across 16 sectors.</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>EdZola team hub · for EdZolans. Please don't share this link outside the team.</span>
+      <span>Something missing? Ask in #EdZolans Ask EdZolans on Cliq.</span>
+    </div>
+  </footer>
+</body>
+</html>
