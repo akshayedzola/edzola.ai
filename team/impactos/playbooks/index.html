@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>ImpactOS Playbooks: Operating Model v0.1 | EdZola</title>
+  <meta name="description" content="A working draft of ImpactOS: how EdZola qualifies, converts, delivers, closes, and learns across every service vertical.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --bg:#fdf8f4; --surface:#fff; --sunk:#f6ede5; --ink:#1a1a1a; --muted:#6b6360;
+      --line:#eadfd6; --coral:#e8967a; --coral-dark:#a94d35; --peach:#fae8dc;
+      --teal:#8ecfca; --teal-dark:#236b66; --teal-soft:#e2f3f1; --yellow:#f7c948;
+      --yellow-soft:#fff6cf; --shadow:0 16px 46px rgba(74,48,32,.1);
+      --display:"Bricolage Grotesque",sans-serif; --sans:"Figtree",sans-serif;
+      --mono:"JetBrains Mono",monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin:auto}
+    h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.035em;line-height:1.06;text-wrap:balance;margin:0}
+    p{margin:0}.muted{color:var(--muted)}
+    :focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+    .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark)}
+    .pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;font-weight:700;text-decoration:none}
+    .pill.primary{background:var(--coral)}.pill.ghost{box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface)}
+    .icon{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+
+    .top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 91%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .top .wrap{height:68px;display:flex;align-items:center;gap:22px}.logo{font:700 22px var(--display);letter-spacing:-.035em;text-decoration:none}
+    .draft-tag{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--coral-dark);background:var(--peach);padding:5px 9px;border-radius:99px}
+    .top nav{margin-left:auto;display:flex;align-items:center;gap:4px}.top nav a{padding:8px 11px;color:var(--muted);font-size:14px;text-decoration:none;border-radius:99px}.top nav a:hover{background:var(--sunk);color:var(--ink)}
+
+    .hero{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;padding:84px 0 92px}.hero>*{min-width:0}
+    .hero h1{font-size:clamp(52px,7vw,88px);line-height:.94;margin:18px 0 26px}.hero h1 em{font-style:normal;color:var(--coral-dark)}
+    .hero-copy{max-width:610px;color:var(--muted);font-size:20px;line-height:1.65}.hero-copy strong{color:var(--ink)}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.draft-note{margin-top:24px;font:12px/1.6 var(--mono);color:var(--muted)}
+    .loop-card{position:relative;padding:24px;border:1px solid var(--line);border-radius:28px;background:var(--sunk);box-shadow:var(--shadow);overflow:hidden}
+    .loop-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;background:var(--ink);color:var(--bg)}
+    .loop-head strong{font:600 15px var(--display)}.loop-head span{font:10px var(--mono);opacity:.72}
+    .loop-track{position:relative;display:grid;gap:9px;padding:26px 54px 14px 0}.loop-track:after{content:"↺";position:absolute;right:0;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:40px;height:76%;border:2px dashed var(--coral);border-left:0;border-radius:0 30px 30px 0;color:var(--coral-dark);font:700 24px var(--display)}
+    .loop-step{display:grid;grid-template-columns:33px 1fr auto;gap:11px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+    .loop-step b{font:600 15px var(--display)}.loop-step small{color:var(--muted);font-size:12px}.loop-step .num{font:500 10px var(--mono);color:var(--coral-dark)}
+    .loop-return{margin:9px 0 0;padding:12px 14px;border-radius:12px;background:var(--yellow-soft);font-size:13px;color:#654f00}.loop-return strong{font-weight:700}
+
+    .section{padding:94px 0}.section.sunk{background:var(--sunk);border-block:1px solid var(--line)}.section-head{max-width:790px;margin-bottom:42px}
+    .section h2{font-size:clamp(38px,5vw,62px);margin:14px 0 18px}.lead{font-size:18px;line-height:1.72;color:var(--muted)}
+
+    .tool-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}.tool-card{min-height:148px;padding:18px 14px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+    .tool-card .tool-icon{display:grid;place-items:center;width:38px;height:38px;margin-bottom:20px;border-radius:11px;background:var(--teal-soft);color:var(--teal-dark)}
+    .tool-card:nth-child(even) .tool-icon{background:var(--peach);color:var(--coral-dark)}.tool-card b{display:block;font:600 15px/1.15 var(--display)}.tool-card small{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.45}
+
+    .definition-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.definition{padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--surface)}
+    .definition span{font:500 11px var(--mono);color:var(--coral-dark)}.definition h3{font-size:24px;margin:22px 0 10px}.definition p{color:var(--muted)}
+
+    .entry-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.route{padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
+    .route.direct{border-top:6px solid var(--teal)}.route.qualify{border-top:6px solid var(--coral)}.route h3{font-size:28px;margin:14px 0 12px}.route p{color:var(--muted)}
+    .mini-flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:24px}.mini-node{padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);font-size:13px;font-weight:600}.arrow{color:var(--coral-dark);font-weight:700}
+    .enrichment{display:grid;grid-template-columns:.7fr 1.3fr;gap:36px;margin-top:18px;padding:30px;border-radius:22px;background:var(--ink);color:var(--bg)}
+    .enrichment h3{font-size:30px}.enrichment p{color:rgba(253,248,244,.66);margin-top:10px}.enrichment ul{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none}.enrichment li{padding:12px 14px;border:1px solid rgba(255,255,255,.13);border-radius:10px;font-size:14px}.enrichment li:last-child{grid-column:1/-1;background:rgba(142,207,202,.13);border-color:rgba(142,207,202,.35)}
+
+    .pre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pre-card{padding:25px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+    .pre-card .tool-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--teal-soft);color:var(--teal-dark);margin-bottom:22px}.pre-card h3{font-size:22px;margin-bottom:8px}.pre-card p{color:var(--muted);font-size:14px}
+    .combine{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;padding:18px;border-radius:14px;background:var(--yellow-soft);font-weight:700;text-align:center}
+    .routing-note{display:grid;grid-template-columns:auto 1fr;gap:18px;margin-top:18px;padding:24px;border:1px dashed var(--coral-dark);border-radius:16px;background:var(--peach)}.routing-note .icon{width:28px;height:28px;color:var(--coral-dark)}.routing-note h3{font-size:20px;margin-bottom:6px}.routing-note p{color:var(--muted);font-size:14px}
+
+    .vertical-nav{display:flex;gap:8px;flex-wrap:wrap;margin:-8px 0 34px}.vertical-nav a{padding:8px 13px;border:1px solid var(--line);border-radius:99px;background:var(--surface);font-size:13px;font-weight:700;text-decoration:none}.vertical-nav a:hover{border-color:var(--teal-dark);background:var(--teal-soft)}
+    .vertical-stack{display:grid;gap:18px}.vertical{scroll-margin-top:88px;border:1px solid var(--line);border-radius:24px;background:var(--surface);overflow:hidden}
+    .vertical-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:25px 28px;border-bottom:1px solid var(--line)}
+    .service-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--teal-soft);color:var(--teal-dark)}.service-icon .icon{width:25px;height:25px}.vertical:nth-child(even) .service-icon{background:var(--peach);color:var(--coral-dark)}
+    .vertical-head h3{font-size:28px}.vertical-head p{color:var(--muted);font-size:14px;margin-top:4px}.owner{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding:6px 9px;border:1px solid var(--line);border-radius:99px}
+    .two-processes{display:grid;grid-template-columns:1fr 1fr}.process{padding:28px}.process+.process{border-left:1px solid var(--line)}.process-label{display:flex;align-items:center;gap:9px;margin-bottom:22px;font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-dark)}.process.delivery .process-label{color:var(--teal-dark)}
+    .process-list{list-style:none;margin:0;padding:0;counter-reset:step}.process-list li{position:relative;padding:0 0 20px 35px;color:var(--muted);font-size:14px}.process-list li:not(:last-child):after{content:"";position:absolute;left:11px;top:24px;bottom:3px;border-left:1px dashed var(--line)}.process-list li:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:var(--peach);color:var(--coral-dark);font:600 10px var(--mono)}.delivery .process-list li:before{background:var(--teal-soft);color:var(--teal-dark)}
+    .process-list strong{color:var(--ink);font-weight:700}.tools{display:inline-flex;gap:4px;margin-left:7px;vertical-align:middle}.tool-dot{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--sunk);color:var(--muted)}.tool-dot .icon{width:13px;height:13px;stroke-width:2}.tool-dot:hover{background:var(--yellow-soft);color:var(--ink)}
+    .branch-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:5px}.branch{padding:15px;border-radius:12px;background:var(--sunk)}.branch b{display:block;font:600 15px var(--display);color:var(--ink);margin-bottom:5px}.branch span{font-size:13px;color:var(--muted)}
+
+    .close-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:34px}.close-step{position:relative;padding:22px 15px;border-block:1px solid var(--line);border-left:1px solid var(--line);background:var(--surface)}.close-step:first-child{border-radius:18px 0 0 18px}.close-step:last-child{border-right:1px solid var(--line);border-radius:0 18px 18px 0}.close-step:not(:last-child):after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--coral);font-weight:700}.close-step span{font:500 10px var(--mono);color:var(--coral-dark)}.close-step b{display:block;font:600 16px/1.25 var(--display);margin-top:12px}
+    .retro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.retro{padding:23px;border:1px solid var(--line);border-radius:17px;background:var(--surface)}.retro span{font:500 10px var(--mono);color:var(--teal-dark)}.retro h3{font-size:20px;margin:16px 0 8px}.retro p{font-size:13px;color:var(--muted)}
+    .feedback{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-top:18px;padding:30px;border-radius:20px;background:var(--teal-soft);border:1px solid #c9e5e2}.feedback h3{font-size:28px}.feedback p{color:var(--muted);margin-top:8px}.feedback .return{font:700 24px var(--display);color:var(--teal-dark);white-space:nowrap}
+
+    .phase-loop{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;align-items:center;margin-top:38px}
+    .phase-node{padding:26px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+    .phase-node .phase-num{font:500 11px var(--mono);margin-bottom:14px}
+    .phase-node h3{font-size:22px;margin-bottom:8px}
+    .phase-node p{font-size:14px;color:var(--muted)}
+    .phase-arrow{display:flex;align-items:center;justify-content:center;font:700 24px var(--display);color:var(--line)}
+    .phase-return{margin-top:10px;padding:18px 24px;border-radius:14px;background:var(--yellow-soft);border:1px solid #E8D98A;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+    .owner-cta{display:grid;grid-template-columns:1fr auto;gap:38px;align-items:center;padding:48px;border-radius:26px;background:var(--ink);color:var(--bg)}.owner-cta h2{font-size:clamp(35px,4.8vw,58px)}.owner-cta p{max-width:690px;margin-top:14px;color:rgba(253,248,244,.67);font-size:17px}.owner-cta .pill{background:var(--coral);color:var(--ink);white-space:nowrap}
+    footer{padding:40px 0;border-top:1px solid var(--line);background:var(--surface)}footer .wrap{display:flex;justify-content:space-between;gap:24px;align-items:center}.footer-note{color:var(--muted);font-size:13px}
+
+    @media(max-width:980px){.tool-grid{grid-template-columns:repeat(4,1fr)}.retro-grid{grid-template-columns:1fr 1fr}.close-flow{grid-template-columns:1fr}.close-step{border:1px solid var(--line);border-bottom:0}.close-step:first-child{border-radius:16px 16px 0 0}.close-step:last-child{border-bottom:1px solid var(--line);border-radius:0 0 16px 16px}.close-step:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-12px;transform:translateX(-50%)}}
+    @media(max-width:820px){.hero{grid-template-columns:1fr}.definition-grid,.pre-grid{grid-template-columns:1fr}.enrichment{grid-template-columns:1fr}.tool-grid{grid-template-columns:repeat(3,1fr)}.owner-cta{grid-template-columns:1fr}.owner-cta .pill{width:max-content}.vertical-head{grid-template-columns:auto 1fr}.owner{grid-column:2}.two-processes{grid-template-columns:1fr}.process+.process{border-left:0;border-top:1px solid var(--line)}.phase-loop{grid-template-columns:1fr}.phase-arrow{display:none}}
+    @media(max-width:640px){.wrap{width:auto!important;min-width:0;margin-left:14px;margin-right:14px}.top nav{display:none}.top .wrap{width:auto!important;gap:10px}.draft-tag{margin-left:auto;font-size:0;white-space:nowrap}.draft-tag:after{content:"DRAFT · V0.1";font-size:9px}.hero{display:block;padding:58px 0 70px}.hero h1{font-size:clamp(44px,14vw,65px);overflow-wrap:anywhere}.hero-copy{max-width:100%;font-size:18px;overflow-wrap:anywhere}.hero-actions{flex-direction:column}.hero-actions .pill{width:100%;max-width:100%}.loop-card{max-width:100%;min-width:0;margin-top:38px;padding:14px}.loop-head{gap:8px}.loop-head span{display:none}.loop-track{padding-right:45px}.loop-step{grid-template-columns:30px minmax(0,1fr);min-width:0}.loop-step small{display:none}.section{padding:70px 0}.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-card{min-width:0;min-height:135px;padding:16px 12px}.tool-card b,.tool-card small{overflow-wrap:anywhere}.entry-grid{grid-template-columns:1fr}.enrichment ul{grid-template-columns:1fr}.enrichment li:last-child{grid-column:auto}.vertical-head{padding:20px}.vertical-head h3{font-size:24px}.process{padding:23px 20px;min-width:0}.process-list li{overflow-wrap:anywhere}.branch-grid,.retro-grid{grid-template-columns:1fr}.feedback{grid-template-columns:1fr}.feedback .return{white-space:normal}.owner-cta{padding:30px}.owner-cta .pill{width:100%}footer .wrap{align-items:flex-start;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-sheet" viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h3M14 15h2"/></symbol>
+    <symbol id="i-skill" viewBox="0 0 24 24"><path d="m12 3 2.2 4.6L19 9l-3.5 3.5.8 5-4.3-2.3-4.3 2.3.8-5L5 9l4.8-1.4z"/></symbol>
+    <symbol id="i-mcp" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="m8.2 7.3 2.7 8M15.8 7.3l-2.7 8M8.5 6h7"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24"><path d="m12 3 1.2 4.1L17 9l-3.8 1.9L12 15l-1.2-4.1L7 9l3.8-1.9zM18.5 14l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></symbol>
+    <symbol id="i-project" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M7 14h3M7 17h6"/></symbol>
+    <symbol id="i-voice" viewBox="0 0 24 24"><path d="M4 12v2M8 8v8M12 4v16M16 7v10M20 10v4"/></symbol>
+    <symbol id="i-agent" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="3"/><path d="M9 11h.01M15 11h.01M9 15h6M12 3v3M2 11h2M20 11h2"/></symbol>
+    <symbol id="i-crm" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="7" r="2"/><path d="M3 20c0-4 2-6 5-6s5 2 5 6M14 14c3 0 5 2 5 5"/></symbol>
+    <symbol id="i-data" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
+    <symbol id="i-hr" viewBox="0 0 24 24"><path d="M9 7V5h6v2M4 8h16v12H4zM4 12h16M10 11v3h4v-3"/></symbol>
+    <symbol id="i-lab" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3M8 15h8"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.5 3 7.5 7.5 9.5 4.5-2 7.5-5 7.5-9.5V6zM9 12l2 2 4-5"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 5h4a3 3 0 0 1 3 3v3M17 5h-1a2 2 0 0 0-2 2M14 11l-2 2 2 2M12 13v4"/></symbol>
+  </svg>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="/team/">edzola.ai</a>
+      <span class="draft-tag"><a href="/team/" style="text-decoration:none">Team hub</a> · <a href="/team/impactos/" style="text-decoration:none">ImpactOS</a> · Playbooks v0.1</span>
+      <nav aria-label="Page navigation"><a href="#overview">Overview</a><a href="#entry">Entry</a><a href="#verticals">Verticals</a><a href="#learning">Learning loop</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <span class="eyebrow">The EdZola operating system</span>
+        <h1>One path from need to <em>lasting use.</em></h1>
+        <p class="hero-copy">ImpactOS is how EdZola <strong>qualifies, converts, delivers, closes and learns</strong> across every service. The common spine stays consistent; each vertical owns and improves its playbook.</p>
+        <div class="hero-actions"><a class="pill primary" href="#verticals">Explore the verticals →</a><a class="pill ghost" href="#toolkit">See the delivery toolkit</a></div>
+        <p class="draft-note">A working page for service owners. Steps, tools and automations are intentionally open for refinement.</p>
+      </div>
+      <div class="loop-card" aria-label="ImpactOS continuous feedback loop">
+        <div class="loop-head"><strong>ImpactOS feedback loop</strong><span>CONTINUOUS</span></div>
+        <div class="loop-track">
+          <div class="loop-step"><span class="num">01</span><b>Entry</b><small>Need identified</small></div>
+          <div class="loop-step"><span class="num">02</span><b>Convert</b><small>Scope agreed</small></div>
+          <div class="loop-step"><span class="num">03</span><b>Deliver</b><small>Solution adopted</small></div>
+          <div class="loop-step"><span class="num">04</span><b>Learn</b><small>Evidence captured</small></div>
+          <div class="loop-step"><span class="num">05</span><b>Improve</b><small>ImpactOS updated</small></div>
+        </div>
+        <p class="loop-return"><strong>Every learning returns to the front:</strong> better questions, estimates, proposals and delivery.</p>
+      </div>
+    </section>
+
+    <section class="section sunk" id="toolkit">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Delivery toolkit</span><h2>Automate the repeatable. Keep judgement human.</h2><p class="lead">These are the building blocks owners can attach to any step while protecting customer satisfaction.</p></div>
+        <div class="tool-grid">
+          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-sheet"/></svg></span><b>Templates</b><small>Spreadsheets and repeatable processes</small></div>
+          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-skill"/></svg></span><b>Skills</b><small>Guided customer-ready outputs</small></div>
+          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-mcp"/></svg></span><b>MCP</b><small>Connected development environments</small></div>
+          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-ai"/></svg></span><b>AI apps</b><small>Clean data and prepare documents</small></div>
+          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-project"/></svg></span><b>Zoho Projects</b><small>Custom modules, fields and reports</small></div>
+          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-voice"/></svg></span><b>Zolabs Voice AI</b><small>Automated voice-led collection</small></div>
+          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-agent"/></svg></span><b>AI &amp; Zia agents</b><small>Automated execution and follow-up</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">What ImpactOS is</span><h2>A common spine with vertical-specific playbooks.</h2><p class="lead">ImpactOS takes an organisation from an identified need to a delivered and adopted solution—then turns project learning into a better next engagement.</p></div>
+        <div class="definition-grid">
+          <article class="definition"><span>01 / COMMON</span><h3>One operating spine</h3><p>Entry, requirements, proposal, conversion, delivery, adoption and closure.</p></article>
+          <article class="definition"><span>02 / OWNED</span><h3>Vertical playbooks</h3><p>CRM, data systems, HRMS, Zolabs, Zola Shield and custom AI each follow their own route.</p></article>
+          <article class="definition"><span>03 / LEARNING</span><h3>A loop, not a line</h3><p>Retrospectives improve templates, tools, estimates and methods at every stage.</p></article>
+        </div>
+
+        <div class="phase-loop">
+          <div class="phase-node" style="border-top:4px solid var(--coral)">
+            <div class="phase-num" style="color:var(--coral-dark)">Phase 01</div>
+            <h3>Lead → Deal</h3>
+            <p>A need is identified, qualified and converted into an accepted proposal. The right service, scope and owner are confirmed before anything is built.</p>
+          </div>
+          <div class="phase-arrow">→</div>
+          <div class="phase-node" style="border-top:4px solid var(--teal)">
+            <div class="phase-num" style="color:var(--teal-dark)">Phase 02</div>
+            <h3>Execute</h3>
+            <p>The proposal becomes a delivered, adopted and closed solution. Delivery follows the vertical playbook — and ends only when the customer owns the outcome.</p>
+          </div>
+          <div class="phase-arrow">→</div>
+          <div class="phase-node" style="border-top:4px solid var(--yellow)">
+            <div class="phase-num" style="color:#654f00">Phase 03</div>
+            <h3>R&amp;D Loop</h3>
+            <p>Templates refined, automations built, playbooks updated. Every project's learning becomes a permanent improvement — to questions, estimates, proposals and delivery.</p>
+          </div>
+        </div>
+        <div class="phase-return">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font:700 22px var(--display);color:#654f00">↺</span>
+            <span style="font-weight:700;color:#654f00">R&amp;D loops back into Lead</span>
+          </div>
+          <span style="font-size:13px;color:var(--muted)">Better questions, faster estimates, stronger proposals — compounding with every completed engagement.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sunk" id="entry">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Broad entry stage</span><h2>Tagged enquiries become deals. Untagged enquiries are qualified first.</h2></div>
+        <div class="entry-grid">
+          <article class="route direct"><span class="eyebrow">Website &amp; landing pages</span><h3>Direct to deal</h3><p>The selected ImpactOS service is already tagged, so the enquiry is created directly as a deal and routed to its owner.</p><div class="mini-flow"><span class="mini-node">Enquiry</span><span class="arrow">→</span><span class="mini-node">Service tag</span><span class="arrow">→</span><span class="mini-node">Deal</span></div></article>
+          <article class="route qualify"><span class="eyebrow">Created by EdZola</span><h3>Qualify, then convert</h3><p>If no service is tagged, it stays a lead until the right ImpactOS service and owner are identified.</p><div class="mini-flow"><span class="mini-node">Lead</span><span class="arrow">→</span><span class="mini-node">Classify</span><span class="arrow">→</span><span class="mini-node">Deal</span></div></article>
+        </div>
+        <div class="enrichment">
+          <div><h3>Then enrich the deal.</h3><p>Auto-populate the context the owner needs to act.</p></div>
+          <ul><li>Previous work with the organisation</li><li>Previously existing nonprofit information</li><li>Zoho’s internal signal intelligence</li><li>Relevant organisation and contact details</li><li><strong>Write the consolidated summary as notes in the deal section.</strong></li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="requirements">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Before the proposal</span><h2>Choose the lightest path to clear requirements.</h2><p class="lead">The deal type and complexity determine the mix. Most proposals will use one or more of these routes.</p></div>
+        <div class="pre-grid">
+          <article class="pre-card"><span class="tool-icon"><svg class="icon"><use href="#i-sheet"/></svg></span><h3>Share templates</h3><p>Use structured spreadsheets or templated processes when the customer can describe the requirement independently.</p></article>
+          <article class="pre-card"><span class="tool-icon"><svg class="icon"><use href="#i-skill"/></svg></span><h3>Share cloud skills</h3><p>Guide the customer to prepare requirements, documents or structured inputs.</p></article>
+          <article class="pre-card"><span class="tool-icon"><svg class="icon"><use href="#i-crm"/></svg></span><h3>Clarify on a call</h3><p>Work through ambiguity together when the deal is complex or the customer needs support.</p></article>
+        </div>
+        <div class="combine">Template + skill + call, in any combination → high-level requirements → estimate → proposal</div>
+        <aside class="routing-note"><svg class="icon"><use href="#i-route"/></svg><div><h3>Flag for a separate solution-routing framework</h3><p>Multi-service or unclear deals need an internal decision: CRM or Creator? CRM or an EdZola-built solution? Creator or an EdZola-built solution? Name the primary service, supporting services, platform and accountable owner before proposing.</p></div></aside>
+      </div>
+    </section>
+
+    <section class="section sunk" id="verticals">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Vertical playbooks</span><h2>Two active lanes for every service.</h2><p class="lead"><strong>Convert</strong> turns an active opportunity into an accepted proposal. <strong>Deliver</strong> takes the converted deal to successful completion.</p></div>
+        <nav class="vertical-nav" aria-label="Jump to vertical"><a href="#crm">CRM</a><a href="#data-systems">Data systems</a><a href="#hrms">HRMS</a><a href="#zolabs">Zolabs</a><a href="#zola-shield">Zola Shield</a><a href="#custom-ai">Custom AI</a></nav>
+        <div class="vertical-stack">
+
+          <article class="vertical" id="crm">
+            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-crm"/></svg></span><div><h3>CRM</h3><p>Strengthen relationships with donors, volunteers, partners, beneficiaries and other stakeholders.</p></div><span class="owner">Owner to refine</span></header>
+            <div class="two-processes">
+              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Map relationship types</strong><span class="tools"><span class="tool-dot" title="Template"><svg class="icon"><use href="#i-sheet"/></svg></span><span class="tool-dot" title="Skill"><svg class="icon"><use href="#i-skill"/></svg></span></span></li><li><strong>Scope modules, pipelines, stages, workflows, reports and integrations</strong></li><li><strong>Estimate and propose</strong></li><li><strong>Record won, lost or deferred</strong></li></ol></div>
+              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Run the CRM design workshop</strong></li><li><strong>Validate fields, layouts and processes</strong></li><li><strong>Connect securely; configure, migrate and integrate</strong><span class="tools"><span class="tool-dot" title="MCP"><svg class="icon"><use href="#i-mcp"/></svg></span><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Test, train and hand over</strong></li><li><strong>Monitor adoption and close</strong></li></ol></div>
+            </div>
+          </article>
+
+          <article class="vertical" id="data-systems">
+            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-data"/></svg></span><div><h3>Data systems</h3><p>Programme and operational systems for admissions, delivery, outcomes, placements and more.</p></div><span class="owner">Owner to refine</span></header>
+            <div class="two-processes">
+              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Identify modules and user groups</strong><span class="tools"><span class="tool-dot" title="Template"><svg class="icon"><use href="#i-sheet"/></svg></span><span class="tool-dot" title="Skill"><svg class="icon"><use href="#i-skill"/></svg></span></span></li><li><strong>Scope functions, indicators, workflows, reports and integrations</strong></li><li><strong>Estimate and propose</strong></li><li><strong>Record won, lost or deferred</strong></li></ol></div>
+              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Run the process and data workshop</strong></li><li><strong>Confirm the data model, journeys and functional design</strong><span class="tools"><span class="tool-dot" title="Zoho Projects"><svg class="icon"><use href="#i-project"/></svg></span></span></li><li><strong>Build, migrate and integrate</strong><span class="tools"><span class="tool-dot" title="MCP"><svg class="icon"><use href="#i-mcp"/></svg></span><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Test, train and deploy</strong></li><li><strong>Adapt, monitor and close</strong></li></ol></div>
+            </div>
+          </article>
+
+          <article class="vertical" id="hrms">
+            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-hr"/></svg></span><div><h3>HRMS</h3><p>Zoho People core HR, extended with the modules each organisation needs.</p></div><span class="owner">Owner to refine</span></header>
+            <div class="two-processes">
+              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Capture the workforce, policies and required modules</strong><span class="tools"><span class="tool-dot" title="Template"><svg class="icon"><use href="#i-sheet"/></svg></span></span></li><li><strong>Select Zoho People plus Expense, Payroll and/or Recruit as needed</strong></li><li><strong>Clarify complexity, estimate and propose</strong></li><li><strong>Record won, lost or deferred</strong></li></ol></div>
+              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Validate HR processes and approve the specification</strong></li><li><strong>Configure Zoho People and selected modules</strong><span class="tools"><span class="tool-dot" title="MCP"><svg class="icon"><use href="#i-mcp"/></svg></span><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Migrate data and test</strong></li><li><strong>Train the internal POC and staff</strong></li><li><strong>Deploy, monitor adoption and close</strong></li></ol></div>
+            </div>
+          </article>
+
+          <article class="vertical" id="zolabs">
+            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-lab"/></svg></span><div><h3>Zolabs</h3><p>Voice AI research and evaluation studies—from a controlled pilot to a final report.</p></div><span class="owner">Owner to refine</span></header>
+            <div class="two-processes">
+              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Confirm a Voice AI research or evaluation study</strong></li><li><strong>Define participant count, language and complexity</strong><span class="tools"><span class="tool-dot" title="Template"><svg class="icon"><use href="#i-sheet"/></svg></span><span class="tool-dot" title="Zolabs Voice AI"><svg class="icon"><use href="#i-voice"/></svg></span></span></li><li><strong>Share the estimate and study plan</strong></li><li><strong>Confirm the engagement</strong></li></ol></div>
+              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Configure and run the pilot</strong><span class="tools"><span class="tool-dot" title="Zolabs Voice AI"><svg class="icon"><use href="#i-voice"/></svg></span></span></li><li><strong>Review feedback and make changes</strong></li><li><strong>Run the full study</strong><span class="tools"><span class="tool-dot" title="AI agents"><svg class="icon"><use href="#i-agent"/></svg></span></span></li><li><strong>Analyse and share the final report</strong><span class="tools"><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Accept and close</strong></li></ol></div>
+            </div>
+          </article>
+
+          <article class="vertical" id="zola-shield">
+            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-shield"/></svg></span><div><h3>Zola Shield</h3><p>Two routes for DPDP readiness: Assess cohort or Comply cohort.</p></div><span class="owner">Owner to refine</span></header>
+            <div class="two-processes">
+              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Classify the enquiry: Assess or Comply</strong><span class="tools"><span class="tool-dot" title="Skill"><svg class="icon"><use href="#i-skill"/></svg></span></span></li></ol><div class="branch-grid"><div class="branch"><b>Assess cohort</b><span>Confirm fit, share the next planned cohort date and enrol.</span></div><div class="branch"><b>Comply cohort</b><span>Clarify the detailed Comply plan, scope, estimate and confirm.</span></div></div></div>
+              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><div class="branch-grid"><div class="branch"><b>Assess cohort</b><span>Onboard → join the scheduled cohort → complete assessment outputs → close.</span></div><div class="branch"><b>Comply cohort</b><span>Detailed plan → implementation and remediation → training → validation → close.</span></div></div><ol class="process-list" style="margin-top:20px"><li><strong>Capture cohort learning and feed it back into Zola Shield</strong><span class="tools"><span class="tool-dot" title="Zoho Projects"><svg class="icon"><use href="#i-project"/></svg></span><span class="tool-dot" title="AI agents"><svg class="icon"><use href="#i-agent"/></svg></span></span></li></ol></div>
+            </div>
+          </article>
+
+          <article class="vertical" id="custom-ai">
+            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-agent"/></svg></span><div><h3>Custom AI solutions</h3><p>Purpose-built AI workflows with explicit feasibility, safety and human-oversight checks.</p></div><span class="owner">Owner to refine</span></header>
+            <div class="two-processes">
+              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Clarify the use case and intended outcome</strong></li><li><strong>Assess data, feasibility, integration and risk</strong><span class="tools"><span class="tool-dot" title="Skill"><svg class="icon"><use href="#i-skill"/></svg></span><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Define prototype or implementation scope</strong></li><li><strong>Estimate, propose and confirm</strong></li></ol></div>
+              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Design and prototype</strong><span class="tools"><span class="tool-dot" title="MCP"><svg class="icon"><use href="#i-mcp"/></svg></span></span></li><li><strong>Evaluate with representative data</strong></li><li><strong>Build, integrate and test</strong><span class="tools"><span class="tool-dot" title="AI agents"><svg class="icon"><use href="#i-agent"/></svg></span></span></li><li><strong>Train and deploy</strong></li><li><strong>Monitor performance, adoption and close</strong></li></ol></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="learning">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Common closing process</span><h2>Close the project. Keep the learning moving.</h2><p class="lead">Completion means the customer can use and own the solution—not simply that the technical work has stopped.</p></div>
+        <div class="close-flow"><div class="close-step"><span>01</span><b>Customer acceptance</b></div><div class="close-step"><span>02</span><b>Documentation &amp; training</b></div><div class="close-step"><span>03</span><b>Handover &amp; adoption</b></div><div class="close-step"><span>04</span><b>Retrospective</b></div><div class="close-step"><span>05</span><b>Learning Circle</b></div></div>
+        <div class="retro-grid">
+          <article class="retro"><span>GATE 01</span><h3>Deal converted</h3><p>Review source, requirements, objections, estimation and promises handed to delivery.</p></article>
+          <article class="retro"><span>GATE 02</span><h3>Design locked</h3><p>Review wrong assumptions, missing questions, scope shifts and reusable patterns.</p></article>
+          <article class="retro"><span>GATE 03</span><h3>Delivery complete</h3><p>Review estimate versus actual, rework, quality, migration and technical learning.</p></article>
+          <article class="retro"><span>GATE 04</span><h3>Adoption reviewed</h3><p>Review real use, training gaps, outcomes and follow-up needs.</p></article>
+        </div>
+        <div class="feedback"><div><h3>The Learning Circle sends improvements back to entry.</h3><p>Update website questions, deal notes, templates, skills, estimation rules, proposals, delivery playbooks, reusable code, training and automation.</p></div><span class="return">↺ Back to the front</span></div>
+      </div>
+    </section>
+
+    <section class="section sunk">
+      <div class="wrap owner-cta">
+        <div><span class="eyebrow" style="color:var(--coral)">For ImpactOS owners</span><h2>This draft becomes useful when each owner makes it real.</h2><p>Refine the steps, name the accountable roles, attach the right templates and automations, define customer-success checks, and bring the updated playbook back to the Learning Circle.</p></div>
+        <a class="pill" href="mailto:reachus@edzola.com?subject=ImpactOS%20playbook%20feedback">Share improvements →</a>
+      </div>
+    </section>
+
+    <section class="section" id="sample-output">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Sample finished output · Data systems</span>
+          <h2>What a completed engagement produces.</h2>
+          <p class="lead">When ImpactOS data-systems work is done, these three documents exist and the build team has everything they need — no ambiguity, no discovery gaps mid-sprint.</p>
+        </div>
+        <div class="definition-grid">
+
+          <div class="definition" style="border-top:4px solid var(--teal)">
+            <span>Deliverable 01</span>
+            <h3>Theory of Change Map</h3>
+            <p>Your impact logic translated into a data architecture. Every module field is tied to an indicator that matters.</p>
+            <div style="margin-top:22px;display:grid;gap:8px">
+              <div style="padding:11px 14px;border-radius:10px;background:var(--teal-soft);font-size:13px;font-weight:600;color:var(--teal-dark)">Activities → Outputs → Outcomes → Impact</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Indicators mapped to data fields</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Data architecture grounded in programme logic</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Reporting periods and aggregation rules defined</div>
+            </div>
+          </div>
+
+          <div class="definition" style="border-top:4px solid var(--coral)">
+            <span>Deliverable 02</span>
+            <h3>MIS Blueprint</h3>
+            <p>Module specs, data model, user stories, workflows, and permissions — everything the build team needs to start without another discovery cycle.</p>
+            <div style="margin-top:22px;display:grid;gap:8px">
+              <div style="padding:11px 14px;border-radius:10px;background:var(--peach);font-size:13px;font-weight:600;color:var(--coral-dark)">Confirmed modules and user groups</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Data model and entity relationships</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Functional spec per module with field list</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Permissions matrix and workflow journeys</div>
+            </div>
+          </div>
+
+          <div class="definition" style="border-top:4px solid var(--yellow)">
+            <span>Deliverable 03</span>
+            <h3>Dashboard Plan</h3>
+            <p>Five ready-to-build dashboards — each with KPIs, chart types, and filter specs defined. No guesswork for the front-end team.</p>
+            <div style="margin-top:22px;display:grid;gap:8px">
+              <div style="padding:11px 14px;border-radius:10px;background:var(--yellow-soft);font-size:13px;font-weight:600;color:#654f00">Admin · Programme · Partner · Volunteer · Impact</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">KPIs and chart types per dashboard</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Filter specs and date-range logic</div>
+              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Export formats for funder reporting</div>
+            </div>
+          </div>
+
+        </div>
+        <div style="margin-top:24px;padding:22px 28px;border-radius:16px;background:var(--sunk);border:1px dashed var(--line);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center">
+          <div>
+            <p style="font-size:14px;font-weight:700;color:var(--ink)">These are the target artefacts — not a scope list.</p>
+            <p style="font-size:14px;color:var(--muted);margin-top:4px">Each data-systems engagement may scope differently. The deliverables above represent a complete engagement. Owners should note which are in scope and which are excluded for each deal.</p>
+          </div>
+          <span style="font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding:6px 9px;border:1px solid var(--line);border-radius:99px;white-space:nowrap">Owner to confirm scope</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><a class="logo" href="/">edzola.ai</a><span class="footer-note">ImpactOS working draft · for team review</span></div></footer>
+</body>
+</html>

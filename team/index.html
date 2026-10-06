@@ -5,7 +5,7 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>Inside EdZola | Team Hub</title>
-  <meta name="description" content="The EdZola team hub: the employee guidebook, our operating model and the NGO operations course, in one place.">
+  <meta name="description" content="The EdZola team hub: the employee guidebook, ImpactOS, the Insight build spec and the NGO operations course, in one place.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -32,7 +32,7 @@
     .hero h1 em:after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;background:var(--yellow);opacity:.55;z-index:-1;border-radius:3px}
     .hero p{font-size:19px;color:var(--muted)}
 
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:28px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding-bottom:28px}
     .card{position:relative;display:flex;flex-direction:column;gap:14px;padding:26px;border-radius:24px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;transition:transform .18s,box-shadow .18s}
     .card:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(74,48,32,.14)}
     .card .badge{width:52px;height:52px;border-radius:16px;display:grid;place-items:center}
@@ -47,6 +47,7 @@
     .grove .badge{background:var(--forest-soft);color:var(--forest)}
     .ios .badge{background:var(--peach);color:var(--coral-dark)}
     .ngo .badge{background:var(--teal-soft);color:var(--teal-dark)}
+    .ins .badge{background:var(--yellow-soft);color:#654F00}
 
     .start{margin:8px 0 56px;padding:24px 26px;border-radius:20px;background:var(--yellow-soft);border:1px solid #EFDC94;display:flex;gap:16px;align-items:flex-start}
     .start h3{font-size:20px;margin-bottom:6px}.start p{color:#5a4f3a}
@@ -71,6 +72,7 @@
     <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 22v-7"/><path d="M8 15h8a4 4 0 0 0 1-7.9A5 5 0 0 0 7.1 6 4.5 4.5 0 0 0 8 15z"/></symbol>
     <symbol id="i-os" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></symbol>
     <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/><path d="M8 7h7M8 11h5"/></symbol>
+    <symbol id="i-signal" viewBox="0 0 24 24"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="6" r="2.5"/><circle cx="17" cy="18" r="2.5"/><path d="M9.7 10.6l5-3.2M9.7 13.4l5 3.2"/></symbol>
     <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></symbol>
   </svg>
 
@@ -86,7 +88,7 @@
     <section class="hero">
       <span class="eyebrow">For EdZolans</span>
       <h1>Everything you need to <em>work the EdZola way.</em></h1>
-      <p>How we work, how we deliver, and how the nonprofits we serve actually run. Three resources, one place. Bookmark this page.</p>
+      <p>How we work, how we deliver, what we build, and how the nonprofits we serve actually run. Four resources, one place. Bookmark this page.</p>
     </section>
 
     <section class="grid" aria-label="Team resources">
@@ -105,15 +107,15 @@
 
       <a class="card ios" href="/team/impactos/">
         <span class="badge"><svg class="icon"><use href="#i-os"/></svg></span>
-        <span class="kicker">Operating model · draft v0.1</span>
+        <span class="kicker">Operating system · draft v0.5</span>
         <h2>ImpactOS</h2>
-        <p>How EdZola qualifies, converts, delivers, closes and learns across every service vertical, from CRM and data systems to Zolabs and ZolaShield.</p>
+        <p>The operating system behind everything EdZola builds: one method, a growing body of knowledge, and the AI tools that run on them.</p>
         <ul>
-          <li>Entry points and qualification</li>
-          <li>Convert and deliver, per vertical</li>
-          <li>The learning loop</li>
+          <li>The three layers: method, knowledge, modules</li>
+          <li>What it means for your service</li>
+          <li>The spine every engagement follows</li>
         </ul>
-        <span class="go"><span>Open the playbook →</span><span>Draft</span></span>
+        <span class="go"><span>Read the definition →</span><span>Draft</span></span>
       </a>
 
       <a class="card ngo" href="/thinking/how-nonprofits-operate/">
@@ -128,6 +130,18 @@
         </ul>
         <span class="go"><span>Start the course →</span><span>~3 hrs</span></span>
       </a>
+      <a class="card ins" href="/team/insight/">
+        <span class="badge"><svg class="icon"><use href="#i-signal"/></svg></span>
+        <span class="kicker">ImpactOS module · build spec v0.2</span>
+        <h2>Insight</h2>
+        <p>The intelligence layer inside Zoho CRM: one trusted record per nonprofit, signals matched to it, fit and intent scored across six services, and a brief with a next action.</p>
+        <ul>
+          <li>Product flow and the five screens</li>
+          <li>Data model, scoring and sources</li>
+          <li>Field catalogue and delivery plan</li>
+        </ul>
+        <span class="go"><span>Open the spec →</span><span>Build spec</span></span>
+      </a>
     </section>
 
     <aside class="start">
@@ -137,7 +151,8 @@
         <ol>
           <li><b>The EdZola Grove</b> in your first week. It's how the company works.</li>
           <li><b>How Nonprofits Operate</b> before your first partner project.</li>
-          <li><b>ImpactOS</b> once you're on a deal or delivery, to see the full lifecycle.</li>
+          <li><b>ImpactOS</b> once you're on a deal or delivery, to see how the method, knowledge and modules fit together.</li>
+          <li><b>Insight</b> if you sell, scope or build CRM work. It's the first ImpactOS module.</li>
         </ol>
       </div>
     </aside>

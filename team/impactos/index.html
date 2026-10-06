@@ -4,364 +4,877 @@
   <meta charset="utf-8">
   <meta name="robots" content="noindex,nofollow">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>ImpactOS — Draft Operating Model | EdZola</title>
-  <meta name="description" content="A working draft of ImpactOS: how EdZola qualifies, converts, delivers, closes, and learns across every service vertical.">
+  <title>ImpactOS: The EdZola Operating System | EdZola</title>
+  <meta name="description" content="ImpactOS is how EdZola works: one method, a growing body of knowledge, and the AI tools that run on them. Every service we deliver and every product we ship is built on it.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
   <style>
-    :root {
-      --bg:#fdf8f4; --surface:#fff; --sunk:#f6ede5; --ink:#1a1a1a; --muted:#6b6360;
-      --line:#eadfd6; --coral:#e8967a; --coral-dark:#a94d35; --peach:#fae8dc;
-      --teal:#8ecfca; --teal-dark:#236b66; --teal-soft:#e2f3f1; --yellow:#f7c948;
-      --yellow-soft:#fff6cf; --shadow:0 16px 46px rgba(74,48,32,.1);
-      --display:"Bricolage Grotesque",sans-serif; --sans:"Figtree",sans-serif;
-      --mono:"JetBrains Mono",monospace;
+    :root{
+      --bg:#fdf8f4;--surface:#fff;--sunk:#f6ede5;--ink:#1a1a1a;--muted:#6b6360;
+      --line:#eadfd6;--coral:#e8967a;--coral-dark:#a94d35;--peach:#fae8dc;
+      --teal:#8ecfca;--teal-dark:#236b66;--teal-soft:#e2f3f1;--yellow:#f7c948;
+      --yellow-soft:#fff6cf;--yellow-dark:#654f00;--forest:#2e5c45;--forest-soft:#dae7dd;
+      --shadow:0 16px 46px rgba(74,48,32,.1);
+      --display:"Bricolage Grotesque",sans-serif;--sans:"Figtree",sans-serif;--mono:"JetBrains Mono",monospace;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:88px}
     body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
     a{color:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin:auto}
     h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.035em;line-height:1.06;text-wrap:balance;margin:0}
-    p{margin:0}.muted{color:var(--muted)}
+    p{margin:0}
     :focus-visible{outline:3px solid var(--coral);outline-offset:3px}
     .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark)}
-    .pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;font-weight:700;text-decoration:none}
-    .pill.primary{background:var(--coral)}.pill.ghost{box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface)}
+    .pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;font-weight:700;text-decoration:none;border:0;font-family:inherit;font-size:15px;cursor:pointer}
+    .pill.primary{background:var(--coral);color:var(--ink)}.pill.ghost{box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface);color:var(--ink)}
     .icon{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+    .tag{display:inline-block;font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding:6px 9px;border:1px solid var(--line);border-radius:99px;white-space:nowrap}
 
+    /* Top bar */
     .top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 91%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
     .top .wrap{height:68px;display:flex;align-items:center;gap:22px}.logo{font:700 22px var(--display);letter-spacing:-.035em;text-decoration:none}
     .draft-tag{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--coral-dark);background:var(--peach);padding:5px 9px;border-radius:99px}
     .top nav{margin-left:auto;display:flex;align-items:center;gap:4px}.top nav a{padding:8px 11px;color:var(--muted);font-size:14px;text-decoration:none;border-radius:99px}.top nav a:hover{background:var(--sunk);color:var(--ink)}
 
-    .hero{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;padding:84px 0 92px}.hero>*{min-width:0}
-    .hero h1{font-size:clamp(52px,7vw,88px);line-height:.94;margin:18px 0 26px}.hero h1 em{font-style:normal;color:var(--coral-dark)}
-    .hero-copy{max-width:610px;color:var(--muted);font-size:20px;line-height:1.65}.hero-copy strong{color:var(--ink)}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.draft-note{margin-top:24px;font:12px/1.6 var(--mono);color:var(--muted)}
-    .loop-card{position:relative;padding:24px;border:1px solid var(--line);border-radius:28px;background:var(--sunk);box-shadow:var(--shadow);overflow:hidden}
-    .loop-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;background:var(--ink);color:var(--bg)}
-    .loop-head strong{font:600 15px var(--display)}.loop-head span{font:10px var(--mono);opacity:.72}
-    .loop-track{position:relative;display:grid;gap:9px;padding:26px 54px 14px 0}.loop-track:after{content:"↺";position:absolute;right:0;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:40px;height:76%;border:2px dashed var(--coral);border-left:0;border-radius:0 30px 30px 0;color:var(--coral-dark);font:700 24px var(--display)}
-    .loop-step{display:grid;grid-template-columns:33px 1fr auto;gap:11px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
-    .loop-step b{font:600 15px var(--display)}.loop-step small{color:var(--muted);font-size:12px}.loop-step .num{font:500 10px var(--mono);color:var(--coral-dark)}
-    .loop-return{margin:9px 0 0;padding:12px 14px;border-radius:12px;background:var(--yellow-soft);font-size:13px;color:#654f00}.loop-return strong{font-weight:700}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding:84px 0 92px}.hero>*{min-width:0}
+    .hero h1{font-size:clamp(50px,6.6vw,84px);line-height:.95;margin:18px 0 26px}.hero h1 em{font-style:normal;color:var(--coral-dark)}
+    .hero-copy{max-width:600px;color:var(--muted);font-size:20px;line-height:1.65}.hero-copy strong{color:var(--ink)}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .draft-note{margin-top:24px;font:12px/1.6 var(--mono);color:var(--muted)}
 
-    .section{padding:94px 0}.section.sunk{background:var(--sunk);border-block:1px solid var(--line)}.section-head{max-width:790px;margin-bottom:42px}
-    .section h2{font-size:clamp(38px,5vw,62px);margin:14px 0 18px}.lead{font-size:18px;line-height:1.72;color:var(--muted)}
+    .stackcard{padding:22px;border:1px solid var(--line);border-radius:28px;background:var(--sunk);box-shadow:var(--shadow)}
+    .sc-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;background:var(--ink);color:var(--bg)}
+    .sc-head strong{font:600 15px var(--display)}.sc-head span{font:10px var(--mono);opacity:.72}
+    .tier-label{display:block;margin:18px 2px 8px;font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .built{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .blk{padding:14px 15px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+    .blk b{display:block;font:600 17px var(--display)}.blk span{font-size:12px;color:var(--muted)}
+    .blk.svc{border-top:4px solid var(--coral)}.blk.prod{border-top:4px solid var(--yellow)}
+    .os{padding:10px;border-radius:16px;background:var(--ink)}
+    .os .tier-label{color:rgba(253,248,244,.6);margin:4px 6px 10px}
+    .layer{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 14px;border-radius:11px;margin-top:6px}
+    .layer b{font:600 16px var(--display)}.layer span{font-size:12px;opacity:.75}.layer i{font:normal 500 10px var(--mono);opacity:.7}
+    .layer.mod{background:var(--teal-soft);color:var(--teal-dark)}
+    .layer.know{background:var(--forest-soft);color:var(--forest)}
+    .layer.meth{background:var(--peach);color:var(--coral-dark)}
+    .sc-foot{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--yellow-soft);font-size:13px;color:var(--yellow-dark)}
 
-    .tool-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}.tool-card{min-height:148px;padding:18px 14px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
-    .tool-card .tool-icon{display:grid;place-items:center;width:38px;height:38px;margin-bottom:20px;border-radius:11px;background:var(--teal-soft);color:var(--teal-dark)}
-    .tool-card:nth-child(even) .tool-icon{background:var(--peach);color:var(--coral-dark)}.tool-card b{display:block;font:600 15px/1.15 var(--display)}.tool-card small{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.45}
+    /* Sections */
+    .section{padding:94px 0}.section.sunk{background:var(--sunk);border-block:1px solid var(--line)}
+    .section-head{max-width:790px;margin-bottom:42px}
+    .section h2{font-size:clamp(38px,5vw,60px);margin:14px 0 18px}.lead{font-size:18px;line-height:1.72;color:var(--muted)}
+    .lead strong{color:var(--ink)}
 
-    .definition-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.definition{padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--surface)}
-    .definition span{font:500 11px var(--mono);color:var(--coral-dark)}.definition h3{font-size:24px;margin:22px 0 10px}.definition p{color:var(--muted)}
+    /* Definition block */
+    .defn{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+    .defn-quote{padding:40px;border-radius:26px;background:var(--ink);color:var(--bg)}
+    .defn-quote .eyebrow{color:var(--coral)}
+    .defn-quote blockquote{margin:20px 0 0;font:600 clamp(26px,3vw,36px)/1.18 var(--display);letter-spacing:-.03em}
+    .defn-quote blockquote em{font-style:normal;color:var(--coral)}
+    .defn-quote p{margin-top:22px;color:rgba(253,248,244,.66);font-size:15px}
+    .ppp{display:grid;gap:10px}
+    .ppp-row{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:start;padding:20px 22px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+    .ppp-row .when{font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding-top:5px}
+    .ppp-row h3{font-size:21px;margin-bottom:5px}.ppp-row p{font-size:14px;color:var(--muted)}
+    .ppp-row.a .when{color:var(--coral-dark)}.ppp-row.b .when{color:var(--teal-dark)}.ppp-row.c .when{color:var(--yellow-dark)}
+    .analogy{margin-top:18px;padding:18px 22px;border-radius:14px;background:var(--yellow-soft);border:1px solid #e8d98a;font-size:15px;color:var(--yellow-dark)}
+    .analogy strong{color:var(--ink)}
 
-    .entry-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.route{padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
-    .route.direct{border-top:6px solid var(--teal)}.route.qualify{border-top:6px solid var(--coral)}.route h3{font-size:28px;margin:14px 0 12px}.route p{color:var(--muted)}
-    .mini-flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:24px}.mini-node{padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);font-size:13px;font-weight:600}.arrow{color:var(--coral-dark);font-weight:700}
-    .enrichment{display:grid;grid-template-columns:.7fr 1.3fr;gap:36px;margin-top:18px;padding:30px;border-radius:22px;background:var(--ink);color:var(--bg)}
-    .enrichment h3{font-size:30px}.enrichment p{color:rgba(253,248,244,.66);margin-top:10px}.enrichment ul{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none}.enrichment li{padding:12px 14px;border:1px solid rgba(255,255,255,.13);border-radius:10px;font-size:14px}.enrichment li:last-child{grid-column:1/-1;background:rgba(142,207,202,.13);border-color:rgba(142,207,202,.35)}
+    /* Layers */
+    .layers{display:grid;gap:12px}
+    .lrow{display:grid;grid-template-columns:200px 1fr 1.2fr;gap:28px;align-items:start;padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
+    .lrow .lname{display:flex;flex-direction:column;gap:12px}
+    .lrow .lname .badge{display:grid;place-items:center;width:46px;height:46px;border-radius:13px}
+    .lrow h3{font-size:28px}.lrow .what{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    .lrow .desc p{color:var(--muted);font-size:15px}.lrow .desc p+p{margin-top:10px}
+    .lrow .desc .rule{margin-top:14px;font-size:13px;font-weight:700}
+    .chips{display:flex;flex-wrap:wrap;gap:7px}
+    .chip{padding:7px 11px;border-radius:9px;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--bg)}
+    .lrow.method{border-left:6px solid var(--coral)}.lrow.method .badge{background:var(--peach);color:var(--coral-dark)}.lrow.method .rule{color:var(--coral-dark)}
+    .lrow.knowledge{border-left:6px solid var(--forest)}.lrow.knowledge .badge{background:var(--forest-soft);color:var(--forest)}.lrow.knowledge .rule{color:var(--forest)}
+    .lrow.modules{border-left:6px solid var(--teal)}.lrow.modules .badge{background:var(--teal-soft);color:var(--teal-dark)}.lrow.modules .rule{color:var(--teal-dark)}
+    .divider{display:flex;align-items:center;gap:14px;margin:26px 0 14px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .divider:before,.divider:after{content:"";flex:1;border-top:1.5px dashed var(--line)}
+    .built-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .bcard{padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
+    .bcard.svc{border-top:6px solid var(--coral)}.bcard.prod{border-top:6px solid var(--yellow)}
+    .bcard h3{font-size:28px;margin:10px 0 8px}.bcard p{color:var(--muted);font-size:15px}.bcard .chips{margin-top:18px}
+    .bcard .what{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
-    .pre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pre-card{padding:25px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
-    .pre-card .tool-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--teal-soft);color:var(--teal-dark);margin-bottom:22px}.pre-card h3{font-size:22px;margin-bottom:8px}.pre-card p{color:var(--muted);font-size:14px}
-    .combine{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;padding:18px;border-radius:14px;background:var(--yellow-soft);font-weight:700;text-align:center}
-    .routing-note{display:grid;grid-template-columns:auto 1fr;gap:18px;margin-top:18px;padding:24px;border:1px dashed var(--coral-dark);border-radius:16px;background:var(--peach)}.routing-note .icon{width:28px;height:28px;color:var(--coral-dark)}.routing-note h3{font-size:20px;margin-bottom:6px}.routing-note p{color:var(--muted);font-size:14px}
+    /* Faces */
+    .faces{display:grid;gap:18px}
+    .face-set{border:1px solid var(--line);border-radius:24px;background:var(--surface);overflow:hidden}
+    .face-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 28px;border-bottom:1px solid var(--line)}
+    .face-head h3{font-size:24px}.face-head p{font-size:14px;color:var(--muted);margin-top:3px}
+    .face-row{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr}
+    .face{padding:24px 26px}
+    .face .k{display:inline-block;font:600 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:99px;margin-bottom:14px}
+    .face h4{font-size:19px;margin-bottom:8px}.face p{font-size:14px;color:var(--muted)}
+    .face.k-know .k{background:var(--forest-soft);color:var(--forest)}
+    .face.k-mod .k{background:var(--teal-soft);color:var(--teal-dark)}
+    .face.k-svc .k{background:var(--peach);color:var(--coral-dark)}
+    .face.k-prod .k{background:var(--yellow-soft);color:var(--yellow-dark)}
+    .face-arrow{display:flex;align-items:center;justify-content:center;color:var(--coral-dark);font:700 20px var(--display)}
 
-    .vertical-nav{display:flex;gap:8px;flex-wrap:wrap;margin:-8px 0 34px}.vertical-nav a{padding:8px 13px;border:1px solid var(--line);border-radius:99px;background:var(--surface);font-size:13px;font-weight:700;text-decoration:none}.vertical-nav a:hover{border-color:var(--teal-dark);background:var(--teal-soft)}
-    .vertical-stack{display:grid;gap:18px}.vertical{scroll-margin-top:88px;border:1px solid var(--line);border-radius:24px;background:var(--surface);overflow:hidden}
-    .vertical-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:25px 28px;border-bottom:1px solid var(--line)}
-    .service-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--teal-soft);color:var(--teal-dark)}.service-icon .icon{width:25px;height:25px}.vertical:nth-child(even) .service-icon{background:var(--peach);color:var(--coral-dark)}
-    .vertical-head h3{font-size:28px}.vertical-head p{color:var(--muted);font-size:14px;margin-top:4px}.owner{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding:6px 9px;border:1px solid var(--line);border-radius:99px}
-    .two-processes{display:grid;grid-template-columns:1fr 1fr}.process{padding:28px}.process+.process{border-left:1px solid var(--line)}.process-label{display:flex;align-items:center;gap:9px;margin-bottom:22px;font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-dark)}.process.delivery .process-label{color:var(--teal-dark)}
-    .process-list{list-style:none;margin:0;padding:0;counter-reset:step}.process-list li{position:relative;padding:0 0 20px 35px;color:var(--muted);font-size:14px}.process-list li:not(:last-child):after{content:"";position:absolute;left:11px;top:24px;bottom:3px;border-left:1px dashed var(--line)}.process-list li:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:var(--peach);color:var(--coral-dark);font:600 10px var(--mono)}.delivery .process-list li:before{background:var(--teal-soft);color:var(--teal-dark)}
-    .process-list strong{color:var(--ink);font-weight:700}.tools{display:inline-flex;gap:4px;margin-left:7px;vertical-align:middle}.tool-dot{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--sunk);color:var(--muted)}.tool-dot .icon{width:13px;height:13px;stroke-width:2}.tool-dot:hover{background:var(--yellow-soft);color:var(--ink)}
-    .branch-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:5px}.branch{padding:15px;border-radius:12px;background:var(--sunk)}.branch b{display:block;font:600 15px var(--display);color:var(--ink);margin-bottom:5px}.branch span{font-size:13px;color:var(--muted)}
+    /* Sort it */
+    .sort{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;align-items:start}
+    .tests{display:grid;gap:8px}
+    .test{display:grid;grid-template-columns:28px 1fr auto;gap:14px;align-items:center;padding:15px 18px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+    .test .n{font:500 11px var(--mono);color:var(--muted)}.test p{font-size:15px}
+    .test .ans{font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:99px}
+    .ans.m{background:var(--peach);color:var(--coral-dark)}.ans.k{background:var(--forest-soft);color:var(--forest)}.ans.mo{background:var(--teal-soft);color:var(--teal-dark)}.ans.s{background:var(--sunk);color:var(--ink);border:1px solid var(--line)}.ans.p{background:var(--yellow-soft);color:var(--yellow-dark)}
+    .tests-note{margin-top:6px;padding:14px 18px;border-radius:14px;border:1px dashed var(--coral-dark);background:var(--peach);font-size:14px;color:var(--muted)}
+    .tests-note strong{color:var(--ink)}
+    .game{padding:30px;border-radius:24px;background:var(--ink);color:var(--bg)}
+    .game-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(253,248,244,.6)}
+    .game-item{min-height:96px;margin:22px 0;font:600 clamp(24px,2.6vw,32px)/1.15 var(--display);letter-spacing:-.03em}
+    .game-btns{display:flex;flex-wrap:wrap;gap:8px}
+    .gbtn{padding:10px 14px;border-radius:99px;border:1.5px solid rgba(253,248,244,.25);background:transparent;color:var(--bg);font:600 14px var(--sans);cursor:pointer}
+    .gbtn:hover:not(:disabled){border-color:var(--coral);background:rgba(232,150,122,.14)}
+    .gbtn:disabled{cursor:default;opacity:.45}
+    .gbtn.right{opacity:1;background:var(--teal);border-color:var(--teal);color:var(--ink)}
+    .gbtn.wrong{opacity:1;background:transparent;border-color:var(--coral);color:var(--coral)}
+    .game-why{min-height:72px;margin-top:20px;padding:16px 18px;border-radius:14px;background:rgba(253,248,244,.07);font-size:15px;color:rgba(253,248,244,.82)}
+    .game-why strong{color:var(--bg)}
+    .game-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+    .game-foot .pill{min-height:40px;font-size:14px}
 
-    .close-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:34px}.close-step{position:relative;padding:22px 15px;border-block:1px solid var(--line);border-left:1px solid var(--line);background:var(--surface)}.close-step:first-child{border-radius:18px 0 0 18px}.close-step:last-child{border-right:1px solid var(--line);border-radius:0 18px 18px 0}.close-step:not(:last-child):after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--coral);font-weight:700}.close-step span{font:500 10px var(--mono);color:var(--coral-dark)}.close-step b{display:block;font:600 16px/1.25 var(--display);margin-top:12px}
-    .retro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.retro{padding:23px;border:1px solid var(--line);border-radius:17px;background:var(--surface)}.retro span{font:500 10px var(--mono);color:var(--teal-dark)}.retro h3{font-size:20px;margin:16px 0 8px}.retro p{font-size:13px;color:var(--muted)}
-    .feedback{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-top:18px;padding:30px;border-radius:20px;background:var(--teal-soft);border:1px solid #c9e5e2}.feedback h3{font-size:28px}.feedback p{color:var(--muted);margin-top:8px}.feedback .return{font:700 24px var(--display);color:var(--teal-dark);white-space:nowrap}
+    /* Services */
+    .svc-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+    .svc-tab{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid var(--line);border-radius:99px;background:var(--surface);font:700 14px var(--sans);color:var(--ink);cursor:pointer}
+    .svc-tab .icon{width:17px;height:17px}
+    .svc-tab:hover{border-color:var(--teal-dark)}
+    .svc-tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+    .svc-panel{border:1px solid var(--line);border-radius:26px;background:var(--surface);overflow:hidden}
+    .svc-panel[hidden]{display:none}
+    .svc-hero{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:30px 32px;border-bottom:1px solid var(--line)}
+    .svc-hero .service-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:15px;background:var(--teal-soft);color:var(--teal-dark)}
+    .svc-hero .service-icon .icon{width:27px;height:27px}
+    .svc-hero h3{font-size:30px}.svc-hero .means{margin-top:6px;font-size:17px;color:var(--muted)}
+    .svc-hero .means strong{color:var(--ink)}
+    .svc-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .svc-cell{padding:26px 24px}.svc-cell+.svc-cell{border-left:1px solid var(--line)}
+    .svc-cell .k{display:inline-block;font:600 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:99px;margin-bottom:6px}
+    .svc-cell .sub{display:block;font-size:12px;color:var(--muted);margin-bottom:16px}
+    .svc-cell ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .svc-cell li{position:relative;padding-left:16px;font-size:14px;line-height:1.5}
+    .svc-cell li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--line)}
+    .svc-cell li small{display:block;color:var(--muted);font-size:12.5px}
+    .svc-cell.m .k{background:var(--peach);color:var(--coral-dark)}.svc-cell.m li:before{background:var(--coral)}
+    .svc-cell.kn .k{background:var(--forest-soft);color:var(--forest)}.svc-cell.kn li:before{background:var(--forest)}
+    .svc-cell.mo .k{background:var(--teal-soft);color:var(--teal-dark)}.svc-cell.mo li:before{background:var(--teal)}
+    .svc-cell.pr .k{background:var(--yellow-soft);color:var(--yellow-dark)}.svc-cell.pr li:before{background:var(--yellow)}
+    .svc-ask{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;padding:22px 32px;border-top:1px solid var(--line);background:var(--sunk)}
+    .svc-ask .icon{width:26px;height:26px;color:var(--coral-dark);margin-top:2px}
+    .svc-ask b{font:600 17px var(--display)}.svc-ask p{font-size:14px;color:var(--muted);margin-top:3px}
 
-    .phase-loop{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;align-items:center;margin-top:38px}
-    .phase-node{padding:26px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
-    .phase-node .phase-num{font:500 11px var(--mono);margin-bottom:14px}
-    .phase-node h3{font-size:22px;margin-bottom:8px}
-    .phase-node p{font-size:14px;color:var(--muted)}
-    .phase-arrow{display:flex;align-items:center;justify-content:center;font:700 24px var(--display);color:var(--line)}
-    .phase-return{margin-top:10px;padding:18px 24px;border-radius:14px;background:var(--yellow-soft);border:1px solid #E8D98A;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .worksheet{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+    .wq{padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+    .wq span{font:500 10px var(--mono);color:var(--coral-dark)}.wq h4{font-size:19px;margin:14px 0 8px}.wq p{font-size:13px;color:var(--muted)}
+    .wq .to{display:inline-block;margin-top:14px}
 
-    .owner-cta{display:grid;grid-template-columns:1fr auto;gap:38px;align-items:center;padding:48px;border-radius:26px;background:var(--ink);color:var(--bg)}.owner-cta h2{font-size:clamp(35px,4.8vw,58px)}.owner-cta p{max-width:690px;margin-top:14px;color:rgba(253,248,244,.67);font-size:17px}.owner-cta .pill{background:var(--coral);color:var(--ink);white-space:nowrap}
+    /* Spine */
+    .spine{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:10px}
+    .sp{position:relative;padding:22px 18px;border-block:1px solid var(--line);border-left:1px solid var(--line);background:var(--surface)}
+    .sp:first-child{border-radius:18px 0 0 18px}.sp:last-child{border-right:1px solid var(--line);border-radius:0 18px 18px 0}
+    .sp:not(:last-child):after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--coral);font-weight:700}
+    .sp span{font:500 10px var(--mono);color:var(--coral-dark)}.sp b{display:block;font:600 19px var(--display);margin:10px 0 6px}.sp p{font-size:13px;color:var(--muted)}
+    .always{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .al{padding:22px;border-radius:16px;background:var(--ink);color:var(--bg)}
+    .al b{font:600 19px var(--display)}.al p{font-size:13px;color:rgba(253,248,244,.66);margin-top:6px}
+    .spine-link{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:18px;padding:20px 24px;border-radius:16px;background:var(--yellow-soft);border:1px solid #e8d98a}
+    .spine-link p{font-size:15px;color:var(--yellow-dark)}.spine-link p strong{color:var(--ink)}
+
+    /* Contract */
+    .contract{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+    .cq{padding:20px 16px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+    .cq span{font:500 10px var(--mono);color:var(--teal-dark)}.cq b{display:block;font:600 17px var(--display);margin:14px 0 6px}.cq p{font-size:13px;color:var(--muted)}
+
+    /* Visible */
+    .visible{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .vis{padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
+    .vis h3{font-size:26px;margin:12px 0 10px}.vis p{color:var(--muted);font-size:15px}.vis p+p{margin-top:10px}
+    .vis.in{border-top:6px solid var(--teal)}.vis.out{border-top:6px solid var(--coral)}
+    .stamp{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 14px;border-radius:10px;border:1.5px dashed var(--coral-dark);font:600 13px var(--mono);color:var(--coral-dark)}
+
+    .owner-cta{display:grid;grid-template-columns:1fr auto;gap:38px;align-items:center;padding:48px;border-radius:26px;background:var(--ink);color:var(--bg)}
+    .owner-cta h2{font-size:clamp(34px,4.6vw,56px)}.owner-cta p{max-width:690px;margin-top:14px;color:rgba(253,248,244,.67);font-size:17px}
+    .owner-cta .pill{background:var(--coral);color:var(--ink);white-space:nowrap}
     footer{padding:40px 0;border-top:1px solid var(--line);background:var(--surface)}footer .wrap{display:flex;justify-content:space-between;gap:24px;align-items:center}.footer-note{color:var(--muted);font-size:13px}
 
-    @media(max-width:980px){.tool-grid{grid-template-columns:repeat(4,1fr)}.retro-grid{grid-template-columns:1fr 1fr}.close-flow{grid-template-columns:1fr}.close-step{border:1px solid var(--line);border-bottom:0}.close-step:first-child{border-radius:16px 16px 0 0}.close-step:last-child{border-bottom:1px solid var(--line);border-radius:0 0 16px 16px}.close-step:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-12px;transform:translateX(-50%)}}
-    @media(max-width:820px){.hero{grid-template-columns:1fr}.definition-grid,.pre-grid{grid-template-columns:1fr}.enrichment{grid-template-columns:1fr}.tool-grid{grid-template-columns:repeat(3,1fr)}.owner-cta{grid-template-columns:1fr}.owner-cta .pill{width:max-content}.vertical-head{grid-template-columns:auto 1fr}.owner{grid-column:2}.two-processes{grid-template-columns:1fr}.process+.process{border-left:0;border-top:1px solid var(--line)}.phase-loop{grid-template-columns:1fr}.phase-arrow{display:none}}
-    @media(max-width:640px){.wrap{width:auto!important;min-width:0;margin-left:14px;margin-right:14px}.top nav{display:none}.top .wrap{width:auto!important;gap:10px}.draft-tag{margin-left:auto;font-size:0;white-space:nowrap}.draft-tag:after{content:"DRAFT · V0.1";font-size:9px}.hero{display:block;padding:58px 0 70px}.hero h1{font-size:clamp(44px,14vw,65px);overflow-wrap:anywhere}.hero-copy{max-width:100%;font-size:18px;overflow-wrap:anywhere}.hero-actions{flex-direction:column}.hero-actions .pill{width:100%;max-width:100%}.loop-card{max-width:100%;min-width:0;margin-top:38px;padding:14px}.loop-head{gap:8px}.loop-head span{display:none}.loop-track{padding-right:45px}.loop-step{grid-template-columns:30px minmax(0,1fr);min-width:0}.loop-step small{display:none}.section{padding:70px 0}.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-card{min-width:0;min-height:135px;padding:16px 12px}.tool-card b,.tool-card small{overflow-wrap:anywhere}.entry-grid{grid-template-columns:1fr}.enrichment ul{grid-template-columns:1fr}.enrichment li:last-child{grid-column:auto}.vertical-head{padding:20px}.vertical-head h3{font-size:24px}.process{padding:23px 20px;min-width:0}.process-list li{overflow-wrap:anywhere}.branch-grid,.retro-grid{grid-template-columns:1fr}.feedback{grid-template-columns:1fr}.feedback .return{white-space:normal}.owner-cta{padding:30px}.owner-cta .pill{width:100%}footer .wrap{align-items:flex-start;flex-direction:column}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+    /* Standard work */
+    .std-head{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:end;margin-bottom:18px}
+    .std-head h3{font-size:clamp(28px,3.2vw,38px)}
+    .std-head p{color:var(--muted);font-size:15px}
+    .std{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:44px}
+    .sw{padding:20px 16px;border-radius:16px;background:var(--ink);color:var(--bg)}
+    .sw span{font:500 10px var(--mono);color:var(--coral)}.sw b{display:block;font:600 17px/1.2 var(--display);margin:12px 0 6px}.sw p{font-size:13px;color:rgba(253,248,244,.66)}
+    /* Before / after */
+    .ba{padding:8px 32px 26px}
+    .ba-title{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:22px 0 12px}
+    .ba-title b{font:600 20px var(--display)}
+    .ba-head,.ba-row{display:grid;grid-template-columns:130px 1fr 1.25fr;gap:22px}
+    .ba-head{padding:0 0 10px;border-bottom:1px solid var(--line);font:600 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+    .ba-head .b{color:var(--muted)}.ba-head .a{color:var(--teal-dark)}
+    .ba-row{padding:16px 0;border-bottom:1px dashed var(--line);align-items:start}
+    .ba-row:last-child{border-bottom:0}
+    .ba-row .st{font:600 15px var(--display);padding-top:1px}
+    .ba-row .b{font-size:14px;color:var(--muted);position:relative;padding-left:18px}
+    .ba-row .b:before{content:"✕";position:absolute;left:0;top:0;font-size:11px;color:#c0a99c}
+    .ba-row .a{font-size:14px;color:var(--ink);position:relative;padding-left:18px}
+    .ba-row .a:before{content:"✓";position:absolute;left:0;top:0;font-size:12px;font-weight:700;color:var(--teal-dark)}
+    .uses{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+    .u{font:normal 600 9.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:99px}
+    .u.kn{background:var(--forest-soft);color:var(--forest)}.u.mo{background:var(--teal-soft);color:var(--teal-dark)}.u.me{background:var(--peach);color:var(--coral-dark)}
+    .svc-sub{padding:16px 32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);font:600 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    @media(max-width:1020px){.std{grid-template-columns:repeat(3,1fr)}.std-head{grid-template-columns:1fr}}
+    @media(max-width:760px){.ba{padding:4px 22px 20px}.ba-head{display:none}.ba-row{grid-template-columns:1fr;gap:8px}.svc-sub{padding:14px 22px}}
+    @media(max-width:640px){.std{grid-template-columns:1fr 1fr}}
+    @media(max-width:1020px){
+      .lrow{grid-template-columns:170px 1fr}.lrow .chips{grid-column:2}
+      .svc-grid{grid-template-columns:1fr 1fr}.svc-cell:nth-child(3){border-left:0}.svc-cell:nth-child(n+3){border-top:1px solid var(--line)}
+      .worksheet{grid-template-columns:1fr 1fr}.contract{grid-template-columns:repeat(3,1fr)}
+      .spine{grid-template-columns:1fr}.sp{border:1px solid var(--line);border-bottom:0}.sp:first-child{border-radius:16px 16px 0 0}.sp:last-child{border-bottom:1px solid var(--line);border-radius:0 0 16px 16px}.sp:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-12px;transform:translateX(-50%)}
+    }
+    @media(max-width:860px){
+      .hero,.defn,.sort,.visible,.built-grid{grid-template-columns:1fr}
+      .face-row{grid-template-columns:1fr}.face-arrow{transform:rotate(90deg);height:26px}
+      .owner-cta{grid-template-columns:1fr}.owner-cta .pill{width:max-content}
+      .always{grid-template-columns:1fr}
+      .svc-hero{grid-template-columns:auto 1fr}.svc-hero .tag{grid-column:2;justify-self:start}
+    }
+    @media(max-width:640px){
+      .wrap{width:auto!important;margin-left:16px;margin-right:16px}
+      .top nav{display:none}.draft-tag{margin-left:auto}
+      .hero{padding:56px 0 70px;gap:40px}.hero h1{font-size:clamp(42px,13vw,60px)}.hero-copy{font-size:18px}
+      .hero-actions{flex-direction:column}.hero-actions .pill{width:100%}
+      .stackcard{padding:14px}.layer{grid-template-columns:auto 1fr}.layer i{display:none}
+      .section{padding:68px 0}
+      .defn-quote{padding:28px}.ppp-row{grid-template-columns:1fr;gap:6px}
+      .lrow{grid-template-columns:1fr;gap:16px;padding:22px}.lrow .chips{grid-column:auto}.lrow .lname{flex-direction:row;align-items:center}
+      .face-head{flex-direction:column;align-items:flex-start;padding:20px}.face{padding:20px}
+      .test{grid-template-columns:22px 1fr}.test .ans{grid-column:2;justify-self:start}
+      .game{padding:22px}
+      .svc-hero{padding:22px;gap:14px}.svc-hero h3{font-size:24px}
+      .svc-grid{grid-template-columns:1fr}.svc-cell+.svc-cell{border-left:0;border-top:1px solid var(--line)}
+      .svc-ask{padding:20px 22px}
+      .worksheet,.contract{grid-template-columns:1fr}
+      .owner-cta{padding:30px 24px}.owner-cta .pill{width:100%}
+      footer .wrap{flex-direction:column;align-items:flex-start}
+    }
   </style>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-sheet" viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h3M14 15h2"/></symbol>
-    <symbol id="i-skill" viewBox="0 0 24 24"><path d="m12 3 2.2 4.6L19 9l-3.5 3.5.8 5-4.3-2.3-4.3 2.3.8-5L5 9l4.8-1.4z"/></symbol>
-    <symbol id="i-mcp" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="m8.2 7.3 2.7 8M15.8 7.3l-2.7 8M8.5 6h7"/></symbol>
-    <symbol id="i-ai" viewBox="0 0 24 24"><path d="m12 3 1.2 4.1L17 9l-3.8 1.9L12 15l-1.2-4.1L7 9l3.8-1.9zM18.5 14l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></symbol>
-    <symbol id="i-project" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M7 14h3M7 17h6"/></symbol>
-    <symbol id="i-voice" viewBox="0 0 24 24"><path d="M4 12v2M8 8v8M12 4v16M16 7v10M20 10v4"/></symbol>
-    <symbol id="i-agent" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="3"/><path d="M9 11h.01M15 11h.01M9 15h6M12 3v3M2 11h2M20 11h2"/></symbol>
+    <symbol id="i-method" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h3M14 12h3M19 10V6H5v4"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 21V5M8 7h7M8 11h5"/></symbol>
+    <symbol id="i-mod" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></symbol>
     <symbol id="i-crm" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="7" r="2"/><path d="M3 20c0-4 2-6 5-6s5 2 5 6M14 14c3 0 5 2 5 5"/></symbol>
     <symbol id="i-data" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
     <symbol id="i-hr" viewBox="0 0 24 24"><path d="M9 7V5h6v2M4 8h16v12H4zM4 12h16M10 11v3h4v-3"/></symbol>
-    <symbol id="i-lab" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3M8 15h8"/></symbol>
+    <symbol id="i-voice" viewBox="0 0 24 24"><path d="M4 12v2M8 8v8M12 4v16M16 7v10M20 10v4"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.5 3 7.5 7.5 9.5 4.5-2 7.5-5 7.5-9.5V6zM9 12l2 2 4-5"/></symbol>
-    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 5h4a3 3 0 0 1 3 3v3M17 5h-1a2 2 0 0 0-2 2M14 11l-2 2 2 2M12 13v4"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24"><path d="m12 3 1.2 4.1L17 9l-3.8 1.9L12 15l-1.2-4.1L7 9l3.8-1.9zM18.5 14l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></symbol>
   </svg>
 
   <header class="top">
     <div class="wrap">
       <a class="logo" href="/team/">edzola.ai</a>
-      <span class="draft-tag"><a href="/team/" style="text-decoration:none">Team hub</a> · Draft v0.1</span>
-      <nav aria-label="Page navigation"><a href="#overview">Overview</a><a href="#entry">Entry</a><a href="#verticals">Verticals</a><a href="#learning">Learning loop</a></nav>
+      <span class="draft-tag"><a href="/team/" style="text-decoration:none">Team hub</a> · Draft v0.5</span>
+      <nav aria-label="Page navigation"><a href="#definition">Definition</a><a href="#layers">Layers</a><a href="#sort">Sort it</a><a href="#services">Your service</a><a href="#method">Method</a></nav>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="wrap hero">
       <div>
-        <span class="eyebrow">The EdZola operating system</span>
-        <h1>One path from need to <em>lasting use.</em></h1>
-        <p class="hero-copy">ImpactOS is how EdZola <strong>qualifies, converts, delivers, closes and learns</strong> across every service. The common spine stays consistent; each vertical owns and improves its playbook.</p>
-        <div class="hero-actions"><a class="pill primary" href="#verticals">Explore the verticals →</a><a class="pill ghost" href="#toolkit">See the delivery toolkit</a></div>
-        <p class="draft-note">A working page for service owners. Steps, tools and automations are intentionally open for refinement.</p>
+        <span class="eyebrow">ImpactOS</span>
+        <h1>The operating system behind <em>everything EdZola builds.</em></h1>
+        <p class="hero-copy">ImpactOS is how EdZola works: <strong>one method, a growing body of knowledge, and the AI tools that run on them.</strong> Every service we deliver and every product we ship is built on it.</p>
+        <div class="hero-actions"><a class="pill primary" href="#services">What it means for my service →</a><a class="pill ghost" href="#layers">See the layers</a></div>
+        <p class="draft-note">Working definition for the EdZola team. Service examples are starting points for owners to refine.</p>
       </div>
-      <div class="loop-card" aria-label="ImpactOS continuous feedback loop">
-        <div class="loop-head"><strong>ImpactOS feedback loop</strong><span>CONTINUOUS</span></div>
-        <div class="loop-track">
-          <div class="loop-step"><span class="num">01</span><b>Entry</b><small>Need identified</small></div>
-          <div class="loop-step"><span class="num">02</span><b>Convert</b><small>Scope agreed</small></div>
-          <div class="loop-step"><span class="num">03</span><b>Deliver</b><small>Solution adopted</small></div>
-          <div class="loop-step"><span class="num">04</span><b>Learn</b><small>Evidence captured</small></div>
-          <div class="loop-step"><span class="num">05</span><b>Improve</b><small>ImpactOS updated</small></div>
+      <div class="stackcard" aria-label="ImpactOS in layers">
+        <div class="sc-head"><strong>ImpactOS, in layers</strong><span>V0.5</span></div>
+        <span class="tier-label">Built on it</span>
+        <div class="built">
+          <div class="blk svc"><b>Services</b><span>People deliver</span></div>
+          <div class="blk prod"><b>Products</b><span>Software delivers</span></div>
         </div>
-        <p class="loop-return"><strong>Every learning returns to the front:</strong> better questions, estimates, proposals and delivery.</p>
-      </div>
-    </section>
-
-    <section class="section sunk" id="toolkit">
-      <div class="wrap">
-        <div class="section-head"><span class="eyebrow">Delivery toolkit</span><h2>Automate the repeatable. Keep judgement human.</h2><p class="lead">These are the building blocks owners can attach to any step while protecting customer satisfaction.</p></div>
-        <div class="tool-grid">
-          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-sheet"/></svg></span><b>Templates</b><small>Spreadsheets and repeatable processes</small></div>
-          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-skill"/></svg></span><b>Skills</b><small>Guided customer-ready outputs</small></div>
-          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-mcp"/></svg></span><b>MCP</b><small>Connected development environments</small></div>
-          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-ai"/></svg></span><b>AI apps</b><small>Clean data and prepare documents</small></div>
-          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-project"/></svg></span><b>Zoho Projects</b><small>Custom modules, fields and reports</small></div>
-          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-voice"/></svg></span><b>Zolabs Voice AI</b><small>Automated voice-led collection</small></div>
-          <div class="tool-card"><span class="tool-icon"><svg class="icon"><use href="#i-agent"/></svg></span><b>AI &amp; Zia agents</b><small>Automated execution and follow-up</small></div>
+        <span class="tier-label">&nbsp;</span>
+        <div class="os">
+          <span class="tier-label">ImpactOS</span>
+          <div class="layer mod"><svg class="icon"><use href="#i-mod"/></svg><div><b>Modules</b> <span>· what runs</span></div><i>ADD · SWAP</i></div>
+          <div class="layer know"><svg class="icon"><use href="#i-book"/></svg><div><b>Knowledge</b> <span>· what we know</span></div><i>GROWS</i></div>
+          <div class="layer meth"><svg class="icon"><use href="#i-method"/></svg><div><b>Method</b> <span>· how we work</span></div><i>STABLE</i></div>
         </div>
+        <p class="sc-foot"><strong>If you know ImpactOS,</strong> you know how EdZola works.</p>
       </div>
     </section>
 
-    <section class="section" id="overview">
-      <div class="wrap">
-        <div class="section-head"><span class="eyebrow">What ImpactOS is</span><h2>A common spine with vertical-specific playbooks.</h2><p class="lead">ImpactOS takes an organisation from an identified need to a delivered and adopted solution—then turns project learning into a better next engagement.</p></div>
-        <div class="definition-grid">
-          <article class="definition"><span>01 / COMMON</span><h3>One operating spine</h3><p>Entry, requirements, proposal, conversion, delivery, adoption and closure.</p></article>
-          <article class="definition"><span>02 / OWNED</span><h3>Vertical playbooks</h3><p>CRM, data systems, HRMS, Zolabs, Zola Shield and custom AI each follow their own route.</p></article>
-          <article class="definition"><span>03 / LEARNING</span><h3>A loop, not a line</h3><p>Retrospectives improve templates, tools, estimates and methods at every stage.</p></article>
-        </div>
-
-        <div class="phase-loop">
-          <div class="phase-node" style="border-top:4px solid var(--coral)">
-            <div class="phase-num" style="color:var(--coral-dark)">Phase 01</div>
-            <h3>Lead → Deal</h3>
-            <p>A need is identified, qualified and converted into an accepted proposal. The right service, scope and owner are confirmed before anything is built.</p>
-          </div>
-          <div class="phase-arrow">→</div>
-          <div class="phase-node" style="border-top:4px solid var(--teal)">
-            <div class="phase-num" style="color:var(--teal-dark)">Phase 02</div>
-            <h3>Execute</h3>
-            <p>The proposal becomes a delivered, adopted and closed solution. Delivery follows the vertical playbook — and ends only when the customer owns the outcome.</p>
-          </div>
-          <div class="phase-arrow">→</div>
-          <div class="phase-node" style="border-top:4px solid var(--yellow)">
-            <div class="phase-num" style="color:#654f00">Phase 03</div>
-            <h3>R&amp;D Loop</h3>
-            <p>Templates refined, automations built, playbooks updated. Every project's learning becomes a permanent improvement — to questions, estimates, proposals and delivery.</p>
-          </div>
-        </div>
-        <div class="phase-return">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span style="font:700 22px var(--display);color:#654f00">↺</span>
-            <span style="font-weight:700;color:#654f00">R&amp;D loops back into Lead</span>
-          </div>
-          <span style="font-size:13px;color:var(--muted)">Better questions, faster estimates, stronger proposals — compounding with every completed engagement.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section sunk" id="entry">
-      <div class="wrap">
-        <div class="section-head"><span class="eyebrow">Broad entry stage</span><h2>Tagged enquiries become deals. Untagged enquiries are qualified first.</h2></div>
-        <div class="entry-grid">
-          <article class="route direct"><span class="eyebrow">Website &amp; landing pages</span><h3>Direct to deal</h3><p>The selected ImpactOS service is already tagged, so the enquiry is created directly as a deal and routed to its owner.</p><div class="mini-flow"><span class="mini-node">Enquiry</span><span class="arrow">→</span><span class="mini-node">Service tag</span><span class="arrow">→</span><span class="mini-node">Deal</span></div></article>
-          <article class="route qualify"><span class="eyebrow">Created by EdZola</span><h3>Qualify, then convert</h3><p>If no service is tagged, it stays a lead until the right ImpactOS service and owner are identified.</p><div class="mini-flow"><span class="mini-node">Lead</span><span class="arrow">→</span><span class="mini-node">Classify</span><span class="arrow">→</span><span class="mini-node">Deal</span></div></article>
-        </div>
-        <div class="enrichment">
-          <div><h3>Then enrich the deal.</h3><p>Auto-populate the context the owner needs to act.</p></div>
-          <ul><li>Previous work with the organisation</li><li>Previously existing nonprofit information</li><li>Zoho’s internal signal intelligence</li><li>Relevant organisation and contact details</li><li><strong>Write the consolidated summary as notes in the deal section.</strong></li></ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="requirements">
-      <div class="wrap">
-        <div class="section-head"><span class="eyebrow">Before the proposal</span><h2>Choose the lightest path to clear requirements.</h2><p class="lead">The deal type and complexity determine the mix. Most proposals will use one or more of these routes.</p></div>
-        <div class="pre-grid">
-          <article class="pre-card"><span class="tool-icon"><svg class="icon"><use href="#i-sheet"/></svg></span><h3>Share templates</h3><p>Use structured spreadsheets or templated processes when the customer can describe the requirement independently.</p></article>
-          <article class="pre-card"><span class="tool-icon"><svg class="icon"><use href="#i-skill"/></svg></span><h3>Share cloud skills</h3><p>Guide the customer to prepare requirements, documents or structured inputs.</p></article>
-          <article class="pre-card"><span class="tool-icon"><svg class="icon"><use href="#i-crm"/></svg></span><h3>Clarify on a call</h3><p>Work through ambiguity together when the deal is complex or the customer needs support.</p></article>
-        </div>
-        <div class="combine">Template + skill + call, in any combination → high-level requirements → estimate → proposal</div>
-        <aside class="routing-note"><svg class="icon"><use href="#i-route"/></svg><div><h3>Flag for a separate solution-routing framework</h3><p>Multi-service or unclear deals need an internal decision: CRM or Creator? CRM or an EdZola-built solution? Creator or an EdZola-built solution? Name the primary service, supporting services, platform and accountable owner before proposing.</p></div></aside>
-      </div>
-    </section>
-
-    <section class="section sunk" id="verticals">
-      <div class="wrap">
-        <div class="section-head"><span class="eyebrow">Vertical playbooks</span><h2>Two active lanes for every service.</h2><p class="lead"><strong>Convert</strong> turns an active opportunity into an accepted proposal. <strong>Deliver</strong> takes the converted deal to successful completion.</p></div>
-        <nav class="vertical-nav" aria-label="Jump to vertical"><a href="#crm">CRM</a><a href="#data-systems">Data systems</a><a href="#hrms">HRMS</a><a href="#zolabs">Zolabs</a><a href="#zola-shield">Zola Shield</a><a href="#custom-ai">Custom AI</a></nav>
-        <div class="vertical-stack">
-
-          <article class="vertical" id="crm">
-            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-crm"/></svg></span><div><h3>CRM</h3><p>Strengthen relationships with donors, volunteers, partners, beneficiaries and other stakeholders.</p></div><span class="owner">Owner to refine</span></header>
-            <div class="two-processes">
-              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Map relationship types</strong><span class="tools"><span class="tool-dot" title="Template"><svg class="icon"><use href="#i-sheet"/></svg></span><span class="tool-dot" title="Skill"><svg class="icon"><use href="#i-skill"/></svg></span></span></li><li><strong>Scope modules, pipelines, stages, workflows, reports and integrations</strong></li><li><strong>Estimate and propose</strong></li><li><strong>Record won, lost or deferred</strong></li></ol></div>
-              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Run the CRM design workshop</strong></li><li><strong>Validate fields, layouts and processes</strong></li><li><strong>Connect securely; configure, migrate and integrate</strong><span class="tools"><span class="tool-dot" title="MCP"><svg class="icon"><use href="#i-mcp"/></svg></span><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Test, train and hand over</strong></li><li><strong>Monitor adoption and close</strong></li></ol></div>
-            </div>
-          </article>
-
-          <article class="vertical" id="data-systems">
-            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-data"/></svg></span><div><h3>Data systems</h3><p>Programme and operational systems for admissions, delivery, outcomes, placements and more.</p></div><span class="owner">Owner to refine</span></header>
-            <div class="two-processes">
-              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Identify modules and user groups</strong><span class="tools"><span class="tool-dot" title="Template"><svg class="icon"><use href="#i-sheet"/></svg></span><span class="tool-dot" title="Skill"><svg class="icon"><use href="#i-skill"/></svg></span></span></li><li><strong>Scope functions, indicators, workflows, reports and integrations</strong></li><li><strong>Estimate and propose</strong></li><li><strong>Record won, lost or deferred</strong></li></ol></div>
-              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Run the process and data workshop</strong></li><li><strong>Confirm the data model, journeys and functional design</strong><span class="tools"><span class="tool-dot" title="Zoho Projects"><svg class="icon"><use href="#i-project"/></svg></span></span></li><li><strong>Build, migrate and integrate</strong><span class="tools"><span class="tool-dot" title="MCP"><svg class="icon"><use href="#i-mcp"/></svg></span><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Test, train and deploy</strong></li><li><strong>Adapt, monitor and close</strong></li></ol></div>
-            </div>
-          </article>
-
-          <article class="vertical" id="hrms">
-            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-hr"/></svg></span><div><h3>HRMS</h3><p>Zoho People core HR, extended with the modules each organisation needs.</p></div><span class="owner">Owner to refine</span></header>
-            <div class="two-processes">
-              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Capture the workforce, policies and required modules</strong><span class="tools"><span class="tool-dot" title="Template"><svg class="icon"><use href="#i-sheet"/></svg></span></span></li><li><strong>Select Zoho People plus Expense, Payroll and/or Recruit as needed</strong></li><li><strong>Clarify complexity, estimate and propose</strong></li><li><strong>Record won, lost or deferred</strong></li></ol></div>
-              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Validate HR processes and approve the specification</strong></li><li><strong>Configure Zoho People and selected modules</strong><span class="tools"><span class="tool-dot" title="MCP"><svg class="icon"><use href="#i-mcp"/></svg></span><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Migrate data and test</strong></li><li><strong>Train the internal POC and staff</strong></li><li><strong>Deploy, monitor adoption and close</strong></li></ol></div>
-            </div>
-          </article>
-
-          <article class="vertical" id="zolabs">
-            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-lab"/></svg></span><div><h3>Zolabs</h3><p>Voice AI research and evaluation studies—from a controlled pilot to a final report.</p></div><span class="owner">Owner to refine</span></header>
-            <div class="two-processes">
-              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Confirm a Voice AI research or evaluation study</strong></li><li><strong>Define participant count, language and complexity</strong><span class="tools"><span class="tool-dot" title="Template"><svg class="icon"><use href="#i-sheet"/></svg></span><span class="tool-dot" title="Zolabs Voice AI"><svg class="icon"><use href="#i-voice"/></svg></span></span></li><li><strong>Share the estimate and study plan</strong></li><li><strong>Confirm the engagement</strong></li></ol></div>
-              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Configure and run the pilot</strong><span class="tools"><span class="tool-dot" title="Zolabs Voice AI"><svg class="icon"><use href="#i-voice"/></svg></span></span></li><li><strong>Review feedback and make changes</strong></li><li><strong>Run the full study</strong><span class="tools"><span class="tool-dot" title="AI agents"><svg class="icon"><use href="#i-agent"/></svg></span></span></li><li><strong>Analyse and share the final report</strong><span class="tools"><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Accept and close</strong></li></ol></div>
-            </div>
-          </article>
-
-          <article class="vertical" id="zola-shield">
-            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-shield"/></svg></span><div><h3>Zola Shield</h3><p>Two routes for DPDP readiness: Assess cohort or Comply cohort.</p></div><span class="owner">Owner to refine</span></header>
-            <div class="two-processes">
-              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Classify the enquiry: Assess or Comply</strong><span class="tools"><span class="tool-dot" title="Skill"><svg class="icon"><use href="#i-skill"/></svg></span></span></li></ol><div class="branch-grid"><div class="branch"><b>Assess cohort</b><span>Confirm fit, share the next planned cohort date and enrol.</span></div><div class="branch"><b>Comply cohort</b><span>Clarify the detailed Comply plan, scope, estimate and confirm.</span></div></div></div>
-              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><div class="branch-grid"><div class="branch"><b>Assess cohort</b><span>Onboard → join the scheduled cohort → complete assessment outputs → close.</span></div><div class="branch"><b>Comply cohort</b><span>Detailed plan → implementation and remediation → training → validation → close.</span></div></div><ol class="process-list" style="margin-top:20px"><li><strong>Capture cohort learning and feed it back into Zola Shield</strong><span class="tools"><span class="tool-dot" title="Zoho Projects"><svg class="icon"><use href="#i-project"/></svg></span><span class="tool-dot" title="AI agents"><svg class="icon"><use href="#i-agent"/></svg></span></span></li></ol></div>
-            </div>
-          </article>
-
-          <article class="vertical" id="custom-ai">
-            <header class="vertical-head"><span class="service-icon"><svg class="icon"><use href="#i-agent"/></svg></span><div><h3>Custom AI solutions</h3><p>Purpose-built AI workflows with explicit feasibility, safety and human-oversight checks.</p></div><span class="owner">Owner to refine</span></header>
-            <div class="two-processes">
-              <div class="process"><div class="process-label">01 · Convert the deal</div><ol class="process-list"><li><strong>Clarify the use case and intended outcome</strong></li><li><strong>Assess data, feasibility, integration and risk</strong><span class="tools"><span class="tool-dot" title="Skill"><svg class="icon"><use href="#i-skill"/></svg></span><span class="tool-dot" title="AI apps"><svg class="icon"><use href="#i-ai"/></svg></span></span></li><li><strong>Define prototype or implementation scope</strong></li><li><strong>Estimate, propose and confirm</strong></li></ol></div>
-              <div class="process delivery"><div class="process-label">02 · Complete delivery</div><ol class="process-list"><li><strong>Design and prototype</strong><span class="tools"><span class="tool-dot" title="MCP"><svg class="icon"><use href="#i-mcp"/></svg></span></span></li><li><strong>Evaluate with representative data</strong></li><li><strong>Build, integrate and test</strong><span class="tools"><span class="tool-dot" title="AI agents"><svg class="icon"><use href="#i-agent"/></svg></span></span></li><li><strong>Train and deploy</strong></li><li><strong>Monitor performance, adoption and close</strong></li></ol></div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="learning">
-      <div class="wrap">
-        <div class="section-head"><span class="eyebrow">Common closing process</span><h2>Close the project. Keep the learning moving.</h2><p class="lead">Completion means the customer can use and own the solution—not simply that the technical work has stopped.</p></div>
-        <div class="close-flow"><div class="close-step"><span>01</span><b>Customer acceptance</b></div><div class="close-step"><span>02</span><b>Documentation &amp; training</b></div><div class="close-step"><span>03</span><b>Handover &amp; adoption</b></div><div class="close-step"><span>04</span><b>Retrospective</b></div><div class="close-step"><span>05</span><b>Learning Circle</b></div></div>
-        <div class="retro-grid">
-          <article class="retro"><span>GATE 01</span><h3>Deal converted</h3><p>Review source, requirements, objections, estimation and promises handed to delivery.</p></article>
-          <article class="retro"><span>GATE 02</span><h3>Design locked</h3><p>Review wrong assumptions, missing questions, scope shifts and reusable patterns.</p></article>
-          <article class="retro"><span>GATE 03</span><h3>Delivery complete</h3><p>Review estimate versus actual, rework, quality, migration and technical learning.</p></article>
-          <article class="retro"><span>GATE 04</span><h3>Adoption reviewed</h3><p>Review real use, training gaps, outcomes and follow-up needs.</p></article>
-        </div>
-        <div class="feedback"><div><h3>The Learning Circle sends improvements back to entry.</h3><p>Update website questions, deal notes, templates, skills, estimation rules, proposals, delivery playbooks, reusable code, training and automation.</p></div><span class="return">↺ Back to the front</span></div>
-      </div>
-    </section>
-
-    <section class="section sunk">
-      <div class="wrap owner-cta">
-        <div><span class="eyebrow" style="color:var(--coral)">For ImpactOS owners</span><h2>This draft becomes useful when each owner makes it real.</h2><p>Refine the steps, name the accountable roles, attach the right templates and automations, define customer-success checks, and bring the updated playbook back to the Learning Circle.</p></div>
-        <a class="pill" href="mailto:reachus@edzola.com?subject=ImpactOS%20playbook%20feedback">Share improvements →</a>
-      </div>
-    </section>
-
-    <section class="section" id="sample-output">
+    <!-- DEFINITION -->
+    <section class="section sunk" id="definition">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Sample finished output · Data systems</span>
-          <h2>What a completed engagement produces.</h2>
-          <p class="lead">When ImpactOS data-systems work is done, these three documents exist and the build team has everything they need — no ambiguity, no discovery gaps mid-sprint.</p>
+          <span class="eyebrow">The definition</span>
+          <h2>One sentence to remember.</h2>
+          <p class="lead">Is ImpactOS a product, a process or a platform? It depends on when you look at it.</p>
         </div>
-        <div class="definition-grid">
-
-          <div class="definition" style="border-top:4px solid var(--teal)">
-            <span>Deliverable 01</span>
-            <h3>Theory of Change Map</h3>
-            <p>Your impact logic translated into a data architecture. Every module field is tied to an indicator that matters.</p>
-            <div style="margin-top:22px;display:grid;gap:8px">
-              <div style="padding:11px 14px;border-radius:10px;background:var(--teal-soft);font-size:13px;font-weight:600;color:var(--teal-dark)">Activities → Outputs → Outcomes → Impact</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Indicators mapped to data fields</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Data architecture grounded in programme logic</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Reporting periods and aggregation rules defined</div>
-            </div>
+        <div class="defn">
+          <div class="defn-quote">
+            <span class="eyebrow">ImpactOS</span>
+            <blockquote>How EdZola works: <em>one method</em>, a growing body of <em>knowledge</em>, and the AI <em>modules</em> that run on them.</blockquote>
+            <p>Services and products sit on top. ImpactOS is what they share, so every project makes the next one faster and every product starts from real delivery.</p>
           </div>
-
-          <div class="definition" style="border-top:4px solid var(--coral)">
-            <span>Deliverable 02</span>
-            <h3>MIS Blueprint</h3>
-            <p>Module specs, data model, user stories, workflows, and permissions — everything the build team needs to start without another discovery cycle.</p>
-            <div style="margin-top:22px;display:grid;gap:8px">
-              <div style="padding:11px 14px;border-radius:10px;background:var(--peach);font-size:13px;font-weight:600;color:var(--coral-dark)">Confirmed modules and user groups</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Data model and entity relationships</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Functional spec per module with field list</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Permissions matrix and workflow journeys</div>
-            </div>
-          </div>
-
-          <div class="definition" style="border-top:4px solid var(--yellow)">
-            <span>Deliverable 03</span>
-            <h3>Dashboard Plan</h3>
-            <p>Five ready-to-build dashboards — each with KPIs, chart types, and filter specs defined. No guesswork for the front-end team.</p>
-            <div style="margin-top:22px;display:grid;gap:8px">
-              <div style="padding:11px 14px;border-radius:10px;background:var(--yellow-soft);font-size:13px;font-weight:600;color:#654f00">Admin · Programme · Partner · Volunteer · Impact</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">KPIs and chart types per dashboard</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Filter specs and date-range logic</div>
-              <div style="padding:11px 14px;border-radius:10px;background:var(--sunk);font-size:13px;color:var(--muted)">Export formats for funder reporting</div>
-            </div>
-          </div>
-
-        </div>
-        <div style="margin-top:24px;padding:22px 28px;border-radius:16px;background:var(--sunk);border:1px dashed var(--line);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center">
           <div>
-            <p style="font-size:14px;font-weight:700;color:var(--ink)">These are the target artefacts — not a scope list.</p>
-            <p style="font-size:14px;color:var(--muted);margin-top:4px">Each data-systems engagement may scope differently. The deliverables above represent a complete engagement. Owners should note which are in scope and which are excluded for each deal.</p>
+            <div class="ppp">
+              <div class="ppp-row a"><span class="when">Today</span><div><h3>A process</h3><p>Written steps, owners and gates. It works with a spreadsheet, a template and a call.</p></div></div>
+              <div class="ppp-row b"><span class="when">Becoming</span><div><h3>A platform</h3><p>The same steps, with knowledge and AI modules doing the heavy lifting. A person still owns the outcome.</p></div></div>
+              <div class="ppp-row c"><span class="when">Produces</span><div><h3>Products</h3><p>When a module runs well without us, it gets its own name. DozAI, zolabs.ai and ZolaShield all come out of ImpactOS.</p></div></div>
+            </div>
+            <p class="analogy"><strong>Think Toyota Production System.</strong> Nobody buys it, and every Toyota is made with it.</p>
           </div>
-          <span style="font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding:6px 9px;border:1px solid var(--line);border-radius:99px;white-space:nowrap">Owner to confirm scope</span>
         </div>
+      </div>
+    </section>
+
+    <!-- LAYERS -->
+    <section class="section" id="layers">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">The layers</span>
+          <h2>Three layers inside. Two things built on top.</h2>
+          <p class="lead">Each layer changes at a different speed. That's the point. <strong>The method stays steady so knowledge and modules can move fast.</strong></p>
+        </div>
+
+        <div class="layers">
+          <div class="lrow modules">
+            <div class="lname"><span class="badge"><svg class="icon"><use href="#i-mod"/></svg></span><div><h3>Modules</h3><span class="what">What runs</span></div></div>
+            <div class="desc">
+              <p>Software that does part of the work: reads from the record, does something useful, writes back with a source. Each one attaches to a stage of the method.</p>
+              <p class="rule">Added, upgraded or retired without touching the method.</p>
+            </div>
+            <div class="chips"><a class="chip" href="/team/insight/" style="text-decoration:none">Insight ↗</a><span class="chip">Creator MCP builder</span><span class="chip">CRM MCP</span><span class="chip">Zolabs Voice</span><span class="chip">Zia agents</span><span class="chip">AI apps</span><span class="chip">Zoho Projects automation</span><span class="chip">+ next</span></div>
+          </div>
+          <div class="lrow knowledge">
+            <div class="lname"><span class="badge"><svg class="icon"><use href="#i-book"/></svg></span><div><h3>Knowledge</h3><span class="what">What we know</span></div></div>
+            <div class="desc">
+              <p>Everything we've learned that's worth reusing. Frameworks, data models, templates, SOPs, code, estimates. Skills are how this knowledge reaches AI.</p>
+              <p class="rule">Grows with every project. This is the moat.</p>
+            </div>
+            <div class="chips"><span class="chip">MAP framework</span><span class="chip">Entity library</span><span class="chip">CRM &amp; HRMS templates</span><span class="chip">Vertical playbooks</span><span class="chip">Estimation data</span><span class="chip">Delivery standards</span><span class="chip">Skills</span><span class="chip">Reusable code</span></div>
+          </div>
+          <div class="lrow method">
+            <div class="lname"><span class="badge"><svg class="icon"><use href="#i-method"/></svg></span><div><h3>Method</h3><span class="what">How we work</span></div></div>
+            <div class="desc">
+              <p>The spine every engagement follows, with named owners and human checkpoints. Same for a small HRMS and a year-long MIS.</p>
+              <p class="rule">Changes slowly, on purpose.</p>
+            </div>
+            <div class="chips"><span class="chip">Entry</span><span class="chip">Convert</span><span class="chip">Deliver</span><span class="chip">Close</span><span class="chip">Learn</span><span class="chip">4 gates</span><span class="chip">Learning Circle</span></div>
+          </div>
+        </div>
+
+        <div class="divider">Built on ImpactOS</div>
+
+        <div class="built-grid">
+          <div class="bcard svc">
+            <span class="what">People deliver</span>
+            <h3>Services</h3>
+            <p>What we sell when an EdZola person runs the work. Each service has a playbook on the same method and uses whatever knowledge and modules help. A new service means a new playbook, nothing more.</p>
+            <div class="chips"><span class="chip">CRM</span><span class="chip">Data systems</span><span class="chip">HRMS</span><span class="chip">Zolabs studies</span><span class="chip">ZolaShield</span><span class="chip">Custom AI</span><span class="chip">+ next</span></div>
+          </div>
+          <div class="bcard prod">
+            <span class="what">Software delivers</span>
+            <h3>Products</h3>
+            <p>What a client uses without an EdZola person in the loop. Products graduate from modules and knowledge that have proved themselves across many projects.</p>
+            <div class="chips"><span class="chip">DozAI</span><span class="chip">zolabs.ai</span><span class="chip">ZolaShield cohorts</span><span class="chip">edzola.ai sector apps</span><span class="chip">+ next</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACES -->
+    <section class="section sunk" id="faces">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">How things move</span>
+          <h2>One capability can wear three faces.</h2>
+          <p class="lead">You'll see Zolabs as a module, a service and a product. That's by design. The same capability shows up differently depending on who's running it.</p>
+        </div>
+        <div class="faces">
+          <div class="face-set">
+            <div class="face-head"><div><h3>Zolabs Voice</h3><p>Same engine, three ways to meet it.</p></div><span class="tag">Example</span></div>
+            <div class="face-row">
+              <div class="face k-mod"><span class="k">Module</span><h4>Inside a Data Systems project</h4><p>Voice calls collect baseline data from parents in their own language, straight into the Creator app. The client bought an MIS. Zolabs made Deliver faster.</p></div>
+              <div class="face-arrow" aria-hidden="true">·</div>
+              <div class="face k-svc"><span class="k">Service</span><h4>A research study</h4><p>A foundation commissions an evaluation. An owner runs the pilot, the full study and the report on the Zolabs playbook.</p></div>
+              <div class="face-arrow" aria-hidden="true">·</div>
+              <div class="face k-prod"><span class="k">Product</span><h4>zolabs.ai, self-serve</h4><p>An NGO signs up, builds a form and runs its own calls. No EdZola person needed.</p></div>
+            </div>
+          </div>
+          <div class="face-set">
+            <div class="face-head"><div><h3>Fundraising know-how</h3><p>The usual path to a product: knowledge, then a module, then a product.</p></div><span class="tag">Example</span></div>
+            <div class="face-row">
+              <div class="face k-know"><span class="k">Knowledge</span><h4>What we've learned</h4><p>Donor types, pipeline stages, hard and soft commitments, 80G and FCRA fields. Written down once, reused in every CRM.</p></div>
+              <div class="face-arrow" aria-hidden="true">→</div>
+              <div class="face k-mod"><span class="k">Module</span><h4>What runs</h4><p>A skill that turns a discovery call into a draft CRM blueprint, reviewed by the owner before it reaches the client.</p></div>
+              <div class="face-arrow" aria-hidden="true">→</div>
+              <div class="face k-prod"><span class="k">Product</span><h4>What scales</h4><p>A DozAI fundraising agent other organisations use directly. Built from years of real CRM projects.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SORT IT -->
+    <section class="section" id="sort">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Where does it go?</span>
+          <h2>Sort anything new in five questions.</h2>
+          <p class="lead">Someone builds a script, a template, a new offer. Ask these in order. The first yes tells you where it lives.</p>
+        </div>
+        <div class="sort">
+          <div>
+            <div class="tests">
+              <div class="test"><span class="n">01</span><p>Is it a step, a gate or a rule every engagement follows?</p><span class="ans m">Method</span></div>
+              <div class="test"><span class="n">02</span><p>Is it something we learned and can reuse?</p><span class="ans k">Knowledge</span></div>
+              <div class="test"><span class="n">03</span><p>Does it run, and write back to the record?</p><span class="ans mo">Module</span></div>
+              <div class="test"><span class="n">04</span><p>Is it a new kind of work we sell, run by our people?</p><span class="ans s">Service</span></div>
+              <div class="test"><span class="n">05</span><p>Does a client use it with no EdZola person in the loop?</p><span class="ans p">Product</span></div>
+            </div>
+            <p class="tests-note"><strong>A module still needs a person.</strong> It can make a step automatic. It can't remove the owner, the gate or the human checkpoint.</p>
+          </div>
+
+          <div class="game" aria-live="polite">
+            <div class="game-top"><span>Try it · <span id="g-count">1 / 10</span></span><span>Score <span id="g-score">0</span></span></div>
+            <p class="game-item" id="g-item">Loading…</p>
+            <div class="game-btns" id="g-btns">
+              <button class="gbtn" data-a="Method">Method</button>
+              <button class="gbtn" data-a="Knowledge">Knowledge</button>
+              <button class="gbtn" data-a="Module">Module</button>
+              <button class="gbtn" data-a="Service">Service</button>
+              <button class="gbtn" data-a="Product">Product</button>
+            </div>
+            <p class="game-why" id="g-why">Pick where you think it lives.</p>
+            <div class="game-foot"><span class="tag" style="color:rgba(253,248,244,.6);border-color:rgba(253,248,244,.2)">Real examples</span><button class="pill primary" id="g-next" hidden>Next →</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section sunk" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">For service owners</span>
+          <h2>What ImpactOS means for your service.</h2>
+          <p class="lead">Each tab shows a typical project before and after ImpactOS, then the layers that make the difference. These are starting examples. <strong>Owners: correct them, add to them, and bring your version to the Learning Circle.</strong></p>
+        </div>
+
+        <div class="std-head">
+          <h3>Different services. One standard of work.</h3>
+          <p>Toyota builds many different cars on one production system, and every one comes off the line to the same standard. ImpactOS does that for EdZola's services. Whoever delivers it, every project has these.</p>
+        </div>
+        <div class="std">
+          <div class="sw"><span>01</span><b>Starts from knowledge</b><p>Templates, the entity library and playbooks first. Nobody starts from a blank page.</p></div>
+          <div class="sw"><span>02</span><b>Same stages, same gates</b><p>Entry to Learn, with four gates every project passes.</p></div>
+          <div class="sw"><span>03</span><b>A named owner</b><p>One accountable person at every stage, visible on the deal and project.</p></div>
+          <div class="sw"><span>04</span><b>Quality before UAT</b><p>QA to delivery standards, a security scan, a root cause for every bug.</p></div>
+          <div class="sw"><span>05</span><b>Done means adopted</b><p>Projects close when the client uses the system on their own.</p></div>
+          <div class="sw"><span>06</span><b>Every project teaches</b><p>Estimate vs actual and lessons go back to the Learning Circle.</p></div>
+        </div>
+
+        <div class="svc-tabs" role="tablist" aria-label="Services">
+          <button class="svc-tab" role="tab" aria-selected="true" aria-controls="p-crm" id="t-crm"><svg class="icon"><use href="#i-crm"/></svg>CRM</button>
+          <button class="svc-tab" role="tab" aria-selected="false" aria-controls="p-data" id="t-data"><svg class="icon"><use href="#i-data"/></svg>Data systems</button>
+          <button class="svc-tab" role="tab" aria-selected="false" aria-controls="p-hr" id="t-hr"><svg class="icon"><use href="#i-hr"/></svg>HRMS</button>
+          <button class="svc-tab" role="tab" aria-selected="false" aria-controls="p-zl" id="t-zl"><svg class="icon"><use href="#i-voice"/></svg>Zolabs</button>
+          <button class="svc-tab" role="tab" aria-selected="false" aria-controls="p-zs" id="t-zs"><svg class="icon"><use href="#i-shield"/></svg>ZolaShield</button>
+          <button class="svc-tab" role="tab" aria-selected="false" aria-controls="p-ai" id="t-ai"><svg class="icon"><use href="#i-ai"/></svg>Custom AI</button>
+        </div>
+
+        <!-- CRM -->
+        <div class="svc-panel" role="tabpanel" id="p-crm" aria-labelledby="t-crm">
+          <div class="svc-hero">
+            <span class="service-icon"><svg class="icon"><use href="#i-crm"/></svg></span>
+            <div><h3>CRM on ImpactOS</h3><p class="means"><strong>No CRM starts from a blank org.</strong> Each one starts from our template and leaves it better.</p></div>
+            <span class="tag">Owner to refine</span>
+          </div>
+          <div class="ba">
+            <div class="ba-title"><b>A CRM project, before and after</b><span class="tag">Example</span></div>
+            <div class="ba-head"><span>Stage</span><span class="b">Before ImpactOS</span><span class="a">On ImpactOS</span></div>
+            <div class="ba-row"><span class="st">Requirements</span><p class="b">Each consultant runs discovery their own way and writes requirements from scratch.</p><div class="a"><p>The client fills the CRM requirement template before the first call. The call only covers the gaps.</p><div class="uses"><i class="u kn">Knowledge</i></div></div></div>
+            <div class="ba-row"><span class="st">Design</span><p class="b">Modules, fields and pipelines designed fresh each time. The same donor fields get rebuilt on every project.</p><div class="a"><p>Start from the standard nonprofit CRM: which modules to switch on or off (Leads, Contacts, Accounts, Deals), standard fields like PAN, 80G and FCRA status, pipeline stages and workflows. Only the differences get designed, and Gate 02 signs them off.</p><div class="uses"><i class="u kn">Knowledge</i><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Build</span><p class="b">Configured click by click in Setup. Quality depends on who builds it.</p><div class="a"><p>The CRM MCP configures modules, fields, layouts and pipelines from the approved spec in a sandbox. The consultant reviews the change log.</p><div class="uses"><i class="u mo">Module</i></div></div></div>
+            <div class="ba-row"><span class="st">Migrate &amp; test</span><p class="b">Donor data cleaned by hand in Excel. Testing is whatever time allows.</p><div class="a"><p>An AI app cleans and dedupes data into the migration template. Testing follows the QA checklist and a standard UAT script.</p><div class="uses"><i class="u mo">Module</i><i class="u kn">Knowledge</i></div></div></div>
+            <div class="ba-row"><span class="st">Close</span><p class="b">Closed at go-live. Adoption checked only if the client complains.</p><div class="a"><p>Closed after the adoption review at Gate 04: are deals moving and receipts going out? The retro updates the template.</p><div class="uses"><i class="u me">Method</i></div></div></div>
+            </div>
+          <div class="svc-sub">The layers behind it</div>
+          <div class="svc-grid">
+            <div class="svc-cell m"><span class="k">Method</span><span class="sub">Your stretch of the spine</span><ul>
+              <li>Convert: map relationship types, then scope pipelines, stages and integrations<small>Gate 01 hands promises to delivery</small></li>
+              <li>Deliver: design workshop, configure, migrate<small>Gate 02 locks fields and layouts</small></li>
+              <li>Close on adoption, not on go-live</li></ul></div>
+            <div class="svc-cell kn"><span class="k">Knowledge</span><span class="sub">What you start from</span><ul>
+              <li>Pre-built CRM template</li>
+              <li>Donor types and pipeline stages for Indian NGOs</li>
+              <li>80G, FCRA, 12A and CSR-1 fields</li>
+              <li>Money-flow teardown for legacy systems</li></ul></div>
+            <div class="svc-cell mo"><span class="k">Modules</span><span class="sub">What plugs in, and where</span><ul>
+              <li><a href="/team/insight/">Insight</a><small>Entry: account brief and fit score</small></li>
+              <li>CRM MCP<small>Deliver: configure from the approved spec</small></li>
+              <li>AI apps<small>Deliver: clean donor data before migration</small></li>
+              <li>Zia agents<small>Close: adoption nudges</small></li></ul></div>
+            <div class="svc-cell pr"><span class="k">Could become</span><span class="sub">Product candidates</span><ul>
+              <li>A fundraising CRM an NGO installs itself</li>
+              <li>A DozAI fundraising agent</li></ul></div>
+          </div>
+          <div class="svc-ask"><svg class="icon"><use href="#i-pen"/></svg><div><b>Your first move</b><p>Write down the questions you ask on every CRM discovery call. That list is knowledge, and it's the first thing Insight and a skill can use.</p></div></div>
+        </div>
+
+        <!-- DATA -->
+        <div class="svc-panel" role="tabpanel" id="p-data" aria-labelledby="t-data" hidden>
+          <div class="svc-hero">
+            <span class="service-icon"><svg class="icon"><use href="#i-data"/></svg></span>
+            <div><h3>Data systems on ImpactOS</h3><p class="means"><strong>Every MIS starts from the entity library and a MAP blueprint.</strong> Creator builds get faster with each project.</p></div>
+            <span class="tag">Owner to refine</span>
+          </div>
+          <div class="ba">
+            <div class="ba-title"><b>A data systems project, before and after</b><span class="tag">Example</span></div>
+            <div class="ba-head"><span>Stage</span><span class="b">Before ImpactOS</span><span class="a">On ImpactOS</span></div>
+            <div class="ba-row"><span class="st">Requirements</span><p class="b">Long discovery, a requirements document written from scratch, scope that keeps moving.</p><div class="a"><p>MAP’s Model step: Theory of Change, logframe and indicators first, then entities. Gate 02 locks the data model before anyone builds.</p><div class="uses"><i class="u kn">Knowledge</i><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Design</span><p class="b">A new data model for every app, each with its own naming.</p><div class="a"><p>Start from the entity library (Beneficiary, Session, Attendance and more) and EdZola naming conventions. The MIS blueprint generator turns it into module specs and pushes them to Zoho Projects as tasks and milestones.</p><div class="uses"><i class="u kn">Knowledge</i><i class="u mo">Module</i></div></div></div>
+            <div class="ba-row"><span class="st">Build</span><p class="b">Forms built by hand. Common Deluge logic rewritten on every project.</p><div class="a"><p>The Creator MCP builder generates forms, reports and workflows in a sandbox from the blueprint. Developers use the shared Deluge library and review every change.</p><div class="uses"><i class="u mo">Module</i><i class="u kn">Knowledge</i></div></div></div>
+            <div class="ba-row"><span class="st">Test</span><p class="b">Most bugs found by the client in UAT. Hardcoded keys sometimes ship.</p><div class="a"><p>QA against delivery standards before UAT. The security auditor scans for PII and keys. Every bug gets a 5 Whys root cause analysis.</p><div class="uses"><i class="u kn">Knowledge</i><i class="u mo">Module</i><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Adopt</span><p class="b">Handover is one training session.</p><div class="a"><p>MAP’s Align and Power steps: dashboards are used in the client’s own review meetings, and adoption is checked before close. Estimate vs actual feeds the estimation data.</p><div class="uses"><i class="u me">Method</i><i class="u kn">Knowledge</i></div></div></div>
+            </div>
+          <div class="svc-sub">The layers behind it</div>
+          <div class="svc-grid">
+            <div class="svc-cell m"><span class="k">Method</span><span class="sub">Your stretch of the spine</span><ul>
+              <li>Convert: identify modules and user groups, scope indicators and workflows</li>
+              <li>Deliver: process and data workshop, then build, migrate, integrate<small>Gate 02 locks the data model</small></li>
+              <li>Close with ToC map, MIS blueprint and dashboard plan in hand</li></ul></div>
+            <div class="svc-cell kn"><span class="k">Knowledge</span><span class="sub">What you start from</span><ul>
+              <li>MAP framework: Model, Align, Power with AI</li>
+              <li>Entity library: 12 canonical entities from 22 apps</li>
+              <li>Estimates from 34,000+ delivery hours</li>
+              <li>QA standards from 2,700+ issues</li></ul></div>
+            <div class="svc-cell mo"><span class="k">Modules</span><span class="sub">What plugs in, and where</span><ul>
+              <li>MIS blueprint generator<small>Convert: blueprint pushed to Zoho Projects</small></li>
+              <li>Creator MCP builder<small>Deliver: build in sandbox from the blueprint</small></li>
+              <li>Zolabs Voice<small>Deliver: field data collection</small></li>
+              <li>Security auditor<small>Close: check before handover</small></li></ul></div>
+            <div class="svc-cell pr"><span class="k">Could become</span><span class="sub">Product candidates</span><ul>
+              <li>Ready-to-use apps for each edzola.ai sector</li>
+              <li>A self-serve MIS blueprint for small NGOs</li></ul></div>
+          </div>
+          <div class="svc-ask"><svg class="icon"><use href="#i-pen"/></svg><div><b>Your first move</b><p>Pick the one Deluge pattern you've rewritten on three projects. Put it in the library with a short note on when to use it.</p></div></div>
+        </div>
+
+        <!-- HRMS -->
+        <div class="svc-panel" role="tabpanel" id="p-hr" aria-labelledby="t-hr" hidden>
+          <div class="svc-hero">
+            <span class="service-icon"><svg class="icon"><use href="#i-hr"/></svg></span>
+            <div><h3>HRMS on ImpactOS</h3><p class="means"><strong>Zoho People goes live from a tested template</strong>, so workshop time goes to their policies.</p></div>
+            <span class="tag">Owner to refine</span>
+          </div>
+          <div class="ba">
+            <div class="ba-title"><b>An HRMS project, before and after</b><span class="tag">Example</span></div>
+            <div class="ba-head"><span>Stage</span><span class="b">Before ImpactOS</span><span class="a">On ImpactOS</span></div>
+            <div class="ba-row"><span class="st">Requirements</span><p class="b">Several calls to understand leave types, shifts, approvals and payroll.</p><div class="a"><p>The client fills the HRMS Excel template: employee master, leave policy, holidays, attendance rules, approval matrix and payroll components. The call only covers what’s unclear.</p><div class="uses"><i class="u kn">Knowledge</i></div></div></div>
+            <div class="ba-row"><span class="st">Design</span><p class="b">Zoho People set up from meeting notes, differently every time.</p><div class="a"><p>Each sheet in the template maps to a part of Zoho People. A standard nonprofit setup is the base, and only deviations get discussed. Gate 02 is the signed-off template.</p><div class="uses"><i class="u kn">Knowledge</i><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Build</span><p class="b">Manual setup, form by form.</p><div class="a"><p>Configuration and employee data imported straight from the filled template, with automation wherever Zoho People allows.</p><div class="uses"><i class="u mo">Module</i></div></div></div>
+            <div class="ba-row"><span class="st">Test</span><p class="b">Testing depends on who remembers what to check.</p><div class="a"><p>Standard test cases for a leave request, an attendance cycle and a payroll run, on every project.</p><div class="uses"><i class="u kn">Knowledge</i></div></div></div>
+            <div class="ba-row"><span class="st">Adopt</span><p class="b">The HR team is trained once and left to it.</p><div class="a"><p>The client’s POC runs one full cycle alone before close. Anything changed from the template goes back into it.</p><div class="uses"><i class="u me">Method</i><i class="u kn">Knowledge</i></div></div></div>
+            </div>
+          <div class="svc-sub">The layers behind it</div>
+          <div class="svc-grid">
+            <div class="svc-cell m"><span class="k">Method</span><span class="sub">Your stretch of the spine</span><ul>
+              <li>Convert: capture workforce, policies and which of Expense, Payroll, Recruit they need</li>
+              <li>Deliver: validate processes, configure, migrate<small>Gate 02 is the signed-off spec</small></li>
+              <li>Close after the internal POC runs it alone</li></ul></div>
+            <div class="svc-cell kn"><span class="k">Knowledge</span><span class="sub">What you start from</span><ul>
+              <li>Pre-built HRMS template</li>
+              <li>Common NGO leave and attendance patterns</li>
+              <li>Migration sheet for employee data</li>
+              <li>POC training kit</li></ul></div>
+            <div class="svc-cell mo"><span class="k">Modules</span><span class="sub">What plugs in, and where</span><ul>
+              <li>Requirement skill<small>Convert: client fills policies before the call</small></li>
+              <li>AI apps<small>Deliver: clean employee data</small></li>
+              <li>Zia agents<small>Close: onboarding follow-ups</small></li></ul></div>
+            <div class="svc-cell pr"><span class="k">Could become</span><span class="sub">Product candidates</span><ul>
+              <li>An HRMS starter kit a small NGO sets up in a day</li></ul></div>
+          </div>
+          <div class="svc-ask"><svg class="icon"><use href="#i-pen"/></svg><div><b>Your first move</b><p>List what changed from the template on your last two implementations. Repeated changes belong back in the template.</p></div></div>
+        </div>
+
+        <!-- ZOLABS -->
+        <div class="svc-panel" role="tabpanel" id="p-zl" aria-labelledby="t-zl" hidden>
+          <div class="svc-hero">
+            <span class="service-icon"><svg class="icon"><use href="#i-voice"/></svg></span>
+            <div><h3>Zolabs on ImpactOS</h3><p class="means"><strong>Every study adds questions, languages and lessons</strong> that make the next study cheaper and zolabs.ai smarter.</p></div>
+            <span class="tag">Owner to refine</span>
+          </div>
+          <div class="ba">
+            <div class="ba-title"><b>A Zolabs study, before and after</b><span class="tag">Example</span></div>
+            <div class="ba-head"><span>Stage</span><span class="b">Before ImpactOS</span><span class="a">On ImpactOS</span></div>
+            <div class="ba-row"><span class="st">Study design</span><p class="b">Each study designed from scratch. Writing questions takes weeks.</p><div class="a"><p>Start from the question bank for that sector and study type. The form creation skill drafts the form, and consent scripts are standard.</p><div class="uses"><i class="u kn">Knowledge</i><i class="u mo">Module</i></div></div></div>
+            <div class="ba-row"><span class="st">Setup</span><p class="b">Forms set up by hand. Language problems show up late.</p><div class="a"><p>Forms created through the Zolabs MCP. A standard pilot checks language, length and drop-off before the full run. Gate 02 is the approved pilot.</p><div class="uses"><i class="u mo">Module</i><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Run</span><p class="b">Calls monitored by hand.</p><div class="a"><p>Completion and drop-off tracked live, with agreed thresholds for pausing and fixing.</p><div class="uses"><i class="u mo">Module</i></div></div></div>
+            <div class="ba-row"><span class="st">Report</span><p class="b">Analysis starts from raw transcripts.</p><div class="a"><p>AI drafts first-pass themes into the standard report template. An analyst checks every claim against the transcripts.</p><div class="uses"><i class="u mo">Module</i><i class="u kn">Knowledge</i></div></div></div>
+            <div class="ba-row"><span class="st">Learn</span><p class="b">Lessons stay with whoever ran the study.</p><div class="a"><p>Questions that worked go into the bank. Questions that confused people get flagged.</p><div class="uses"><i class="u me">Method</i><i class="u kn">Knowledge</i></div></div></div>
+            </div>
+          <div class="svc-sub">The layers behind it</div>
+          <div class="svc-grid">
+            <div class="svc-cell m"><span class="k">Method</span><span class="sub">Your stretch of the spine</span><ul>
+              <li>Convert: confirm the study, participant count, language and complexity</li>
+              <li>Deliver: pilot, review, full study<small>Gate 02 is the approved pilot</small></li>
+              <li>Close on the accepted report</li></ul></div>
+            <div class="svc-cell kn"><span class="k">Knowledge</span><span class="sub">What you start from</span><ul>
+              <li>Question bank by sector</li>
+              <li>What works per language and region</li>
+              <li>Consent scripts and study plans</li>
+              <li>Report templates</li></ul></div>
+            <div class="svc-cell mo"><span class="k">Modules</span><span class="sub">What plugs in, and where</span><ul>
+              <li>Zolabs Voice engine<small>Deliver: the calls themselves</small></li>
+              <li>Form creation skill<small>Convert: draft the study form</small></li>
+              <li>AI analysis<small>Close: first-pass themes for the report</small></li></ul></div>
+            <div class="svc-cell pr"><span class="k">Already is</span><span class="sub">Product</span><ul>
+              <li>zolabs.ai, self-serve</li>
+              <li>Next: sector-ready study templates</li></ul></div>
+          </div>
+          <div class="svc-ask"><svg class="icon"><use href="#i-pen"/></svg><div><b>Your first move</b><p>After each study, save the final form and one paragraph on what you'd change. That's how the question bank grows.</p></div></div>
+        </div>
+
+        <!-- ZOLASHIELD -->
+        <div class="svc-panel" role="tabpanel" id="p-zs" aria-labelledby="t-zs" hidden>
+          <div class="svc-hero">
+            <span class="service-icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+            <div><h3>ZolaShield on ImpactOS</h3><p class="means"><strong>Every assessment sharpens the checklist</strong>, and every finding becomes a check we run on our own apps.</p></div>
+            <span class="tag">Owner to refine</span>
+          </div>
+          <div class="ba">
+            <div class="ba-title"><b>A ZolaShield engagement, before and after</b><span class="tag">Example</span></div>
+            <div class="ba-head"><span>Stage</span><span class="b">Before ImpactOS</span><span class="a">On ImpactOS</span></div>
+            <div class="ba-row"><span class="st">Entry</span><p class="b">Every enquiry starts with an open-ended conversation.</p><div class="a"><p>A short self-check routes the organisation to Assess or Comply.</p><div class="uses"><i class="u mo">Module</i></div></div></div>
+            <div class="ba-row"><span class="st">Assess</span><p class="b">Each assessment run as a custom consultation.</p><div class="a"><p>The same DPDP checklist and cohort format for every organisation, so results can be compared.</p><div class="uses"><i class="u kn">Knowledge</i><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Comply</span><p class="b">Remediation plans written per client.</p><div class="a"><p>A remediation playbook by gap type, with standard consent and notice templates.</p><div class="uses"><i class="u kn">Knowledge</i></div></div></div>
+            <div class="ba-row"><span class="st">Tech check</span><p class="b">Systems reviewed by eye, if at all.</p><div class="a"><p>The security auditor scans Creator apps for plain-text PII, passwords and API keys.</p><div class="uses"><i class="u mo">Module</i></div></div></div>
+            <div class="ba-row"><span class="st">Learn</span><p class="b">Each cohort’s findings stay in its own notes.</p><div class="a"><p>The most common gaps update the checklist and become checks on EdZola’s own builds.</p><div class="uses"><i class="u me">Method</i><i class="u kn">Knowledge</i></div></div></div>
+            </div>
+          <div class="svc-sub">The layers behind it</div>
+          <div class="svc-grid">
+            <div class="svc-cell m"><span class="k">Method</span><span class="sub">Your stretch of the spine</span><ul>
+              <li>Convert: classify as Assess or Comply</li>
+              <li>Deliver: cohort sessions, or plan and remediation<small>Gate 03 is validation</small></li>
+              <li>Learn: cohort lessons go back into ZolaShield</li></ul></div>
+            <div class="svc-cell kn"><span class="k">Knowledge</span><span class="sub">What you start from</span><ul>
+              <li>DPDP readiness checklist</li>
+              <li>Consent and notice templates</li>
+              <li>Common gaps from our own app audits</li></ul></div>
+            <div class="svc-cell mo"><span class="k">Modules</span><span class="sub">What plugs in, and where</span><ul>
+              <li>Security auditor<small>Deliver: scan Creator apps for PII and keys</small></li>
+              <li>Assessment form<small>Entry: self-check before enrolment</small></li></ul></div>
+            <div class="svc-cell pr"><span class="k">Already is</span><span class="sub">Product</span><ul>
+              <li>Assess and Comply cohorts</li>
+              <li>Next: a self-serve readiness check</li></ul></div>
+          </div>
+          <div class="svc-ask"><svg class="icon"><use href="#i-pen"/></svg><div><b>Your first move</b><p>Turn the top five gaps from Cohort 1 into checks the security auditor runs on every Creator handover.</p></div></div>
+        </div>
+
+        <!-- CUSTOM AI -->
+        <div class="svc-panel" role="tabpanel" id="p-ai" aria-labelledby="t-ai" hidden>
+          <div class="svc-hero">
+            <span class="service-icon"><svg class="icon"><use href="#i-ai"/></svg></span>
+            <div><h3>Custom AI on ImpactOS</h3><p class="means"><strong>Every custom build is a test of what DozAI should do next.</strong></p></div>
+            <span class="tag">Owner to refine</span>
+          </div>
+          <div class="ba">
+            <div class="ba-title"><b>A custom AI build, before and after</b><span class="tag">Example</span></div>
+            <div class="ba-head"><span>Stage</span><span class="b">Before ImpactOS</span><span class="a">On ImpactOS</span></div>
+            <div class="ba-row"><span class="st">Use case</span><p class="b">Open conversations about what AI could do.</p><div class="a"><p>The AI maturity model places the organisation and the use-case library suggests where to start. Gate 01 checks data, feasibility and risk.</p><div class="uses"><i class="u kn">Knowledge</i><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Prototype</span><p class="b">Built from scratch for each client.</p><div class="a"><p>Assembled from existing skills, MCP connectors and agent patterns, then shaped to the client’s work.</p><div class="uses"><i class="u mo">Module</i><i class="u kn">Knowledge</i></div></div></div>
+            <div class="ba-row"><span class="st">Evaluate</span><p class="b">Judged by how good the demo looked.</p><div class="a"><p>Tested on the client’s real data, with a named person reviewing outputs before they’re used.</p><div class="uses"><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Deploy</span><p class="b">Handed over once it works.</p><div class="a"><p>Usage and quality monitored, with human checkpoints written into the workflow.</p><div class="uses"><i class="u me">Method</i></div></div></div>
+            <div class="ba-row"><span class="st">Learn</span><p class="b">Each build stays a one-off.</p><div class="a"><p>The reusable part becomes a DozAI skill or agent candidate.</p><div class="uses"><i class="u kn">Knowledge</i></div></div></div>
+            </div>
+          <div class="svc-sub">The layers behind it</div>
+          <div class="svc-grid">
+            <div class="svc-cell m"><span class="k">Method</span><span class="sub">Your stretch of the spine</span><ul>
+              <li>Convert: use case, data, feasibility and risk<small>Gate 01 includes the safety check</small></li>
+              <li>Deliver: prototype, evaluate with real data, build</li>
+              <li>Close on monitored performance and adoption</li></ul></div>
+            <div class="svc-cell kn"><span class="k">Knowledge</span><span class="sub">What you start from</span><ul>
+              <li>AI maturity model and use-case library</li>
+              <li>Lessons from coaching retainers</li>
+              <li>Prompt and skill patterns that worked</li></ul></div>
+            <div class="svc-cell mo"><span class="k">Modules</span><span class="sub">What plugs in, and where</span><ul>
+              <li>Skills<small>Deliver: package the client's expertise</small></li>
+              <li>MCP connectors<small>Deliver: connect to their Zoho and tools</small></li>
+              <li>Agents<small>Deliver: run the repeatable work</small></li></ul></div>
+            <div class="svc-cell pr"><span class="k">Could become</span><span class="sub">Product candidates</span><ul>
+              <li>DozAI skills and agents</li>
+              <li>Partner expertise served across many NGOs</li></ul></div>
+          </div>
+          <div class="svc-ask"><svg class="icon"><use href="#i-pen"/></svg><div><b>Your first move</b><p>For each build, note one part another NGO would want too. That's a DozAI candidate.</p></div></div>
+        </div>
+
+        <div class="worksheet">
+          <div class="wq"><span>Q1</span><h4>What do we repeat on every project?</h4><p>Questions, sheets, configs, code, emails.</p><span class="ans k tag to" style="border:0">→ Knowledge</span></div>
+          <div class="wq"><span>Q2</span><h4>Which step eats the most hours?</h4><p>The one you'd hand to a capable intern.</p><span class="ans mo tag to" style="border:0">→ Module candidate</span></div>
+          <div class="wq"><span>Q3</span><h4>What would a client happily do without us?</h4><p>If they'd do it alone, it can run alone.</p><span class="ans p tag to" style="border:0">→ Product candidate</span></div>
+          <div class="wq"><span>Q4</span><h4>What did the last project teach us?</h4><p>Anything that isn't written down yet.</p><span class="ans m tag to" style="border:0">→ Learning Circle</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="section" id="method">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">The method</span>
+          <h2>The spine every engagement follows.</h2>
+          <p class="lead">From an identified need to a solution the client owns, and back again with what we learned.</p>
+        </div>
+        <div class="spine">
+          <div class="sp"><span>01</span><b>Entry</b><p>Enquiry matched to an organisation, tagged to a service, routed to an owner.</p></div>
+          <div class="sp"><span>02</span><b>Convert</b><p>Clear requirements, estimate, accepted proposal. Won, lost or deferred recorded.</p></div>
+          <div class="sp"><span>03</span><b>Deliver</b><p>The service playbook, followed to adoption.</p></div>
+          <div class="sp"><span>04</span><b>Close</b><p>Acceptance, documentation, handover, retrospective.</p></div>
+          <div class="sp"><span>05</span><b>Learn</b><p>Learning Circle sends improvements back to the front.</p></div>
+        </div>
+        <div class="always">
+          <div class="al"><b>Named owners</b><p>Every deal, project and module has one accountable person.</p></div>
+          <div class="al"><b>Human checkpoints</b><p>AI drafts. People review, decide and send.</p></div>
+          <div class="al"><b>One record per org</b><p>Everything we learn about an organisation lands in one place.</p></div>
+        </div>
+        <div class="spine-link"><p><strong>Want the step-by-step?</strong> Entry routes, the four gates and each vertical playbook are on the operating model page.</p><a class="pill ghost" href="/team/impactos/playbooks/">Open the playbooks →</a></div>
+      </div>
+    </section>
+
+    <!-- CONTRACT -->
+    <section class="section sunk" id="contract">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Adding a module</span>
+          <h2>Six answers before it counts.</h2>
+          <p class="lead">Powerful tools tend to quietly redefine how people work. The contract keeps the method in charge.</p>
+        </div>
+        <div class="contract">
+          <div class="cq"><span>01</span><b>Attaches to</b><p>A named stage of the spine</p></div>
+          <div class="cq"><span>02</span><b>Reads</b><p>What it takes from the Account, Deal or Project</p></div>
+          <div class="cq"><span>03</span><b>Writes back</b><p>What it leaves in the record, with source</p></div>
+          <div class="cq"><span>04</span><b>Checkpoint</b><p>Who reviews before it counts</p></div>
+          <div class="cq"><span>05</span><b>Owner</b><p>One accountable person</p></div>
+          <div class="cq"><span>06</span><b>Without it</b><p>The manual route still works</p></div>
+        </div>
+        <div class="spine-link"><p><strong>Worked example:</strong> Insight, the intelligence layer in Zoho CRM, specced end to end as a module.</p><a class="pill ghost" href="/team/insight/">Open the Insight spec →</a></div>
+      </div>
+    </section>
+
+    <!-- VISIBLE NOT SOLD -->
+    <section class="section" id="outside">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Inside and outside</span>
+          <h2>Visible, never sold.</h2>
+          <p class="lead">ImpactOS is ours. What clients buy is what it produces.</p>
+        </div>
+        <div class="visible">
+          <div class="vis in">
+            <span class="tag">For the team</span>
+            <h3>The way we train, plan and improve</h3>
+            <p>It's the backbone of onboarding, the handbook and L&amp;D. A new joiner who learns ImpactOS learns how EdZola works.</p>
+            <p>Service owners keep their part of it current. The Learning Circle decides what moves into the core.</p>
+          </div>
+          <div class="vis out">
+            <span class="tag">For clients and funders</span>
+            <h3>A sign the work is done properly</h3>
+            <p>They see a clear method, named owners and reusable assets behind every engagement. They don't need to learn the layers.</p>
+            <span class="stamp">Delivered on ImpactOS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" style="padding-bottom:94px">
+      <div class="owner-cta">
+        <div>
+          <h2>Make your service's ImpactOS real.</h2>
+          <p>Open your tab above. Fix what's wrong, fill what's missing, answer the four questions. Bring it to the next Learning Circle.</p>
+        </div>
+        <a class="pill" href="mailto:reachus@edzola.com?subject=ImpactOS%20v0.5%20feedback">Share improvements →</a>
       </div>
     </section>
   </main>
 
-  <footer><div class="wrap"><a class="logo" href="/">edzola.ai</a><span class="footer-note">ImpactOS working draft · for team review</span></div></footer>
+  <footer><div class="wrap"><a class="logo" href="/">edzola.ai</a><span class="footer-note">ImpactOS working definition · v0.5 · for team review</span></div></footer>
+
+  <script>
+  (function(){
+    // Service tabs
+    var tabs=[].slice.call(document.querySelectorAll('.svc-tab'));
+    function pick(t){
+      tabs.forEach(function(x){
+        var on=x===t; x.setAttribute('aria-selected',on?'true':'false'); x.tabIndex=on?0:-1;
+        document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+      });
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){pick(t)});
+      t.addEventListener('keydown',function(e){
+        var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!d)return;
+        var n=tabs[(i+d+tabs.length)%tabs.length]; pick(n); n.focus(); e.preventDefault();
+      });
+    });
+    if(location.hash){var h=document.getElementById('t-'+location.hash.slice(1));if(h)pick(h);}
+
+    // Sort-it game
+    var items=[
+      ['The 80G receipt field set we add to every fundraising CRM','Knowledge','Something we learned and reuse. It sits in the CRM template, and skills can read it.'],
+      ['Insight scoring a new enquiry and writing a brief into the deal','Module','It runs, attaches to Entry, and writes back with sources. The owner still reviews the brief.'],
+      ['Gate 02: Design locked','Method','A checkpoint every engagement passes, whatever the service.'],
+      ['A new offer: websites for NGOs','Service','A new kind of work run by our people. It needs a playbook on the same spine, nothing else.'],
+      ['An NGO running its own voice survey on zolabs.ai','Product','A client uses it with no EdZola person in the loop.'],
+      ['Estimation rules drawn from 34,000+ hours of delivery','Knowledge','Learned from past projects, reused on every estimate. It gets sharper each time we close a project.'],
+      ['The Creator MCP builder generating forms from an approved blueprint','Module','It runs at Deliver, reads the blueprint and writes to a sandbox. Code review stays human.'],
+      ['A Deluge approval-workflow snippet we keep rewriting','Knowledge','Reusable code is knowledge. Write it once, document it, stop rewriting it.'],
+      ['The Learning Circle after every project','Method','How the method improves itself. It decides what gets promoted into the core.'],
+      ['A DozAI agent that drafts grant reports for any NGO','Product','Built from our knowledge and modules, used directly by organisations without us.']
+    ];
+    var i=0,score=0,el=function(id){return document.getElementById(id)};
+    var btns=[].slice.call(document.querySelectorAll('.gbtn'));
+    function show(){
+      el('g-item').textContent=items[i][0];
+      el('g-count').textContent=(i+1)+' / '+items.length;
+      el('g-why').innerHTML='Pick where you think it lives.';
+      btns.forEach(function(b){b.disabled=false;b.className='gbtn'});
+      el('g-next').hidden=true;
+    }
+    btns.forEach(function(b){
+      b.addEventListener('click',function(){
+        var right=items[i][1], ok=b.dataset.a===right;
+        if(ok)score++;
+        el('g-score').textContent=score;
+        btns.forEach(function(x){x.disabled=true; if(x.dataset.a===right)x.classList.add('right'); else if(x===b)x.classList.add('wrong');});
+        el('g-why').innerHTML='<strong>'+(ok?'Yes. ':'It’s '+right+'. ')+'</strong>'+items[i][2];
+        el('g-next').hidden=false;
+        el('g-next').textContent=i<items.length-1?'Next →':'Play again ↺';
+        el('g-next').focus();
+      });
+    });
+    el('g-next').addEventListener('click',function(){
+      if(i<items.length-1){i++}else{i=0;score=0;el('g-score').textContent=0}
+      show();
+    });
+    show();
+  })();
+  </script>
 </body>
 </html>
