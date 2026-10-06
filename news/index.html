@@ -147,12 +147,25 @@ section{padding-block:clamp(56px,8vw,104px)}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .play{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:var(--coral);box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .play::after{content:"";position:absolute;left:27px;top:21px;border-style:solid;border-width:13px 0 13px 21px;border-color:transparent transparent transparent var(--ink)}
-.featured{display:grid;grid-template-columns:2.2fr 1fr;gap:20px;align-items:start}
-.shorts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.shorts-label{grid-column:1/-1;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.meta{margin-top:16px}
+.featured{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center}
+.meta .sub{font-family:var(--font-display);font-size:var(--step-1);font-weight:600;color:var(--ink);margin-bottom:12px;line-height:1.3}
+.meta .when{margin-top:14px;font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.clips{margin-top:40px;padding-top:28px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.clips-label{grid-column:1/-1;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.clip{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px}
+.clip .yt.short{border-radius:12px}
+.clip .play{width:44px;height:44px;margin:-22px 0 0 -22px}
+.clip .play::after{left:17px;top:13px;border-width:9px 0 9px 14px}
+.clip h3{font-size:1.08rem;margin-bottom:6px}
+.clip p{color:var(--muted);font-size:var(--step--1)}
+.events{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center}
+.events p{color:var(--muted);margin-top:14px}
+.ev-photos{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+.ev-photos figure{margin:0;border-radius:16px;overflow:hidden}
+.ev-photos figure:first-child{grid-row:1/3}
+.ev-photos img{width:100%;height:100%;object-fit:cover;display:block}
 .meta .tag{font-family:var(--font-mono);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-ink)}
-.meta h2{font-size:var(--step-2);margin:6px 0 8px}
+.meta h2{font-size:var(--step-3);margin:6px 0 8px;letter-spacing:-.03em}
 .meta p{color:var(--muted);max-width:70ch}
 .vids{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .vid h3{font-size:1.1rem;margin:12px 0 4px}
@@ -190,8 +203,8 @@ section{padding-block:clamp(56px,8vw,104px)}
 footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:var(--step--1);color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 @media (max-width:900px){
-  .featured{grid-template-columns:1fr}
-  .shorts{grid-template-columns:1fr 1fr;max-width:420px}
+  .featured,.events{grid-template-columns:1fr}
+  .clips{grid-template-columns:1fr}
   .vids,.follow{grid-template-columns:1fr 1fr}
   .press a{grid-template-columns:80px 1fr;gap:4px 14px}
   .press .t{grid-column:2}
@@ -203,23 +216,43 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   .brand span{display:none}
   .vids,.follow,.chron{grid-template-columns:1fr}
   .pod{grid-template-columns:1fr}
+  .clip{grid-template-columns:96px 1fr}
 }
+</style>
+<style id="gh-css">
+html{scroll-padding-top:76px}
+.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
+.gh.gh-static{position:relative}
+.gh *{box-sizing:border-box}
+.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.gh a{text-decoration:none;color:inherit}
+.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
+.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
+.gh-nav{margin-left:auto;display:flex;gap:2px}
+.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
+.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
+.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
+.gh-cta:hover{filter:brightness(.96)}
+.gh-menu{display:none;position:relative}
+.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.gh-menu summary::-webkit-details-marker{display:none}
+.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
+.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
+.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
+.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
+.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
+.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
+:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
+@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
+@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="/"><b>edzola.ai</b><span>News &amp; media</span></a>
-    <nav class="nav-links" aria-label="Page sections">
-      <a href="#watch">Watch</a>
-      <a href="#follow">Follow</a>
-      <a href="#newsletter">Newsletter</a>
-      <a href="#press">Press</a>
-    </nav>
-    <a class="btn btn-primary" href="https://in.linkedin.com/company/edzola" rel="noopener">Follow on LinkedIn</a>
-  </div>
-</header>
+<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b><span>News &amp; media</span></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a></div><a class="gh-cta" href="https://in.linkedin.com/company/edzola" target="_blank" rel="noopener">Follow on LinkedIn</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a><a class="gh-drop-cta" href="https://in.linkedin.com/company/edzola" target="_blank" rel="noopener">Follow on LinkedIn</a></div></details></div></div>
 
 <main>
   <section class="hero">
@@ -233,19 +266,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <section class="sunk" id="watch" style="padding-top:clamp(40px,6vw,72px)">
     <div class="wrap">
       <div class="featured">
-        <div>
-          <button class="yt " data-id="J1OhJa5T3VI" aria-label="Play video: Impact Dialogues by EdZola, Episode 1 with TRRAIN"><img src="https://i.ytimg.com/vi/J1OhJa5T3VI/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button>
-          <div class="meta">
-            <span class="tag">New series · Impact Dialogues by EdZola · Episode 1</span>
-            <h2>From fragmented processes to integrated systems, with TRRAIN.</h2>
-            <p>A fireside conversation series where social-impact leaders share how they use technology, data and AI. In the first episode, Akshay V speaks with Sajidali Pathan, Chief of Digital Initiatives at TRRAIN, about leadership, change, choosing tech partners and TRRAIN's approach to AI.</p>
-          </div>
+        <div class="feat-video"><button class="yt " data-id="J1OhJa5T3VI" aria-label="Play video: Impact Dialogues by EdZola, Episode 1 with TRRAIN"><img src="https://i.ytimg.com/vi/J1OhJa5T3VI/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button></div>
+        <div class="meta">
+          <span class="tag">New series · Episode 1</span>
+          <h2>Impact Dialogues by EdZola</h2>
+          <p class="sub">From fragmented processes to integrated systems, with TRRAIN.</p>
+          <p>A fireside conversation series where social-impact leaders share how they use technology, data and AI. In the first episode, Akshay V speaks with Sajidali Pathan, Chief of Digital Initiatives at TRRAIN, about leadership, change, choosing tech partners and TRRAIN's approach to AI.</p>
+          <p class="when">Full episode · September 2026</p>
         </div>
-        <div class="shorts">
-          <span class="shorts-label">Shorts from the episode</span>
-          <button class="yt short " data-id="CbAGWKLhcQM" aria-label="Play video: Short: how to choose a technology partner"><img src="https://i.ytimg.com/vi/CbAGWKLhcQM/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button>
-          <button class="yt short " data-id="G78TI-5VUrY" aria-label="Play video: Short: Impact Dialogues with TRRAIN"><img src="https://i.ytimg.com/vi/G78TI-5VUrY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button>
-        </div>
+      </div>
+      <div class="clips">
+        <p class="clips-label">Clips from the episode</p>
+        <div class="clip"><button class="yt short " data-id="CbAGWKLhcQM" aria-label="Play video: Short: how to choose a technology partner"><img src="https://i.ytimg.com/vi/CbAGWKLhcQM/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button><div><h3>How do you choose a tech partner without a tech team?</h3><p>Sajidali on seeking independent advice, and why empathy matters as much as expertise.</p></div></div>
+        <div class="clip"><button class="yt short " data-id="G78TI-5VUrY" aria-label="Play video: Short: Impact Dialogues with TRRAIN"><img src="https://i.ytimg.com/vi/G78TI-5VUrY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true"></span></button><div><h3>From fragmented processes to one system</h3><p>The TRRAIN journey in under a minute.</p></div></div>
       </div>
     </div>
   </section>
@@ -315,6 +348,21 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <li><a href="https://epaper.thestatesman.com/3701046/Delhi-The-Statesman/09-05-2023#page/11/1" rel="noopener"><span class="d">May 2023</span><b>The Statesman</b><span class="t">The challenges and future of implementing edtech.</span><span class="v">e-paper ↗</span></a></li>
       </ul>
       <div class="pod"><span class="d">Mar 2022</span><p><b>Podcast · InnovatEd</b> &nbsp;Contextualising tech for impact: Akshay V on distributive technology in the change and impact ecosystem.</p><a href="https://open.spotify.com/episode/6QXU83hTnzPz9LyiuIw7pF" rel="noopener">Listen on Spotify ↗</a></div>
+    </div>
+  </section>
+  <section id="events">
+    <div class="wrap events">
+      <div>
+        <p class="eyebrow">Events</p>
+        <h2>Social Impact Circle.</h2>
+        <p>Our community for tech-forward nonprofits and Tech4Good builders: a room to learn what's changing, share what worked and what didn't, and find partners for collective action.</p>
+        <p><a href="mailto:reachus@edzola.com?subject=Social%20Impact%20Circle">Ask about the next circle →</a></p>
+      </div>
+      <div class="ev-photos">
+        <figure><img src="/assets/photos/sic-networking.jpg" alt="Attendees networking at Social Impact Circle" width="1400" height="930" loading="lazy"></figure>
+        <figure><img src="/assets/photos/sic-table-talk.jpg" alt="A table discussion at Social Impact Circle" width="1400" height="930" loading="lazy"></figure>
+        <figure><img src="/assets/photos/sic-writing.jpg" alt="A participant writing notes during a session" width="1400" height="930" loading="lazy"></figure>
+      </div>
     </div>
   </section>
 </main>

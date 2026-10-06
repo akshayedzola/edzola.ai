@@ -143,8 +143,24 @@ section{padding-block:clamp(56px,8vw,104px)}
 .hero{padding-top:clamp(48px,7vw,88px);padding-bottom:0}
 .hero h1{font-size:var(--step-4);font-weight:800;letter-spacing:-.045em;line-height:.98;margin-bottom:20px;max-width:14ch}
 .hero h1 em{font-style:normal;color:var(--coral-ink)}
-.group{margin-top:44px;border-radius:24px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1600/470;background:var(--sunk)}
-.group img{width:100%;height:100%;object-fit:cover;display:block}
+.mosaic{margin-top:44px;display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:clamp(300px,42vw,520px)}
+.mosaic figure{margin:0;border-radius:20px;overflow:hidden;background:var(--sunk)}
+.mosaic .m1{grid-row:1/3}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block}
+.sic{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.sic p{color:var(--muted);margin-top:14px}
+.sic-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sic-photos figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/3}
+.sic-photos figure:first-child{grid-column:1/-1;aspect-ratio:16/9}
+.sic-photos img{width:100%;height:100%;object-fit:cover;display:block}
+.pillars{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
+.pillars li{padding-left:18px;position:relative;color:var(--ink)}
+.pillars li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.pillars span{color:var(--muted)}
+.voice{margin-top:44px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;padding:28px 30px;border-radius:20px;background:var(--peach)}
+.voice img{width:120px;height:auto}
+.voice blockquote{margin:0;font-family:var(--font-display);font-size:var(--step-1);font-weight:600;line-height:1.35;letter-spacing:-.01em}
+.voice cite{display:block;margin-top:10px;font-style:normal;color:var(--muted);font-size:var(--step--1)}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:40px}
 .facts div{padding:20px;border-left:1px solid var(--line)}
 .facts div:first-child{border-left:0;padding-left:0}
@@ -192,7 +208,7 @@ section{padding-block:clamp(56px,8vw,104px)}
 footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:var(--step--1);color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 @media (max-width:900px){
-  .story,.join-box{grid-template-columns:1fr}
+  .story,.join-box,.sic{grid-template-columns:1fr}
   .values{grid-template-columns:1fr 1fr}
   .value,.value:not(:nth-child(3n+1)){padding:22px 18px 22px 0;border-left:0}
   .value:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
@@ -208,24 +224,46 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   .values{grid-template-columns:1fr}
   .value:nth-child(even){padding-left:0;border-left:0}
   .team{grid-template-columns:repeat(2,1fr);gap:16px}
-  .group{aspect-ratio:4/3}
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;height:auto}
+  .mosaic .m1{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}
+  .mosaic .m2,.mosaic .m3{aspect-ratio:1}
+  .voice{grid-template-columns:1fr}
 }
+</style>
+<style id="gh-css">
+html{scroll-padding-top:76px}
+.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
+.gh.gh-static{position:relative}
+.gh *{box-sizing:border-box}
+.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.gh a{text-decoration:none;color:inherit}
+.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
+.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
+.gh-nav{margin-left:auto;display:flex;gap:2px}
+.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
+.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
+.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
+.gh-cta:hover{filter:brightness(.96)}
+.gh-menu{display:none;position:relative}
+.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.gh-menu summary::-webkit-details-marker{display:none}
+.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
+.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
+.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
+.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
+.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
+.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
+:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
+@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
+@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="/"><b>edzola.ai</b><span>About</span></a>
-    <nav class="nav-links" aria-label="Page sections">
-      <a href="#story">Our story</a>
-      <a href="#team">Team</a>
-      <a href="#join">Careers</a>
-      <a href="/news/">News &amp; media</a>
-    </nav>
-    <a class="btn btn-primary" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a>
-  </div>
-</header>
+<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a></div></details></div></div>
 
 <main>
   <section class="hero">
@@ -233,7 +271,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <p class="eyebrow">About EdZola</p>
       <h1>Misfits on <em>a mission.</em></h1>
       <p class="lede">Part technologists, part social-sector practitioners. Fully obsessed with building things that create impact.</p>
-      <div class="group"><img src="/assets/team/edzola-team.jpg" alt="The EdZola team at the Coimbatore office" width="1600" height="470"></div>
+      <div class="mosaic">
+        <figure class="m1"><img src="/assets/photos/sic-group.jpg" alt="Nonprofit and technology teams together at Social Impact Circle, hosted by EdZola" width="1280" height="960"></figure>
+        <figure class="m2"><img src="/assets/photos/sic-sticky-notes.jpg" alt="Hands arranging sticky notes during a workshop" width="1400" height="933" loading="lazy"></figure>
+        <figure class="m3"><img src="/assets/photos/sic-discussion.jpg" alt="A small-group discussion at Social Impact Circle" width="1400" height="930" loading="lazy"></figure>
+      </div>
       <div class="facts">
         <div><b>2020</b><span>founded in Coimbatore, India</span></div>
         <div><b>100+</b><span>organisations supported</span></div>
@@ -296,15 +338,41 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <figure class="person"><img src="/assets/team/aristo-raj.jpg" alt="Aristo Raj" width="360" height="360" loading="lazy"><figcaption><b>Aristo Raj</b><span>Senior Software Engineer</span></figcaption></figure>
         <figure class="person"><img src="/assets/team/lakshmi.jpg" alt="Lakshmi" width="360" height="360" loading="lazy"><figcaption><b>Lakshmi</b><span>Consultant</span></figcaption></figure>
         <figure class="person"><img src="/assets/team/ramya.jpg" alt="Ramya" width="360" height="360" loading="lazy"><figcaption><b>Ramya</b><span>Consultant</span></figcaption></figure>
-        <figure class="person"><img src="/assets/team/abdullah-ahmad.jpg" alt="Abdullah Ahmad" width="360" height="360" loading="lazy"><figcaption><b>Abdullah Ahmad</b><span>Software Engineer</span></figcaption></figure>
         <figure class="person"><img src="/assets/team/mahavir-kumar.jpg" alt="Mahavir Kumar" width="360" height="360" loading="lazy"><figcaption><b>Mahavir Kumar</b><span>Software Engineer</span></figcaption></figure>
         <figure class="person"><img src="/assets/team/monisha.jpg" alt="Monisha" width="360" height="360" loading="lazy"><figcaption><b>Monisha</b><span>Software Engineer</span></figcaption></figure>
         <figure class="person"><img src="/assets/team/niranjan.jpg" alt="Niranjan" width="360" height="360" loading="lazy"><figcaption><b>Niranjan</b><span>Software Engineer</span></figcaption></figure>
       </div>
+      <div class="voice">
+        <img src="/assets/logos/logo-trrain.png" alt="TRRAIN" width="120" height="160" loading="lazy">
+        <div>
+          <blockquote>"They've shown a strong commitment to understanding and addressing the specific challenges we face. The team is responsive and dedicated to meeting deadlines, which makes our collaboration smooth and effective."</blockquote>
+          <cite>Pooja, Head of Business Excellence, Trust for Retailers and Retail Associates of India (TRRAIN)</cite>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="join" id="join">
+  <section class="sunk" id="community">
+    <div class="wrap sic">
+      <div>
+        <p class="eyebrow">Social Impact Circle</p>
+        <h2>We build in the open, with the sector.</h2>
+        <p>Social Impact Circle is the community we started to bring tech-forward nonprofits and Tech4Good builders into one room. Most of what the sector learns about technology stays inside one organisation. SIC is where it gets shared, mistakes included.</p>
+        <ul class="pillars">
+          <li><b>Learn.</b> <span>What's changing in technology and the nonprofit sector.</span></li>
+          <li><b>Share.</b> <span>What worked, what didn't, and what not to rebuild.</span></li>
+          <li><b>Connect.</b> <span>With other nonprofits and Tech4Good partners, for collective action.</span></li>
+        </ul>
+      </div>
+      <div class="sic-photos">
+        <figure><img src="/assets/photos/sic-panel.jpg" alt="A panel discussion at Social Impact Circle" width="1400" height="930" loading="lazy"></figure>
+        <figure><img src="/assets/photos/sic-workshop.jpg" alt="Participants in a workshop session" width="1400" height="930" loading="lazy"></figure>
+        <figure><img src="/assets/photos/sic-fireside.jpg" alt="A fireside conversation on stage" width="1400" height="933" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="join" id="join" style="padding-top:clamp(56px,8vw,104px)">
     <div class="wrap">
       <div class="join-box">
         <div>
