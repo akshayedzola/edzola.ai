@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZolaShield — DPDP Risk Assessment Platform</title>
   <meta name="description" content="ZolaShield helps organisations identify every personal data system they hold, assess risk, and generate audit-ready DPDP compliance reports — through AI-conducted interviews, not spreadsheets." />
+  <link rel="canonical" href="https://edzola.ai/zolashield/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
@@ -79,6 +80,11 @@
     .header-link.cta {
       background: linear-gradient(90deg, rgba(88,223,216,0.12), rgba(208,239,117,0.08));
       border-color: rgba(208,239,117,0.28); color: var(--lime);
+    }
+
+    @media (max-width: 640px) {
+      .header-link:not(.cta) { display: none; }
+      .wordmark { font-size: 1.3rem; }
     }
 
     /* ── Hero ── */
@@ -347,6 +353,20 @@
       padding: 10px 18px; border-radius: 999px; border: 1px solid var(--border);
       background: rgba(8,20,27,0.5); color: var(--muted-strong);
       font-size: 0.85rem; font-weight: 600; letter-spacing: 0.01em;
+    }
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .steps { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .use-cases-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .feature-block { grid-template-columns: 1fr; gap: 28px; }
+      .feature-block.reverse { direction: ltr; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 56px 0 72px; }
+      .hero h1 { font-size: clamp(2.2rem, 10.5vw, 2.8rem); }
+      .stat-strip, .pain-grid, .report-grid, .use-cases-grid, .steps { grid-template-columns: 1fr; }
+      .stat-strip { margin-top: 48px; }
+      .report-card { padding: 24px; }
     }
   </style>
 </head>
