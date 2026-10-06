@@ -260,10 +260,25 @@ html{scroll-padding-top:76px}
 @media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
 @media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
 </style>
+<style id="gh-lang-css">
+.gh-lang{display:flex;gap:2px;padding:3px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font:600 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace}
+.gh-lang a{padding:6px 8px;border-radius:999px;color:#6B6360!important}
+.gh-lang a[aria-current]{background:#1A1A1A;color:#FDF8F4!important}
+.gh-lang a:hover{color:#1A1A1A!important}
+.gh-drop .gh-lang{margin:8px 6px 4px;justify-content:center}
+@media (max-width:900px){.gh-in>.gh-lang{display:none}}
+.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:440px;margin-left:auto;display:flex;align-items:center;gap:12px;padding:14px 16px;background:#1A1A1A;color:#FDF8F4;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);font:500 14px/1.4 "Figtree",system-ui,sans-serif}
+.lang-hint a{color:#1A1A1A;background:#E8967A;padding:8px 14px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap}
+.lang-hint button{margin-left:auto;background:none;border:0;color:#FDF8F4;opacity:.7;font-size:20px;cursor:pointer;padding:4px 6px}
+</style>
+<link rel="alternate" hreflang="en" href="https://edzola.ai/about/">
+<link rel="alternate" hreflang="es" href="https://edzola.ai/es/about/">
+<link rel="alternate" hreflang="pt-BR" href="https://edzola.ai/pt/about/">
+<link rel="alternate" hreflang="x-default" href="https://edzola.ai/about/">
 </head>
 <body>
 
-<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a></div></details></div></div>
+<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a></div><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/about/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/es/about/" hreflang="es" lang="es">ES</a><a href="/pt/about/" hreflang="pt" lang="pt">PT</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/about/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/es/about/" hreflang="es" lang="es">ES</a><a href="/pt/about/" hreflang="pt" lang="pt">PT</a></div><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/" aria-current="page">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a></div></details></div></div>
 
 <main>
   <section class="hero">
@@ -406,5 +421,21 @@ html{scroll-padding-top:76px}
     <span><a href="/">edzola.ai</a> · <a href="https://go.edzola.com/hiring">Careers</a> · <a href="mailto:reachus@edzola.com">reachus@edzola.com</a></span>
   </div>
 </footer>
+<script id="lang-hint">
+(function(){
+  var dst="about/", offers={es:['¿Prefieres leer en español?','Ver en español'],pt:['Prefere ler em português?','Ver em português']};
+  function get(){try{return localStorage.getItem('edz-lang')}catch(e){return null}}
+  function set(v){try{localStorage.setItem('edz-lang',v)}catch(e){}}
+  document.querySelectorAll('.gh-lang a').forEach(function(a){a.addEventListener('click',function(){set(a.getAttribute('hreflang'))})});
+  if(document.documentElement.lang.slice(0,2)!=='en'||get())return;
+  var pref=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase();
+  if(!offers[pref])return;
+  var d=document.createElement('div');d.className='lang-hint';d.setAttribute('role','region');d.setAttribute('aria-label','Language');
+  d.innerHTML='<span lang="'+pref+'">'+offers[pref][0]+'</span><a lang="'+pref+'" href="/'+pref+'/'+dst+'">'+offers[pref][1]+'</a><button aria-label="Dismiss">×</button>';
+  d.querySelector('a').addEventListener('click',function(){set(pref)});
+  d.querySelector('button').addEventListener('click',function(){set('en');d.remove()});
+  document.body.appendChild(d);
+})();
+</script>
 </body>
 </html>

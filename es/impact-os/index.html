@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>«ImpactOS: The Method Behind EdZola's Nonprofit Systems»</title>
+<meta content="«ImpactOS is EdZola's delivery method: one way of working, reusable sector knowledge and AI tools with a person checking, so no project starts from zero.»" name="description"/>
+<link href="https://edzola.ai/es/impact-os/" rel="canonical"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Layout concept: the three layers (method, knowledge, tools) are the spine; every section shows what one of them means for a partner. */
+:root{
+  --bg:#FDF8F4;
+  --surface:#FFFFFF;
+  --sunk:#F6EDE5;
+  --peach:#FAE8DC;
+  --coral:#E8967A;
+  --coral-ink:#A9492C;
+  --teal:#8ECFCA;
+  --teal-soft:#E2F3F1;
+  --teal-ink:#2C6F6A;
+  --yellow:#F7C948;
+  --yellow-soft:#FDF1CC;
+  --ink:#1A1A1A;
+  --muted:#6B6360;
+  --line:#EADBD0;
+  --on-accent:#1A1A1A;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Hanken Grotesk","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --step--1:clamp(.82rem,.8rem + .1vw,.88rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.09rem);
+  --step-1:clamp(1.2rem,1.1rem + .45vw,1.45rem);
+  --step-2:clamp(1.5rem,1.3rem + .9vw,2.1rem);
+  --step-3:clamp(2rem,1.6rem + 2vw,3.2rem);
+  --step-4:clamp(2.5rem,1.8rem + 3.6vw,4.9rem);
+  --radius:14px;
+}
+:root[data-theme="dark"]{
+  --bg:#181412;--surface:#221C19;--sunk:#1F1916;--peach:#33251F;--coral:#EE9F84;--coral-ink:#F4AE95;
+  --teal:#79BFB9;--teal-soft:#1D2B29;--teal-ink:#8FD3CD;--yellow:#E8BE45;--yellow-soft:#2E2715;
+  --ink:#F4EDE8;--muted:#B4A8A2;--line:#3A2E28;--on-accent:#1A1A1A;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+a{color:var(--coral-ink)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--teal-ink);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:var(--step-3);font-weight:700}
+h3{font-size:var(--step-1);font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--font-mono);font-size:var(--step--1);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-ink);margin-bottom:16px}
+.lede{font-size:var(--step-1);color:var(--muted);line-height:1.5;max-width:60ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:1.5px solid transparent}
+.btn-primary{background:var(--coral);color:var(--on-accent)}
+.btn-primary:hover{filter:brightness(.96)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.btn-ghost:hover{border-color:var(--coral)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--font-display);font-size:1.3rem;letter-spacing:-.04em}
+.brand span{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.nav-links{margin-left:auto;display:flex;gap:2px}
+.nav-links a{padding:8px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.94rem}
+.nav-links a:hover{background:var(--sunk);color:var(--ink)}
+.nav .btn{min-height:40px;padding:8px 18px;font-size:.92rem}
+
+section{padding-block:clamp(56px,8vw,104px)}
+.section-head{max-width:760px;margin-bottom:40px}
+.section-head p{color:var(--muted);margin-top:14px;font-size:var(--step-0)}
+
+/* hero */
+.hero{padding-top:clamp(48px,7vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:var(--step-4);font-weight:800;letter-spacing:-.045em;line-height:.98;margin-bottom:24px}
+.hero h1 em{font-style:normal;color:var(--coral-ink)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+.stack{display:grid;gap:10px}
+.stack-top{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.layer{border-radius:var(--radius);padding:16px 18px;border:1px solid var(--line);background:var(--surface)}
+.layer small{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.layer b{font-family:var(--font-display);font-size:1.12rem}
+.layer.on-top{background:var(--sunk);border-style:dashed}
+.layer.l-tools{background:var(--yellow-soft)}
+.layer.l-know{background:var(--teal-soft)}
+.layer.l-method{background:var(--peach)}
+.layer .speed{float:right;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;color:var(--muted);margin-top:4px}
+.stack-label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px 0}
+
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof div{padding:22px 20px;border-left:1px solid var(--line)}
+.proof div:first-child{border-left:0;padding-left:0}
+.proof b{display:block;font-family:var(--font-display);font-size:var(--step-2);letter-spacing:-.03em;line-height:1.1}
+.proof span{color:var(--muted);font-size:var(--step--1)}
+
+/* problem */
+.problem{background:var(--sunk)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.card h3{margin-bottom:10px}
+.card p{color:var(--muted)}
+.pull{margin-top:36px;font-family:var(--font-display);font-size:var(--step-2);font-weight:700;letter-spacing:-.025em;line-height:1.2;max-width:28ch}
+
+/* layers */
+.layers{display:grid;gap:18px}
+.layer-row{display:grid;grid-template-columns:220px 1fr 1fr;gap:28px;padding:28px;border-radius:var(--radius);border:1px solid var(--line)}
+.layer-row.l-method{background:var(--peach)}
+.layer-row.l-know{background:var(--teal-soft)}
+.layer-row.l-tools{background:var(--yellow-soft)}
+.layer-row .tag{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.layer-row h3{font-size:var(--step-2);margin-top:6px}
+.layer-row .what{color:var(--ink)}
+.layer-row .means{color:var(--muted)}
+.layer-row .means strong{color:var(--ink)}
+.layer-row ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.layer-row li{font-size:.82rem;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--surface) 70%,transparent);border:1px solid var(--line)}
+.analogy{margin-top:22px;color:var(--muted);font-size:var(--step-0);max-width:70ch}
+.analogy strong{color:var(--ink)}
+
+/* promises */
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.promise{padding:28px 28px 28px 0;border-bottom:1px solid var(--line)}
+.promise:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
+.promise .n{font-family:var(--font-mono);font-size:.78rem;color:var(--coral-ink);font-weight:600}
+.promise h3{margin:8px 0 8px}
+.promise p{color:var(--muted)}
+
+/* method */
+.method{background:var(--sunk)}
+.spine{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:s}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px;position:relative}
+.stage .n{font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
+.stage h3{margin:6px 0 8px}
+.stage p{color:var(--muted);font-size:.95rem}
+.gate{display:inline-block;margin-top:14px;font-family:var(--font-mono);font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--teal-ink);background:var(--teal-soft);border-radius:999px;padding:4px 10px}
+.method-note{margin-top:28px;color:var(--muted);max-width:70ch}
+
+/* ai */
+.ai-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.ai-grid h2{margin-bottom:18px}
+.ai-grid .lede{font-size:var(--step-0)}
+.rules{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.rules li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.rules b{font-family:var(--font-display)}
+.rules span{color:var(--muted)}
+
+/* examples */
+.examples{background:var(--sunk)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.tabs button{font:inherit;font-weight:600;font-size:.95rem;padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.panel-intro{padding:22px 26px;border-bottom:1px solid var(--line);font-family:var(--font-display);font-size:var(--step-1);font-weight:700;letter-spacing:-.015em}
+.compare{width:100%;border-collapse:collapse}
+.compare th,.compare td{text-align:left;vertical-align:top;padding:16px 26px;border-bottom:1px solid var(--line)}
+.compare tr:last-child td{border-bottom:0}
+.compare th{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--sunk)}
+.compare td:first-child{font-weight:700;width:16%}
+.compare td:nth-child(2){color:var(--muted);width:34%}
+.compare td:nth-child(3){width:50%}
+
+/* built on */
+.built{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.built .card h3{font-size:var(--step-2);margin:6px 0 10px}
+.built .tag{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips a,.chips span{font-size:.9rem;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--bg)}
+.chips a:hover{border-color:var(--coral)}
+
+/* open */
+.open-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.open-list{display:grid;gap:12px}
+.open-list a{display:block;padding:20px 22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);text-decoration:none;color:var(--ink)}
+.open-list a:hover{border-color:var(--coral)}
+.open-list small{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.open-list b{font-family:var(--font-display);font-size:1.15rem}
+.data-note{margin-top:24px;padding:20px 22px;border-radius:var(--radius);background:var(--teal-soft);color:var(--ink)}
+.data-note strong{display:block;font-family:var(--font-display);font-size:1.1rem;margin-bottom:4px}
+
+/* cta */
+.cta{padding-block:0 clamp(64px,8vw,104px)}
+.cta-box{border-radius:24px;background:var(--peach);padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:end}
+.cta-box h2{font-size:var(--step-3);margin-bottom:14px}
+.cta-box p{color:var(--muted);max-width:52ch}
+.cta-box .actions{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.cta-box small{color:var(--muted);font-size:var(--step--1)}
+
+footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:var(--step--1);color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (max-width:900px){
+  .hero-grid,.ai-grid,.open-grid,.cta-box{grid-template-columns:1fr}
+  .hero-grid{gap:40px}
+  .cards,.built{grid-template-columns:1fr}
+  .layer-row{grid-template-columns:1fr;gap:12px}
+  .promises{grid-template-columns:1fr 1fr}
+  .promise,.promise:not(:nth-child(3n+1)){padding:24px 20px 24px 0;border-left:0}
+  .promise:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}
+  .spine{grid-template-columns:1fr 1fr}
+  .proof{grid-template-columns:1fr 1fr}
+  .proof div:nth-child(3){border-left:0;padding-left:0}
+  .proof div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:620px){
+  .nav-links{display:none}
+  .nav .btn{margin-left:auto}
+  .brand span{display:none}
+  .promises,.spine{grid-template-columns:1fr}
+  .promise:nth-child(even){padding-left:0;border-left:0}
+  .rules li{grid-template-columns:1fr;gap:4px}
+  .compare thead{display:none}
+  .compare,.compare tbody,.compare tr,.compare td{display:block;width:auto!important}
+  .compare tr{border-bottom:1px solid var(--line);padding:14px 20px}
+  .compare tr:last-child{border-bottom:0}
+  .compare td{border:0;padding:4px 0}
+  .compare td:nth-child(2)::before{content:"Usually: ";font-weight:700;color:var(--muted)}
+  .compare td:nth-child(3)::before{content:"With ImpactOS: ";font-weight:700;color:var(--coral-ink)}
+  .panel-intro{padding:18px 20px}
+}
+.method-photo{margin:0 0 32px;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:21/8;background:var(--surface)}
+.method-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.method-photo figcaption{position:absolute;left:16px;bottom:16px;max-width:52ch;background:color-mix(in srgb,var(--bg) 92%,transparent);border-radius:12px;padding:10px 14px;font-size:var(--step--1);color:var(--ink)}
+@media (max-width:620px){.method-photo{aspect-ratio:4/3}.method-photo figcaption{position:static;border-radius:0}}
+</style>
+<link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="website" property="og:type"/><meta content="es_419" property="og:locale"/>
+<meta content="EdZola" property="og:site_name"/>
+<meta content="«ImpactOS: The Method Behind EdZola's Nonprofit Systems»" property="og:title"/>
+<meta content="«ImpactOS is EdZola's delivery method: one way of working, reusable sector knowledge and AI tools with a person checking, so no project starts from zero.»" property="og:description"/>
+<meta content="https://edzola.ai/es/impact-os/" property="og:url"/>
+<meta content="https://edzola.ai/assets/og-edzola.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://edzola.ai/#org",
+   "name": "EdZola",
+   "legalName": "EdZola Technologies Private Limited",
+   "url": "https://edzola.ai/",
+   "logo": "https://edzola.ai/assets/apple-touch-icon.png",
+   "email": "reachus@edzola.com",
+   "foundingDate": "2020",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Coimbatore",
+    "addressRegion": "Tamil Nadu",
+    "addressCountry": "IN"
+   },
+   "description": "EdZola designs, builds and runs data systems and AI for nonprofits, from first system to AI. 100+ organisations and 150+ systems since 2020.",
+   "sameAs": [
+    "https://www.edzola.com/",
+    "https://in.linkedin.com/company/edzola",
+    "https://twitter.com/edzolatech",
+    "https://www.facebook.com/edzolatech",
+    "https://instagram.com/edzolatech"
+   ]
+  },
+  {
+   "@type": "AboutPage",
+   "@id": "https://edzola.ai/impact-os/#page",
+   "url": "https://edzola.ai/impact-os/",
+   "name": "«ImpactOS: The Method Behind EdZola's Nonprofit Systems»",
+   "description": "«ImpactOS is EdZola's delivery method: one way of working, reusable sector knowledge and AI tools with a person checking, so no project starts from zero.»",
+   "inLanguage": "en-GB",
+   "isPartOf": {
+    "@id": "https://edzola.ai/#site"
+   },
+   "publisher": {
+    "@id": "https://edzola.ai/#org"
+   }
+  }
+ ]
+}
+</script>
+<style id="gh-css">
+html{scroll-padding-top:76px}
+.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
+.gh.gh-static{position:relative}
+.gh *{box-sizing:border-box}
+.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.gh a{text-decoration:none;color:inherit}
+.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
+.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
+.gh-nav{margin-left:auto;display:flex;gap:2px}
+.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
+.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
+.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
+.gh-cta:hover{filter:brightness(.96)}
+.gh-menu{display:none;position:relative}
+.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.gh-menu summary::-webkit-details-marker{display:none}
+.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
+.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
+.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
+.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
+.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
+.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
+:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
+@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
+@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
+</style>
+<style id="gh-lang-css">
+.gh-lang{display:flex;gap:2px;padding:3px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font:600 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace}
+.gh-lang a{padding:6px 8px;border-radius:999px;color:#6B6360!important}
+.gh-lang a[aria-current]{background:#1A1A1A;color:#FDF8F4!important}
+.gh-lang a:hover{color:#1A1A1A!important}
+.gh-drop .gh-lang{margin:8px 6px 4px;justify-content:center}
+@media (max-width:900px){.gh-in>.gh-lang{display:none}}
+.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:440px;margin-left:auto;display:flex;align-items:center;gap:12px;padding:14px 16px;background:#1A1A1A;color:#FDF8F4;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);font:500 14px/1.4 "Figtree",system-ui,sans-serif}
+.lang-hint a{color:#1A1A1A;background:#E8967A;padding:8px 14px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap}
+.lang-hint button{margin-left:auto;background:none;border:0;color:#FDF8F4;opacity:.7;font-size:20px;cursor:pointer;padding:4px 6px}
+</style>
+<link href="https://edzola.ai/impact-os/" hreflang="en" rel="alternate"/>
+<link href="https://edzola.ai/es/impact-os/" hreflang="es" rel="alternate"/>
+<link href="https://edzola.ai/pt/impact-os/" hreflang="pt-BR" rel="alternate"/>
+<link href="https://edzola.ai/impact-os/" hreflang="x-default" rel="alternate"/>
+<style id="gh-lang-css">
+.gh-lang{display:flex;gap:2px;padding:3px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font:600 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace}
+.gh-lang a{padding:6px 8px;border-radius:999px;color:#6B6360!important}
+.gh-lang a[aria-current]{background:#1A1A1A;color:#FDF8F4!important}
+.gh-lang a:hover{color:#1A1A1A!important}
+.gh-drop .gh-lang{margin:8px 6px 4px;justify-content:center}
+@media (max-width:900px){.gh-in>.gh-lang{display:none}}
+.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:440px;margin-left:auto;display:flex;align-items:center;gap:12px;padding:14px 16px;background:#1A1A1A;color:#FDF8F4;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);font:500 14px/1.4 "Figtree",system-ui,sans-serif}
+.lang-hint a{color:#1A1A1A;background:#E8967A;padding:8px 14px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap}
+.lang-hint button{margin-left:auto;background:none;border:0;color:#FDF8F4;opacity:.7;font-size:20px;cursor:pointer;padding:4px 6px}
+</style>
+<link rel="alternate" hreflang="en" href="https://edzola.ai/impact-os/">
+<link rel="alternate" hreflang="es" href="https://edzola.ai/es/impact-os/">
+<link rel="alternate" hreflang="pt-BR" href="https://edzola.ai/pt/impact-os/">
+<link rel="alternate" hreflang="x-default" href="https://edzola.ai/impact-os/">
+</head>
+<body>
+<div class="gh" role="banner"><div class="gh-in"><a aria-label="«edzola.ai home»" class="gh-logo" href="/es/"><b>«edzola.ai»</b></a><div aria-label="«Primary»" class="gh-nav" role="navigation"><a href="/es/#model">«What we do»</a><a href="/sectors/">«Sectors»</a><a aria-current="page" href="/es/impact-os/">«ImpactOS»</a><a href="/thinking/">«Thinking»</a><a href="/es/about/">«About»</a></div><div aria-label="Language" class="gh-lang" data-i18n="skip" role="navigation"><a aria-current="true" href="/es/impact-os/" hreflang="en" lang="en">EN</a><a href="/es/impact-os/" hreflang="es" lang="es">ES</a><a href="/pt/impact-os/" hreflang="pt" lang="pt">PT</a></div><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/impact-os/" hreflang="en" lang="en">EN</a><a href="/es/impact-os/" hreflang="es" lang="es" aria-current="true">ES</a><a href="/pt/impact-os/" hreflang="pt" lang="pt">PT</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">«Talk to us»</a><details class="gh-menu"><summary aria-label="«Open menu»"><i aria-hidden="true"></i>«Menu»</summary><div aria-label="«Primary (mobile)»" class="gh-drop" role="navigation"><div aria-label="Language" class="gh-lang" data-i18n="skip" role="navigation"><a aria-current="true" href="/es/impact-os/" hreflang="en" lang="en">EN</a><a href="/es/impact-os/" hreflang="es" lang="es">ES</a><a href="/pt/impact-os/" hreflang="pt" lang="pt">PT</a></div><a href="/es/#model">«What we do»</a><a href="/sectors/">«Sectors»</a><a aria-current="page" href="/es/impact-os/">«ImpactOS»</a><a href="/thinking/">«Thinking»</a><a href="/es/about/">«About»</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">«Talk to us»</a></div></details></div></div>
+<main>
+<section class="hero">
+<div class="wrap">
+<div class="hero-grid">
+<div>
+<p class="eyebrow">«ImpactOS · How EdZola works»</p>
+<h1>«Every project starts where »<em>«the last one finished.»</em></h1>
+<p class="lede">«ImpactOS is the method behind everything EdZola builds: one way of working, a growing body of sector knowledge, and AI tools that always have a person checking. You don't buy it. Every system we build for you runs on it.»</p>
+<div class="actions">
+<a class="btn btn-primary" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">«Talk to us»</a>
+<a class="btn btn-ghost" href="#layers">«See what's inside»</a>
+</div>
+</div>
+<div aria-label="«ImpactOS layers: services and products are built on top of three layers. Tools, which change often. Knowledge, which grows with every project. Method, which stays steady.»" class="stack" role="img">
+<div class="stack-top">
+<div class="layer on-top"><small>«Built on it»</small><b>«Services»</b></div>
+<div class="layer on-top"><small>«Built on it»</small><b>«Products»</b></div>
+</div>
+<div class="stack-label">«ImpactOS»</div>
+<div class="layer l-tools"><span class="speed">«ADDED OFTEN»</span><small>«What runs»</small><b>«Tools»</b></div>
+<div class="layer l-know"><span class="speed">«GROWS»</span><small>«What we know»</small><b>«Knowledge»</b></div>
+<div class="layer l-method"><span class="speed">«STEADY»</span><small>«How we work»</small><b>«Method»</b></div>
+</div>
+</div>
+<div class="proof">
+<div><b>100+</b><span>«organisations supported since 2020»</span></div>
+<div><b>60+</b><span>«nonprofit implementations behind the method»</span></div>
+<div><b>34,000+</b><span>«delivery hours behind our estimates»</span></div>
+<div><b>150+</b><span>«systems built and supported»</span></div>
+</div>
+</div>
+</section>
+<section class="problem">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">«The problem»</p>
+<h2>«Most nonprofit systems are built from a blank page.»</h2>
+<p>«Two programmes in two cities ask the same questions about who they serve and what changed. Usually both pay to answer them from scratch. Sound familiar?»</p>
+</div>
+<div class="cards">
+<div class="card">
+<h3>«Discovery starts at zero»</h3>
+<p>«Weeks of workshops to rediscover what a beneficiary record needs, how donors move through a pipeline, or which leave rules an NGO runs on.»</p>
+</div>
+<div class="card">
+<h3>«Quality depends on who you get»</h3>
+<p>«Every consultant has their own way. One build is careful, the next ships with gaps nobody checked for. You can't tell which until it's live.»</p>
+</div>
+<div class="card">
+<h3>«What's learned walks out the door»</h3>
+<p>«The project ends, the consultant leaves, and everything they figured out stays in their head. The next organisation pays to learn it again.»</p>
+</div>
+</div>
+<p class="pull">«ImpactOS exists so that doesn't happen to you, or to the next organisation after you.»</p>
+</div>
+</section>
+<section id="layers">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">«What it is»</p>
+<h2>«Three layers. Each one moves at a different speed.»</h2>
+<p>«The method stays steady so the knowledge and tools on top of it can improve quickly without breaking how your project runs.»</p>
+</div>
+<div class="layers">
+<div class="layer-row l-method">
+<div><span class="tag">«Layer 1 · Steady»</span><h3>«Method»</h3></div>
+<p class="what">«The same stages, sign-off points and named owners on every engagement, whether it's a small HR system or a year-long programme MIS.»</p>
+<p class="means"><strong>«For you:»</strong>« you always know what stage you're in, who's accountable, and what has to be true before we move on.»</p>
+</div>
+<div class="layer-row l-know">
+<div><span class="tag">«Layer 2 · Grows»</span><h3>«Knowledge»</h3></div>
+<div>
+<p class="what">«Everything we've learned that's worth reusing, written down once and improved on every project.»</p>
+<ul>
+<li>«MAP framework»</li><li>«Standard nonprofit data models»</li><li>«CRM and HR templates»</li><li>«Sector playbooks»</li><li>«80G, FCRA and CSR fields»</li><li>«Quality standards»</li>
+</ul>
+</div>
+<p class="means"><strong>«For you:»</strong>« your project starts from what's already been tested elsewhere. Workshop time goes on what makes you different.»</p>
+</div>
+<div class="layer-row l-tools">
+<div><span class="tag">«Layer 3 · Added often»</span><h3>«Tools»</h3></div>
+<div>
+<p class="what">«AI and automation that do part of the work: drafting blueprints, configuring systems, cleaning data, running voice interviews, checking for security gaps.»</p>
+<ul>
+<li>«Blueprint drafting»</li><li>«System configuration»</li><li>«Data cleaning»</li><li>«Voice data collection»</li><li>«Security checks»</li>
+</ul>
+</div>
+<p class="means"><strong>«For you:»</strong>« faster delivery and fewer manual errors, with a named person reviewing every output before it counts.»</p>
+</div>
+</div>
+<p class="analogy"><strong>«Think of a car production system.»</strong>« Nobody buys it, and every car on the line is made with it, to the same standard. ImpactOS does that for EdZola's work. Whoever leads your project, it's built the same careful way.»</p>
+</div>
+</section>
+<section>
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">«What you get»</p>
+<h2>«Six things true of every project we run.»</h2>
+</div>
+<div class="promises">
+<div class="promise"><span class="n">01</span><h3>«We don't start from zero»</h3><p>«Templates, standard data models and playbooks come first. Nobody designs your system from a blank page.»</p></div>
+<div class="promise"><span class="n">02</span><h3>«Clear sign-off points»</h3><p>«Four gates where you agree before we move on, including locking the design before anyone builds.»</p></div>
+<div class="promise"><span class="n">03</span><h3>«One named owner»</h3><p>«One accountable person at every stage. You never have to wonder who to call.»</p></div>
+<div class="promise"><span class="n">04</span><h3>«Checked before you test»</h3><p>«Quality checks against our delivery standards and a security scan before your team ever sees it.»</p></div>
+<div class="promise"><span class="n">05</span><h3>«Done means adopted»</h3><p>«A project closes when your team uses the system on its own, not on the day it goes live.»</p></div>
+<div class="promise"><span class="n">06</span><h3>«Every project teaches»</h3><p>«What we learn goes back into the templates, so the next system, including your next one, is better.»</p></div>
+</div>
+</div>
+</section>
+<section class="method" id="method">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">«How we work»</p>
+<h2>«From the first conversation to a system your team owns.»</h2>
+<p>«Five stages, four sign-off gates. The same for every engagement.»</p>
+</div>
+<figure class="method-photo"><img alt="«Mapping a workflow on a whiteboard with sticky notes»" height="852" loading="lazy" src="/assets/photos/sic-whiteboard.jpg" width="1280"/><figcaption>«Scoping starts on a wall of sticky notes with the people who do the work, before anyone opens a laptop.»</figcaption></figure>
+<div class="spine">
+<div class="stage"><span class="n">01</span><h3>«Listen»</h3><p>«We understand how your work really runs and match you with a practitioner who's built it before.»</p></div>
+<div class="stage"><span class="n">02</span><h3>«Scope»</h3><p>«Clear requirements, an honest estimate, and what we won't do. If a spreadsheet is enough, we'll say so.»</p><span class="gate">«Gate 1 · scope agreed»</span></div>
+<div class="stage"><span class="n">03</span><h3>«Deliver»</h3><p>«Design with you, then build, migrate and train in usable stages.»</p><span class="gate">«Gate 2 · design locked»</span><br/><span class="gate">«Gate 3 · tested»</span></div>
+<div class="stage"><span class="n">04</span><h3>«Close»</h3><p>«Handover, documentation, and an adoption check. We stay until it's in use.»</p><span class="gate">«Gate 4 · adopted»</span></div>
+<div class="stage"><span class="n">05</span><h3>«Learn»</h3><p>«A retrospective. What worked goes back into ImpactOS for the next organisation.»</p></div>
+</div>
+<p class="method-note">«The method is written down and owned inside EdZola, so it doesn't depend on any one person. If you want to see the stages and gates for your kind of project, ask us on the first call.»</p>
+</div>
+</section>
+<section>
+<div class="wrap ai-grid">
+<div>
+<p class="eyebrow">«Where AI fits»</p>
+<h2>«AI drafts. People review, decide and send.»</h2>
+<p class="lede">«AI handles volume. People handle consequence. Every AI tool in ImpactOS has to meet five rules before it's allowed near your project.»</p>
+</div>
+<ul class="rules">
+<li><b>«Has a place»</b><span>«It attaches to a named stage of the method. No tool runs just because it can.»</span></li>
+<li><b>«Leaves a trail»</b><span>«What it produces goes back into the record with its source, so you can see where every answer came from.»</span></li>
+<li><b>«Gets checked»</b><span>«A named person reviews its output before it counts, and before it reaches you.»</span></li>
+<li><b>«Has an owner»</b><span>«One accountable person at EdZola is responsible for it working properly.»</span></li>
+<li><b>«Can be switched off»</b><span>«The manual route still works. Your project never depends on a tool we can't do without.»</span></li>
+</ul>
+</div>
+</section>
+<section class="examples" id="examples">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">«In practice»</p>
+<h2>«What changes in your project.»</h2>
+<p>«A typical engagement, the usual way and on ImpactOS.»</p>
+</div>
+<div aria-label="«Project types»" class="tabs" role="tablist">
+<button aria-controls="p-mis" aria-selected="true" id="t-mis" role="tab">«Programme MIS»</button>
+<button aria-controls="p-crm" aria-selected="false" id="t-crm" role="tab" tabindex="-1">«Fundraising CRM»</button>
+<button aria-controls="p-hr" aria-selected="false" id="t-hr" role="tab" tabindex="-1">«HR system»</button>
+<button aria-controls="p-voice" aria-selected="false" id="t-voice" role="tab" tabindex="-1">«Voice study»</button>
+</div>
+<div aria-labelledby="t-mis" class="panel" id="p-mis" role="tabpanel">
+<p class="panel-intro">«Every MIS starts from your Theory of Change and our standard data model.»</p>
+<table class="compare">
+<thead><tr><th>«Stage»</th><th>«Usually»</th><th>«With ImpactOS»</th></tr></thead>
+<tbody>
+<tr><td>«Requirements»</td><td>«Long discovery, a requirements document written from scratch, scope that keeps moving.»</td><td>«Theory of Change, outcomes and indicators first, using the MAP framework. The data model is locked with you before anyone builds.»</td></tr>
+<tr><td>«Design»</td><td>«A new data model for every app, with its own naming.»</td><td>«Start from standard entities like beneficiary, session and attendance, tested across 60+ projects. Only what's different about you gets designed.»</td></tr>
+<tr><td>«Build»</td><td>«Forms and logic built by hand, rewritten on every project.»</td><td>«AI builds forms, reports and workflows in a test environment from the approved blueprint. Our developers review every change.»</td></tr>
+<tr><td>«Test»</td><td>«Most bugs found by your team during testing.»</td><td>«Checked against our quality standards and scanned for exposed personal data before you test. Every bug gets a root cause.»</td></tr>
+<tr><td>«Adopt»</td><td>«Handover is one training session.»</td><td>«Dashboards used in your own review meetings, and adoption checked before we close.»</td></tr>
+</tbody>
+</table>
+</div>
+<div aria-labelledby="t-crm" class="panel" hidden="" id="p-crm" role="tabpanel">
+<p class="panel-intro">«No CRM starts from a blank setup. Each one starts from our template and leaves it better.»</p>
+<table class="compare">
+<thead><tr><th>«Stage»</th><th>«Usually»</th><th>«With ImpactOS»</th></tr></thead>
+<tbody>
+<tr><td>«Requirements»</td><td>«Discovery run from scratch, requirements rewritten every time.»</td><td>«You fill a short requirements template before the first call. The call only covers the gaps.»</td></tr>
+<tr><td>«Design»</td><td>«The same donor fields and pipelines rebuilt on every project.»</td><td>«Start from a nonprofit CRM with donor types, pipeline stages, and PAN, 80G and FCRA fields already defined. Only your differences get designed and signed off.»</td></tr>
+<tr><td>«Build»</td><td>«Configured click by click. Quality depends on who builds it.»</td><td>«Configured from the approved spec in a test environment, with a change log a consultant reviews.»</td></tr>
+<tr><td>«Migrate»</td><td>«Donor data cleaned by hand in Excel.»</td><td>«AI cleans and de-duplicates donor data into a standard migration template, then a person checks it.»</td></tr>
+<tr><td>«Close»</td><td>«Closed at go-live.»</td><td>«Closed after an adoption review: are deals moving and receipts going out?»</td></tr>
+</tbody>
+</table>
+</div>
+<div aria-labelledby="t-hr" class="panel" hidden="" id="p-hr" role="tabpanel">
+<p class="panel-intro">«Your HR system goes live from a tested template, so workshop time goes on your policies.»</p>
+<table class="compare">
+<thead><tr><th>«Stage»</th><th>«Usually»</th><th>«With ImpactOS»</th></tr></thead>
+<tbody>
+<tr><td>«Requirements»</td><td>«Several calls to understand leave types, shifts, approvals and payroll.»</td><td>«You fill one template: staff list, leave policy, holidays, attendance rules, approvals and payroll. The call only covers what's unclear.»</td></tr>
+<tr><td>«Design»</td><td>«Set up from meeting notes, differently every time.»</td><td>«A standard nonprofit setup is the base. Only the deviations get discussed.»</td></tr>
+<tr><td>«Test»</td><td>«Testing depends on who remembers what to check.»</td><td>«Standard tests for a leave request, an attendance cycle and a payroll run, on every project.»</td></tr>
+<tr><td>«Adopt»</td><td>«Your HR team is trained once and left to it.»</td><td>«Your own point person runs one full cycle alone before we close.»</td></tr>
+</tbody>
+</table>
+</div>
+<div aria-labelledby="t-voice" class="panel" hidden="" id="p-voice" role="tabpanel">
+<p class="panel-intro">«Every voice study adds questions, languages and lessons that make the next one cheaper.»</p>
+<table class="compare">
+<thead><tr><th>«Stage»</th><th>«Usually»</th><th>«With ImpactOS»</th></tr></thead>
+<tbody>
+<tr><td>«Design»</td><td>«Questions written from scratch over weeks.»</td><td>«Start from a question bank for your sector and study type, with standard consent scripts.»</td></tr>
+<tr><td>«Pilot»</td><td>«Language and length problems show up halfway through.»</td><td>«A short pilot checks language, length and drop-off before the full run. You approve it first.»</td></tr>
+<tr><td>«Report»</td><td>«Analysis starts from raw transcripts.»</td><td>«AI drafts first-pass themes. A researcher checks every claim against what people actually said.»</td></tr>
+<tr><td>«Learn»</td><td>«Lessons stay with whoever ran the study.»</td><td>«Questions that worked go back into the bank. Questions that confused people get flagged.»</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">«Built on ImpactOS»</p>
+<h2>«One method underneath everything we offer.»</h2>
+<p>«Some of our work is run by our people. Some of it you can use on your own. All of it comes from the same method and knowledge.»</p>
+</div>
+<div class="built">
+<div class="card">
+<span class="tag">«People deliver»</span>
+<h3>«Services»</h3>
+<p>«An EdZola practitioner runs the work with you, following the playbook for that service.»</p>
+<div class="chips">
+<a href="/sectors/">«Programme MIS»</a><span>«Fundraising CRM»</span><span>«HR systems»</span><a href="/es/zolabs/">«Voice studies»</a><a href="/zolashield/">«DPDP readiness»</a><a href="mailto:reachus@edzola.com?subject=Custom%20AI">«Custom AI»</a>
+</div>
+</div>
+<div class="card">
+<span class="tag">«Software delivers»</span>
+<h3>«Products»</h3>
+<p>«When a tool proves itself across many projects, it graduates into something you can use without us in the loop.»</p>
+<div class="chips">
+<a href="/dozai/">«DozAI»</a><a href="/es/zolabs/">«zolabs.ai»</a><a href="/zolashield/">«ZolaShield»</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="problem">
+<div class="wrap open-grid">
+<div>
+<p class="eyebrow">«What we share»</p>
+<h2>«Much of what's inside is free to read.»</h2>
+<p class="lede" style="margin-top:16px;font-size:var(--step-0)">«The method and its tools are how we deliver. The thinking behind them is open, whether or not you ever work with us.»</p>
+<div class="data-note"><strong>«Your data never goes into ImpactOS.»</strong>« Projects improve our templates and lessons, never with your records. Beneficiary and donor data belongs to you and the people in it.»</div>
+</div>
+<div class="open-list">
+<a href="/field-guides/technology-that-sticks/"><small>«Field guide · 7 essays»</small><b>«Building technology that sticks →»</b></a>
+<a href="/thinking/how-nonprofits-operate/"><small>«Field guide · 6 chapters»</small><b>«How nonprofits actually work →»</b></a>
+<a href="/sectors/"><small>«16 sectors»</small><b>«What we've mapped, and where we haven't built before →»</b></a>
+<a href="/why/"><small>«Founding thesis»</small><b>«Systems built for the world's hardest work →»</b></a>
+</div>
+</div>
+</section>
+<section class="cta">
+<div class="wrap" style="padding-top:clamp(56px,8vw,104px)">
+<div class="cta-box">
+<div>
+<h2>«Bring us the messiest part of your work.»</h2>
+<p>«A tracker, a form, a report nobody enjoys making. Someone who's built it before will look at it and tell you what we'd do, and whether you need us at all.»</p>
+</div>
+<div class="actions">
+<a class="btn btn-primary" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">«Talk to us»</a>
+<small>«If you share a file, remove names, phone numbers and IDs first. Column headers and a few dummy rows are enough.»</small>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<span>«ImpactOS is EdZola's delivery method · »<a href="/es/">«edzola.ai»</a>« · Coimbatore, India»</span>
+<span><a href="/thinking/">«How we think»</a>« · »<a href="mailto:reachus@edzola.com">«reachus@edzola.com»</a></span>
+</div>
+</footer>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute('aria-selected',on);
+      x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+      if(!d)return;
+      var n=tabs[(i+d+tabs.length)%tabs.length];select(n);n.focus();
+    });
+  });
+})();
+</script>
+<script id="lang-hint">
+(function(){
+  var dst="impact-os/", offers={es:['¿Prefieres leer en español?','Ver en español'],pt:['Prefere ler em português?','Ver em português']};
+  function get(){try{return localStorage.getItem('edz-lang')}catch(e){return null}}
+  function set(v){try{localStorage.setItem('edz-lang',v)}catch(e){}}
+  document.querySelectorAll('.gh-lang a').forEach(function(a){a.addEventListener('click',function(){set(a.getAttribute('hreflang'))})});
+  if(document.documentElement.lang.slice(0,2)!=='en'||get())return;
+  var pref=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase();
+  if(!offers[pref])return;
+  var d=document.createElement('div');d.className='lang-hint';d.setAttribute('role','region');d.setAttribute('aria-label','Language');
+  d.innerHTML='<span lang="'+pref+'">'+offers[pref][0]+'</span><a lang="'+pref+'" href="/'+pref+'/'+dst+'">'+offers[pref][1]+'</a><button aria-label="Dismiss">×</button>';
+  d.querySelector('a').addEventListener('click',function(){set(pref)});
+  d.querySelector('button').addEventListener('click',function(){set('en');d.remove()});
+  document.body.appendChild(d);
+})();
+</script>
+<script id="lang-hint">
+(function(){
+  var dst="impact-os/", offers={es:['¿Prefieres leer en español?','Ver en español'],pt:['Prefere ler em português?','Ver em português']};
+  function get(){try{return localStorage.getItem('edz-lang')}catch(e){return null}}
+  function set(v){try{localStorage.setItem('edz-lang',v)}catch(e){}}
+  document.querySelectorAll('.gh-lang a').forEach(function(a){a.addEventListener('click',function(){set(a.getAttribute('hreflang'))})});
+  if(document.documentElement.lang.slice(0,2)!=='en'||get())return;
+  var pref=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase();
+  if(!offers[pref])return;
+  var d=document.createElement('div');d.className='lang-hint';d.setAttribute('role','region');d.setAttribute('aria-label','Language');
+  d.innerHTML='<span lang="'+pref+'">'+offers[pref][0]+'</span><a lang="'+pref+'" href="/'+pref+'/'+dst+'">'+offers[pref][1]+'</a><button aria-label="Dismiss">×</button>';
+  d.querySelector('a').addEventListener('click',function(){set(pref)});
+  d.querySelector('button').addEventListener('click',function(){set('en');d.remove()});
+  document.body.appendChild(d);
+})();
+</script>
+</body>
+</html>
