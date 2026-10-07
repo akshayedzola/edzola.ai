@@ -110,6 +110,13 @@ html{scroll-padding-top:76px}
   document.querySelectorAll('.gh-lang a').forEach(function(a){a.addEventListener('click',function(){set(a.getAttribute('hreflang'))})});
   if(document.documentElement.lang.slice(0,2)!=='en'||get())return;
   var pref=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase();
+  if(!offers[pref]){
+    /* No es/pt browser language: fall back to the device time zone, which stays on the device. */
+    var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}
+    var PT=/^(America\/(Sao_Paulo|Bahia|Fortaleza|Recife|Belem|Manaus|Cuiaba|Campo_Grande|Porto_Velho|Boa_Vista|Rio_Branco|Araguaina|Maceio|Santarem|Noronha|Eirunepe)|Europe\/Lisbon|Atlantic\/(Azores|Madeira|Cape_Verde)|Africa\/(Maputo|Luanda|Bissau|Sao_Tome))$/;
+    var ES=/^(America\/(Argentina\/.*|Buenos_Aires|Mexico_City|Cancun|Merida|Monterrey|Matamoros|Chihuahua|Ciudad_Juarez|Ojinaga|Mazatlan|Bahia_Banderas|Hermosillo|Tijuana|Bogota|Lima|Santiago|Punta_Arenas|Caracas|Guayaquil|La_Paz|Asuncion|Montevideo|Guatemala|El_Salvador|Tegucigalpa|Managua|Costa_Rica|Panama|Havana|Santo_Domingo|Puerto_Rico)|Europe\/Madrid|Africa\/(Ceuta|Malabo)|Atlantic\/Canary|Pacific\/(Galapagos|Easter))$/;
+    pref=PT.test(tz)?'pt':ES.test(tz)?'es':'';
+  }
   if(!offers[pref])return;
   var d=document.createElement('div');d.className='lang-hint';d.setAttribute('role','region');d.setAttribute('aria-label','Language');
   d.innerHTML='<span lang="'+pref+'">'+offers[pref][0]+'</span><a lang="'+pref+'" href="/'+pref+'/'+dst+'">'+offers[pref][1]+'</a><button aria-label="Dismiss">×</button>';
