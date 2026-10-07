@@ -17,7 +17,7 @@ PAGES = {'index.html': '', 'about/index.html': 'about/', 'impact-os/index.html':
 LANGS = {'es': {'html': 'es', 'og': 'es_419', 'name': 'Español'}, 'pt': {'html': 'pt-BR', 'og': 'pt_BR', 'name': 'Português'}}
 INLINE = {'a', 'b', 'strong', 'em', 'i', 'span', 'small', 'br', 'sup', 'sub', 'code', 'abbr', 'u', 'mark', 'cite', 'img', 'svg', 'time', 'q', 's'}
 SKIP = {'script', 'style', 'noscript', 'svg', 'template', 'canvas'}
-ATTRS = ('alt', 'aria-label', 'title', 'placeholder')
+ATTRS = ('alt', 'aria-label', 'title', 'placeholder', 'data-pause', 'data-play')
 META = ('description', 'og:title', 'og:description', 'twitter:title', 'twitter:description')
 HAS_WORDS = re.compile(r'[A-Za-z]{2,}')
 # Strings drawn by the homepage hero animation (canvas text and captions).
