@@ -16,6 +16,11 @@ Key facts:
 - [DozAI](https://edzola.ai/dozai/): AI teammates and end-to-end missions (for example scholarship screening) that handle operational volume, with people deciding exceptions. Pilots open.
 - [ImpactOS](https://edzola.ai/impact-os/): The delivery method behind all of the above: method, knowledge and tools, so no project starts from zero.
 
+## Other languages
+
+- [Español](https://edzola.ai/es/): Homepage, About, ImpactOS and Zolabs in Latin American Spanish.
+- [Português](https://edzola.ai/pt/): Homepage, About, ImpactOS and Zolabs in Brazilian Portuguese.
+
 ## About EdZola
 
 - [About and team](https://edzola.ai/about/): Origin story (Zoho, Teach For India, founded 2020), values, the team, and careers. Open roles: https://go.edzola.com/hiring

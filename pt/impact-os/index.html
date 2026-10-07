@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>ImpactOS: o método por trás dos sistemas da EdZola para ONGs</title>
+<meta content="O ImpactOS é o método de entrega da EdZola: uma única forma de trabalhar, conhecimento reutilizável do setor e ferramentas de IA sempre com uma pessoa revisando, para que nenhum projeto comece do zero." name="description"/>
+<link href="https://edzola.ai/pt/impact-os/" rel="canonical"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Layout concept: the three layers (method, knowledge, tools) are the spine; every section shows what one of them means for a partner. */
+:root{
+  --bg:#FDF8F4;
+  --surface:#FFFFFF;
+  --sunk:#F6EDE5;
+  --peach:#FAE8DC;
+  --coral:#E8967A;
+  --coral-ink:#A9492C;
+  --teal:#8ECFCA;
+  --teal-soft:#E2F3F1;
+  --teal-ink:#2C6F6A;
+  --yellow:#F7C948;
+  --yellow-soft:#FDF1CC;
+  --ink:#1A1A1A;
+  --muted:#6B6360;
+  --line:#EADBD0;
+  --on-accent:#1A1A1A;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Hanken Grotesk","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --step--1:clamp(.82rem,.8rem + .1vw,.88rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.09rem);
+  --step-1:clamp(1.2rem,1.1rem + .45vw,1.45rem);
+  --step-2:clamp(1.5rem,1.3rem + .9vw,2.1rem);
+  --step-3:clamp(2rem,1.6rem + 2vw,3.2rem);
+  --step-4:clamp(2.5rem,1.8rem + 3.6vw,4.9rem);
+  --radius:14px;
+}
+:root[data-theme="dark"]{
+  --bg:#181412;--surface:#221C19;--sunk:#1F1916;--peach:#33251F;--coral:#EE9F84;--coral-ink:#F4AE95;
+  --teal:#79BFB9;--teal-soft:#1D2B29;--teal-ink:#8FD3CD;--yellow:#E8BE45;--yellow-soft:#2E2715;
+  --ink:#F4EDE8;--muted:#B4A8A2;--line:#3A2E28;--on-accent:#1A1A1A;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+a{color:var(--coral-ink)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--teal-ink);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:var(--step-3);font-weight:700}
+h3{font-size:var(--step-1);font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--font-mono);font-size:var(--step--1);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-ink);margin-bottom:16px}
+.lede{font-size:var(--step-1);color:var(--muted);line-height:1.5;max-width:60ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:1.5px solid transparent}
+.btn-primary{background:var(--coral);color:var(--on-accent)}
+.btn-primary:hover{filter:brightness(.96)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.btn-ghost:hover{border-color:var(--coral)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--font-display);font-size:1.3rem;letter-spacing:-.04em}
+.brand span{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.nav-links{margin-left:auto;display:flex;gap:2px}
+.nav-links a{padding:8px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.94rem}
+.nav-links a:hover{background:var(--sunk);color:var(--ink)}
+.nav .btn{min-height:40px;padding:8px 18px;font-size:.92rem}
+
+section{padding-block:clamp(56px,8vw,104px)}
+.section-head{max-width:760px;margin-bottom:40px}
+.section-head p{color:var(--muted);margin-top:14px;font-size:var(--step-0)}
+
+/* hero */
+.hero{padding-top:clamp(48px,7vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:var(--step-4);font-weight:800;letter-spacing:-.045em;line-height:.98;margin-bottom:24px}
+.hero h1 em{font-style:normal;color:var(--coral-ink)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+.stack{display:grid;gap:10px}
+.stack-top{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.layer{border-radius:var(--radius);padding:16px 18px;border:1px solid var(--line);background:var(--surface)}
+.layer small{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.layer b{font-family:var(--font-display);font-size:1.12rem}
+.layer.on-top{background:var(--sunk);border-style:dashed}
+.layer.l-tools{background:var(--yellow-soft)}
+.layer.l-know{background:var(--teal-soft)}
+.layer.l-method{background:var(--peach)}
+.layer .speed{float:right;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;color:var(--muted);margin-top:4px}
+.stack-label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px 0}
+
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof div{padding:22px 20px;border-left:1px solid var(--line)}
+.proof div:first-child{border-left:0;padding-left:0}
+.proof b{display:block;font-family:var(--font-display);font-size:var(--step-2);letter-spacing:-.03em;line-height:1.1}
+.proof span{color:var(--muted);font-size:var(--step--1)}
+
+/* problem */
+.problem{background:var(--sunk)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.card h3{margin-bottom:10px}
+.card p{color:var(--muted)}
+.pull{margin-top:36px;font-family:var(--font-display);font-size:var(--step-2);font-weight:700;letter-spacing:-.025em;line-height:1.2;max-width:28ch}
+
+/* layers */
+.layers{display:grid;gap:18px}
+.layer-row{display:grid;grid-template-columns:220px 1fr 1fr;gap:28px;padding:28px;border-radius:var(--radius);border:1px solid var(--line)}
+.layer-row.l-method{background:var(--peach)}
+.layer-row.l-know{background:var(--teal-soft)}
+.layer-row.l-tools{background:var(--yellow-soft)}
+.layer-row .tag{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.layer-row h3{font-size:var(--step-2);margin-top:6px}
+.layer-row .what{color:var(--ink)}
+.layer-row .means{color:var(--muted)}
+.layer-row .means strong{color:var(--ink)}
+.layer-row ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.layer-row li{font-size:.82rem;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--surface) 70%,transparent);border:1px solid var(--line)}
+.analogy{margin-top:22px;color:var(--muted);font-size:var(--step-0);max-width:70ch}
+.analogy strong{color:var(--ink)}
+
+/* promises */
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.promise{padding:28px 28px 28px 0;border-bottom:1px solid var(--line)}
+.promise:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
+.promise .n{font-family:var(--font-mono);font-size:.78rem;color:var(--coral-ink);font-weight:600}
+.promise h3{margin:8px 0 8px}
+.promise p{color:var(--muted)}
+
+/* method */
+.method{background:var(--sunk)}
+.spine{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:s}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px;position:relative}
+.stage .n{font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
+.stage h3{margin:6px 0 8px}
+.stage p{color:var(--muted);font-size:.95rem}
+.gate{display:inline-block;margin-top:14px;font-family:var(--font-mono);font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--teal-ink);background:var(--teal-soft);border-radius:999px;padding:4px 10px}
+.method-note{margin-top:28px;color:var(--muted);max-width:70ch}
+
+/* ai */
+.ai-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.ai-grid h2{margin-bottom:18px}
+.ai-grid .lede{font-size:var(--step-0)}
+.rules{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.rules li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.rules b{font-family:var(--font-display)}
+.rules span{color:var(--muted)}
+
+/* examples */
+.examples{background:var(--sunk)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.tabs button{font:inherit;font-weight:600;font-size:.95rem;padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.panel-intro{padding:22px 26px;border-bottom:1px solid var(--line);font-family:var(--font-display);font-size:var(--step-1);font-weight:700;letter-spacing:-.015em}
+.compare{width:100%;border-collapse:collapse}
+.compare th,.compare td{text-align:left;vertical-align:top;padding:16px 26px;border-bottom:1px solid var(--line)}
+.compare tr:last-child td{border-bottom:0}
+.compare th{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--sunk)}
+.compare td:first-child{font-weight:700;width:16%}
+.compare td:nth-child(2){color:var(--muted);width:34%}
+.compare td:nth-child(3){width:50%}
+
+/* built on */
+.built{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.built .card h3{font-size:var(--step-2);margin:6px 0 10px}
+.built .tag{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips a,.chips span{font-size:.9rem;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--bg)}
+.chips a:hover{border-color:var(--coral)}
+
+/* open */
+.open-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.open-list{display:grid;gap:12px}
+.open-list a{display:block;padding:20px 22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);text-decoration:none;color:var(--ink)}
+.open-list a:hover{border-color:var(--coral)}
+.open-list small{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.open-list b{font-family:var(--font-display);font-size:1.15rem}
+.data-note{margin-top:24px;padding:20px 22px;border-radius:var(--radius);background:var(--teal-soft);color:var(--ink)}
+.data-note strong{display:block;font-family:var(--font-display);font-size:1.1rem;margin-bottom:4px}
+
+/* cta */
+.cta{padding-block:0 clamp(64px,8vw,104px)}
+.cta-box{border-radius:24px;background:var(--peach);padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:end}
+.cta-box h2{font-size:var(--step-3);margin-bottom:14px}
+.cta-box p{color:var(--muted);max-width:52ch}
+.cta-box .actions{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.cta-box small{color:var(--muted);font-size:var(--step--1)}
+
+footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:var(--step--1);color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (max-width:900px){
+  .hero-grid,.ai-grid,.open-grid,.cta-box{grid-template-columns:1fr}
+  .hero-grid{gap:40px}
+  .cards,.built{grid-template-columns:1fr}
+  .layer-row{grid-template-columns:1fr;gap:12px}
+  .promises{grid-template-columns:1fr 1fr}
+  .promise,.promise:not(:nth-child(3n+1)){padding:24px 20px 24px 0;border-left:0}
+  .promise:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}
+  .spine{grid-template-columns:1fr 1fr}
+  .proof{grid-template-columns:1fr 1fr}
+  .proof div:nth-child(3){border-left:0;padding-left:0}
+  .proof div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:620px){
+  .nav-links{display:none}
+  .nav .btn{margin-left:auto}
+  .brand span{display:none}
+  .promises,.spine{grid-template-columns:1fr}
+  .promise:nth-child(even){padding-left:0;border-left:0}
+  .rules li{grid-template-columns:1fr;gap:4px}
+  .compare thead{display:none}
+  .compare,.compare tbody,.compare tr,.compare td{display:block;width:auto!important}
+  .compare tr{border-bottom:1px solid var(--line);padding:14px 20px}
+  .compare tr:last-child{border-bottom:0}
+  .compare td{border:0;padding:4px 0}
+  .compare td:nth-child(2)::before{content:"Usually: ";font-weight:700;color:var(--muted)}
+  .compare td:nth-child(3)::before{content:"With ImpactOS: ";font-weight:700;color:var(--coral-ink)}
+  .panel-intro{padding:18px 20px}
+}
+.method-photo{margin:0 0 32px;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:21/8;background:var(--surface)}
+.method-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.method-photo figcaption{position:absolute;left:16px;bottom:16px;max-width:52ch;background:color-mix(in srgb,var(--bg) 92%,transparent);border-radius:12px;padding:10px 14px;font-size:var(--step--1);color:var(--ink)}
+@media (max-width:620px){.method-photo{aspect-ratio:4/3}.method-photo figcaption{position:static;border-radius:0}}
+</style>
+<link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="website" property="og:type"/><meta content="pt_BR" property="og:locale"/>
+<meta content="EdZola" property="og:site_name"/>
+<meta content="ImpactOS: o método por trás dos sistemas da EdZola para ONGs" property="og:title"/>
+<meta content="O ImpactOS é o método de entrega da EdZola: uma única forma de trabalhar, conhecimento reutilizável do setor e ferramentas de IA sempre com uma pessoa revisando, para que nenhum projeto comece do zero." property="og:description"/>
+<meta content="https://edzola.ai/pt/impact-os/" property="og:url"/>
+<meta content="https://edzola.ai/assets/og-edzola.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://edzola.ai/#org",
+   "name": "EdZola",
+   "legalName": "EdZola Technologies Private Limited",
+   "url": "https://edzola.ai/",
+   "logo": "https://edzola.ai/assets/apple-touch-icon.png",
+   "email": "reachus@edzola.com",
+   "foundingDate": "2020",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Coimbatore",
+    "addressRegion": "Tamil Nadu",
+    "addressCountry": "IN"
+   },
+   "description": "EdZola designs, builds and runs data systems and AI for nonprofits, from first system to AI. 100+ organisations and 150+ systems since 2020.",
+   "sameAs": [
+    "https://www.edzola.com/",
+    "https://in.linkedin.com/company/edzola",
+    "https://twitter.com/edzolatech",
+    "https://www.facebook.com/edzolatech",
+    "https://instagram.com/edzolatech"
+   ]
+  },
+  {
+   "@type": "AboutPage",
+   "@id": "https://edzola.ai/impact-os/#page",
+   "url": "https://edzola.ai/impact-os/",
+   "name": "ImpactOS: o método por trás dos sistemas da EdZola para ONGs",
+   "description": "O ImpactOS é o método de entrega da EdZola: uma única forma de trabalhar, conhecimento reutilizável do setor e ferramentas de IA sempre com uma pessoa revisando, para que nenhum projeto comece do zero.",
+   "inLanguage": "en-GB",
+   "isPartOf": {
+    "@id": "https://edzola.ai/#site"
+   },
+   "publisher": {
+    "@id": "https://edzola.ai/#org"
+   }
+  }
+ ]
+}
+</script>
+<style id="gh-css">
+html{scroll-padding-top:76px}
+.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
+.gh.gh-static{position:relative}
+.gh *{box-sizing:border-box}
+.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.gh a{text-decoration:none;color:inherit}
+.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
+.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
+.gh-nav{margin-left:auto;display:flex;gap:2px}
+.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
+.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
+.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
+.gh-cta:hover{filter:brightness(.96)}
+.gh-menu{display:none;position:relative}
+.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.gh-menu summary::-webkit-details-marker{display:none}
+.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
+.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
+.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
+.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
+.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
+.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
+:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
+@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
+@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
+</style>
+<style id="gh-lang-css">
+.gh-lang{display:flex;gap:2px;padding:3px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font:600 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace}
+.gh-lang a{padding:6px 8px;border-radius:999px;color:#6B6360!important}
+.gh-lang a[aria-current]{background:#1A1A1A;color:#FDF8F4!important}
+.gh-lang a:hover{color:#1A1A1A!important}
+.gh-drop .gh-lang{margin:8px 6px 4px;justify-content:center}
+@media (max-width:900px){.gh-in>.gh-lang{display:none}}
+.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:440px;margin-left:auto;display:flex;align-items:center;gap:12px;padding:14px 16px;background:#1A1A1A;color:#FDF8F4;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);font:500 14px/1.4 "Figtree",system-ui,sans-serif}
+.lang-hint a{color:#1A1A1A;background:#E8967A;padding:8px 14px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap}
+.lang-hint button{margin-left:auto;background:none;border:0;color:#FDF8F4;opacity:.7;font-size:20px;cursor:pointer;padding:4px 6px}
+</style>
+<link rel="alternate" hreflang="en" href="https://edzola.ai/impact-os/">
+<link rel="alternate" hreflang="es" href="https://edzola.ai/es/impact-os/">
+<link rel="alternate" hreflang="pt-BR" href="https://edzola.ai/pt/impact-os/">
+<link rel="alternate" hreflang="x-default" href="https://edzola.ai/impact-os/">
+</head>
+<body>
+<div class="gh" role="banner"><div class="gh-in"><a aria-label="Página inicial do edzola.ai" class="gh-logo" href="/pt/"><b>edzola.ai</b></a><div aria-label="Principal" class="gh-nav" role="navigation"><a href="/pt/#model">O que fazemos</a><a href="/sectors/">Setores</a><a aria-current="page" href="/pt/impact-os/">ImpactOS</a><a href="/thinking/">Reflexões</a><a href="/pt/about/">Sobre</a></div><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Idioma"><a href="/impact-os/" hreflang="en" lang="en">EN</a><a href="/es/impact-os/" hreflang="es" lang="es">ES</a><a href="/pt/impact-os/" hreflang="pt" lang="pt" aria-current="true">PT</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Fale com a gente</a><details class="gh-menu"><summary aria-label="Abrir menu"><i aria-hidden="true"></i>Menu</summary><div aria-label="Principal (celular)" class="gh-drop" role="navigation"><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Idioma"><a href="/impact-os/" hreflang="en" lang="en">EN</a><a href="/es/impact-os/" hreflang="es" lang="es">ES</a><a href="/pt/impact-os/" hreflang="pt" lang="pt" aria-current="true">PT</a></div><a href="/pt/#model">O que fazemos</a><a href="/sectors/">Setores</a><a aria-current="page" href="/pt/impact-os/">ImpactOS</a><a href="/thinking/">Reflexões</a><a href="/pt/about/">Sobre</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Fale com a gente</a></div></details></div></div>
+<main>
+<section class="hero">
+<div class="wrap">
+<div class="hero-grid">
+<div>
+<p class="eyebrow">ImpactOS · Como a EdZola trabalha</p>
+<h1>Cada projeto começa onde <em>o anterior terminou.</em></h1>
+<p class="lede">O ImpactOS é o método por trás de tudo o que a EdZola constrói: uma única forma de trabalhar, um conjunto crescente de conhecimento do setor e ferramentas de IA que sempre têm uma pessoa revisando. Você não o compra. Todo sistema que construímos para você roda sobre ele.</p>
+<div class="actions">
+<a class="btn btn-primary" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Fale com a gente</a>
+<a class="btn btn-ghost" href="#layers">Veja o que tem dentro</a>
+</div>
+</div>
+<div aria-label="Camadas do ImpactOS: serviços e produtos são construídos sobre três camadas. Ferramentas, que mudam com frequência. Conhecimento, que cresce a cada projeto. Método, que se mantém estável." class="stack" role="img">
+<div class="stack-top">
+<div class="layer on-top"><small>Construído sobre ele</small><b>Serviços</b></div>
+<div class="layer on-top"><small>Construído sobre ele</small><b>Produtos</b></div>
+</div>
+<div class="stack-label">ImpactOS</div>
+<div class="layer l-tools"><span class="speed">ADICIONADO COM FREQUÊNCIA</span><small>O que roda</small><b>Ferramentas</b></div>
+<div class="layer l-know"><span class="speed">CRESCE</span><small>O que sabemos</small><b>Conhecimento</b></div>
+<div class="layer l-method"><span class="speed">ESTÁVEL</span><small>Como trabalhamos</small><b>Método</b></div>
+</div>
+</div>
+<div class="proof">
+<div><b>100+</b><span>organizações apoiadas desde 2020</span></div>
+<div><b>60+</b><span>implementações em ONGs por trás do método</span></div>
+<div><b>34.000+</b><span>horas de entrega por trás das nossas estimativas</span></div>
+<div><b>150+</b><span>sistemas construídos e mantidos</span></div>
+</div>
+</div>
+</section>
+<section class="problem">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">O problema</p>
+<h2>A maioria dos sistemas de ONGs é construída a partir de uma página em branco.</h2>
+<p>Dois programas em duas cidades fazem as mesmas perguntas sobre quem atendem e o que mudou. Normalmente, os dois pagam para respondê-las do zero. Parece familiar?</p>
+</div>
+<div class="cards">
+<div class="card">
+<h3>A descoberta começa do zero</h3>
+<p>Semanas de oficinas para redescobrir o que um registro de beneficiário precisa, como os doadores avançam em um funil ou quais regras de licença uma ONG segue.</p>
+</div>
+<div class="card">
+<h3>A qualidade depende de quem você recebe</h3>
+<p>Cada consultor tem seu próprio jeito. Um projeto é cuidadoso, o seguinte é entregue com falhas que ninguém verificou. Você só descobre qual é qual quando já está em operação.</p>
+</div>
+<div class="card">
+<h3>O que se aprende vai embora junto</h3>
+<p>O projeto termina, o consultor sai e tudo o que ele descobriu fica na cabeça dele. A próxima organização paga para aprender tudo de novo.</p>
+</div>
+</div>
+<p class="pull">O ImpactOS existe para que isso não aconteça com você, nem com a próxima organização depois de você.</p>
+</div>
+</section>
+<section id="layers">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">O que é</p>
+<h2>Três camadas. Cada uma se move em uma velocidade diferente.</h2>
+<p>O método se mantém estável para que o conhecimento e as ferramentas sobre ele possam melhorar rápido sem quebrar o andamento do seu projeto.</p>
+</div>
+<div class="layers">
+<div class="layer-row l-method">
+<div><span class="tag">Camada 1 · Estável</span><h3>Método</h3></div>
+<p class="what">As mesmas etapas, pontos de aprovação e responsáveis nomeados em todo projeto, seja um pequeno sistema de RH ou um MIS de programa de um ano inteiro.</p>
+<p class="means"><strong>Para você:</strong> você sempre sabe em que etapa está, quem é o responsável e o que precisa estar resolvido antes de seguirmos.</p>
+</div>
+<div class="layer-row l-know">
+<div><span class="tag">Camada 2 · Cresce</span><h3>Conhecimento</h3></div>
+<div>
+<p class="what">Tudo o que aprendemos e vale a pena reutilizar, registrado uma vez e aprimorado a cada projeto.</p>
+<ul>
+<li>Framework MAP</li><li>Modelos de dados padrão para ONGs</li><li>Templates de CRM e RH</li><li>Guias práticos do setor</li><li>Campos 80G, FCRA e CSR (Índia)</li><li>Padrões de qualidade</li>
+</ul>
+</div>
+<p class="means"><strong>Para você:</strong> seu projeto parte do que já foi testado em outros lugares. O tempo de oficina vai para o que torna você diferente.</p>
+</div>
+<div class="layer-row l-tools">
+<div><span class="tag">Camada 3 · Adicionada com frequência</span><h3>Ferramentas</h3></div>
+<div>
+<p class="what">IA e automação que fazem parte do trabalho: rascunho de blueprints, configuração de sistemas, limpeza de dados, entrevistas por voz e verificação de falhas de segurança.</p>
+<ul>
+<li>Rascunho de blueprints</li><li>Configuração de sistemas</li><li>Limpeza de dados</li><li>Coleta de dados por voz</li><li>Verificações de segurança</li>
+</ul>
+</div>
+<p class="means"><strong>Para você:</strong> entrega mais rápida e menos erros manuais, com uma pessoa nomeada revisando cada resultado antes que ele conte.</p>
+</div>
+</div>
+<p class="analogy"><strong>Pense em um sistema de produção de carros.</strong> Ninguém o compra, e todo carro da linha é feito com ele, no mesmo padrão. O ImpactOS faz isso pelo trabalho da EdZola. Quem quer que lidere seu projeto, ele é construído com o mesmo cuidado.</p>
+</div>
+</section>
+<section>
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">O que você recebe</p>
+<h2>Seis coisas que valem para todo projeto que conduzimos.</h2>
+</div>
+<div class="promises">
+<div class="promise"><span class="n">01</span><h3>Não começamos do zero</h3><p>Templates, modelos de dados padrão e guias práticos vêm primeiro. Ninguém desenha seu sistema a partir de uma página em branco.</p></div>
+<div class="promise"><span class="n">02</span><h3>Pontos de aprovação claros</h3><p>Quatro pontos de aprovação em que você concorda antes de seguirmos, incluindo travar o design antes de qualquer construção.</p></div>
+<div class="promise"><span class="n">03</span><h3>Um responsável nomeado</h3><p>Uma pessoa responsável em cada etapa. Você nunca precisa se perguntar para quem ligar.</p></div>
+<div class="promise"><span class="n">04</span><h3>Verificado antes do seu teste</h3><p>Verificações de qualidade com base em nossos padrões de entrega e uma varredura de segurança antes que sua equipe veja qualquer coisa.</p></div>
+<div class="promise"><span class="n">05</span><h3>Concluído significa adotado</h3><p>Um projeto se encerra quando sua equipe usa o sistema por conta própria, não no dia em que ele entra em operação.</p></div>
+<div class="promise"><span class="n">06</span><h3>Todo projeto ensina</h3><p>O que aprendemos volta para os templates, então o próximo sistema, inclusive o seu próximo, fica melhor.</p></div>
+</div>
+</div>
+</section>
+<section class="method" id="method">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">Como trabalhamos</p>
+<h2>Da primeira conversa a um sistema que é da sua equipe.</h2>
+<p>Cinco etapas, quatro pontos de aprovação. Iguais para todo projeto.</p>
+</div>
+<figure class="method-photo"><img alt="Mapeando um fluxo de trabalho em um quadro branco com post-its" height="852" loading="lazy" src="/assets/photos/sic-whiteboard.jpg" width="1280"/><figcaption>O escopo começa em uma parede de post-its com as pessoas que fazem o trabalho, antes de alguém abrir um notebook.</figcaption></figure>
+<div class="spine">
+<div class="stage"><span class="n">01</span><h3>Ouvir</h3><p>Entendemos como seu trabalho realmente funciona e conectamos você a um profissional que já construiu isso antes.</p></div>
+<div class="stage"><span class="n">02</span><h3>Escopo</h3><p>Requisitos claros, uma estimativa honesta e o que não vamos fazer. Se uma planilha bastar, vamos dizer.</p><span class="gate">Ponto de aprovação 1 · escopo acordado</span></div>
+<div class="stage"><span class="n">03</span><h3>Entregar</h3><p>Desenhar com você, depois construir, migrar e treinar em etapas utilizáveis.</p><span class="gate">Ponto de aprovação 2 · design travado</span><br/><span class="gate">Ponto de aprovação 3 · testado</span></div>
+<div class="stage"><span class="n">04</span><h3>Encerrar</h3><p>Entrega, documentação e uma verificação de adoção. Ficamos até o sistema estar em uso.</p><span class="gate">Ponto de aprovação 4 · adotado</span></div>
+<div class="stage"><span class="n">05</span><h3>Aprender</h3><p>Uma retrospectiva. O que funcionou volta para o ImpactOS para a próxima organização.</p></div>
+</div>
+<p class="method-note">O método é documentado e mantido dentro da EdZola, então não depende de nenhuma pessoa específica. Se quiser ver as etapas e os pontos de aprovação para o seu tipo de projeto, pergunte na primeira conversa.</p>
+</div>
+</section>
+<section>
+<div class="wrap ai-grid">
+<div>
+<p class="eyebrow">Onde a IA entra</p>
+<h2>A IA rascunha. Pessoas revisam, decidem e enviam.</h2>
+<p class="lede">A IA cuida do volume. As pessoas cuidam das consequências. Toda ferramenta de IA no ImpactOS precisa cumprir cinco regras antes de chegar perto do seu projeto.</p>
+</div>
+<ul class="rules">
+<li><b>Tem um lugar</b><span>Ela está ligada a uma etapa definida do método. Nenhuma ferramenta roda só porque pode.</span></li>
+<li><b>Deixa rastro</b><span>O que ela produz volta para o registro com a fonte, para que você veja de onde veio cada resposta.</span></li>
+<li><b>É revisada</b><span>Uma pessoa nomeada revisa o resultado antes que ele conte, e antes que chegue até você.</span></li>
+<li><b>Tem um responsável</b><span>Uma pessoa na EdZola responde por ela funcionar direito.</span></li>
+<li><b>Pode ser desligada</b><span>O caminho manual continua funcionando. Seu projeto nunca depende de uma ferramenta sem a qual não conseguimos trabalhar.</span></li>
+</ul>
+</div>
+</section>
+<section class="examples" id="examples">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">Na prática</p>
+<h2>O que muda no seu projeto.</h2>
+<p>Um projeto típico, do jeito comum e com o ImpactOS.</p>
+</div>
+<div aria-label="Tipos de projeto" class="tabs" role="tablist">
+<button aria-controls="p-mis" aria-selected="true" id="t-mis" role="tab">MIS de programa</button>
+<button aria-controls="p-crm" aria-selected="false" id="t-crm" role="tab" tabindex="-1">CRM de captação de recursos</button>
+<button aria-controls="p-hr" aria-selected="false" id="t-hr" role="tab" tabindex="-1">Sistema de RH</button>
+<button aria-controls="p-voice" aria-selected="false" id="t-voice" role="tab" tabindex="-1">Estudo por voz</button>
+</div>
+<div aria-labelledby="t-mis" class="panel" id="p-mis" role="tabpanel">
+<p class="panel-intro">Todo MIS começa pela sua Teoria da Mudança e pelo nosso modelo de dados padrão.</p>
+<table class="compare">
+<thead><tr><th>Etapa</th><th>Normalmente</th><th>Com o ImpactOS</th></tr></thead>
+<tbody>
+<tr><td>Requisitos</td><td>Descoberta longa, um documento de requisitos escrito do zero, escopo que não para de mudar.</td><td>Teoria da Mudança, resultados e indicadores primeiro, usando o framework MAP. O modelo de dados é travado com você antes de qualquer construção.</td></tr>
+<tr><td>Design</td><td>Um novo modelo de dados para cada app, com sua própria nomenclatura.</td><td>Comece por entidades padrão como beneficiário, sessão e frequência, testadas em 60+ projetos. Só o que é diferente em você é desenhado.</td></tr>
+<tr><td>Construção</td><td>Formulários e lógica feitos à mão, reescritos a cada projeto.</td><td>A IA constrói formulários, relatórios e fluxos de trabalho em um ambiente de teste a partir do blueprint aprovado. Nossos desenvolvedores revisam cada mudança.</td></tr>
+<tr><td>Teste</td><td>A maioria dos bugs é encontrada pela sua equipe durante os testes.</td><td>Verificado com base em nossos padrões de qualidade e escaneado em busca de dados pessoais expostos antes do seu teste. Todo bug tem a causa raiz identificada.</td></tr>
+<tr><td>Adoção</td><td>A entrega é uma única sessão de treinamento.</td><td>Painéis usados nas suas próprias reuniões de acompanhamento, e adoção verificada antes de encerrarmos.</td></tr>
+</tbody>
+</table>
+</div>
+<div aria-labelledby="t-crm" class="panel" hidden="" id="p-crm" role="tabpanel">
+<p class="panel-intro">Nenhum CRM começa de uma configuração em branco. Cada um parte do nosso template e o deixa melhor.</p>
+<table class="compare">
+<thead><tr><th>Etapa</th><th>Normalmente</th><th>Com o ImpactOS</th></tr></thead>
+<tbody>
+<tr><td>Requisitos</td><td>Descoberta feita do zero, requisitos reescritos toda vez.</td><td>Você preenche um template curto de requisitos antes da primeira conversa. A conversa cobre só as lacunas.</td></tr>
+<tr><td>Design</td><td>Os mesmos campos de doadores e funis reconstruídos a cada projeto.</td><td>Comece com um CRM para ONGs com tipos de doador, etapas do funil e campos PAN, 80G e FCRA (Índia) já definidos. Só as suas diferenças são desenhadas e aprovadas.</td></tr>
+<tr><td>Construção</td><td>Configurado clique por clique. A qualidade depende de quem constrói.</td><td>Configurado a partir da especificação aprovada em um ambiente de teste, com um registro de mudanças revisado por um consultor.</td></tr>
+<tr><td>Migração</td><td>Dados de doadores limpos à mão no Excel.</td><td>A IA limpa e remove duplicidades dos dados de doadores em um template padrão de migração, e depois uma pessoa confere.</td></tr>
+<tr><td>Encerrar</td><td>Encerrado na entrada em operação.</td><td>Encerrado após uma revisão de adoção: os negócios estão avançando e os recibos estão sendo enviados?</td></tr>
+</tbody>
+</table>
+</div>
+<div aria-labelledby="t-hr" class="panel" hidden="" id="p-hr" role="tabpanel">
+<p class="panel-intro">Seu sistema de RH entra em operação a partir de um template testado, então o tempo de oficina vai para as suas políticas.</p>
+<table class="compare">
+<thead><tr><th>Etapa</th><th>Normalmente</th><th>Com o ImpactOS</th></tr></thead>
+<tbody>
+<tr><td>Requisitos</td><td>Várias conversas para entender tipos de licença, turnos, aprovações e folha de pagamento.</td><td>Você preenche um único template: lista de funcionários, política de licenças, feriados, regras de frequência, aprovações e folha de pagamento. A conversa cobre só o que não está claro.</td></tr>
+<tr><td>Design</td><td>Configurado a partir de anotações de reunião, de um jeito diferente a cada vez.</td><td>Uma configuração padrão para ONGs é a base. Só os desvios são discutidos.</td></tr>
+<tr><td>Teste</td><td>Os testes dependem de quem lembra o que verificar.</td><td>Testes padrão para um pedido de licença, um ciclo de frequência e uma rodada de folha de pagamento, em todo projeto.</td></tr>
+<tr><td>Adoção</td><td>Sua equipe de RH é treinada uma vez e fica por conta própria.</td><td>Sua própria pessoa de referência conduz um ciclo completo sozinha antes de encerrarmos.</td></tr>
+</tbody>
+</table>
+</div>
+<div aria-labelledby="t-voice" class="panel" hidden="" id="p-voice" role="tabpanel">
+<p class="panel-intro">Cada estudo por voz acrescenta perguntas, idiomas e aprendizados que tornam o próximo mais barato.</p>
+<table class="compare">
+<thead><tr><th>Etapa</th><th>Normalmente</th><th>Com o ImpactOS</th></tr></thead>
+<tbody>
+<tr><td>Design</td><td>Perguntas escritas do zero ao longo de semanas.</td><td>Comece com um banco de perguntas para o seu setor e tipo de estudo, com roteiros de consentimento padrão.</td></tr>
+<tr><td>Piloto</td><td>Problemas de idioma e duração aparecem no meio do caminho.</td><td>Um piloto curto verifica idioma, duração e desistências antes da rodada completa. Você aprova primeiro.</td></tr>
+<tr><td>Relatório</td><td>A análise começa das transcrições brutas.</td><td>A IA rascunha os temas iniciais. Um pesquisador confere cada afirmação com o que as pessoas realmente disseram.</td></tr>
+<tr><td>Aprender</td><td>Os aprendizados ficam com quem conduziu o estudo.</td><td>Perguntas que funcionaram voltam para o banco. Perguntas que confundiram as pessoas são sinalizadas.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">Construído sobre o ImpactOS</p>
+<h2>Um único método por trás de tudo o que oferecemos.</h2>
+<p>Parte do nosso trabalho é conduzida pelas nossas pessoas. Parte você pode usar por conta própria. Tudo vem do mesmo método e do mesmo conhecimento.</p>
+</div>
+<div class="built">
+<div class="card">
+<span class="tag">Pessoas entregam</span>
+<h3>Serviços</h3>
+<p>Um profissional da EdZola conduz o trabalho com você, seguindo o guia prático daquele serviço.</p>
+<div class="chips">
+<a href="/sectors/">MIS de programa</a><span>CRM de captação de recursos</span><span>Sistemas de RH</span><a href="/pt/zolabs/">Estudos por voz</a><a href="/zolashield/">Prontidão para a Lei DPDP (Índia)</a><a href="mailto:reachus@edzola.com?subject=Custom%20AI">IA sob medida</a>
+</div>
+</div>
+<div class="card">
+<span class="tag">Software entrega</span>
+<h3>Produtos</h3>
+<p>Quando uma ferramenta se prova em muitos projetos, ela se torna algo que você pode usar sem a nossa participação.</p>
+<div class="chips">
+<a href="/dozai/">DozAI</a><a href="/pt/zolabs/">zolabs.ai</a><a href="/zolashield/">ZolaShield</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="problem">
+<div class="wrap open-grid">
+<div>
+<p class="eyebrow">O que compartilhamos</p>
+<h2>Grande parte do que tem dentro é de leitura gratuita.</h2>
+<p class="lede" style="margin-top:16px;font-size:var(--step-0)">O método e suas ferramentas são a forma como entregamos. O pensamento por trás deles é aberto, trabalhando você conosco ou não.</p>
+<div class="data-note"><strong>Seus dados nunca entram no ImpactOS.</strong> Os projetos melhoram nossos templates e aprendizados, nunca com os seus registros. Os dados de beneficiários e doadores pertencem a você e às pessoas que estão neles.</div>
+</div>
+<div class="open-list">
+<a href="/field-guides/technology-that-sticks/"><small>Guia de campo · 7 ensaios</small><b>Construindo tecnologia que pega →</b></a>
+<a href="/thinking/how-nonprofits-operate/"><small>Guia de campo · 6 capítulos</small><b>Como as ONGs realmente funcionam →</b></a>
+<a href="/sectors/"><small>16 setores</small><b>O que mapeamos, e onde ainda não construímos →</b></a>
+<a href="/why/"><small>Tese fundadora</small><b>Sistemas feitos para o trabalho mais difícil do mundo →</b></a>
+</div>
+</div>
+</section>
+<section class="cta">
+<div class="wrap" style="padding-top:clamp(56px,8vw,104px)">
+<div class="cta-box">
+<div>
+<h2>Traga para nós a parte mais bagunçada do seu trabalho.</h2>
+<p>Uma planilha de controle, um formulário, um relatório que ninguém gosta de fazer. Alguém que já construiu isso antes vai olhar e dizer o que faríamos, e se você precisa mesmo de nós.</p>
+</div>
+<div class="actions">
+<a class="btn btn-primary" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Fale com a gente</a>
+<small>Se você compartilhar um arquivo, remova antes nomes, telefones e números de identificação. Cabeçalhos de colunas e algumas linhas fictícias bastam.</small>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<span>O ImpactOS é o método de entrega da EdZola · <a href="/pt/">edzola.ai</a> · Coimbatore, Índia</span>
+<span><a href="/thinking/">Como pensamos</a> · <a href="mailto:reachus@edzola.com">reachus@edzola.com</a></span>
+</div>
+</footer>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute('aria-selected',on);
+      x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+      if(!d)return;
+      var n=tabs[(i+d+tabs.length)%tabs.length];select(n);n.focus();
+    });
+  });
+})();
+</script>
+<script id="lang-hint">
+(function(){
+  var dst="impact-os/", offers={es:['¿Prefieres leer en español?','Ver en español'],pt:['Prefere ler em português?','Ver em português']};
+  function get(){try{return localStorage.getItem('edz-lang')}catch(e){return null}}
+  function set(v){try{localStorage.setItem('edz-lang',v)}catch(e){}}
+  document.querySelectorAll('.gh-lang a').forEach(function(a){a.addEventListener('click',function(){set(a.getAttribute('hreflang'))})});
+  if(document.documentElement.lang.slice(0,2)!=='en'||get())return;
+  var pref=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase();
+  if(!offers[pref]){
+    /* No es/pt browser language: fall back to the device time zone, which stays on the device. */
+    var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}
+    var PT=/^(America\/(Sao_Paulo|Bahia|Fortaleza|Recife|Belem|Manaus|Cuiaba|Campo_Grande|Porto_Velho|Boa_Vista|Rio_Branco|Araguaina|Maceio|Santarem|Noronha|Eirunepe)|Europe\/Lisbon|Atlantic\/(Azores|Madeira|Cape_Verde)|Africa\/(Maputo|Luanda|Bissau|Sao_Tome))$/;
+    var ES=/^(America\/(Argentina\/.*|Buenos_Aires|Mexico_City|Cancun|Merida|Monterrey|Matamoros|Chihuahua|Ciudad_Juarez|Ojinaga|Mazatlan|Bahia_Banderas|Hermosillo|Tijuana|Bogota|Lima|Santiago|Punta_Arenas|Caracas|Guayaquil|La_Paz|Asuncion|Montevideo|Guatemala|El_Salvador|Tegucigalpa|Managua|Costa_Rica|Panama|Havana|Santo_Domingo|Puerto_Rico)|Europe\/Madrid|Africa\/(Ceuta|Malabo)|Atlantic\/Canary|Pacific\/(Galapagos|Easter))$/;
+    pref=PT.test(tz)?'pt':ES.test(tz)?'es':'';
+  }
+  if(!offers[pref])return;
+  var d=document.createElement('div');d.className='lang-hint';d.setAttribute('role','region');d.setAttribute('aria-label','Language');
+  d.innerHTML='<span lang="'+pref+'">'+offers[pref][0]+'</span><a lang="'+pref+'" href="/'+pref+'/'+dst+'">'+offers[pref][1]+'</a><button aria-label="Dismiss">×</button>';
+  d.querySelector('a').addEventListener('click',function(){set(pref)});
+  d.querySelector('button').addEventListener('click',function(){set('en');d.remove()});
+  document.body.appendChild(d);
+})();
+</script>
+</body>
+</html>
