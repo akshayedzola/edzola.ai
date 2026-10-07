@@ -242,6 +242,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <style id="gh-css">
+.gh-skip{position:absolute;left:16px;top:-60px;z-index:80;padding:10px 16px;border-radius:999px;background:#1A1A1A;color:#FDF8F4!important;font-weight:700;font-size:14px}.gh-skip:focus{top:12px}
 html{scroll-padding-top:76px}
 .gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
 .gh.gh-static{position:relative}
@@ -274,7 +275,7 @@ html{scroll-padding-top:76px}
 </head>
 <body>
 
-<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b><span>Built for Impact Fund</span></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="#join">Join the movement</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="#join">Join the movement</a></div></details></div></div>
+<a class="gh-skip" href="#top">Skip to content</a><div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b><span>Built for Impact Fund</span></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="#join">Join the movement</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="#join">Join the movement</a></div></details></div></div>
 
 <main id="top">
   <!-- HERO -->
@@ -348,18 +349,18 @@ html{scroll-padding-top:76px}
         <p class="lede">In New York or London, $1,000 buys a few hours of a technology consultant. Built in Coimbatore, $2,500 pays for a working CRM or MIS, the data migration, the training, and a year of support.</p>
         <p>We've built 150+ systems for 100+ organisations, so we don't start from zero. Sector templates and our ImpactOS delivery method mean each nonprofit gets a system configured to its work in weeks. Four parties put money or time into every system, and the nonprofit is one of them.</p>
       </div>
-      <div class="stack-table" role="table" aria-label="How one nonprofit system is funded">
+      <div class="stack-table" role="list" aria-label="How one nonprofit system is funded">
         <div class="stack-bar" aria-hidden="true">
           <span style="flex:40;background:var(--coral)"></span>
           <span style="flex:30;background:var(--ink)"></span>
           <span style="flex:20;background:var(--teal)"></span>
           <span style="flex:10;background:var(--yellow)"></span>
         </div>
-        <div class="stack-row" role="row"><div class="who"><span class="swatch" style="background:var(--coral)"></span><div>Your contribution<small>Pooled in the fund</small></div></div><div class="amt">$1,000</div></div>
-        <div class="stack-row" role="row"><div class="who"><span class="swatch" style="background:var(--ink)"></span><div>EdZola matched hours<small>Delivery we put in at no charge</small></div></div><div class="amt">$750</div></div>
-        <div class="stack-row" role="row"><div class="who"><span class="swatch" style="background:var(--teal)"></span><div>Technology partner credits<small>Licences and cloud credits we're seeking</small></div></div><div class="amt">$500</div></div>
-        <div class="stack-row" role="row"><div class="who"><span class="swatch" style="background:var(--yellow)"></span><div>The nonprofit's own share<small>Paid in rupees, scaled to their size. Having a stake is what makes adoption stick.</small></div></div><div class="amt">$250</div></div>
-        <div class="stack-row stack-total" role="row"><div class="who"><div>Full cost of one nonprofit system<small>Built, migrated, adopted and supported for a year</small></div></div><div class="amt">$2,500</div></div>
+        <div class="stack-row" role="listitem"><div class="who"><span class="swatch" style="background:var(--coral)"></span><div>Your contribution<small>Pooled in the fund</small></div></div><div class="amt">$1,000</div></div>
+        <div class="stack-row" role="listitem"><div class="who"><span class="swatch" style="background:var(--ink)"></span><div>EdZola matched hours<small>Delivery we put in at no charge</small></div></div><div class="amt">$750</div></div>
+        <div class="stack-row" role="listitem"><div class="who"><span class="swatch" style="background:var(--teal)"></span><div>Technology partner credits<small>Licences and cloud credits we're seeking</small></div></div><div class="amt">$500</div></div>
+        <div class="stack-row" role="listitem"><div class="who"><span class="swatch" style="background:var(--yellow)"></span><div>The nonprofit's own share<small>Paid in rupees, scaled to their size. Having a stake is what makes adoption stick.</small></div></div><div class="amt">$250</div></div>
+        <div class="stack-row stack-total" role="listitem"><div class="who"><div>Full cost of one nonprofit system<small>Built, migrated, adopted and supported for a year</small></div></div><div class="amt">$2,500</div></div>
         <p class="stack-note">Pilot targets. We'll publish the real numbers from the first cohort, including what didn't go to plan.</p>
       </div>
     </div>

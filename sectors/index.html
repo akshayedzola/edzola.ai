@@ -22,8 +22,8 @@
 <style>
 :root{
   --bg:#FDF8F4;--surface:#FFFFFF;--sunk:#F6EDE5;--ink:#1A1A1A;--muted:#6B6360;--line:#EADFD6;
-  --coral:#E8967A;--coral-ink:#B4553A;--peach:#FAE8DC;--teal:#8ECFCA;--teal-ink:#2C7771;--teal-soft:#E2F3F1;
-  --yellow:#F7C948;--yellow-soft:#FCF0C8;--risk:#C2412D;--risk-soft:#FBE3DD;--paper:#FFFBEA;--rule:#C9D9EE;
+  --coral:#E8967A;--coral-ink:#9E452D;--peach:#FAE8DC;--teal:#8ECFCA;--teal-ink:#2C7771;--teal-soft:#E2F3F1;
+  --yellow:#F7C948;--yellow-soft:#FCF0C8;--risk:#A8341F;--risk-soft:#FBE3DD;--paper:#FFFBEA;--rule:#C9D9EE;
   --wa:#DCF8C6;--shadow:0 14px 40px rgba(74,48,32,.10);
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --sans:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -344,8 +344,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .spot .go{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .spot .go a{color:var(--coral);font-weight:700;text-decoration:none}
 .spot .pager{display:flex;gap:5px}
-.spot .pager button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:color-mix(in srgb,var(--bg) 30%,transparent)}
-.spot .pager button[aria-current="true"]{background:var(--coral);width:22px;border-radius:99px}
+.spot .pager button{width:24px;height:24px;border-radius:50%;border:0;padding:8px;background-clip:content-box!important;background:color-mix(in srgb,var(--bg) 30%,transparent)}
+.spot .pager button[aria-current="true"]{background:var(--coral);width:38px;border-radius:99px}
 .spot-body{transition:opacity .3s}
 .ids{display:flex;flex-wrap:wrap;gap:6px;margin-top:26px}
 .ids span{font:500 11px var(--mono);padding:4px 8px;border-radius:6px;background:var(--sunk);color:var(--muted)}
@@ -385,7 +385,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <meta property="og:image" content="https://edzola.ai/assets/og-edzola.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<style>@media (max-width:400px){main *{min-width:0}main h1{overflow-wrap:anywhere}.go,.pager{flex-wrap:wrap}}</style>
 <style id="gh-css">
+.gh-skip{position:absolute;left:16px;top:-60px;z-index:80;padding:10px 16px;border-radius:999px;background:#1A1A1A;color:#FDF8F4!important;font-weight:700;font-size:14px}.gh-skip:focus{top:12px}
 html{scroll-padding-top:76px}
 .gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
 .gh.gh-static{position:relative}
@@ -418,7 +420,7 @@ html{scroll-padding-top:76px}
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/" aria-current="page">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Our%20programme%20system">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/" aria-current="page">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Our%20programme%20system">Talk to us</a></div></details></div></div>
+<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/" aria-current="page">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Our%20programme%20system">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/" aria-current="page">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Our%20programme%20system">Talk to us</a></div></details></div></div>
 <main id="main-content">
 <section class="wrap hub-hero" id="top"><div>
 <div class="eyebrow">Data systems for nonprofits · 16 sectors</div>

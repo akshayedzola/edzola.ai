@@ -9,10 +9,10 @@
 /* Layout: GitBook-style reader. Sticky top bar, chapter sidebar, one chapter per view, "on this page" rail on wide screens. EdZola edzola.ai tokens. */
 :root{
   --bg:#FDF8F4;--surface:#FFFFFF;--sunk:#F6EDE5;--ink:#1A1A1A;--muted:#6B6360;--line:#EADFD6;
-  --coral:#E8967A;--coral-ink:#B4553A;--peach:#FAE8DC;--peach-line:#EFD3C2;
+  --coral:#E8967A;--coral-ink:#9E452D;--peach:#FAE8DC;--peach-line:#EFD3C2;
   --teal:#8ECFCA;--teal-ink:#2C7771;--teal-soft:#E2F3F1;--teal-line:#C9E5E2;
   --yellow:#F7C948;--yellow-soft:#FDF3D3;--yellow-line:#F0DFA6;
-  --good:#2C7771;--warn:#B7791F;--bad:#B4553A;
+  --good:#2C7771;--warn:#8A5A12;--bad:#9E452D;
   --good-soft:#E2F3F1;--bad-soft:#FBE4DC;
   --chip-ink:#1A1A1A;
   --shadow:0 14px 40px rgba(74,48,32,.10);
@@ -632,7 +632,9 @@ details.facil .tbl{margin-top:0}
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<style>@media (max-width:400px){.top-right{display:none}}input:focus-visible,button:focus-visible{outline:3px solid #2C7771!important;outline-offset:2px}</style>
 <style id="gh-css">
+.gh-skip{position:absolute;left:16px;top:-60px;z-index:80;padding:10px 16px;border-radius:999px;background:#1A1A1A;color:#FDF8F4!important;font-weight:700;font-size:14px}.gh-skip:focus{top:12px}
 html{scroll-padding-top:76px}
 .gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
 .gh.gh-static{position:relative}
@@ -674,7 +676,7 @@ html{scroll-padding-top:76px}
   <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h10"/></symbol>
 </svg>
 
-<div class="gh gh-static" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/" aria-current="page">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/" aria-current="page">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a></div></details></div></div>
+<a class="gh-skip" href="#main">Skip to content</a><div class="gh gh-static"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/" aria-current="page">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/" aria-current="page">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a></div></details></div></div>
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-controls="side" aria-expanded="false"><svg><use href="#i-menu"/></svg>Contents</button>
@@ -720,16 +722,16 @@ html{scroll-padding-top:76px}
   <div class="fig">
     <div class="maps">
       <div class="lane p"><div class="lane-name">People<small>a person reached</small></div>
-        <div class="flow"><div class="st">Identify</div><div class="ar"></div><div class="st">Enrol</div><div class="ar"></div><div class="st">Serve</div><div class="ar"></div><div class="st">Follow up</div><div class="ar"></div><div class="st">Outcome</div></div></div>
+        <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 1 (scrollable)"><div class="st">Identify</div><div class="ar"></div><div class="st">Enrol</div><div class="ar"></div><div class="st">Serve</div><div class="ar"></div><div class="st">Follow up</div><div class="ar"></div><div class="st">Outcome</div></div></div>
       <div class="lane m"><div class="lane-name">Money<small>the rupee</small></div>
-        <div class="flow"><div class="st">Donor</div><div class="ar"></div><div class="st">Grant</div><div class="ar"></div><div class="st">Budget</div><div class="ar"></div><div class="st">Spend</div><div class="ar"></div><div class="st">Utilisation</div></div></div>
+        <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 2 (scrollable)"><div class="st">Donor</div><div class="ar"></div><div class="st">Grant</div><div class="ar"></div><div class="st">Budget</div><div class="ar"></div><div class="st">Spend</div><div class="ar"></div><div class="st">Utilisation</div></div></div>
       <div class="lane e"><div class="lane-name">Evidence<small>a verified data point</small></div>
-        <div class="flow"><div class="st">Data captured</div><div class="ar"></div><div class="st">Indicators</div><div class="ar"></div><div class="st">Reports</div><div class="ar"></div><div class="st">Decisions</div></div></div>
+        <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 3 (scrollable)"><div class="st">Data captured</div><div class="ar"></div><div class="st">Indicators</div><div class="ar"></div><div class="st">Reports</div><div class="ar"></div><div class="st">Decisions</div></div></div>
     </div>
     <div class="converge"><small>Where all three meet</small>Accountability and outcomes</div>
   </div>
 
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 1 (scrollable)"><table>
     <thead><tr><th>Flow</th><th>Unit</th><th>Who cares most</th><th>Where it usually lives today</th></tr></thead>
     <tbody>
       <tr><td>People</td><td>a person reached, a change achieved</td><td>programme teams, field staff</td><td>registers, Excel, KoBo or Google Forms, WhatsApp</td></tr>
@@ -774,7 +776,7 @@ html{scroll-padding-top:76px}
   <h2 id="start-lenses"><span class="n">The lenses we reuse</span>How EdZola looks at any organisation</h2>
   <h3>MAP: Model, Align, Power with AI</h3>
   <div class="fig">
-    <div class="flow">
+    <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 4 (scrollable)">
       <div class="st hot"><b>Model</b><small>What decision? What's the smallest data that supports it?</small></div><div class="ar"></div>
       <div class="st cool"><b>Align</b><small>Make it usable. Workflows, access, data flows back.</small></div><div class="ar"></div>
       <div class="st end"><b>Power with AI</b><small>Only on clean foundations.</small></div>
@@ -810,7 +812,7 @@ html{scroll-padding-top:76px}
     <li><label><input type="checkbox" id="cap-5"><span><b>Seam tests:</b> which of the four seams is broken, and what it costs them</span></label></li>
     <li><label><input type="checkbox" id="cap-6"><span><b>MAP recommendation:</b> one Model fix, one Align fix, one AI move with its failure mode (chapter 5)</span></label></li>
   </ul>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 2 (scrollable)"><table>
     <thead><tr><th>Score yourself (1 to 4)</th><th>1 looks like</th><th>4 looks like</th></tr></thead>
     <tbody>
       <tr><td>Uses the org's own vocabulary</td><td>generic terms</td><td>their terms, used correctly</td></tr>
@@ -893,7 +895,7 @@ html{scroll-padding-top:76px}
   </div>
 
   <h2 id="actors-legal"><span class="n">3 · Legal forms</span>Trust, Society or Section 8: the 10-minute version</h2>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 3 (scrollable)"><table>
     <thead><tr><th></th><th>Trust</th><th>Society</th><th>Section 8 company</th></tr></thead>
     <tbody>
       <tr><td>Law</td><td>Indian Trusts Act or state Public Trust Acts; deed registered under the Registration Act 1908</td><td>Societies Registration Act 1860</td><td>Companies Act 2013</td></tr>
@@ -944,7 +946,7 @@ html{scroll-padding-top:76px}
       <div class="lvl"><div class="nd k"><small>Beneficiary</small>one record, many projects</div></div>
     </div>
   </div>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 4 (scrollable)"><table>
     <thead><tr><th>Word</th><th>What it means</th></tr></thead>
     <tbody>
       <tr><td>Programme</td><td>A long-lived theme of work with its own Theory of Change ("Girls' Education")</td></tr>
@@ -1016,7 +1018,7 @@ html{scroll-padding-top:76px}
 
   <details class="facil">
     <summary>Glossary <small>7 terms</small></summary>
-    <div class="in"><div class="tbl"><table><tbody>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 5 (scrollable)"><table><tbody>
       <tr><td>NGO / NPO / nonprofit / CSO</td><td>Used interchangeably in India. Legally a Trust, Society or Section 8 company</td></tr>
       <tr><td>Beneficiary</td><td>The person served. Many NGOs prefer participant, learner, member or community member. Use the client's own word</td></tr>
       <tr><td>Implementation partner</td><td>An NGO that delivers a programme funded by someone else</td></tr>
@@ -1028,7 +1030,7 @@ html{scroll-padding-top:76px}
   </details>
   <details class="facil">
     <summary>Running this as a session? <small>150 min plan</small></summary>
-    <div class="in"><div class="tbl"><table>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 6 (scrollable)"><table>
       <thead><tr><th>Time</th><th>Block</th><th>Method</th></tr></thead>
       <tbody>
         <tr><td>0:00</td><td>Myth vs reality poll. Vote with hands, don't reveal</td><td>Plenary</td></tr>
@@ -1085,7 +1087,7 @@ html{scroll-padding-top:76px}
       <div class="pot" style="border-top:4px solid var(--yellow)"><h4>Money explained</h4><ul><li>Programme costing</li><li>Utilisation reporting</li></ul></div>
     </div>
   </div>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 7 (scrollable)"><table>
     <thead><tr><th>Job</th><th>The question it answers</th><th>Typical user</th><th>Typical tool</th></tr></thead>
     <tbody>
       <tr><td>Fundraising</td><td>How do we get money into the organisation?</td><td>Founder, fundraising team</td><td>Proposals, events, campaigns</td></tr>
@@ -1101,7 +1103,7 @@ html{scroll-padding-top:76px}
   <div class="box try sorter" data-sorter="jobs"></div>
 
   <h2 id="money-sources"><span class="n">3 · Sources</span>Where the money comes from</h2>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 8 (scrollable)"><table>
     <thead><tr><th>Source</th><th>How it arrives</th><th>What it expects back</th><th>Paperwork</th></tr></thead>
     <tbody>
       <tr><td>CSR (Indian companies)</td><td>Project grant, usually 1 to 3 years</td><td>Project reports, site visits, photos, often an audited FUC</td><td>CSR-1, MoU, FUR/FUC; the company files CSR-2</td></tr>
@@ -1117,7 +1119,7 @@ html{scroll-padding-top:76px}
   <h3>Paying for outcomes, not activities</h3>
   <p>The <strong>Educate Girls Development Impact Bond</strong> (Rajasthan, 2015 to 2018) was the world's first development impact bond in education. An investor fronted the money, and an outcome funder repaid it only if an independent evaluator verified results.</p>
   <div class="fig">
-    <div class="flow">
+    <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 5 (scrollable)">
       <div class="st"><b>Investor</b><small>UBS Optimus Foundation puts up working capital</small></div><div class="ar"></div>
       <div class="st hot"><b>Educate Girls</b><small>enrols girls and runs learning camps</small></div><div class="ar"></div>
       <div class="st"><b>Children</b><small>about 7,300 across 166 schools</small></div><div class="ar"></div>
@@ -1137,7 +1139,7 @@ html{scroll-padding-top:76px}
   <p>Most institutional money is restricted. That's why every expense needs a project code and a budget head: so restricted money is provably spent on what it was restricted to.</p>
 
   <h3>Hard vs soft commitments</h3>
-  <div class="tbl"><table><thead><tr><th></th><th>Hard</th><th>Soft</th></tr></thead><tbody>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 9 (scrollable)"><table><thead><tr><th></th><th>Hard</th><th>Soft</th></tr></thead><tbody>
     <tr><td>Evidence</td><td>MoU signed or written confirmation</td><td>Verbal, or an email saying "we're keen"</td></tr>
     <tr><td>In the forecast</td><td>Count at 100%</td><td>Discount it</td></tr>
   </tbody></table></div>
@@ -1228,7 +1230,7 @@ html{scroll-padding-top:76px}
   </div>
 
   <h2 id="money-report"><span class="n">6 · Utilisation and reporting</span>Answering the ₹1 crore question</h2>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 10 (scrollable)"><table>
     <thead><tr><th>Report</th><th>What it is</th><th>Who asks</th><th>If it's late</th></tr></thead>
     <tbody>
       <tr><td>FUR</td><td>Fund Utilisation Report: budget vs actual, per head, in the donor's template</td><td>Most institutional donors</td><td>Donor loses confidence</td></tr>
@@ -1246,7 +1248,7 @@ html{scroll-padding-top:76px}
     </div>
   </div>
   <p>A good utilisation report reads like this:</p>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 11 (scrollable)"><table>
     <thead><tr><th>Head</th><th class="num">Budget</th><th class="num">Actual</th><th class="num">Used</th><th>Output</th><th>Outcome</th></tr></thead>
     <tbody>
       <tr><td>Teacher training</td><td class="num">₹12,00,000</td><td class="num">₹11,40,000</td><td class="num">95%</td><td>310 teachers trained</td><td>240 observed using the new method</td></tr>
@@ -1262,7 +1264,7 @@ html{scroll-padding-top:76px}
 
   <h2 id="money-comply"><span class="n">7 · Compliance</span>The rules that shape a design</h2>
   <p>Keep this at "what it means for the system". Recheck the exact rules before advising a client; these are the details a client will test you on.</p>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 12 (scrollable)"><table>
     <thead><tr><th>Rule</th><th>What it says</th><th>What it means for a system</th></tr></thead>
     <tbody>
       <tr><td>12A / 12AB</td><td>The NGO's income tax exemption. Regular certificate valid 5 years</td><td>Store validity. Alert 6 months before renewal</td></tr>
@@ -1296,7 +1298,7 @@ html{scroll-padding-top:76px}
 
   <details class="facil">
     <summary>Glossary <small>10 terms</small></summary>
-    <div class="in"><div class="tbl"><table><tbody>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 13 (scrollable)"><table><tbody>
       <tr><td>MoU / grant agreement</td><td>The contract: amount, purpose, tranches, reporting, indemnity</td></tr>
       <tr><td>Tranche / disbursement plan</td><td>Instalments of a grant; Proposed, Confirmed, Received</td></tr>
       <tr><td>Budget head / line item</td><td>A category of spend (HR, travel, materials)</td></tr>
@@ -1311,7 +1313,7 @@ html{scroll-padding-top:76px}
   </details>
   <details class="facil">
     <summary>Running this as a session? <small>180 min plan</small></summary>
-    <div class="in"><div class="tbl"><table>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 14 (scrollable)"><table>
       <thead><tr><th>Time</th><th>Block</th><th>Method</th></tr></thead>
       <tbody>
         <tr><td>0:00</td><td>Hook: "We gave you ₹1 crore. What happened to it?"</td><td>Plenary</td></tr>
@@ -1388,7 +1390,7 @@ html{scroll-padding-top:76px}
       <div class="c5"><b>Impact</b>long-term change: needs evaluation</div>
     </div>
   </div>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 15 (scrollable)"><table>
     <thead><tr><th>Sector</th><th>Output</th><th>Outcome</th></tr></thead>
     <tbody>
       <tr><td>Education</td><td>1,200 students attended 40 sessions</td><td>610 students moved up a learning level</td></tr>
@@ -1477,7 +1479,7 @@ Sheet "Baseline":       P. Sharma, age 13
   </div>
 
   <h2 id="people-consent"><span class="n">5 · Consent and dignity</span>Not optional, and not just a legal box</h2>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 16 (scrollable)"><table>
     <thead><tr><th>Principle</th><th>What it means in practice</th></tr></thead>
     <tbody>
       <tr><td>Consent (DPDP Act 2023)</td><td>Record that consent was given, for what purpose, when, and by whom (a guardian for minors). A consent field, date and version on the beneficiary record</td></tr>
@@ -1495,7 +1497,7 @@ Sheet "Baseline":       P. Sharma, age 13
 
   <h2 id="people-case"><span class="n">6 · Two journey types</span>Cohorts vs case management</h2>
   <p>Clients often don't say which one they are. Ask.</p>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 17 (scrollable)"><table>
     <thead><tr><th></th><th>Cohort / batch</th><th>Case management</th></tr></thead>
     <tbody>
       <tr><td>Shape</td><td>Everyone starts and ends together</td><td>Each person has their own timeline</td></tr>
@@ -1541,7 +1543,7 @@ Sheet "Baseline":       P. Sharma, age 13
 
   <details class="facil">
     <summary>Glossary <small>8 terms</small></summary>
-    <div class="in"><div class="tbl"><table><tbody>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 18 (scrollable)"><table><tbody>
       <tr><td>Mobilisation</td><td>Finding and bringing people into a programme (door-to-door, camps, partners)</td></tr>
       <tr><td>Baseline / midline / endline</td><td>The same measurement before, during and after</td></tr>
       <tr><td>Cohort / batch</td><td>A group that goes through the programme together</td></tr>
@@ -1554,7 +1556,7 @@ Sheet "Baseline":       P. Sharma, age 13
   </details>
   <details class="facil">
     <summary>Running this as a session? <small>150 min plan</small></summary>
-    <div class="in"><div class="tbl"><table>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 19 (scrollable)"><table>
       <thead><tr><th>Time</th><th>Block</th><th>Method</th></tr></thead>
       <tbody>
         <tr><td>0:00</td><td>Priya's journey, told as a story</td><td>Storytelling</td></tr>
@@ -1607,7 +1609,7 @@ Sheet "Baseline":       P. Sharma, age 13
   <h2 id="ev-toc"><span class="n">2 · ToC, logframe, indicators</span>The story, the contract and the data model</h2>
   <h3>Theory of Change: the story</h3>
   <div class="fig">
-    <div class="flow">
+    <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 6 (scrollable)">
       <div class="st"><b>Activities</b><small>Door-to-door mobilisation, enrol girls, remedial learning camps</small></div><div class="ar"></div>
       <div class="st hot"><b>Outputs</b><small>Out-of-school girls identified and enrolled, sessions delivered</small></div><div class="ar"></div>
       <div class="st cool"><b>Outcomes</b><small>Girls attend regularly, learning levels improve</small></div><div class="ar"></div>
@@ -1616,7 +1618,7 @@ Sheet "Baseline":       P. Sharma, age 13
     <p class="fig-cap">Assumptions under the outcomes: schools have teachers, families allow girls to attend. Pattern loosely based on the Educate Girls model; illustrative, not their actual ToC.</p>
   </div>
   <h3>Logframe: the contract</h3>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 20 (scrollable)"><table>
     <thead><tr><th>Level</th><th>Narrative</th><th>Indicator</th><th>Means of verification</th><th>Assumptions</th></tr></thead>
     <tbody>
       <tr><td>Goal</td><td>Girls in 2 districts complete primary school with foundational skills</td><td>% of girls at grade level in Hindi and Maths (endline)</td><td>Independent assessment (ASER-style tool)</td><td>Schools remain functional</td></tr>
@@ -1626,7 +1628,7 @@ Sheet "Baseline":       P. Sharma, age 13
     </tbody>
   </table></div>
   <h3>Anatomy of a good indicator</h3>
-  <div class="tbl"><table><tbody>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 21 (scrollable)"><table><tbody>
     <tr><td>Name</td><td>Placement rate</td></tr>
     <tr><td>Definition</td><td>% of youth who completed training and started a job paying at least minimum wage within 90 days</td></tr>
     <tr><td>Formula</td><td><code>Placed within 90 days ÷ Completed × 100</code></td></tr>
@@ -1690,7 +1692,7 @@ Sheet "Baseline":       P. Sharma, age 13
     <p class="fig-cap">The dark box is "data flows back". Without it, this workflow is surveillance.</p>
   </div>
   <h3>The workflows we build most</h3>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 22 (scrollable)"><table>
     <thead><tr><th>Workflow</th><th>Key roles</th><th>Typical rule</th></tr></thead>
     <tbody>
       <tr><td>Beneficiary registration</td><td>Field staff, supervisor</td><td>Duplicate check; supervisor verifies</td></tr>
@@ -1714,7 +1716,7 @@ Sheet "Baseline":       P. Sharma, age 13
 
   <h2 id="ev-cadence"><span class="n">5 · Decision cadence</span>Dashboards don't make decisions. Meetings do.</h2>
   <p>Map the meetings and you know what the dashboards need to show.</p>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 23 (scrollable)"><table>
     <thead><tr><th>Rhythm</th><th>Who</th><th>Decision</th><th>Data needed</th><th>System view</th></tr></thead>
     <tbody>
       <tr><td>Daily</td><td>Field staff</td><td>Whom do I visit today?</td><td>My list: absentees, pending follow-ups</td><td>Mobile task list</td></tr>
@@ -1761,7 +1763,7 @@ Sheet "Baseline":       P. Sharma, age 13
   <ol><li>One dashboard, one audience.</li><li>Answer questions, don't display data. List the 5 to 7 questions first.</li><li>Summary cards, then trends, then drill-down tables.</li><li>Remove anything that doesn't drive a decision.</li><li>Consistent colours: green good, amber at risk, red needs attention.</li></ol>
 
   <h2 id="ev-quality"><span class="n">6 · Data quality</span>Why the numbers are wrong</h2>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 24 (scrollable)"><table>
     <thead><tr><th>Problem</th><th>Symptom</th><th>Fix</th></tr></thead>
     <tbody>
       <tr><td>No unique ID</td><td>Same person counted twice</td><td>Auto IDs, duplicate checks</td></tr>
@@ -1819,7 +1821,7 @@ Sheet "Baseline":       P. Sharma, age 13
 
   <details class="facil">
     <summary>Glossary <small>10 terms</small></summary>
-    <div class="in"><div class="tbl"><table><tbody>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 25 (scrollable)"><table><tbody>
       <tr><td>M&amp;E / MEL / MEAL</td><td>Monitoring and Evaluation (+ Learning, + Accountability)</td></tr>
       <tr><td>Theory of Change</td><td>The causal story from activities to impact</td></tr>
       <tr><td>Logframe</td><td>The matrix version of the ToC, with indicators and verification</td></tr>
@@ -1834,7 +1836,7 @@ Sheet "Baseline":       P. Sharma, age 13
   </details>
   <details class="facil">
     <summary>Running this as a session? <small>180 min plan</small></summary>
-    <div class="in"><div class="tbl"><table>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 26 (scrollable)"><table>
       <thead><tr><th>Time</th><th>Block</th><th>Method</th></tr></thead>
       <tbody>
         <tr><td>0:00</td><td>Hook: three placement rates. Which is right?</td><td>Plenary</td></tr>
@@ -1878,7 +1880,7 @@ Sheet "Baseline":       P. Sharma, age 13
 
   <h2 id="sys-map"><span class="n">1 · The core idea</span>Model, Align, then Power</h2>
   <div class="fig">
-    <div class="flow">
+    <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 7 (scrollable)">
       <div class="st hot"><b>M · Model</b><small>What decision? What's the smallest data that supports it?</small></div><div class="ar"></div>
       <div class="st cool"><b>A · Align</b><small>Make it usable. Workflows, access, data flows back.</small></div><div class="ar"></div>
       <div class="st end"><b>P · Power with AI</b><small>Cut effort, sharpen insight, on trusted data.</small></div>
@@ -1889,7 +1891,7 @@ Sheet "Baseline":       P. Sharma, age 13
   <p>Everything in chapters 1 to 4 is <strong>Model</strong> and <strong>Align</strong> work. This chapter is about building it well and then powering it.</p>
   <h3>How MAP maps onto the ImpactOS lifecycle</h3>
   <div class="fig">
-    <div class="flow">
+    <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 8 (scrollable)">
       <div class="st hot"><b>Discovery</b><small>requirements, ToC</small></div><div class="ar"></div>
       <div class="st hot"><b>Architecture</b><small>data model, module specs</small></div><div class="ar"></div>
       <div class="st cool"><b>Build</b><small>sprints</small></div><div class="ar"></div>
@@ -1903,7 +1905,7 @@ Sheet "Baseline":       P. Sharma, age 13
 
   <h2 id="sys-choose"><span class="n">2 · Choosing the system</span>Match the job to the tool</h2>
   <p>The most common mistake is forcing one tool to do another's job.</p>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 27 (scrollable)"><table>
     <thead><tr><th>Need</th><th>System type</th><th>EdZola stack</th><th>Signals it fits</th></tr></thead>
     <tbody>
       <tr><td>Donor pipeline, relationships, proposals</td><td>Fundraising CRM</td><td>Zoho CRM (5+ users, institutional donors); Bigin (small teams)</td><td>Leads, deals, stages, renewals, KYD</td></tr>
@@ -1922,7 +1924,7 @@ Sheet "Baseline":       P. Sharma, age 13
   <div class="box try sorter" data-sorter="systems"></div>
 
   <h2 id="sys-auto"><span class="n">3 · Automation</span>The patterns we build most</h2>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 28 (scrollable)"><table>
     <thead><tr><th>Pattern</th><th>Example</th><th>Seam it fixes</th></tr></thead>
     <tbody>
       <tr><td>Reminders and escalations</td><td>Plan not filed by the 3rd → reminder; 6th → manager</td><td>Plan ↔ actual</td></tr>
@@ -1958,7 +1960,7 @@ Sheet "Baseline":       P. Sharma, age 13
     <div class="ladder-out" id="aiOut" aria-live="polite"></div>
   </div>
   <h3>Examples from the sector</h3>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 29 (scrollable)"><table>
     <thead><tr><th>Example</th><th>What it does</th><th>Lesson</th></tr></thead>
     <tbody>
       <tr><td>Educate Girls DIB</td><td>Performance data used for course correction during the bond</td><td>Tight data loops improved results before any AI was involved</td></tr>
@@ -1980,7 +1982,7 @@ Sheet "Baseline":       P. Sharma, age 13
   <div class="box trivia" data-trivia="t5"></div>
 
   <h2 id="sys-safe"><span class="n">5 · Safe AI and DPDP</span>The rules we live by</h2>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 30 (scrollable)"><table>
     <thead><tr><th>Rule</th><th>Source</th></tr></thead>
     <tbody>
       <tr><td>Never paste beneficiary or donor PII, Aadhaar, health data or financial details into any AI tool</td><td>EdZola AI Usage Policy v2.0</td></tr>
@@ -2039,7 +2041,7 @@ Sheet "Baseline":       P. Sharma, age 13
 
   <details class="facil">
     <summary>Glossary <small>8 terms</small></summary>
-    <div class="in"><div class="tbl"><table><tbody>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 31 (scrollable)"><table><tbody>
       <tr><td>MIS</td><td>Management Information System: the single source of truth for programme data</td></tr>
       <tr><td>CRM</td><td>Constituent (donor, partner) Relationship Management</td></tr>
       <tr><td>HRMS</td><td>Human Resource Management System</td></tr>
@@ -2052,7 +2054,7 @@ Sheet "Baseline":       P. Sharma, age 13
   </details>
   <details class="facil">
     <summary>Running this as a session? <small>150 min plan</small></summary>
-    <div class="in"><div class="tbl"><table>
+    <div class="in"><div class="tbl" tabindex="0" role="region" aria-label="Table 32 (scrollable)"><table>
       <thead><tr><th>Time</th><th>Block</th><th>Method</th></tr></thead>
       <tbody>
         <tr><td>0:00</td><td>Hook: "An NGO asks for an AI chatbot. What do we ask first?"</td><td>Plenary</td></tr>
@@ -2105,7 +2107,7 @@ Sheet "Baseline":       P. Sharma, age 13
   </div>
 
   <h2 id="con-compare"><span class="n">Side by side</span>Corporate assumption vs nonprofit reality</h2>
-  <div class="tbl"><table>
+  <div class="tbl" tabindex="0" role="region" aria-label="Table 33 (scrollable)"><table>
     <thead><tr><th>Corporate assumption</th><th>Nonprofit reality</th><th>What works instead</th></tr></thead>
     <tbody>
       <tr><td>There's a tech budget</td><td>Tech is overhead. Overhead is capped, often at 5 to 15% of a grant, and rarely covers systems</td><td>Phase the work so each phase fits one grant or one funder's capacity-building line</td></tr>
@@ -2125,7 +2127,7 @@ Sheet "Baseline":       P. Sharma, age 13
   <h2 id="con-ocean"><span class="n">Boiling the ocean</span>Why trying to fix everything at once fails</h2>
   <p>A typical "transform everything" plan looks like this: new CRM, new MIS, new HRMS, new dashboards and an AI layer, all in one financial year. Here's what usually happens next.</p>
   <div class="fig">
-    <div class="flow">
+    <div class="flow" tabindex="0" role="region" aria-label="Flow diagram 9 (scrollable)">
       <div class="st hot"><b>Month 1</b><small>Big kickoff. Every team lists every requirement.</small></div><div class="ar"></div>
       <div class="st hot"><b>Month 3</b><small>Scope doubles. Requirements conflict across teams.</small></div><div class="ar"></div>
       <div class="st"><b>Month 5</b><small>March arrives. Everyone disappears into utilisation reports.</small></div><div class="ar"></div>

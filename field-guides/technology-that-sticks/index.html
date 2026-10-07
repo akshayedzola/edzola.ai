@@ -17,7 +17,7 @@
 :root{
   --cream:#FDF8F4; --peach:#FAE8DC; --paper:#FFFFFF;
   --ink:#1A1A1A; --grey:#6B6360; --line:#EADFD6;
-  --coral:#E8967A; --coral-ink:#B4533A; --coral-soft:#F6D3C5;
+  --coral:#E8967A; --coral-ink:#9A422B; --coral-soft:#F6D3C5;
   --teal:#8ECFCA; --teal-ink:#2F7F79; --yellow:#F7C948;
   --serif:'Fraunces',Georgia,'Times New Roman',serif;
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -161,6 +161,7 @@ footer{max-width:72rem;margin:0 auto;padding:2rem 1rem 3rem;color:var(--grey);fo
 <meta name="twitter:card" content="summary_large_image">
 <style>nav.toc{top:88px!important}.progress{top:64px!important}</style>
 <style id="gh-css">
+.gh-skip{position:absolute;left:16px;top:-60px;z-index:80;padding:10px 16px;border-radius:999px;background:#1A1A1A;color:#FDF8F4!important;font-weight:700;font-size:14px}.gh-skip:focus{top:12px}
 html{scroll-padding-top:76px}
 .gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
 .gh.gh-static{position:relative}
@@ -193,7 +194,7 @@ html{scroll-padding-top:76px}
 </head>
 <body>
 <div class="progress" id="progress"></div>
-<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/" aria-label="edzola.ai home"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/" aria-current="page">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/" aria-current="page">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a></div></details></div></div>
+<a class="gh-skip" href="#main">Skip to content</a><div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/" aria-current="page">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/" aria-current="page">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="mailto:reachus@edzola.com?subject=Working%20with%20EdZola">Talk to us</a></div></details></div></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -202,6 +203,7 @@ html{scroll-padding-top:76px}
   </defs>
 </svg>
 
+<main id="main">
 <section class="hero">
   <svg class="burst" viewBox="0 0 100 100" aria-hidden="true"><use href="#burst12" fill="#E8967A"/><circle cx="50" cy="50" r="17" fill="#F7C948"/></svg>
   <svg class="burst2" viewBox="0 0 100 100" aria-hidden="true"><use href="#burst9" fill="#8ECFCA"/></svg>
@@ -277,7 +279,7 @@ html{scroll-padding-top:76px}
         <div class="step s2"><div class="n">Job 2</div><h4>Accelerator</h4><p>Once the process is clear, go faster. Automated follow-ups, participant tracking that flags who needs re-engagement, field data in real time instead of weeks later.</p></div>
         <div class="step s3"><div class="n">Job 3</div><h4>Insight engine</h4><p>Help people see and decide. Patterns across sites, AI that synthesises field notes, risk flags for a caseworker who still makes the call.</p></div>
       </div>
-      <p class="steps-caption"><svg width="48" height="10" viewBox="0 0 48 10" aria-hidden="true"><path d="M0 5h44m-5-4 5 4-5 4" stroke="#B4533A" stroke-width="1.6" fill="none"/></svg>Each job depends on the one before it.</p>
+      <p class="steps-caption"><svg width="48" height="10" viewBox="0 0 48 10" aria-hidden="true"><path d="M0 5h44m-5-4 5 4-5 4" stroke="#9A422B" stroke-width="1.6" fill="none"/></svg>Each job depends on the one before it.</p>
       <div class="prose">
         <p>Skip the first job and the second one backfires. Automate a confused workflow and you get a confused workflow at scale. A CRM is only useful if someone owns data quality. A workflow tool only saves time if the workflow is written down and followed. Technology accelerates discipline. It can't create it.</p>
         <p>The third job is where AI lives, and it's where we're most careful. A model that predicts which students are likely to drop out is useful only if someone is ready and able to act on the prediction. Insight without action is noise.</p>
@@ -435,6 +437,7 @@ html{scroll-padding-top:76px}
   </article>
 </div>
 
+</main>
 <footer>&copy; EdZola Technologies. Systems built for the world's hardest work. &nbsp; <a href="/thinking/">Explore how we think →</a></footer>
 
 <script>
