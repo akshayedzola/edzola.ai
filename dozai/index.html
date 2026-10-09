@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DozAI — AI That Gets Nonprofit Work Done | EdZola</title>
-  <meta name="description" content="DozAI gives nonprofits AI teammates and end-to-end missions that complete operational work, with expert methodology and human judgement built in." />
+  <meta name="description" content="DozAI runs missions for nonprofits: whole workflows where AI does the repeatable work and people keep the decisions that matter. Mission 01, placement and retention tracking, is open for a pilot cohort." />
   <link rel="canonical" href="https://edzola.ai/dozai/" />
   <meta property="og:title" content="DozAI — AI that gets nonprofit work done" />
-  <meta property="og:description" content="Deploy AI teammates and complete missions built for nonprofit operations, with human judgement where it matters." />
+  <meta property="og:description" content="Hand DozAI a whole workflow. It does the repeatable work, shows its evidence and brings consequential decisions back to people. Mission 01 pilot cohort now open." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://edzola.ai/dozai/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -127,6 +127,16 @@
     .quote em { color:#9E452D; background:linear-gradient(transparent 76%,rgba(247,201,72,.48) 0); }
     .cta-box { background:#E2F3F1; border-color:#C9E5E2; }
     footer { background:#FFFFFF; }
+    .launch { padding:0 0 12px; }
+    .launch-box { display:grid; grid-template-columns:auto 1fr auto; gap:28px; align-items:center; padding:26px 30px; border-radius:22px; background:#1A1A1A; color:#FDF8F4; }
+    .launch-num { font-family:"JetBrains Mono",monospace; font-size:.8rem; letter-spacing:.08em; color:#1A1A1A; background:#E8967A; padding:8px 12px; border-radius:999px; white-space:nowrap; }
+    .launch-box h2 { margin:0 0 6px; font-size:clamp(1.4rem,2.4vw,1.9rem); line-height:1.15; color:#FDF8F4; }
+    .launch-box p { margin:0; color:#D9CFC8; line-height:1.6; }
+    .launch-box .button.primary { white-space:nowrap; }
+    .mission-list a.mission:hover strong { text-decoration:underline; }
+    .mission .live { color:#9E452D; font-weight:700; }
+    .examples a { text-decoration:underline; text-underline-offset:3px; font-weight:700; }
+    @media (max-width:900px) { .launch-box { grid-template-columns:1fr; gap:14px; } .launch-num { width:fit-content; } }
     @media (max-width:900px) {
       .hero-grid,.mission-band { grid-template-columns:1fr; }
       .hero-grid { gap:48px; }
@@ -186,22 +196,33 @@ html{scroll-padding-top:76px}
         <div>
           <span class="eyebrow">Introducing DozAI by EdZola</span>
           <h1>AI that gets nonprofit <span class="gradient">work done.</span></h1>
-          <p class="hero-copy">Don’t give your team another AI tool to operate. Give them AI teammates and complete missions that handle the volume, while people retain consequential decisions.</p>
+          <p class="hero-copy">Your team doesn’t need another AI tool to operate. Hand DozAI a whole workflow, the follow-ups, checks and paperwork you repeat every cycle. It does the volume, shows its evidence, and brings the decisions that matter back to your people.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#missions">See what DozAI can do →</a>
+            <a class="button primary" href="/dozai/missions/placement-retention/">See Mission 01 →</a>
             <a class="button secondary" href="mailto:reachus@edzola.com?subject=DozAI%20pilot">Bring us a workflow</a>
           </div>
         </div>
-        <div class="work-map" aria-label="Example scholarship screening mission">
-          <div class="map-label">Example mission</div>
-          <h2 class="mission-title">Scholarship screening</h2>
-          <div class="step"><span class="step-num">01</span><span>Collect applications and documents</span></div>
-          <div class="step"><span class="step-num">02</span><span>Extract evidence and check eligibility</span></div>
-          <div class="step"><span class="step-num">03</span><span>Follow up on missing information</span></div>
-          <div class="step"><span class="step-num">04</span><span>Run multilingual voice screening</span></div>
-          <div class="step human"><span class="step-num">05</span><span>Escalate exceptions for human judgement</span></div>
-          <div class="result"><strong>5,000 applications</strong> become a focused set of cases your team needs to review, with the evidence attached.</div>
+        <div class="work-map" aria-label="Mission 01: placement and retention tracking">
+          <div class="map-label">Mission 01 · Pilot cohort open</div>
+          <h2 class="mission-title">Placement and retention tracking</h2>
+          <div class="step"><span class="step-num">01</span><span>Load a cohort of programme graduates</span></div>
+          <div class="step"><span class="step-num">02</span><span>Reach each one on WhatsApp and voice, in their language</span></div>
+          <div class="step"><span class="step-num">03</span><span>Verify job, employer and changes at 30, 90 and 180 days</span></div>
+          <div class="step"><span class="step-num">04</span><span>Check answers against your records and attach the evidence</span></div>
+          <div class="step human"><span class="step-num">05</span><span>Your team reviews conflicts and unclear cases</span></div>
+          <div class="result"><strong>Every graduate</strong> ends in a clear, evidenced state. Your reviewers only see the cases that need a person. <a href="/dozai/missions/placement-retention/" style="text-decoration:underline;font-weight:700">How it works →</a></div>
         </div>
+      </div>
+    </section>
+
+    <section class="launch" aria-label="Mission 01 pilot cohort">
+      <div class="container launch-box">
+        <span class="launch-num">MISSION 01 · NOW OPEN</span>
+        <div>
+          <h2>Our first mission is open for a pilot design cohort.</h2>
+          <p>Placement and retention tracking for skilling and livelihoods nonprofits. We’re working with a small group of organisations to follow up a real cohort and shape the mission together.</p>
+        </div>
+        <a class="button primary" href="/dozai/missions/placement-retention/">See the mission &amp; apply →</a>
       </div>
     </section>
 
@@ -219,7 +240,7 @@ html{scroll-padding-top:76px}
           <div class="divider" aria-hidden="true"></div>
           <div class="better">
             <h3>DozAI</h3>
-            <p>You define the outcome, rules, evidence, and decisions. DozAI plans and executes the repeatable work, then escalates what needs a person.</p>
+            <p>You set the outcome, the rules, what counts as evidence, and where a person must decide. DozAI does the repeatable work in between and hands back what needs a person, with the evidence attached.</p>
           </div>
         </div>
       </div>
@@ -229,13 +250,13 @@ html{scroll-padding-top:76px}
       <div class="container">
         <div class="section-head">
           <span class="kicker">The DozAI system</span>
-          <h2>Choose the shape of work you need completed.</h2>
-          <p class="lead">A focused mission, a persistent AI teammate, a reusable capability, or hands-on help designing where AI belongs in your organisation.</p>
+          <h2>Four ways to put DozAI to work.</h2>
+          <p class="lead">Start with a mission: one workflow, done start to finish. Add a teammate for an ongoing role, package your expertise as a skill, or work with us to decide where AI belongs at all.</p>
         </div>
         <div class="offer-grid">
-          <article class="offer"><span class="offer-tag">DozAI Missions</span><h3>Complete an outcome-oriented workflow.</h3><p>Give DozAI the goal, programme rules, evidence requirements, and human decision points. It coordinates the steps from intake to review-ready output.</p><div class="examples">Scholarship screening · Grant due diligence · Placement verification</div></article>
-          <article class="offer"><span class="offer-tag">DozAI Workforce</span><h3>Add an AI teammate to a recurring role.</h3><p>Deploy a specialised teammate that understands the function, works across tools, remembers context, and knows when to ask for help.</p><div class="examples">MEL associate · Programme analyst · Fundraising associate</div></article>
-          <article class="offer"><span class="offer-tag">DozAI Skills</span><h3>Turn expertise into a reusable capability.</h3><p>Skills combine knowledge, method, rubrics, tools, boundaries, and escalation rules. They are executable expertise, not prompt templates.</p><div class="examples">Theory of Change · Survey design · Outcome analysis</div></article>
+          <article class="offer"><span class="offer-tag">DozAI Missions</span><h3>Hand over a whole workflow, start to finish.</h3><p>A mission is one outcome with clear rules: verify where 2,000 graduates are working, chase every missing document, collect every grantee’s milestone evidence. DozAI runs each case until it is done or needs a person.</p><div class="examples"><a href="/dozai/missions/placement-retention/">Placement &amp; retention · pilot open</a> · Document completeness · Grantee milestone evidence</div></article>
+          <article class="offer"><span class="offer-tag">DozAI Workforce</span><h3>Add an AI teammate to a recurring role.</h3><p>A specialised teammate that learns how your team works, operates across your tools, keeps context between tasks, and knows when to ask for help.</p><div class="examples">MEL associate · Programme analyst · Fundraising associate</div></article>
+          <article class="offer"><span class="offer-tag">DozAI Skills</span><h3>Turn expertise into a reusable capability.</h3><p>A skill packages a proven method with its rubrics, tools, boundaries and escalation rules, so the same quality of work happens every time. Expertise that runs, not a prompt template.</p><div class="examples">Theory of Change · Survey design · Outcome analysis</div></article>
           <article class="offer"><span class="offer-tag">Voice + Advisory</span><h3>Reach people, then design the system around them.</h3><p>Use multilingual AI voice for last-mile conversations, with EdZola’s team helping assess readiness, shape workflows, and build responsible controls.</p><div class="examples">Voice follow-up · Readiness assessment · Workflow design</div></article>
         </div>
       </div>
@@ -244,16 +265,16 @@ html{scroll-padding-top:76px}
     <section>
       <div class="container mission-band">
         <div>
-          <span class="kicker">Built for social impact</span>
-          <h2>Common infrastructure. Sector-specific work.</h2>
-          <p class="lead">Forms, voice, documents, rules, workflows, systems, and human review combine differently for each programme.</p>
+          <span class="kicker">Missions for social impact</span>
+          <h2>One platform. Missions shaped for each sector.</h2>
+          <p class="lead">Every mission uses the same building blocks: outreach, voice, documents, rules, review and audit. We pick work with high volume, clear evidence and an obvious point where a person decides.</p>
         </div>
         <div class="mission-list">
-          <div class="mission"><strong>Scholarships</strong><span>Application → verification → interview → shortlist</span></div>
-          <div class="mission"><strong>Skilling</strong><span>Enrolment → placement → retention follow-up</span></div>
-          <div class="mission"><strong>Grantmaking</strong><span>Application → due diligence → assessment → monitoring</span></div>
-          <div class="mission"><strong>MEL</strong><span>ToC → indicators → tools → analysis → report</span></div>
-          <div class="mission"><strong>Fundraising</strong><span>Prospects → qualification → outreach → proposal</span></div>
+          <a class="mission" href="/dozai/missions/placement-retention/"><strong>Skilling &amp; livelihoods →</strong><span><span class="live">Mission 01 · pilot open</span> · Placement → 30/90/180-day follow-up → verified retention</span></a>
+          <div class="mission"><strong>Scholarships</strong><span>Application → missing documents → verification → reviewer packet</span></div>
+          <div class="mission"><strong>Grantmaking</strong><span>Milestone plan → evidence chase → review-ready packet</span></div>
+          <div class="mission"><strong>MEL</strong><span>Survey data → back-checks → data-quality fixes → clean dataset</span></div>
+          <div class="mission"><strong>Health &amp; social protection</strong><span>Referral → follow-up → service received or escalated</span></div>
         </div>
       </div>
     </section>
@@ -263,11 +284,11 @@ html{scroll-padding-top:76px}
         <div class="section-head">
           <span class="kicker">Human judgement by design</span>
           <h2>AI handles volume. People handle consequence.</h2>
-          <p class="lead">DozAI is designed around explicit boundaries, evidence, evaluation, and escalation. The aim is not to hide humans inside every task. It is to use their judgement where it changes the outcome.</p>
+          <p class="lead">Every DozAI mission starts as an apprentice. It works under review, learns from your team’s corrections, and earns more autonomy only after it passes. People keep the decisions that affect someone’s rights, money or opportunity.</p>
         </div>
         <div class="trust-flow">
           <div class="trust-step"><strong>Configure</strong>Set methods, rules, examples, permissions, and quality standards.</div>
-          <div class="trust-step"><strong>Calibrate</strong>Review early executions and correct recurring behaviour.</div>
+          <div class="trust-step"><strong>Calibrate</strong>Review early cases and correct what it gets wrong.</div>
           <div class="trust-step"><strong>Execute</strong>Let DozAI complete repeatable work across the workflow.</div>
           <div class="trust-step"><strong>Escalate</strong>Route uncertainty, high-risk cases, and decisions to people.</div>
           <div class="trust-step"><strong>Audit</strong>Sample outputs, evaluate quality, and improve the capability.</div>
@@ -278,7 +299,7 @@ html{scroll-padding-top:76px}
 
     <section class="cta">
       <div class="container cta-box">
-        <h2>Bring us one workflow your team should not have to do manually at this scale.</h2>
+        <h2>Is there a workflow your team repeats hundreds of times a cycle? Bring it to us.</h2>
         <a class="button primary" href="mailto:reachus@edzola.com?subject=DozAI%20workflow%20pilot">Discuss a DozAI pilot →</a>
       </div>
     </section>

@@ -13,7 +13,8 @@ Key facts:
 - [Data systems](https://edzola.ai/#model): Programme MIS, case management, donor CRM and HR, built around one ID per person, household or case, from first visit to funder report.
 - [Zolabs](https://edzola.ai/zolabs/): Voice AI evaluation. AI-led phone interviews in local languages for evaluations, beneficiary feedback and follow-ups, with every finding traceable to what was said.
 - [ZolaShield](https://edzola.ai/zolashield/): DPDP Act readiness for Indian nonprofits. A 15-minute voice assessment produces a data map, a scored risk report and a 180-day action plan. Assess from ₹10,000; Comply and Sustain tiers for implementation.
-- [DozAI](https://edzola.ai/dozai/): AI teammates and end-to-end missions (for example scholarship screening) that handle operational volume, with people deciding exceptions. Pilots open.
+- [DozAI](https://edzola.ai/dozai/): Missions and AI teammates that handle operational volume for nonprofits, with evidence on every case and people deciding exceptions. First mission: placement and retention tracking.
+- [DozAI Mission 01: Placement and retention tracking](https://edzola.ai/dozai/missions/placement-retention/): AI follow-up of skilling programme graduates at 30, 90 and 180 days, with evidence and human review. Pilot design cohort open.
 - [ImpactOS](https://edzola.ai/impact-os/): The delivery method behind all of the above: method, knowledge and tools, so no project starts from zero.
 
 ## Other languages
