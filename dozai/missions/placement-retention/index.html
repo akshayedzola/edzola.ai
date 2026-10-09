@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Placement &amp; Retention Tracking for Skilling Nonprofits | DozAI Mission 01 | EdZola</title>
+<meta name="description" content="DozAI's first mission follows up with every programme graduate at 30, 90 and 180 days, verifies placement and retention with evidence, and returns only the cases that need a person. Pilot design cohort now open.">
+<link rel="canonical" href="https://edzola.ai/dozai/missions/placement-retention/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdZola">
+<meta property="og:title" content="Know where every graduate is, 90 days later">
+<meta property="og:description" content="DozAI Mission 01: placement and retention tracking for skilling and livelihoods nonprofits. Pilot design cohort now open.">
+<meta property="og:url" content="https://edzola.ai/dozai/missions/placement-retention/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:image" content="https://edzola.ai/assets/og-edzola.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FDF8F4;--surface:#FFFFFF;--sunk:#F6EDE5;--ink:#1A1A1A;--muted:#6B6360;--line:#EADFD6;
+  --coral:#E8967A;--coral-ink:#9E452D;--peach:#FAE8DC;--teal:#8ECFCA;--teal-ink:#2C7771;--teal-soft:#E2F3F1;
+  --yellow:#F7C948;--yellow-soft:#FCF0C8;--green:#2F8A5B;--green-soft:#E0F4E9;--risk:#A8341F;--risk-soft:#FBE3DD;
+  --wa:#DCF8C6;--shadow:0 14px 40px rgba(74,48,32,.10);
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --sans:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#1A1613;--surface:#241F1B;--sunk:#2C2621;--ink:#F4EDE7;--muted:#B5A9A1;--line:#3A322C;
+  --coral:#EFA48A;--coral-ink:#F2AF97;--peach:#3A2A22;--teal:#8ECFCA;--teal-ink:#93D6D0;--teal-soft:#1F3533;
+  --yellow:#F7C948;--yellow-soft:#3A321B;--green:#7FD1A2;--green-soft:#1E3427;--risk:#F08A76;--risk-soft:#3D231E;--wa:#26382A;--shadow:0 14px 40px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#1A1613;--surface:#241F1B;--sunk:#2C2621;--ink:#F4EDE7;--muted:#B5A9A1;--line:#3A322C;
+  --coral:#EFA48A;--coral-ink:#F2AF97;--peach:#3A2A22;--teal:#8ECFCA;--teal-ink:#93D6D0;--teal-soft:#1F3533;
+  --yellow:#F7C948;--yellow-soft:#3A321B;--green:#7FD1A2;--green-soft:#1E3427;--risk:#F08A76;--risk-soft:#3D231E;--wa:#26382A;--shadow:0 14px 40px rgba(0,0,0,.35)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:6px}
+.eyebrow{font:600 12px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 22px;font-weight:700;text-decoration:none;transition:transform .15s,background .15s}
+.pill.primary{background:var(--coral);color:#1A1A1A}
+.pill.primary:hover{background:#E07F60;transform:translateY(-1px)}
+.pill.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.pill.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+
+/* breadcrumb */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:20px;font-size:14px;color:var(--muted)}
+.crumbs a{text-decoration:none}
+.crumbs a:hover{color:var(--ink);text-decoration:underline}
+.crumbs [aria-current]{color:var(--ink)}
+.jump{margin-left:auto;display:flex;gap:4px}
+.jump a{padding:6px 12px;border-radius:999px}
+.jump a:hover{background:var(--sunk);text-decoration:none}
+
+/* hero */
+.hero{padding-block:40px 80px;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:10px;background:var(--peach);color:var(--coral-ink);font:600 13px var(--sans);padding:7px 14px 7px 10px;border-radius:999px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px color-mix(in srgb,var(--coral) 25%,transparent)}
+.hero h1{font-size:clamp(38px,4.8vw,60px);line-height:1.02;font-weight:700;margin:20px 0 22px}
+.hero h1 em{font-style:normal;color:var(--coral-ink);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:.16em;background:var(--yellow);opacity:.55;z-index:-1;border-radius:3px}
+.hero .lead{font-size:19px;color:var(--muted);max-width:34em}
+.hero .lead b{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-note{margin-top:22px;font-size:13px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap}
+.hero-note span::before{content:"✓";color:var(--teal-ink);font-weight:700;margin-right:6px}
+
+/* case card visual */
+.case{background:var(--sunk);border-radius:28px;padding:20px;box-shadow:var(--shadow)}
+.case-head{display:flex;align-items:center;gap:12px;background:var(--ink);color:var(--bg);border-radius:16px;padding:12px 14px}
+.case-head .av{width:38px;height:38px;border-radius:11px;background:var(--coral);color:#1A1A1A;display:grid;place-items:center;font:700 15px var(--mono);flex:none}
+.case-head b{display:block;font-size:14px}
+.case-head small{font:400 11px var(--mono);opacity:.75}
+.case-head .live{margin-left:auto;font:500 10px var(--mono);letter-spacing:.06em;background:color-mix(in srgb,var(--bg) 18%,transparent);padding:4px 8px;border-radius:99px;white-space:nowrap}
+.tl{position:relative;margin:18px 0 0;padding:0 0 0 30px;list-style:none;display:grid;gap:12px}
+.tl::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:2px;background:repeating-linear-gradient(var(--coral) 0 8px,transparent 8px 13px)}
+.tl li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.tl li::before{content:"";position:absolute;left:-27px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--node,var(--teal-ink))}
+.tl .when{font:500 10px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
+.tl b{display:block;font-size:14px;margin-top:2px}
+.tl p{font-size:13px;color:var(--muted);margin-top:4px}
+.tl p b{display:inline;font-size:inherit;color:var(--ink)}
+.tl .wa{background:var(--wa);border-radius:10px 10px 10px 2px;padding:7px 10px;font-size:12.5px;color:var(--ink);margin-top:8px;width:fit-content;max-width:100%}
+.tl .quote{font-size:12.5px;border-left:3px solid var(--teal);padding:4px 10px;margin-top:8px;color:var(--ink);background:var(--teal-soft);border-radius:0 8px 8px 0}
+.tl li.flag{background:var(--risk-soft);border-color:color-mix(in srgb,var(--risk) 40%,transparent);--node:var(--risk)}
+.tl li.later{background:transparent;border-style:dashed;--node:var(--line)}
+.tag{display:inline-block;font:600 11px var(--sans);padding:3px 9px;border-radius:99px;background:var(--teal-soft);color:var(--teal-ink);white-space:nowrap}
+.tag.flag{background:var(--risk);color:#fff}
+.tag.grey{background:var(--sunk);color:var(--muted)}
+.case-cap{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+
+/* sections */
+section.band{padding-block:88px}
+section.alt{background:var(--sunk)}
+.sec-head{max-width:740px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(30px,3.6vw,46px);line-height:1.06;margin:14px 0 16px}
+.sec-head p{font-size:18px;color:var(--muted)}
+
+/* pain */
+.pain{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pain article{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
+.pain .n{font:500 12px var(--mono);color:var(--coral-ink)}
+.pain h3{font-size:19px;line-height:1.2;margin:12px 0 10px}
+.pain p{font-size:15px;color:var(--muted)}
+.pain-close{margin-top:28px;font:600 20px/1.4 var(--display);max-width:42em}
+.pain-close span{color:var(--coral-ink)}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;counter-reset:s}
+.flow div{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 16px;counter-increment:s}
+.flow div::before{content:counter(s,decimal-leading-zero);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--teal-soft);color:var(--teal-ink);font:600 12px var(--mono);margin-bottom:14px}
+.flow div.human{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.flow div.human::before{background:var(--coral);color:#1A1A1A}
+.flow b{display:block;font-size:16px;line-height:1.25;margin-bottom:6px}
+.flow p{font-size:14px;color:var(--muted)}
+.flow-legend{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted)}
+.flow-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;background:var(--teal-ink);vertical-align:middle}
+.flow-legend span.h::before{background:var(--coral)}
+
+/* outcomes */
+.outs{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.out-list{display:grid;gap:10px}
+.out{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:center;padding:14px 18px;border-radius:16px;border:1px solid}
+.out b{font-size:16px}
+.out span{font-size:14px;color:var(--muted)}
+.o1{background:var(--green-soft);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
+.o2{background:var(--teal-soft);border-color:color-mix(in srgb,var(--teal-ink) 40%,transparent)}
+.o3{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 50%,transparent)}
+.o4{background:var(--yellow-soft);border-color:color-mix(in srgb,var(--yellow) 70%,transparent)}
+.o5{background:var(--risk-soft);border-color:color-mix(in srgb,var(--risk) 40%,transparent)}
+.packet{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px}
+.packet h3{font-size:22px;margin-bottom:6px}
+.packet>p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.packet ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.packet li{display:flex;gap:12px;font-size:15px;align-items:flex-start}
+.packet li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;background:var(--teal-soft);color:var(--teal-ink);display:grid;place-items:center;font-weight:700;font-size:12px;margin-top:1px}
+.packet .note{margin-top:18px;padding:12px 14px;background:var(--sunk);border-radius:12px;font-size:14px;color:var(--muted)}
+
+/* review example */
+.review{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:14px}
+.rcol{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
+.rcol h3{font-size:13px;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.fact{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.fact:last-child{border:0}
+.fact small{display:block;font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.ev{border-radius:14px;padding:14px;margin-bottom:10px;font-size:14px}
+.ev small{display:block;font:500 11px var(--mono);letter-spacing:.05em;margin-bottom:4px;color:var(--muted)}
+.ev.v{background:var(--teal-soft)}
+.ev.w{background:var(--wa)}
+.decide{background:var(--peach);border:1px solid color-mix(in srgb,var(--coral) 45%,transparent);border-radius:16px;padding:18px}
+.decide strong{display:block;color:var(--coral-ink);font:600 13px var(--mono);letter-spacing:.04em;margin-bottom:8px}
+.decide p{font-size:14px;color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.actions span{font-size:12px;font-weight:600;padding:6px 10px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.review-cap{margin-top:16px;font-size:14px;color:var(--muted);max-width:52em}
+
+/* split: automated / assisted / human */
+.split{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.split article{border-radius:22px;padding:26px;border:1px solid var(--line);background:var(--surface)}
+.split article.h{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.split .k{font:600 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink)}
+.split article.h .k{color:var(--coral-ink)}
+.split h3{font-size:22px;margin:10px 0 14px}
+.split ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:15px;color:var(--muted)}
+.tools{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:22px}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.tool b{display:block;font-size:15px}
+.tool span{font-size:13px;color:var(--muted)}
+
+/* apprenticeship */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border-top:2px solid var(--line)}
+.ladder div{padding:20px 18px 0 0;position:relative}
+.ladder div::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--teal-ink)}
+.ladder div:last-child::before{border-color:var(--coral)}
+.ladder small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.ladder b{display:block;font:600 19px var(--display);margin:6px 0}
+.ladder p{font-size:14px;color:var(--muted)}
+.ladder-cap{margin-top:26px;font:600 19px/1.4 var(--display)}
+
+/* pilot cohort */
+.cohort{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cbox{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.cbox.dark{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cbox h3{font-size:22px;margin-bottom:16px}
+.cbox ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.cbox li{display:flex;gap:12px;font-size:15px;line-height:1.5}
+.cbox li::before{content:"→";flex:none;color:var(--coral-ink);font-weight:700}
+.cbox.dark li::before{color:var(--coral)}
+.cbox.dark li{color:color-mix(in srgb,var(--bg) 82%,transparent)}
+.fit{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fit div{background:var(--teal-soft);border-radius:16px;padding:18px}
+.fit b{display:block;font-size:15px;margin-bottom:4px}
+.fit span{font-size:14px;color:var(--muted)}
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.week{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--surface)}
+.week small{font:500 11px var(--mono);color:var(--coral-ink);letter-spacing:.06em;text-transform:uppercase}
+.week b{display:block;font-size:17px;margin:6px 0}
+.week p{font-size:14px;color:var(--muted)}
+
+/* platform */
+.platform{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.stack{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:14px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.layer b{font-size:15px}
+.layer span{font-size:14px;color:var(--muted)}
+.layer.p{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.layer.p span{color:color-mix(in srgb,var(--bg) 75%,transparent)}
+.layer.m{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.platform .sec-head{margin-bottom:0}
+.platform .sec-head p+p{margin-top:14px}
+
+/* next missions */
+.criteria{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.criteria span{font-size:14px;padding:8px 14px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.criteria span b{color:var(--teal-ink)}
+.next{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.next article{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column}
+.next .fam{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink)}
+.next h3{font-size:20px;margin:10px 0 8px;line-height:1.2}
+.next p{font-size:15px;color:var(--muted)}
+.next .keep{margin-top:auto;padding-top:16px;font-size:13px;color:var(--ink)}
+.next .keep::before{content:"Stays human: ";font-weight:700;color:var(--coral-ink)}
+.wont{margin-top:16px;border:1.5px dashed var(--line);border-radius:20px;padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.wont b{font:600 18px var(--display)}
+.wont p{font-size:15px;color:var(--muted)}
+
+/* faq */
+.faq{max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font:600 18px var(--display);list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--coral-ink);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:12px;color:var(--muted);font-size:16px;max-width:44em}
+
+/* cta */
+.cta{padding-block:40px 96px}
+.cta-box{background:var(--teal-soft);border-radius:28px;padding:48px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.cta-box h2{font-size:clamp(28px,3.4vw,42px);line-height:1.08}
+.cta-box p{color:var(--muted);margin-top:14px;font-size:17px}
+.cta-side{display:grid;gap:12px}
+.cta-side small{font-size:13px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);background:var(--surface);padding-block:30px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+@media (max-width:1000px){
+  .hero,.outs,.platform,.cta-box{grid-template-columns:1fr}
+  .pain,.fit,.weeks{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:repeat(3,1fr)}
+  .review{grid-template-columns:1fr 1fr}
+  .review .rcol:last-child{grid-column:1/-1}
+  .split,.next{grid-template-columns:1fr 1fr}
+  .tools{grid-template-columns:repeat(3,1fr)}
+  .ladder{grid-template-columns:1fr 1fr;row-gap:28px}
+  .jump{display:none}
+}
+@media (max-width:640px){
+  .wrap{padding-inline:16px}
+  .hero{padding-block:40px 56px}
+  section.band{padding-block:60px}
+  .pain,.fit,.weeks,.flow,.review,.split,.next,.tools,.cohort,.ladder{grid-template-columns:1fr}
+  .out,.layer{grid-template-columns:1fr;gap:4px}
+  .wont{grid-template-columns:1fr;gap:8px}
+  .cta-box{padding:28px}
+  .hero-cta .pill{width:100%}
+  .case{padding:14px}
+  .case-head .live{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+<style id="gh-css">
+.gh-skip{position:absolute;left:16px;top:-60px;z-index:80;padding:10px 16px;border-radius:999px;background:#1A1A1A;color:#FDF8F4!important;font-weight:700;font-size:14px}.gh-skip:focus{top:12px}
+html{scroll-padding-top:76px}
+.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
+.gh.gh-static{position:relative}
+.gh *{box-sizing:border-box}
+.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.gh a{text-decoration:none;color:inherit}
+.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
+.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
+.gh-nav{margin-left:auto;display:flex;gap:2px}
+.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
+.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
+.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
+.gh-cta:hover{filter:brightness(.96)}
+.gh-menu{display:none;position:relative}
+.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.gh-menu summary::-webkit-details-marker{display:none}
+.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
+.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
+.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
+.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
+.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
+.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
+:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
+@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
+@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
+</style>
+</head>
+<body>
+
+<a class="gh-skip" href="#main">Skip to content</a><div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b><span>DozAI</span></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="#apply">Join the pilot</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="#apply">Join the pilot</a></div></details></div></div>
+
+<main id="main">
+<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/dozai/">DozAI</a><span aria-hidden="true">/</span><span>Missions</span><span aria-hidden="true">/</span><span aria-current="page">Placement &amp; retention</span><span class="jump"><a href="#how">How it works</a><a href="#judgement">Human judgement</a><a href="#cohort">Pilot cohort</a><a href="#faq">FAQ</a></span></nav>
+
+<!-- HERO -->
+<div class="wrap hero">
+  <div>
+    <span class="badge"><i></i>DozAI Mission 01 · Pilot design cohort open</span>
+    <h1>Know where every graduate is, <em>90 days later.</em></h1>
+    <p class="lead">Your funder wants 3, 6 and 12-month retention numbers. Your trainers are already running the next batch. <b>DozAI follows up with every graduate on WhatsApp and voice, in their language, verifies what has changed, and hands your team only the cases that need a person.</b></p>
+    <div class="hero-cta">
+      <a class="pill primary" href="#apply">Apply for the pilot cohort →</a>
+      <a class="pill ghost" href="#how">See how the mission runs</a>
+    </div>
+    <div class="hero-note"><span>Your outcome definitions, not ours</span><span>Evidence on every case</span><span>People make the final call</span></div>
+  </div>
+
+  <div class="case" aria-label="Illustrative example of one graduate's follow-up case">
+    <div class="case-head">
+      <div class="av">184</div>
+      <div><b>Case 0184 · Retail associate cohort</b><small>Completed Mar 2026 · Placed: Bright Retail</small></div>
+      <span class="live">● IN REVIEW</span>
+    </div>
+    <ol class="tl">
+      <li><div class="when"><span>Day 30 · WhatsApp</span><span class="tag">Same job</span></div>
+        <b>Still with the placed employer</b>
+        <div class="wa">Yes, still at Bright Retail. Floor staff, morning shift.</div></li>
+      <li class="flag"><div class="when"><span>Day 90 · Voice call · 4 min</span><span class="tag flag">Needs review</span></div>
+        <b>Changed job. Employer differs from your record.</b>
+        <div class="quote">“I moved to City Mart in June. Better salary, same work.”</div>
+        <p>DozAI proposes <b>Changed job, retained in sector</b>. Your reviewer confirms.</p></li>
+      <li class="later"><div class="when"><span>Day 180</span><span class="tag grey">Scheduled</span></div>
+        <b>Next check-in booked automatically</b></li>
+    </ol>
+    <p class="case-cap">One case out of a cohort of hundreds. Illustrative example.</p>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="band alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2>Placement is the easy number. Retention is where it falls apart.</h2>
+      <p>You can tell a funder how many people you trained and placed. Ask what happened six months later and it becomes a scramble.</p>
+    </div>
+    <div class="pain">
+      <article><span class="n">01</span><h3>The report is due. The number is a guess.</h3><p>Retention gets estimated from whoever picked up the phone, not from the full cohort.</p></article>
+      <article><span class="n">02</span><h3>Half the phone numbers have changed.</h3><p>Graduates switch SIMs, cities and jobs. One missed call and they drop off the list.</p></article>
+      <article><span class="n">03</span><h3>Calls happen between batches.</h3><p>Trainers and placement officers squeeze in follow-ups, ask different questions and log answers differently.</p></article>
+      <article><span class="n">04</span><h3>Nobody can show the evidence.</h3><p>When a funder or auditor asks “how do you know?”, the answer lives in a spreadsheet and someone’s memory.</p></article>
+    </div>
+    <p class="pain-close">The people who most need a follow-up, the ones who lost the job, are the ones you’re <span>least likely to reach.</span></p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How the mission runs</span>
+      <h2>You set the rules once. DozAI runs every checkpoint.</h2>
+      <p>The mission works through your cohort at 30, 90 and 180 days (or whatever schedule your funder uses), and keeps going until every case reaches a clear state.</p>
+    </div>
+    <div class="flow">
+      <div><b>Load the cohort</b><p>From your MIS, CRM or a spreadsheet. Consent and contact rules travel with each record.</p></div>
+      <div><b>Reach out</b><p>WhatsApp first, then a voice call in the graduate’s language. Retries within the contact windows you allow.</p></div>
+      <div><b>Ask what matters</b><p>Your questions, with follow-ups that branch: employer, role, start date, income band, reasons for leaving.</p></div>
+      <div><b>Check against records</b><p>Spots when answers contradict the placement on file, or when something sounds off.</p></div>
+      <div><b>Propose an outcome</b><p>Classifies each case and attaches the evidence. Clear cases are ready to approve.</p></div>
+      <div class="human"><b>Your team decides</b><p>Reviewers see only conflicts, sensitive answers and unclear cases. Approved results write back to your system.</p></div>
+    </div>
+    <div class="flow-legend"><span>DozAI does the work</span><span class="h">A person makes the call</span></div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="band alt">
+  <div class="wrap outs">
+    <div>
+      <div class="sec-head" style="margin-bottom:28px">
+        <span class="eyebrow">What you get back</span>
+        <h2>Every graduate lands in one clear state.</h2>
+        <p>No more “couldn’t reach” as a silent default. Unreachable is a result too, with the attempts on record.</p>
+      </div>
+      <div class="out-list">
+        <div class="out o1"><b>Same job</b><span>Still with the employer you placed them with</span></div>
+        <div class="out o2"><b>Changed job</b><span>New employer, role or way of working</span></div>
+        <div class="out o3"><b>Not employed</b><span>Looking for work, unavailable, or another reason, in their words</span></div>
+        <div class="out o4"><b>Education or training</b><span>Further study, apprenticeship or another course</span></div>
+        <div class="out o5"><b>Unreachable or unclear</b><span>Every attempt logged, or flagged for a person to look at</span></div>
+      </div>
+    </div>
+    <div class="packet">
+      <h3>A case packet, not a call log</h3>
+      <p>Each graduate’s result comes with everything a funder or auditor would ask for.</p>
+      <ul>
+        <li>Call recording and transcript, or the WhatsApp thread</li>
+        <li>Structured answers: employer, role, start date, income band</li>
+        <li>What changed since the last checkpoint, and why</li>
+        <li>Who reviewed it, what they decided, and when</li>
+        <li>A cohort view: retention by checkpoint, centre, trade and employer</li>
+      </ul>
+      <p class="note">And one thing most follow-up efforts never capture: <b>the graduates who need help again.</b> Anyone looking for work can be routed back to your placement team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW EXAMPLE -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What your reviewer sees</span>
+      <h2>Only the cases that need a person. With the evidence side by side.</h2>
+    </div>
+    <div class="review">
+      <div class="rcol"><h3>On your record</h3>
+        <div class="fact"><small>Placed employer</small>Metro Logistics</div>
+        <div class="fact"><small>Role</small>Warehouse associate</div>
+        <div class="fact"><small>Checkpoint</small>Day 90</div>
+      </div>
+      <div class="rcol"><h3>What DozAI found</h3>
+        <div class="ev w"><small>WHATSAPP · DAY 88</small>“The company name you have is wrong.”</div>
+        <div class="ev v"><small>VOICE CALL · 00:42</small>“I joined Metro Express in July. Same warehouse, they changed the contractor. I’m still working there.”</div>
+      </div>
+      <div class="rcol"><h3>Proposed decision</h3>
+        <div class="decide"><strong>RECORD CONFLICT</strong><p>Graduate appears to be employed in the same role. The employer on file may need correcting.</p></div>
+        <div class="actions"><span>Approve</span><span>Edit</span><span>Ask for evidence</span><span>Reject</span></div>
+      </div>
+    </div>
+    <p class="review-cap">Every override needs a reason. Those reasons are how DozAI learns your organisation’s judgement, and they become test cases before any change goes live. Names and details here are illustrative.</p>
+  </div>
+</section>
+
+<!-- AUTOMATION / HUMAN -->
+<section class="band alt" id="judgement">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Tools, automation and human judgement</span>
+      <h2>AI handles the volume. People handle the consequence.</h2>
+      <p>We’re explicit about who does what. Nothing that affects a graduate’s record or your reported outcomes is decided without a person able to see why.</p>
+    </div>
+    <div class="split">
+      <article><span class="k">Automated</span><h3>Repeatable, reversible work</h3><ul>
+        <li>Scheduling checkpoints and retries</li><li>Sending reminders and switching channels</li><li>Running the interview in the graduate’s language</li><li>Transcribing and pulling out the answers</li><li>Honouring opt-outs immediately</li></ul></article>
+      <article><span class="k">AI-assisted</span><h3>Drafts a person can check</h3><ul>
+        <li>Proposing an outcome for each case</li><li>Flagging contradictions with your records</li><li>Summarising why a graduate left a job</li><li>Drafting the cohort retention report</li></ul></article>
+      <article class="h"><span class="k">Stays human</span><h3>Decisions with consequence</h3><ul>
+        <li>Whether conflicting evidence counts as an outcome</li><li>What meets your funder’s definition of “placed”</li><li>Anything involving distress, safety or suspected fraud</li><li>Changing the definitions themselves</li></ul></article>
+    </div>
+    <div class="tools">
+      <div class="tool"><b>WhatsApp</b><span>First contact, reminders, quick replies</span></div>
+      <div class="tool"><b>Zolabs voice</b><span>Multilingual AI calls for the last mile</span></div>
+      <div class="tool"><b>Your system</b><span>Zoho, CRM, MIS or spreadsheet, read and written back</span></div>
+      <div class="tool"><b>Review workspace</b><span>Evidence, decision and reason in one screen</span></div>
+      <div class="tool"><b>Audit trail</b><span>Every action, version and decision on record</span></div>
+    </div>
+
+    <div class="ladder" aria-label="How DozAI earns autonomy">
+      <div><small>Stage 1</small><b>Shadow</b><p>Runs on past cases. We compare its answers with what your team decided.</p></div>
+      <div><small>Stage 2</small><b>Draft</b><p>Works live, but a person approves every classification and update.</p></div>
+      <div><small>Stage 3</small><b>Bounded action</b><p>Sends reminders and clears simple cases. Exceptions and a random sample still go to review.</p></div>
+      <div><small>Stage 4</small><b>Managed autonomy</b><p>Handles defined case types end to end. Consequential calls stay with people.</p></div>
+    </div>
+    <p class="ladder-cap">DozAI starts as an apprentice. It earns autonomy task by task, only after it passes your review.</p>
+  </div>
+</section>
+
+<!-- PILOT COHORT -->
+<section class="band" id="cohort">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The pilot design cohort</span>
+      <h2>We’re building this with a small group of skilling organisations.</h2>
+      <p>Not a demo, and not a finished product. A real follow-up of one of your cohorts, with your team shaping the questions, the outcome definitions and the review screen alongside ours.</p>
+    </div>
+    <div class="cohort">
+      <div class="fit">
+        <div><b>You run skilling or livelihoods programmes</b><span>With placement or self-employment as a stated outcome</span></div>
+        <div><b>You have a recent cohort</b><span>Graduates who finished roughly 1 to 12 months ago</span></div>
+        <div><b>You can contact them</b><span>Phone numbers on file and a consent basis for follow-up</span></div>
+        <div><b>You have a named owner</b><span>Someone who can review cases a few hours a week</span></div>
+      </div>
+      <div class="cbox dark"><h3>What you get</h3><ul>
+        <li>The mission configured on your outcome definitions and your funders’ reporting requirements</li>
+        <li>A supervised follow-up of a real cohort, on WhatsApp and voice</li>
+        <li>Case packets with evidence for every graduate reached</li>
+        <li>A retention report you can take to your board and funders</li>
+        <li>A direct say in what DozAI’s first mission becomes</li></ul></div>
+      <div class="cbox"><h3>What we ask</h3><ul>
+        <li>A cohort list and the placement records you already hold</li>
+        <li>Your current follow-up questions and how you define “placed” and “retained”</li>
+        <li>A reviewer’s time during the supervised weeks</li>
+        <li>Honest feedback, including when something doesn’t work</li>
+        <li>Your baseline: how long follow-up takes today, and what it costs</li></ul></div>
+    </div>
+    <div class="weeks">
+      <div class="week"><small>Week 1</small><b>Mission contract</b><p>Agree definitions, questions, contact rules and what DozAI must never do.</p></div>
+      <div class="week"><small>Week 2</small><b>Shadow</b><p>Test on past cases your team has already followed up. Fix the gaps.</p></div>
+      <div class="week"><small>Weeks 3–4</small><b>Supervised live run</b><p>DozAI contacts your cohort. Your reviewer approves every outcome.</p></div>
+      <div class="week"><small>Weeks 5–6</small><b>Bounded autonomy</b><p>Clear cases flow through. We compare against your baseline and report.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="band alt">
+  <div class="wrap platform">
+    <div class="sec-head">
+      <span class="eyebrow">What DozAI is</span>
+      <h2>One mission. Built on a platform for many.</h2>
+      <p>DozAI isn’t a placement-tracking app. It’s a platform for running <b>missions</b>: outcome-focused workflows where AI does the repeatable work and people keep the decisions that carry consequence.</p>
+      <p>Placement and retention is the first. Every mission after it reuses the same foundation for cases, evidence, follow-up, review and audit, so your second mission doesn’t need a second system.</p>
+      <p style="margin-top:22px"><a class="pill ghost" href="/dozai/">More about DozAI →</a></p>
+    </div>
+    <div class="stack" aria-label="How DozAI is structured">
+      <div class="layer p"><b>DozAI platform</b><span>Cases, evidence, scheduling, review and audit, shared across every mission</span></div>
+      <div class="layer"><b>AI employee</b><span>A reusable role, like a verification associate, that collects and reconciles evidence</span></div>
+      <div class="layer m"><b>Mission</b><span>Your questions, contact rules, outcome rubric, messages and voice scripts</span></div>
+      <div class="layer"><b>Run</b><span>One programme cohort, with the mission version frozen so results are comparable</span></div>
+      <div class="layer"><b>Case</b><span>One graduate’s outcome, with every piece of evidence behind it</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT MISSIONS -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What comes next</span>
+      <h2>How we choose a mission, and what’s on the list.</h2>
+      <p>AI agents do well on work with <b>bounded judgement</b>: a known goal, a finite set of evidence, clear rules, and an obvious point where they must stop and ask a person. We test every candidate against the same criteria.</p>
+    </div>
+    <div class="criteria">
+      <span><b>High volume</b> · hundreds of similar cases</span>
+      <span><b>Repeats</b> · every cycle or cohort</span>
+      <span><b>Evidence-based</b> · records, documents, calls</span>
+      <span><b>A person decides</b> · AI prepares, doesn’t rule</span>
+      <span><b>Named exceptions</b> · most cases follow a known path</span>
+      <span><b>Reversible</b> · errors can be corrected</span>
+      <span><b>Someone owns it</b> · a team already pays for this work</span>
+    </div>
+    <div class="next">
+      <article><span class="fam">Follow-up &amp; verification</span><h3>Enrolment and attendance follow-up</h3><p>Three missed sessions triggers a call. DozAI records the reason in the participant’s words and routes them to a staff member.</p><span class="keep">Safeguarding or disciplinary action</span></article>
+      <article><span class="fam">Follow-up &amp; verification</span><h3>Referral closure and benefit receipt</h3><p>Follows a health, education or welfare referral, or a distribution, until the service was received, refused or needs attention.</p><span class="keep">Closing a case when wellbeing is uncertain</span></article>
+      <article><span class="fam">Evidence completeness</span><h3>Missing documents and applications</h3><p>Checks scholarship or programme applications for what’s missing, expired or inconsistent, and chases it. Before anyone scores merit.</p><span class="keep">Waivers and final eligibility</span></article>
+      <article><span class="fam">Evidence completeness</span><h3>Grantee milestone evidence</h3><p>Reads the grant agreement, builds the evidence checklist each reporting cycle, chases gaps and links every claim to a source.</p><span class="keep">Accepting weak evidence, releasing funds</span></article>
+      <article><span class="fam">Data quality</span><h3>MIS exception clearing</h3><p>Runs validation rules, queues duplicates and contradictions, fixes the obvious ones and proposes corrections for the rest.</p><span class="keep">Merging identities, changing outcomes</span></article>
+      <article><span class="fam">Data quality</span><h3>Survey back-checks</h3><p>Spots impossible durations and identical answer patterns, picks a transparent sample for back-check calls and reports discrepancies.</p><span class="keep">Any finding about an enumerator</span></article>
+    </div>
+    <div class="wont"><b>What we won’t automate</b><p>Award decisions for grants, scholarships or benefits. Safeguarding triage. Hiring and rejection. The volume is tempting, but the consequence for a person is too high for an AI to own.</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band alt" id="faq">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Questions we’re asked</span><h2>Before you apply</h2></div>
+    <div class="faq">
+      <details><summary>Does this replace our placement team?</summary><p>No. It takes the repetitive calling off their plate so they can spend time on the graduates who need help: the ones who lost a job, or are struggling in one. Your team still owns every decision that goes into a report.</p></details>
+      <details><summary>What about consent and our graduates’ data?</summary><p>We agree the consent basis, what data the mission can see, and how long recordings are kept before anything runs. Graduates can opt out at any point and that’s honoured immediately. Your data stays within your organisation’s own tenant, and a lesson learned from your cases never moves to another organisation’s mission. Once the mission is complete, we can delete your data on request, including every call recording, transcript and message. We design this in line with India’s DPDP Act.</p></details>
+      <details><summary>Which languages does it work in?</summary><p>Voice calls run on Zolabs, EdZola’s multilingual voice platform, built for conversations across Indian languages. We’ll confirm the languages your cohort needs during the mission contract week.</p></details>
+      <details><summary>What if a graduate doesn’t pick up?</summary><p>DozAI retries within the windows you set, switches between WhatsApp and voice, and stops at the limit you agree. “Unreachable” is a recorded outcome with every attempt logged, not a blank row.</p></details>
+      <details><summary>Which systems does it work with?</summary><p>For the pilot, a spreadsheet export is enough. If you run on Zoho Creator, a CRM or another MIS, we can read from and write back to it directly.</p></details>
+      <details><summary>What does the pilot cost?</summary><p>We’ll talk about it on our first call. The cohort is small on purpose and we want the right partners in it, not the ones who can pay most.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="apply">
+  <div class="wrap cta-box">
+    <div>
+      <span class="eyebrow">Pilot design cohort · Mission 01</span>
+      <h2 style="margin-top:14px">Bring us one cohort. We’ll tell you where they are.</h2>
+      <p>Tell us about your programme, roughly how many graduates you’d want to follow up, and when your next funder report is due. We’ll come back within a week.</p>
+    </div>
+    <div class="cta-side">
+      <a class="pill primary" href="mailto:reachus@edzola.com?subject=DozAI%20pilot%20cohort%3A%20placement%20and%20retention&amp;body=Organisation%3A%0AProgramme%20%2F%20trades%3A%0AApprox.%20graduates%20in%20the%20cohort%3A%0AWhen%20they%20completed%3A%0AHow%20you%20follow%20up%20today%3A%0ANext%20funder%20report%20due%3A%0A%0APlease%20don%27t%20include%20any%20graduate%20names%20or%20phone%20numbers%20in%20this%20email.">Apply for the pilot cohort →</a>
+      <small>Please don’t send graduate names or phone numbers by email. We’ll set up a secure way to share data once we’ve agreed the mission.</small>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <span>EdZola Technologies · Coimbatore, India · Systems built for the world's hardest work.<br><a href="/">Home</a> · <a href="/dozai/">DozAI</a> · <a href="/livelihoods/">Livelihoods</a> · <a href="/zolabs/">Zolabs</a> · <a href="/zolashield/">ZolaShield</a> · <a href="mailto:reachus@edzola.com">reachus@edzola.com</a></span>
+  <span>Screens, names and figures on this page are illustrative examples.<br>Last updated 2026-10-09</span>
+</div></footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a554d343571244ed9f5a68d182583373"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
