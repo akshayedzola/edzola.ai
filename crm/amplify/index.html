@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Amplify: Claude for Zoho CRM and Bigin | EdZola</title>
-<meta name="description" content="A four-week cohort for Indian nonprofits on Zoho CRM or Bigin: connect Claude to your CRM for donor follow-ups, CSR proposals, prospect research and founder reports.">
+<title>Amplify: a community of practice for nonprofits on Zoho | EdZola</title>
+<meta name="description" content="A community of practice for Indian nonprofits on Zoho CRM or Bigin. Learn with peers to turn your CRM from a register you update into a colleague you ask, with Claude.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="canonical" href="https://edzola.ai/crm/amplify/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EdZola">
-<meta property="og:title" content="Your CRM remembers every donor. Now Claude can use all of it.">
-<meta property="og:description" content="A four-week cohort for Indian nonprofits on Zoho CRM or Bigin: connect Claude to your CRM for donor follow-ups, CSR proposals, prospect research and founder reports.">
+<meta property="og:title" content="Stop updating your CRM. Start asking it.">
+<meta property="og:description" content="A community of practice for Indian nonprofits on Zoho CRM or Bigin. Learn with peers to turn your CRM from a register you update into a colleague you ask, with Claude.">
 <meta property="og:url" content="https://edzola.ai/crm/amplify/">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
@@ -161,6 +161,21 @@ table.t td.n{text-align:right;white-space:nowrap}
 .c-thread-enter{animation:in .35s ease both}
 @keyframes in{from{opacity:.25;transform:translateY(6px)}to{opacity:1;transform:none}}
 
+/* ---------- problems ---------- */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pain{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:10px;align-content:start}
+.pain q{font-family:var(--display);font-weight:600;font-size:1.2rem;line-height:1.25;letter-spacing:-.01em;quotes:"\201C" "\201D"}
+.pain p{color:var(--muted);font-size:.95rem}
+.shift{margin-top:28px;display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;background:var(--night);color:#FDF8F4;border-radius:20px;padding:26px 28px}
+.shift > *{min-width:0}
+.shift .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.shift .from .k{color:var(--coral)}
+.shift b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;letter-spacing:-.01em;margin-top:4px}
+.shift p{color:rgba(253,248,244,.7);font-size:.95rem;margin-top:4px}
+.shift .arrow{font-size:1.6rem;color:var(--coral)}
+.amp{margin-top:26px;border-left:3px solid var(--coral);padding:4px 0 4px 18px;font-family:var(--display);font-size:1.3rem;line-height:1.35;letter-spacing:-.01em;max-width:46ch}
+.amp em{font-style:normal;color:var(--coral-dark)}
+
 /* ---------- cohort sections ---------- */
 .ends{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .end{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:8px;align-content:start}
@@ -245,13 +260,15 @@ details p{margin-top:10px;color:var(--muted);font-size:.97rem}
   .chat-link{flex:none;max-width:220px;background:rgba(0,0,0,.03)}
   .pods,.price-grid{grid-template-columns:1fr}
   .who-grid,.weeks,.rules{grid-template-columns:1fr 1fr}
-  .ends,.inc{grid-template-columns:1fr 1fr}
+  .ends,.inc,.pains{grid-template-columns:1fr 1fr}
   .kpis{grid-template-columns:1fr 1fr}
 }
 @media (max-width:620px){
   body{font-size:16px}
   .section{padding-block:60px}
-  .who-grid,.weeks,.rules,.ends,.inc{grid-template-columns:1fr}
+  .who-grid,.weeks,.rules,.ends,.inc,.pains{grid-template-columns:1fr}
+  .shift{grid-template-columns:1fr}
+  .shift .arrow{transform:rotate(90deg);justify-self:start}
   .fields{grid-template-columns:1fr;gap:2px}
   .fields dd{margin-bottom:8px}
   .bar{grid-template-columns:80px 1fr 60px}
@@ -296,9 +313,9 @@ html{scroll-padding-top:76px}
 <main id="main">
 <div class="wrap">
   <header class="hero">
-    <p class="eyebrow">A 4-week AI cohort for Zoho CRM and Bigin users</p>
-    <h1>Your CRM remembers every donor. <em>Now Claude can use all of it.</em></h1>
-    <p class="lede">Years of donors, CSR partners, donations, notes and emails sit in your Zoho CRM or Bigin. In four weeks you connect Claude to it and learn to <b>follow up faster, track every lead, draft proposals, research prospects</b> and hand your founder a report in minutes instead of days.</p>
+    <p class="eyebrow">A community of practice for nonprofits on Zoho CRM and Bigin</p>
+    <h1>Stop updating your CRM. <em>Start asking it.</em></h1>
+    <p class="lede">Most nonprofits pay for a CRM and open it only to record work that's already done. Connected to Claude, the same CRM can <b>draft your donor follow-ups, prepare the founder's report and remind you who you've lost touch with</b>. The tools are already here. What's missing is the time to learn them and people to learn with. Amplify gives you both.</p>
     <div class="pills">
       <span class="pill"><b>Follow up</b> with leads</span>
       <span class="pill"><b>Track</b> the pipeline</span>
@@ -307,13 +324,13 @@ html{scroll-padding-top:76px}
       <span class="pill"><b>Report</b> to leadership</span>
     </div>
     <div class="cta-row">
-      <a class="btn btn-coral" href="#join">Check if you're eligible →</a>
-      <a class="btn btn-line" href="#claude">See Claude in a CRM</a>
+      <a class="btn btn-coral" href="#join">Join the first cohort →</a>
+      <a class="btn btn-line" href="#claude">See what changes</a>
     </div>
     <div class="facts">
       <span><b>₹15,000</b>per organisation</span>
       <span><b>2</b>people max</span>
-      <span><b>4</b>weeks, live</span>
+      <span><b>4</b>weeks together, then ongoing</span>
       <span><b>Nov</b>2026 start</span>
     </div>
     <div class="works">
@@ -325,14 +342,37 @@ html{scroll-padding-top:76px}
   </header>
 </div>
 
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Sound familiar?</p>
+      <h2>Most CRMs in our sector are <em>registers, not tools</em></h2>
+      <p class="lede">We hear the same things from fundraising and programme teams across India. None of them is about the software being bad.</p>
+    </div>
+    <div class="pains">
+      <div class="pain"><q>I'll update the CRM later.</q><p>The CRM gets filled in after the meeting, after the donation, after the report. It records the work instead of helping with it.</p></div>
+      <div class="pain"><q>Only one person knows how to pull that report.</q><p>The founder asks a simple question and waits two days. Friday becomes spreadsheet day.</p></div>
+      <div class="pain"><q>We forgot to follow up.</q><p>A CSR proposal sits unanswered for a month. A regular donor's UPI mandate fails and nobody notices.</p></div>
+      <div class="pain"><q>We pay for licences we barely use.</q><p>Half the team logs in once a month. Everything else lives in WhatsApp, inboxes and someone's Excel.</p></div>
+      <div class="pain"><q>When she left, the relationships left with her.</q><p>Years of funder history sit in the CRM, but nobody has time to dig through it before the next meeting.</p></div>
+      <div class="pain"><q>We've watched the AI videos. We still haven't set it up.</q><p>The guides exist online. Without time, help and someone to ask, it never gets done.</p></div>
+    </div>
+    <div class="shift">
+      <div class="from"><span class="k">Today</span><b>"Update the CRM"</b><p>A register you fill in after the work is done.</p></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="to"><span class="k">With Amplify</span><b>"Ask the CRM"</b><p>A colleague that helps you decide what to do next, and does the first draft.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="stage" id="claude">
   <div class="wrap">
     <div class="stage-head">
       <div style="display:grid;gap:10px">
-        <p class="eyebrow">See it work</p>
-        <h2>Six things your team will do <em>by week four</em></h2>
+        <p class="eyebrow">What changes</p>
+        <h2>Your CRM, <em>in plain language</em></h2>
       </div>
-      <p>Pick a chat. Each one is Claude connected to a fundraising CRM, using Zoho's own connector.</p>
+      <p>Pick a conversation. Each one is an everyday fundraising job, done by asking a question the way you'd ask a colleague.</p>
     </div>
 
     <div class="cw">
@@ -358,20 +398,47 @@ html{scroll-padding-top:76px}
   </div>
 </section>
 
+<section class="section sunk" id="community">
+  <div class="wrap pods">
+    <div>
+      <p class="eyebrow">A community of practice</p>
+      <h2 style="margin-top:14px">You don't need another course. <em>You need peers.</em></h2>
+      <p class="lede" style="margin-top:16px">Everything you need to connect Claude to Zoho is already online. Most teams still don't do it, because learning alone is slow and there's nobody to ask when it doesn't work. Amplify puts you in a small group of nonprofits facing the same problems, with EdZola alongside.</p>
+      <ul class="list">
+        <li><span><strong>Learn in pods of 4 to 5 nonprofits.</strong> A fundraising lead, a founder and a CRM admin from different organisations, working through the same problems.</span></li>
+        <li><span><strong>Share what works.</strong> Every request that helps one team goes into a shared library for everyone.</span></li>
+        <li><span><strong>Keep going after the four weeks.</strong> A monthly meet-up, a community group, and what's new in Zoho and Claude explained in plain language.</span></li>
+      </ul>
+      <p class="amp">Our sector doesn't need more CRM developers. It needs <em>CRM amplifiers</em>: people inside nonprofits who help their teams get far more from the systems they already have.</p>
+    </div>
+    <div class="pod-viz" aria-label="Example pod: five participants from different organisations">
+      <span class="cap">Example pod · Week 3</span>
+      <div class="pod-row">
+        <span class="seat"><i></i>Fundraising lead · CRM</span>
+        <span class="seat bigin"><i></i>Founder · Bigin</span>
+        <span class="seat"><i></i>CRM admin · CRM</span>
+        <span class="seat bigin"><i></i>Partnerships · Bigin</span>
+        <span class="seat"><i></i>Programme head · CRM</span>
+      </div>
+      <span class="cap">+ 1 EdZola mentor in every pod</span>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Where it leads</p>
-      <h2>A CRM full of history becomes <em>something you can ask</em></h2>
-      <p class="lede">Once Claude can read your CRM, the slow jobs get fast. These are the ones fundraising teams tell us eat their week.</p>
+      <h2>Jobs that eat your week, <em>done in minutes</em></h2>
+      <p class="lede">These are the jobs nonprofit teams bring to us most often. By the end of the four weeks, you'll have done at least three of them on your own CRM.</p>
     </div>
     <div class="ends">
       <div class="end"><span class="k">Monthly, in minutes</span><h3>Founder and board reports</h3><p>Raised against target, pipeline health, CSR renewals due and the one ask you need from leadership.</p></div>
       <div class="end"><span class="k">Years of data</span><h3>Forgotten relationships</h3><p>Find every past grant, trustee link and old contact tied to a funder before you walk into the meeting.</p></div>
       <div class="end"><span class="k">Every Monday</span><h3>Pipeline review</h3><p>What moved, what stalled and who needs a call, without building a report by hand.</p></div>
       <div class="end"><span class="k">Before every call</span><h3>Donor briefs</h3><p>One page on donation history, the last conversation and open commitments, pulled from notes and emails.</p></div>
-      <div class="end"><span class="k">Ongoing</span><h3>Cleaner data</h3><p>Duplicate donors, missing PAN for 80G receipts and leads with no owner, listed for a person to fix.</p></div>
-      <div class="end"><span class="k">Week 4</span><h3>Your first agent</h3><p>A scheduled job, like a Friday check on stalled CSR proposals, that runs with a person approving what it does.</p></div>
+      <div class="end"><span class="k">Ongoing</span><h3>Cleaner records</h3><p>Duplicate donors, missing PAN for 80G receipts and leads nobody owns, listed for a person to fix.</p></div>
+      <div class="end"><span class="k">Every Friday</span><h3>Work that runs on its own</h3><p>A weekly check, like a list of CSR proposals with no reply, that runs by itself and waits for a person to approve the next step.</p></div>
     </div>
   </div>
 </section>
@@ -380,14 +447,14 @@ html{scroll-padding-top:76px}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Who it's for</p>
-      <h2>Organisations on a paid Zoho CRM or Bigin account</h2>
-      <p class="lede">You don't need to be technical or a big team. If your organisation pays for CRM or Bigin and someone uses it every week, this is for you.</p>
+      <h2>Nonprofit teams <em>already on Zoho</em></h2>
+      <p class="lede">You don't need to be technical or a big team. If your organisation pays for Zoho CRM or Bigin, even if you hardly use it, this is for you.</p>
     </div>
     <div class="who-grid">
       <div class="who-card"><h3>Fundraising teams</h3><p>Individual donors, HNIs, CSR proposals, 80G receipts and utilisation reports.</p></div>
       <div class="who-card"><h3>Founders and EDs</h3><p>Leaders who want straight answers from the CRM without waiting for a report.</p></div>
-      <div class="who-card"><h3>CRM admins</h3><p>The person everyone asks for reports, clean-ups and "can the CRM do this?"</p></div>
-      <div class="who-card"><h3>Social enterprises</h3><p>Partnership and sales pipelines run on Bigin or CRM.</p></div>
+      <div class="who-card"><h3>The "CRM person"</h3><p>The one everyone asks for reports, clean-ups and "can the CRM do this?"</p></div>
+      <div class="who-card"><h3>Programme teams</h3><p>Partner NGOs, volunteers or beneficiary follow-ups tracked in Bigin or CRM.</p></div>
     </div>
   </div>
 </section>
@@ -396,40 +463,14 @@ html{scroll-padding-top:76px}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">The four weeks</p>
-      <h2>One live session a week, <em>then you build</em></h2>
-      <p class="lede">Each week has a 90-minute live session followed by work time on your own CRM. Plan for about 3 hours a week.</p>
+      <h2>One session a week, <em>then you try it on real work</em></h2>
+      <p class="lede">Each week has a 90-minute live session, then you practise on your own CRM with help close by. Plan for about 3 hours a week.</p>
     </div>
     <div class="weeks">
-      <article class="wk"><span class="num">Week 1</span><h3>Connect</h3><p>What MCP is in plain words, what Claude can and can't do in your CRM, and a guided setup for CRM and for Bigin.</p><p class="done"><span>By Friday</span>Claude connected and your first 10 questions answered.</p></article>
-      <article class="wk"><span class="num">Week 2</span><h3>Ask and draft</h3><p>Prompts for donor follow-ups, pipeline reviews, donor briefs, prospect research and clean-up.</p><p class="done"><span>By Friday</span>3 saved prompts your team uses daily.</p></article>
-      <article class="wk"><span class="num">Week 3</span><h3>Build clinic</h3><p>Bring a real job, like the founder report or a CSR proposal. Build it end to end in your pod with an EdZola mentor.</p><p class="done"><span>By Friday</span>1 workflow running, with a review step.</p></article>
-      <article class="wk"><span class="num">Week 4</span><h3>Agents</h3><p>A Claude agent next to Zoho's Zia Agents, on the same use case. Compare effort, control and cost, then set up yours.</p><p class="done"><span>By Friday</span>1 agent running and a 90-day plan.</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="section sunk">
-  <div class="wrap pods">
-    <div>
-      <p class="eyebrow">Why a cohort</p>
-      <h2 style="margin-top:14px">Learn in a pod of <em>4 to 5 CRM users</em></h2>
-      <p class="lede" style="margin-top:16px">Zoho's documentation tells you how to connect. It doesn't tell you which prompt works on a messy donor list, or what broke for the team next door. You learn that from people with the same tool and the same problems.</p>
-      <ul class="list">
-        <li><span><strong>Shared prompts.</strong> What works in one CRM usually works in yours. Pods swap prompts every week.</span></li>
-        <li><span><strong>Shared mistakes.</strong> Each pod shows one thing that worked and one that broke, so you skip the dead ends.</span></li>
-        <li><span><strong>A community after.</strong> Three months in the alumni group, a monthly show-and-tell and a growing prompt library.</span></li>
-      </ul>
-    </div>
-    <div class="pod-viz" aria-label="Example pod: five participants from different organisations">
-      <span class="cap">Example pod · Week 3 build clinic</span>
-      <div class="pod-row">
-        <span class="seat"><i></i>Fundraising lead · CRM</span>
-        <span class="seat bigin"><i></i>Founder · Bigin</span>
-        <span class="seat"><i></i>CRM admin · CRM</span>
-        <span class="seat bigin"><i></i>Partnerships · Bigin</span>
-        <span class="seat"><i></i>Programme head · CRM</span>
-      </div>
-      <span class="cap">+ 1 EdZola mentor on every pod</span>
+      <article class="wk"><span class="num">Week 1</span><h3>Connect</h3><p>Link Claude to your CRM with step-by-step help. No coding. Learn what it can and can't do with your data.</p><p class="done"><span>By Friday</span>Your first 10 questions about your own donors, answered.</p></article>
+      <article class="wk"><span class="num">Week 2</span><h3>Ask</h3><p>How to ask so the answers are useful: donor follow-ups, pipeline checks, donor briefs and prospect research.</p><p class="done"><span>By Friday</span>3 requests your team now uses every day.</p></article>
+      <article class="wk"><span class="num">Week 3</span><h3>Build</h3><p>Bring one job that eats your week, like the founder report or a CSR proposal. Work it through with your pod and a mentor.</p><p class="done"><span>By Friday</span>1 real job done start to finish, with a person checking.</p></article>
+      <article class="wk"><span class="num">Week 4</span><h3>Hand off</h3><p>Set up a weekly job that runs on its own and waits for your approval. Then plan what your team takes on next.</p><p class="done"><span>By Friday</span>1 weekly job running and a 90-day plan.</p></article>
     </div>
   </div>
 </section>
@@ -442,11 +483,11 @@ html{scroll-padding-top:76px}
     </div>
     <div class="inc">
       <div class="inc-item"><span class="k">4 × 90 min</span><h3>Live sessions</h3><p>Hands-on, with time to build in every session.</p></div>
-      <div class="inc-item"><span class="k">2 a week</span><h3>Build hours</h3><p>Drop in with your problem. The EdZola team helps you fix it.</p></div>
-      <div class="inc-item"><span class="k">1 working day</span><h3>Async channel</h3><p>Ask questions any time. Answers within one working day.</p></div>
+      <div class="inc-item"><span class="k">2 a week</span><h3>Drop-in help</h3><p>Bring whatever is stuck. The EdZola team helps you fix it.</p></div>
+      <div class="inc-item"><span class="k">Always on</span><h3>Community group</h3><p>Ask your pod and the wider group any time. EdZola replies within one working day.</p></div>
       <div class="inc-item"><span class="k">30 min</span><h3>One-to-one call</h3><p>One call per organisation in week 2 or 3 to unblock what's stuck.</p></div>
       <div class="inc-item"><span class="k">Your screen, your call</span><h3>Your own CRM</h3><p>You work on your own paid account. Sharing your screen is optional. Some teams add a few test records to practise on.</p></div>
-      <div class="inc-item"><span class="k">Yours to keep</span><h3>Take-home kit</h3><p>Setup guides, about 30 tested fundraising prompts for Indian nonprofits, workflow recipes, agent templates and a guardrail pack.</p></div>
+      <div class="inc-item"><span class="k">Yours to keep</span><h3>Take-home kit</h3><p>Step-by-step guides, about 30 ready-to-use requests for fundraising work, and simple rules for using AI safely with donor data.</p></div>
     </div>
   </div>
 </section>
@@ -455,14 +496,14 @@ html{scroll-padding-top:76px}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Safe by design</p>
-      <h2>Four rules we teach <em>on day one</em></h2>
+      <h2>Four habits we start <em>on day one</em></h2>
       <p class="lede">Your CRM holds donor data. Every workflow in the cohort follows these rules.</p>
     </div>
     <div class="rules">
-      <div class="rule"><h3>Your own login</h3><p>Claude sees only what you can see. Turn on only the tools a task needs.</p></div>
-      <div class="rule"><h3>Read first</h3><p>Prompts start read-only. A person approves anything that changes a record.</p></div>
+      <div class="rule"><h3>It sees what you see</h3><p>Claude uses your own login, so it can only see what you already can.</p></div>
+      <div class="rule"><h3>Look before it changes</h3><p>Claude reads first. A person approves anything that changes a record.</p></div>
       <div class="rule"><h3>Drafts, not sends</h3><p>Emails to donors are saved as drafts for a person to review.</p></div>
-      <div class="rule"><h3>Guard your links</h3><p>Connector URLs work like passwords. Don't share them, and disconnect what you stop using.</p></div>
+      <div class="rule"><h3>Keep the link private</h3><p>The link that connects Claude to your CRM works like a password. Don't share it.</p></div>
     </div>
   </div>
 </section>
@@ -480,9 +521,9 @@ html{scroll-padding-top:76px}
         <ul>
           <li>Up to 2 people from your organisation</li>
           <li>One person with a paid CRM licence is enough to join</li>
-          <li>4 live sessions, 8 build hours and async support</li>
+          <li>4 live sessions, 8 drop-in help hours and a community group</li>
           <li>One-to-one call and the take-home kit</li>
-          <li>3 months in the alumni community</li>
+          <li>3 months in the community of practice after the cohort</li>
         </ul>
         <p class="note">Not included: your Zoho CRM or Bigin licence and your Claude subscription. You pay for those directly.</p>
       </div>
@@ -492,7 +533,7 @@ html{scroll-padding-top:76px}
           <h3>Check your eligibility</h3>
           <p style="color:var(--muted);font-size:.95rem;margin-top:4px">Tick all three to apply.</p>
         </div>
-        <label class="check" for="c-crm"><input type="checkbox" id="c-crm"><span class="box"></span><span><strong>My organisation has a paid Zoho CRM or Bigin account</strong><small>And I'm a licensed user on it. Free editions can't connect.</small></span></label>
+        <label class="check" for="c-crm"><input type="checkbox" id="c-crm"><span class="box"></span><span><strong>My organisation has a paid Zoho CRM or Bigin account</strong><small>And I'm a licensed user on it, even if we hardly use it today.</small></span></label>
         <label class="check" for="c-claude"><input type="checkbox" id="c-claude"><span class="box"></span><span><strong>I have a paid Claude plan</strong><small>Pro, Max, Team or Enterprise. Connecting to Zoho needs a paid plan. Each participant needs their own.</small></span></label>
         <label class="check" for="c-time"><input type="checkbox" id="c-time"><span class="box"></span><span><strong>I can give about 3 hours a week for 4 weeks</strong><small>90 minutes live, plus work time on your own CRM.</small></span></label>
         <p class="status" id="status" aria-live="polite">0 of 3 confirmed.</p>
@@ -509,12 +550,13 @@ html{scroll-padding-top:76px}
       <h2>Before you sign up</h2>
     </div>
     <div class="faq">
+      <details><summary>Is this a course or a community?</summary><p>Both, in that order. The four weeks are structured, with a session and a task each week. After that, you stay in a community of nonprofits doing the same work, with a monthly meet-up and a shared library.</p></details>
       <details><summary>Can just one person from our organisation join?</summary><p>Yes. One person with a paid Zoho CRM or Bigin licence is enough. The price is the same for one or two people.</p></details>
-      <details><summary>Why do I need a paid Claude plan?</summary><p>Connecting Claude to Zoho uses a custom connector, which is only on paid Claude plans. Each participant connects with their own Claude account.</p></details>
+      <details><summary>Why do I need a paid Claude plan?</summary><p>Connecting Claude to Zoho is only possible on paid Claude plans. Each participant connects with their own Claude account.</p></details>
       <details><summary>Do I have to share my screen or our data?</summary><p>No. You build on your own CRM, on your own screen. Sharing in sessions is optional. If you want somewhere safe to practise, add a few test records to your own account. Our team never connects to your system.</p></details>
       <details><summary>Do I need to know how to code?</summary><p>No. Everything happens in Claude and inside Zoho's own screens. If you can build a report in your CRM, you can do this.</p></details>
       <details><summary>We use CRM for programmes, not fundraising. Is it still useful?</summary><p>Yes. The examples lean on fundraising because that's where most teams start, but the same methods work for partnerships, volunteers or beneficiary follow-ups.</p></details>
-      <details><summary>Does Zia Agents in Bigin work on every edition?</summary><p>Zia Agents need Bigin Premier or Bigin 360. On other editions you still build a Claude agent in week 4.</p></details>
+      <details><summary>Zoho has its own AI, Zia. Do we still need Claude?</summary><p>They do different things. We show both. On Bigin Premier and Bigin 360 you can also try Zia Agents in week 4, and compare them with what Claude does on the same job.</p></details>
     </div>
   </div>
 </section>
@@ -523,8 +565,8 @@ html{scroll-padding-top:76px}
 
 <footer class="foot">
   <div class="wrap in">
-    <h2>Bring us your <em>messiest pipeline.</em></h2>
-    <div><a class="btn btn-coral" href="#join">Check eligibility →</a></div>
+    <h2>Bring your CRM. <em>We'll bring the community.</em></h2>
+    <div><a class="btn btn-coral" href="#join">Join the first cohort →</a></div>
     <div class="row">
       <a class="foot-logo" href="/">edzola.ai</a>
       <p style="max-width:70ch">EdZola Technologies · Coimbatore, India · <a href="mailto:reachus@edzola.com">reachus@edzola.com</a><br>Screens, names and figures on this page are illustrative examples. Zoho, Zoho CRM, Bigin and Zia are trademarks of Zoho Corporation. Claude is a trademark of Anthropic. This cohort is run independently by EdZola and is not endorsed by Zoho or Anthropic.</p>
