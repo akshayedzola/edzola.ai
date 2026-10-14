@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en-GB" data-variant="b">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Placement &amp; Retention Follow-up Assistant | DozAI Mission 01 | EdZola</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="An AI-powered follow-up and outcomes assistant for skilling nonprofits. Know who is still working, who needs support, and the evidence behind every number. Pilot cohort open.">
+<link rel="canonical" href="https://edzola.ai/dozai/missions/placement-retention/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdZola">
+<meta property="og:title" content="Know who's still working, and who needs support">
+<meta property="og:description" content="DozAI Mission 01: placement and retention tracking for skilling and livelihoods nonprofits. Pilot design cohort now open.">
+<meta property="og:url" content="https://edzola.ai/dozai/missions/placement-retention/b/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:image" content="https://edzola.ai/assets/og-edzola.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FDF8F4;--surface:#FFFFFF;--sunk:#F6EDE5;--ink:#1A1A1A;--muted:#6B6360;--line:#EADFD6;
+  --coral:#E8967A;--coral-ink:#9E452D;--peach:#FAE8DC;--teal:#8ECFCA;--teal-ink:#2C7771;--teal-soft:#E2F3F1;
+  --yellow:#F7C948;--yellow-soft:#FCF0C8;--green:#2F8A5B;--green-soft:#E0F4E9;--risk:#A8341F;--risk-soft:#FBE3DD;
+  --wa:#DCF8C6;--shadow:0 14px 40px rgba(74,48,32,.10);
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --sans:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#1A1613;--surface:#241F1B;--sunk:#2C2621;--ink:#F4EDE7;--muted:#B5A9A1;--line:#3A322C;
+  --coral:#EFA48A;--coral-ink:#F2AF97;--peach:#3A2A22;--teal:#8ECFCA;--teal-ink:#93D6D0;--teal-soft:#1F3533;
+  --yellow:#F7C948;--yellow-soft:#3A321B;--green:#7FD1A2;--green-soft:#1E3427;--risk:#F08A76;--risk-soft:#3D231E;--wa:#26382A;--shadow:0 14px 40px rgba(0,0,0,.35)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:6px}
+.eyebrow{font:600 12px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 22px;font-weight:700;text-decoration:none;transition:transform .15s,background .15s}
+.pill.primary{background:var(--coral);color:#1A1A1A}
+.pill.primary:hover{background:#E07F60;transform:translateY(-1px)}
+.pill.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.pill.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+
+/* breadcrumb */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:20px;font-size:14px;color:var(--muted)}
+.crumbs a{text-decoration:none}
+.crumbs a:hover{color:var(--ink);text-decoration:underline}
+.crumbs [aria-current]{color:var(--ink)}
+.jump{margin-left:auto;display:flex;gap:4px}
+.jump a{padding:6px 12px;border-radius:999px}
+.jump a:hover{background:var(--sunk);text-decoration:none}
+
+/* hero */
+.hero{padding-block:40px 80px;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:10px;background:var(--peach);color:var(--coral-ink);font:600 13px var(--sans);padding:7px 14px 7px 10px;border-radius:999px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px color-mix(in srgb,var(--coral) 25%,transparent)}
+.hero h1{font-size:clamp(38px,4.8vw,60px);line-height:1.02;font-weight:700;margin:20px 0 22px}
+.hero h1 em{font-style:normal;color:var(--coral-ink);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:.16em;background:var(--yellow);opacity:.55;z-index:-1;border-radius:3px}
+.hero .lead{font-size:19px;color:var(--muted);max-width:34em}
+.hero .lead b{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-note{margin-top:22px;font-size:13px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap}
+.hero-note span::before{content:"✓";color:var(--teal-ink);font-weight:700;margin-right:6px}
+
+/* case card visual */
+.case{background:var(--sunk);border-radius:28px;padding:20px;box-shadow:var(--shadow)}
+.case-head{display:flex;align-items:center;gap:12px;background:var(--ink);color:var(--bg);border-radius:16px;padding:12px 14px}
+.case-head .av{width:38px;height:38px;border-radius:11px;background:var(--coral);color:#1A1A1A;display:grid;place-items:center;font:700 15px var(--mono);flex:none}
+.case-head b{display:block;font-size:14px}
+.case-head small{font:400 11px var(--mono);opacity:.75}
+.case-head .live{margin-left:auto;font:500 10px var(--mono);letter-spacing:.06em;background:color-mix(in srgb,var(--bg) 18%,transparent);padding:4px 8px;border-radius:99px;white-space:nowrap}
+.tl{position:relative;margin:18px 0 0;padding:0 0 0 30px;list-style:none;display:grid;gap:12px}
+.tl::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:2px;background:repeating-linear-gradient(var(--coral) 0 8px,transparent 8px 13px)}
+.tl li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.tl li::before{content:"";position:absolute;left:-27px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--node,var(--teal-ink))}
+.tl .when{font:500 10px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
+.tl b{display:block;font-size:14px;margin-top:2px}
+.tl p{font-size:13px;color:var(--muted);margin-top:4px}
+.tl p b{display:inline;font-size:inherit;color:var(--ink)}
+.tl .wa{background:var(--wa);border-radius:10px 10px 10px 2px;padding:7px 10px;font-size:12.5px;color:var(--ink);margin-top:8px;width:fit-content;max-width:100%}
+.tl .quote{font-size:12.5px;border-left:3px solid var(--teal);padding:4px 10px;margin-top:8px;color:var(--ink);background:var(--teal-soft);border-radius:0 8px 8px 0}
+.tl li.flag{background:var(--risk-soft);border-color:color-mix(in srgb,var(--risk) 40%,transparent);--node:var(--risk)}
+.tl li.later{background:transparent;border-style:dashed;--node:var(--line)}
+.tag{display:inline-block;font:600 11px var(--sans);padding:3px 9px;border-radius:99px;background:var(--teal-soft);color:var(--teal-ink);white-space:nowrap}
+.tag.flag{background:var(--risk);color:#fff}
+.tag.grey{background:var(--sunk);color:var(--muted)}
+.case-cap{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+
+/* sections */
+section.band{padding-block:88px}
+section.alt{background:var(--sunk)}
+.sec-head{max-width:740px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(30px,3.6vw,46px);line-height:1.06;margin:14px 0 16px}
+.sec-head p{font-size:18px;color:var(--muted)}
+
+/* pain */
+.pain{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pain article{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
+.pain .n{font:500 12px var(--mono);color:var(--coral-ink)}
+.pain h3{font-size:19px;line-height:1.2;margin:12px 0 10px}
+.pain p{font-size:15px;color:var(--muted)}
+.pain-close{margin-top:28px;font:600 20px/1.4 var(--display);max-width:42em}
+.pain-close span{color:var(--coral-ink)}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;counter-reset:s}
+.flow div{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 16px;counter-increment:s}
+.flow div::before{content:counter(s,decimal-leading-zero);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--teal-soft);color:var(--teal-ink);font:600 12px var(--mono);margin-bottom:14px}
+.flow div.human{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.flow div.human::before{background:var(--coral);color:#1A1A1A}
+.flow b{display:block;font-size:16px;line-height:1.25;margin-bottom:6px}
+.flow p{font-size:14px;color:var(--muted)}
+.flow-legend{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted)}
+.flow-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;background:var(--teal-ink);vertical-align:middle}
+.flow-legend span.h::before{background:var(--coral)}
+
+/* outcomes */
+.outs{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.out-list{display:grid;gap:10px}
+.out{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:center;padding:14px 18px;border-radius:16px;border:1px solid}
+.out b{font-size:16px}
+.out span{font-size:14px;color:var(--muted)}
+.o1{background:var(--green-soft);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
+.o2{background:var(--teal-soft);border-color:color-mix(in srgb,var(--teal-ink) 40%,transparent)}
+.o3{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 50%,transparent)}
+.o4{background:var(--yellow-soft);border-color:color-mix(in srgb,var(--yellow) 70%,transparent)}
+.o5{background:var(--risk-soft);border-color:color-mix(in srgb,var(--risk) 40%,transparent)}
+.packet{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px}
+.packet h3{font-size:22px;margin-bottom:6px}
+.packet>p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.packet ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.packet li{display:flex;gap:12px;font-size:15px;align-items:flex-start}
+.packet li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;background:var(--teal-soft);color:var(--teal-ink);display:grid;place-items:center;font-weight:700;font-size:12px;margin-top:1px}
+.packet .note{margin-top:18px;padding:12px 14px;background:var(--sunk);border-radius:12px;font-size:14px;color:var(--muted)}
+
+/* review example */
+.review{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:14px}
+.rcol{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
+.rcol h3{font-size:13px;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.fact{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.fact:last-child{border:0}
+.fact small{display:block;font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.ev{border-radius:14px;padding:14px;margin-bottom:10px;font-size:14px}
+.ev small{display:block;font:500 11px var(--mono);letter-spacing:.05em;margin-bottom:4px;color:var(--muted)}
+.ev.v{background:var(--teal-soft)}
+.ev.w{background:var(--wa)}
+.decide{background:var(--peach);border:1px solid color-mix(in srgb,var(--coral) 45%,transparent);border-radius:16px;padding:18px}
+.decide strong{display:block;color:var(--coral-ink);font:600 13px var(--mono);letter-spacing:.04em;margin-bottom:8px}
+.decide p{font-size:14px;color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.actions span{font-size:12px;font-weight:600;padding:6px 10px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.review-cap{margin-top:16px;font-size:14px;color:var(--muted);max-width:52em}
+
+/* split: automated / assisted / human */
+.split{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.split article{border-radius:22px;padding:26px;border:1px solid var(--line);background:var(--surface)}
+.split article.h{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.split .k{font:600 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink)}
+.split article.h .k{color:var(--coral-ink)}
+.split h3{font-size:22px;margin:10px 0 14px}
+.split ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:15px;color:var(--muted)}
+.tools{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:22px}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.tool b{display:block;font-size:15px}
+.tool span{font-size:13px;color:var(--muted)}
+
+/* apprenticeship */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border-top:2px solid var(--line)}
+.ladder div{padding:20px 18px 0 0;position:relative}
+.ladder div::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--teal-ink)}
+.ladder div:last-child::before{border-color:var(--coral)}
+.ladder small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.ladder b{display:block;font:600 19px var(--display);margin:6px 0}
+.ladder p{font-size:14px;color:var(--muted)}
+.ladder-cap{margin-top:26px;font:600 19px/1.4 var(--display)}
+
+/* pilot cohort */
+.cohort{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cbox{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.cbox.dark{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cbox h3{font-size:22px;margin-bottom:16px}
+.cbox ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.cbox li{display:flex;gap:12px;font-size:15px;line-height:1.5}
+.cbox li::before{content:"→";flex:none;color:var(--coral-ink);font-weight:700}
+.cbox.dark li::before{color:var(--coral)}
+.cbox.dark li{color:color-mix(in srgb,var(--bg) 82%,transparent)}
+.fit{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fit div{background:var(--teal-soft);border-radius:16px;padding:18px}
+.fit b{display:block;font-size:15px;margin-bottom:4px}
+.fit span{font-size:14px;color:var(--muted)}
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.week{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--surface)}
+.week small{font:500 11px var(--mono);color:var(--coral-ink);letter-spacing:.06em;text-transform:uppercase}
+.week b{display:block;font-size:17px;margin:6px 0}
+.week p{font-size:14px;color:var(--muted)}
+
+/* platform */
+.platform{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.stack{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:14px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.layer b{font-size:15px}
+.layer span{font-size:14px;color:var(--muted)}
+.layer.p{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.layer.p span{color:color-mix(in srgb,var(--bg) 75%,transparent)}
+.layer.m{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.platform .sec-head{margin-bottom:0}
+.platform .sec-head p+p{margin-top:14px}
+
+/* next missions */
+.criteria{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.criteria span{font-size:14px;padding:8px 14px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+.criteria span b{color:var(--teal-ink)}
+.next{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.next article{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column}
+.next .fam{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink)}
+.next h3{font-size:20px;margin:10px 0 8px;line-height:1.2}
+.next p{font-size:15px;color:var(--muted)}
+.next .keep{margin-top:auto;padding-top:16px;font-size:13px;color:var(--ink)}
+.next .keep::before{content:"Stays human: ";font-weight:700;color:var(--coral-ink)}
+.wont{margin-top:16px;border:1.5px dashed var(--line);border-radius:20px;padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.wont b{font:600 18px var(--display)}
+.wont p{font-size:15px;color:var(--muted)}
+
+/* faq */
+.faq{max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font:600 18px var(--display);list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--coral-ink);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:12px;color:var(--muted);font-size:16px;max-width:44em}
+
+/* cta */
+.cta{padding-block:40px 96px}
+.cta-box{background:var(--teal-soft);border-radius:28px;padding:48px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.cta-box h2{font-size:clamp(28px,3.4vw,42px);line-height:1.08}
+.cta-box p{color:var(--muted);margin-top:14px;font-size:17px}
+.cta-side{display:grid;gap:12px}
+.cta-side small{font-size:13px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);background:var(--surface);padding-block:30px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+@media (max-width:1000px){
+  .hero,.outs,.platform,.cta-box{grid-template-columns:1fr}
+  .pain,.fit,.weeks{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:repeat(3,1fr)}
+  .review{grid-template-columns:1fr 1fr}
+  .review .rcol:last-child{grid-column:1/-1}
+  .split,.next{grid-template-columns:1fr 1fr}
+  .tools{grid-template-columns:repeat(3,1fr)}
+  .ladder{grid-template-columns:1fr 1fr;row-gap:28px}
+  .jump{display:none}
+}
+@media (max-width:640px){
+  .wrap{padding-inline:16px}
+  .hero{padding-block:40px 56px}
+  section.band{padding-block:60px}
+  .pain,.fit,.weeks,.flow,.review,.split,.next,.tools,.cohort,.ladder{grid-template-columns:1fr}
+  .out,.layer{grid-template-columns:1fr;gap:4px}
+  .wont{grid-template-columns:1fr;gap:8px}
+  .cta-box{padding:28px}
+  .hero-cta .pill{width:100%}
+  .case{padding:14px}
+  .case-head .live{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* ---- variant B additions ---- */
+.hero h1 em{white-space:normal;background:linear-gradient(transparent 80%,color-mix(in srgb,var(--yellow) 55%,transparent) 0);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero h1 em::after{display:none}
+.values{display:grid;gap:10px;margin-top:26px;max-width:36em}
+.values div{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;font-size:16px;color:var(--muted)}
+.values b{color:var(--ink);font-weight:600}
+.values i{font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:600 12px var(--mono);background:var(--teal-soft);color:var(--teal-ink)}
+.values div:last-child i{background:var(--peach);color:var(--coral-ink)}
+
+/* hero visual: what needs your team */
+.todo{background:var(--sunk);border-radius:28px;padding:20px;box-shadow:var(--shadow)}
+.todo-head{background:var(--ink);color:var(--bg);border-radius:16px;padding:14px 16px}
+.todo-head small{display:block;font:500 11px var(--mono);opacity:.75;letter-spacing:.04em}
+.todo-head b{display:block;font:600 18px var(--display);margin-top:4px}
+.todo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.todo-stats div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}
+.todo-stats b{display:block;font:700 24px var(--display);line-height:1}
+.todo-stats span{font-size:12.5px;color:var(--muted)}
+.todo ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.todo li{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.todo li b{font:700 18px var(--mono);text-align:right}
+.todo li span{font-size:14px;line-height:1.35}
+.todo li small{display:block;color:var(--muted);font-size:12.5px}
+.todo li.hot{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.todo li.hot b{color:var(--coral-ink)}
+.todo-cap{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+
+/* platform intro */
+.plat{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.plat .sec-head{margin-bottom:0}
+.plat .sec-head p+p{margin-top:14px}
+.plat-note{margin-top:18px;font-size:14px;color:var(--muted);border-left:3px solid var(--teal);padding:6px 12px}
+.plat-diagram{display:grid;gap:12px}
+.plat-top{background:var(--ink);color:var(--bg);border-radius:20px;padding:20px 22px}
+.plat-top small{font:500 11px var(--mono);letter-spacing:.08em;opacity:.7}
+.plat-top b{display:block;font:700 22px var(--display);margin:4px 0 12px}
+.plat-top .chips{display:flex;flex-wrap:wrap;gap:6px}
+.plat-top .chips span{font-size:12.5px;padding:5px 10px;border-radius:99px;background:color-mix(in srgb,var(--bg) 14%,transparent)}
+.plat-arrow{text-align:center;font-size:13px;color:var(--muted)}
+.plat-missions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mcard{border-radius:18px;padding:18px;border:1px solid var(--line);background:var(--surface)}
+.mcard small{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.mcard b{display:block;font:600 18px var(--display);margin:6px 0}
+.mcard p{font-size:14px;color:var(--muted)}
+.mcard.live{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 50%,transparent)}
+.mcard.live small{color:var(--coral-ink)}
+.mcard.future{border-style:dashed;background:transparent}
+
+/* four steps */
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.steps4 article{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;counter-increment:s}
+.steps4 article::before{content:"Step " counter(s);display:inline-block;font:600 12px var(--mono);color:var(--teal-ink);background:var(--teal-soft);padding:5px 10px;border-radius:99px;margin-bottom:14px}
+.steps4 article:last-child{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.steps4 article:last-child::before{background:var(--coral);color:#1A1A1A}
+.steps4 h3{font-size:20px;line-height:1.2;margin-bottom:8px}
+.steps4 p{font-size:15px;color:var(--muted)}
+
+/* report mock */
+.dash{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow)}
+.dash-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.dash-head b{font:600 20px var(--display)}
+.dash-head span{font:500 12px var(--mono);color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}
+.tile{border-radius:14px;padding:14px;background:var(--sunk)}
+.tile b{display:block;font:700 26px var(--display);line-height:1.05}
+.tile span{font-size:13px;color:var(--muted)}
+.tile.warn{background:var(--yellow-soft)}
+.tile.hot{background:var(--peach)}
+.tile.hot b{color:var(--coral-ink)}
+.dash-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;margin-top:6px}
+.dash h3{font:600 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.stack{display:flex;height:22px;border-radius:8px;overflow:hidden;gap:2px}
+.stack i{display:block}
+.s1{background:var(--green)}.s2{background:var(--teal-ink)}.s3{background:var(--coral)}.s4{background:var(--yellow)}.s5{background:var(--muted)}
+.legend{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.legend li{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;font-size:14px}
+.legend li i{width:12px;height:12px;border-radius:3px}
+.legend li b{font:600 14px var(--mono)}
+.rate{margin-top:16px;padding:12px 14px;background:var(--teal-soft);border-radius:12px;font-size:14px}
+.rate b{font:700 18px var(--display);color:var(--teal-ink)}
+.unknown{margin-top:10px;font-size:13.5px;color:var(--muted)}
+.levels{display:grid;gap:12px}
+.level b{display:flex;justify-content:space-between;font-size:15px}
+.level b span{font-family:var(--mono)}
+.level p{font-size:13.5px;color:var(--muted);margin:2px 0 6px}
+.bar{height:10px;border-radius:99px;background:var(--sunk);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--teal-ink)}
+.level.v .bar i{background:var(--green)}
+.outputs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.outputs article{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
+.outputs h3{font-size:19px;margin-bottom:8px}
+.outputs p{font-size:15px;color:var(--muted)}
+.outputs article.h{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+.dash-cap{margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* invitation strip */
+.strip{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--ink);color:var(--bg);border-radius:20px;padding:22px 26px;margin-top:28px}
+.strip b{font:600 20px var(--display)}
+.strip span{display:block;font-size:14px;opacity:.8;margin-top:2px}
+
+/* examples */
+.ex2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ex2 .case{box-shadow:none}
+.lvl{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.04em;padding:2px 7px;border-radius:6px;background:var(--sunk);color:var(--muted);margin-top:8px}
+.lvl.x{background:var(--teal-soft);color:var(--teal-ink)}
+.tl li.help{background:var(--peach);border-color:color-mix(in srgb,var(--coral) 45%,transparent);--node:var(--coral)}
+.tl li.done{--node:var(--green)}
+.ex-cap{margin-top:16px;font-size:14px;color:var(--muted);max-width:52em}
+
+/* pilot */
+.pfacts{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.pfacts div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.pfacts small{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--coral-ink)}
+.pfacts b{display:block;font-size:16px;margin:6px 0 6px;line-height:1.3}
+.pfacts p{font-size:14px;color:var(--muted)}
+.price{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:14px;margin-top:22px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
+.pcard small{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pcard .amt{display:block;font:700 34px var(--display);margin:6px 0 2px}
+.pcard .per{font-size:14px;color:var(--muted)}
+.pcard ul{margin:14px 0 0;padding-left:18px;font-size:14.5px;color:var(--muted);display:grid;gap:4px}
+.pcard.eg{background:var(--teal-soft);border-color:transparent}
+.eg table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14.5px}
+.eg td{padding:9px 0;border-bottom:1px solid color-mix(in srgb,var(--teal-ink) 22%,transparent)}
+.eg td:last-child{text-align:right;font-family:var(--mono)}
+.eg tr:last-child td{border:0;font-weight:700;font-size:16px}
+.price-note{margin-top:14px;font-size:14px;color:var(--muted);max-width:56em}
+.weeks4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.weeks4 div{border-top:3px solid var(--teal);padding-top:12px}
+.weeks4 div:last-child{border-color:var(--coral)}
+.weeks4 small{font:500 11px var(--mono);color:var(--coral-ink);letter-spacing:.06em;text-transform:uppercase}
+.weeks4 b{display:block;font-size:16px;margin:4px 0}
+.weeks4 p{font-size:14px;color:var(--muted)}
+
+/* trust */
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.trust article{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.trust h3{font-size:18px;margin-bottom:8px}
+.trust p{font-size:15px;color:var(--muted)}
+.now{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 40px}
+.now div{border-radius:18px;padding:22px}
+.now .t{background:var(--green-soft)}
+.now .l{border:1.5px dashed var(--line)}
+.now b{font:600 18px var(--display)}
+.now ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:4px}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about dl{margin:0;display:grid;gap:12px}
+.about dl div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.about dt{font:600 16px var(--display)}
+.about dd{margin:4px 0 0;font-size:14.5px;color:var(--muted)}
+
+@media (max-width:1000px){
+  .plat,.about,.dash-grid{grid-template-columns:1fr}
+  .steps4,.weeks4{grid-template-columns:1fr 1fr}
+  .tiles{grid-template-columns:repeat(3,1fr)}
+  .outputs,.trust{grid-template-columns:1fr 1fr}
+  .pfacts{grid-template-columns:1fr 1fr}
+  .price{grid-template-columns:1fr 1fr}
+  .price .eg{grid-column:1/-1}
+  .ex2{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .steps4,.weeks4,.outputs,.trust,.pfacts,.price,.now,.plat-missions{grid-template-columns:1fr}
+  .tiles{grid-template-columns:1fr 1fr}
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .todo-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .todo-stats div{padding:10px}
+  .todo-stats b{font-size:20px}
+  .todo li{grid-template-columns:48px 1fr;padding:10px 12px}
+  .todo{padding:14px}
+  .dash{padding:18px}
+  .strip{padding:20px}
+  .strip .pill{width:100%}
+}
+</style>
+<style id="gh-css">
+.gh-skip{position:absolute;left:16px;top:-60px;z-index:80;padding:10px 16px;border-radius:999px;background:#1A1A1A;color:#FDF8F4!important;font-weight:700;font-size:14px}.gh-skip:focus{top:12px}
+html{scroll-padding-top:76px}
+.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
+.gh.gh-static{position:relative}
+.gh *{box-sizing:border-box}
+.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.gh a{text-decoration:none;color:inherit}
+.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
+.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
+.gh-nav{margin-left:auto;display:flex;gap:2px}
+.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
+.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
+.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
+.gh-cta:hover{filter:brightness(.96)}
+.gh-menu{display:none;position:relative}
+.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.gh-menu summary::-webkit-details-marker{display:none}
+.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
+.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
+.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
+.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
+.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
+.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
+:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
+@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
+@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
+</style>
+</head>
+<body>
+
+<a class="gh-skip" href="#main">Skip to content</a><div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b><span>DozAI</span></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><a class="gh-cta" href="#pilot">Join the pilot</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><a href="/#model">What we do</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="#pilot">Join the pilot</a></div></details></div></div>
+
+<main id="main">
+<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/dozai/">DozAI</a><span aria-hidden="true">/</span><span>Missions</span><span aria-hidden="true">/</span><span aria-current="page">Placement &amp; retention</span><span class="jump"><a href="#how">How it works</a><a href="#get">What you get</a><a href="#pilot">Pilot &amp; pricing</a><a href="#faq">Trust &amp; FAQ</a></span></nav>
+
+<!-- 1. HERO -->
+<div class="wrap hero">
+  <div>
+    <span class="badge"><i></i>DozAI Mission 01 · Pilot cohort open</span>
+    <h1>Know who’s still working, <em>and who needs support.</em></h1>
+    <p class="lead">An AI-powered follow-up and outcomes assistant for skilling and placement programmes. It checks in with every graduate on WhatsApp and voice, records what has changed, and tells your team who needs help next.</p>
+    <div class="values">
+      <div><i>01</i><span><b>Save time.</b> Far less repetitive calling, chasing and data entry for your placement team.</span></div>
+      <div><i>02</i><span><b>Report outcomes you can stand behind.</b> Who is employed, who isn’t, and the evidence behind each number.</span></div>
+      <div><i>03</i><span><b>Support graduates better.</b> Find the people who lost a job or need placement help, while there’s still time to act.</span></div>
+    </div>
+    <div class="hero-cta">
+      <a class="pill primary" href="#pilot">Join the pilot cohort →</a>
+      <a class="pill ghost" href="#get">See what your team gets</a>
+    </div>
+  </div>
+
+  <div class="todo" aria-label="Illustrative example: what needs your team after a follow-up round">
+    <div class="todo-head"><small>BATCH 7 · RETAIL &amp; LOGISTICS · 90-DAY FOLLOW-UP</small><b>What needs your team this week</b></div>
+    <div class="todo-stats">
+      <div><b>2,500</b><span>graduates</span></div>
+      <div><b>1,700</b><span>responded</span></div>
+      <div><b>1,250</b><span>in work</span></div>
+    </div>
+    <ul>
+      <li class="hot"><b>240</b><span>Looking for work<small>Send to the placement team</small></span></li>
+      <li><b>370</b><span>Changed employer<small>Update placement records</small></span></li>
+      <li><b>100</b><span>Unclear or conflicting answers<small>A person checks these</small></span></li>
+      <li><b>800</b><span>Not yet reached<small>Next attempt scheduled, counted as unknown</small></span></li>
+    </ul>
+    <p class="todo-cap">Illustrative figures for one cohort.</p>
+  </div>
+</div>
+
+<!-- 2. PLATFORM INTRO -->
+<section class="band alt" aria-labelledby="plat-h">
+  <div class="wrap plat">
+    <div class="sec-head">
+      <span class="eyebrow">One platform. Many missions.</span>
+      <h2 id="plat-h">Meet your placement verification assistant.</h2>
+      <p>DozAI is EdZola’s platform for getting nonprofit work done with AI. Each <b>mission</b> is a specific job, set up with your organisation’s knowledge, tools and ways of working.</p>
+      <p>Placement &amp; Retention is our first mission. Think of it as a verification assistant for your placement team: it follows up with graduates, collects their answers, checks them against your records, and brings anything that needs judgement back to your people.</p>
+      <p class="plat-note">Today we design each mission together with our pilot partners. Over time, organisations will be able to set up and run more missions of their own on DozAI.</p>
+    </div>
+    <div class="plat-diagram" aria-label="How DozAI and its missions fit together">
+      <div class="plat-top"><small>THE PLATFORM</small><b>DozAI</b>
+        <div class="chips"><span>Your knowledge</span><span>Your tools &amp; records</span><span>AI assistants</span><span>Human review</span><span>Audit trail</span></div></div>
+      <div class="plat-arrow" aria-hidden="true">↓ powers specific jobs ↓</div>
+      <div class="plat-missions">
+        <div class="mcard live"><small>Mission 01 · Pilot open</small><b>Placement &amp; Retention</b><p>Follows up with graduates and helps verify employment outcomes.</p></div>
+        <div class="mcard future"><small>Example future mission</small><b>Scholarship document checks</b><p>Checks applications for missing documents and prepares them for your reviewers.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PROBLEM -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2>Placement is the easy number. Retention is where it falls apart.</h2>
+      <p>You can tell a funder how many people you trained and placed. Ask what happened six months later and it becomes a scramble.</p>
+    </div>
+    <div class="pain">
+      <article><span class="n">01</span><h3>The report is due. The number is a guess.</h3><p>Retention gets estimated from whoever picked up the phone, not the whole cohort.</p></article>
+      <article><span class="n">02</span><h3>Half the phone numbers have changed.</h3><p>Graduates switch SIMs, cities and jobs. One missed call and they drop off the list.</p></article>
+      <article><span class="n">03</span><h3>Calls happen between batches.</h3><p>Trainers squeeze in follow-ups, ask different questions and log answers differently.</p></article>
+      <article><span class="n">04</span><h3>The people who need help go unseen.</h3><p>Graduates who lost their job are the least likely to pick up, and the most likely to need you.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HOW THIS MISSION WORKS -->
+<section class="band alt" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How this mission works</span>
+      <h2>Four steps. Your team stays in charge.</h2>
+    </div>
+    <div class="steps4">
+      <article><h3>Share your graduate data</h3><p>Upload a spreadsheet of your graduates. Together we agree when to follow up, what to ask, and what your funders need to see.</p></article>
+      <article><h3>DozAI follows up</h3><p>Graduates get WhatsApp messages and AI voice calls in their language, with retries when they don’t answer.</p></article>
+      <article><h3>Answers are recorded</h3><p>Job status, employer, role, salary band and any changes are captured the same way for every graduate.</p></article>
+      <article><h3>Your team reviews and acts</h3><p>You get an organised report, a short list of unclear cases to check, and a list of graduates who need help.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 5. WHAT YOUR TEAM GETS -->
+<section class="band" id="get">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What your team gets</span>
+      <h2>A report you can take to your monthly review, and to your funder.</h2>
+      <p>Every follow-up round ends with a cohort view, a complete record for each graduate, and a clear list of who needs your team.</p>
+    </div>
+
+    <div class="dash" role="figure" aria-label="Illustrative cohort follow-up report">
+      <div class="dash-head"><b>Batch 7 · Retail &amp; logistics · 90-day follow-up</b><span>ILLUSTRATIVE REPORT</span></div>
+      <div class="tiles">
+        <div class="tile"><b>2,500</b><span>Graduates in cohort</span></div>
+        <div class="tile"><b>2,500</b><span>Contacted</span></div>
+        <div class="tile"><b>1,700</b><span>Responded (68%)</span></div>
+        <div class="tile warn"><b>800</b><span>Not yet reached</span></div>
+        <div class="tile hot"><b>240</b><span>Need placement support</span></div>
+      </div>
+      <div class="dash-grid">
+        <div>
+          <h3>Where graduates who responded are now</h3>
+          <div class="stack" aria-hidden="true"><i class="s1" style="width:51.8%"></i><i class="s2" style="width:21.8%"></i><i class="s3" style="width:14.1%"></i><i class="s4" style="width:6.5%"></i><i class="s5" style="width:5.8%"></i></div>
+          <ul class="legend">
+            <li><i class="s1"></i>Same employer<b>880</b></li>
+            <li><i class="s2"></i>Changed employer<b>370</b></li>
+            <li><i class="s3"></i>Not employed, looking for work<b>240</b></li>
+            <li><i class="s4"></i>Education or training<b>110</b></li>
+            <li><i class="s5"></i>Needs verification<b>100</b></li>
+          </ul>
+          <p class="rate"><b>74%</b> of graduates who responded are in work (1,250 of 1,700).</p>
+          <p class="unknown">The 800 graduates not yet reached are shown as <b>unknown</b>. They are never counted as employed or unemployed.</p>
+        </div>
+        <div>
+          <h3>How sure are we about employment?</h3>
+          <div class="levels">
+            <div class="level"><b>Self-reported <span>1,250</span></b><p>What the graduate told us about their work.</p><div class="bar"><i style="width:100%"></i></div></div>
+            <div class="level"><b>Cross-checked <span>1,020</span></b><p>Compared with your placement records and earlier follow-ups.</p><div class="bar"><i style="width:82%"></i></div></div>
+            <div class="level v"><b>Independently verified <span>180</span></b><p>Further evidence obtained, such as a document the graduate shared.</p><div class="bar"><i style="width:14%"></i></div></div>
+          </div>
+          <p class="unknown" style="margin-top:14px">You choose which level each funder report uses. We never present a self-reported answer as verified.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="outputs">
+      <article><h3>A complete follow-up record</h3><p>For every graduate: their answers, the call recording and transcript or WhatsApp thread, every attempt made, and who reviewed it.</p></article>
+      <article><h3>An outcome summary</h3><p>Retention by follow-up round, centre, trade and employer, ready for your monthly review or funder report.</p></article>
+      <article class="h"><h3>A list of who needs help</h3><p>Graduates looking for work, struggling in a job, or asking for support, routed to your placement team.</p></article>
+    </div>
+
+    <div class="strip"><div><b>Want this for one of your cohorts?</b><span>We’re taking a small number of skilling and livelihoods organisations into the pilot.</span></div><a class="pill primary" href="#pilot">See pilot &amp; pricing →</a></div>
+  </div>
+</section>
+
+<!-- 6. A REALISTIC EXAMPLE -->
+<section class="band alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">A realistic example</span>
+      <h2>Follow two graduates through a follow-up round.</h2>
+    </div>
+    <div class="ex2">
+      <div class="case" aria-label="Illustrative example: a graduate who changed jobs">
+        <div class="case-head"><div class="av">184</div><div><b>Graduate 0184 · Retail associate</b><small>Placed: Bright Retail · Mar 2026</small></div></div>
+        <ol class="tl">
+          <li><div class="when"><span>Day 30 · WhatsApp</span><span class="tag">Same job</span></div><b>Still with the placed employer</b><div class="wa">Yes, still at Bright Retail. Morning shift.</div><span class="lvl">SELF-REPORTED</span></li>
+          <li class="flag"><div class="when"><span>Day 90 · Voice call</span><span class="tag flag">Needs a person</span></div><b>Moved jobs. Employer differs from your record.</b><div class="quote">“I moved to City Mart in June. Better salary, same work.”</div></li>
+          <li class="done"><div class="when"><span>Day 92 · Your reviewer</span><span class="tag">Changed job</span></div><b>Reviewer confirms and updates the record</b><span class="lvl x">CROSS-CHECKED</span></li>
+        </ol>
+      </div>
+      <div class="case" aria-label="Illustrative example: a graduate who needs placement support">
+        <div class="case-head"><div class="av">219</div><div><b>Graduate 0219 · Warehouse associate</b><small>Placed: Metro Logistics · Mar 2026</small></div></div>
+        <ol class="tl">
+          <li class="later"><div class="when"><span>Day 88 · WhatsApp</span><span class="tag grey">No reply</span></div><b>Two messages, no answer</b><span class="lvl">COUNTED AS UNKNOWN</span></li>
+          <li class="help"><div class="when"><span>Day 90 · Voice call</span><span class="tag flag">Needs support</span></div><b>Not working since August. Looking for work nearby.</b><div class="quote">“The contract ended. I want warehouse work again.”</div></li>
+          <li class="done"><div class="when"><span>Day 91 · Placement team</span><span class="tag">Support offered</span></div><b>Placement officer calls back with two openings</b></li>
+        </ol>
+      </div>
+    </div>
+    <p class="ex-cap">DozAI does the calling and the paperwork. People decide anything that changes a record or a reported outcome. Names, employers and figures are illustrative.</p>
+  </div>
+</section>
+
+<!-- 7. PILOT WITH US -->
+<section class="band" id="pilot">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Pilot with us</span>
+      <h2>Bring us one cohort. We’ll set up the rest.</h2>
+      <p>A six-week pilot on a real cohort of your graduates, designed with your team.</p>
+    </div>
+    <div class="pfacts">
+      <div><small>Who it’s for</small><b>Skilling, livelihoods and placement nonprofits</b><p>With employment or self-employment as a programme outcome.</p></div>
+      <div><small>What you need</small><b>A graduate list and one coordinator</b><p>Your follow-up requirements, and someone from the programme team for a few hours a week.</p></div>
+      <div><small>What we do</small><b>Set up and test everything</b><p>Questions, outcome definitions, WhatsApp and voice, and a test on your past records.</p></div>
+      <div><small>What you get</small><b>Records, summaries and action lists</b><p>Follow-up records, an outcome summary, a list of cases to check, and a review of results.</p></div>
+      <div><small>What happens next</small><b>You decide whether to expand</b><p>We review the pilot together. Continue, change, or stop.</p></div>
+    </div>
+
+    <div class="price" aria-label="Indicative pilot pricing">
+      <div class="pcard"><small>One-time setup</small><span class="amt">≈ ₹50,000</span><span class="per">per organisation</span>
+        <ul><li>Follow-up goals and success measures</li><li>Which graduates to follow up, and when</li><li>Questionnaire and outcome definitions</li><li>WhatsApp and voice set-up</li><li>Testing on your past records</li></ul></div>
+      <div class="pcard"><small>Follow-up</small><span class="amt">≈ ₹20</span><span class="per">per graduate, per follow-up round</span>
+        <ul><li>WhatsApp messages and AI voice calls</li><li>Retry attempts within the limit we agree</li><li>A complete record for each graduate</li></ul></div>
+      <div class="pcard eg"><small>Example: 2,500 graduates</small>
+        <table><tbody>
+          <tr><td>One-time setup</td><td>₹50,000</td></tr>
+          <tr><td>One follow-up round × 2,500 × ₹20</td><td>₹50,000</td></tr>
+          <tr><td>Indicative pilot cost</td><td>₹1,00,000</td></tr>
+        </tbody></table></div>
+    </div>
+    <p class="price-note">Indicative figures, not a quotation. Final pricing depends on the follow-up scope, channels and number of attempts we agree. Each additional follow-up round (for example at 180 days) is charged per graduate again.</p>
+
+    <div class="weeks4">
+      <div><small>Week 1</small><b>Agree goals and success measures</b><p>What to ask, when, and what counts as a good outcome for you.</p></div>
+      <div><small>Week 2</small><b>Test on past follow-up records</b><p>We check the assistant against answers your team already has.</p></div>
+      <div><small>Weeks 3–4</small><b>Follow up with your cohort</b><p>Your team reviews every outcome before it’s final.</p></div>
+      <div><small>Weeks 5–6</small><b>Automate the routine, review the rest</b><p>Routine follow-ups run on their own, with a person overseeing. Then we review results together.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. TRUST & FAQ -->
+<section class="band alt" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Trust &amp; data protection</span>
+      <h2>Your graduates’ data, handled with care.</h2>
+    </div>
+    <div class="trust">
+      <article><h3>Consent and AI disclosure</h3><p>Graduates are told the message or call comes from your organisation and uses an AI assistant. They can ask for a person, or opt out at any time.</p></article>
+      <article><h3>Who sees responses</h3><p>Only the people your organisation names, and the EdZola team running your pilot.</p></article>
+      <article><h3>Recordings and transcripts</h3><p>Kept so your team can check any answer. Deleted on request, including once the mission is complete.</p></article>
+      <article><h3>Where your data lives</h3><p>Within your organisation’s own tenant, never shared with another organisation’s mission. We design this in line with India’s DPDP Act.</p></article>
+      <article><h3>When a person decides</h3><p>Conflicting answers, anything involving distress or safety, and any change to a reported outcome.</p></article>
+      <article><h3>Deletion on request</h3><p>Ask us to delete your graduates’ data, messages and recordings after the pilot, and we will.</p></article>
+    </div>
+
+    <div class="now">
+      <div class="t"><b>In the pilot today</b><ul><li>Graduate list from a spreadsheet</li><li>WhatsApp messages and AI voice calls</li><li>Your team reviews unclear cases</li><li>Outcome summary and follow-up records you can export</li></ul></div>
+      <div class="l"><b>Planned for later</b><ul><li>Two-way sync with your MIS or CRM</li><li>Dashboards your team can configure</li><li>Setting up new missions yourself</li></ul></div>
+    </div>
+
+    <div class="faq">
+      <details><summary>Does this replace our placement team?</summary><p>No. It takes the repetitive calling off their plate so they can spend time on the graduates who need help. Your team still owns every decision that goes into a report.</p></details>
+      <details><summary>Which languages does it work in?</summary><p>Voice calls run on Zolabs, EdZola’s multilingual voice platform for conversations across Indian languages. We confirm the languages your graduates need in week one.</p></details>
+      <details><summary>What if a graduate doesn’t pick up?</summary><p>We retry within the limits you set, switching between WhatsApp and voice. Anyone we can’t reach is reported as unknown, with every attempt logged, not as employed or unemployed.</p></details>
+      <details><summary>Is this just an AI calling bot?</summary><p>No. Calling is one part. The assistant keeps a consistent record for each graduate, cross-checks answers with your records, separates self-reported from verified outcomes, and flags who needs help. Your team reviews what matters.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 9. ABOUT DOZAI -->
+<section class="band">
+  <div class="wrap about">
+    <div class="sec-head" style="margin-bottom:0">
+      <span class="eyebrow">About DozAI</span>
+      <h2>The platform for getting nonprofit work done.</h2>
+      <p>Placement &amp; Retention is the first of many missions. Each one is a specific job you give DozAI to complete, with your rules, your records and your people deciding what matters.</p>
+      <p style="margin-top:22px"><a class="pill ghost" href="/dozai/">Learn more about DozAI →</a></p>
+    </div>
+    <dl>
+      <div><dt>DozAI</dt><dd>The platform: knowledge, tools, AI assistants and human review in one place.</dd></div>
+      <div><dt>Missions</dt><dd>Specific jobs, like following up with graduates or checking applications for missing documents.</dd></div>
+      <div><dt>Mission 01: Placement &amp; Retention</dt><dd>An AI verification assistant that follows up with graduates, clarifies employment outcomes and finds who needs support.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 10. CTA -->
+<section class="cta" id="apply">
+  <div class="wrap cta-box">
+    <div>
+      <span class="eyebrow">Pilot cohort · Mission 01</span>
+      <h2 style="margin-top:14px">Find out who’s still working, and who needs you.</h2>
+      <p>Tell us about your programme, roughly how many graduates you’d like to follow up, and when your next funder report is due. We’ll come back within a week.</p>
+    </div>
+    <div class="cta-side">
+      <a class="pill primary" href="mailto:reachus@edzola.com?subject=DozAI%20pilot%20cohort%3A%20placement%20and%20retention%20%5BB%5D&amp;body=Organisation%3A%0AProgramme%20%2F%20trades%3A%0AApprox.%20graduates%20in%20the%20cohort%3A%0AWhen%20they%20completed%3A%0AHow%20you%20follow%20up%20today%3A%0ANext%20funder%20report%20due%3A%0A%0APlease%20don%27t%20include%20any%20graduate%20names%20or%20phone%20numbers%20in%20this%20email.">Apply for the pilot cohort →</a>
+      <small>Please don’t send graduate names or phone numbers by email. We’ll set up a secure way to share data once we’ve agreed the pilot.</small>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<footer><div class="wrap">
+  <span>EdZola Technologies · Coimbatore, India · Systems built for the world's hardest work.<br><a href="/">Home</a> · <a href="/dozai/">DozAI</a> · <a href="/livelihoods/">Livelihoods</a> · <a href="/zolabs/">Zolabs</a> · <a href="/zolashield/">ZolaShield</a> · <a href="mailto:reachus@edzola.com">reachus@edzola.com</a></span>
+  <span>Screens, names and figures on this page are illustrative examples.<br>Last updated 2026-10-14</span>
+</div></footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a554d343571244ed9f5a68d182583373"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
