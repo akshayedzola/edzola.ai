@@ -312,6 +312,7 @@ html{scroll-padding-top:76px}
 @media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
 @media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
 </style>
+<link rel="stylesheet" href="/assets/crm-webform.css?v=20261015h">
 </head>
 <body>
 
@@ -381,12 +382,12 @@ html{scroll-padding-top:76px}
       <p>The mission works through your cohort at 30, 90 and 180 days (or whatever schedule your funder uses), and keeps going until every case reaches a clear state.</p>
     </div>
     <div class="flow">
-      <div><b>Load the cohort</b><p>From your MIS, CRM or a spreadsheet. Consent and contact rules travel with each record.</p></div>
+      <div><b>Load the cohort</b><p>From your programme tracking system or a spreadsheet. Consent and contact rules travel with each record.</p></div>
       <div><b>Reach out</b><p>WhatsApp first, then a voice call in the graduate’s language. Retries within the contact windows you allow.</p></div>
       <div><b>Ask what matters</b><p>Your questions, with follow-ups that branch: employer, role, start date, income band, reasons for leaving.</p></div>
       <div><b>Check against records</b><p>Spots when answers contradict the placement on file, or when something sounds off.</p></div>
       <div><b>Propose an outcome</b><p>Classifies each case and attaches the evidence. Clear cases are ready to approve.</p></div>
-      <div class="human"><b>Your team decides</b><p>Reviewers see only conflicts, sensitive answers and unclear cases. Approved results write back to your system.</p></div>
+      <div class="human"><b>Your team decides</b><p>Reviewers see only conflicts, sensitive answers and unclear cases. Approved results are saved back to your system.</p></div>
     </div>
     <div class="flow-legend"><span>DozAI does the work</span><span class="h">A person makes the call</span></div>
   </div>
@@ -446,7 +447,7 @@ html{scroll-padding-top:76px}
         <div class="actions"><span>Approve</span><span>Edit</span><span>Ask for evidence</span><span>Reject</span></div>
       </div>
     </div>
-    <p class="review-cap">Every override needs a reason. Those reasons are how DozAI learns your organisation’s judgement, and they become test cases before any change goes live. Names and details here are illustrative.</p>
+    <p class="review-cap">Every override needs a reason. Those reasons are how DozAI learns your organisation’s judgement, and they become test cases before any change launches. Names and details here are illustrative.</p>
   </div>
 </section>
 
@@ -477,8 +478,8 @@ html{scroll-padding-top:76px}
     <div class="ladder" aria-label="How DozAI earns autonomy">
       <div><small>Stage 1</small><b>Shadow</b><p>Runs on past cases. We compare its answers with what your team decided.</p></div>
       <div><small>Stage 2</small><b>Draft</b><p>Works live, but a person approves every classification and update.</p></div>
-      <div><small>Stage 3</small><b>Bounded action</b><p>Sends reminders and clears simple cases. Exceptions and a random sample still go to review.</p></div>
-      <div><small>Stage 4</small><b>Managed autonomy</b><p>Handles defined case types end to end. Consequential calls stay with people.</p></div>
+      <div><small>Stage 3</small><b>Limited action</b><p>Sends reminders and clears simple cases. Unusual cases and a random sample still go to review.</p></div>
+      <div><small>Stage 4</small><b>Managed autonomy</b><p>Handles defined case types end to end. Calls with real consequences stay with people.</p></div>
     </div>
     <p class="ladder-cap">DozAI starts as an apprentice. It earns autonomy task by task, only after it passes your review.</p>
   </div>
@@ -500,7 +501,7 @@ html{scroll-padding-top:76px}
         <div><b>You have a named owner</b><span>Someone who can review cases a few hours a week</span></div>
       </div>
       <div class="cbox dark"><h3>What you get</h3><ul>
-        <li>The mission configured on your outcome definitions and your funders’ reporting requirements</li>
+        <li>The mission set up around your outcome definitions and your funders’ reporting requirements</li>
         <li>A supervised follow-up of a real cohort, on WhatsApp and voice</li>
         <li>Case packets with evidence for every graduate reached</li>
         <li>A retention report you can take to your board and funders</li>
@@ -516,7 +517,7 @@ html{scroll-padding-top:76px}
       <div class="week"><small>Week 1</small><b>Mission contract</b><p>Agree definitions, questions, contact rules and what DozAI must never do.</p></div>
       <div class="week"><small>Week 2</small><b>Shadow</b><p>Test on past cases your team has already followed up. Fix the gaps.</p></div>
       <div class="week"><small>Weeks 3–4</small><b>Supervised live run</b><p>DozAI contacts your cohort. Your reviewer approves every outcome.</p></div>
-      <div class="week"><small>Weeks 5–6</small><b>Bounded autonomy</b><p>Clear cases flow through. We compare against your baseline and report.</p></div>
+      <div class="week"><small>Weeks 5–6</small><b>Limited autonomy</b><p>Clear cases flow through. We compare against your baseline and report.</p></div>
     </div>
   </div>
 </section>
@@ -527,15 +528,15 @@ html{scroll-padding-top:76px}
     <div class="sec-head">
       <span class="eyebrow">What DozAI is</span>
       <h2>One mission. Built on a platform for many.</h2>
-      <p>DozAI isn’t a placement-tracking app. It’s a platform for running <b>missions</b>: outcome-focused workflows where AI does the repeatable work and people keep the decisions that carry consequence.</p>
+      <p>DozAI isn’t a placement-tracking app. It’s a platform for running <b>missions</b>: pieces of work with a clear end result, where AI does the repeatable work and people keep the decisions that carry consequence.</p>
       <p>Placement and retention is the first. Every mission after it reuses the same foundation for cases, evidence, follow-up, review and audit, so your second mission doesn’t need a second system.</p>
       <p style="margin-top:22px"><a class="pill ghost" href="/dozai/">More about DozAI →</a></p>
     </div>
     <div class="stack" aria-label="How DozAI is structured">
       <div class="layer p"><b>DozAI platform</b><span>Cases, evidence, scheduling, review and audit, shared across every mission</span></div>
-      <div class="layer"><b>AI employee</b><span>A reusable role, like a verification associate, that collects and reconciles evidence</span></div>
+      <div class="layer"><b>AI employee</b><span>A reusable role, like a verification associate, that collects and cross-checks evidence</span></div>
       <div class="layer m"><b>Mission</b><span>Your questions, contact rules, outcome rubric, messages and voice scripts</span></div>
-      <div class="layer"><b>Run</b><span>One programme cohort, with the mission version frozen so results are comparable</span></div>
+      <div class="layer"><b>Run</b><span>One programme cohort, with the mission’s settings fixed so results are comparable</span></div>
       <div class="layer"><b>Case</b><span>One graduate’s outcome, with every piece of evidence behind it</span></div>
     </div>
   </div>
@@ -563,7 +564,7 @@ html{scroll-padding-top:76px}
       <article><span class="fam">Follow-up &amp; verification</span><h3>Referral closure and benefit receipt</h3><p>Follows a health, education or welfare referral, or a distribution, until the service was received, refused or needs attention.</p><span class="keep">Closing a case when wellbeing is uncertain</span></article>
       <article><span class="fam">Evidence completeness</span><h3>Missing documents and applications</h3><p>Checks scholarship or programme applications for what’s missing, expired or inconsistent, and chases it. Before anyone scores merit.</p><span class="keep">Waivers and final eligibility</span></article>
       <article><span class="fam">Evidence completeness</span><h3>Grantee milestone evidence</h3><p>Reads the grant agreement, builds the evidence checklist each reporting cycle, chases gaps and links every claim to a source.</p><span class="keep">Accepting weak evidence, releasing funds</span></article>
-      <article><span class="fam">Data quality</span><h3>MIS exception clearing</h3><p>Runs validation rules, queues duplicates and contradictions, fixes the obvious ones and proposes corrections for the rest.</p><span class="keep">Merging identities, changing outcomes</span></article>
+      <article><span class="fam">Data quality</span><h3>Clearing data errors</h3><p>Runs data checks, lists duplicates and contradictions, fixes the obvious ones and proposes corrections for the rest.</p><span class="keep">Merging people’s records, changing outcomes</span></article>
       <article><span class="fam">Data quality</span><h3>Survey back-checks</h3><p>Spots impossible durations and identical answer patterns, picks a transparent sample for back-check calls and reports discrepancies.</p><span class="keep">Any finding about an enumerator</span></article>
     </div>
     <div class="wont"><b>What we won’t automate</b><p>Award decisions for grants, scholarships or benefits. Safeguarding triage. Hiring and rejection. The volume is tempting, but the consequence for a person is too high for an AI to own.</p></div>
@@ -576,10 +577,10 @@ html{scroll-padding-top:76px}
     <div class="sec-head"><span class="eyebrow">Questions we’re asked</span><h2>Before you apply</h2></div>
     <div class="faq">
       <details><summary>Does this replace our placement team?</summary><p>No. It takes the repetitive calling off their plate so they can spend time on the graduates who need help: the ones who lost a job, or are struggling in one. Your team still owns every decision that goes into a report.</p></details>
-      <details><summary>What about consent and our graduates’ data?</summary><p>We agree the consent basis, what data the mission can see, and how long recordings are kept before anything runs. Graduates can opt out at any point and that’s honoured immediately. Your data stays within your organisation’s own tenant, and a lesson learned from your cases never moves to another organisation’s mission. Once the mission is complete, we can delete your data on request, including every call recording, transcript and message. We design this in line with India’s DPDP Act.</p></details>
+      <details><summary>What about consent and our graduates’ data?</summary><p>We agree the consent basis, what data the mission can see, and how long recordings are kept before anything runs. Graduates can opt out at any point and that’s honoured immediately. Your data stays within your organisation’s own secure space, and a lesson learned from your cases never moves to another organisation’s mission. Once the mission is complete, we can delete your data on request, including every call recording, transcript and message. We design this in line with India’s DPDP Act.</p></details>
       <details><summary>Which languages does it work in?</summary><p>Voice calls run on Zolabs, EdZola’s multilingual voice platform, built for conversations across Indian languages. We’ll confirm the languages your cohort needs during the mission contract week.</p></details>
       <details><summary>What if a graduate doesn’t pick up?</summary><p>DozAI retries within the windows you set, switches between WhatsApp and voice, and stops at the limit you agree. “Unreachable” is a recorded outcome with every attempt logged, not a blank row.</p></details>
-      <details><summary>Which systems does it work with?</summary><p>For the pilot, a spreadsheet export is enough. If you run on Zoho Creator, a CRM or another MIS, we can read from and write back to it directly.</p></details>
+      <details><summary>Which systems does it work with?</summary><p>For the pilot, a spreadsheet export is enough. If you run on Zoho Creator or another system, we can read from and update it directly.</p></details>
       <details><summary>What does the pilot cost?</summary><p>We’ll talk about it on our first call. The cohort is small on purpose and we want the right partners in it, not the ones who can pay most.</p></details>
     </div>
   </div>
@@ -608,5 +609,6 @@ html{scroll-padding-top:76px}
 </div></footer>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a554d343571244ed9f5a68d182583373"}'></script><!-- End Cloudflare Web Analytics -->
+<script src="/assets/crm-webform.js?v=20261015h"></script>
 </body>
 </html>

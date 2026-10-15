@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
 <title>FundZola — AI-Powered Fundraising Layer for Zoho Books</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -868,6 +869,34 @@ footer {
 .footer-links a { font-size: 12.5px; color: var(--ink-3); text-decoration: none; }
 .footer-links a:hover { color: var(--ink); }
 
+@media (max-width: 760px) {
+  body { overflow-x: hidden; }
+  nav { height: 58px; padding: 0 16px; }
+  .nav-links { display: none; }
+  .nav-cta { padding: 8px 14px; text-decoration: none; }
+  .hero { grid-template-columns: minmax(0,1fr); gap: 36px; padding: 56px 20px; }
+  .hero-title { font-size: clamp(42px,13vw,56px); }
+  .hero-desc { max-width: none; }
+  .hero-actions,.cta-actions { align-items: stretch; flex-direction: column; }
+  .hero-actions a,.cta-actions a { width: 100%; text-align: center; }
+  .hero-mockup,.screen-pair>* { min-width: 0; }
+  section,.quote-section,.cta-section { padding: 58px 20px; }
+  .books-banner { padding: 44px 20px; }
+  .books-banner-inner { align-items: flex-start; flex-direction: column; gap: 22px; }
+  .books-arrow { transform: rotate(90deg); }
+  .module-grid,.compliance-grid { grid-template-columns: minmax(0,1fr); }
+  .screen-pair,.screen-pair.reverse { grid-template-columns: minmax(0,1fr); gap: 28px; direction: ltr; }
+  .screen-showcase { gap: 52px; }
+  .d-stats { grid-template-columns: minmax(0,1fr); }
+  .d-table-wrap,.d-mini-table { overflow-x: auto; }
+  .how-steps { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .how-steps::before { display: none; }
+  .how-step { text-align: left; padding: 0; }
+  .how-step-num { margin: 0 0 12px; }
+  footer { align-items: flex-start; flex-direction: column; gap: 22px; padding: 30px 20px; }
+  .footer-links { flex-wrap: wrap; gap: 12px 18px; }
+}
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -1034,6 +1063,8 @@ footer {
   }
 }
 </style>
+<link rel="stylesheet" href="/assets/crm-webform.css?v=20261015h">
+<script defer src="/assets/crm-webform.js?v=20261015h"></script>
 </head>
 <body>
 
@@ -1046,7 +1077,7 @@ footer {
     <li><a href="#screens">See it in Action</a></li>
     <li><a href="#compliance">Compliance</a></li>
   </ul>
-  <button class="nav-cta">Request a Demo →</button>
+  <a class="nav-cta" href="#contact-form">Request a Demo →</a>
 </nav>
 
 
@@ -1056,23 +1087,23 @@ footer {
   <div>
     <div class="hero-eyebrow">✦ Built on Zoho Books</div>
     <h1 class="hero-title">Your NGO's finance team, <em>reimagined.</em></h1>
-    <p class="hero-desc">FundZola is an AI layer that sits on top of your Zoho Books account — automating donor receipts, expense tagging, fund utilisation reporting, and 80G compliance. Your finance team keeps working in the tools they know. FundZola handles the heavy lifting.</p>
+    <p class="hero-desc">FundZola adds AI to your Zoho Books account, automating donor receipts, expense tagging, fund utilisation reporting, and 80G compliance. Your finance team keeps working in the tools they know. FundZola handles the heavy lifting.</p>
     <div class="hero-actions">
-      <button class="btn-primary">Request a Demo →</button>
-      <button class="btn-ghost">See how it works</button>
+      <a class="btn-primary" href="#contact-form">Request a Demo →</a>
+      <a class="btn-ghost" href="#how">See how it works</a>
     </div>
     <div class="hero-stats">
       <div>
-        <div class="hero-stat-val">80%</div>
-        <div class="hero-stat-label">reduction in manual data entry</div>
+        <div class="hero-stat-val">Fewer</div>
+        <div class="hero-stat-label">manual entries and repeated reconciliations</div>
       </div>
       <div>
-        <div class="hero-stat-val">< 2 min</div>
-        <div class="hero-stat-label">to generate bulk 80G receipts</div>
+        <div class="hero-stat-val">Minutes</div>
+        <div class="hero-stat-label">to prepare a reviewed batch of 80G receipts</div>
       </div>
       <div>
-        <div class="hero-stat-val">100%</div>
-        <div class="hero-stat-label">audit trail, always</div>
+        <div class="hero-stat-val">Traceable</div>
+        <div class="hero-stat-label">changes, approvals and source records</div>
       </div>
     </div>
   </div>
@@ -1083,7 +1114,7 @@ footer {
       <div class="dot dot-r"></div>
       <div class="dot dot-y"></div>
       <div class="dot dot-g"></div>
-      <div class="mockup-url">app.fundzola.in / dashboard</div>
+      <div class="mockup-url">Illustrative sample data · app.fundzola.in / dashboard</div>
     </div>
     <div class="mockup-body">
       <div class="d-stats">
@@ -1116,7 +1147,7 @@ footer {
           <div class="d-row-amt">₹50,000</div>
         </div>
         <div class="d-row">
-          <div class="d-row-name">Infosys Foundation</div>
+          <div class="d-row-name">Example CSR Foundation</div>
           <div class="d-row-org">Direct · FCRA</div>
           <div class="d-badge d-badge-yellow" style="font-size:9px;">FCRA</div>
           <div class="d-row-amt">₹3,00,000</div>
@@ -1155,8 +1186,8 @@ footer {
     </div>
     <div class="books-arrow">⟶</div>
     <div class="books-text">
-      <h3>FundZola doesn't replace Zoho Books. It makes it actually usable for nonprofits.</h3>
-      <p>Zoho Books is a powerful financial ledger — but it wasn't built for Indian NGO compliance workflows. FundZola connects to your existing Books account and adds the layer your finance team has been missing: AI-assisted data entry, 80G receipt generation, FCRA tagging, fund utilisation reporting, and a conversational interface to your financial data.</p>
+      <h3>FundZola doesn't replace Zoho Books. It adds workflows nonprofit finance teams often need.</h3>
+      <p>FundZola connects to your existing Books account and adds support for AI-assisted data entry, 80G receipt generation, FCRA tagging, fund utilisation reporting, and questions about your financial data in plain English.</p>
       <div class="books-features">
         <span class="books-chip">OAuth 2.0 Integration</span>
         <span class="books-chip">Contacts sync</span>
@@ -1176,19 +1207,19 @@ footer {
 <section id="how">
   <div class="section-inner">
     <div class="eyebrow">How it works</div>
-    <h2 class="section-title">Setup in a day. <em>Results from day one.</em></h2>
-    <p class="section-desc">FundZola connects to your Zoho Books account via secure OAuth. Your existing data stays exactly where it is — FundZola adds intelligence on top.</p>
+    <h2 class="section-title">Connect without replacing <em>your books.</em></h2>
+    <p class="section-desc">FundZola connects securely to your Zoho Books account. Your existing data stays exactly where it is, and FundZola adds AI on top.</p>
 
     <div class="how-steps">
       <div class="how-step">
         <div class="how-step-num">01</div>
         <div class="how-step-title">Connect Zoho Books</div>
-        <div class="how-step-desc">One-click OAuth connection to your existing Books account. No migration required.</div>
+        <div class="how-step-desc">One-click secure connection to your existing Books account. No need to move your data.</div>
       </div>
       <div class="how-step active">
         <div class="how-step-num">02</div>
         <div class="how-step-title">Configure Grant Matrix</div>
-        <div class="how-step-desc">Map your active grants to programme heads and donor allocations. FundZola uses this as its AI brain.</div>
+        <div class="how-step-desc">Map your active grants to programme heads and donor allocations. FundZola's AI works from this.</div>
       </div>
       <div class="how-step">
         <div class="how-step-num">03</div>
@@ -1209,8 +1240,8 @@ footer {
 <section id="modules">
   <div class="section-inner">
     <div class="eyebrow">Capabilities</div>
-    <h2 class="section-title">Six modules. <em>Every finance workflow covered.</em></h2>
-    <p class="section-desc">FundZola covers the full lifecycle of nonprofit finance — from a donor paying on Ketto to a fund utilisation report going to the board.</p>
+    <h2 class="section-title">Six focused modules. <em>Core finance workflows connected.</em></h2>
+    <p class="section-desc">FundZola covers the full lifecycle of nonprofit finance, from a donor paying on Ketto to a fund utilisation report going to the board.</p>
 
     <div class="module-grid">
 
@@ -1219,7 +1250,7 @@ footer {
           <div class="module-icon-wrap icon-coral">⬆️</div>
           <div class="module-tag">M1 · DonorIngest</div>
           <div class="module-name">Bulk Donation Import</div>
-          <div class="module-desc">Upload donation CSVs from any platform — Ketto, Milaap, Razorpay, internal sheets. AI normalises, deduplicates, validates PAN, and pushes clean records to Zoho Books as Customer Payments.</div>
+          <div class="module-desc">Upload donation CSVs from any platform: Ketto, Milaap, Razorpay, internal sheets. AI tidies the data, runs duplicate checks, validates PAN, and pushes clean records to Zoho Books as Customer Payments.</div>
         </div>
         <div class="module-card-bottom">
           <ul class="module-points">
@@ -1241,7 +1272,7 @@ footer {
         <div class="module-card-bottom">
           <ul class="module-points">
             <li>Auto-serialised receipt numbers (no duplicates, ever)</li>
-            <li>Donor name pulled from PAN — no legal risk</li>
+            <li>Donor name pulled from PAN, so no legal risk</li>
             <li>Bulk email delivery with delivery status</li>
             <li>Amendment workflow for receipt corrections (RAN)</li>
           </ul>
@@ -1253,14 +1284,14 @@ footer {
           <div class="module-icon-wrap icon-yellow">🏷️</div>
           <div class="module-tag">M3 · ExpenseMapper</div>
           <div class="module-name">AI Expense Tagging</div>
-          <div class="module-desc">Import expense bills and let AI suggest which grant and programme head each expense belongs to — based on your Grant Allocation Matrix. You confirm, it pushes to Zoho Books.</div>
+          <div class="module-desc">Import expense bills and let AI suggest which grant and programme head each expense belongs to, based on your Grant Allocation Matrix. You confirm, it pushes to Zoho Books.</div>
         </div>
         <div class="module-card-bottom">
           <ul class="module-points">
             <li>AI maps each expense to the right grant automatically</li>
             <li>Flags admin overhead breaches per funder rules</li>
             <li>Cost centre, function, and reporting tag auto-fill</li>
-            <li>Human approval required before every Books write</li>
+            <li>A person approves before anything is written to Books</li>
           </ul>
         </div>
       </div>
@@ -1274,10 +1305,10 @@ footer {
         </div>
         <div class="module-card-bottom">
           <ul class="module-points">
-            <li>Natural language queries on all financial data</li>
+            <li>Ask about any financial data in plain English</li>
             <li>Alerts: grant ceilings approaching, FCRA limits, etc.</li>
-            <li>Actionable outputs — not just answers</li>
-            <li>No training needed — works like a chat</li>
+            <li>Clear next steps, not just answers</li>
+            <li>No training needed: works like a chat</li>
           </ul>
         </div>
       </div>
@@ -1308,7 +1339,7 @@ footer {
         </div>
         <div class="module-card-bottom">
           <ul class="module-points">
-            <li>Razorpay and BillDesk settlement file parsing</li>
+            <li>Reads Razorpay and BillDesk settlement files</li>
             <li>Auto-calculates gateway commission and GST</li>
             <li>Posts net settlement amounts back to Zoho Books</li>
             <li>Full reconciliation audit trail maintained</li>
@@ -1326,7 +1357,7 @@ footer {
   <div class="section-inner">
     <div class="eyebrow">See it in Action</div>
     <h2 class="section-title">Four screens your finance team <em>will love.</em></h2>
-    <p class="section-desc">These aren't wireframes — this is what your team sees on day one.</p>
+    <p class="section-desc">These aren't mock-ups. This is what your team sees on day one.</p>
 
     <div class="screen-showcase">
 
@@ -1334,8 +1365,8 @@ footer {
       <div class="screen-pair">
         <div class="screen-info">
           <div class="screen-num">01 / DonorIngest</div>
-          <div class="screen-name">Upload, validate, push to Books — in three steps.</div>
-          <div class="screen-desc">Drop in any donation file. FundZola's AI pipeline normalises the data, identifies new vs existing donors, flags data quality issues, and waits for your review before touching Zoho Books.</div>
+          <div class="screen-name">Upload, validate, push to Books, in three steps.</div>
+          <div class="screen-desc">Drop in any donation file. FundZola's AI tidies the data, identifies new vs existing donors, flags data quality issues, and waits for your review before touching Zoho Books.</div>
           <ul class="screen-points">
             <li>
               <div class="screen-point-icon pi-coral">📁</div>
@@ -1343,11 +1374,11 @@ footer {
             </li>
             <li>
               <div class="screen-point-icon pi-teal">🤖</div>
-              AI normalises donor names, detects fund type (FCRA/Local), validates PANs
+              AI tidies donor names, detects fund type (FCRA/Local), validates PANs
             </li>
             <li>
               <div class="screen-point-icon pi-green">✓</div>
-              You review, confirm, and push — never auto-written to Books
+              You review, confirm, and push. Nothing goes into Books on its own
             </li>
           </ul>
         </div>
@@ -1428,15 +1459,15 @@ footer {
         <div class="screen-info">
           <div class="screen-num">02 / ReceiptEngine</div>
           <div class="screen-name">Bulk 80G receipts. Two minutes, not two days.</div>
-          <div class="screen-desc">Select a donation batch, hit generate. FundZola creates serialised, legally compliant 80G receipts for every donor — using their exact PAN name — and emails them in one go.</div>
+          <div class="screen-desc">Select a donation batch, hit generate. FundZola creates serialised, legally compliant 80G receipts for every donor, using their exact PAN name, and emails them in one go.</div>
           <ul class="screen-points">
             <li>
               <div class="screen-point-icon pi-coral">🧾</div>
-              Receipt serial numbers auto-assigned — no gaps, no duplicates
+              Receipt serial numbers auto-assigned: no gaps, no duplicates
             </li>
             <li>
               <div class="screen-point-icon pi-yellow">⚖️</div>
-              Donor name pulled from PAN record — legally required, handled automatically
+              Donor name pulled from PAN record: legally required, handled automatically
             </li>
             <li>
               <div class="screen-point-icon pi-teal">📧</div>
@@ -1496,7 +1527,7 @@ footer {
           <ul class="screen-points">
             <li>
               <div class="screen-point-icon pi-teal">🤖</div>
-              AI trained on your grant matrix — not a generic model
+              AI trained on your grant matrix, not a generic model
             </li>
             <li>
               <div class="screen-point-icon pi-yellow">⚠️</div>
@@ -1504,7 +1535,7 @@ footer {
             </li>
             <li>
               <div class="screen-point-icon pi-coral">👁</div>
-              Every suggestion requires human confirmation — no surprise entries in Books
+              A person confirms every suggestion, so no surprise entries in Books
             </li>
           </ul>
         </div>
@@ -1569,15 +1600,15 @@ footer {
         <div class="screen-info">
           <div class="screen-num">04 / Finance Copilot</div>
           <div class="screen-name">Ask your financial data anything. In plain English.</div>
-          <div class="screen-desc">No pivot tables. No custom reports. Just type your question and Copilot pulls the answer from your Zoho Books data — fund utilisation, grant balances, budget vs actuals, everything.</div>
+          <div class="screen-desc">No pivot tables. No custom reports. Just type your question and Copilot pulls the answer from your Zoho Books data: fund utilisation, grant balances, budget vs actuals, everything.</div>
           <ul class="screen-points">
             <li>
               <div class="screen-point-icon pi-coral">💬</div>
-              Natural language — no training, no learning curve
+              Plain English: no training, no learning curve
             </li>
             <li>
               <div class="screen-point-icon pi-teal">📊</div>
-              Pulls live data from Zoho Books — always up to date
+              Pulls live data from Zoho Books, always up to date
             </li>
             <li>
               <div class="screen-point-icon pi-green">🔔</div>
@@ -1603,9 +1634,9 @@ footer {
               </div>
               <div class="chat-body">
                 <div class="chat-bubble chat-user">How much have we spent from the APF Education Grant this quarter?</div>
-                <div class="chat-bubble chat-ai">From the APF Education Grant (Apr–Jun 2025), you've spent <span class="chat-highlight">₹8.4L of ₹14L approved</span> — that's 60% utilised. Teacher Training is the largest head at ₹4.1L. Admin overhead stands at 11%, within APF's 15% ceiling. You have approximately ₹5.6L remaining with 6 weeks left in the quarter.</div>
+                <div class="chat-bubble chat-ai">From the APF Education Grant (Apr–Jun 2025), you've spent <span class="chat-highlight">₹8.4L of ₹14L approved</span>. That's 60% utilised. Teacher Training is the largest head at ₹4.1L. Admin overhead stands at 11%, within APF's 15% ceiling. You have approximately ₹5.6L remaining with 6 weeks left in the quarter.</div>
                 <div class="chat-bubble chat-user">Which grants are close to their ceiling?</div>
-                <div class="chat-bubble chat-ai">Two grants need attention: <span class="chat-highlight">HDFC CSR Grant</span> is at 89% utilised (₹2.2L remaining, closes Sep 30). <span class="chat-highlight">Azim Premji Foundation</span> admin overhead is at 13.8% — approaching the 15% cap. I'd suggest reviewing admin allocations for AZP before the next expense batch.</div>
+                <div class="chat-bubble chat-ai">Two grants need attention: <span class="chat-highlight">HDFC CSR Grant</span> is at 89% utilised (₹2.2L remaining, closes Sep 30). <span class="chat-highlight">Azim Premji Foundation</span> admin overhead is at 13.8%, approaching the 15% cap. I'd suggest reviewing admin allocations for AZP before the next expense batch.</div>
               </div>
               <div class="chat-input-bar">
                 <div class="chat-input-fake">Ask about any grant, expense, or donor…</div>
@@ -1625,7 +1656,7 @@ footer {
   <div class="section-inner">
     <div class="eyebrow">Indian NGO Compliance</div>
     <h2 class="section-title">80G. FCRA. CSR. <em>All handled.</em></h2>
-    <p class="section-desc">FundZola was built specifically for Indian nonprofit compliance. Every workflow reflects how regulators actually work — not a generic accounting tool retrofitted.</p>
+    <p class="section-desc">FundZola was built specifically for Indian nonprofit compliance. Every workflow reflects how regulators actually work, unlike a generic accounting tool adapted after the fact.</p>
 
     <div class="compliance-grid">
       <div class="comp-card comp-coral">
@@ -1634,7 +1665,7 @@ footer {
         <div class="comp-desc">Generate legally compliant 80G donation receipts in bulk with correct serial numbers, donor PAN details, and your NGO's registration number.</div>
         <ul class="comp-list">
           <li>Auto-serialised receipt numbers (unique per FY)</li>
-          <li>Donor name exactly as per PAN — legally required</li>
+          <li>Donor name exactly as per PAN (legally required)</li>
           <li>Receipt Amendment Notice (RAN) workflow</li>
           <li>PDF with your NGO letterhead and stamp</li>
           <li>Email delivery with delivery tracking</li>
@@ -1647,8 +1678,8 @@ footer {
         <div class="comp-desc">FundZola automatically identifies and tags foreign contributions, maintains strict Local / FCRA fund separation, and never co-mingles accounts.</div>
         <ul class="comp-list">
           <li>Auto-detect FCRA vs Local at donation upload</li>
-          <li>Separate COA entries for FCRA Income in Zoho Books</li>
-          <li>FCRA_UNCERTAIN cases always escalated to human</li>
+          <li>Separate Chart of Accounts entries for FCRA Income in Zoho Books</li>
+          <li>Unclear FCRA cases always passed to a person</li>
           <li>Audit log of every FCRA classification decision</li>
           <li>FCRA utilisation tracking against permitted heads</li>
         </ul>
@@ -1674,8 +1705,8 @@ footer {
 <!-- QUOTE -->
 <div class="quote-section">
   <div class="quote-inner">
-    <div class="quote-text">"Our finance team was spending <em>three days a month</em> just generating 80G receipts and matching expenses to grants. FundZola brought that down to a few hours — and our Zoho Books is cleaner than it's ever been."</div>
-    <div class="quote-attr"><strong>Priya R.</strong> · Finance Head, Education NGO, Mumbai</div>
+    <div class="quote-text">A finance team may spend <em>several days each month</em> preparing 80G receipts and matching expenses to grants. FundZola is designed to reduce that work while keeping every result open to review.</div>
+    <div class="quote-attr"><strong>Illustrative scenario</strong> · not a customer testimonial</div>
   </div>
 </div>
 
@@ -1684,13 +1715,13 @@ footer {
 <div class="cta-section">
   <div class="cta-inner">
     <h2 class="cta-title">Ready to see FundZola with <em>your</em> Zoho Books?</h2>
-    <p class="cta-desc">We'll connect it to your existing Zoho Books account in the demo itself. No data migration, no disruption. See your own financial data flowing through FundZola in 30 minutes.</p>
+    <p class="cta-desc">We’ll walk through the workflow using sample data, then scope a secure pilot with your team. Your existing data stays in Zoho Books unless you choose to connect it.</p>
     <div class="cta-actions">
-      <button class="btn-primary">Book a 30-min Demo →</button>
-      <button class="btn-ghost">Talk to us first</button>
+      <a class="btn-primary" href="#contact-form">Book a 30-min Demo →</a>
+      <a class="btn-ghost" href="#contact-form">Talk to us first</a>
     </div>
     <div style="margin-top: 24px; font-size: 12px; color: var(--ink-3);">
-      Currently serving nonprofits across education, livelihoods, health, and environment sectors in India.
+      Designed for nonprofit finance teams across education, livelihoods, health and environment programmes in India.
     </div>
   </div>
 </div>
