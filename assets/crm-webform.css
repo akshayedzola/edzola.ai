@@ -1,0 +1,317 @@
+:root[data-theme="light"]{
+  color-scheme:light;
+}
+.crm-embed-section{
+  --ink:#1A1A1A;
+  --muted:#6B6360;
+  --teal-ink:#2C7771;
+  --sans:"Figtree",Arial,sans-serif;
+  --display:"Bricolage Grotesque","Figtree",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  position:relative;
+  z-index:1;
+  padding:88px 0;
+  background:#F6EDE5;
+  color:var(--ink);
+  color-scheme:light;
+}
+.crm-embed-inner{
+  width:min(1160px,calc(100% - 48px));
+  margin:0 auto;
+}
+.crm-embed-section .final{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(440px,1.18fr);
+  align-items:start;
+  gap:40px;
+  padding:56px;
+  border-radius:32px;
+  background:#E8967A;
+}
+.crm-embed-section .final h2{
+  margin:0;
+  color:#1A1A1A;
+  font:700 clamp(32px,4vw,48px)/1.04 var(--display);
+  letter-spacing:-.025em;
+}
+.crm-embed-section .final>div>p{
+  max-width:520px;
+  margin:16px 0 0;
+  color:#3B2A22;
+  font:500 17px/1.6 var(--sans);
+}
+.crm-embed-section .contact{
+  border-radius:20px;
+  background:#FDF8F4;
+}
+.crm-final{
+  grid-template-columns:minmax(0,.82fr) minmax(440px,1.18fr);
+  align-items:start;
+}
+.crm-intro{
+  position:sticky;
+  top:96px;
+}
+.crm-intro .form-kicker{
+  display:inline-flex;
+  margin:0 0 16px;
+  padding:7px 10px;
+  border:1px solid rgba(26,26,26,.22);
+  border-radius:999px;
+  font:700 10px var(--mono);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.crm-intro .form-points{
+  list-style:none;
+  display:grid;
+  gap:11px;
+  margin:24px 0 0;
+  padding:0;
+}
+.crm-intro .form-points li{
+  position:relative;
+  padding-left:29px;
+  color:#3B2A22;
+  font-size:14px;
+  line-height:1.5;
+}
+.crm-intro .form-points li::before{
+  content:'✓';
+  position:absolute;
+  left:0;
+  top:0;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:#1A1A1A;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:800;
+}
+.contact.crm-contact{
+  padding:30px;
+  gap:0;
+  background:#FDF8F4;
+  color:#1A1A1A;
+  font-family:var(--sans);
+  box-shadow:0 18px 46px rgba(79,50,35,.14);
+  scroll-margin-top:92px;
+}
+.crm-contact .form-title{
+  margin:0 0 6px;
+  color:#1A1A1A!important;
+  font-size:22px;
+  line-height:1.2;
+}
+.crm-contact .form-note{
+  margin:0 0 22px;
+  color:#615651;
+  font-size:14px;
+  line-height:1.55;
+}
+#crmWebToEntityForm{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0;
+  background:transparent;
+  color:var(--ink);
+  text-align:left;
+}
+#crmWebToEntityForm,
+#crmWebToEntityForm *{box-sizing:border-box}
+#crmWebToEntityForm *{direction:ltr}
+#crmWebToEntityForm .zcwf_row{
+  margin:0 0 17px;
+}
+#crmWebToEntityForm .zcwf_col_lab{
+  width:auto;
+  min-height:0;
+  margin:0 0 7px;
+  padding:0;
+  float:none;
+}
+#crmWebToEntityForm .zcwf_col_lab label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.35;
+  color:#2A2421;
+}
+#crmWebToEntityForm .required{
+  color:#B1392F;
+  margin-left:2px;
+}
+#crmWebToEntityForm .zcwf_col_fld{
+  width:auto;
+  margin:0;
+  padding:0;
+  float:none;
+}
+#crmWebToEntityForm input[type='text'],
+#crmWebToEntityForm input[type='email'],
+#crmWebToEntityForm textarea,
+#crmWebToEntityForm select{
+  width:100%;
+  min-height:48px;
+  margin:0;
+  padding:11px 13px;
+  float:none;
+  border:1px solid #CFC4BC;
+  border-radius:10px;
+  background:#fff;
+  color:#1A1A1A;
+  font:500 15px/1.4 var(--sans);
+  transition:border-color .16s ease,box-shadow .16s ease;
+}
+#crmWebToEntityForm textarea{
+  min-height:116px;
+  resize:vertical;
+}
+#crmWebToEntityForm input:focus,
+#crmWebToEntityForm textarea:focus,
+#crmWebToEntityForm select:focus{
+  outline:none;
+  border-color:var(--teal-ink);
+  box-shadow:0 0 0 3px rgba(18,105,108,.14);
+}
+#crmWebToEntityForm input::placeholder,
+#crmWebToEntityForm textarea::placeholder{
+  color:#8A7F78;
+  opacity:1;
+}
+#crmWebToEntityForm .form-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:4px;
+}
+#crmWebToEntityForm .zcwf_button{
+  min-height:46px;
+  padding:0 18px;
+  border:1px solid #1A1A1A;
+  border-radius:999px;
+  font:700 14px var(--sans);
+  cursor:pointer;
+}
+#crmWebToEntityForm .formsubmit{
+  flex:1;
+  background:#1A1A1A;
+  color:#FDF8F4;
+}
+#crmWebToEntityForm .formsubmit:hover{background:#2D2A28}
+#crmWebToEntityForm .formsubmit:disabled{
+  cursor:wait;
+  opacity:.6;
+}
+#crmWebToEntityForm .formreset{
+  background:transparent;
+  color:#514944;
+}
+#crmWebToEntityForm .formreset:hover{background:#EEE7E1}
+.crm-contact .privacy-note{
+  margin:13px 0 0;
+  color:#766B65;
+  font-size:11px;
+  line-height:1.5;
+}
+.crm-contact .form-status{
+  min-height:20px;
+  margin:12px 0 0;
+  color:#236B66;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.45;
+}
+.crm-contact .form-status.error{color:#9B3025}
+.wf_customMessageBox{
+  position:fixed;
+  z-index:11000;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  max-width:min(90vw,560px);
+  width:max-content;
+  min-width:220px;
+  padding:13px 16px;
+  border:1px solid #A9D3AB;
+  border-radius:10px;
+  background:#F5FAF5;
+  color:#132C14;
+  box-shadow:0 8px 28px rgba(0,0,0,.2);
+  font:600 14px/1.4 var(--sans);
+  word-break:break-word;
+}
+.wf_customCircle{
+  position:relative;
+  flex:none;
+  width:20px;
+  height:20px;
+  margin-right:9px;
+  border-radius:50%;
+  background:#12AA67;
+}
+.wf_customCheckMark{
+  position:absolute;
+  left:7px;
+  top:4px;
+  width:5px;
+  height:9px;
+  transform:rotate(45deg);
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+}
+.crm-alt{
+  display:grid;
+  gap:7px;
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px dashed rgba(26,26,26,.25);
+  font-size:13px;
+}
+.crm-alt b{
+  font:700 10px var(--mono);
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.crm-alt a{color:#1A1A1A;font-weight:650}
+
+/* Keep the shared form readable inside older product pages that carried
+   high-specificity Zoho theme overrides. */
+.contact.crm-contact #crmWebToEntityForm{color:#1A1A1A!important}
+.contact.crm-contact #crmWebToEntityForm .zcwf_col_lab label{color:#2A2421!important}
+.contact.crm-contact #crmWebToEntityForm .required{color:#B1392F!important}
+.contact.crm-contact #crmWebToEntityForm input[type='text'],
+.contact.crm-contact #crmWebToEntityForm input[type='email'],
+.contact.crm-contact #crmWebToEntityForm textarea,
+.contact.crm-contact #crmWebToEntityForm select{
+  border:1px solid #CFC4BC!important;
+  border-radius:10px!important;
+  background:#fff!important;
+  color:#1A1A1A!important;
+  padding:11px 13px!important;
+}
+.contact.crm-contact #crmWebToEntityForm input::placeholder,
+.contact.crm-contact #crmWebToEntityForm textarea::placeholder{color:#8A7F78!important}
+.contact.crm-contact #crmWebToEntityForm .formreset{
+  border:1px solid #1A1A1A!important;
+  background:transparent!important;
+  color:#514944!important;
+}
+@media(max-width:900px){
+  .crm-final,.crm-embed-section .final{grid-template-columns:1fr}
+  .crm-intro{position:static}
+}
+@media(max-width:620px){
+  .crm-embed-section{padding:52px 0}
+  .crm-embed-inner{width:min(100% - 28px,1160px)}
+  .crm-embed-section .final{padding:28px 20px;border-radius:24px;gap:26px}
+  .contact.crm-contact{padding:22px 18px}
+  #crmWebToEntityForm .form-actions{align-items:stretch;flex-direction:column}
+  #crmWebToEntityForm .zcwf_button{width:100%}
+}
