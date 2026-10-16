@@ -148,7 +148,7 @@
     +'<input type="hidden" id="LEADCF121" name="LEADCF121" value="">'
     +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF40">What is getting in the way today? <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><textarea id="LEADCF40" aria-required="true" name="LEADCF40" placeholder="For example: '+(examples[contextKey]||examples.contact)+'"></textarea></div></div>'
     +'<input type="hidden" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off">'
-    +'<div class="form-actions"><input type="submit" id="formsubmit" class="formsubmit zcwf_button" value="Tell us about your work" aria-label="Tell us about your work"><input type="reset" class="zcwf_button formreset" name="reset" value="Clear" aria-label="Clear form"></div>'
+    +'<div class="form-actions"><input type="submit" id="formsubmit" class="formsubmit zcwf_button" value="Tell us about your work" aria-label="Tell us about your work"><input type="reset" class="zcwf_button formreset" value="Clear" aria-label="Clear form"></div>'
     +'<p class="privacy-note">Your details go directly to EdZola’s CRM so our team can respond to this enquiry.</p><p class="form-status" id="crm-form-status" role="status" aria-live="polite"></p>'
     +'</form></div><div class="crm-alt">'+altHtml+'</div>';
 
@@ -224,7 +224,7 @@
         var confirmation=typeof data==='object'&&data.actionvalue?data.actionvalue:'Thank you. Your note has been sent.';
         message.textContent=confirmation;
         splash.style.display='flex';
-        form.reset();
+        HTMLFormElement.prototype.reset.call(form);
         showStatus(confirmation,false);
         window.setTimeout(function(){splash.style.display='none'},5000);
         if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_post_submit)_wfa_track.wfa_post_submit(event);
