@@ -6,7 +6,7 @@
   var landingUrl=canonical&&canonical.href?canonical.href:(window.location.origin+window.location.pathname);
   var path=(new URL(landingUrl,window.location.href).pathname);
   var slug=(path.split('/').filter(Boolean)[0]||'home');
-  var contextKey=path.indexOf('/team/impactos/')===0?'impactos':(path==='/zolabs/why/'?'why':slug);
+  var contextKey=path.indexOf('/crm/amplify/')===0?'amplify':(path.indexOf('/team/impactos/')===0?'impactos':(path==='/zolabs/why/'?'why':slug));
   var formContexts={
     'home':{
       title:'Start with one part of the work that feels harder than it should.',
@@ -40,6 +40,10 @@
       title:'Tell us what your finance team needs to see more clearly.',
       body:'Share how you manage grants, budgets and donor reporting today. We’ll help you identify a practical first step without disrupting the tools you already use.'
     },
+    'amplify':{
+      title:'Apply for the Amplify cohort.',
+      body:'Tell us who will join and what you want your Zoho CRM or Bigin account to help your team do. Your application goes straight to EdZola’s CRM.'
+    },
     'thinking':{
       title:'Bring us a question from the work.',
       body:'If something here connects with a challenge your team is facing, tell us what is happening now. We’ll help you think through a practical next step.'
@@ -54,6 +58,10 @@
     }
   };
   var context=formContexts[contextKey]||formContexts.home;
+  var isAmplify=contextKey==='amplify';
+  var formTitle=isAmplify?'Apply for the Amplify cohort.':'Tell us a little about your work.';
+  var formNote=isAmplify?'You need a paid Zoho CRM or Bigin account, a paid Claude plan, and about 3 hours a week for 4 weeks.':'Five short questions. Plain language is perfect; you do not need to have the solution worked out.';
+  var submitLabel=isAmplify?'Send my Amplify application':'Tell us about your work';
 
   function createFormHost(){
     var section=document.createElement('section');
@@ -121,6 +129,7 @@
     'impactos':'we want to connect one programme workflow without trying to replace every tool at once.',
     'impact-os':'we need a programme blueprint that connects delivery, follow-up and reporting around how our work actually runs.',
     'fundzola':'grant budgets, spending and donor reports take too much manual reconciliation each month.',
+    'amplify':'we use Zoho CRM or Bigin and want it to help with donor follow-ups, pipeline reviews or reporting. The people joining will be...',
     'thinking':'one of our programme processes is not working as clearly as it should.',
     'why':'technology is adding work for our team instead of helping them make better decisions.',
     'field-guides':'a tool or workflow was introduced, but the team is struggling to use it consistently.',
@@ -130,8 +139,8 @@
   contact.classList.add('contact','crm-contact');
   contact.id='contact-form';
   contact.innerHTML=''
-    +'<h3 class="form-title">Tell us a little about your work.</h3>'
-    +'<p class="form-note">Five short questions. Plain language is perfect; you do not need to have the solution worked out.</p>'
+    +'<h3 class="form-title">'+formTitle+'</h3>'
+    +'<p class="form-note">'+formNote+'</p>'
     +'<div id="crmWebToEntityForm" class="zcwf_lblLeft crmWebToEntityForm">'
     +'<div class="wf_customMessageBox" id="wf_splash" style="display:none"><div class="wf_customCircle"><div class="wf_customCheckMark"></div></div><span id="wf_splash_info"></span></div>'
     +'<form id="webform4805054000017631043" name="WebToLeads4805054000017631043" accept-charset="UTF-8" novalidate>'
@@ -148,7 +157,7 @@
     +'<input type="hidden" id="LEADCF121" name="LEADCF121" value="">'
     +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF40">What is getting in the way today? <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><textarea id="LEADCF40" aria-required="true" name="LEADCF40" placeholder="For example: '+(examples[contextKey]||examples.contact)+'"></textarea></div></div>'
     +'<input type="hidden" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off">'
-    +'<div class="form-actions"><input type="submit" id="formsubmit" class="formsubmit zcwf_button" value="Tell us about your work" aria-label="Tell us about your work"><input type="reset" class="zcwf_button formreset" value="Clear" aria-label="Clear form"></div>'
+    +'<div class="form-actions"><input type="submit" id="formsubmit" class="formsubmit zcwf_button" value="'+submitLabel+'" aria-label="'+submitLabel+'"><input type="reset" class="zcwf_button formreset" value="Clear" aria-label="Clear form"></div>'
     +'<p class="privacy-note">Your details go directly to EdZola’s CRM so our team can respond to this enquiry.</p><p class="form-status" id="crm-form-status" role="status" aria-live="polite"></p>'
     +'</form></div><div class="crm-alt">'+altHtml+'</div>';
 
@@ -164,9 +173,11 @@
     'patrons':'Built for Impact program',
     'impactos':'Data Systems – MIS / ERP',
     'impact-os':'Data Systems – MIS / ERP',
-    'fundzola':'Data Systems – MIS / ERP'
+    'fundzola':'Data Systems – MIS / ERP',
+    'amplify':'CRM'
   };
   if(helpDefaults[contextKey])helpField.value=helpDefaults[contextKey];
+  var preserveStatus=false;
 
   function showStatus(message,isError){
     status.textContent=message;
@@ -196,7 +207,12 @@
   }
 
   form.addEventListener('reset',function(){
-    window.setTimeout(function(){landingField.value=landingUrl;showStatus('',false)},0);
+    var keepStatus=preserveStatus;
+    window.setTimeout(function(){
+      landingField.value=landingUrl;
+      helpField.value=helpDefaults[contextKey]||'-None-';
+      if(!keepStatus)showStatus('',false);
+    },0);
   });
   form.addEventListener('submit',function(event){
     event.preventDefault();
@@ -224,13 +240,15 @@
         var confirmation=typeof data==='object'&&data.actionvalue?data.actionvalue:'Thank you. Your note has been sent.';
         message.textContent=confirmation;
         splash.style.display='flex';
+        preserveStatus=true;
         HTMLFormElement.prototype.reset.call(form);
+        preserveStatus=false;
         showStatus(confirmation,false);
         window.setTimeout(function(){splash.style.display='none'},5000);
         if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_post_submit)_wfa_track.wfa_post_submit(event);
       })
       .catch(function(){showStatus('We could not send the form just now. Please try again in a moment.',true)})
-      .finally(function(){button.disabled=false;button.value='Tell us about your work'});
+      .finally(function(){button.disabled=false;button.value=submitLabel});
   });
 
   if(typeof _wfa_fstprtcken==='undefined')window._wfa_fstprtcken={};
