@@ -6,7 +6,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FORM_SCRIPT = ROOT / "assets" / "crm-webform.js"
-ASSET_VERSION = "20261015i"
+AMPLIFY_PAGE = ROOT / "crm" / "amplify" / "index.html"
+HOME_PAGE = ROOT / "index.html"
+SITEMAP = ROOT / "sitemap.xml"
+ASSET_VERSION = "20261016a"
 
 
 class CrmWebformRegressionTests(unittest.TestCase):
@@ -25,6 +28,9 @@ class CrmWebformRegressionTests(unittest.TestCase):
             source,
             "Successful submissions should use the native reset method explicitly",
         )
+        self.assertIn("var preserveStatus=false;", source)
+        self.assertIn("if(!keepStatus)showStatus('',false);", source)
+        self.assertIn("helpField.value=helpDefaults[contextKey]||'-None-';", source)
 
     def test_every_page_uses_the_current_shared_form_script(self):
         tracked_html = subprocess.run(
@@ -51,6 +57,30 @@ class CrmWebformRegressionTests(unittest.TestCase):
             [],
             "Every page must use the new cache key for the corrected shared form script",
         )
+
+    def test_amplify_has_one_crm_backed_application_flow(self):
+        page = AMPLIFY_PAGE.read_text(encoding="utf-8")
+
+        self.assertIn('data-crm-webform', page)
+        self.assertIn('href="#contact-form"', page)
+        self.assertNotIn('id="elig"', page)
+        self.assertNotIn('Amplify%20cohort%20application', page)
+        self.assertNotIn('id="c-crm"', page)
+
+    def test_amplify_form_is_contextual_and_defaults_to_crm(self):
+        source = FORM_SCRIPT.read_text(encoding="utf-8")
+
+        self.assertIn("path.indexOf('/crm/amplify/')===0?'amplify'", source)
+        self.assertIn("'amplify':'CRM'", source)
+        self.assertIn("Send my Amplify application", source)
+
+    def test_amplify_is_promoted_and_in_the_sitemap(self):
+        home = HOME_PAGE.read_text(encoding="utf-8")
+        sitemap = SITEMAP.read_text(encoding="utf-8")
+
+        self.assertIn('href="https://edzola.ai/crm/amplify/"', home)
+        self.assertIn('Amplify CRM cohort', home)
+        self.assertIn('<loc>https://edzola.ai/crm/amplify/</loc>', sitemap)
 
 
 if __name__ == "__main__":
