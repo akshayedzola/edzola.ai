@@ -11,6 +11,11 @@ Key facts:
 ## What EdZola does
 
 - [Data systems](https://edzola.ai/#model): Programme MIS, case management, donor CRM and HR, built around one ID per person, household or case, from first visit to funder report.
+- [Verticals](https://edzola.ai/verticals/): Systems organised by operational need, plus a sequenced path for organisation-wide digital transformation. EdZola maps current processes and systems, simplifies the operating model, stabilises core records, connects cross-team handoffs, then adds automation and governed AI where useful.
+- [Programme and evidence systems](https://edzola.ai/verticals/programme-evidence-systems/): Programme MIS, case management, participant journeys, monitoring, evaluation, data quality, dashboards and reporting.
+- [Fundraising, donor and grant systems](https://edzola.ai/verticals/fundraising-donor-grant-systems/): Fundraising CRM, donor stewardship, donation operations, grants, budgets, tranches, utilisation and reporting obligations.
+- [People and HR systems](https://edzola.ai/verticals/people-hr-systems/): Recruitment, employee records, onboarding, leave, attendance, payroll inputs, performance, expenses and offboarding.
+- [Finance and operations systems](https://edzola.ai/verticals/finance-operations-systems/): Budgets, approvals, expenses, fund utilisation, projects, tasks, documents, marketing operations and accounting handoffs.
 - [Zolabs](https://edzola.ai/zolabs/): Voice AI evaluation. AI-led phone interviews in local languages for evaluations, beneficiary feedback and follow-ups, with every finding traceable to what was said.
 - [ZolaShield](https://edzola.ai/zolashield/): DPDP Act readiness for Indian nonprofits. A 15-minute voice assessment produces a data map, a scored risk report and a 180-day action plan. Assess from ₹10,000; Comply and Sustain tiers for implementation.
 - [DozAI](https://edzola.ai/dozai/): Missions and AI teammates that handle operational volume for nonprofits, with evidence on every case and people deciding exceptions. First mission: placement and retention tracking.
