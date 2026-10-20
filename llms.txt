@@ -63,3 +63,11 @@ Key facts:
 - [Community Development](https://edzola.ai/community-development/): Villages own the plan. The data should prove who was heard.
 - [Media & Journalism](https://edzola.ai/media/): From the tip to the correction to the policy that changed
 - [Arts & Culture](https://edzola.ai/arts/): Follow the artist from open call to archive to career
+
+## Implementation library
+
+- [Solutions](https://edzola.ai/solutions/): Practical guides for nonprofit MIS, M&amp;E, CRM, AI voice research, DPDP readiness and responsible AI workflows.
+- [Nonprofit MIS software](https://edzola.ai/solutions/nonprofit-mis-software/): A complete guide to records, workflows, indicators, permissions, implementation and common failure modes.
+- [Learn](https://edzola.ai/learn/): Technology guides and comparisons for nonprofit teams.
+- [Resources](https://edzola.ai/resources/): Requirements templates, trackers, estimators and implementation frameworks.
+- [Content sitemap](https://edzola.ai/sitemap-content.xml): The Phase 1 implementation library and its browsing hubs.

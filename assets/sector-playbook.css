@@ -29,3 +29,11 @@
 @media(max-width:980px){.hero{grid-template-columns:minmax(0,1fr)}.hero>*{min-width:0}.stage-box{max-width:100%;overflow:hidden}}
 @media(max-width:900px){.playbook-path .wrap{grid-template-columns:1fr 1fr}.path-label{grid-column:1/-1;padding:13px 0}.path-step:nth-of-type(odd){border-left:0}.models,.module-grid,.decision-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.hero h1{font-size:clamp(34px,10.8vw,44px)}.playbook-path .wrap,.models,.module-grid,.decision-grid{grid-template-columns:1fr}.path-step{border-left:0;border-top:1px solid var(--line)}.model-card{min-height:auto}}
+.phase-guides{background:var(--sunk)}
+.phase-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.phase-guide-card{display:flex;min-height:180px;flex-direction:column;gap:12px;padding:26px;border:1px solid var(--line);border-radius:18px;background:#fff;color:var(--ink);text-decoration:none;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.phase-guide-card:hover{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 14px 34px rgba(12,41,38,.08)}
+.phase-guide-card span{color:var(--teal);font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.phase-guide-card strong{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(1.35rem,2vw,1.8rem);font-weight:400;line-height:1.12}
+.phase-guide-card b{margin-top:auto;font-size:.9rem}
+@media(max-width:700px){.phase-guide-grid{grid-template-columns:1fr}.phase-guide-card{min-height:150px}}

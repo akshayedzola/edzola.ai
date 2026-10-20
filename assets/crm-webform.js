@@ -92,19 +92,28 @@
   if(!contact)contact=createFormHost();
   if(!contact)return;
   window.__edzolaCrmFormInitialised=true;
+  var crmData=contact.dataset||{};
+  context={
+    title:crmData.crmTitle||context.title,
+    body:crmData.crmBody||context.body
+  };
+  formTitle=crmData.crmFormTitle||formTitle;
+  formNote=crmData.crmFormNote||formNote;
+  submitLabel=crmData.crmSubmitLabel||submitLabel;
+  var questionLabel=crmData.crmQuestionLabel||ui.barrier;
   if(document.querySelector('link[href*="sector-playbook.css"]')||contextKey==='sectors'||contextKey==='contact'){
     document.documentElement.setAttribute('data-theme','light');
   }
 
   var finalPanel=contact.closest('.final');
-  var intro=finalPanel&&finalPanel.firstElementChild;
+  var intro=finalPanel&&(finalPanel.querySelector('[data-crm-intro]')||(finalPanel.firstElementChild===contact?contact.nextElementSibling:finalPanel.firstElementChild));
   if(finalPanel)finalPanel.classList.add('crm-final');
   if(intro){
     intro.classList.add('crm-intro');
     if(!intro.querySelector('.form-kicker')){
       var kicker=document.createElement('span');
       kicker.className='form-kicker';
-      kicker.textContent=ui.kicker;
+      kicker.textContent=crmData.crmKicker||ui.kicker;
       intro.insertBefore(kicker,intro.firstChild);
     }
     if(!intro.querySelector('.form-points')){
@@ -172,7 +181,7 @@
     +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Email">'+ui.email+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="email" ftype="email" id="Email" aria-required="true" name="Email" maxlength="100" autocomplete="email" placeholder="you@yourorganisation.org"></div></div>'
     +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF41">'+ui.help+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><select class="zcwf_col_fld_slt" id="LEADCF41" aria-required="true" name="LEADCF41"><option value="-None-">'+ui.choose+'</option><option value="Data Systems – MIS / ERP">'+ui.programme+'</option><option value="CRM">'+ui.relationships+'</option><option value="HRMS">'+ui.people+'</option><option value="zolabs.ai – Qualitative Data Collection">'+ui.research+'</option><option value="zolashield – DPDP Compliance">'+ui.protection+'</option><option value="Custom AI Solutions">'+ui.customAi+'</option><option value="AI Workshops and Advisory">'+ui.aiAdvice+'</option><option value="Built for Impact program">'+ui.builtForImpact+'</option></select></div></div>'
     +'<input type="hidden" id="LEADCF121" name="LEADCF121" value="">'
-    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF40">'+ui.barrier+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><textarea id="LEADCF40" aria-required="true" name="LEADCF40" placeholder="'+ui.example+(examples[contextKey]||examples.contact)+'"></textarea></div></div>'
+    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF40">'+questionLabel+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><textarea id="LEADCF40" aria-required="true" name="LEADCF40" placeholder="'+ui.example+(crmData.crmPlaceholder||examples[contextKey]||examples.contact)+'"></textarea></div></div>'
     +'<input type="hidden" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off">'
     +'<div class="form-actions"><input type="submit" id="formsubmit" class="formsubmit zcwf_button" value="'+submitLabel+'" aria-label="'+submitLabel+'"><input type="reset" class="zcwf_button formreset" value="'+ui.clear+'" aria-label="'+ui.clearForm+'"></div>'
     +'<p class="privacy-note">'+ui.privacy+'</p><p class="form-status" id="crm-form-status" role="status" aria-live="polite"></p>'
@@ -194,6 +203,7 @@
     'amplify':'CRM',
     'verticals':'Data Systems – MIS / ERP'
   };
+  if(crmData.crmHelpDefault)helpDefaults[contextKey]=crmData.crmHelpDefault;
   if(helpDefaults[contextKey])helpField.value=helpDefaults[contextKey];
   var preserveStatus=false;
 

@@ -9,7 +9,7 @@ FORM_SCRIPT = ROOT / "assets" / "crm-webform.js"
 AMPLIFY_PAGE = ROOT / "crm" / "amplify" / "index.html"
 HOME_PAGE = ROOT / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
-ASSET_VERSION = "20261020a"
+ASSET_VERSION = "20261020b"
 
 
 class CrmWebformRegressionTests(unittest.TestCase):
@@ -96,6 +96,15 @@ class CrmWebformRegressionTests(unittest.TestCase):
         self.assertIn('href="https://edzola.ai/crm/amplify/"', home)
         self.assertIn('Amplify CRM cohort', home)
         self.assertIn('<loc>https://edzola.ai/crm/amplify/</loc>', sitemap)
+
+    def test_contextual_forms_keep_canonical_landing_page_attribution(self):
+        source = FORM_SCRIPT.read_text(encoding="utf-8")
+
+        self.assertIn("var landingUrl=canonical&&canonical.href?canonical.href", source)
+        self.assertIn("landingField.value=landingUrl;", source)
+        self.assertIn("crmData.crmQuestionLabel", source)
+        self.assertIn("crmData.crmPlaceholder", source)
+        self.assertIn("crmData.crmHelpDefault", source)
 
 
 if __name__ == "__main__":
