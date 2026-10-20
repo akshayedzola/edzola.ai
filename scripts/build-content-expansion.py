@@ -873,8 +873,8 @@ QUESTION_PATTERNS = {
         ("evidence", "What evidence would make the answer to '{title}?' credible to a donor?"),
     ],
     "solution-landing": [
-        ("fit", "What problems should {topic} solve for a nonprofit?"),
-        ("requirements", "What should be included in a good {topic} implementation?"),
+        ("fit", "What operational problems can {topic} address?"),
+        ("requirements", "What should a strong {topic} approach include?"),
         ("cost", "What drives the cost and timeline of {topic}?"),
         ("vendor-selection", "How should an NGO evaluate a partner for {topic}?"),
         ("readiness", "When is a nonprofit ready to invest in {topic}?"),
@@ -887,7 +887,7 @@ QUESTION_PATTERNS = {
         ("limitations", "Where can an AI mission for {topic} fail or require escalation?"),
     ],
     "technology-guide": [
-        ("capability", "Can {topic} support a nonprofit's real operating workflow?"),
+        ("capability", "Can {topic} support a real nonprofit operating workflow?"),
         ("architecture", "How should a nonprofit configure {topic}?"),
         ("integration", "What data and integrations are needed for {topic}?"),
         ("limitations", "What are the limitations and maintenance needs of {topic}?"),
@@ -903,9 +903,9 @@ QUESTION_PATTERNS = {
     "comparison": [
         ("decision", "{title}: which option suits which type of nonprofit?"),
         ("cost", "How do the cost and implementation effort compare for {topic}?"),
-        ("capability", "Which option handles field work reporting and permissions better in {topic}?"),
+        ("capability", "How do the options compare on field work, reporting and permissions for {topic}?"),
         ("tradeoff", "What trade-offs are easy to miss in {topic}?"),
-        ("switching", "When should a nonprofit switch approaches in {topic}?"),
+        ("switching", "When should a nonprofit switch approaches after comparing {topic}?"),
     ],
     "implementation-insight": [
         ("lesson", "What practical lessons does EdZola have about {topic}?"),
@@ -924,6 +924,40 @@ QUESTION_PATTERNS = {
 }
 
 
+QUESTION_OVERRIDES = {
+    ("Custom MIS versus off-the-shelf NGO software", "decision"):
+        "When should a nonprofit choose a custom MIS instead of off-the-shelf software?",
+    ("Custom MIS versus off-the-shelf NGO software", "cost"):
+        "How do custom and off-the-shelf systems compare on cost and implementation effort?",
+    ("Custom MIS versus off-the-shelf NGO software", "capability"):
+        "How do custom and off-the-shelf systems compare on field work, reporting and permissions?",
+    ("Custom MIS versus off-the-shelf NGO software", "tradeoff"):
+        "Which ownership and exit trade-offs are easy to miss?",
+    ("Custom MIS versus off-the-shelf NGO software", "switching"):
+        "When should a nonprofit replace its current software approach?",
+    ("Zoho Creator for nonprofits", "capability"):
+        "Can Zoho Creator support a nonprofit's actual operating workflow?",
+    ("Zoho Creator for nonprofits", "architecture"):
+        "How should a nonprofit structure a Zoho Creator application?",
+    ("Zoho Creator for nonprofits", "integration"):
+        "Which data and integrations does a Zoho Creator application need?",
+    ("Zoho Creator for nonprofits", "limitations"):
+        "What are Zoho Creator's limitations and maintenance needs?",
+    ("Zoho Creator for nonprofits", "selection"):
+        "When should an NGO choose Zoho Creator over another approach?",
+    ("Human escalation and override design", "ai-fit"):
+        "When should an AI workflow hand a case to a person?",
+    ("Human escalation and override design", "inputs"):
+        "What information should be passed during an AI-to-human escalation?",
+    ("Human escalation and override design", "human-oversight"):
+        "Which actions can AI pause or prepare, and which require a person?",
+    ("Human escalation and override design", "auditability"):
+        "What should an escalation and override audit trail record?",
+    ("Human escalation and override design", "limitations"):
+        "What can go wrong when escalation and override rules are unclear?",
+}
+
+
 def topic_form(title):
     topic = title.rstrip("?.")
     for prefix in ("How to ", "What ", "When ", "Why "):
@@ -931,7 +965,7 @@ def topic_form(title):
             topic = topic[len(prefix):]
             break
     first_word = topic.split(maxsplit=1)[0]
-    if first_word.isupper() or first_word in {"EdZola", "ImpactOS", "Zoho", "KoboToolbox", "WhatsApp", "DozAI", "Zolabs", "ZolaShield"}:
+    if first_word.isupper() or first_word in {"EdZola", "ImpactOS", "Zoho", "KoboToolbox", "WhatsApp", "DozAI", "Zolabs", "ZolaShield", "Theory"}:
         return topic
     return topic[:1].lower() + topic[1:]
 
@@ -946,7 +980,7 @@ def questions_for(page, count):
     topic = topic_form(title)
     result = []
     for family, pattern in patterns[:count]:
-        question = pattern.format(title=title, topic=topic)
+        question = QUESTION_OVERRIDES.get((title, family), pattern.format(title=title, topic=topic))
         question = re.sub(r"\s+", " ", question)
         result.append((family, question))
     return result

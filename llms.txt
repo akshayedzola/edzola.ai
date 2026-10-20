@@ -66,8 +66,18 @@ Key facts:
 
 ## Implementation library
 
-- [Solutions](https://edzola.ai/solutions/): Practical guides for nonprofit MIS, M&amp;E, CRM, AI voice research, DPDP readiness and responsible AI workflows.
+- [Solutions](https://edzola.ai/solutions/): Practical guides for nonprofit MIS, M&E, CRM, AI voice research, DPDP readiness and responsible AI workflows.
 - [Nonprofit MIS software](https://edzola.ai/solutions/nonprofit-mis-software/): A complete guide to records, workflows, indicators, permissions, implementation and common failure modes.
+- [NGO monitoring and evaluation software](https://edzola.ai/solutions/ngo-monitoring-and-evaluation-software/): Connect indicators to definitions, source records, reporting periods, owners and review decisions.
+- [Offline field data collection](https://edzola.ai/solutions/offline-field-data-collection-for-nonprofits/): Design forms, IDs, sync and conflict handling for real field conditions.
+- [Nonprofit CRM implementation](https://edzola.ai/solutions/nonprofit-crm-implementation/): Connect relationship history, ownership, proposals, commitments and next actions.
+- [AI voice surveys for NGOs](https://edzola.ai/solutions/ai-voice-surveys-for-ngos/): Multilingual, consent-aware voice research with explicit human review.
+- [DPDP compliance for NGOs](https://edzola.ai/solutions/dpdp-compliance-for-ngos/): Turn data mapping, notices, access, retention and response workflows into practical controls.
+- [AI agents for nonprofits](https://edzola.ai/solutions/ai-agents-for-nonprofits/): Define bounded AI missions with evidence, stop conditions and human escalation.
+- [Technology for CSR teams](https://edzola.ai/solutions/technology-for-csr-teams/): Connect partner due diligence, grants, evidence, utilisation and portfolio learning.
 - [Learn](https://edzola.ai/learn/): Technology guides and comparisons for nonprofit teams.
+- [Technology guides](https://edzola.ai/learn/technology/): Platform and architecture guidance grounded in nonprofit operating workflows.
+- [Comparison guides](https://edzola.ai/learn/compare/): Compare workflow fit, ownership, implementation effort and trade-offs.
 - [Resources](https://edzola.ai/resources/): Requirements templates, trackers, estimators and implementation frameworks.
-- [Content sitemap](https://edzola.ai/sitemap-content.xml): The Phase 1 implementation library and its browsing hubs.
+- [DozAI missions](https://edzola.ai/dozai/): Operational AI missions with evidence and human review.
+- [Content sitemap](https://edzola.ai/sitemap-content.xml): The implementation library and its browsing hubs.
