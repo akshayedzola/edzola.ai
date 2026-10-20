@@ -98,7 +98,7 @@ class VerticalsRegressionTests(unittest.TestCase):
         for route in ALL_VERTICAL_ROUTES:
             page = route_file(route).read_text(encoding="utf-8")
             self.assertIn("/assets/verticals-nav.js?v=20261019c", page, route)
-            self.assertIn("/assets/crm-webform.js?v=20261020a", page, route)
+            self.assertIn("/assets/crm-webform.js?v=20261020b", page, route)
             self.assertNotIn("<details open>", page, route)
 
     def test_vertical_language_alternates_are_reciprocal(self):
