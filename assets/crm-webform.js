@@ -5,7 +5,15 @@
   var canonical=document.querySelector('link[rel="canonical"]');
   var landingUrl=canonical&&canonical.href?canonical.href:(window.location.origin+window.location.pathname);
   var path=(new URL(landingUrl,window.location.href).pathname);
-  var slug=(path.split('/').filter(Boolean)[0]||'home');
+  var parts=path.split('/').filter(Boolean);
+  var locale=parts[0]==='es'||parts[0]==='pt'?parts.shift():'en';
+  var translations={
+    en:{formTitle:'Tell us a little about your work.',formNote:'Five short questions. Plain language is perfect; you do not need to have the solution worked out.',submit:'Tell us about your work',name:'Your name',namePlaceholder:'For example, Asha Menon',organisation:'Organisation name',organisationPlaceholder:'Your nonprofit or organisation',email:'Work email',help:'What would you like help with?',choose:'Choose the closest option',programme:'A programme data system or MIS',relationships:'Managing partners, donors or relationships',people:'People and HR systems',research:'Understanding interviews and qualitative data',protection:'Data protection and DPDP readiness',customAi:'A custom AI solution',aiAdvice:'AI workshops or advice',builtForImpact:'The Built for Impact Programme',barrier:'What is getting in the way today?',example:'For example: ',clear:'Clear',clearForm:'Clear form',privacy:'Your details go directly to EdZola’s CRM so our team can respond to this enquiry.',kicker:'Start with the work, not the software',points:['Start with one spreadsheet, form or process that is slowing the team down.','The first walkthrough is free and takes about 30 minutes.','If budget is tight, ask about the Built for Impact Programme.'],explore:'Not ready to get in touch yet?',browseSectors:'Browse all sector playbooks →',readApproach:'Read how EdZola approaches the work →',required:['your name','your organisation name','your work email','what you would like help with','what is getting in the way today'],complete:'Please complete ',validEmail:'Please enter a valid work email address.',sending:'Sending…',captcha:'Please complete the security check and try again.',thanks:'Thank you. Your note has been sent.',failed:'We could not send the form just now. Please try again in a moment.',contact:'Contact EdZola'},
+    es:{formTitle:'Cuéntanos un poco sobre tu trabajo.',formNote:'Cinco preguntas breves. Puedes responder con palabras sencillas; no necesitas tener la solución definida.',submit:'Cuéntanos sobre tu trabajo',name:'Tu nombre',namePlaceholder:'Por ejemplo, Asha Menon',organisation:'Nombre de la organización',organisationPlaceholder:'Tu organización sin fines de lucro',email:'Correo de trabajo',help:'¿Con qué te gustaría recibir ayuda?',choose:'Elige la opción más cercana',programme:'Un sistema de datos de programas o MIS',relationships:'Gestión de aliados, donantes o relaciones',people:'Sistemas de personas y RR. HH.',research:'Comprender entrevistas y datos cualitativos',protection:'Protección de datos y preparación para DPDP',customAi:'Una solución de IA a medida',aiAdvice:'Talleres o asesoría sobre IA',builtForImpact:'El programa Built for Impact',barrier:'¿Qué está dificultando el trabajo hoy?',example:'Por ejemplo: ',clear:'Borrar',clearForm:'Borrar formulario',privacy:'Tus datos van directamente al CRM de EdZola para que nuestro equipo pueda responder a esta consulta.',kicker:'Empieza por el trabajo, no por el software',points:['Empieza con una hoja, formulario o proceso que esté frenando al equipo.','La primera conversación es gratuita y dura unos 30 minutos.','Si el presupuesto es limitado, pregunta por el programa Built for Impact.'],explore:'¿Todavía no quieres ponerte en contacto?',browseSectors:'Explora los itinerarios por sector →',readApproach:'Lee cómo aborda EdZola el trabajo →',required:['tu nombre','el nombre de tu organización','tu correo de trabajo','el tipo de ayuda que buscas','lo que dificulta el trabajo hoy'],complete:'Completa ',validEmail:'Introduce un correo de trabajo válido.',sending:'Enviando…',captcha:'Completa la verificación de seguridad e inténtalo de nuevo.',thanks:'Gracias. Hemos recibido tu mensaje.',failed:'No pudimos enviar el formulario. Inténtalo de nuevo en un momento.',contact:'Contactar con EdZola'},
+    pt:{formTitle:'Conte um pouco sobre o seu trabalho.',formNote:'Cinco perguntas breves. Pode responder em linguagem simples; não precisa ter a solução pronta.',submit:'Conte sobre o seu trabalho',name:'Seu nome',namePlaceholder:'Por exemplo, Asha Menon',organisation:'Nome da organização',organisationPlaceholder:'Sua organização sem fins lucrativos',email:'E-mail de trabalho',help:'Em que você gostaria de receber ajuda?',choose:'Escolha a opção mais próxima',programme:'Um sistema de dados de programas ou MIS',relationships:'Gestão de parceiros, doadores ou relacionamentos',people:'Sistemas de pessoas e RH',research:'Compreender entrevistas e dados qualitativos',protection:'Proteção de dados e preparação para DPDP',customAi:'Uma solução de IA sob medida',aiAdvice:'Oficinas ou consultoria sobre IA',builtForImpact:'O programa Built for Impact',barrier:'O que está dificultando o trabalho hoje?',example:'Por exemplo: ',clear:'Limpar',clearForm:'Limpar formulário',privacy:'Seus dados vão diretamente para o CRM da EdZola para que nossa equipe possa responder a esta consulta.',kicker:'Comece pelo trabalho, não pelo software',points:['Comece com uma planilha, formulário ou processo que esteja atrasando a equipe.','A primeira conversa é gratuita e leva cerca de 30 minutos.','Se o orçamento for limitado, pergunte sobre o programa Built for Impact.'],explore:'Ainda não quer entrar em contato?',browseSectors:'Explore os roteiros por setor →',readApproach:'Leia como a EdZola aborda o trabalho →',required:['seu nome','o nome da sua organização','seu e-mail de trabalho','o tipo de ajuda que procura','o que está dificultando o trabalho hoje'],complete:'Preencha ',validEmail:'Informe um e-mail de trabalho válido.',sending:'Enviando…',captcha:'Conclua a verificação de segurança e tente novamente.',thanks:'Obrigado. Recebemos sua mensagem.',failed:'Não foi possível enviar o formulário agora. Tente novamente em instantes.',contact:'Falar com a EdZola'}
+  };
+  var ui=translations[locale];
+  var slug=(parts[0]||'home');
   var contextKey=path.indexOf('/crm/amplify/')===0?'amplify':(path.indexOf('/team/impactos/')===0?'impactos':(path==='/zolabs/why/'?'why':slug));
   var formContexts={
     'home':{
@@ -55,19 +63,25 @@
     'field-guides':{
       title:'Tell us where technology is not sticking.',
       body:'Bring one tracker, tool or handoff that your team is struggling with. We’ll help you find a first version people can actually use.'
+    },
+    'verticals':{
+      title:'Bring us the workflow that is creating the most pressure.',
+      body:'We’ll help you decide whether to repair one system, connect several handoffs or sequence organisation-wide digital transformation.'
     }
   };
+  if(contextKey==='verticals'&&locale==='es')formContexts.verticals={title:'Trae el flujo de trabajo que genera más presión.',body:'Te ayudaremos a decidir si conviene reparar un sistema, conectar varios traspasos o secuenciar una transformación digital de toda la organización.'};
+  if(contextKey==='verticals'&&locale==='pt')formContexts.verticals={title:'Traga o fluxo de trabalho que gera mais pressão.',body:'Ajudaremos a decidir se vale reparar um sistema, conectar várias passagens ou sequenciar uma transformação digital em toda a organização.'};
   var context=formContexts[contextKey]||formContexts.home;
   var isAmplify=contextKey==='amplify';
-  var formTitle=isAmplify?'Apply for the Amplify cohort.':'Tell us a little about your work.';
-  var formNote=isAmplify?'You need a paid Zoho CRM or Bigin account, a paid Claude plan, and about 3 hours a week for 4 weeks.':'Five short questions. Plain language is perfect; you do not need to have the solution worked out.';
-  var submitLabel=isAmplify?'Send my Amplify application':'Tell us about your work';
+  var formTitle=isAmplify?'Apply for the Amplify cohort.':ui.formTitle;
+  var formNote=isAmplify?'You need a paid Zoho CRM or Bigin account, a paid Claude plan, and about 3 hours a week for 4 weeks.':ui.formNote;
+  var submitLabel=isAmplify?'Send my Amplify application':ui.submit;
 
   function createFormHost(){
     var section=document.createElement('section');
     section.className='crm-embed-section';
     section.setAttribute('aria-labelledby','crm-embed-heading');
-    section.innerHTML='<div class="crm-embed-inner"><div class="final"><div><h2 id="crm-embed-heading">'+context.title+'</h2><p>'+context.body+'</p></div><div class="contact" data-crm-webform><div class="alt"><b>Explore first</b><a href="/sectors/">Browse the sector playbooks →</a><a href="/thinking/">Read how EdZola approaches the work →</a></div></div></div></div>';
+    section.innerHTML='<div class="crm-embed-inner"><div class="final"><div><h2 id="crm-embed-heading">'+context.title+'</h2><p>'+context.body+'</p></div><div class="contact" data-crm-webform><div class="alt"><b>'+ui.explore+'</b><a href="/sectors/">'+ui.browseSectors+'</a><a href="/thinking/">'+ui.readApproach+'</a></div></div></div></div>';
     var footer=document.querySelector('footer');
     if(footer)footer.parentNode.insertBefore(section,footer);
     else document.body.appendChild(section);
@@ -90,19 +104,19 @@
     if(!intro.querySelector('.form-kicker')){
       var kicker=document.createElement('span');
       kicker.className='form-kicker';
-      kicker.textContent='Start with the work, not the software';
+      kicker.textContent=ui.kicker;
       intro.insertBefore(kicker,intro.firstChild);
     }
     if(!intro.querySelector('.form-points')){
       var points=document.createElement('ul');
       points.className='form-points';
-      points.innerHTML='<li>Start with one spreadsheet, form or process that is slowing the team down.</li><li>The first walkthrough is free and takes about 30 minutes.</li><li>If budget is tight, ask about the Built for Impact Programme.</li>';
+      points.innerHTML='<li>'+ui.points[0]+'</li><li>'+ui.points[1]+'</li><li>'+ui.points[2]+'</li>';
       intro.appendChild(points);
     }
   }
 
   var alt=contact.querySelector('.crm-alt,.alt');
-  var altHtml=alt?alt.innerHTML:'<b>Not ready to get in touch yet?</b><a href="/sectors/">Browse all sector playbooks →</a><a href="/thinking/">Read how EdZola approaches the work →</a>';
+  var altHtml=alt?alt.innerHTML:'<b>'+ui.explore+'</b><a href="/sectors/">'+ui.browseSectors+'</a><a href="/thinking/">'+ui.readApproach+'</a>';
   var examples={
     'home':'we have a process that depends on several trackers, and the team cannot see what needs attention next.',
     'sectors':'we are not sure which programme model best fits our work, or what the first useful system should track.',
@@ -133,8 +147,11 @@
     'thinking':'one of our programme processes is not working as clearly as it should.',
     'why':'technology is adding work for our team instead of helping them make better decisions.',
     'field-guides':'a tool or workflow was introduced, but the team is struggling to use it consistently.',
+    'verticals':'programme, funding, people or operations data is split across tools, and we need to know what to fix first.',
     'contact':'our team spends too much time reconciling trackers and still cannot see what needs attention.'
   };
+  if(contextKey==='verticals'&&locale==='es')examples.verticals='los datos de programas, financiación, personas u operaciones están repartidos entre varias herramientas y necesitamos saber qué corregir primero.';
+  if(contextKey==='verticals'&&locale==='pt')examples.verticals='os dados de programas, captação, pessoas ou operações estão espalhados por várias ferramentas e precisamos saber o que corrigir primeiro.';
 
   contact.classList.add('contact','crm-contact');
   contact.id='contact-form';
@@ -150,15 +167,15 @@
     +'<input type="hidden" name="actionType" value="TGVhZHM=">'
     +'<input type="hidden" name="returnURL" value="null">'
     +'<!-- Do not remove this code. -->'
-    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Last_Name">Your name <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="text" id="Last_Name" aria-required="true" name="Last Name" maxlength="80" autocomplete="name" placeholder="For example, Asha Menon"></div></div>'
-    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Company">Organisation name <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="text" id="Company" aria-required="true" name="Company" maxlength="200" autocomplete="organization" placeholder="Your nonprofit or organisation"></div></div>'
-    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Email">Work email <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="email" ftype="email" id="Email" aria-required="true" name="Email" maxlength="100" autocomplete="email" placeholder="you@yourorganisation.org"></div></div>'
-    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF41">What would you like help with? <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><select class="zcwf_col_fld_slt" id="LEADCF41" aria-required="true" name="LEADCF41"><option value="-None-">Choose the closest option</option><option value="Data Systems – MIS / ERP">A programme data system or MIS</option><option value="CRM">Managing partners, donors or relationships</option><option value="HRMS">People and HR systems</option><option value="zolabs.ai – Qualitative Data Collection">Understanding interviews and qualitative data</option><option value="zolashield – DPDP Compliance">Data protection and DPDP readiness</option><option value="Custom AI Solutions">A custom AI solution</option><option value="AI Workshops and Advisory">AI workshops or advice</option><option value="Built for Impact program">The Built for Impact Programme</option></select></div></div>'
+    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Last_Name">'+ui.name+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="text" id="Last_Name" aria-required="true" name="Last Name" maxlength="80" autocomplete="name" placeholder="'+ui.namePlaceholder+'"></div></div>'
+    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Company">'+ui.organisation+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="text" id="Company" aria-required="true" name="Company" maxlength="200" autocomplete="organization" placeholder="'+ui.organisationPlaceholder+'"></div></div>'
+    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Email">'+ui.email+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="email" ftype="email" id="Email" aria-required="true" name="Email" maxlength="100" autocomplete="email" placeholder="you@yourorganisation.org"></div></div>'
+    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF41">'+ui.help+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><select class="zcwf_col_fld_slt" id="LEADCF41" aria-required="true" name="LEADCF41"><option value="-None-">'+ui.choose+'</option><option value="Data Systems – MIS / ERP">'+ui.programme+'</option><option value="CRM">'+ui.relationships+'</option><option value="HRMS">'+ui.people+'</option><option value="zolabs.ai – Qualitative Data Collection">'+ui.research+'</option><option value="zolashield – DPDP Compliance">'+ui.protection+'</option><option value="Custom AI Solutions">'+ui.customAi+'</option><option value="AI Workshops and Advisory">'+ui.aiAdvice+'</option><option value="Built for Impact program">'+ui.builtForImpact+'</option></select></div></div>'
     +'<input type="hidden" id="LEADCF121" name="LEADCF121" value="">'
-    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF40">What is getting in the way today? <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><textarea id="LEADCF40" aria-required="true" name="LEADCF40" placeholder="For example: '+(examples[contextKey]||examples.contact)+'"></textarea></div></div>'
+    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF40">'+ui.barrier+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><textarea id="LEADCF40" aria-required="true" name="LEADCF40" placeholder="'+ui.example+(examples[contextKey]||examples.contact)+'"></textarea></div></div>'
     +'<input type="hidden" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off">'
-    +'<div class="form-actions"><input type="submit" id="formsubmit" class="formsubmit zcwf_button" value="'+submitLabel+'" aria-label="'+submitLabel+'"><input type="reset" class="zcwf_button formreset" value="Clear" aria-label="Clear form"></div>'
-    +'<p class="privacy-note">Your details go directly to EdZola’s CRM so our team can respond to this enquiry.</p><p class="form-status" id="crm-form-status" role="status" aria-live="polite"></p>'
+    +'<div class="form-actions"><input type="submit" id="formsubmit" class="formsubmit zcwf_button" value="'+submitLabel+'" aria-label="'+submitLabel+'"><input type="reset" class="zcwf_button formreset" value="'+ui.clear+'" aria-label="'+ui.clearForm+'"></div>'
+    +'<p class="privacy-note">'+ui.privacy+'</p><p class="form-status" id="crm-form-status" role="status" aria-live="polite"></p>'
     +'</form></div><div class="crm-alt">'+altHtml+'</div>';
 
   var form=document.getElementById('webform4805054000017631043');
@@ -174,7 +191,8 @@
     'impactos':'Data Systems – MIS / ERP',
     'impact-os':'Data Systems – MIS / ERP',
     'fundzola':'Data Systems – MIS / ERP',
-    'amplify':'CRM'
+    'amplify':'CRM',
+    'verticals':'Data Systems – MIS / ERP'
   };
   if(helpDefaults[contextKey])helpField.value=helpDefaults[contextKey];
   var preserveStatus=false;
@@ -189,17 +207,17 @@
   }
   function mandatoryFieldsPresent(){
     var fields=['Last Name','Company','Email','LEADCF41','LEADCF40'];
-    var labels=['your name','your organisation name','your work email','what you would like help with','what is getting in the way today'];
+    var labels=ui.required;
     for(var i=0;i<fields.length;i++){
       var field=form.elements[fields[i]];
       if(!field||!String(field.value).trim()||(field.tagName==='SELECT'&&field.value==='-None-')){
-        showStatus('Please complete '+labels[i]+'.',true);
+        showStatus(ui.complete+labels[i]+'.',true);
         if(field)field.focus();
         return false;
       }
     }
     if(!validEmail(form.elements.Email)){
-      showStatus('Please enter a valid work email address.',true);
+      showStatus(ui.validEmail,true);
       form.elements.Email.focus();
       return false;
     }
@@ -222,12 +240,12 @@
     if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_submit)_wfa_track.wfa_submit(event);
     var button=form.querySelector('.formsubmit');
     button.disabled=true;
-    button.value='Sending…';
+    button.value=ui.sending;
     fetch('https://crm.zoho.com/crm/WebToLeadForm',{method:'POST',body:new FormData(form),cache:'no-cache'})
       .then(function(response){var type=response.headers.get('Content-Type')||'';return type.indexOf('application/json')>-1?response.json():response.text()})
       .then(function(data){
         if(typeof data==='object'&&data.invalidCaptcha==='true'){
-          showStatus(data.actionvalue||'Please complete the security check and try again.',true);
+          showStatus(data.actionvalue||ui.captcha,true);
           return;
         }
         if(typeof data==='object'&&data.redirectUrl){window.location.assign(data.redirectUrl);return;}
@@ -237,7 +255,7 @@
         }
         var message=document.getElementById('wf_splash_info');
         var splash=document.getElementById('wf_splash');
-        var confirmation=typeof data==='object'&&data.actionvalue?data.actionvalue:'Thank you. Your note has been sent.';
+        var confirmation=typeof data==='object'&&data.actionvalue?data.actionvalue:ui.thanks;
         message.textContent=confirmation;
         splash.style.display='flex';
         preserveStatus=true;
@@ -247,16 +265,16 @@
         window.setTimeout(function(){splash.style.display='none'},5000);
         if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_post_submit)_wfa_track.wfa_post_submit(event);
       })
-      .catch(function(){showStatus('We could not send the form just now. Please try again in a moment.',true)})
+      .catch(function(){showStatus(ui.failed,true)})
       .finally(function(){button.disabled=false;button.value=submitLabel});
   });
 
   if(typeof _wfa_fstprtcken==='undefined')window._wfa_fstprtcken={};
   window._wfa_fstprtcken[4805054000017631043]=true;
 
-  document.querySelectorAll('a[href^="mailto:reachus@edzola.com"],a[href="/contact/"]').forEach(function(link){
+  document.querySelectorAll('a[href^="mailto:reachus@edzola.com"],a[href^="/contact/"]').forEach(function(link){
     link.href='#contact-form';
-    if(link.textContent.trim()==='reachus@edzola.com')link.textContent='Contact EdZola';
+    if(link.textContent.trim()==='reachus@edzola.com')link.textContent=ui.contact;
   });
 
   function loadAnalytics(){

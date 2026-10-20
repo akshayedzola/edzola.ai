@@ -9,7 +9,7 @@ FORM_SCRIPT = ROOT / "assets" / "crm-webform.js"
 AMPLIFY_PAGE = ROOT / "crm" / "amplify" / "index.html"
 HOME_PAGE = ROOT / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
-ASSET_VERSION = "20261016a"
+ASSET_VERSION = "20261020a"
 
 
 class CrmWebformRegressionTests(unittest.TestCase):
@@ -73,6 +73,21 @@ class CrmWebformRegressionTests(unittest.TestCase):
         self.assertIn("path.indexOf('/crm/amplify/')===0?'amplify'", source)
         self.assertIn("'amplify':'CRM'", source)
         self.assertIn("Send my Amplify application", source)
+
+    def test_vertical_pages_use_contextual_embedded_form_and_capture_query_links(self):
+        source = FORM_SCRIPT.read_text(encoding="utf-8")
+
+        self.assertIn("'verticals':{", source)
+        self.assertIn("'verticals':'Data Systems – MIS / ERP'", source)
+        self.assertIn('a[href^="/contact/"]', source)
+
+    def test_shared_form_localizes_visible_ui_for_spanish_and_portuguese(self):
+        source = FORM_SCRIPT.read_text(encoding="utf-8")
+
+        self.assertIn("es:{formTitle:'Cuéntanos un poco sobre tu trabajo.'", source)
+        self.assertIn("pt:{formTitle:'Conte um pouco sobre o seu trabalho.'", source)
+        self.assertIn("if(contextKey==='verticals'&&locale==='es')", source)
+        self.assertIn("if(contextKey==='verticals'&&locale==='pt')", source)
 
     def test_amplify_is_promoted_and_in_the_sitemap(self):
         home = HOME_PAGE.read_text(encoding="utf-8")

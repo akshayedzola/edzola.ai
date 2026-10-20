@@ -343,6 +343,12 @@ html{scroll-padding-top:76px}
 .gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
 .gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
 .gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
+.gh-drop details{border-block:1px solid #EADFD6;margin:3px 0;padding:4px 0}
+.gh-drop details summary{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:10px 14px;list-style:none;cursor:pointer;font-size:15px;font-weight:650}
+.gh-drop details summary::-webkit-details-marker{display:none}
+.gh-drop details summary:after{content:"+";color:#9E452D;font-size:18px;line-height:1}
+.gh-drop details[open] summary:after{content:"−"}
+.gh-drop details a{display:block;padding-left:28px;color:#6B6360}
 .gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
 :focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
 @media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
@@ -360,17 +366,27 @@ html{scroll-padding-top:76px}
 .lang-hint a{color:#1A1A1A;background:#E8967A;padding:8px 14px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap}
 .lang-hint button{margin-left:auto;background:none;border:0;color:#FDF8F4;opacity:.7;font-size:20px;cursor:pointer;padding:4px 6px}
 </style>
+<style>
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.entry-chooser{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.entry-choice{display:flex;min-height:150px;flex-direction:column;padding:22px;border:1px solid #EADFD6;border-radius:20px;background:#fff;text-decoration:none;transition:transform .18s,border-color .18s}
+.entry-choice:hover{transform:translateY(-2px);border-color:#2C7771}
+.entry-choice small{font:700 10px/1.3 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#9E452D}
+.entry-choice b{font:700 23px/1.08 "Bricolage Grotesque","Figtree",sans-serif;margin:12px 0 8px}
+.entry-choice span{color:#6B6360;font-size:14px;line-height:1.45}
+@media(max-width:760px){.entry-chooser{grid-template-columns:1fr}.entry-choice{min-height:0}}
+</style>
 <link rel="alternate" hreflang="en" href="https://edzola.ai/">
 <link rel="alternate" hreflang="es" href="https://edzola.ai/es/">
 <link rel="alternate" hreflang="pt-BR" href="https://edzola.ai/pt/">
 <link rel="alternate" hreflang="x-default" href="https://edzola.ai/">
-<link rel="stylesheet" href="/assets/crm-webform.css?v=20261015h">
+<link rel="stylesheet" href="/assets/crm-webform.css?v=20261019a">
 </head>
 <body>
 <a class="gh-skip" href="#top">Skip to content</a>
 
 <a class="notice" href="https://edzola.ai/crm/amplify/"><b>New</b> · Amplify: <span>turn your Zoho CRM into a colleague with Claude</span> →</a>
-<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><details class="gh-vgroup"><summary>Verticals</summary><div class="gh-vmega"><section><h3>Programme &amp; evidence</h3><a href="/verticals/programme-evidence-systems/">Programme MIS, cases &amp; MEL</a></section><section><h3>Funding &amp; relationships</h3><a href="/verticals/fundraising-donor-grant-systems/">Fundraising, donors &amp; grants</a></section><section><h3>People &amp; operations</h3><a href="/verticals/people-hr-systems/">People &amp; HR</a><a href="/verticals/finance-operations-systems/">Finance &amp; operations</a></section><a href="/verticals/"><span>Explore all verticals and organisation-wide transformation</span><span>→</span></a></div></details><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/pt/" hreflang="pt" lang="pt">PT</a></div><a class="gh-cta" href="#start">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/pt/" hreflang="pt" lang="pt">PT</a></div><a href="/#model">What we do</a><a href="/verticals/">Verticals</a><a href="/verticals/programme-evidence-systems/">Programme &amp; evidence</a><a href="/verticals/fundraising-donor-grant-systems/">Funding &amp; relationships</a><a href="/verticals/people-hr-systems/">People &amp; HR</a><a href="/verticals/finance-operations-systems/">Finance &amp; operations</a><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="#start">Talk to us</a></div></details></div></div>
+<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><details class="gh-vgroup"><summary>Verticals</summary><div class="gh-vmega"><section><h3>Programme &amp; evidence</h3><a href="/verticals/programme-evidence-systems/">Programme MIS, cases &amp; MEL</a></section><section><h3>Funding &amp; relationships</h3><a href="/verticals/fundraising-donor-grant-systems/">Fundraising, donors &amp; grants</a></section><section><h3>People &amp; operations</h3><a href="/verticals/people-hr-systems/">People &amp; HR</a><a href="/verticals/finance-operations-systems/">Finance &amp; operations</a></section><a href="/verticals/"><span>Explore all verticals and organisation-wide transformation</span><span>→</span></a></div></details><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/pt/" hreflang="pt" lang="pt">PT</a></div><a class="gh-cta" href="#start">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/pt/" hreflang="pt" lang="pt">PT</a></div><a href="/#model">What we do</a><details><summary>Verticals</summary><a href="/verticals/">All verticals</a><a href="/verticals/programme-evidence-systems/">Programme &amp; evidence</a><a href="/verticals/fundraising-donor-grant-systems/">Funding &amp; relationships</a><a href="/verticals/people-hr-systems/">People &amp; HR</a><a href="/verticals/finance-operations-systems/">Finance &amp; operations</a></details><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="#start">Talk to us</a></div></details></div></div>
 
 <main id="top">
 <!-- ================= HERO ================= -->
@@ -378,10 +394,10 @@ html{scroll-padding-top:76px}
   <div>
     <span class="eyebrow">AI-powered operations for social impact</span>
     <h1>From the field to the funder, <em>nothing gets lost.</em></h1>
-    <p class="hero-copy">EdZola <strong>designs, builds and runs</strong> the systems behind your programmes, with AI and people working together. So the person you serve stays at the centre, whether you reach a hundred people or a hundred thousand.</p>
+    <p class="hero-copy">EdZola <strong>designs, builds and runs</strong> the connected systems behind your programmes and organisation. Start with one broken workflow or sequence an organisation-wide transformation, while the person you serve stays at the centre.</p>
     <div class="hero-actions">
-      <a class="pill primary" href="#start">Start a conversation →</a>
-      <a class="pill ghost" href="#model">See what we do</a>
+      <a class="pill primary" href="/verticals/">Find the system you need →</a>
+      <a class="pill ghost" href="/sectors/">Explore your sector</a>
     </div>
     <div class="modes"><span><b>Build</b> data systems</span><span><b>Listen</b> with Zolabs</span><span><b>Protect</b> with ZolaShield</span><span><b>Run</b> with AI</span></div>
   </div>
@@ -400,6 +416,15 @@ html{scroll-padding-top:76px}
   </div>
 </section>
 
+<section class="wrap" aria-labelledby="start-path-heading">
+  <h2 id="start-path-heading" class="sr-only">Choose how to explore EdZola</h2>
+  <div class="entry-chooser">
+    <a class="entry-choice" href="/verticals/"><small>Start with the operational need</small><b>Explore systems by vertical</b><span>Programme, funding, people, finance and operations.</span></a>
+    <a class="entry-choice" href="/sectors/"><small>Start with the mission context</small><b>Explore sector playbooks</b><span>See how records, workflows and risks change across 16 sectors.</span></a>
+    <a class="entry-choice" href="/verticals/#transformation"><small>Change across the organisation</small><b>Sequence digital transformation</b><span>De-stress existing processes and systems through useful releases.</span></a>
+  </div>
+</section>
+
 <!-- ================= LOGO CLOUD ================= -->
 <section class="cloud" aria-label="Organisations we have worked with">
   <div class="wrap cloud-head"><b>Trusted by 100+ organisations</b><span>A few of the teams we've built and run systems with <button class="motion-toggle" data-target=".cloud" data-pause="Pause" data-play="Play" aria-pressed="false">Pause</button></span></div>
@@ -411,8 +436,8 @@ html{scroll-padding-top:76px}
 <section class="section" id="model"><div class="wrap">
   <div class="section-head">
     <span class="eyebrow">What we do</span>
-    <h2>Four ways we close the gap.</h2>
-    <p class="lead">Most partners start with one and grow into the others. Where you start depends on where you are.</p>
+    <h2>Four ways we make the system work.</h2>
+    <p class="lead">Connected data systems are the foundation. Voice research, data protection and AI extend what the organisation can learn, protect and deliver.</p>
   </div>
   <div class="pillars">
     <article class="pillar build">
@@ -423,7 +448,7 @@ html{scroll-padding-top:76px}
         <div class="row"><span>Attendance</span><span class="t w">3 absent</span></div>
         <div class="row"><span>Home visit</span><span class="t w">Today</span></div>
         <div class="row"><span>Funder report</span><span class="t">Auto</span></div></div>
-      <a class="go" href="#fix">What we build →</a>
+      <a class="go" href="/verticals/">Explore systems by organisational need →</a>
     </article>
     <article class="pillar listen">
       <span class="tag">02 · Listen</span><h3>Zolabs</h3><span class="sub">Phone conversations with the people you serve, in their language</span>
@@ -599,7 +624,7 @@ html{scroll-padding-top:76px}
     <figure class="partners-photo"><img src="/assets/photos/sic-panel.jpg" alt="Nonprofit leaders and funders in a panel discussion at Social Impact Circle" loading="lazy"></figure>
   </div>
   <div class="partners-list">
-    <article><span>01</span><h3>Nonprofits and social enterprises</h3><p>Programme tracking, case management, donor management and AI, built around how your field team actually works.</p><a href="#model">What we build →</a></article>
+    <article><span>01</span><h3>Nonprofits and social enterprises</h3><p>Programme, evidence, fundraising, donor, grant, HR, finance and operations systems, built around how your teams actually work.</p><a href="/verticals/">Find the system you need →</a></article>
     <article><span>02</span><h3>Funders, foundations and CSR teams</h3><p>Grant and portfolio monitoring, shared data views across grantees, and impact reporting you can trust. We also make your grantees digitally ready, so their data reaches you without a three-week scramble.</p><a href="mailto:reachus@edzola.com?subject=Funder%20and%20portfolio%20systems">Talk to us about your portfolio →</a></article>
     <article><span>03</span><h3>Ecosystem partners</h3><p>Intermediaries, capacity builders and networks. We run tech workshops for nonprofit cohorts, secure software credits through partner programmes, and build shared platforms for knowledge exchange.</p><a href="mailto:reachus@edzola.com?subject=Ecosystem%20partnership">Partner with us →</a></article>
   </div>
@@ -715,7 +740,7 @@ html{scroll-padding-top:76px}
 /* ---------- smooth anchor links (works in file/data previews too) ---------- */
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
   const el=document.querySelector(a.getAttribute('href'));
-  if(el){e.preventDefault();el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+  if(el){e.preventDefault();const menu=a.closest('.gh-menu');if(menu)menu.open=false;el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
 }));
 
 /* ---------- logo cloud ---------- */
@@ -989,6 +1014,6 @@ document.querySelectorAll('.wave').forEach(w=>{for(let i=0;i<34;i++){const b=doc
   document.body.appendChild(d);
 })();
 </script>
-<script src="/assets/crm-webform.js?v=20261016a"></script>
+<script src="/assets/crm-webform.js?v=20261020a"></script>
 </body>
 </html>
