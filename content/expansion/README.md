@@ -51,11 +51,11 @@ Publishing is conditional on intent differentiation, source sufficiency, human r
 
 ## Sample-page questions
 
-- Custom MIS versus off-the-shelf NGO software: which option suits which type of nonprofit?
-- How do the cost and implementation effort compare for custom MIS versus off-the-shelf NGO software?
-- Which option handles field work reporting and permissions better in custom MIS versus off-the-shelf NGO software?
-- What trade-offs are easy to miss in custom MIS versus off-the-shelf NGO software?
-- When should a nonprofit switch approaches in custom MIS versus off-the-shelf NGO software?
+- When should a nonprofit choose a custom MIS instead of off-the-shelf software?
+- How do custom and off-the-shelf systems compare on cost and implementation effort?
+- How do custom and off-the-shelf systems compare on field work, reporting and permissions?
+- Which ownership and exit trade-offs are easy to miss?
+- When should a nonprofit replace its current software approach?
 - Can AI safely help a nonprofit with 90-day and 180-day retention follow-up?
 - What information does an AI mission for 90-day and 180-day retention follow-up need?
 - What can AI execute and what must a person decide in 90-day and 180-day retention follow-up?
@@ -66,11 +66,11 @@ Publishing is conditional on intent differentiation, source sufficiency, human r
 - What can AI execute and what must a person decide in employment placement verification?
 - What evidence and audit trail should employment placement verification produce?
 - Where can an AI mission for employment placement verification fail or require escalation?
-- Can AI safely help a nonprofit with human escalation and override design?
-- What information does an AI mission for human escalation and override design need?
-- What can AI execute and what must a person decide in human escalation and override design?
-- What evidence and audit trail should human escalation and override design produce?
-- Where can an AI mission for human escalation and override design fail or require escalation?
+- When should an AI workflow hand a case to a person?
+- What information should be passed during an AI-to-human escalation?
+- Which actions can AI pause or prepare, and which require a person?
+- What should an escalation and override audit trail record?
+- What can go wrong when escalation and override rules are unclear?
 - Can AI safely help a nonprofit with MEL data quality assistant?
 - What information does an AI mission for MEL data quality assistant need?
 - What can AI execute and what must a person decide in MEL data quality assistant?
@@ -101,11 +101,11 @@ Publishing is conditional on intent differentiation, source sufficiency, human r
 - Who should complete and maintain the skilling placement and retention tracker?
 - How can the skilling placement and retention tracker be adapted for different programme sizes?
 - How can a team check that the skilling placement and retention tracker is complete and useful?
-- How should a nonprofit use the theory of Change to data model guide?
-- What fields or sections should the theory of Change to data model guide contain?
-- Who should complete and maintain the theory of Change to data model guide?
-- How can the theory of Change to data model guide be adapted for different programme sizes?
-- How can a team check that the theory of Change to data model guide is complete and useful?
+- How should a nonprofit use the Theory of Change to data model guide?
+- What fields or sections should the Theory of Change to data model guide contain?
+- Who should complete and maintain the Theory of Change to data model guide?
+- How can the Theory of Change to data model guide be adapted for different programme sizes?
+- How can a team check that the Theory of Change to data model guide is complete and useful?
 - How should a nonprofit implement child protection case management systems?
 - What records and data fields are needed for child protection case management systems?
 - Which staff roles and review steps should child protection case management systems include?
@@ -156,51 +156,51 @@ Publishing is conditional on intent differentiation, source sufficiency, human r
 - Which staff roles and review steps should placement verification and retention systems for skilling programmes include?
 - What are the most common mistakes when setting up placement verification and retention systems for skilling programmes?
 - How should placement verification and retention systems for skilling programmes change for a small NGO versus a multi-state programme?
-- What problems should AI agents for nonprofits solve for a nonprofit?
-- What should be included in a good AI agents for nonprofits implementation?
+- What operational problems can AI agents for nonprofits address?
+- What should a strong AI agents for nonprofits approach include?
 - What drives the cost and timeline of AI agents for nonprofits?
 - How should an NGO evaluate a partner for AI agents for nonprofits?
 - When is a nonprofit ready to invest in AI agents for nonprofits?
-- What problems should AI voice surveys for NGOs solve for a nonprofit?
-- What should be included in a good AI voice surveys for NGOs implementation?
+- What operational problems can AI voice surveys for NGOs address?
+- What should a strong AI voice surveys for NGOs approach include?
 - What drives the cost and timeline of AI voice surveys for NGOs?
 - How should an NGO evaluate a partner for AI voice surveys for NGOs?
 - When is a nonprofit ready to invest in AI voice surveys for NGOs?
-- What problems should DPDP compliance for NGOs solve for a nonprofit?
-- What should be included in a good DPDP compliance for NGOs implementation?
+- What operational problems can DPDP compliance for NGOs address?
+- What should a strong DPDP compliance for NGOs approach include?
 - What drives the cost and timeline of DPDP compliance for NGOs?
 - How should an NGO evaluate a partner for DPDP compliance for NGOs?
 - When is a nonprofit ready to invest in DPDP compliance for NGOs?
-- What problems should NGO monitoring and evaluation software solve for a nonprofit?
-- What should be included in a good NGO monitoring and evaluation software implementation?
+- What operational problems can NGO monitoring and evaluation software address?
+- What should a strong NGO monitoring and evaluation software approach include?
 - What drives the cost and timeline of NGO monitoring and evaluation software?
 - How should an NGO evaluate a partner for NGO monitoring and evaluation software?
 - When is a nonprofit ready to invest in NGO monitoring and evaluation software?
-- What problems should nonprofit CRM implementation solve for a nonprofit?
-- What should be included in a good nonprofit CRM implementation implementation?
+- What operational problems can nonprofit CRM implementation address?
+- What should a strong nonprofit CRM implementation approach include?
 - What drives the cost and timeline of nonprofit CRM implementation?
 - How should an NGO evaluate a partner for nonprofit CRM implementation?
 - When is a nonprofit ready to invest in nonprofit CRM implementation?
-- What problems should nonprofit MIS software solve for a nonprofit?
-- What should be included in a good nonprofit MIS software implementation?
+- What operational problems can nonprofit MIS software address?
+- What should a strong nonprofit MIS software approach include?
 - What drives the cost and timeline of nonprofit MIS software?
 - How should an NGO evaluate a partner for nonprofit MIS software?
 - When is a nonprofit ready to invest in nonprofit MIS software?
-- What problems should offline field data collection for nonprofits solve for a nonprofit?
-- What should be included in a good offline field data collection for nonprofits implementation?
+- What operational problems can offline field data collection for nonprofits address?
+- What should a strong offline field data collection for nonprofits approach include?
 - What drives the cost and timeline of offline field data collection for nonprofits?
 - How should an NGO evaluate a partner for offline field data collection for nonprofits?
 - When is a nonprofit ready to invest in offline field data collection for nonprofits?
-- What problems should technology for CSR teams solve for a nonprofit?
-- What should be included in a good technology for CSR teams implementation?
+- What operational problems can technology for CSR teams address?
+- What should a strong technology for CSR teams approach include?
 - What drives the cost and timeline of technology for CSR teams?
 - How should an NGO evaluate a partner for technology for CSR teams?
 - When is a nonprofit ready to invest in technology for CSR teams?
-- Can Zoho Creator for nonprofits support a nonprofit's real operating workflow?
-- How should a nonprofit configure Zoho Creator for nonprofits?
-- What data and integrations are needed for Zoho Creator for nonprofits?
-- What are the limitations and maintenance needs of Zoho Creator for nonprofits?
-- When should an NGO choose Zoho Creator for nonprofits instead of another approach?
+- Can Zoho Creator support a nonprofit's actual operating workflow?
+- How should a nonprofit structure a Zoho Creator application?
+- Which data and integrations does a Zoho Creator application need?
+- What are Zoho Creator's limitations and maintenance needs?
+- When should an NGO choose Zoho Creator over another approach?
 
 ## Fields that prevent mass-produced thin content
 
