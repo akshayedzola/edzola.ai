@@ -7,11 +7,12 @@
   if(parts[0]!=='verticals')return;
   var leaf=parts.slice(1).join('/');
   var copy={
-    en:{home:'/',what:'What we do',verticals:'Verticals',all:'All verticals',programme:'Programme & evidence',funding:'Funding & relationships',people:'People & HR',finance:'Finance & operations',sectors:'Sectors',thinking:'Thinking',about:'About',talk:'Talk to us',menu:'Menu'},
-    es:{home:'/es/',what:'Qué hacemos',verticals:'Verticales',all:'Todas las verticales',programme:'Programas y evidencia',funding:'Financiación y relaciones',people:'Personas y RR. HH.',finance:'Finanzas y operaciones',sectors:'Sectores',thinking:'Ideas',about:'Nosotros',talk:'Habla con nosotros',menu:'Menú'},
-    pt:{home:'/pt/',what:'O que fazemos',verticals:'Verticais',all:'Todas as verticais',programme:'Programas e evidências',funding:'Captação e relacionamentos',people:'Pessoas e RH',finance:'Finanças e operações',sectors:'Setores',thinking:'Reflexões',about:'Sobre',talk:'Fale com a gente',menu:'Menu'}
+    en:{home:'/',what:'What we do',verticals:'Verticals',all:'All verticals',programme:'Programme & evidence',funding:'Funding & relationships',people:'People & HR',finance:'Finance & operations',procurement:'Procurement & inventory',sectors:'Sectors',thinking:'Thinking',about:'About',talk:'Talk to us',menu:'Menu'},
+    es:{home:'/es/',what:'Qué hacemos',verticals:'Verticales',all:'Todas las verticales',programme:'Programas y evidencia',funding:'Financiación y relaciones',people:'Personas y RR. HH.',finance:'Finanzas y operaciones',procurement:'Compras e inventario',sectors:'Sectores',thinking:'Ideas',about:'Nosotros',talk:'Habla con nosotros',menu:'Menú'},
+    pt:{home:'/pt/',what:'O que fazemos',verticals:'Verticais',all:'Todas as verticais',programme:'Programas e evidências',funding:'Captação e relacionamentos',people:'Pessoas e RH',finance:'Finanças e operações',procurement:'Compras e estoque',sectors:'Setores',thinking:'Reflexões',about:'Sobre',talk:'Fale com a gente',menu:'Menu'}
   };
   var c=copy[locale];
+  var prefix=locale==='en'?'/verticals/':'/'+locale+'/verticals/';
   function route(lang){
     var prefix=lang==='en'?'/verticals/':'/'+lang+'/verticals/';
     return prefix+(leaf?leaf+'/':'');
@@ -36,10 +37,9 @@
     if(menuSummary)menuSummary.textContent=c.menu;
   }
   if(panel){
-    var prefix=locale==='en'?'/verticals/':'/'+locale+'/verticals/';
     panel.innerHTML='<nav class="mobile-lang" aria-label="'+(locale==='en'?'Language':'Idioma')+'">'+language+'</nav>'
       +'<a href="'+c.home+'#model">'+c.what+'</a>'
-      +'<details><summary>'+c.verticals+'</summary><a href="'+prefix+'">'+c.all+'</a><a href="'+prefix+'programme-evidence-systems/">'+c.programme+'</a><a href="'+prefix+'fundraising-donor-grant-systems/">'+c.funding+'</a><a href="'+prefix+'people-hr-systems/">'+c.people+'</a><a href="'+prefix+'finance-operations-systems/">'+c.finance+'</a></details>'
+      +'<details><summary>'+c.verticals+'</summary><a href="'+prefix+'">'+c.all+'</a><a href="'+prefix+'programme-evidence-systems/">'+c.programme+'</a><a href="'+prefix+'fundraising-donor-grant-systems/">'+c.funding+'</a><a href="'+prefix+'people-hr-systems/">'+c.people+'</a><a href="'+prefix+'finance-operations-systems/">'+c.finance+'</a><a href="'+prefix+'procurement-inventory-systems/">'+c.procurement+'</a></details>'
       +'<a href="/sectors/">'+c.sectors+'</a><a href="'+c.home+'impact-os/">ImpactOS</a><a href="/thinking/">'+c.thinking+'</a><a href="'+c.home+'about/">'+c.about+'</a><a href="#contact-form">'+c.talk+'</a>';
     panel.addEventListener('click',function(event){
       var link=event.target.closest('a');
@@ -59,5 +59,12 @@
       }
       menu.open=false;
     });
+  }
+  var desktopFinance=document.querySelector('.primary-nav .mega a[href$="finance-operations-systems/"]');
+  if(desktopFinance&&!document.querySelector('.primary-nav .mega a[href$="procurement-inventory-systems/"]')){
+    var procurementLink=document.createElement('a');
+    procurementLink.href=prefix+'procurement-inventory-systems/';
+    procurementLink.textContent=c.procurement;
+    desktopFinance.insertAdjacentElement('afterend',procurementLink);
   }
 })();

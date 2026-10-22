@@ -12,6 +12,7 @@ SLUGS = {
     "funding": "fundraising-donor-grant-systems",
     "people": "people-hr-systems",
     "finance": "finance-operations-systems",
+    "procurement": "procurement-inventory-systems",
 }
 
 COMMON = {
@@ -26,6 +27,7 @@ COMMON = {
         "funding": "Financiación y relaciones",
         "people": "Personas y RR. HH.",
         "finance": "Finanzas y operaciones",
+        "procurement": "Compras e inventario",
         "sectors": "Sectores",
         "thinking": "Ideas",
         "about": "Nosotros",
@@ -52,6 +54,7 @@ COMMON = {
         "funding": "Captação e relacionamentos",
         "people": "Pessoas e RH",
         "finance": "Finanças e operações",
+        "procurement": "Compras e estoque",
         "sectors": "Setores",
         "thinking": "Reflexões",
         "about": "Sobre",
@@ -164,6 +167,24 @@ PAGES = {
             "cta_body": "Trae un presupuesto, aprobación, proyecto o proceso de gastos. Identificaremos dónde se separan propiedad, datos y decisiones.",
             "cta_label": "Empezar por el traspaso roto",
         },
+        "procurement": {
+            "title": "Sistemas de compras, órdenes e inventario | EdZola",
+            "description": "Conecta solicitudes de compra, presupuestos, proveedores, cotizaciones, órdenes, recepciones, facturas, pagos e inventario.",
+            "eyebrow": "Compras e inventario",
+            "h1": "Sigue cada compra desde la necesidad hasta la recepción, el pago y el inventario.",
+            "lead": "Diseñamos sistemas de compras para ONG y empresas que conectan solicitudes, presupuestos, proveedores, cotizaciones, aprobaciones, órdenes de compra, recepción de bienes o servicios, facturas, pagos e inventario.",
+            "section_title": "Una compra pierde control cuando cada equipo ve solo una parte.",
+            "section_body": "El correo, las hojas y los sistemas contables pueden registrar fragmentos del proceso sin mostrar el compromiso completo, la excepción actual ni quién debe actuar.",
+            "cards": [("Aprobaciones opacas", "La solicitud se mueve entre correos y chats sin una cola, un responsable o un historial fiable."), ("Compromisos tardíos", "El presupuesto se revisa después de decidir, y las órdenes se crean cuando el gasto ya ocurrió."), ("Recepción desconectada", "Bienes, servicios, facturas, existencias y pagos no comparten una referencia trazable.")],
+            "workflow": ["Necesidad y solicitud", "Presupuesto y política", "Proveedor y cotizaciones", "Aprobación y orden", "Recepción o conformidad", "Factura, pago y conciliación"],
+            "modules_title": "Un flujo configurable de solicitud a conciliación.",
+            "modules": [("Solicitudes y presupuesto", "Propósito, entidad, proyecto, subvención o centro de coste, partidas, fechas y comprobaciones presupuestarias."), ("Proveedores y cotizaciones", "Alta controlada, documentos, categorías, precios, plazos, comparaciones y justificación de selección."), ("Aprobaciones y órdenes", "Matrices por rol y valor, separación de funciones, numeración, versiones, anticipos y saldos."), ("Recepción, inventario y pago", "GRN o conformidad de servicio, entregas parciales, variaciones, activos o existencias, factura y traspaso contable.")],
+            "transform_title": "Las compras conectan financiación, programas, personas, activos y contabilidad.",
+            "transform_body": "Puede empezar como un flujo concreto y convertirse en una etapa de transformación más amplia cuando presupuestos, maestros, inventario y sistemas financieros se conectan en secuencia.",
+            "cta_title": "Traza una compra real de principio a fin.",
+            "cta_body": "Trae una solicitud, una cadena de aprobación, una orden o un problema de inventario. Identificaremos dónde se pierde el contexto y cuál es el primer cambio útil.",
+            "cta_label": "Revisar el flujo de compras",
+        },
     },
     "pt": {},
 }
@@ -196,6 +217,9 @@ PAGES["pt"] = {
     "finance": {
         "title": "Sistemas de finanças, despesas, projetos e operações | EdZola", "description": "Conecte orçamentos, despesas, utilização de fundos, projetos, tarefas, aprovações e repasses contábeis.", "eyebrow": "Sistemas de finanças e operações", "h1": "Faça orçamentos, aprovações, projetos e entrega avançarem juntos.", "lead": "Projetamos a camada operacional ao redor da contabilidade: controle orçamentário, despesas, utilização, projetos, responsáveis, documentos, aprovações e comunicação.", "section_title": "O plano, o trabalho e o gasto se afastam.", "section_body": "A contabilidade pode estar correta enquanto donos de projeto ainda não enxergam pressão orçamentária, aprovações pendentes ou evidências faltando.", "cards": [("Névoa de aprovações", "Solicitações passam por chat e e-mail sem dono nem status claros."), ("Dados tardios", "A visibilidade do orçamento chega depois que a decisão foi tomada."), ("Trabalho disperso", "Tarefas, riscos, documentos, tempo e custos vivem em ferramentas separadas.")], "workflow": ["Plano, orçamento e responsáveis", "Solicitação e aprovação", "Projeto, tarefa e compromisso", "Despesa, fatura e pagamento", "Realizado, alocação e variação", "Evidência, revisão e nova previsão"], "modules_title": "Dê a cada equipe a visão certa sem reconstruir a contabilidade.", "modules": [("Orçamentos e revisões", "Estruturas por programa, projeto, grant e centro de custo."), ("Solicitações e aprovações", "Compras, viagens, adiantamentos, despesas e pagamentos com limites e evidências."), ("Projetos e trabalho", "Marcos, tarefas, responsáveis, dependências, riscos, documentos e decisões."), ("Repasse contábil", "Registros validados, conciliação e integrações com Zoho Books ou Tally.")], "transform_title": "Operações é onde sistemas separados se conectam ou criam mais trabalho.", "transform_body": "Sequenciamos este pilar quando registros de programas, captação ou pessoas já são confiáveis, para não multiplicar a conciliação.", "cta_title": "Audite as passagens operacionais.", "cta_body": "Traga um orçamento, aprovação, projeto ou processo de despesas. Identificaremos onde responsabilidade, dados e decisões se separam.", "cta_label": "Começar pela passagem quebrada",
     },
+    "procurement": {
+        "title": "Sistemas de compras, pedidos e estoque | EdZola", "description": "Conecte solicitações, orçamento, fornecedores, cotações, pedidos, recebimento, faturas, pagamentos e estoque.", "eyebrow": "Compras e estoque", "h1": "Acompanhe cada compra da necessidade ao recebimento, pagamento e estoque.", "lead": "Projetamos sistemas de compras para ONGs e empresas que conectam solicitações, orçamento, fornecedores, cotações, aprovações, pedidos de compra, recebimento de bens ou serviços, faturas, pagamentos e estoque.", "section_title": "Uma compra perde controle quando cada equipe enxerga apenas uma parte.", "section_body": "E-mail, planilhas e sistemas contábeis podem registrar pedaços do processo sem mostrar o compromisso completo, a exceção atual ou quem precisa agir.", "cards": [("Aprovações opacas", "A solicitação passa por e-mail e chat sem fila, responsável ou histórico confiável."), ("Compromissos tardios", "O orçamento é verificado depois da decisão e os pedidos aparecem quando a despesa já ocorreu."), ("Recebimento desconectado", "Bens, serviços, faturas, estoque e pagamentos não compartilham uma referência rastreável.")], "workflow": ["Necessidade e solicitação", "Orçamento e política", "Fornecedor e cotações", "Aprovação e pedido", "Recebimento ou aceite", "Fatura, pagamento e conciliação"], "modules_title": "Um fluxo configurável da solicitação à conciliação.", "modules": [("Solicitações e orçamento", "Finalidade, entidade, projeto, grant ou centro de custo, itens, datas e verificações de orçamento."), ("Fornecedores e cotações", "Cadastro controlado, documentos, categorias, preços, prazos, comparações e justificativa de escolha."), ("Aprovações e pedidos", "Matrizes por papel e valor, segregação de funções, numeração, versões, adiantamentos e saldos."), ("Recebimento, estoque e pagamento", "GRN ou aceite de serviço, entregas parciais, divergências, ativos ou estoque, fatura e repasse contábil.")], "transform_title": "Compras conectam captação, programas, pessoas, ativos e contabilidade.", "transform_body": "Pode começar como um fluxo específico e virar uma etapa de transformação maior quando orçamentos, cadastros, estoque e sistemas financeiros são conectados em sequência.", "cta_title": "Mapeie uma compra real de ponta a ponta.", "cta_body": "Traga uma solicitação, cadeia de aprovação, pedido ou problema de estoque. Vamos identificar onde o contexto se perde e qual é a primeira mudança útil.", "cta_label": "Revisar o fluxo de compras",
+    },
 }
 
 PROOFS = {
@@ -204,6 +228,7 @@ PROOFS = {
     "funding": [("NeevJivan Foundation", "https://www.edzola.com/post/neevjivan-foundation-streamlining-and-tracking-fundraising-and-donor-engagement-with-zoho-crm"), ("CRM para ONG", "https://www.edzola.com/post/how-a-crm-saved-me-from-losing-my-mind-and-why-every-ngo-needs-one"), ("Gestão de grants", "https://www.edzola.com/post/technology-enabled-grant-management-innovations-and-best-practices")],
     "people": [("Aangan Trust", "https://www.edzola.com/post/edg-aangan-trust-streamlining-hr-operations-and-employee-data-management-through-zoho-people"), ("HRMS para ONG", "https://www.edzola.com/post/the-ultimate-guide-to-hrms-for-non-profits-streamlining-hr-processes-with-zoho-people"), ("Implementação de HRMS", "https://www.edzola.com/post/overcoming-implementation-challenges-in-hr-management-systems")],
     "finance": [("Aria CFO Services", "https://www.edzola.com/post/edg-aria-cfo-services-effective-project-management-and-team-collaboration-with-zoho-projects"), ("Zoho Books para ONG", "https://www.edzola.com/post/top-5-reasons-why-zoho-books-is-your-ideal-solution-for-non-profit-accounting-management"), ("Operações com Zoho Creator", "https://www.edzola.com/post/streamlining-non-profit-operations-with-zoho-creator-apps")],
+    "procurement": [("Zoho Books para ONG", "https://www.edzola.com/post/top-5-reasons-why-zoho-books-is-your-ideal-solution-for-non-profit-accounting-management"), ("Operações com Zoho Creator", "https://www.edzola.com/post/streamlining-non-profit-operations-with-zoho-creator-apps"), ("Aria CFO Services", "https://www.edzola.com/post/edg-aria-cfo-services-effective-project-management-and-team-collaboration-with-zoho-projects")],
 }
 
 RESOURCES = {
@@ -212,6 +237,7 @@ RESOURCES = {
     "funding": [("O fluxo do dinheiro", "/thinking/how-nonprofits-operate/#money"), ("Avalie sua tecnologia", "https://www.edzola.com/post/how-to-perform-tech-evaluation-criteria-for-technology-assessment-in-nonprofits"), ("Comece pela necessidade humana", "https://www.edzola.com/post/stop-chasing-tools-start-with-the-human-need")],
     "people": [("Avalie o que você já tem", "https://www.edzola.com/post/how-to-perform-tech-evaluation-criteria-for-technology-assessment-in-nonprofits"), ("Rica em missão, pobre em sistemas", "/field-guides/technology-that-sticks/mission-rich-systems-poor/"), ("Como novos padrões ganham adesão", "/field-guides/technology-that-sticks/warmth-is-how-standards-travel/")],
     "finance": [("Orçamento, alocação e utilização", "/thinking/how-nonprofits-operate/#money"), ("Tecnologia, automação e IA", "/thinking/how-nonprofits-operate/#systems"), ("Superando silos de dados", "https://www.edzola.com/post/unlocking-nonprofit-efficiency-overcoming-data-silos-and-centralizing-your-systems")],
+    "procurement": [("O fluxo do dinheiro", "/thinking/how-nonprofits-operate/#money"), ("Avalie sua tecnologia", "https://www.edzola.com/post/how-to-perform-tech-evaluation-criteria-for-technology-assessment-in-nonprofits"), ("Superando silos de dados", "https://www.edzola.com/post/unlocking-nonprofit-efficiency-overcoming-data-silos-and-centralizing-your-systems")],
 }
 
 SPANISH_TITLES = {
@@ -262,9 +288,10 @@ def navigation(locale, key):
         f'<a href="{vr}fundraising-donor-grant-systems/">{escape(c["funding"])}</a>'
         f'<a href="{vr}people-hr-systems/">{escape(c["people"])}</a>'
         f'<a href="{vr}finance-operations-systems/">{escape(c["finance"])}</a>'
+        f'<a href="{vr}procurement-inventory-systems/">{escape(c["procurement"])}</a>'
     )
     return f'''<header class="site-header"><div class="wrap nav-shell"><a class="brand" href="{c['home']}">edzola.ai</a>
-<nav class="primary-nav" aria-label="Principal"><a href="{c['home']}#model">{escape(c['what'])}</a><details class="nav-group"><summary aria-current="page">{escape(c['verticals'])}</summary><div class="mega"><div class="mega-col"><h3>{escape(c['programme'])}</h3><a href="{vr}programme-evidence-systems/">{escape(programme_short)}</a></div><div class="mega-col"><h3>{escape(c['funding'])}</h3><a href="{vr}fundraising-donor-grant-systems/">{escape(funding_short)}</a></div><div class="mega-col"><h3>{escape(c['people'])} &amp; {escape(c['finance'])}</h3><a href="{vr}people-hr-systems/">{escape(c['people'])}</a><a href="{vr}finance-operations-systems/">{escape(c['finance'])}</a></div><a class="mega-all" href="{vr}"><span>{escape(c['all'])}</span><span>→</span></a></div></details><a href="/sectors/">{escape(c['sectors'])}</a><a href="{c['home']}impact-os/">ImpactOS</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}about/">{escape(c['about'])}</a></nav>
+<nav class="primary-nav" aria-label="Principal"><a href="{c['home']}#model">{escape(c['what'])}</a><details class="nav-group"><summary aria-current="page">{escape(c['verticals'])}</summary><div class="mega"><div class="mega-col"><h3>{escape(c['programme'])}</h3><a href="{vr}programme-evidence-systems/">{escape(programme_short)}</a></div><div class="mega-col"><h3>{escape(c['funding'])}</h3><a href="{vr}fundraising-donor-grant-systems/">{escape(funding_short)}</a></div><div class="mega-col"><h3>{escape(c['people'])} &amp; {escape(c['finance'])}</h3><a href="{vr}people-hr-systems/">{escape(c['people'])}</a><a href="{vr}finance-operations-systems/">{escape(c['finance'])}</a><a href="{vr}procurement-inventory-systems/">{escape(c['procurement'])}</a></div><a class="mega-all" href="{vr}"><span>{escape(c['all'])}</span><span>→</span></a></div></details><a href="/sectors/">{escape(c['sectors'])}</a><a href="{c['home']}impact-os/">ImpactOS</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}about/">{escape(c['about'])}</a></nav>
 {language_links(locale, key, 'nav-lang')}<a class="pill primary header-cta" href="#contact-form">{escape(c['talk'])}</a>
 <details class="mobile-menu"><summary>{escape(c['menu'])}</summary><div class="mobile-panel">{language_links(locale, key, 'mobile-lang')}<a href="{c['home']}#model">{escape(c['what'])}</a><details><summary>{escape(c['verticals'])}</summary>{vertical_links}</details><a href="/sectors/">{escape(c['sectors'])}</a><a href="{c['home']}impact-os/">ImpactOS</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}about/">{escape(c['about'])}</a><a href="#contact-form">{escape(c['talk'])}</a></div></details></div></header>'''
 
@@ -277,7 +304,7 @@ def head(locale, key, page):
 <title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'], quote=True)}"><link rel="canonical" href="{canonical}">
 <link rel="alternate" hreflang="en" href="https://edzola.ai{en_path}"><link rel="alternate" hreflang="es" href="https://edzola.ai{route('es', key)}"><link rel="alternate" hreflang="pt-BR" href="https://edzola.ai{route('pt', key)}"><link rel="alternate" hreflang="x-default" href="https://edzola.ai{en_path}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="EdZola"><meta property="og:title" content="{escape(page['h1'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:url" content="{canonical}">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="/assets/verticals.css?v=20261020a"><link rel="stylesheet" href="/assets/crm-webform.css?v=20261019a">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="/assets/verticals.css?v=20261022a"><link rel="stylesheet" href="/assets/crm-webform.css?v=20261019a">
 </head><body><a class="skip" href="#main">{escape(COMMON[locale]['skip'])}</a>'''
 
 
@@ -296,7 +323,7 @@ def proof_and_resources(locale, key):
 def footer(locale):
     c = COMMON[locale]
     vr = c["vertical_root"]
-    return f'''<footer class="footer"><div class="wrap"><div class="footer-grid"><div><a class="brand" href="{c['home']}">edzola.ai</a><p>{escape(c['transformation'])}.</p></div><div><h3>{escape(c['verticals'])}</h3><a href="{vr}programme-evidence-systems/">{escape(c['programme'])}</a><a href="{vr}fundraising-donor-grant-systems/">{escape(c['funding'])}</a><a href="{vr}people-hr-systems/">{escape(c['people'])}</a><a href="{vr}finance-operations-systems/">{escape(c['finance'])}</a></div><div><h3>{escape(c['explore'])}</h3><a href="/sectors/">{escape(c['sectors'])}</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}impact-os/">ImpactOS</a></div><div><h3>{escape(c['start'])}</h3><a href="#contact-form">{escape(c['talk'])}</a><a href="mailto:reachus@edzola.com">reachus@edzola.com</a></div></div><div class="footer-bottom"><span>© EdZola Technologies Private Limited</span><span>{escape(c['country'])}</span></div></div></footer><script src="/assets/verticals-nav.js?v=20261019c"></script><script src="/assets/crm-webform.js?v=20261020a"></script></body></html>'''
+    return f'''<footer class="footer"><div class="wrap"><div class="footer-grid"><div><a class="brand" href="{c['home']}">edzola.ai</a><p>{escape(c['transformation'])}.</p></div><div><h3>{escape(c['verticals'])}</h3><a href="{vr}programme-evidence-systems/">{escape(c['programme'])}</a><a href="{vr}fundraising-donor-grant-systems/">{escape(c['funding'])}</a><a href="{vr}people-hr-systems/">{escape(c['people'])}</a><a href="{vr}finance-operations-systems/">{escape(c['finance'])}</a><a href="{vr}procurement-inventory-systems/">{escape(c['procurement'])}</a></div><div><h3>{escape(c['explore'])}</h3><a href="/sectors/">{escape(c['sectors'])}</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}impact-os/">ImpactOS</a></div><div><h3>{escape(c['start'])}</h3><a href="#contact-form">{escape(c['talk'])}</a><a href="mailto:reachus@edzola.com">reachus@edzola.com</a></div></div><div class="footer-bottom"><span>© EdZola Technologies Private Limited</span><span>{escape(c['country'])}</span></div></div></footer><script src="/assets/verticals-nav.js?v=20261022a"></script><script src="/assets/crm-webform.js?v=20261022a"></script></body></html>'''
 
 
 def render_hub(locale, page):
@@ -304,7 +331,7 @@ def render_hub(locale, page):
     cards = "".join(f'<a class="pillar-card" href="{route(locale, key)}"><span class="number">{escape(label)}</span><h3>{escape(title)}</h3><p>{escape(body)}</p><span class="go">{escape(c[key])} →</span></a>' for key, label, title, body in page["pillars"])
     steps = "".join(f'<article><h3>{escape(step)}</h3><p>{escape(page["transform_body"])}</p></article>' for step in page["steps"])
     return head(locale, "hub", page) + navigation(locale, "hub") + f'''<main id="main"><section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">{escape(page['eyebrow'])}</span><h1>{escape(page['h1'])}</h1><p class="lead">{escape(page['lead'])}</p><div class="hero-actions"><a class="pill primary" href="#pillars">{escape(c['all'])}</a><a class="pill ghost" href="#transformation">{escape(c['transformation'])}</a></div></div><div class="system-map"><div class="map-title"><span>{escape(c['transformation'])}</span><i></i></div><div class="map-core"><b>{escape(page['intro'])}</b><span>{escape(page['intro_body'])}</span></div></div></div></section>
-<section class="section" id="pillars"><div class="wrap"><div class="section-head"><div><span class="eyebrow">{escape(page['intro'])}</span><h2>{escape(page['intro'])}</h2></div><p>{escape(page['intro_body'])}</p></div><div class="pillar-grid">{cards}</div></div></section>
+<section class="section" id="pillars"><div class="wrap"><div class="section-head"><div><span class="eyebrow">{escape(page['intro'])}</span><h2>{escape(page['intro'])}</h2></div><p>{escape(page['intro_body'])}</p></div><div class="pillar-grid">{cards}</div><a class="focus-link" href="{route(locale, 'procurement')}"><span>{escape(c['finance'])} · {escape(c['procurement'])}</span><strong>{escape(PAGES[locale]['procurement']['h1'])} →</strong></a></div></section>
 <section class="section dark" id="transformation"><div class="wrap"><div class="transform-intro"><span class="eyebrow">{escape(c['transformation'])}</span><h2>{escape(page['transform_title'])}</h2><p>{escape(page['transform_body'])}</p></div><div class="sequence">{steps}</div></div></section>
 {proof_and_resources(locale, 'hub')}<section class="section"><div class="wrap"><div class="cta"><div><h2>{escape(page['cta_title'])}</h2><p>{escape(page['cta_body'])}</p></div><a class="pill dark" href="#contact-form">{escape(page['cta_label'])}</a></div></div></section></main>''' + footer(locale)
 
