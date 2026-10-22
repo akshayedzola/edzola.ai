@@ -46,7 +46,7 @@ class PhaseOneContentTests(unittest.TestCase):
             self.assertEqual(len(re.findall(r'data-question-id="q-\d{4}"', source)), 5)
             self.assertIn("data-crm-webform", source)
             self.assertIn("crm-form-left", source)
-            self.assertIn('/assets/crm-webform.js?v=20261020b', source)
+            self.assertIn('/assets/crm-webform.js?v=20261022a', source)
             self.assertTrue({"Article", "FAQPage"}.issubset(schema_types(source)))
             titles.add(re.search(r"<title>(.*?)</title>", source, re.S).group(1))
             descriptions.add(re.search(r'<meta name="description" content="(.*?)">', source, re.S).group(1))

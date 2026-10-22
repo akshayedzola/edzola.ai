@@ -20,7 +20,7 @@ QUESTION_BANK = ROOT / "content" / "expansion" / "question-bank.csv"
 TODAY = "2026-10-20"
 DISPLAY_DATE = "20 October 2026"
 SITE = "https://edzola.ai"
-FORM_SCRIPT_VERSION = "20261020b"
+FORM_SCRIPT_VERSION = "20261022a"
 
 
 def parts(value: str) -> list[str]:

@@ -9,7 +9,7 @@ FORM_SCRIPT = ROOT / "assets" / "crm-webform.js"
 AMPLIFY_PAGE = ROOT / "crm" / "amplify" / "index.html"
 HOME_PAGE = ROOT / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
-ASSET_VERSION = "20261020b"
+ASSET_VERSION = "20261022a"
 
 
 class CrmWebformRegressionTests(unittest.TestCase):
@@ -80,6 +80,9 @@ class CrmWebformRegressionTests(unittest.TestCase):
         self.assertIn("'verticals':{", source)
         self.assertIn("'verticals':'Data Systems – MIS / ERP'", source)
         self.assertIn('a[href^="/contact/"]', source)
+        self.assertIn("path.indexOf('/verticals/procurement-inventory-systems/')>-1?'procurement'", source)
+        self.assertIn("contextKey==='procurement'?ui.procurement:ui.programme", source)
+        self.assertIn("'procurement':'Data Systems – MIS / ERP'", source)
 
     def test_shared_form_localizes_visible_ui_for_spanish_and_portuguese(self):
         source = FORM_SCRIPT.read_text(encoding="utf-8")

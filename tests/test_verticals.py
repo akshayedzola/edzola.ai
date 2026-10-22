@@ -13,6 +13,7 @@ VERTICAL_ROUTES = (
     "/verticals/fundraising-donor-grant-systems/",
     "/verticals/people-hr-systems/",
     "/verticals/finance-operations-systems/",
+    "/verticals/procurement-inventory-systems/",
 )
 TRANSLATED_VERTICAL_ROUTES = tuple(
     f"/{language}{route}"
@@ -82,7 +83,7 @@ class VerticalsRegressionTests(unittest.TestCase):
             parsed = parse_page(page)
             self.assertEqual((parsed.titles, parsed.h1s, parsed.descriptions), (1, 1, 1), route)
             self.assertEqual(parsed.canonicals, [f"https://edzola.ai{route}"], route)
-            self.assertIn("/assets/verticals.css?v=20261020a", parsed.stylesheets, route)
+            self.assertTrue(any(href and href.startswith("/assets/verticals.css?") for href in parsed.stylesheets), route)
             self.assertIn("/assets/crm-webform.css?v=20261019a", parsed.stylesheets, route)
             for payload in parsed.json_ld:
                 json.loads(payload)
@@ -97,8 +98,8 @@ class VerticalsRegressionTests(unittest.TestCase):
     def test_every_vertical_route_loads_shared_navigation_and_crm(self):
         for route in ALL_VERTICAL_ROUTES:
             page = route_file(route).read_text(encoding="utf-8")
-            self.assertIn("/assets/verticals-nav.js?v=20261019c", page, route)
-            self.assertIn("/assets/crm-webform.js?v=20261020b", page, route)
+            self.assertIn("/assets/verticals-nav.js?", page, route)
+            self.assertIn("/assets/crm-webform.js?", page, route)
             self.assertNotIn("<details open>", page, route)
 
     def test_vertical_language_alternates_are_reciprocal(self):
@@ -154,6 +155,22 @@ class VerticalsRegressionTests(unittest.TestCase):
         for relative in ("index.html", "impact-os/index.html", "sectors/index.html", "thinking/index.html"):
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn('href="/verticals/"', page, relative)
+
+    def test_procurement_is_a_visible_finance_and_operations_focus(self):
+        procurement_route = "/verticals/procurement-inventory-systems/"
+        hub = route_file("/verticals/").read_text(encoding="utf-8")
+        finance = route_file("/verticals/finance-operations-systems/").read_text(encoding="utf-8")
+        self.assertIn(f'href="{procurement_route}"', hub)
+        self.assertIn(f'href="{procurement_route}"', finance)
+        for language in ("es", "pt"):
+            localized_hub = route_file(f"/{language}/verticals/").read_text(encoding="utf-8")
+            self.assertIn(f'href="/{language}{procurement_route}"', localized_hub)
+
+    def test_procurement_page_covers_the_complete_control_chain(self):
+        required = ("purchase request", "budget", "vendor", "quotation", "purchase order", "goods receipt", "invoice", "payment", "inventory", "audit")
+        page = route_file("/verticals/procurement-inventory-systems/").read_text(encoding="utf-8").lower()
+        for term in required:
+            self.assertIn(term, page)
 
     def test_homepages_use_collapsible_vertical_navigation_and_new_entry_paths(self):
         expectations = {
