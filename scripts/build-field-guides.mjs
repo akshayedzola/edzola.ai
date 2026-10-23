@@ -102,7 +102,7 @@ for (let index = 0; index < files.length; index += 1) {
 <link rel="stylesheet" href="/thinking/reading.css">
 </head>
 <body>
-<header class="reading-header"><div class="reading-wrap"><a class="reading-logo" href="/">edzola.ai</a><nav aria-label="Breadcrumb"><a href="/thinking/">Thinking</a><span>/</span><a href="/field-guides/technology-that-sticks/">Technology that sticks</a></nav></div></header>
+<!-- ez-shell:header:start --><!-- ez-shell:header:end -->
 <main>
   <article class="essay">
     <header class="essay-head"><span class="kicker">${escapeHtml(meta.series)} · ${escapeHtml(meta.reading_time)} read</span><h1>${escapeHtml(meta.title)}</h1><p class="dek">${escapeHtml(meta.subtitle)}</p><p class="byline">By ${escapeHtml(meta.author)}</p></header>
@@ -113,7 +113,7 @@ for (let index = 0; index < files.length; index += 1) {
     ${next ? `<a class="next" href="/field-guides/technology-that-sticks/${next.slug}/"><span>Next essay</span><strong>${escapeHtml(next.title)} →</strong></a>` : `<a class="next" href="/field-guides/technology-that-sticks/"><span>Return to</span><strong>The complete field guide →</strong></a>`}
   </nav>
 </main>
-<footer class="reading-footer"><div class="reading-wrap"><span>EdZola Technologies · Systems built for the world's hardest work.</span><a href="/thinking/">Explore how we think →</a></div></footer>
+<!-- ez-shell:footer:start --><!-- ez-shell:footer:end -->
 </body>
 </html>`;
   const destination = join(outputRoot, meta.slug, "index.html");

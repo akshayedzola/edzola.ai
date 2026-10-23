@@ -16,10 +16,12 @@
   if(!ui.procurement)ui.procurement=locale==='es'?'Un sistema de compras, órdenes o inventario':'Um sistema de compras, pedidos ou estoque';
   var slug=(parts[0]||'home');
   var contextKey=path.indexOf('/verticals/procurement-inventory-systems/')>-1?'procurement':
+    (path.indexOf('/verticals/people-hr-systems/')>-1?'people-hr':
+    (path.indexOf('/verticals/fundraising-donor-grant-systems/')>-1?'fundraising':
     (path.indexOf('/crm/amplify/')===0?'amplify':
     ((path.indexOf('/dozai/')===0||path.indexOf('/solutions/ai-agents-for-nonprofits/')===0)?'dozai':
     ((path.indexOf('/learn/technology/zoho-creator-for-nonprofits/')===0||path.indexOf('/solutions/nonprofit-crm-implementation/')===0)?'zoho-consulting':
-    (path.indexOf('/team/impactos/')===0?'impactos':(path==='/zolabs/why/'?'why':slug)))));
+    (path.indexOf('/team/impactos/')===0?'impactos':(path==='/zolabs/why/'?'why':slug)))))));
   var formContexts={
     'home':{
       title:'Start with one part of the work that feels harder than it should.',
@@ -77,11 +79,37 @@
       title:'Bring us the workflow that is creating the most pressure.',
       body:'We’ll help you decide whether to repair one system, connect several handoffs or sequence organisation-wide digital transformation.'
     },
+    'people-hr':{
+      title:'Tell us where the employee journey breaks.',
+      body:'Share how hiring, onboarding, attendance, leave or payroll work today. We’ll help you find the first part of the journey to make reliable.'
+    },
+    'fundraising':{
+      title:'Tell us where donor and grant follow-up slips.',
+      body:'Share how prospects, donors, grants and reports are tracked today. We’ll help you decide what your CRM should hold and what it should remind people to do.'
+    },
     'procurement':{
       title:'Trace one real purchase from request to reconciliation.',
       body:'Bring a PR form, approval chain, PO, receiving problem or stock tracker. We’ll identify where context is lost and the first useful system change.'
     }
   };
+  /* helpKey picks the CRM offering; contextKey picks the copy. Translated verticals share one translated copy. */
+  var helpKey=contextKey;
+  if((contextKey==='people-hr'||contextKey==='fundraising')&&locale!=='en')contextKey='verticals';
+  var localisedContexts={
+    es:{
+      'home':{title:'Empieza por una parte del trabajo que resulta más difícil de lo que debería.',body:'Trae una hoja de cálculo, un formulario o un flujo de trabajo. Te ayudaremos a encontrar un primer paso práctico: un proceso más claro, un sistema conectado o un mejor uso de lo que ya tienes.'},
+      'impact-os':{title:'Cuéntanos qué debe aclarar tu sistema de programas.',body:'Comparte el modelo del programa, las decisiones que tu equipo necesita tomar y una hoja que usas hoy. Te ayudaremos a definir el plan mínimo útil para empezar.'},
+      'zolabs':{title:'Cuéntanos qué necesitas aprender de las voces de las personas.',body:'Comparte el estudio, la consulta o la evaluación que tienes en mente. Te ayudaremos a diseñar un piloto pequeño de investigación por voz en varios idiomas.'}
+    },
+    pt:{
+      'home':{title:'Comece por uma parte do trabalho que está mais difícil do que deveria.',body:'Traga uma planilha, um formulário ou um fluxo de trabalho. Vamos ajudar você a encontrar um primeiro passo prático: um processo mais claro, um sistema conectado ou um uso melhor do que você já tem.'},
+      'impact-os':{title:'Conte o que o seu sistema de programas precisa deixar mais claro.',body:'Compartilhe o modelo do programa, as decisões que sua equipe precisa tomar e uma planilha que usa hoje. Vamos ajudar a definir o menor plano útil para começar.'},
+      'zolabs':{title:'Conte o que você precisa aprender com a voz das pessoas.',body:'Compartilhe o estudo, a consulta ou a avaliação que tem em mente. Vamos ajudar a desenhar um pequeno piloto de pesquisa por voz em vários idiomas.'}
+    }
+  };
+  if(localisedContexts[locale]){
+    Object.keys(localisedContexts[locale]).forEach(function(key){formContexts[key]=localisedContexts[locale][key]});
+  }
   if(contextKey==='verticals'&&locale==='es')formContexts.verticals={title:'Trae el flujo de trabajo que genera más presión.',body:'Te ayudaremos a decidir si conviene reparar un sistema, conectar varios traspasos o secuenciar una transformación digital de toda la organización.'};
   if(contextKey==='verticals'&&locale==='pt')formContexts.verticals={title:'Traga o fluxo de trabalho que gera mais pressão.',body:'Ajudaremos a decidir se vale reparar um sistema, conectar várias passagens ou sequenciar uma transformação digital em toda a organização.'};
   if(contextKey==='procurement'&&locale==='es')formContexts.procurement={title:'Traza una compra real de principio a fin.',body:'Trae una solicitud, una cadena de aprobación, una orden o un problema de inventario. Identificaremos dónde se pierde el contexto y el primer cambio útil.'};
@@ -172,9 +200,19 @@
     'why':'technology is adding work for our team instead of helping them make better decisions.',
     'field-guides':'a tool or workflow was introduced, but the team is struggling to use it consistently.',
     'verticals':'programme, funding, people or operations data is split across tools, and we need to know what to fix first.',
+    'people-hr':'attendance, leave and payroll inputs come from different sheets, and managers cannot see who needs approval.',
+    'fundraising':'donor history lives in inboxes and spreadsheets, so grant reports and renewals depend on one person remembering.',
     'procurement':'purchase requests, approvals, POs, receipts, invoices and stock are tracked in separate places, so we cannot see the full commitment or what needs attention.',
     'contact':'our team spends too much time reconciling trackers and still cannot see what needs attention.'
   };
+  var localisedExamples={
+    es:{home:'tenemos un proceso que depende de varias hojas de cálculo y el equipo no ve qué necesita atención.',contact:'el equipo dedica demasiado tiempo a conciliar hojas y aun así no ve qué necesita atención.','impact-os':'necesitamos un plan de programa que conecte la ejecución, el seguimiento y los informes según cómo trabajamos de verdad.',zolabs:'necesitamos recoger y entender entrevistas o comentarios en varios idiomas y a escala.'},
+    pt:{home:'temos um processo que depende de várias planilhas e a equipe não consegue ver o que precisa de atenção.',contact:'a equipe gasta tempo demais conciliando planilhas e ainda não vê o que precisa de atenção.','impact-os':'precisamos de um plano de programa que conecte execução, acompanhamento e relatórios de acordo com a forma como trabalhamos.',zolabs:'precisamos coletar e entender entrevistas ou retornos em vários idiomas e em escala.'}
+  };
+  if(localisedExamples[locale]){
+    Object.keys(localisedExamples[locale]).forEach(function(key){examples[key]=localisedExamples[locale][key]});
+    if(contextKey!=='verticals'&&!localisedExamples[locale][contextKey])examples[contextKey]=localisedExamples[locale].home;
+  }
   if(contextKey==='verticals'&&locale==='es')examples.verticals='los datos de programas, financiación, personas u operaciones están repartidos entre varias herramientas y necesitamos saber qué corregir primero.';
   if(contextKey==='verticals'&&locale==='pt')examples.verticals='os dados de programas, captação, pessoas ou operações estão espalhados por várias ferramentas e precisamos saber o que corrigir primeiro.';
 
@@ -219,10 +257,12 @@
     'fundzola':'Data Systems – MIS / ERP',
     'amplify':'Claude Consulting',
     'verticals':'Data Systems – MIS / ERP',
+    'people-hr':'HRMS',
+    'fundraising':'CRM',
     'procurement':'Data Systems – MIS / ERP'
   };
-  if(crmData.crmHelpDefault)helpDefaults[contextKey]=crmData.crmHelpDefault;
-  if(helpDefaults[contextKey])helpField.value=helpDefaults[contextKey];
+  if(crmData.crmHelpDefault)helpDefaults[helpKey]=crmData.crmHelpDefault;
+  if(helpDefaults[helpKey])helpField.value=helpDefaults[helpKey];
   var preserveStatus=false;
 
   function showStatus(message,isError){
@@ -256,7 +296,7 @@
     var keepStatus=preserveStatus;
     window.setTimeout(function(){
       landingField.value=landingUrl;
-      helpField.value=helpDefaults[contextKey]||'-None-';
+      helpField.value=helpDefaults[helpKey]||'-None-';
       if(!keepStatus)showStatus('',false);
     },0);
   });

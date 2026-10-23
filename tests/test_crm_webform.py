@@ -9,7 +9,7 @@ FORM_SCRIPT = ROOT / "assets" / "crm-webform.js"
 AMPLIFY_PAGE = ROOT / "crm" / "amplify" / "index.html"
 HOME_PAGE = ROOT / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
-ASSET_VERSION = "20261023a"
+ASSET_VERSION = "20261023b"
 
 
 class CrmWebformRegressionTests(unittest.TestCase):
@@ -30,7 +30,7 @@ class CrmWebformRegressionTests(unittest.TestCase):
         )
         self.assertIn("var preserveStatus=false;", source)
         self.assertIn("if(!keepStatus)showStatus('',false);", source)
-        self.assertIn("helpField.value=helpDefaults[contextKey]||'-None-';", source)
+        self.assertIn("helpField.value=helpDefaults[helpKey]||'-None-';", source)
 
     def test_every_page_uses_the_current_shared_form_script(self):
         tracked_html = subprocess.run(

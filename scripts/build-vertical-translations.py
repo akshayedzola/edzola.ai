@@ -269,33 +269,9 @@ def route(locale, key):
     return f"/{locale}/verticals/" + (f"{slug}/" if slug else "")
 
 
-def language_links(locale, key, css_class):
-    links = []
-    for code, label in (("en", "EN"), ("es", "ES"), ("pt", "PT")):
-        href = f"/verticals/{SLUGS[key] + '/' if SLUGS[key] else ''}" if code == "en" else route(code, key)
-        current = ' aria-current="true"' if code == locale else ""
-        links.append(f'<a href="{href}" hreflang="{code}" lang="{code}"{current}>{label}</a>')
-    return f'<nav class="{css_class}" aria-label="Idioma">' + "".join(links) + "</nav>"
-
-
 def navigation(locale, key):
-    c = COMMON[locale]
-    vr = c["vertical_root"]
-    programme_short = "MIS, casos y MEL" if locale == "es" else "MIS, casos e MEL"
-    funding_short = "CRM, donantes y subvenciones" if locale == "es" else "CRM, doadores e grants"
-    vertical_links = (
-        f'<a href="{vr}">{escape(c["all"])}</a>'
-        f'<a href="{vr}programme-evidence-systems/">{escape(c["programme"])}</a>'
-        f'<a href="{vr}fundraising-donor-grant-systems/">{escape(c["funding"])}</a>'
-        f'<a href="{vr}people-hr-systems/">{escape(c["people"])}</a>'
-        f'<a href="{vr}finance-operations-systems/">{escape(c["finance"])}</a>'
-        f'<a href="{vr}procurement-inventory-systems/">{escape(c["procurement"])}</a>'
-    )
-    return f'''<header class="site-header"><div class="wrap nav-shell"><a class="brand" href="{c['home']}">edzola.ai</a>
-<nav class="primary-nav" aria-label="Principal"><a href="{c['home']}#model">{escape(c['what'])}</a><details class="nav-group"><summary aria-current="page">{escape(c['verticals'])}</summary><div class="mega"><div class="mega-col"><h3>{escape(c['programme'])}</h3><a href="{vr}programme-evidence-systems/">{escape(programme_short)}</a></div><div class="mega-col"><h3>{escape(c['funding'])}</h3><a href="{vr}fundraising-donor-grant-systems/">{escape(funding_short)}</a></div><div class="mega-col"><h3>{escape(c['people'])} &amp; {escape(c['finance'])}</h3><a href="{vr}people-hr-systems/">{escape(c['people'])}</a><a href="{vr}finance-operations-systems/">{escape(c['finance'])}</a><a href="{vr}procurement-inventory-systems/">{escape(c['procurement'])}</a></div><a class="mega-all" href="{vr}"><span>{escape(c['all'])}</span><span>→</span></a></div></details><a href="/sectors/">{escape(c['sectors'])}</a><a href="{c['home']}impact-os/">ImpactOS</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}about/">{escape(c['about'])}</a></nav>
-{language_links(locale, key, 'nav-lang')}<a class="pill primary header-cta" href="#contact-form">{escape(c['talk'])}</a>
-<details class="mobile-menu"><summary>{escape(c['menu'])}</summary><div class="mobile-panel">{language_links(locale, key, 'mobile-lang')}<a href="{c['home']}#model">{escape(c['what'])}</a><details><summary>{escape(c['verticals'])}</summary>{vertical_links}</details><a href="/sectors/">{escape(c['sectors'])}</a><a href="{c['home']}impact-os/">ImpactOS</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}about/">{escape(c['about'])}</a><a href="#contact-form">{escape(c['talk'])}</a></div></details></div></header>'''
-
+    # The shared header is rendered by scripts/build-site-shell.mjs.
+    return "<!-- ez-shell:header:start --><!-- ez-shell:header:end -->"
 
 def schema(locale, key, page, canonical):
     language = "es-419" if locale == "es" else "pt-BR"
@@ -366,7 +342,7 @@ def head(locale, key, page):
 <meta property="og:type" content="website"><meta property="og:locale" content="{'es_419' if locale == 'es' else 'pt_BR'}"><meta property="og:site_name" content="EdZola"><meta property="og:title" content="{escape(page['h1'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://edzola.ai/assets/og-edzola.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(page['h1'], quote=True)}"><meta name="twitter:description" content="{escape(page['description'], quote=True)}"><meta name="twitter:image" content="https://edzola.ai/assets/og-edzola.png">
 <script type="application/ld+json">{schema(locale, key, page, canonical)}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="/assets/verticals.css?v=20261022a"><link rel="stylesheet" href="/assets/crm-webform.css?v=20261019a">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="/assets/verticals.css?v=20261022a"><link rel="stylesheet" href="/assets/crm-webform.css?v=20261023b">
 </head><body><a class="skip" href="#main">{escape(COMMON[locale]['skip'])}</a>'''
 
 
@@ -383,10 +359,8 @@ def proof_and_resources(locale, key):
 
 
 def footer(locale):
-    c = COMMON[locale]
-    vr = c["vertical_root"]
-    return f'''<footer class="footer"><div class="wrap"><div class="footer-grid"><div><a class="brand" href="{c['home']}">edzola.ai</a><p>{escape(c['transformation'])}.</p></div><div><h3>{escape(c['verticals'])}</h3><a href="{vr}programme-evidence-systems/">{escape(c['programme'])}</a><a href="{vr}fundraising-donor-grant-systems/">{escape(c['funding'])}</a><a href="{vr}people-hr-systems/">{escape(c['people'])}</a><a href="{vr}finance-operations-systems/">{escape(c['finance'])}</a><a href="{vr}procurement-inventory-systems/">{escape(c['procurement'])}</a></div><div><h3>{escape(c['explore'])}</h3><a href="/sectors/">{escape(c['sectors'])}</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}impact-os/">ImpactOS</a></div><div><h3>{escape(c['start'])}</h3><a href="#contact-form">{escape(c['talk'])}</a><a href="mailto:reachus@edzola.com">reachus@edzola.com</a></div></div><div class="footer-bottom"><span>© EdZola Technologies Private Limited</span><span>{escape(c['country'])}</span></div></div></footer><script src="/assets/verticals-nav.js?v=20261022a"></script><script src="/assets/crm-webform.js?v=20261022a"></script></body></html>'''
-
+    # The shared footer is rendered by scripts/build-site-shell.mjs.
+    return "<!-- ez-shell:footer:start --><!-- ez-shell:footer:end -->"
 
 def render_hub(locale, page):
     c = COMMON[locale]

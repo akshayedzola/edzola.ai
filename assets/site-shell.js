@@ -1,78 +1,109 @@
+/* Behaviour for the shared edzola.ai header. The markup is rendered into each page by
+   scripts/build-site-shell.mjs, so navigation works and is crawlable without this script. */
 (function(){
   'use strict';
   if(window.__edzolaSiteShellInitialised)return;
+  var header=document.querySelector('[data-ez-header]');
+  if(!header)return;
   window.__edzolaSiteShellInitialised=true;
 
-  var path=window.location.pathname;
-  var locale=path.indexOf('/es/')===0?'es':(path.indexOf('/pt/')===0?'pt':'en');
-  var labels={
-    en:{solutions:'Solutions',sectors:'Sectors',work:'Work',resources:'Resources',company:'Company',talk:'Talk to us',menu:'Menu',close:'Close',current:'Current language'},
-    es:{solutions:'Soluciones',sectors:'Sectores',work:'Trabajo',resources:'Recursos',company:'EdZola',talk:'Hablemos',menu:'Menú',close:'Cerrar',current:'Idioma actual'},
-    pt:{solutions:'Soluções',sectors:'Setores',work:'Trabalho',resources:'Recursos',company:'EdZola',talk:'Fale conosco',menu:'Menu',close:'Fechar',current:'Idioma atual'}
-  }[locale];
-  var prefix=locale==='en'?'':'/'+locale;
-  var home=prefix?prefix+'/':'/';
-  var core=prefix+'/verticals/';
-  var contact=document.querySelector('[data-crm-webform],#contact-form,#contact,#talk,#start,#join')?'#contact-form':'/contact/';
-  if(!document.getElementById('contact-form')&&contact==='#contact-form'){
-    var contactTarget=document.querySelector('[data-crm-webform],#contact,#talk,#start,#join');
-    if(contactTarget&&!contactTarget.id)contactTarget.id='contact-form';
-    if(contactTarget&&contactTarget.id)contact='#'+contactTarget.id;
-  }
-
-  function link(href,title,desc){return '<a class="ez-menu-link" href="'+href+'"><b>'+title+'</b><small>'+desc+'</small></a>'}
-  var html=''
-    +'<header class="ez-site-shell" data-ez-header>'
-    +'<div class="ez-header-inner ez-shell"><a class="ez-brand" href="'+home+'" aria-label="EdZola home">edzola.ai</a>'
-    +'<nav class="ez-desktop-nav" aria-label="Primary navigation">'
-    +['solutions','sectors','work','resources','company'].map(function(name){return '<button class="ez-nav-trigger" type="button" data-ez-trigger="'+name+'" aria-expanded="false" aria-controls="ez-menu-'+name+'">'+labels[name]+' <span aria-hidden="true">⌄</span></button>'}).join('')
-    +'</nav><div class="ez-header-actions"><div class="ez-locale-wrap"><button class="ez-locale-trigger" type="button" data-ez-locale-trigger aria-expanded="false" aria-controls="ez-locale-menu" aria-label="Change language">◎ '+locale.toUpperCase()+' ⌄</button>'
-    +'<div class="ez-locale-menu" id="ez-locale-menu" data-ez-locale-menu hidden><a href="/" lang="en" class="'+(locale==='en'?'is-current':'')+'"><b>English</b><small>'+(locale==='en'?labels.current:'English site')+'</small></a><a href="/es/" lang="es" class="'+(locale==='es'?'is-current':'')+'"><b>Español</b><small>'+(locale==='es'?labels.current:'Páginas principales')+'</small></a><a href="/pt/" lang="pt" class="'+(locale==='pt'?'is-current':'')+'"><b>Português</b><small>'+(locale==='pt'?labels.current:'Páginas principais')+'</small></a></div></div>'
-    +'<a class="ez-header-cta" href="'+contact+'">'+labels.talk+'</a><button class="ez-mobile-toggle" type="button" data-ez-mobile-toggle aria-expanded="false" aria-controls="ez-mobile-nav"><span class="ez-menu-icon" aria-hidden="true"><i></i><i></i></span><span data-ez-mobile-label>'+labels.menu+'</span></button></div></div>'
-    +'<div class="ez-mega" id="ez-menu-solutions" data-ez-menu="solutions" hidden><div class="ez-mega-inner ez-solutions ez-shell"><div class="ez-mega-intro"><span class="ez-kicker">Start with the pressure point</span><h2>What needs to work better?</h2><p>Choose the part of the organisation slowing people down. Find the right first step before choosing software.</p><a class="ez-menu-all" href="'+core+'">See all solutions →</a></div><div class="ez-menu-col"><span class="ez-menu-label">Core systems</span>'
-    +link(core+'programme-evidence-systems/','Programme & evidence','MIS, cases, monitoring and reporting')+link(core+'fundraising-donor-grant-systems/','Fundraising & grants','Donors, pipelines, grants and compliance')+link(core+'people-hr-systems/','People & HR','Teams, attendance, leave and payroll')+link(core+'finance-operations-systems/','Finance & operations','Approvals, vendors, assets and workflows')+link(core+'procurement-inventory-systems/','Procurement & inventory','Purchasing, stock and reconciliation')+'</div><div class="ez-menu-col"><span class="ez-menu-label">AI in real work</span>'
-    +link('/zolabs/','Zolabs · Listen','Voice research and evaluation at scale')+link('/zolashield/','ZolaShield · Protect','DPDP readiness and safer data practices')+link('/dozai/','DozAI · Run','AI teammates for high-volume workflows')+'</div><div class="ez-menu-col"><span class="ez-menu-label">Access & funding</span><a class="ez-feature" href="/patrons/"><span class="ez-kicker">Built for Impact Fund</span><strong>Fund the systems nonprofits need to grow.</strong><small>Back the 2027 cohort →</small></a><a class="ez-feature ez-teal" href="/crm/amplify/"><span class="ez-kicker">Amplify cohort</span><strong>Make Zoho CRM useful in everyday work.</strong><small>Apply for the cohort →</small></a></div></div></div>'
-    +'<div class="ez-mega" id="ez-menu-sectors" data-ez-menu="sectors" hidden><div class="ez-mega-inner ez-sectors ez-shell"><div class="ez-mega-intro"><span class="ez-kicker">Built for context</span><h2>Find the programme model closest to yours.</h2><p>Explore the decisions, workflows and evidence that change across social-impact work.</p><a class="ez-menu-all" href="/sectors/">Browse all sector playbooks →</a></div><div class="ez-menu-col"><span class="ez-menu-label">People, care & rights</span><div class="ez-sector-links">'
-    +'<a href="/education/"><b>Education</b><small>Learner journeys</small></a><a href="/youth-employability/"><b>Youth & employability</b><small>Skills to work</small></a><a href="/health/"><b>Health & wellbeing</b><small>Care and follow-up</small></a><a href="/child-protection/"><b>Child protection</b><small>Cases and transitions</small></a><a href="/gender/"><b>Gender equality</b><small>Choice and safety</small></a><a href="/disability/"><b>Disability inclusion</b><small>Access and participation</small></a></div></div><div class="ez-menu-col"><span class="ez-menu-label">Place, planet & culture</span><div class="ez-sector-links"><a href="/livelihoods/"><b>Livelihoods</b><small>Households and enterprises</small></a><a href="/environment/"><b>Environment & climate</b><small>Landscapes and adaptation</small></a><a href="/waste/"><b>Waste & circularity</b><small>Collection and recovery</small></a><a href="/food-systems/"><b>Food systems</b><small>Producers and nutrition</small></a><a href="/community-development/"><b>Community development</b><small>Plans and participation</small></a><a href="/media/"><b>Media & information</b><small>Stories and public change</small></a></div></div></div></div>'
-    +'<div class="ez-mega" id="ez-menu-work" data-ez-menu="work" hidden><div class="ez-mega-inner ez-shell"><div class="ez-mega-intro"><span class="ez-kicker">Work and outcomes</span><h2>See what changed after the system went live.</h2><p>Explore the problem, the people using the system and the evidence behind the result.</p><a class="ez-menu-all" href="/work/">Visit the Work hub →</a></div><div class="ez-menu-col"><span class="ez-menu-label">Case studies</span>'+link('https://www.edzola.com/post/compass-mis-transforming-state-wide-teacher-training-with-tech','Simple Education Foundation','Teacher development across four states')+link('https://www.edzola.com/post/edg-trust-for-retailers-retail-associates-of-india-streamlining-program-management','TRRAIN','Operations for 10,000+ trainees')+link('https://www.edzola.com/the-nudge-future-perfect','The/Nudge Institute','Ten tools connected around one journey')+'</div><div class="ez-menu-col"><span class="ez-menu-label">Explore by need</span>'+link('/work/#programme','Programme systems','Delivery, cases, evidence and reporting')+link('/work/#fundraising','Funding systems','Donor relationships and grant workflows')+link('/work/#operations','People & operations','Teams, approvals and internal work')+'</div></div></div>'
-    +'<div class="ez-mega" id="ez-menu-resources" data-ez-menu="resources" hidden><div class="ez-mega-inner ez-shell"><div class="ez-mega-intro"><span class="ez-kicker">Useful before a sales call</span><h2>Read, compare and plan.</h2><p>Practical material from six years of building with the impact sector.</p></div><div class="ez-menu-col"><span class="ez-menu-label">Learn</span>'+link('/learn/','Implementation library','Guides for choosing and building systems')+link('/resources/','Templates & tools','Reusable worksheets and planning resources')+'</div><div class="ez-menu-col"><span class="ez-menu-label">How we think and work</span>'+link(prefix+'/impact-os/','ImpactOS','The method behind every EdZola project')+link('/thinking/','Thinking & field guides','Beliefs, lessons and sector understanding')+'</div></div></div>'
-    +'<div class="ez-mega" id="ez-menu-company" data-ez-menu="company" hidden><div class="ez-mega-inner ez-shell"><div class="ez-mega-intro"><span class="ez-kicker">EdZola</span><h2>Part technologists. Part sector practitioners.</h2><p>Headquartered in Coimbatore, working with impact organisations across five countries.</p></div><div class="ez-menu-col"><span class="ez-menu-label">Meet EdZola</span>'+link(prefix+'/about/','About & team','Who we are and what we have learnt')+link('/news/','News & media','Updates, coverage and announcements')+link('https://go.edzola.com/hiring','Careers','Join the team in Coimbatore')+'</div><div class="ez-menu-col"><span class="ez-menu-label">Get in touch</span>'+link('/contact/','Start a conversation','Bring us one messy workflow')+link('https://in.linkedin.com/company/edzola','Follow EdZola','Updates from the work')+'</div></div></div></header>';
-
-  var mobile='<div class="ez-mobile-nav" id="ez-mobile-nav" data-ez-mobile-nav hidden><div class="ez-mobile-inner"><div class="ez-mobile-language"><a href="/" '+(locale==='en'?'aria-current="page"':'')+'>EN</a><a href="/es/" '+(locale==='es'?'aria-current="page"':'')+'>ES</a><a href="/pt/" '+(locale==='pt'?'aria-current="page"':'')+'>PT</a></div>'
-    +'<details><summary>'+labels.solutions+' <span>+</span></summary><div class="ez-mobile-sub"><a href="'+core+'programme-evidence-systems/">Programme & evidence</a><a href="'+core+'fundraising-donor-grant-systems/">Fundraising & grants</a><a href="'+core+'people-hr-systems/">People & HR</a><a href="'+core+'finance-operations-systems/">Finance & operations</a><a href="'+core+'procurement-inventory-systems/">Procurement & inventory</a><a href="/zolabs/">Zolabs</a><a href="/zolashield/">ZolaShield</a><a href="/dozai/">DozAI</a><a href="/patrons/">Built for Impact Fund</a><a class="ez-mobile-all" href="'+core+'">See all solutions →</a></div></details>'
-    +'<details><summary>'+labels.sectors+' <span>+</span></summary><div class="ez-mobile-sub"><a href="/education/">Education</a><a href="/health/">Health</a><a href="/livelihoods/">Livelihoods</a><a href="/youth-employability/">Youth & employability</a><a href="/child-protection/">Child protection</a><a href="/environment/">Climate</a><a class="ez-mobile-all" href="/sectors/">All sector playbooks →</a></div></details>'
-    +'<details><summary>'+labels.work+' <span>+</span></summary><div class="ez-mobile-sub"><a href="/work/">Work hub</a><a href="/work/#programme">Programme systems</a><a href="/work/#fundraising">Funding systems</a><a href="/work/#operations">People & operations</a></div></details>'
-    +'<details><summary>'+labels.resources+' <span>+</span></summary><div class="ez-mobile-sub"><a href="/learn/">Implementation library</a><a href="/resources/">Templates & tools</a><a href="'+prefix+'/impact-os/">ImpactOS</a><a href="/thinking/">Thinking & field guides</a></div></details>'
-    +'<details><summary>'+labels.company+' <span>+</span></summary><div class="ez-mobile-sub"><a href="'+prefix+'/about/">About & team</a><a href="/news/">News & media</a><a href="https://go.edzola.com/hiring">Careers</a><a href="/contact/">Contact</a></div></details><a class="ez-mobile-cta" href="'+contact+'">'+labels.talk+'</a></div></div>';
-
-  var stale=document.querySelectorAll('body > header.top,body > header.site-header,body > header.site-top,body > header.simple-header,body > header.topbar,body > .gh,body > .mobile-nav');
-  Array.prototype.forEach.call(stale,function(node){node.remove()});
-  var brandedNav=document.querySelector('body > nav');
-  if(brandedNav&&brandedNav.querySelector('.nav-logo'))brandedNav.remove();
-  var holder=document.createElement('div');holder.innerHTML=html+mobile;
-  var nodes=Array.prototype.slice.call(holder.children);
-  var skip=document.querySelector('body > a[href^="#"]');
-  nodes.forEach(function(node,index){if(skip&&index===0)skip.insertAdjacentElement('afterend',node);else if(index===0)document.body.insertBefore(node,document.body.firstChild);else nodes[index-1].insertAdjacentElement('afterend',node)});
-
-  var header=document.querySelector('[data-ez-header]');
-  var triggers=Array.prototype.slice.call(document.querySelectorAll('[data-ez-trigger]'));
-  var menus=Array.prototype.slice.call(document.querySelectorAll('[data-ez-menu]'));
-  var localeTrigger=document.querySelector('[data-ez-locale-trigger]');
-  var localeMenu=document.querySelector('[data-ez-locale-menu]');
-  var mobileToggle=document.querySelector('[data-ez-mobile-toggle]');
+  var triggers=[].slice.call(header.querySelectorAll('[data-ez-trigger]'));
+  var localeTrigger=header.querySelector('[data-ez-locale-trigger]');
+  var localeMenu=header.querySelector('[data-ez-locale-menu]');
+  var mobileToggle=header.querySelector('[data-ez-mobile-toggle]');
   var mobileNav=document.querySelector('[data-ez-mobile-nav]');
-  var mobileLabel=document.querySelector('[data-ez-mobile-label]');
-  var active=null,closeTimer=null;
-  function conceal(menu,immediate){if(!menu)return;menu.classList.remove('is-open');if(immediate)menu.hidden=true;else{clearTimeout(closeTimer);closeTimer=setTimeout(function(){if(!menu.classList.contains('is-open'))menu.hidden=true},190)}}
-  function closeMenus(returnFocus){triggers.forEach(function(t){t.setAttribute('aria-expanded','false')});menus.forEach(function(m){conceal(m)});if(returnFocus&&active){var target=document.querySelector('[data-ez-trigger="'+active+'"]');if(target)target.focus()}active=null}
+  var mobileLabel=header.querySelector('[data-ez-mobile-label]');
+  var canHover=window.matchMedia('(hover:hover) and (pointer:fine)');
+  var active=null,closeTimer=null,hoverTimer=null;
+
+  function menuFor(name){return header.querySelector('[data-ez-menu="'+name+'"]')}
+  function triggerFor(name){return header.querySelector('[data-ez-trigger="'+name+'"]')}
+
+  function openMenu(name){
+    if(active===name)return;
+    closeMenus(false,true);closeLocale();
+    var menu=menuFor(name);
+    active=name;clearTimeout(closeTimer);
+    triggerFor(name).setAttribute('aria-expanded','true');
+    menu.hidden=false;
+    requestAnimationFrame(function(){menu.classList.add('is-open')});
+  }
+  function closeMenus(returnFocus,immediate){
+    var previous=active;
+    triggers.forEach(function(t){t.setAttribute('aria-expanded','false')});
+    [].forEach.call(header.querySelectorAll('[data-ez-menu]'),function(menu){
+      if(!menu.classList.contains('is-open')&&menu.hidden)return;
+      menu.classList.remove('is-open');
+      if(immediate)menu.hidden=true;
+      else setTimeout(function(){if(!menu.classList.contains('is-open'))menu.hidden=true},190);
+    });
+    active=null;
+    if(returnFocus&&previous)triggerFor(previous).focus();
+  }
   function closeLocale(){localeTrigger.setAttribute('aria-expanded','false');localeMenu.hidden=true}
-  triggers.forEach(function(trigger){trigger.addEventListener('click',function(){var name=trigger.getAttribute('data-ez-trigger');var wasOpen=active===name;closeMenus();closeLocale();if(wasOpen)return;active=name;trigger.setAttribute('aria-expanded','true');var menu=document.querySelector('[data-ez-menu="'+name+'"]');clearTimeout(closeTimer);menu.hidden=false;requestAnimationFrame(function(){menu.classList.add('is-open')})})});
-  localeTrigger.addEventListener('click',function(){var open=localeTrigger.getAttribute('aria-expanded')!=='true';closeMenus();localeTrigger.setAttribute('aria-expanded',String(open));localeMenu.hidden=!open});
+
+  triggers.forEach(function(trigger){
+    var name=trigger.getAttribute('data-ez-trigger');
+    trigger.addEventListener('click',function(){if(active===name)closeMenus();else openMenu(name)});
+    trigger.addEventListener('keydown',function(event){
+      if(event.key==='ArrowDown'){event.preventDefault();openMenu(name);var first=menuFor(name).querySelector('a');if(first)first.focus()}
+    });
+    trigger.addEventListener('pointerenter',function(){
+      if(!canHover.matches)return;
+      clearTimeout(closeTimer);clearTimeout(hoverTimer);
+      hoverTimer=setTimeout(function(){openMenu(name)},active?0:110);
+    });
+    trigger.addEventListener('pointerleave',function(){clearTimeout(hoverTimer)});
+  });
+  header.addEventListener('pointerleave',function(){
+    if(!canHover.matches||!active)return;
+    clearTimeout(hoverTimer);
+    closeTimer=setTimeout(function(){closeMenus()},260);
+  });
+  header.addEventListener('pointerenter',function(){clearTimeout(closeTimer)});
+  /* Leaving a menu with Tab closes it so it never hides the content being focused. */
+  header.addEventListener('focusout',function(event){
+    if(active&&event.relatedTarget&&!header.contains(event.relatedTarget))closeMenus();
+  });
+
+  localeTrigger.addEventListener('click',function(){
+    var open=localeTrigger.getAttribute('aria-expanded')!=='true';
+    closeMenus(false,true);
+    localeTrigger.setAttribute('aria-expanded',String(open));
+    localeMenu.hidden=!open;
+  });
+
   function setMobileTop(){mobileNav.style.setProperty('--ez-mobile-top',Math.max(0,Math.round(header.getBoundingClientRect().bottom))+'px')}
-  function closeMobile(returnFocus){mobileToggle.setAttribute('aria-expanded','false');mobileLabel.textContent=labels.menu;document.body.classList.remove('ez-nav-open');mobileNav.classList.remove('is-open');mobileNav.hidden=true;if(returnFocus)mobileToggle.focus()}
-  mobileToggle.addEventListener('click',function(){if(mobileToggle.getAttribute('aria-expanded')==='true'){closeMobile()}else{closeMenus();closeLocale();setMobileTop();mobileToggle.setAttribute('aria-expanded','true');mobileLabel.textContent=labels.close;document.body.classList.add('ez-nav-open');mobileNav.hidden=false;mobileNav.classList.add('is-open')}});
+  function closeMobile(returnFocus){
+    if(mobileToggle.getAttribute('aria-expanded')!=='true')return;
+    mobileToggle.setAttribute('aria-expanded','false');
+    mobileLabel.textContent=mobileLabel.getAttribute('data-closed');
+    document.body.classList.remove('ez-nav-open');
+    mobileNav.hidden=true;
+    if(returnFocus)mobileToggle.focus();
+  }
+  mobileToggle.addEventListener('click',function(){
+    if(mobileToggle.getAttribute('aria-expanded')==='true'){closeMobile();return}
+    closeMenus(false,true);closeLocale();setMobileTop();
+    mobileToggle.setAttribute('aria-expanded','true');
+    mobileLabel.textContent=mobileLabel.getAttribute('data-open');
+    document.body.classList.add('ez-nav-open');
+    mobileNav.hidden=false;
+  });
   mobileNav.addEventListener('click',function(event){if(event.target===mobileNav||event.target.closest('a'))closeMobile()});
-  document.addEventListener('pointerdown',function(event){if(!header.contains(event.target)){closeMenus();closeLocale()}});
-  document.addEventListener('keydown',function(event){if(event.key!=='Escape')return;if(mobileToggle.getAttribute('aria-expanded')==='true'){closeMobile(true)}else if(localeTrigger.getAttribute('aria-expanded')==='true'){closeLocale();localeTrigger.focus()}else if(active)closeMenus(true)});
-  window.addEventListener('resize',function(){if(window.innerWidth>1080)closeMobile();else closeMenus()});
+
+  document.addEventListener('pointerdown',function(event){
+    if(!header.contains(event.target)){closeMenus();closeLocale()}
+  });
+  document.addEventListener('keydown',function(event){
+    if(event.key!=='Escape')return;
+    if(mobileToggle.getAttribute('aria-expanded')==='true')closeMobile(true);
+    else if(localeTrigger.getAttribute('aria-expanded')==='true'){closeLocale();localeTrigger.focus()}
+    else if(active)closeMenus(true);
+  });
+  window.addEventListener('resize',function(){if(window.innerWidth>1080)closeMobile();else closeMenus(false,true)});
+
+  var scrolled=false;
+  function onScroll(){var next=window.scrollY>8;if(next!==scrolled){scrolled=next;header.classList.toggle('is-scrolled',next)}}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 })();

@@ -84,7 +84,7 @@ class VerticalsRegressionTests(unittest.TestCase):
             self.assertEqual((parsed.titles, parsed.h1s, parsed.descriptions), (1, 1, 1), route)
             self.assertEqual(parsed.canonicals, [f"https://edzola.ai{route}"], route)
             self.assertTrue(any(href and href.startswith("/assets/verticals.css?") for href in parsed.stylesheets), route)
-            self.assertIn("/assets/crm-webform.css?v=20261019a", parsed.stylesheets, route)
+            self.assertIn("/assets/crm-webform.css?v=20261023b", parsed.stylesheets, route)
             for payload in parsed.json_ld:
                 json.loads(payload)
 
@@ -98,7 +98,7 @@ class VerticalsRegressionTests(unittest.TestCase):
     def test_every_vertical_route_loads_shared_navigation_and_crm(self):
         for route in ALL_VERTICAL_ROUTES:
             page = route_file(route).read_text(encoding="utf-8")
-            self.assertIn("/assets/verticals-nav.js?", page, route)
+            self.assertNotIn("/assets/verticals-nav.js", page, route)
             self.assertIn("/assets/crm-webform.js?", page, route)
             self.assertNotIn("<details open>", page, route)
 
@@ -180,7 +180,7 @@ class VerticalsRegressionTests(unittest.TestCase):
         }
         for relative, vertical_route in expectations.items():
             page = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn('/assets/site-shell.js?v=20261023a', page, relative)
+            self.assertIn('<header class="ez-site-shell', page, relative)
             self.assertIn(f'href="{vertical_route}"', page, relative)
 
 
