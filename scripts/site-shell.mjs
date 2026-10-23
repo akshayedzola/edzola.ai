@@ -24,9 +24,10 @@ function localise(href, locale) {
 
 const T = {
   en: {
-    home: 'EdZola home', primary: 'Primary navigation', solutions: 'Solutions', sectors: 'Sectors', work: 'Work', resources: 'Resources', company: 'Company',
+    home: 'EdZola home', primary: 'Primary navigation', solutions: 'Solutions', platforms: 'Platforms', sectors: 'Sectors', work: 'Work', resources: 'Resources', company: 'Company',
     talk: 'Talk to us', menu: 'Menu', close: 'Close', language: 'Change language', languageLabel: 'Language', current: 'Current language', other: 'Read in English',
     sol: { kicker: 'Start with the pressure point', title: 'What needs to work better?', body: 'Choose the part of the organisation slowing people down. Find the right first step before choosing software.', all: 'See all solutions →', core: 'Core systems', ai: 'AI in real work', access: 'Access & funding' },
+    plt: { kicker: 'What it runs on', title: 'Our own products, and the platforms we build on.', body: 'EdZola products add AI to the systems we build. Underneath, we use the platform that fits the problem, never the other way round.', all: 'See all platforms →', ours: 'EdZola products', partners: 'Platforms we build on' },
     sec: { kicker: 'Built for context', title: 'Find the programme model closest to yours.', body: 'Explore the decisions, workflows and evidence that change across social-impact work.', all: 'Browse all 16 sector playbooks →', people: 'People, care & rights', place: 'Communities, planet & culture' },
     wrk: { kicker: 'Work and outcomes', title: 'See what changed after the system went live.', body: 'Explore the problem, the people using the system and the evidence behind the result.', all: 'Visit the Work hub →', cases: 'Case studies', need: 'Explore by need' },
     res: { kicker: 'Useful before a sales call', title: 'Read, compare and plan.', body: 'Practical material from six years of building with the impact sector.', learn: 'Learn and compare', think: 'Tools and thinking' },
@@ -34,9 +35,10 @@ const T = {
     foot: { tagline: 'Systems built for the world’s hardest work.', place: 'EdZola Technologies · Coimbatore, India', explore: 'Explore', learn: 'Learn', edzola: 'EdZola', rights: 'EdZola Technologies Private Limited', privacy: 'Privacy policy', terms: 'Terms of use', social: 'EdZola on social media' },
   },
   es: {
-    home: 'Inicio de EdZola', primary: 'Navegación principal', solutions: 'Soluciones', sectors: 'Sectores', work: 'Trabajo', resources: 'Recursos', company: 'EdZola',
+    home: 'Inicio de EdZola', primary: 'Navegación principal', solutions: 'Soluciones', platforms: 'Plataformas', sectors: 'Sectores', work: 'Trabajo', resources: 'Recursos', company: 'EdZola',
     talk: 'Hablemos', menu: 'Menú', close: 'Cerrar', language: 'Cambiar idioma', languageLabel: 'Idioma', current: 'Idioma actual', other: 'Leer en español',
     sol: { kicker: 'Empieza por el punto de presión', title: '¿Qué necesita funcionar mejor?', body: 'Elige la parte de la organización que está frenando al equipo. Encuentra el primer paso correcto antes de elegir software.', all: 'Ver todas las soluciones →', core: 'Sistemas centrales', ai: 'IA en el trabajo real', access: 'Acceso y financiación' },
+    plt: { kicker: 'Sobre qué funciona', title: 'Nuestros productos y las plataformas sobre las que construimos.', body: 'Los productos de EdZola añaden IA a los sistemas que construimos. Debajo, usamos la plataforma que mejor se ajusta al problema.', all: 'Ver todas las plataformas →', ours: 'Productos de EdZola', partners: 'Plataformas que usamos' },
     sec: { kicker: 'Hecho para cada contexto', title: 'Encuentra el modelo de programa más cercano al tuyo.', body: 'Explora las decisiones, flujos y evidencias que cambian en cada tipo de trabajo social.', all: 'Ver los 16 itinerarios por sector →', people: 'Personas, cuidado y derechos', place: 'Comunidades, planeta y cultura' },
     wrk: { kicker: 'Trabajo y resultados', title: 'Mira qué cambió cuando el sistema entró en uso.', body: 'Explora el problema, las personas que usan el sistema y la evidencia detrás del resultado.', all: 'Ver todo el trabajo →', cases: 'Casos de estudio', need: 'Explorar por necesidad' },
     res: { kicker: 'Útil antes de hablar', title: 'Lee, compara y planifica.', body: 'Material práctico de seis años construyendo con el sector social.', learn: 'Aprender y comparar', think: 'Herramientas e ideas' },
@@ -44,9 +46,10 @@ const T = {
     foot: { tagline: 'Sistemas hechos para el trabajo más difícil del mundo.', place: 'EdZola Technologies · Coimbatore, India', explore: 'Explorar', learn: 'Aprender', edzola: 'EdZola', rights: 'EdZola Technologies Private Limited', privacy: 'Política de privacidad', terms: 'Términos de uso', social: 'EdZola en redes sociales' },
   },
   pt: {
-    home: 'Página inicial da EdZola', primary: 'Navegação principal', solutions: 'Soluções', sectors: 'Setores', work: 'Trabalho', resources: 'Recursos', company: 'EdZola',
+    home: 'Página inicial da EdZola', primary: 'Navegação principal', solutions: 'Soluções', platforms: 'Plataformas', sectors: 'Setores', work: 'Trabalho', resources: 'Recursos', company: 'EdZola',
     talk: 'Fale conosco', menu: 'Menu', close: 'Fechar', language: 'Mudar idioma', languageLabel: 'Idioma', current: 'Idioma atual', other: 'Ler em português',
     sol: { kicker: 'Comece pelo ponto de pressão', title: 'O que precisa funcionar melhor?', body: 'Escolha a parte da organização que está travando a equipe. Encontre o primeiro passo certo antes de escolher software.', all: 'Ver todas as soluções →', core: 'Sistemas centrais', ai: 'IA no trabalho real', access: 'Acesso e financiamento' },
+    plt: { kicker: 'Sobre o que funciona', title: 'Nossos produtos e as plataformas sobre as quais construímos.', body: 'Os produtos da EdZola adicionam IA aos sistemas que construímos. Por baixo, usamos a plataforma que melhor se ajusta ao problema.', all: 'Ver todas as plataformas →', ours: 'Produtos da EdZola', partners: 'Plataformas que usamos' },
     sec: { kicker: 'Feito para cada contexto', title: 'Encontre o modelo de programa mais próximo do seu.', body: 'Explore as decisões, fluxos e evidências que mudam em cada tipo de trabalho social.', all: 'Ver os 16 roteiros por setor →', people: 'Pessoas, cuidado e direitos', place: 'Comunidades, planeta e cultura' },
     wrk: { kicker: 'Trabalho e resultados', title: 'Veja o que mudou quando o sistema entrou em uso.', body: 'Explore o problema, as pessoas que usam o sistema e a evidência por trás do resultado.', all: 'Ver todo o trabalho →', cases: 'Estudos de caso', need: 'Explorar por necessidade' },
     res: { kicker: 'Útil antes de conversar', title: 'Leia, compare e planeje.', body: 'Material prático de seis anos construindo com o setor social.', learn: 'Aprender e comparar', think: 'Ferramentas e reflexões' },
@@ -73,6 +76,21 @@ const AI = [
   L('/zolabs/', 'Zolabs · Listen', 'Voice research and evaluation at scale', 'Zolabs · Escuchar', 'Investigación por voz y evaluación a escala', 'Zolabs · Ouvir', 'Pesquisa por voz e avaliação em escala'),
   L('/zolashield/', 'ZolaShield · Protect', 'DPDP readiness and safer data practices', 'ZolaShield · Proteger', 'Preparación DPDP y datos más seguros', 'ZolaShield · Proteger', 'Preparação DPDP e dados mais seguros'),
   L('/dozai/', 'DozAI · Run', 'AI agents for high-volume nonprofit workflows', 'DozAI · Operar', 'Agentes de IA para flujos de alto volumen', 'DozAI · Operar', 'Agentes de IA para fluxos de alto volume'),
+];
+const AI_SERVICES = [
+  L('/solutions/ai-agents-for-nonprofits/', 'AI agents & coaching', 'Claude adoption and agents, people in charge', 'Agentes de IA y acompañamiento', 'Adopción de Claude y agentes, con personas a cargo', 'Agentes de IA e mentoria', 'Adoção do Claude e agentes, com pessoas no comando'),
+  L('/solutions/ai-voice-surveys-for-ngos/', 'Voice surveys & evaluation', 'Phone interviews in local languages', 'Encuestas por voz y evaluación', 'Entrevistas telefónicas en idiomas locales', 'Pesquisas por voz e avaliação', 'Entrevistas por telefone em idiomas locais'),
+  L('/solutions/dpdp-compliance-for-ngos/', 'Data protection (DPDP)', 'Readiness for India’s privacy law', 'Protección de datos (DPDP)', 'Preparación para la ley de privacidad de India', 'Proteção de dados (DPDP)', 'Preparação para a lei de privacidade da Índia'),
+];
+const PRODUCTS = [
+  ...AI,
+  L('/fundzola/', 'FundZola · Account', 'Money in, money out, every rupee traced', 'FundZola · Rendir cuentas', 'Entradas y salidas, cada rupia trazada', 'FundZola · Prestar contas', 'Entradas e saídas, cada rupia rastreada'),
+];
+const PLATFORMS = [
+  L('/platforms/#zoho', 'Zoho · Advanced Partner', 'Creator, CRM, Books, People and Catalyst', 'Zoho · Advanced Partner', 'Creator, CRM, Books, People y Catalyst', 'Zoho · Advanced Partner', 'Creator, CRM, Books, People e Catalyst'),
+  L('/platforms/#claude', 'Claude · Anthropic', 'AI adoption, agents and connected CRM', 'Claude · Anthropic', 'Adopción de IA, agentes y CRM conectado', 'Claude · Anthropic', 'Adoção de IA, agentes e CRM conectado'),
+  L('/platforms/#open-source', 'Frappe & open source', 'ERPNext and stacks you can own and host', 'Frappe y código abierto', 'ERPNext y tecnologías que puedes alojar', 'Frappe e código aberto', 'ERPNext e tecnologias que você pode hospedar'),
+  L('/platforms/#custom', 'Custom code', 'When no platform fits without bending', 'Código a medida', 'Cuando ninguna plataforma encaja', 'Código sob medida', 'Quando nenhuma plataforma se encaixa'),
 ];
 const SECTORS_PEOPLE = [
   L('/education/', 'Education', 'Learner journeys', 'Educación', 'Trayectorias de aprendizaje', 'Educação', 'Trajetórias de aprendizagem'),
@@ -142,7 +160,8 @@ const SOCIAL = [
 // Which top-level section a path belongs to, for the "you are here" state.
 export function sectionFor(path) {
   const p = path.replace(/^\/(es|pt)(?=\/)/, '');
-  if (/^\/(verticals|solutions|zolabs|zolashield|dozai|patrons|crm|fundzola)\//.test(p)) return 'solutions';
+  if (/^\/(platforms|zolabs|zolashield|dozai|fundzola)\//.test(p)) return 'platforms';
+  if (/^\/(verticals|solutions|patrons|crm)\//.test(p)) return 'solutions';
   if (p === '/sectors/' || [...SECTORS_PEOPLE, ...SECTORS_PLACE].some((s) => p.startsWith(s.href))) return 'sectors';
   if (/^\/work\//.test(p)) return 'work';
   if (/^\/(learn|resources|impact-os|thinking|field-guides|why)\//.test(p)) return 'resources';
@@ -187,7 +206,8 @@ export function renderHeader({ locale, path, alternates = {}, staticHeader = fal
   const features = FEATURES[locale].map(([href, kicker, strong, cta, tone]) => `<a class="ez-feature${tone}" href="${href}"><span class="ez-kicker">${esc(kicker)}</span><strong>${esc(strong)}</strong><small>${esc(cta)}</small></a>`).join('');
 
   const megas = [
-    ['solutions', 'ez-solutions', intro(t.sol, '/verticals/', locale) + col(t.sol.core, CORE.map((i) => menuLink(i, locale)).join('')) + col(t.sol.ai, AI.map((i) => menuLink(i, locale)).join('')) + col(t.sol.access, features)],
+    ['solutions', 'ez-solutions', intro(t.sol, '/verticals/', locale) + col(t.sol.core, CORE.map((i) => menuLink(i, locale)).join('')) + col(t.sol.ai, AI_SERVICES.map((i) => menuLink(i, locale)).join('')) + col(t.sol.access, features)],
+    ['platforms', '', intro(t.plt, '/platforms/', locale) + col(t.plt.ours, PRODUCTS.map((i) => menuLink(i, locale)).join('')) + col(t.plt.partners, PLATFORMS.map((i) => menuLink(i, locale)).join(''))],
     ['sectors', 'ez-sectors', intro(t.sec, '/sectors/', locale) + col(t.sec.people, `<div class="ez-sector-links">${SECTORS_PEOPLE.map((i) => sectorLink(i, locale)).join('')}</div>`) + col(t.sec.place, `<div class="ez-sector-links">${SECTORS_PLACE.map((i) => sectorLink(i, locale)).join('')}</div>`)],
     ['work', '', intro(t.wrk, '/work/', locale) + col(t.wrk.cases, CASES.map((i) => menuLink(i, locale)).join('')) + col(t.wrk.need, NEEDS.map((i) => menuLink(i, locale)).join(''))],
     ['resources', '', intro(t.res, '', locale) + col(t.res.learn, LEARN.map((i) => menuLink(i, locale)).join('')) + col(t.res.think, THINK.map((i) => menuLink(i, locale)).join(''))],
@@ -197,7 +217,8 @@ export function renderHeader({ locale, path, alternates = {}, staticHeader = fal
   const mobileGroup = (name, items, allHref, allLabel, two = false) => `<details${current === name ? ' class="is-current"' : ''}><summary>${esc(t[name])}<span aria-hidden="true"></span></summary><div class="ez-mobile-sub${two ? ' ez-two' : ''}">${items.map((i) => mobileLink(i, locale)).join('')}${allHref ? `<a class="ez-mobile-all" href="${esc(localise(allHref, locale))}">${esc(allLabel)}</a>` : ''}</div></details>`;
   const mobile = `<div class="ez-mobile-nav" id="ez-mobile-nav" data-ez-mobile-nav hidden><div class="ez-mobile-inner">`
     + `<nav class="ez-mobile-language" aria-label="${esc(t.languageLabel)}">${LOCALES.map((code) => `<a href="${esc(langHref(code))}" lang="${code}" hreflang="${code}"${code === locale ? ' aria-current="true"' : ''}>${langNames[code][1]}</a>`).join('')}</nav>`
-    + mobileGroup('solutions', [...CORE, ...AI, L('/patrons/', 'Built for Impact Fund', '', 'Fondo Built for Impact', '', 'Fundo Built for Impact', ''), L('/crm/amplify/', 'Amplify cohort', '', 'Cohorte Amplify', '', 'Coorte Amplify', '')], '/verticals/', t.sol.all)
+    + mobileGroup('solutions', [...CORE, ...AI_SERVICES, L('/patrons/', 'Built for Impact Fund', '', 'Fondo Built for Impact', '', 'Fundo Built for Impact', ''), L('/crm/amplify/', 'Amplify cohort', '', 'Cohorte Amplify', '', 'Coorte Amplify', '')], '/verticals/', t.sol.all)
+    + mobileGroup('platforms', [...PRODUCTS, ...PLATFORMS], '/platforms/', t.plt.all)
     + mobileGroup('sectors', [...SECTORS_PEOPLE, ...SECTORS_PLACE], '/sectors/', t.sec.all, true)
     + mobileGroup('work', [...NEEDS, ...CASES.slice(0, 4)], '/work/', t.wrk.all)
     + mobileGroup('resources', [...LEARN, ...THINK])
@@ -206,7 +227,7 @@ export function renderHeader({ locale, path, alternates = {}, staticHeader = fal
 
   return `<header class="ez-site-shell${staticHeader ? ' ez-static' : ''}" data-ez-header>`
     + `<div class="ez-header-inner ez-shell"><a class="ez-brand" href="${home}" aria-label="${esc(t.home)}">edzola.ai</a>`
-    + `<nav class="ez-desktop-nav" aria-label="${esc(t.primary)}">${['solutions', 'sectors', 'work', 'resources', 'company'].map(trigger).join('')}</nav>`
+    + `<nav class="ez-desktop-nav" aria-label="${esc(t.primary)}">${['solutions', 'platforms', 'sectors', 'work', 'resources', 'company'].map(trigger).join('')}</nav>`
     + `<div class="ez-header-actions"><div class="ez-locale-wrap"><button class="ez-locale-trigger" type="button" data-ez-locale-trigger aria-expanded="false" aria-controls="ez-locale-menu" aria-label="${esc(t.language)}"><svg aria-hidden="true" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2"/><path d="M1.8 8h12.4M8 1.8c1.7 1.8 2.5 3.8 2.5 6.2S9.7 12.4 8 14.2C6.3 12.4 5.5 10.4 5.5 8S6.3 3.6 8 1.8Z"/></svg>${locale.toUpperCase()}</button>`
     + `<div class="ez-locale-menu" id="ez-locale-menu" data-ez-locale-menu hidden>${langLinks}</div></div>`
     + `<a class="ez-button ez-header-cta" href="${esc(localise('/contact/', locale))}">${esc(t.talk)}</a>`
@@ -220,7 +241,7 @@ export function renderFooter({ locale }) {
   const home = locale === 'en' ? '/' : `/${locale}/`;
   const group = (label, items) => `<div class="ez-footer-col"><p class="ez-footer-label">${esc(label)}</p>${items.map((i) => mobileLink(i, locale)).join('')}</div>`;
   const solutions = [L('/verticals/', 'Core systems', '', 'Sistemas centrales', '', 'Sistemas centrais', ''), L('/solutions/', 'Solution guides', '', 'Guías de soluciones', '', 'Guias de soluções', ''), ...AI.map((i) => ({ href: i.href, text: i.text.map((x, n) => (n % 2 === 0 ? x.split(' · ')[0] : x)) })), L('/crm/amplify/', 'Amplify CRM cohort', '', 'Cohorte Amplify', '', 'Coorte Amplify', '')];
-  const explore = [L('/sectors/', 'Sectors', '', 'Sectores', '', 'Setores', ''), L('/work/', 'Work & case studies', '', 'Trabajo y casos', '', 'Trabalho e casos', ''), L('/impact-os/', 'ImpactOS', '', 'ImpactOS', '', 'ImpactOS', ''), L('/why/', 'Founding thesis', '', 'Tesis fundacional', '', 'Tese fundadora', '')];
+  const explore = [L('/platforms/', 'Platforms', '', 'Plataformas', '', 'Plataformas', ''), L('/sectors/', 'Sectors', '', 'Sectores', '', 'Setores', ''), L('/work/', 'Work & case studies', '', 'Trabajo y casos', '', 'Trabalho e casos', ''), L('/impact-os/', 'ImpactOS', '', 'ImpactOS', '', 'ImpactOS', ''), L('/why/', 'Founding thesis', '', 'Tesis fundacional', '', 'Tese fundadora', '')];
   const learn = [LEARN[0], THINK[0], L('/thinking/', 'Thinking', '', 'Ideas', '', 'Reflexões', ''), L('/field-guides/technology-that-sticks/', 'Field guides', '', 'Guías de campo', '', 'Guias de campo', '')];
   const company = [L('/about/', 'About & team', '', 'Nosotros y equipo', '', 'Sobre e equipe', ''), MEET[1], MEET[2], L('/patrons/', 'Become a patron', '', 'Hazte mecenas', '', 'Torne-se patrono', ''), L('/contact/', 'Contact', '', 'Contacto', '', 'Contato', '')];
   const social = SOCIAL.map(([href, name, icon]) => `<a href="${href}" rel="noopener" aria-label="EdZola on ${name}"><svg aria-hidden="true" viewBox="0 0 24 24">${icon}</svg></a>`).join('');
