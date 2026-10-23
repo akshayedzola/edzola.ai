@@ -122,6 +122,7 @@ footer.ez-footer{display:block;position:static;width:auto;margin:0;padding:56px 
 @media(max-width:1080px){
   .ez-site-shell nav.ez-desktop-nav,.ez-site-shell .ez-locale-wrap,.ez-site-shell .ez-header-cta{display:none}
   .ez-site-shell .ez-mobile-toggle{display:inline-flex}.ez-site-shell .ez-header-actions{margin-left:auto}
+  div.ez-mobile-nav:not([hidden]){display:block}
   .ez-shell,aside.ez-page-note p{width:min(100% - 40px,1200px)}
   .ez-footer .ez-footer-grid{grid-template-columns:repeat(2,1fr)}.ez-footer .ez-footer-brand{grid-column:1/-1}
 }

@@ -26,7 +26,8 @@
     active=name;clearTimeout(closeTimer);
     triggerFor(name).setAttribute('aria-expanded','true');
     menu.hidden=false;
-    requestAnimationFrame(function(){menu.classList.add('is-open')});
+    void menu.offsetWidth; /* commit the closed state so the open transition runs and links are focusable at once */
+    menu.classList.add('is-open');
   }
   function closeMenus(returnFocus,immediate){
     var previous=active;
