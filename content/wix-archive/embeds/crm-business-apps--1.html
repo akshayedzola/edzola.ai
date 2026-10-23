@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM & Business Apps for Nonprofits | EdZola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --peach: #F5C5B1;
+  --peach-light: #FDF0EA;
+  --peach-dark: #E8A88E;
+  --teal: #D4EDED;
+  --teal-dark: #7CBCBC;
+  --dark: #1A1A1A;
+  --gray: #555;
+  --gray-light: #888;
+  --white: #FFFFFF;
+  --off-white: #FAFAFA;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--dark);
+  line-height: 1.7;
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+a { color: inherit; }
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+  color: var(--white);
+  padding: 80px 24px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: var(--teal);
+  opacity: 0.06;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  right: -15%;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: var(--peach);
+  opacity: 0.07;
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(212, 237, 237, 0.12);
+  border: 1px solid rgba(212, 237, 237, 0.25);
+  padding: 8px 20px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal-dark);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-badge-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--teal-dark);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  margin-bottom: 20px;
+  color: var(--white);
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal-dark);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 620px;
+  margin: 0 auto 36px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--teal-dark);
+  color: var(--dark);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124,188,188,0.3);
+}
+
+.btn-ghost {
+  display: inline-block;
+  background: transparent;
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  transition: border-color 0.2s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--white);
+}
+
+/* ===== STATS ===== */
+.stats {
+  background: var(--teal);
+  padding: 40px 24px;
+}
+
+.stats-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  color: var(--dark);
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+/* ===== SECTION BASE ===== */
+.section {
+  padding: 80px 24px;
+}
+
+.section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  margin-bottom: 12px;
+}
+
+.section-label-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  margin-bottom: 12px;
+  background: var(--teal);
+  padding: 5px 14px;
+  border-radius: 100px;
+}
+
+.section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray);
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+/* ===== PROBLEM ===== */
+.problem {
+  background: var(--off-white);
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.problem-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+.problem-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--teal-dark);
+  border-radius: 16px 16px 0 0;
+}
+
+.problem-icon { font-size: 1.6rem; margin-bottom: 16px; }
+.problem-card h4 { font-size: 1.1rem; margin-bottom: 10px; }
+.problem-card p { font-size: 0.92rem; color: var(--gray); }
+
+/* ===== WHAT WE CONFIGURE ===== */
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.config-card {
+  border-radius: 16px;
+  padding: 36px 28px;
+  border: 1px solid #eee;
+}
+
+.config-card.primary { background: var(--teal); border-color: transparent; }
+.config-card.secondary { background: var(--peach-light); border-color: transparent; }
+.config-card.tertiary { background: var(--white); }
+
+.config-card h4 { font-size: 1.15rem; margin-bottom: 6px; }
+.config-card .config-tool { font-size: 0.78rem; color: var(--teal-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+.config-card p { font-size: 0.92rem; color: var(--gray); }
+
+.config-card ul {
+  list-style: none;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.config-card ul li {
+  font-size: 0.88rem;
+  color: var(--gray);
+  padding: 5px 0 5px 20px;
+  position: relative;
+}
+
+.config-card ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
+/* ===== 3Es FRAMEWORK ===== */
+.ees {
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+}
+
+.ees h2 { color: var(--white); }
+.ees .section-subtitle { color: rgba(255,255,255,0.6); margin-left: auto; margin-right: auto; }
+
+.ees-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--teal-dark);
+  margin-bottom: 8px;
+}
+
+.ees-tagline {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 40px;
+}
+
+.ees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.ee-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 32px 28px;
+}
+
+.ee-card .ee-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.5rem;
+  color: var(--teal-dark);
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+.ee-card h4 { font-size: 1.1rem; color: var(--white); margin-bottom: 10px; }
+.ee-card p { font-size: 0.9rem; color: rgba(255,255,255,0.55); }
+
+/* ===== ECOSYSTEM ===== */
+.eco-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.eco-item {
+  text-align: center;
+  padding: 28px 20px;
+  background: var(--off-white);
+  border-radius: 12px;
+}
+
+.eco-item h4 { font-size: 1rem; margin-bottom: 6px; }
+.eco-item p { font-size: 0.82rem; color: var(--gray); }
+
+/* ===== PROCESS ===== */
+.process { background: var(--teal); }
+
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0;
+}
+
+.process-step {
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+}
+
+.process-step h4 { font-size: 0.95rem; margin-bottom: 8px; }
+.process-step p { font-size: 0.82rem; color: var(--gray); }
+
+/* ===== PRINCIPLES ===== */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.principle {
+  padding: 28px 24px;
+  border-left: 3px solid var(--teal-dark);
+}
+
+.principle h4 { font-size: 1rem; margin-bottom: 8px; }
+.principle p { font-size: 0.88rem; color: var(--gray); }
+
+/* ===== TESTIMONIAL ===== */
+.testimonial {
+  background: var(--peach-light);
+  text-align: center;
+}
+
+.testimonial blockquote {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-style: italic;
+  max-width: 720px;
+  margin: 0 auto 24px;
+  color: var(--dark);
+}
+
+.testimonial cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+/* ===== CASE STUDIES ===== */
+.cases { background: var(--off-white); }
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.case-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.case-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+.case-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 24px 28px;
+}
+
+.case-header h4 { font-size: 1.1rem; margin-bottom: 4px; }
+.case-header .case-sector { font-size: 0.8rem; color: var(--teal-dark); font-weight: 500; }
+
+.case-body { padding: 24px 28px; }
+.case-body p { font-size: 0.9rem; color: var(--gray); margin-bottom: 16px; }
+
+.case-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+.case-stat { font-size: 0.82rem; }
+.case-stat strong {
+  display: block;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--teal-dark);
+}
+
+.case-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dark);
+  text-decoration: none;
+  border-bottom: 2px solid var(--teal-dark);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+
+.case-link:hover { border-color: var(--dark); }
+
+/* ===== WHY EDZOLA ===== */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.why-card {
+  padding: 32px 28px;
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid #eee;
+}
+
+.why-card h4 { font-size: 1.05rem; margin-bottom: 10px; }
+.why-card p { font-size: 0.9rem; color: var(--gray); }
+
+/* ===== CTA ===== */
+.cta {
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.cta h2 { color: var(--white); margin-bottom: 16px; }
+.cta p {
+  color: rgba(255,255,255,0.65);
+  max-width: 520px;
+  margin: 0 auto 36px;
+  font-size: 1.05rem;
+}
+
+.btn-cta {
+  display: inline-block;
+  background: var(--teal-dark);
+  color: var(--dark);
+  padding: 18px 42px;
+  border-radius: 100px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124,188,188,0.4);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--off-white);
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 0.85rem;
+  color: var(--gray-light);
+}
+
+.footer-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .process-timeline { grid-template-columns: 1fr; gap: 8px; }
+  .ees-grid { grid-template-columns: 1fr; }
+  .hero { padding: 60px 20px 50px; }
+  .section { padding: 56px 20px; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat-number { font-size: 1.7rem; }
+  .eco-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">CRM & Business Apps for Nonprofits</span>
+    </div>
+    <h1>Your relationships deserve more than a <em>spreadsheet</em></h1>
+    <p>We configure Zoho CRM, Zoho One, and connected business apps so your fundraising, donor management, HR, finance, and operations work together &mdash; not in silos.</p>
+    <div class="hero-buttons">
+      <a href="https://www.edzola.com/contact" class="btn-primary">Talk to us</a>
+      <a href="#framework" class="btn-ghost">Our CRM approach</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Implementations</div>
+    </div>
+    <div>
+      <div class="stat-number">60+</div>
+      <div class="stat-label">Organisations</div>
+    </div>
+    <div>
+      <div class="stat-number">#1</div>
+      <div class="stat-label">Zoho Creator Partner, India</div>
+    </div>
+    <div>
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Countries</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section problem">
+  <div class="section-inner">
+    <div class="section-label">Sound familiar?</div>
+    <h2>The relationship gaps holding you back</h2>
+    <p class="section-subtitle">Nonprofits survive on relationships &mdash; with donors, volunteers, members, and partners. Without a system, those relationships fall through the cracks.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">📧</div>
+        <h4>Donor follow-ups get missed</h4>
+        <p>A potential funder expressed interest three months ago. Who followed up? When? Nobody knows &mdash; because it's in someone's inbox, not a system.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🗂️</div>
+        <h4>Every team runs its own tools</h4>
+        <p>Fundraising uses Google Sheets. HR uses email. Finance uses Tally. Nothing talks to anything. Data lives in silos that nobody can cross.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">⏳</div>
+        <h4>Onboarding takes forever</h4>
+        <p>New hires wait days for documentation. Leave policies live in PDFs. Expense claims are manual. Your team spends time on admin instead of impact.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📊</div>
+        <h4>You can't report on what you can't see</h4>
+        <p>How many donors gave last year? What's your retention rate? How much did you spend on travel? Without connected systems, every answer requires a research project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE CONFIGURE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">What we configure</div>
+    <h2>One connected platform for your entire organisation</h2>
+    <p class="section-subtitle">We don't sell software. We configure Zoho's ecosystem to fit how your organisation actually works &mdash; then connect everything into a single, seamless platform.</p>
+    <div class="config-grid">
+      <div class="config-card primary">
+        <div class="config-tool">Zoho CRM &middot; Zoho Bigin</div>
+        <h4>Donor & Stakeholder Management</h4>
+        <p>Build structured donor pipelines, automate follow-ups via email and WhatsApp, run targeted campaigns, track grants, and generate actionable reports.</p>
+        <ul>
+          <li>Donor lifecycle &amp; pipeline management</li>
+          <li>Grant tracking &amp; fund utilisation</li>
+          <li>Automated communication sequences</li>
+          <li>Volunteer &amp; member management</li>
+        </ul>
+      </div>
+      <div class="config-card secondary">
+        <div class="config-tool">Zoho People &middot; Recruit &middot; Payroll</div>
+        <h4>HR & People Operations</h4>
+        <p>Streamline the entire employee lifecycle &mdash; from recruitment and onboarding to attendance, leave, expenses, payroll, and exit.</p>
+        <ul>
+          <li>Recruitment workflows &amp; candidate tracking</li>
+          <li>Onboarding, leave &amp; attendance</li>
+          <li>Expense management with OCR</li>
+          <li>Payroll with Indian compliance (PF, ESI, PT)</li>
+        </ul>
+      </div>
+      <div class="config-card tertiary">
+        <div class="config-tool">Zoho Books &middot; Expense &middot; Analytics</div>
+        <h4>Finance & Reporting</h4>
+        <p>Connect your fundraising data to your books. Track expenses by project. Generate fund utilisation reports that funders actually trust.</p>
+        <ul>
+          <li>Budgeting &amp; forecasting</li>
+          <li>Project-wise expense tracking</li>
+          <li>Donor reporting &amp; fund utilisation</li>
+          <li>Dashboards across all business apps</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZOHO ECOSYSTEM -->
+<section class="section" style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="section-label">The Zoho ecosystem</div>
+    <h2>We connect the tools you need into one platform</h2>
+    <p class="section-subtitle">We're a Zoho Advanced Partner with deep expertise across the entire suite. We pick the right tools and make them talk to each other.</p>
+    <div class="eco-grid">
+      <div class="eco-item">
+        <h4>Zoho CRM</h4>
+        <p>Donors, grants, stakeholders</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho Bigin</h4>
+        <p>Lightweight CRM for small teams</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho People</h4>
+        <p>HR, attendance, leave</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho Recruit</h4>
+        <p>Hiring pipelines</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho Payroll</h4>
+        <p>Salary, compliance</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho Books</h4>
+        <p>Accounting, invoicing</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho Expense</h4>
+        <p>Claims, budgets</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho WorkDrive</h4>
+        <p>Documents, collaboration</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho Analytics</h4>
+        <p>Dashboards, reporting</p>
+      </div>
+      <div class="eco-item">
+        <h4>Zoho One</h4>
+        <p>45+ apps, one license</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3Es FRAMEWORK -->
+<section class="section ees" id="framework">
+  <div class="section-inner">
+    <div class="ees-name">The 3Es Framework</div>
+    <p class="ees-tagline">How we think about every CRM implementation.</p>
+    <p class="section-subtitle">A CRM is not Excel with lipstick. It's a living system that makes relationships come alive. Every project we take on is anchored in three principles.</p>
+    <div class="ees-grid">
+      <div class="ee-card">
+        <div class="ee-number">E1</div>
+        <h4>Efficiency</h4>
+        <p>Save time. Reduce errors. Streamline workflows. If your team is doing something manually that a system should handle, we fix that first. We turn 10-step processes into 3.</p>
+      </div>
+      <div class="ee-card">
+        <div class="ee-number">E2</div>
+        <h4>Experience</h4>
+        <p>Improve the quality of every stakeholder interaction. If a donor once felt ignored, they should now feel remembered. If a volunteer felt stuck, they should now feel valued. We test for delight, not just functionality.</p>
+      </div>
+      <div class="ee-card">
+        <div class="ee-number">E3</div>
+        <h4>Empowerment</h4>
+        <p>Help your team move from "Excel comfort zone" to data-driven confidence. Even if a project stops after Phase 1, you should walk away with something valuable &mdash; process clarity, optimised flows, a roadmap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process">
+  <div class="section-inner">
+    <div class="section-label-brand">Our delivery approach</div>
+    <h2>The path to your digital transformation</h2>
+    <p class="section-subtitle">We follow a structured, transparent process. No black boxes. You know what's happening at every step.</p>
+    <div class="process-timeline">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h4>Deep Understanding</h4>
+        <p>We understand your mission, users, hierarchy, and workflows. We create a shared problem statement.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h4>Use Case Mapping</h4>
+        <p>We identify your specific needs &mdash; fundraising, HR, finance, donor management &mdash; and decide the right Zoho platform.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h4>Solution Design</h4>
+        <p>We define what needs customisation vs. out-of-the-box, create a Solution Blueprint, and plan sprints.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h4>Configure & Build</h4>
+        <p>Agile sprints with working demos every 2&ndash;3 weeks. We configure, test, and refine based on your feedback.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">5</div>
+        <h4>Adopt & Evolve</h4>
+        <p>Training, data migration, hypercare, and ongoing advisory. We monitor usage and align systems with your evolving needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRM PRINCIPLES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label-brand">Our CRM principles</div>
+    <h2>How we build CRM systems that people actually use</h2>
+    <p class="section-subtitle">These aren't just nice words. They govern every decision we make during implementation.</p>
+    <div class="principles-grid">
+      <div class="principle">
+        <h4>Relationships, not databases</h4>
+        <p>CRM captures the initiation, maintenance, and closure of relationships. Our job is to make relationships come alive &mdash; with clarity, follow-ups, and delight.</p>
+      </div>
+      <div class="principle">
+        <h4>Turn pain into delight</h4>
+        <p>Every CRM must remove a pain point and replace it with joy. A donor who once felt ignored must now feel remembered. A volunteer who felt stuck must now feel valued.</p>
+      </div>
+      <div class="principle">
+        <h4>Value at every stage</h4>
+        <p>Even if a project stops after requirement gathering, you walk away with something valuable &mdash; process documents, optimised flows, or clarity on scope. No engagement is ever wasted.</p>
+      </div>
+      <div class="principle">
+        <h4>Partners, not vendors</h4>
+        <p>We co-create with you. We share learnings, show shortcuts, and add value in small ways. We succeed when you see us as long-term partners, not tech implementers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section testimonial">
+  <div class="section-inner">
+    <blockquote>&ldquo;The team goes the extra mile to deliver outcomes. Their expertise in all things Zoho and integrating Zoho with external applications has been the backbone to scaling our program.&rdquo;</blockquote>
+    <cite>&mdash; The/Nudge Institute, Future Perfect Program</cite>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="section cases">
+  <div class="section-inner">
+    <div class="section-label">Proof, not promises</div>
+    <h2>CRM & business apps in action</h2>
+    <p class="section-subtitle">A few examples from organisations we've helped connect their systems.</p>
+    <div class="case-grid">
+
+      <div class="case-card">
+        <div class="case-header">
+          <h4>The/Nudge CSI</h4>
+          <span class="case-sector">Finance &amp; Donor Management</span>
+        </div>
+        <div class="case-body">
+          <p>Streamlined the entire finance process &mdash; fundraising, contract management, procurement, expenses, and donor reporting &mdash; across Zoho CRM, Zoho Contracts, and Zoho Expenses with Tally integration.</p>
+          <div class="case-stats">
+            <div class="case-stat"><strong>End-to-end</strong> finance workflow</div>
+            <div class="case-stat"><strong>Tally</strong> integration</div>
+          </div>
+          <a href="https://www.edzola.com/blog/categories/edzola-digital-guides" class="case-link">Read more &rarr;</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <h4>Avanti Fellows</h4>
+          <span class="case-sector">CRM &amp; Operations</span>
+        </div>
+        <div class="case-body">
+          <p>Built an automated telecalling and scholarship management system with role-based access and real-time dashboards. Unified visibility across Admin, Donor, Operations, and Finance teams.</p>
+          <div class="case-stats">
+            <div class="case-stat"><strong>8,000+</strong> students managed</div>
+            <div class="case-stat"><strong>4 teams</strong> unified</div>
+          </div>
+          <a href="https://www.edzola.com/blog/categories/edzola-digital-guides" class="case-link">Read the case study &rarr;</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <h4>NeevJivan Foundation</h4>
+          <span class="case-sector">Donor Management</span>
+        </div>
+        <div class="case-body">
+          <p>Optimised the fundraising process and donor management system to enhance data-driven decision-making. Built structured pipelines, automated receipts, and fund utilisation tracking.</p>
+          <div class="case-stats">
+            <div class="case-stat"><strong>Structured</strong> donor pipeline</div>
+            <div class="case-stat"><strong>Automated</strong> receipts &amp; reports</div>
+          </div>
+          <a href="https://www.edzola.com/blog/categories/edzola-digital-guides" class="case-link">Read the case study &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY EDZOLA -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Why EdZola</div>
+    <h2>We're not a generic Zoho reseller</h2>
+    <p class="section-subtitle">We understand nonprofit relationships because we've lived them.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <h4>75% nonprofit clients</h4>
+        <p>We know how donor pipelines, grant cycles, volunteer management, and funder reporting actually work &mdash; because we've built them dozens of times.</p>
+      </div>
+      <div class="why-card">
+        <h4>Zoho Advanced Partner</h4>
+        <p>#1 Zoho Creator Partner in India, #2 in Asia, #4 globally. We know which Zoho tool fits your problem and when to use Bigin vs CRM vs Creator.</p>
+      </div>
+      <div class="why-card">
+        <h4>Configuration, not over-engineering</h4>
+        <p>We use native Zoho features first. Custom code only if unavoidable. This keeps costs low, timelines short, and your system maintainable without us.</p>
+      </div>
+      <div class="why-card">
+        <h4>We plan with your constraints</h4>
+        <p>Time and budget will always be tight for nonprofits. We don't fight that &mdash; we embrace it as a design challenge. Lean but effective, every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="section-inner">
+    <h2>Ready to connect your systems and strengthen your relationships?</h2>
+    <p>Tell us about your organisation. We'll help you figure out which Zoho tools fit &mdash; and which ones you don't need.</p>
+    <a href="https://www.edzola.com/contact" class="btn-cta">Schedule a conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">EdZola</div>
+  <p>Bridging the gap between technology and impact organisations.</p>
+  <p style="margin-top: 8px;">reachus@edzola.com &middot; www.edzola.com</p>
+</footer>
+
+</body>
+</html>
