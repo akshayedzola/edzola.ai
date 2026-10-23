@@ -9,7 +9,7 @@ FORM_SCRIPT = ROOT / "assets" / "crm-webform.js"
 AMPLIFY_PAGE = ROOT / "crm" / "amplify" / "index.html"
 HOME_PAGE = ROOT / "index.html"
 SITEMAP = ROOT / "sitemap.xml"
-ASSET_VERSION = "20261022a"
+ASSET_VERSION = "20261023a"
 
 
 class CrmWebformRegressionTests(unittest.TestCase):
@@ -67,12 +67,22 @@ class CrmWebformRegressionTests(unittest.TestCase):
         self.assertNotIn('Amplify%20cohort%20application', page)
         self.assertNotIn('id="c-crm"', page)
 
-    def test_amplify_form_is_contextual_and_defaults_to_crm(self):
+    def test_amplify_form_is_contextual_and_defaults_to_claude_consulting(self):
         source = FORM_SCRIPT.read_text(encoding="utf-8")
 
         self.assertIn("path.indexOf('/crm/amplify/')===0?'amplify'", source)
-        self.assertIn("'amplify':'CRM'", source)
+        self.assertIn("'amplify':'Claude Consulting'", source)
         self.assertIn("Send my Amplify application", source)
+
+    def test_new_offerings_are_available_and_contextually_selected(self):
+        source = FORM_SCRIPT.read_text(encoding="utf-8")
+
+        for offering in ("DozAI", "Zoho Consulting", "Claude Consulting"):
+            self.assertIn(f'<option value="{offering}">', source)
+        self.assertIn("'dozai':'DozAI'", source)
+        self.assertIn("'zoho-consulting':'Zoho Consulting'", source)
+        self.assertIn("/solutions/ai-agents-for-nonprofits/", source)
+        self.assertIn("/learn/technology/zoho-creator-for-nonprofits/", source)
 
     def test_vertical_pages_use_contextual_embedded_form_and_capture_query_links(self):
         source = FORM_SCRIPT.read_text(encoding="utf-8")
@@ -97,8 +107,8 @@ class CrmWebformRegressionTests(unittest.TestCase):
         sitemap = SITEMAP.read_text(encoding="utf-8")
         amplify = AMPLIFY_PAGE.read_text(encoding="utf-8")
 
-        self.assertIn('href="https://edzola.ai/crm/amplify/"', home)
-        self.assertIn('Amplify CRM cohort', home)
+        self.assertRegex(home, r'href="(?:https://edzola\.ai)?/crm/amplify/"')
+        self.assertIn('Amplify cohort', home)
         self.assertIn('name="robots" content="noindex,nofollow"', amplify)
         self.assertNotIn('<loc>https://edzola.ai/crm/amplify/</loc>', sitemap)
 

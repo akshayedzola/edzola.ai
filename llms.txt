@@ -11,6 +11,7 @@ Key facts:
 ## What EdZola does
 
 - [Data systems](https://edzola.ai/#model): Programme MIS, case management, donor CRM and HR, built around one ID per person, household or case, from first visit to funder report.
+- [Work and outcomes](https://edzola.ai/work/): Representative programme, fundraising and operations systems, organised around what changed for the teams using them.
 - [Verticals](https://edzola.ai/verticals/): Systems organised by operational need, plus a sequenced path for organisation-wide digital transformation. EdZola maps current processes and systems, simplifies the operating model, stabilises core records, connects cross-team handoffs, then adds automation and governed AI where useful.
 - [Programme and evidence systems](https://edzola.ai/verticals/programme-evidence-systems/): Programme MIS, case management, participant journeys, monitoring, evaluation, data quality, dashboards and reporting.
 - [Fundraising, donor and grant systems](https://edzola.ai/verticals/fundraising-donor-grant-systems/): Fundraising CRM, donor stewardship, donation operations, grants, budgets, tranches, utilisation and reporting obligations.
@@ -71,6 +72,7 @@ Key facts:
 - [NGO monitoring and evaluation software](https://edzola.ai/solutions/ngo-monitoring-and-evaluation-software/): Connect indicators to definitions, source records, reporting periods, owners and review decisions.
 - [Offline field data collection](https://edzola.ai/solutions/offline-field-data-collection-for-nonprofits/): Design forms, IDs, sync and conflict handling for real field conditions.
 - [Nonprofit CRM implementation](https://edzola.ai/solutions/nonprofit-crm-implementation/): Connect relationship history, ownership, proposals, commitments and next actions.
+- [Zoho Creator for nonprofits](https://edzola.ai/learn/technology/zoho-creator-for-nonprofits/): Decide when low-code configuration fits the workflow, permissions, integrations and long-term ownership.
 - [AI voice surveys for NGOs](https://edzola.ai/solutions/ai-voice-surveys-for-ngos/): Multilingual, consent-aware voice research with explicit human review.
 - [DPDP compliance for NGOs](https://edzola.ai/solutions/dpdp-compliance-for-ngos/): Turn data mapping, notices, access, retention and response workflows into practical controls.
 - [AI agents for nonprofits](https://edzola.ai/solutions/ai-agents-for-nonprofits/): Define bounded AI missions with evidence, stop conditions and human escalation.
@@ -80,4 +82,5 @@ Key facts:
 - [Comparison guides](https://edzola.ai/learn/compare/): Compare workflow fit, ownership, implementation effort and trade-offs.
 - [Resources](https://edzola.ai/resources/): Requirements templates, trackers, estimators and implementation frameworks.
 - [DozAI missions](https://edzola.ai/dozai/): Operational AI missions with evidence and human review.
+- CRM enquiries distinguish DozAI, Zoho Consulting and Claude Consulting so each landing page reaches the team with the right service context.
 - [Content sitemap](https://edzola.ai/sitemap-content.xml): The implementation library and its browsing hubs.

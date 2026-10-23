@@ -1,1021 +1,253 @@
 <!doctype html>
 <html lang="en-GB">
 <head>
-<meta charset="utf-8">
-<link rel="canonical" href="https://edzola.ai/">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>EdZola | AI-native operations and data systems for nonprofits</title>
-<meta name="description" content="EdZola designs, builds and runs the systems behind nonprofit programmes. AI handles the volume, your people keep the judgement. 100+ organisations since 2020.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-:root{--bg:#FDF8F4;--surface:#fff;--sunk:#F6EDE5;--ink:#1A1A1A;--night:#161311;--muted:#6B6360;--line:#EADFD6;--coral:#E8967A;--coral-dark:#9E452D;--peach:#FAE8DC;--teal:#8ECFCA;--teal-dark:#2C7771;--teal-soft:#E2F3F1;--yellow:#F7C948;--shadow:0 14px 40px rgba(74,48,32,.10);--display:"Bricolage Grotesque",sans-serif;--sans:"Figtree",sans-serif;--mono:"JetBrains Mono",monospace}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit}.wrap{width:min(1200px,calc(100% - 48px));margin:auto}
-h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;text-wrap:balance;margin:0}p{margin:0}
-:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark)}
-.pill{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:0;border-radius:999px;font:700 15px var(--sans);text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
-.pill:hover{transform:translateY(-1px)}.pill.primary{background:var(--coral);color:var(--ink)}.pill.ghost{box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface)}.pill.dark{background:var(--ink);color:var(--bg)}
-
-.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.top .wrap{height:66px;display:flex;align-items:center;gap:24px}
-.logo{font:700 22px var(--display);letter-spacing:-.035em;text-decoration:none}
-.top nav{margin-left:auto;display:flex;gap:2px}.top nav a{padding:8px 12px;color:var(--muted);font-size:14px;text-decoration:none;border-radius:99px}.top nav a:hover{background:var(--sunk);color:var(--ink)}
-.top .pill{min-height:42px;padding:0 18px;font-size:14px}
-
-/* ---------- HERO ---------- */
-.hero{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center;padding:56px 0 40px}
-.hero h1{font-size:clamp(44px,5.4vw,74px);line-height:.98;margin:18px 0 22px}
-.hero h1 em{font-style:normal;color:var(--coral-dark);position:relative}
-.hero h1 em:after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;background:var(--yellow);opacity:.55;z-index:-1;border-radius:3px}
-.hero-copy{font-size:19px;line-height:1.6;color:var(--muted)}.hero-copy strong{color:var(--ink);font-weight:600}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.modes{display:flex;gap:8px;margin-top:26px;flex-wrap:wrap}
-.modes span{font:500 12px var(--mono);padding:6px 11px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
-.modes b{color:var(--coral-dark);font-weight:600}
-
-.stage{position:relative;border-radius:28px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
-.stage-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px 0}
-.stage-top span{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.stage-top .live{display:flex;align-items:center;gap:8px}.stage-top .live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--coral);animation:blink 2s ease-in-out infinite}
-@keyframes blink{50%{opacity:.3}}
-.ctrl{background:var(--sunk);color:var(--muted);border:0;border-radius:99px;padding:6px 12px;font:500 11px var(--mono);cursor:pointer}.ctrl:hover{color:var(--ink)}
-.stage canvas{display:block;width:100%;height:480px}
-.acts{padding:14px 18px 18px;border-top:1px solid var(--line);background:var(--bg)}
-.act-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.act{all:unset;cursor:pointer;display:block;color:var(--muted);font:600 13px var(--sans)}
-.act i{display:block;height:3px;border-radius:2px;background:var(--line);margin-bottom:8px;overflow:hidden}
-.act i b{display:block;height:100%;width:0;background:var(--coral)}
-.act.on{color:var(--ink)}.act:focus-visible{outline:2px solid var(--coral);outline-offset:4px;border-radius:4px}
-.caption{margin-top:9px;min-height:62px;color:var(--muted);font-size:14px;line-height:1.5}
-
-/* ---------- LOGO CLOUD ---------- */
-.cloud{padding:34px 0 38px;border-block:1px solid var(--line);background:var(--sunk);overflow:hidden}
-.cloud-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:20px;flex-wrap:wrap}
-.cloud-head b{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.cloud-head span{font-size:14px;color:var(--muted)}
-.lane{display:flex;width:max-content;gap:14px;padding:10px 0;animation:slide 70s linear infinite}
-.lane.rev{animation-direction:reverse;animation-duration:85s}
-.cloud:hover .lane{animation-play-state:paused}
-@keyframes slide{to{transform:translateX(-50%)}}
-.org{flex:none;height:72px;min-width:120px;padding:0 22px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 20px rgba(74,48,32,.07);font:600 15px var(--display);letter-spacing:-.01em;color:#3d3633;white-space:nowrap;animation:bob 6s ease-in-out infinite}
-.org img{max-height:44px;max-width:150px;display:block}
-.org:nth-child(3n){animation-delay:-2s}.org:nth-child(3n+1){animation-delay:-4s}.org:nth-child(4n){animation-duration:7.5s}
-@keyframes bob{50%{transform:translateY(-6px)}}
-
-/* ---------- SECTIONS ---------- */
-.section{padding:96px 0}.section.sunk{background:var(--sunk);border-block:1px solid var(--line)}
-.section-head{max-width:780px;margin-bottom:44px}
-.section h2{font-size:clamp(36px,4.8vw,58px);line-height:1.04;margin:14px 0 16px}
-.lead{font-size:18px;line-height:1.7;color:var(--muted)}
-
-/* pillars */
-.pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.pillar{position:relative;display:flex;flex-direction:column;padding:30px;border-radius:24px;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c,var(--coral))}
-.pillar.build{--c:var(--teal-dark)}.pillar.listen{--c:var(--teal)}.pillar.protect{--c:var(--ink)}.pillar.run{--c:var(--coral)}
-.pillar .tag{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.pillar h3{font-size:clamp(30px,3.2vw,40px);line-height:1.02;margin:14px 0 4px}
-.pillar .sub{font:600 16px var(--display);color:var(--coral-dark);letter-spacing:-.01em}
-.pillar p{color:var(--muted);margin-top:12px;font-size:15.5px}
-.pillar .badge{position:absolute;top:26px;right:26px;font:600 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:99px;background:var(--peach);color:var(--coral-dark)}
-.pillar .go{margin-top:auto;padding-top:20px;font-weight:700;text-decoration:none;color:var(--teal-dark)}
-.pillar .also{margin-top:14px;font-size:13.5px;color:var(--muted);padding-top:12px;border-top:1px dashed var(--line)}
-.viz{margin-top:20px;border-radius:16px;background:var(--bg);border:1px solid var(--line);padding:16px;font-size:13px}
-.viz .row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line)}.viz .row:first-of-type{border-top:0}
-.viz .hd{font:600 10.5px var(--mono);color:var(--teal-dark);letter-spacing:.04em;margin-bottom:6px}
-.t{font:600 10px var(--mono);padding:2px 8px;border-radius:99px;background:var(--teal-soft);color:var(--teal-dark);white-space:nowrap}
-.t.w{background:var(--peach);color:var(--coral-dark)}.t.h{background:#F3D6CC;color:#8E3A22}.t.l{background:var(--sunk);color:var(--muted)}
-.wave{display:flex;align-items:center;gap:3px;height:34px;margin-bottom:10px}
-.wave i{flex:1;background:var(--teal);border-radius:2px;animation:wv 1.4s ease-in-out infinite}
-@keyframes wv{50%{transform:scaleY(.35)}}
-.quote-line{font-style:italic;color:var(--ink)}
-.arrow-to{display:flex;align-items:center;gap:8px;margin-top:8px;color:var(--muted);font-size:12.5px}
-.steps-mini{counter-reset:m}.steps-mini .row{justify-content:flex-start}.steps-mini .row:before{counter-increment:m;content:"0" counter(m);font:500 10.5px var(--mono);color:var(--coral-dark);width:22px}
-.steps-mini .row .t{margin-left:auto}
-.platform{margin-top:22px;font-size:14.5px;color:var(--muted);max-width:760px}
-@media(prefers-reduced-motion:reduce){.wave i{animation:none}}
-
-/* picker */
-.picker{display:grid;grid-template-columns:330px 1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--surface)}
-.tabs{display:flex;flex-direction:column;background:var(--sunk);border-right:1px solid var(--line);padding:10px}
-.tab{all:unset;cursor:pointer;display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:14px;font:600 15.5px var(--sans);color:var(--muted)}
-.tab .n{font:500 11px var(--mono);color:var(--coral-dark);width:20px}
-.tab:hover{color:var(--ink)}.tab[aria-selected=true]{background:var(--surface);color:var(--ink);box-shadow:0 4px 14px rgba(60,40,25,.07)}
-.tab:focus-visible{outline:3px solid var(--coral)}
-.panel{padding:40px 46px}.panel[hidden]{display:none}
-.panel .kicker{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dark)}
-.panel h3{font-size:clamp(27px,3.2vw,38px);line-height:1.1;margin:14px 0 14px}
-.panel>p{color:var(--muted);font-size:17px;max-width:640px}
-.panel-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px}
-.panel ul{list-style:none;padding:0;margin:0}.panel li{padding:9px 0 9px 24px;border-bottom:1px solid var(--line);position:relative;font-size:15px}
-.panel li:before{content:"→";position:absolute;left:0;color:var(--coral-dark)}
-.proofbox{background:var(--teal-soft);border:1px solid #C9E5E2;border-radius:16px;padding:20px}
-.proofbox .o{font:600 12px var(--mono);color:var(--teal-dark);letter-spacing:.06em;text-transform:uppercase}
-.proofbox strong{display:block;font:700 32px var(--display);letter-spacing:-.04em;margin:6px 0 2px}
-.proofbox p{font-size:14px;color:var(--muted)}
-.proofbox.p{background:var(--peach);border-color:#E6CBBE}.proofbox.p .o{color:var(--coral-dark)}
-.panel-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px}.panel-links a{font-weight:700;text-decoration:none;color:var(--teal-dark)}
-
-/* proof */
-.cases{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.case{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;text-decoration:none;transition:border-color .2s,transform .2s}
-.case:hover{border-color:var(--teal-dark);transform:translateY(-2px)}
-.case img{height:34px;width:auto;max-width:140px;object-fit:contain;object-position:left;mix-blend-mode:multiply}
-.case strong{font:700 44px/1 var(--display);letter-spacing:-.045em;margin:20px 0 6px}
-.case .unit{font-weight:600}.case p{color:var(--muted);font-size:14.5px;margin-top:12px}
-.case .go{margin-top:auto;padding-top:18px;font-weight:700;color:var(--teal-dark);font-size:14px}
-.case .live{align-self:flex-start;margin-top:14px;font:600 10.5px var(--mono);padding:3px 8px;border-radius:99px;background:var(--peach);color:var(--coral-dark)}
-.honest{margin-top:22px;font-size:15px;color:var(--muted);max-width:760px}.honest a{color:var(--teal-dark);font-weight:700}
-
-/* sectors */
-.sectors-shell{display:grid;grid-template-columns:.75fr 1.25fr;gap:56px;align-items:start}
-.sector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.sector{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 16px;border:1px solid var(--line);background:var(--surface);text-decoration:none;border-radius:12px}
-.sector:hover{border-color:var(--teal-dark);background:var(--teal-soft)}
-.sector b{font-weight:600}.sector .id{font:500 11px var(--mono);color:var(--teal-dark);align-self:center}
-.sector small{grid-column:1/-1;color:var(--muted);font-size:13px;line-height:1.4}
-
-/* method */
-.method{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
-.steps{border-top:1px solid var(--line)}
-.step{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--line)}
-.step span{font:500 12px var(--mono);color:var(--coral-dark)}.step h3{font-size:22px;margin-bottom:4px}.step p{color:var(--muted)}
-.promises{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
-.promise{padding:18px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
-.promise b{display:block;font:600 16px var(--display);margin-bottom:4px}.promise span{font-size:14px;color:var(--muted)}
-
-
-.people{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.founder{background:var(--night);color:var(--bg);border-radius:24px;padding:40px}
-.founder blockquote{margin:0;font:500 clamp(22px,2.6vw,30px)/1.3 var(--display);letter-spacing:-.02em}
-.founder cite{display:block;margin-top:22px;font:normal 14px var(--sans);opacity:.75}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:28px}
-.facts div{background:var(--surface);padding:20px}.facts strong{display:block;font:700 32px var(--display);letter-spacing:-.04em}.facts span{font-size:13.5px;color:var(--muted)}
-
-.reads{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.read{display:flex;flex-direction:column;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--surface);text-decoration:none}
-.read:hover{border-color:var(--coral)}
-.read span{font:500 11px var(--mono);color:var(--coral-dark);letter-spacing:.08em;text-transform:uppercase}
-.read h3{font-size:22px;line-height:1.2;margin:14px 0 8px}.read p{color:var(--muted);font-size:14.5px}
-
-.cta{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:52px;border-radius:28px;background:var(--teal-soft);border:1px solid #C9E5E2}
-.cta h2{font-size:clamp(34px,4.4vw,54px);line-height:1.03}.cta p{margin-top:14px;color:var(--muted);font-size:18px}
-.cta .pill{margin-top:26px}
-.next{counter-reset:n;display:grid;gap:10px}
-.next div{counter-increment:n;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--surface);border-radius:14px;padding:16px 18px;border:1px solid #C9E5E2}
-.next div:before{content:counter(n);width:30px;height:30px;border-radius:50%;background:var(--teal-dark);color:#fff;display:grid;place-items:center;font:700 14px var(--display)}
-.next b{display:block;color:var(--ink)}.next span{font-size:14px;color:var(--muted)}
-.pii{margin-top:12px;font-size:12.5px;color:var(--muted)}
-
-.footer{padding:44px 0;border-top:1px solid var(--line);background:var(--surface)}
-.footer .wrap{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:28px}
-.footer .social{display:flex;gap:8px;margin-top:16px}.footer .social a{display:grid;place-items:center;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:50%;color:var(--muted)}.footer .social a:hover{color:var(--coral-dark);border-color:var(--coral)}
-.footer .wrap.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.footer .legal a{display:inline;font-size:13px;color:var(--muted);margin-left:16px}
-.footer h3{margin:0 0 10px;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.footer a{display:block;color:var(--ink);font-size:14px;text-decoration:none;padding:3px 0}.footer a:hover{color:var(--coral-dark)}
-.footer p{font-size:14px;color:var(--muted);margin-top:10px;max-width:300px}
-
-/* get involved */
-.notice{display:block;background:var(--night);color:var(--bg);text-align:center;font-size:13.5px;padding:9px 16px;text-decoration:none}
-.notice b{color:var(--yellow);font-weight:600}.notice span{text-decoration:underline;text-underline-offset:3px}
-.give{display:grid;grid-template-columns:1.25fr 1fr;gap:14px}
-.patron{position:relative;display:grid;gap:16px;align-content:start;padding:36px;border-radius:24px;background:var(--peach);border:1px solid #F1D3C1;text-decoration:none;overflow:hidden}
-.patron h3{font-size:clamp(28px,3vw,38px);line-height:1.05}.patron p{color:var(--muted);font-size:16.5px;max-width:46ch}
-.split{display:flex;height:12px;border-radius:99px;overflow:hidden;max-width:420px}
-.split-key{display:flex;flex-wrap:wrap;gap:6px 16px;font:500 12px var(--mono);color:var(--muted)}
-.split-key i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-.patron .pill{justify-self:start}
-.ways{display:grid;gap:10px}
-.way{display:grid;grid-template-columns:1fr auto;gap:4px 14px;align-items:center;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:var(--surface);text-decoration:none}
-.way:hover{border-color:var(--coral)}
-.way b{font:600 18px var(--display);letter-spacing:-.02em}.way small{grid-column:1;color:var(--muted);font-size:14px;line-height:1.45}
-.way .amt{grid-row:1/3;grid-column:2;font:500 13px var(--mono);color:var(--coral-dark);white-space:nowrap}
-
-@media(max-width:1040px){
- .hero{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}
- .sectors-shell,.method,.people,.cta,.give{grid-template-columns:1fr}
- .cases{grid-template-columns:1fr 1fr}.reads{grid-template-columns:1fr}
- .picker{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);scrollbar-width:none}
- .tab{white-space:nowrap;padding:12px 14px;font-size:14px}.footer .wrap{grid-template-columns:1fr 1fr}
-}
-@media(max-width:680px){
- .wrap{width:calc(100% - 32px)}.top nav{display:none}.top .pill{margin-left:auto}
- .hero{padding:40px 0 30px;gap:30px}.hero h1{font-size:clamp(40px,11.5vw,54px)}.hero-copy{font-size:17.5px}
- .hero-actions .pill{width:100%}
- .stage canvas{height:600px}.caption{font-size:13px;min-height:96px}.act{font-size:11.5px}.pillar{padding:24px}
- .section{padding:68px 0}.cases,.panel-grid,.promises,.sector-grid,.facts{grid-template-columns:1fr}
- .panel{padding:28px 22px}.cta{padding:28px 22px}.patron{padding:26px 22px}.way .amt{grid-row:auto;grid-column:1}.founder{padding:28px}.footer .wrap{grid-template-columns:1fr}
- .org{height:60px;min-width:100px;padding:0 16px;font-size:14px}.org img{max-height:36px}
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.lane,.org{animation:none}.lane{width:auto;overflow-x:auto;padding-inline:20px;scrollbar-width:thin}.lane .dup{display:none!important}}
-
-/* partner voices */
-.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.voice-card{margin:0;background:var(--peach);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px}
-.voice-card img{height:34px;width:auto;max-width:150px;object-fit:contain;object-position:left;mix-blend-mode:multiply}
-.voice-card blockquote{margin:0;font:600 17px/1.45 var(--display);letter-spacing:-.01em;color:var(--ink)}
-.voice-card figcaption{margin-top:auto;font-size:13px;color:var(--muted)}
-.voice-card figcaption b{display:block;color:var(--ink);font-size:14px}
-/* who we work with */
-.partners{background:var(--night);color:var(--bg);padding:96px 0}
-.partners-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
-.partners .eyebrow{color:var(--coral)}
-.partners h2{color:var(--bg);margin-top:14px}
-.partners-grid>div>p{margin-top:16px;color:rgba(253,248,244,.72);max-width:46ch}
-.partners-photo{margin:28px 0 0;border-radius:20px;overflow:hidden;aspect-ratio:3/2}
-.partners-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.partners-list{display:grid;gap:12px}
-.partners-list article{border:1px solid rgba(253,248,244,.14);border-radius:18px;padding:24px;background:rgba(253,248,244,.04)}
-.partners-list span{font:500 12px var(--mono);color:var(--coral)}
-.partners-list h3{color:var(--bg);margin:6px 0 8px;font-size:21px}
-.partners-list p{color:rgba(253,248,244,.72);font-size:15px}
-.partners-list a{display:inline-block;margin-top:12px;color:var(--coral);font-weight:600;text-decoration:none}
-.partners-list a:hover{text-decoration:underline}
-.founder cite{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.founder-pic{width:44px;height:44px;border-radius:50%;object-fit:cover}
-@media(max-width:900px){.voices{grid-template-columns:1fr}.partners-grid{grid-template-columns:1fr}.partners{padding:68px 0}}
-</style>
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="EdZola">
-<meta property="og:title" content="EdZola | AI-native operations and data systems for nonprofits">
-<meta property="og:description" content="EdZola designs, builds and runs the systems behind nonprofit programmes. AI handles the volume, your people keep the judgement. 100+ organisations since 2020.">
-<meta property="og:url" content="https://edzola.ai/">
-<meta property="og:image" content="https://edzola.ai/assets/og-edzola.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@graph": [
-  {
-   "@type": "Organization",
-   "@id": "https://edzola.ai/#org",
-   "name": "EdZola",
-   "legalName": "EdZola Technologies Private Limited",
-   "url": "https://edzola.ai/",
-   "logo": "https://edzola.ai/assets/apple-touch-icon.png",
-   "email": "reachus@edzola.com",
-   "foundingDate": "2020",
-   "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Coimbatore",
-    "addressRegion": "Tamil Nadu",
-    "addressCountry": "IN"
-   },
-   "description": "EdZola designs, builds and runs data systems and AI for nonprofits, from first system to AI. 100+ organisations and 150+ systems since 2020.",
-   "sameAs": [
-    "https://www.edzola.com/",
-    "https://in.linkedin.com/company/edzola",
-    "https://twitter.com/edzolatech",
-    "https://www.facebook.com/edzolatech",
-    "https://instagram.com/edzolatech"
-   ]
-  },
-  {
-   "@type": "WebSite",
-   "@id": "https://edzola.ai/#site",
-   "url": "https://edzola.ai/",
-   "name": "EdZola",
-   "inLanguage": "en-GB",
-   "publisher": {
-    "@id": "https://edzola.ai/#org"
-   }
-  },
-  {
-   "@type": "WebPage",
-   "@id": "https://edzola.ai/#page",
-   "url": "https://edzola.ai/",
-   "name": "EdZola | AI-native operations and data systems for nonprofits",
-   "description": "EdZola designs, builds and runs the systems behind nonprofit programmes. AI handles the volume, your people keep the judgement. 100+ organisations since 2020.",
-   "inLanguage": "en-GB",
-   "isPartOf": {
-    "@id": "https://edzola.ai/#site"
-   },
-   "publisher": {
-    "@id": "https://edzola.ai/#org"
-   }
-  }
- ]
-}
-</script>
-<style>.pillar,.pillars>*{min-width:0}.pillar h3,.pillar .sub,.pillar p{overflow-wrap:break-word}.viz .row{gap:4px 8px;flex-wrap:wrap}@media (max-width:400px){.row{flex-wrap:wrap}.t{white-space:normal}}.viz .row>span:first-child{min-width:0;overflow-wrap:anywhere}</style>
-<style id="gh-css">
-.gh-skip{position:absolute;left:16px;top:-60px;z-index:80;padding:10px 16px;border-radius:999px;background:#1A1A1A;color:#FDF8F4!important;font-weight:700;font-size:14px}.gh-skip:focus{top:12px}
-html{scroll-padding-top:76px}
-.gh{position:sticky;top:0;z-index:60;height:64px;background:rgba(253,248,244,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #EADFD6;font-family:"Figtree","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A1A1A}
-.gh.gh-static{position:relative}
-.gh *{box-sizing:border-box}
-.gh-in{max-width:1160px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
-.gh a{text-decoration:none;color:inherit}
-.gh-logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
-.gh-logo b{font:700 22px/1 "Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;letter-spacing:-.04em;color:#1A1A1A}
-.gh-logo span{font:500 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;color:#6B6360;letter-spacing:.02em}
-.gh-nav{margin-left:auto;display:flex;gap:2px}
-.gh-nav a{padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
-.gh-nav a:hover{background:#F6EDE5;color:#1A1A1A}
-.gh-nav a[aria-current="page"]{background:#F6EDE5;color:#1A1A1A}
-.gh-vgroup{position:relative}
-.gh-vgroup>summary{list-style:none;cursor:pointer;padding:8px 12px;border-radius:999px;font-size:14.5px;font-weight:500;color:#6B6360;line-height:1.2}
-.gh-vgroup>summary::-webkit-details-marker{display:none}
-.gh-vgroup>summary:after{content:"⌄";margin-left:5px;color:#9E452D;font-weight:700}
-.gh-vgroup>summary:hover,.gh-vgroup[open]>summary{background:#F6EDE5;color:#1A1A1A}
-.gh-vmega{position:absolute;left:-210px;top:calc(100% + 12px);width:760px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;padding:1px;background:#EADFD6;border:1px solid #EADFD6;border-radius:18px;box-shadow:0 18px 40px rgba(60,40,30,.14);overflow:hidden}
-.gh-vmega section{background:#fff;padding:20px}
-.gh-vmega h3{margin:0 0 8px;font:700 11px/1.2 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#9E452D}
-.gh-vmega a{display:block;padding:7px 0!important;border-radius:0!important;font-size:14px!important;color:#1A1A1A!important}
-.gh-vmega a:hover{background:transparent!important;color:#2C7771!important}
-.gh-vmega>a{grid-column:1/-1;display:flex!important;justify-content:space-between;padding:13px 18px!important;background:#F6EDE5!important;font-weight:700!important}
-.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E8967A;color:#1A1A1A!important;font-size:14px;font-weight:700;white-space:nowrap}
-.gh-cta:hover{filter:brightness(.96)}
-.gh-menu{display:none;position:relative}
-.gh-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font-size:14px;font-weight:600}
-.gh-menu summary::-webkit-details-marker{display:none}
-.gh-menu summary i{display:block;width:16px;height:2px;background:#1A1A1A;box-shadow:0 5px 0 #1A1A1A,0 -5px 0 #1A1A1A}
-.gh-menu[open] summary i{box-shadow:none;transform:rotate(45deg)}
-.gh-menu[open] summary i::after{content:"";display:block;width:16px;height:2px;background:#1A1A1A;transform:rotate(90deg)}
-.gh-drop{position:absolute;right:0;top:calc(100% + 10px);min-width:230px;background:#fff;border:1px solid #EADFD6;border-radius:16px;box-shadow:0 18px 40px rgba(60,40,30,.14);padding:8px;display:grid}
-.gh-drop a{padding:11px 14px;border-radius:10px;font-size:15px;font-weight:500}
-.gh-drop a:hover,.gh-drop a[aria-current="page"]{background:#F6EDE5}
-.gh-drop details{border-block:1px solid #EADFD6;margin:3px 0;padding:4px 0}
-.gh-drop details summary{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:10px 14px;list-style:none;cursor:pointer;font-size:15px;font-weight:650}
-.gh-drop details summary::-webkit-details-marker{display:none}
-.gh-drop details summary:after{content:"+";color:#9E452D;font-size:18px;line-height:1}
-.gh-drop details[open] summary:after{content:"−"}
-.gh-drop details a{display:block;padding-left:28px;color:#6B6360}
-.gh-drop .gh-drop-cta{margin-top:6px;background:#E8967A;font-weight:700;text-align:center}
-:focus-visible.gh-cta,.gh a:focus-visible,.gh summary:focus-visible{outline:3px solid #2C7771;outline-offset:2px}
-@media (max-width:900px){.gh-nav{display:none}.gh-menu{display:block;margin-left:auto}}
-@media (max-width:520px){.gh-cta{display:none}.gh-logo span{display:none}}
-</style>
-<style>.motion-toggle{font:600 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;padding:8px 12px;border-radius:999px;border:1px solid #EADFD6;background:#fff;color:#1A1A1A;cursor:pointer}.motion-toggle:focus-visible{outline:3px solid #2C7771;outline-offset:2px}.is-paused .lane,.is-paused .org,.is-paused .reel-track{animation-play-state:paused!important}</style>
-<style id="gh-lang-css">
-.gh-lang{display:flex;gap:2px;padding:3px;border:1px solid #EADFD6;border-radius:999px;background:#fff;font:600 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace}
-.gh-lang a{padding:6px 8px;border-radius:999px;color:#6B6360!important}
-.gh-lang a[aria-current]{background:#1A1A1A;color:#FDF8F4!important}
-.gh-lang a:hover{color:#1A1A1A!important}
-.gh-drop .gh-lang{margin:8px 6px 4px;justify-content:center}
-@media (max-width:900px){.gh-in>.gh-lang{display:none}}
-.lang-hint{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:440px;margin-left:auto;display:flex;align-items:center;gap:12px;padding:14px 16px;background:#1A1A1A;color:#FDF8F4;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);font:500 14px/1.4 "Figtree",system-ui,sans-serif}
-.lang-hint a{color:#1A1A1A;background:#E8967A;padding:8px 14px;border-radius:999px;font-weight:700;text-decoration:none;white-space:nowrap}
-.lang-hint button{margin-left:auto;background:none;border:0;color:#FDF8F4;opacity:.7;font-size:20px;cursor:pointer;padding:4px 6px}
-</style>
-<style>
-.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-.entry-chooser{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
-.entry-choice{display:flex;min-height:150px;flex-direction:column;padding:22px;border:1px solid #EADFD6;border-radius:20px;background:#fff;text-decoration:none;transition:transform .18s,border-color .18s}
-.entry-choice:hover{transform:translateY(-2px);border-color:#2C7771}
-.entry-choice small{font:700 10px/1.3 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#9E452D}
-.entry-choice b{font:700 23px/1.08 "Bricolage Grotesque","Figtree",sans-serif;margin:12px 0 8px}
-.entry-choice span{color:#6B6360;font-size:14px;line-height:1.45}
-@media(max-width:1050px){.entry-chooser{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.entry-chooser{grid-template-columns:1fr}.entry-choice{min-height:0}}
-</style>
-<link rel="alternate" hreflang="en" href="https://edzola.ai/">
-<link rel="alternate" hreflang="es" href="https://edzola.ai/es/">
-<link rel="alternate" hreflang="pt-BR" href="https://edzola.ai/pt/">
-<link rel="alternate" hreflang="x-default" href="https://edzola.ai/">
-<link rel="stylesheet" href="/assets/crm-webform.css?v=20261019a">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="EdZola helps nonprofits, funders and ecosystem partners build technology that works—from programme systems and operations to responsible AI.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://edzola.ai/">
+  <link rel="alternate" hreflang="en" href="https://edzola.ai/">
+  <link rel="alternate" hreflang="es" href="https://edzola.ai/es/">
+  <link rel="alternate" hreflang="pt" href="https://edzola.ai/pt/">
+  <link rel="alternate" hreflang="x-default" href="https://edzola.ai/">
+  <title>EdZola — Technology that works for social impact</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EdZola">
+  <meta property="og:title" content="EdZola — Technology that works for social impact">
+  <meta property="og:description" content="Systems people actually use—from programme operations and fundraising to responsible AI.">
+  <meta property="og:url" content="https://edzola.ai/">
+  <meta property="og:image" content="https://edzola.ai/assets/og-edzola.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EdZola — Technology that works for social impact">
+  <meta name="twitter:description" content="Systems people actually use—from programme operations and fundraising to responsible AI.">
+  <meta name="twitter:image" content="https://edzola.ai/assets/og-edzola.png">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="/assets/homepage-v2.css?v=20261023a">
+  <link rel="stylesheet" href="/assets/crm-webform.css?v=20261023a">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"EdZola","url":"https://edzola.ai/","logo":"https://edzola.ai/assets/og-edzola.png","email":"reachus@edzola.com","address":{"@type":"PostalAddress","addressLocality":"Coimbatore","addressCountry":"IN"},"sameAs":["https://in.linkedin.com/company/edzola","https://www.youtube.com/@edzola"]}</script>
+  <script src="/assets/homepage-v2.js?v=20261023a" defer></script>
+  <script src="/assets/crm-webform.js?v=20261023a" defer></script>
+<link rel="stylesheet" href="/assets/site-shell.css?v=20261023a">
 </head>
 <body>
-<a class="gh-skip" href="#top">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<a class="notice" href="https://edzola.ai/crm/amplify/"><b>New</b> · Amplify: <span>turn your Zoho CRM into a colleague with Claude</span> →</a>
-<div class="gh" role="banner"><div class="gh-in"><a class="gh-logo" href="/"><b>edzola.ai</b></a><div class="gh-nav" role="navigation" aria-label="Primary"><a href="/#model">What we do</a><details class="gh-vgroup"><summary>Verticals</summary><div class="gh-vmega"><section><h3>Programme &amp; evidence</h3><a href="/verticals/programme-evidence-systems/">Programme MIS, cases &amp; MEL</a></section><section><h3>Funding &amp; relationships</h3><a href="/verticals/fundraising-donor-grant-systems/">Fundraising, donors &amp; grants</a></section><section><h3>People &amp; operations</h3><a href="/verticals/people-hr-systems/">People &amp; HR</a><a href="/verticals/finance-operations-systems/">Finance &amp; operations</a></section><a href="/verticals/"><span>Explore all verticals and organisation-wide transformation</span><span>→</span></a></div></details><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/learn/">Learn</a><a href="/thinking/">Thinking</a><a href="/about/">About</a></div><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/pt/" hreflang="pt" lang="pt">PT</a></div><a class="gh-cta" href="#start">Talk to us</a><details class="gh-menu"><summary aria-label="Open menu"><i aria-hidden="true"></i>Menu</summary><div class="gh-drop" role="navigation" aria-label="Primary (mobile)"><div class="gh-lang" data-i18n="skip" role="navigation" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/pt/" hreflang="pt" lang="pt">PT</a></div><a href="/#model">What we do</a><details><summary>Verticals</summary><a href="/verticals/">All verticals</a><a href="/verticals/programme-evidence-systems/">Programme &amp; evidence</a><a href="/verticals/fundraising-donor-grant-systems/">Funding &amp; relationships</a><a href="/verticals/people-hr-systems/">People &amp; HR</a><a href="/verticals/finance-operations-systems/">Finance &amp; operations</a></details><a href="/sectors/">Sectors</a><a href="/impact-os/">ImpactOS</a><a href="/learn/">Learn</a><a href="/thinking/">Thinking</a><a href="/about/">About</a><a class="gh-drop-cta" href="#start">Talk to us</a></div></details></div></div>
+  <header class="site-header" data-header>
+    <div class="header-inner shell">
+      <a class="brand" href="#top" aria-label="EdZola home">edzola.ai</a>
 
-<main id="top">
-<!-- ================= HERO ================= -->
-<section class="wrap hero">
-  <div>
-    <span class="eyebrow">AI-powered operations for social impact</span>
-    <h1>From the field to the funder, <em>nothing gets lost.</em></h1>
-    <p class="hero-copy">EdZola <strong>designs, builds and runs</strong> the connected systems behind your programmes and organisation. Start with one broken workflow or sequence an organisation-wide transformation, while the person you serve stays at the centre.</p>
-    <div class="hero-actions">
-      <a class="pill primary" href="/verticals/">Find the system you need →</a>
-      <a class="pill ghost" href="/sectors/">Explore your sector</a>
-    </div>
-    <div class="modes"><span><b>Build</b> data systems</span><span><b>Listen</b> with Zolabs</span><span><b>Protect</b> with ZolaShield</span><span><b>Run</b> with AI</span></div>
-  </div>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <button class="nav-trigger" type="button" data-menu-trigger="solutions" aria-expanded="false" aria-controls="menu-solutions">Solutions <span aria-hidden="true">⌄</span></button>
+        <button class="nav-trigger" type="button" data-menu-trigger="sectors" aria-expanded="false" aria-controls="menu-sectors">Sectors <span aria-hidden="true">⌄</span></button>
+        <button class="nav-trigger" type="button" data-menu-trigger="work" aria-expanded="false" aria-controls="menu-work">Work <span aria-hidden="true">⌄</span></button>
+        <button class="nav-trigger" type="button" data-menu-trigger="resources" aria-expanded="false" aria-controls="menu-resources">Resources <span aria-hidden="true">⌄</span></button>
+        <button class="nav-trigger" type="button" data-menu-trigger="company" aria-expanded="false" aria-controls="menu-company">Company <span aria-hidden="true">⌄</span></button>
+      </nav>
 
-  <div class="stage" id="stage">
-    <div class="stage-top"><span class="live">One person, one thread</span><button class="ctrl" id="ctrl" type="button">Pause</button></div>
-    <canvas id="gap" role="img" aria-label="Animation: one child's information is scattered between the field and the funder. EdZola steps in and brings it into one record connected to the funder, then the same clarity scales to thousands of people."></canvas>
-    <div class="acts">
-      <div class="act-btns" role="group" aria-label="Animation chapters">
-        <button class="act on" data-act="0" type="button"><i><b></b></i>01 · The gap</button>
-        <button class="act" data-act="1" type="button"><i><b></b></i>02 · EdZola steps in</button>
-        <button class="act" data-act="2" type="button"><i><b></b></i>03 · At scale</button>
+      <div class="header-actions">
+        <div class="locale-wrap">
+          <button class="locale-trigger" type="button" data-locale-trigger aria-expanded="false" aria-controls="locale-menu" aria-label="Change language"><span aria-hidden="true">◎</span> EN <span aria-hidden="true">⌄</span></button>
+          <div class="locale-menu" id="locale-menu" data-locale-menu hidden>
+            <a class="current" href="/" lang="en" aria-current="page"><b>English</b><span>Current language</span></a>
+            <a href="/es/" lang="es"><b>Español</b><span>Core pages available</span></a>
+            <a href="/pt/" lang="pt"><b>Português</b><span>Core pages available</span></a>
+          </div>
+        </div>
+        <a class="button button-coral header-cta" href="#contact">Talk to us</a>
+        <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false" aria-controls="mobile-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span data-mobile-label>Menu</span></button>
       </div>
-      <p class="caption" id="caption" aria-live="polite"></p>
-    </div>
-  </div>
-</section>
-
-<section class="wrap" aria-labelledby="start-path-heading">
-  <h2 id="start-path-heading" class="sr-only">Choose how to explore EdZola</h2>
-  <div class="entry-chooser">
-    <a class="entry-choice" href="/verticals/"><small>Start with the operational need</small><b>Explore systems by vertical</b><span>Programme, funding, people, finance and operations.</span></a>
-    <a class="entry-choice" href="/sectors/"><small>Start with the mission context</small><b>Explore sector playbooks</b><span>See how records, workflows and risks change across 16 sectors.</span></a>
-    <a class="entry-choice" href="/verticals/#transformation"><small>Change across the organisation</small><b>Sequence digital transformation</b><span>De-stress existing processes and systems through useful releases.</span></a>
-    <a class="entry-choice" href="/learn/"><small>Start with a practical question</small><b>Browse guides and tools</b><span>Compare approaches, plan implementation and explore reusable resources.</span></a>
-  </div>
-</section>
-
-<!-- ================= LOGO CLOUD ================= -->
-<section class="cloud" aria-label="Organisations we have worked with">
-  <div class="wrap cloud-head"><b>Trusted by 100+ organisations</b><span>A few of the teams we've built and run systems with <button class="motion-toggle" data-target=".cloud" data-pause="Pause" data-play="Play" aria-pressed="false">Pause</button></span></div>
-  <div class="lane" id="lane1" tabindex="0" role="group" aria-label="Partner logos, row 1"></div>
-  <div class="lane rev" id="lane2" tabindex="0" role="group" aria-label="Partner logos, row 2"></div>
-</section>
-
-<!-- ================= WHAT WE DO ================= -->
-<section class="section" id="model"><div class="wrap">
-  <div class="section-head">
-    <span class="eyebrow">What we do</span>
-    <h2>Four ways we make the system work.</h2>
-    <p class="lead">Connected data systems are the foundation. Voice research, data protection and AI extend what the organisation can learn, protect and deliver.</p>
-  </div>
-  <div class="pillars">
-    <article class="pillar build">
-      <span class="tag">01 · Build</span><h3>Data systems</h3><span class="sub">The system your programme runs on</span>
-      <p>Programme tracking, case management, donor management and HR, designed around your Theory of Change and how your field team actually works. One record per person, from first visit to funder report.</p>
-      <div class="viz"><div class="hd">ED-1042 · MEERA, 10</div>
-        <div class="row"><span>Enrolled · Govt PS</span><span class="t">Done</span></div>
-        <div class="row"><span>Attendance</span><span class="t w">3 absent</span></div>
-        <div class="row"><span>Home visit</span><span class="t w">Today</span></div>
-        <div class="row"><span>Funder report</span><span class="t">Auto</span></div></div>
-      <a class="go" href="/verticals/">Explore systems by organisational need →</a>
-    </article>
-    <article class="pillar listen">
-      <span class="tag">02 · Listen</span><h3>Zolabs</h3><span class="sub">Phone conversations with the people you serve, in their language</span>
-      <p>AI-led phone interviews for evaluations, feedback and follow-ups. Reach the people that forms leave out, and trace every finding back to what was actually said.</p>
-      <div class="viz"><div class="wave" aria-hidden="true"></div>
-        <div class="quote-line">"The money comes every month now, so I decide what we buy."</div>
-        <div class="arrow-to">→ <span class="t">Theme: income stability</span><span class="t w">Reviewed</span></div></div>
-      <a class="go" href="https://edzola.ai/zolabs/">Explore Zolabs →</a>
-    </article>
-    <article class="pillar protect">
-      <span class="tag">03 · Protect</span><h3>ZolaShield</h3><span class="sub">DPDP readiness, in a 15-minute conversation</span>
-      <p>The DPDP Act applies to nonprofits too. A voice AI assessment maps where your data lives, from field apps to WhatsApp, rates it by risk and gives you a 180-day plan. From ₹10,000.</p>
-      <div class="viz"><div class="hd">DATA MAP · EXAMPLE</div>
-        <div class="row"><span>Health records · HR system</span><span class="t h">P1 · High</span></div>
-        <div class="row"><span>Donor database · PAN</span><span class="t h">P1 · High</span></div>
-        <div class="row"><span>Beneficiary contacts · WhatsApp</span><span class="t w">P2 · Medium</span></div>
-        <div class="row"><span>Programme attendance</span><span class="t l">P3 · Low</span></div></div>
-      <a class="go" href="https://edzola.ai/zolashield/">Explore ZolaShield →</a>
-    </article>
-    <article class="pillar run"><span class="badge">Pilots open</span>
-      <span class="tag">04 · Run</span><h3>DozAI</h3><span class="sub">Results, not another tool to learn</span>
-      <p>DozAI's AI teammates take on the high-volume work: reading documents, making calls, checking rules and following up. Your people keep the decisions that matter.</p>
-      <div class="viz steps-mini"><div class="hd">MISSION · SCHOLARSHIP SCREENING</div>
-        <div class="row"><span>Collect applications</span><span class="t">5,000</span></div>
-        <div class="row"><span>Check eligibility &amp; evidence</span><span class="t">AI</span></div>
-        <div class="row"><span>Follow up by voice</span><span class="t">AI</span></div>
-        <div class="row"><span>Review the shortlist</span><span class="t w">Your team</span></div></div>
-      <p class="also">We also build custom AI for harder problems: AI that understands photos, audio and video, private AI that runs on your own servers, and AI agents built on Claude, as a Claude partner.</p>
-      <a class="go" href="https://edzola.ai/dozai/">Explore DozAI →</a>
-    </article>
-  </div>
-  <p class="platform">We pick the platform to fit the problem. Often that's Zoho, where we're an Advanced Partner. Sometimes it's custom code. Either way, your data stays yours.</p>
-</div></section>
-
-<!-- ================= WHAT DO YOU NEED TO FIX ================= -->
-<section class="section sunk" id="fix"><div class="wrap">
-  <div class="section-head">
-    <span class="eyebrow">Start with the problem</span>
-    <h2>What do you need to fix first?</h2>
-    <p class="lead">Pick the one that keeps your team up at night. We'll show you what we'd do and where we've done it before.</p>
-  </div>
-  <div class="picker">
-    <div class="tabs" role="tablist" aria-label="Problems we solve">
-      <button class="tab" role="tab" aria-selected="true" aria-controls="p1" id="t1"><span class="n">01</span>Track our programme</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2" tabindex="-1"><span class="n">02</span>Manage donors &amp; funds</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p3" id="t3" tabindex="-1"><span class="n">03</span>Run HR across locations</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p4" id="t4" tabindex="-1"><span class="n">04</span>Hear from the people we serve</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p5" id="t5" tabindex="-1"><span class="n">05</span>Get ready for DPDP</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p6" id="t6" tabindex="-1"><span class="n">06</span>Hand off repetitive work</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p7" id="t7" tabindex="-1"><span class="n">07</span>Build custom AI</button>
     </div>
 
-    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
-      <span class="kicker">Build · Programme MIS</span>
-      <h3>One ID for every child, patient or household. Every visit and outcome attached.</h3>
-      <p>Your field team sees who needs attention this week. Your leadership sees what's working. Your funder report stops taking three weeks.</p>
-      <div class="panel-grid">
-        <ul><li>Offline field forms in the local language</li><li>Alerts when someone starts falling behind, while there's still time to act</li><li>Dashboards field teams can actually read</li><li>Separate access for field, partners and managers</li></ul>
-        <div class="proofbox"><span class="o">TAP India Foundation</span><strong>16,000+</strong><p>out-of-school children tracked from identification to retention, in one system.</p></div>
+    <div class="mega-menu" id="menu-solutions" data-menu="solutions" hidden>
+      <div class="mega-inner shell solutions-menu">
+        <div class="mega-intro">
+          <span class="menu-kicker">Start with the pressure point</span>
+          <h2>What needs to work better?</h2>
+          <p>Choose the part of the organisation that is slowing people down. We will help you find the right first step.</p>
+          <a class="text-link" href="/verticals/">See all solutions <span>→</span></a>
+        </div>
+        <div class="menu-column">
+          <span class="menu-label">Core systems</span>
+          <a class="menu-link" href="/verticals/programme-evidence-systems/"><b>Programme &amp; evidence</b><span>MIS, cases, monitoring and reporting</span></a>
+          <a class="menu-link" href="/verticals/fundraising-donor-grant-systems/"><b>Fundraising &amp; grants</b><span>Donors, pipelines, grants and compliance</span></a>
+          <a class="menu-link" href="/verticals/people-hr-systems/"><b>People &amp; HR</b><span>Teams, attendance, leave and payroll</span></a>
+          <a class="menu-link" href="/verticals/finance-operations-systems/"><b>Finance &amp; operations</b><span>Approvals, vendors, assets and workflows</span></a>
+        </div>
+        <div class="menu-column">
+          <span class="menu-label">AI in real work</span>
+          <a class="menu-link" href="/zolabs/"><b>Zolabs · Listen</b><span>Voice research and evaluation at scale</span></a>
+          <a class="menu-link" href="/zolashield/"><b>ZolaShield · Protect</b><span>DPDP readiness and safer data practices</span></a>
+          <a class="menu-link" href="/dozai/"><b>DozAI · Run</b><span>AI teammates for high-volume workflows</span></a>
+        </div>
+        <div class="menu-column access-menu">
+          <span class="menu-label">Access &amp; funding</span>
+          <a class="featured-link" href="/patrons/"><span>Built for Impact Fund</span><b>Fund the systems nonprofits need to grow.</b><i>Back the 2027 cohort →</i></a>
+          <a class="featured-link teal-feature" href="/crm/amplify/"><span>Amplify cohort</span><b>Make Zoho CRM useful in everyday work.</b><i>Apply for the first cohort →</i></a>
+        </div>
       </div>
-      <div class="panel-links"><a href="#sectors">Find your sector →</a></div>
     </div>
-    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
-      <span class="kicker">Build · Fundraising CRM</span>
-      <h3>Every donor, grant and rupee in one place, with compliance built in.</h3>
-      <p>From first conversation to fund utilisation report. CSR, foundations, major donors and individual givers, each with the pipeline and paperwork they need.</p>
-      <div class="panel-grid">
-        <ul><li>Donor and grant pipelines</li><li>Bulk 80G receipts, FCRA tagging, full audit trail</li><li>Expenses mapped to the right grant by AI, approved by you</li><li>Fund utilisation reports in minutes</li></ul>
-        <div class="proofbox"><span class="o">One view</span><strong>Donor → report</strong><p>Every donor and grant, from first conversation to the utilisation report, in one place.</p></div>
+
+    <div class="mega-menu" id="menu-sectors" data-menu="sectors" hidden>
+      <div class="mega-inner shell sectors-menu">
+        <div class="mega-intro">
+          <span class="menu-kicker">Built for context</span>
+          <h2>Find the programme model closest to yours.</h2>
+          <p>Explore the decisions, workflows and evidence that change across different kinds of social-impact work.</p>
+          <a class="text-link" href="/sectors/">Browse all 16 sector playbooks <span>→</span></a>
+        </div>
+        <div class="sector-menu-group">
+          <span class="menu-label">People, care &amp; rights</span>
+          <div class="sector-links">
+            <a href="/education/"><b>Education</b><span>Learner journeys</span></a>
+            <a href="/youth-employability/"><b>Youth &amp; employability</b><span>Skills to sustained work</span></a>
+            <a href="/health/"><b>Health &amp; wellbeing</b><span>Care and follow-up</span></a>
+            <a href="/child-protection/"><b>Child protection</b><span>Cases and safe transitions</span></a>
+            <a href="/gender/"><b>Gender equality</b><span>Choice, safety and control</span></a>
+            <a href="/disability/"><b>Disability inclusion</b><span>Access and participation</span></a>
+          </div>
+        </div>
+        <div class="sector-menu-group">
+          <span class="menu-label">Place, planet &amp; culture</span>
+          <div class="sector-links">
+            <a href="/livelihoods/"><b>Livelihoods</b><span>Households and enterprises</span></a>
+            <a href="/environment/"><b>Environment &amp; climate</b><span>Landscapes and adaptation</span></a>
+            <a href="/waste/"><b>Waste &amp; circularity</b><span>Collection and recovery</span></a>
+            <a href="/food-systems/"><b>Food systems</b><span>Producers and nutrition</span></a>
+            <a href="/community-development/"><b>Community development</b><span>Plans and participation</span></a>
+            <a href="/media/"><b>Media &amp; information</b><span>Stories and public change</span></a>
+          </div>
+        </div>
       </div>
-      <div class="panel-links"><a href="#start">Talk to us about fundraising systems →</a></div>
     </div>
-    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
-      <span class="kicker">Build · HR system</span>
-      <h3>Leave, attendance and payroll for teams spread across states and sites.</h3>
-      <p>Different leave rules per location. Field staff who never sit at a desk. We set up core HR, then add only what you need.</p>
-      <div class="panel-grid">
-        <ul><li>Each person sees only what their role, state and team need</li><li>Payroll, expenses and recruitment when you need them</li><li>Attendance marked on the phone, with location</li><li>Old data moved over, staff trained, usage tracked</li></ul>
-        <div class="proofbox"><span class="o">Aangan Trust · 7 states</span><strong>6h → 2h</strong><p>a month spent on attendance, for 100+ staff on one HR system.</p></div>
+
+    <div class="mega-menu compact-menu" id="menu-work" data-menu="work" hidden>
+      <div class="mega-inner shell">
+        <div class="mega-intro">
+          <span class="menu-kicker">Work and outcomes</span>
+          <h2>See what changed after the system went live.</h2>
+          <p>Explore the problem, the people using the system and the evidence behind the result.</p>
+          <a class="text-link" href="/work/">Visit the Work hub <span>→</span></a>
+        </div>
+        <div class="menu-column">
+          <span class="menu-label">Case studies</span>
+          <a class="menu-link" href="https://www.edzola.com/post/compass-mis-transforming-state-wide-teacher-training-with-tech"><b>Simple Education Foundation</b><span>Teacher development across four states</span></a>
+          <a class="menu-link" href="https://www.edzola.com/post/edg-trust-for-retailers-retail-associates-of-india-streamlining-program-management"><b>TRRAIN</b><span>Programme operations for 10,000+ trainees</span></a>
+          <a class="menu-link" href="https://www.edzola.com/the-nudge-future-perfect"><b>The/Nudge Institute</b><span>Ten tools connected around one journey</span></a>
+        </div>
+        <div class="menu-column">
+          <span class="menu-label">Explore the work</span>
+          <a class="menu-link" href="/work/#programme"><b>Programme systems</b><span>Delivery, cases, evidence and reporting</span></a>
+          <a class="menu-link" href="/work/#fundraising"><b>Funding systems</b><span>Donor relationships and grant workflows</span></a>
+          <a class="menu-link" href="/work/#operations"><b>People &amp; operations</b><span>Teams, approvals and internal work</span></a>
+          <a class="menu-link" href="#proof"><b>Featured outcomes</b><span>Three representative transformations</span></a>
+        </div>
       </div>
-      <div class="panel-links"><a href="https://www.edzola.com/post/edg-aangan-trust-streamlining-hr-operations-and-employee-data-management-through-zoho-people">Read the Aangan case study →</a></div>
     </div>
-    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
-      <span class="kicker">Listen · Zolabs</span>
-      <h3>Hear the story behind the score, in the language people speak.</h3>
-      <p>AI-led phone interviews for evaluations, beneficiary feedback and alumni follow-ups. No app for participants. Every finding links back to what was actually said.</p>
-      <div class="panel-grid">
-        <ul><li>Phone interviews in many languages, at the scale of your programme</li><li>Transcripts kept in the original language</li><li>A researcher checks every theme before it goes into a report</li><li>Combined with your programme data</li></ul>
-        <div class="proofbox p"><span class="o">Zolabs.ai · by EdZola</span><strong>Any phone</strong><p>Reaches people forms leave out: low literacy, no smartphone, weak connectivity.</p></div>
+
+    <div class="mega-menu compact-menu" id="menu-resources" data-menu="resources" hidden>
+      <div class="mega-inner shell">
+        <div class="mega-intro"><span class="menu-kicker">Useful before a sales call</span><h2>Read, compare and plan.</h2><p>Practical material from six years of building with the impact sector.</p></div>
+        <div class="menu-column"><span class="menu-label">Learn</span><a class="menu-link" href="/learn/"><b>Implementation library</b><span>How-to guides for choosing and building systems</span></a><a class="menu-link" href="/resources/"><b>Templates &amp; tools</b><span>Reusable worksheets and planning resources</span></a></div>
+        <div class="menu-column"><span class="menu-label">How we think and work</span><a class="menu-link" href="/impact-os/"><b>ImpactOS</b><span>The method behind every EdZola project</span></a><a class="menu-link" href="/thinking/"><b>Thinking &amp; field guides</b><span>Beliefs, lessons and sector understanding</span></a></div>
       </div>
-      <div class="panel-links"><a href="https://edzola.ai/zolabs/">Explore Zolabs →</a></div>
     </div>
-    <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
-      <span class="kicker">Protect · ZolaShield</span>
-      <h3>Know exactly where you stand on DPDP, in 15 minutes.</h3>
-      <p>Before you write consent and retention policies, you need to know where personal data lives. ZolaShield finds out in a conversation, not a 200-question form, and your data never leaves your organisation.</p>
-      <div class="panel-grid">
-        <ul><li>15-minute voice AI assessment that adapts to your answers</li><li>Maps field apps, paper forms, WhatsApp groups and personal Sheets</li><li>Scored risk report and a prioritised 180-day action plan</li><li>From ₹10,000 by team size, delivered in two weeks</li></ul>
-        <div class="proofbox p"><span class="o">ZolaShield · June 2026 pilot</span><strong>3 of 3</strong><p>pilot NGOs found high-risk gaps, and left with a complete data map and a 180-day plan.</p></div>
+
+    <div class="mega-menu compact-menu" id="menu-company" data-menu="company" hidden>
+      <div class="mega-inner shell">
+        <div class="mega-intro"><span class="menu-kicker">EdZola</span><h2>Part technologists. Part sector practitioners.</h2><p>Headquartered in Coimbatore, working with impact organisations across five countries.</p></div>
+        <div class="menu-column"><span class="menu-label">Meet EdZola</span><a class="menu-link" href="/about/"><b>About &amp; team</b><span>Who we are and what we have learnt</span></a><a class="menu-link" href="/news/"><b>News &amp; media</b><span>Updates, coverage and announcements</span></a><a class="menu-link" href="https://go.edzola.com/hiring"><b>Careers</b><span>Join the team in Coimbatore</span></a></div>
+        <div class="menu-column"><span class="menu-label">Get in touch</span><a class="menu-link" href="#contact"><b>Start a conversation</b><span>Bring us one messy workflow</span></a><a class="menu-link" href="https://in.linkedin.com/company/edzola"><b>Follow EdZola</b><span>Updates from the work</span></a></div>
       </div>
-      <div class="panel-links"><a href="https://edzola.ai/zolashield/">Explore ZolaShield →</a></div>
     </div>
-    <div class="panel" role="tabpanel" id="p6" aria-labelledby="t6" hidden>
-      <span class="kicker">Run · DozAI · pilots open</span>
-      <h3>5,000 applications. Your team reviews only the ones that need a person.</h3>
-      <p>DozAI delivers the result, not another tool to learn. AI workers collect, check and follow up, then pass the tricky cases to your team with the evidence attached.</p>
-      <div class="panel-grid">
-        <ul><li>Collect applications and documents</li><li>Pull out the key details and check who's eligible</li><li>Chase missing information, including by voice</li><li>Pass unusual cases to a person to decide</li></ul>
-        <div class="proofbox p"><span class="o">DozAI mission · scholarship screening</span><strong>5,000 → shortlist</strong><p>A focused set of review-ready cases, instead of a mountain of forms.</p></div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
+    <div class="mobile-nav-inner">
+      <div class="mobile-language" aria-label="Language"><a href="/" aria-current="page">EN</a><a href="/es/">ES</a><a href="/pt/">PT</a></div>
+      <details><summary>Solutions <span>+</span></summary><div class="mobile-submenu"><a href="/verticals/programme-evidence-systems/">Programme &amp; evidence</a><a href="/verticals/fundraising-donor-grant-systems/">Fundraising &amp; grants</a><a href="/verticals/people-hr-systems/">People &amp; HR</a><a href="/verticals/finance-operations-systems/">Finance &amp; operations</a><a href="/zolabs/">Zolabs · Voice research</a><a href="/zolashield/">ZolaShield · DPDP readiness</a><a href="/dozai/">DozAI · AI teammates</a><a href="/patrons/">Built for Impact Fund</a><a class="mobile-all" href="/verticals/">See all solutions →</a></div></details>
+      <details><summary>Sectors <span>+</span></summary><div class="mobile-submenu two-col"><a href="/education/">Education</a><a href="/health/">Health</a><a href="/livelihoods/">Livelihoods</a><a href="/youth-employability/">Youth</a><a href="/child-protection/">Child protection</a><a href="/environment/">Climate</a><a class="mobile-all" href="/sectors/">All 16 sectors →</a></div></details>
+      <details><summary>Work <span>+</span></summary><div class="mobile-submenu"><a href="/work/">Work hub</a><a href="/work/#programme">Programme systems</a><a href="/work/#fundraising">Funding systems</a><a href="/work/#operations">People &amp; operations</a><a class="mobile-all" href="#proof">Featured outcomes →</a></div></details>
+      <details><summary>Resources <span>+</span></summary><div class="mobile-submenu"><a href="/learn/">Implementation library</a><a href="/resources/">Templates &amp; tools</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking &amp; field guides</a></div></details>
+      <details><summary>Company <span>+</span></summary><div class="mobile-submenu"><a href="/about/">About &amp; team</a><a href="/news/">News &amp; media</a><a href="https://go.edzola.com/hiring">Careers</a><a href="#contact">Contact</a></div></details>
+      <a class="button button-coral mobile-cta" href="#contact">Talk to us</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="hero-stage" id="top">
+      <img class="hero-backdrop" src="/assets/photos/hero-workshop.jpg" width="1800" height="1197" alt="Social-impact practitioners working together around a table at an EdZola workshop">
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="hero shell">
+        <div class="hero-copy">
+          <span class="eyebrow">Technology consultancy for social impact</span>
+          <h1>Get technology right. <em>From your first system to AI.</em></h1>
+          <p>EdZola helps nonprofits, funders and ecosystem partners replace scattered work with connected systems people actually use. Start with one broken workflow. Grow from there.</p>
+          <div class="hero-actions"><a class="button button-coral" href="#contact">Bring us the messy part <span>→</span></a><a class="button button-on-dark" href="/work/">See the work</a></div>
+          <div class="hero-proof" aria-label="EdZola impact numbers"><div><strong>100+</strong><span>organisations</span></div><div><strong>150+</strong><span>systems built</span></div><div><strong>5+</strong><span>countries</span></div></div>
+        </div>
       </div>
-      <div class="panel-links"><a href="https://edzola.ai/dozai/">Discuss a DozAI pilot →</a></div>
-    </div>
-    <div class="panel" role="tabpanel" id="p7" aria-labelledby="t7" hidden>
-      <span class="kicker">Run · Custom AI</span>
-      <h3>AI built around your programmes, your data and your rules.</h3>
-      <p>For problems no product covers. We start with your leadership, find where AI genuinely helps, then build it into the systems and data you already have.</p>
-      <div class="panel-grid">
-        <ul><li>AI that understands photos, audio, text and video</li><li>Private AI that runs on your own servers and searches your own documents</li><li>AI agents built on Claude, by a Claude partner</li><li>Leadership coaching and hands-on team training</li></ul>
-        <div class="proofbox p"><span class="o">How it starts</span><strong>One workflow</strong><p>We pick one real workflow, build it, measure it, then decide together what's next.</p></div>
+    </section>
+
+    <section class="now-section">
+      <section class="event-carousel shell" aria-labelledby="event-title" data-carousel>
+        <div class="event-carousel-head"><div><span class="menu-kicker">Happening now</span><h2 id="event-title">Join the work in progress.</h2></div><button type="button" class="carousel-pause" data-carousel-pause aria-pressed="false"><span aria-hidden="true">Ⅱ</span> Pause</button></div>
+        <div class="carousel-stage" aria-live="polite">
+          <article class="event-slide amplify-slide is-active" data-slide="0">
+            <div class="event-meta"><span>01</span><b>Amplify · First cohort</b><i>Nov 2026</i></div>
+            <div class="event-visual crm-visual" aria-hidden="true"><div class="crm-prompt">Who needs a donor follow-up this week?</div><div class="crm-answer"><span></span><span></span><span></span></div></div>
+            <h3>Stop updating your CRM. Start asking it.</h3>
+            <p>A four-week community of practice for nonprofits using Zoho CRM or Bigin with Claude.</p>
+            <a href="/crm/amplify/">Apply for the first cohort <span>→</span></a>
+          </article>
+          <article class="event-slide shield-slide" data-slide="1" hidden>
+            <div class="event-meta"><span>02</span><b>ZolaShield</b><i>DPDP readiness</i></div>
+            <div class="event-visual shield-visual" aria-hidden="true"><div><b>15 min</b><span>voice assessment</span></div><div><b>180 days</b><span>clear action plan</span></div></div>
+            <h3>Know where your beneficiary data stands.</h3>
+            <p>Map the data you hold, understand risk and get a practical route towards DPDP readiness.</p>
+            <a href="/zolashield/">Start your assessment <span>→</span></a>
+          </article>
+          <article class="event-slide fund-slide" data-slide="2" hidden>
+            <div class="event-meta"><span>03</span><b>Built for Impact Fund</b><i>2027 cohort</i></div>
+            <div class="event-visual fund-visual" aria-hidden="true"><strong>100</strong><span>patrons</span><i>→</i><strong>100</strong><span>nonprofits</span></div>
+            <h3>Fund the systems behind the mission.</h3>
+            <p>For funders, companies and individuals who want nonprofits to have technology that actually works.</p>
+            <a href="/patrons/">Back the first cohort <span>→</span></a>
+          </article>
+        </div>
+        <div class="carousel-controls" aria-label="Choose an update"><button type="button" data-carousel-dot="0" class="is-active" aria-label="Show Amplify cohort" aria-current="true"><span></span>Amplify</button><button type="button" data-carousel-dot="1" aria-label="Show ZolaShield"><span></span>DPDP</button><button type="button" data-carousel-dot="2" aria-label="Show Built for Impact Fund"><span></span>Fund</button></div>
+      </section>
+    </section>
+
+    <section class="pathway-strip" aria-labelledby="pathway-title"><div class="shell"><div class="pathway-heading"><span class="eyebrow">Where should I start?</span><h2 id="pathway-title">Start with who you are helping—and what is getting in the way.</h2></div><div class="pathways"><a href="#solutions"><span>Nonprofit or social enterprise</span><b>I need a system that fits our programme and our team.</b><small>Explore solutions by workflow, then see what changes across sectors.</small><i>Find a practical first step →</i></a><a href="/patrons/"><span>Funder or CSR team</span><b>I want the organisations we support to use technology well.</b><small>Fund implementation, strengthen a portfolio or back a shared cohort.</small><i>Explore Built for Impact →</i></a><a href="#contact"><span>Ecosystem partner or mentor</span><b>I want to enable better technology across the sector.</b><small>Bring a network, a cohort or a capacity-building idea.</small><i>Build an enabling partnership →</i></a></div></div></section>
+
+    <section class="logo-cloud" aria-label="Organisations EdZola has worked with"><div class="shell"><span>Trusted by teams including</span><div class="logos"><img src="/assets/logos/logo-sef.png" alt="Simple Education Foundation"><img src="/assets/logos/logo-trrain.png" alt="TRRAIN"><img src="/assets/logos/logo-tap.png" alt="TAP India Foundation"><img src="/assets/logos/logo-nudge.png" alt="The/Nudge Institute"><img src="/assets/logos/logo-avanti.png" alt="Avanti Fellows"><img src="/assets/logos/logo-aangan.png" alt="Aangan Trust"></div></div></section>
+
+    <section class="section shell" id="solutions">
+      <div class="section-heading split-heading" id="model"><div><span class="eyebrow">Solutions</span><h2>Start with the work that is breaking.</h2></div><p>Most partners do not need a grand transformation plan. They need one part of the organisation to work reliably, then a clear path to the next.</p></div>
+      <div class="solution-grid">
+        <a class="solution-card coral-card" href="/verticals/programme-evidence-systems/"><span>Programme &amp; evidence</span><h3>Know what is happening for every person you serve.</h3><p>Programme MIS, case management, field data, monitoring and funder reporting.</p><div class="card-proof"><b>16,000+</b><small>out-of-school children tracked in one system</small></div><i>Explore programme systems →</i></a>
+        <a class="solution-card yellow-card" href="/verticals/fundraising-donor-grant-systems/"><span>Funding &amp; relationships</span><h3>Follow every relationship from first conversation to utilisation report.</h3><p>Donor CRM, grant tracking, partner management and reporting.</p><div class="mini-workflow"><b>Prospect</b><span>→</span><b>Grant</b><span>→</span><b>Report</b></div><i>Explore fundraising systems →</i></a>
+        <a class="solution-card teal-card" href="/verticals/people-hr-systems/"><span>People &amp; operations</span><h3>Give distributed teams one place to get work done.</h3><p>HR, attendance, payroll, approvals, vendors, assets and internal workflows.</p><div class="card-proof"><b>100+</b><small>staff across locations on one HR system</small></div><i>Explore people and operations →</i></a>
+        <a class="solution-card ink-card" id="ai-practice" href="/dozai/"><span>AI practice</span><h3>Put AI inside the work, with a person still in charge.</h3><p>Voice research, data protection, AI teammates and custom AI built around your rules.</p><div class="ai-tags"><b>Zolabs</b><b>ZolaShield</b><b>DozAI</b></div><i>See AI in real work →</i></a>
+        <a class="solution-card access-card" href="/patrons/"><div><span>Access &amp; funding · Built for Impact</span><h3>Good systems should not be limited to organisations that can afford transformation alone.</h3></div><div><p>The Built for Impact Fund brings patrons, partners and nonprofits together to pay for the systems behind the mission.</p><i>See how the fund works →</i></div></a>
       </div>
-      <div class="panel-links"><a href="#start">Talk to us about custom AI →</a></div>
-    </div>
-  </div>
-</div></section>
+    </section>
 
-<!-- ================= PROOF ================= -->
-<section class="section" id="work"><div class="wrap">
-  <div class="section-head">
-    <span class="eyebrow">Proof, not promises</span>
-    <h2>Real systems. Real numbers.</h2>
-    <p class="lead">Each write-up says what we built and how long it took.</p>
-  </div>
-  <div class="cases">
-    <a class="case" href="https://www.edzola.com/post/compass-mis-transforming-state-wide-teacher-training-with-tech"><img src="/assets/logos/logo-sef.png" alt="Simple Education Foundation"><strong>20,000+</strong><span class="unit">teachers across four states</span><p>Teacher training, classroom observations and multilingual assessments. A new-state pilot logged 2 million interactions in week one.</p><span class="go">Read the case study →</span></a>
-    <a class="case" href="https://www.edzola.com/post/edg-trust-for-retailers-retail-associates-of-india-streamlining-program-management"><img src="/assets/logos/logo-trrain.png" alt="TRRAIN"><strong>10,000+</strong><span class="unit">trainees a year</span><p>Skilling for women and persons with disability in one system that runs from regional teams down to each trainee, with automatic certificates.</p><span class="live">Live in four months</span><span class="go">Read the case study →</span></a>
-    <a class="case" href="https://www.edzola.com/post/tap-india-foundation-tracking-out-of-school-children-data-with-zoho-creator"><img src="/assets/logos/logo-tap.png" alt="TAP India Foundation"><strong>16,000+</strong><span class="unit">out-of-school children tracked</span><p>Identification, enrolment, attendance and retention in one system, with separate access for field, partners and managers.</p><span class="go">Read the case study →</span></a>
-    <a class="case" href="https://www.edzola.com/the-nudge-future-perfect"><img src="/assets/logos/logo-nudge.png" alt="The/Nudge Institute"><strong>10+</strong><span class="unit">tools in one record</span><p>Admissions, payments, the learning platform, Zoom and WhatsApp through one system, with screens for trainers, telecallers and verifiers.</p><span class="go">Read the case study →</span></a>
-  </div>
-  <p class="honest">We'll also tell you where we haven't built before. Each sector page says plainly which parts are proven and which would be new. <a href="https://edzola.ai/field-guides/technology-that-sticks/why-we-name-our-limits/">Why we name our limits →</a></p>
-  <div class="voices" aria-label="What partners say">
-    <figure class="voice-card"><img src="/assets/logos/logo-sef.png" alt="Simple Education Foundation" loading="lazy"><blockquote>"Everyone was slightly blown away by what the portal can do and what potential it has. The team is highly collaborative and extremely responsive."</blockquote><figcaption><b>Shinjinee Pal</b>Simple Education Foundation</figcaption></figure>
-    <figure class="voice-card"><img src="/assets/logos/logo-avanti.png" alt="Avanti Fellows" loading="lazy"><blockquote>"They took the time to understand our specific requirements and provided valuable insights that helped us refine our vision."</blockquote><figcaption><b>Akshay Saxena</b>Co-CEO and Co-Founder, Avanti Fellows</figcaption></figure>
-    <figure class="voice-card"><img src="/assets/logos/logo-aangan.png" alt="Aangan Trust" loading="lazy"><blockquote>"From weekly meetings to prompt availability and quick resolution of issues, their team has been reliable, proactive and true to their word."</blockquote><figcaption><b>Mansi Kanv</b>Lead, Human Resources, Aangan Trust</figcaption></figure>
-  </div>
-</div></section>
+    <section class="section proof-section" id="proof"><div class="shell"><div class="section-heading split-heading"><div><span class="eyebrow">Proof, not promises</span><h2>See what changed in the work.</h2></div><p>Each case tells you what was built, who used it and what changed. No anonymous claims. No feature theatre.</p></div><div class="case-grid"><a class="case-card" href="https://www.edzola.com/post/compass-mis-transforming-state-wide-teacher-training-with-tech"><img src="/assets/logos/logo-sef.png" alt="Simple Education Foundation"><span>Education · Programme MIS</span><strong>20,000+</strong><b>teachers across four states</b><p>Teacher training, classroom observations and multilingual assessments. A new-state pilot logged 2 million interactions in week one.</p><i>Read the case study →</i></a><a class="case-card" href="https://www.edzola.com/post/edg-trust-for-retailers-retail-associates-of-india-streamlining-program-management"><img src="/assets/logos/logo-trrain.png" alt="TRRAIN"><span>Employability · Programme operations</span><strong>10,000+</strong><b>trainees a year</b><p>Regional teams, trainee journeys and automatic certificates in one system. Live in four months.</p><i>Read the case study →</i></a><a class="case-card" href="https://www.edzola.com/the-nudge-future-perfect"><img src="/assets/logos/logo-nudge.png" alt="The/Nudge Institute"><span>Skilling · Connected operations</span><strong>10+</strong><b>tools in one record</b><p>Admissions, payments, the learning platform, Zoom and WhatsApp connected for trainers, telecallers and verifiers.</p><i>Read the case study →</i></a></div><div class="proof-footer"><p><b>Looking for a specific kind of transformation?</b> Browse the new Work hub by programme, funding or operations.</p><a class="text-link" href="/work/">Explore all work →</a></div></div></section>
 
-<!-- ================= SECTORS ================= -->
-<section class="section sunk" id="sectors"><div class="wrap sectors-shell">
-  <div class="section-head">
-    <span class="eyebrow">Built for context</span>
-    <h2>Every programme follows one thread.</h2>
-    <p class="lead">A school follows a child. A clinic follows a patient. A livelihoods programme follows a household. We give that thread one ID and build everything around it.</p>
-    <a class="pill ghost" style="margin-top:26px" href="https://edzola.ai/sectors/">See all 16 sectors →</a>
-  </div>
-  <div class="sector-grid">
-    <a class="sector" href="https://edzola.ai/education/"><b>Education</b><span class="id">Student ID</span><small>Which children can actually read?</small></a>
-    <a class="sector" href="https://edzola.ai/youth-employability/"><b>Youth &amp; employability</b><span class="id">Candidate ID</span><small>Who's still working at month six?</small></a>
-    <a class="sector" href="https://edzola.ai/livelihoods/"><b>Livelihoods</b><span class="id">Household ID</span><small>Which households moved out of poverty?</small></a>
-    <a class="sector" href="https://edzola.ai/health/"><b>Health &amp; wellbeing</b><span class="id">Patient ID</span><small>How many finished treatment?</small></a>
-    <a class="sector" href="https://edzola.ai/maternal-child-health/"><b>Maternal &amp; child health</b><span class="id">Mother + Child ID</span><small>Whose blood pressure was actually checked?</small></a>
-    <a class="sector" href="https://edzola.ai/child-protection/"><b>Child protection</b><span class="id">Case ID</span><small>Who's still safe after restoration?</small></a>
-    <a class="sector" href="https://edzola.ai/gender/"><b>Gender equality</b><span class="id">Member ID</span><small>Who decides how the loan is spent?</small></a>
-    <a class="sector" href="https://edzola.ai/environment/"><b>Environment &amp; climate</b><span class="id">Parcel ID</span><small>How many saplings are still alive?</small></a>
-  </div>
-</div></section>
+    <section class="section shell sector-section" id="sectors"><div class="sector-copy"><span class="eyebrow">Built for context</span><h2>We work across sectors. The programme model comes first.</h2><p>Education, skilling and livelihoods are deep areas of experience. Across every sector, we begin with the decisions your team needs to make and the journey your programme is trying to change.</p><a class="button button-dark" href="/sectors/">Browse all 16 sector playbooks</a></div><div class="sector-visual"><a class="sector-card sector-card-large sector-education" href="/education/"><span>Education</span><h3>From direct learning delivery to public-system partnerships.</h3><p>Six programme models · deep experience</p><i>Explore the playbook →</i></a><a class="sector-card sector-card-large sector-youth" href="/youth-employability/"><span>Youth development &amp; employability</span><h3>From skills training to sustained work and enterprise.</h3><p>Six programme models · deep experience</p><i>Explore the playbook →</i></a><a class="sector-card sector-card-wide sector-livelihoods" href="/livelihoods/"><span>Livelihoods &amp; economic empowerment</span><h3>Households, enterprises, farms and markets need different views.</h3><p>Six programme models · deep experience</p><i>Explore the playbook →</i></a><div class="sector-more" aria-label="More sectors"><a href="/health/">Health &amp; wellbeing <span>→</span></a><a href="/mental-health/">Mental health <span>→</span></a><a href="/child-protection/">Child rights &amp; protection <span>→</span></a><a href="/gender/">Gender equality <span>→</span></a><a href="/environment/">Environment &amp; climate <span>→</span></a><a href="/community-development/">Community development <span>→</span></a></div></div></section>
 
-<!-- ================= HOW WE WORK ================= -->
-<section class="partners" id="who"><div class="wrap partners-grid">
-  <div>
-    <span class="eyebrow">Who we work with</span>
-    <h2>From the field to the funder, and everyone in between.</h2>
-    <p>The systems we build only work if the people funding and supporting a programme can see what's happening too. So we work across the whole chain.</p>
-    <figure class="partners-photo"><img src="/assets/photos/sic-panel.jpg" alt="Nonprofit leaders and funders in a panel discussion at Social Impact Circle" loading="lazy"></figure>
-  </div>
-  <div class="partners-list">
-    <article><span>01</span><h3>Nonprofits and social enterprises</h3><p>Programme, evidence, fundraising, donor, grant, HR, finance and operations systems, built around how your teams actually work.</p><a href="/verticals/">Find the system you need →</a></article>
-    <article><span>02</span><h3>Funders, foundations and CSR teams</h3><p>Grant and portfolio monitoring, shared data views across grantees, and impact reporting you can trust. We also make your grantees digitally ready, so their data reaches you without a three-week scramble.</p><a href="mailto:reachus@edzola.com?subject=Funder%20and%20portfolio%20systems">Talk to us about your portfolio →</a></article>
-    <article><span>03</span><h3>Ecosystem partners</h3><p>Intermediaries, capacity builders and networks. We run tech workshops for nonprofit cohorts, secure software credits through partner programmes, and build shared platforms for knowledge exchange.</p><a href="mailto:reachus@edzola.com?subject=Ecosystem%20partnership">Partner with us →</a></article>
-  </div>
-</div></section>
+    <section class="section method-section"><div class="shell method-layout"><div class="method-intro"><span class="eyebrow">How we work · ImpactOS</span><h2>Programme first. Software last.</h2><p>Every project begins with how the work actually runs. The tools come after the decisions, responsibilities and evidence are clear.</p><a class="text-link" href="/impact-os/">Explore the full method →</a></div><ol class="method-steps"><li><span>01</span><div><b>Understand the work</b><p>Follow the person, the money and the evidence through today’s process.</p></div></li><li><span>02</span><div><b>Design it with you</b><p>Agree on records, roles, decisions and where AI should stop.</p></div></li><li><span>03</span><div><b>Build, move data, train</b><p>Release useful parts early. Move old data carefully. Train in context.</p></div></li><li><span>04</span><div><b>Run and improve</b><p>Watch adoption and quality. Keep the system growing with the programme.</p></div></li></ol></div></section>
 
-<section class="section" id="how"><div class="wrap method">
-  <div>
-    <div class="section-head" style="margin-bottom:0">
-      <span class="eyebrow">How we work</span>
-      <h2>Programme first. Software last. AI where it earns its place.</h2>
-      <p class="lead">Refined across 60+ nonprofit implementations into <a href="https://edzola.ai/impact-os/">ImpactOS</a>, our delivery method. So we don't start from zero, and neither do you.</p>
-    </div>
-    <div class="promises">
-      <div class="promise"><b>No jargon, no upselling</b><span>If a spreadsheet is enough, we'll say so.</span></div>
-      <div class="promise"><b>Your data stays yours</b><span>Whatever the platform, you own it.</span></div>
-      <div class="promise"><b>Humans decide</b><span>AI handles volume. People handle consequence.</span></div>
-      <div class="promise"><b>We stay</b><span>We don't leave until your team is actually using it.</span></div>
-    </div>
-  </div>
-  <div class="steps">
-    <div class="step"><span>01</span><div><h3>Understand how the work really runs</h3><p>Who you serve, what your field team does each day, which decisions need evidence, and the workarounds holding it together.</p></div></div>
-    <div class="step"><span>02</span><div><h3>Design it with you</h3><p>What gets recorded, how work moves, who sees what, the dashboards, and where AI stops and people take over. All tied to your Theory of Change. You see the plan before we build.</p></div></div>
-    <div class="step"><span>03</span><div><h3>Build, move data, train</h3><p>Launch in stages you can use straight away. Move old data carefully. Train the people who'll use it, in their language.</p></div></div>
-    <div class="step"><span>04</span><div><h3>Run and improve</h3><p>AI workers take on the repeatable work. We watch quality, adjust, and keep the system growing with your programme.</p></div></div>
-  </div>
-</div></section>
+    <section class="section shell resource-section"><div class="section-heading split-heading"><div><span class="eyebrow">Useful before you talk to us</span><h2>Read how we think.</h2></div><p>Use the material. Challenge it. Bring the parts that do not fit your organisation.</p></div><div class="resource-grid"><a href="/field-guides/technology-that-sticks/"><span>Field guide · 7 lessons</span><h3>Building technology that sticks</h3><p>Readiness, trust, delivery and leadership lessons from real implementations.</p><i>Read the guide →</i></a><a href="/thinking/how-nonprofits-operate/"><span>Field guide · 6 chapters</span><h3>How nonprofits actually work</h3><p>Follow the people, the money and the evidence through any organisation.</p><i>Read the guide →</i></a><a href="/learn/"><span>Implementation library</span><h3>Compare before you build</h3><p>Practical guides for choosing platforms, scoping systems and avoiding expensive mistakes.</p><i>Browse the library →</i></a></div></section>
 
-<section class="section sunk"><div class="wrap people">
-  <div>
-    <span class="eyebrow">Who you'll work with</span>
-    <h2 style="font-size:clamp(34px,4.4vw,52px);line-height:1.05;margin:14px 0 16px">Part technologists. Part sector practitioners.</h2>
-    <p class="lead">A team in Coimbatore, India, building with the impact sector since 2020, and running our own work AI-first. We use what we sell, every day. <a href="https://edzola.ai/about/">Meet the team →</a></p>
-    <div class="facts">
-      <div><strong>100+</strong><span>organisations supported</span></div>
-      <div><strong>150+</strong><span>systems built</span></div>
-      <div><strong>16</strong><span>sectors we've mapped</span></div>
-      <div><strong>5+</strong><span>countries reached</span></div>
-    </div>
-  </div>
-  <div class="founder">
-    <blockquote>"Automate a confused workflow and you get a confused workflow at scale. The order in which technology does its jobs matters more than the tool."</blockquote>
-    <cite><img class="founder-pic" src="/assets/team/akshay-v.jpg" alt="" width="44" height="44" loading="lazy">Akshay · Founder &amp; CEO, EdZola · from <a href="https://edzola.ai/field-guides/technology-that-sticks/technology-three-jobs/" style="color:inherit">Technology has three jobs</a></cite>
-  </div>
-</div></section>
+    <section class="crm-embed-section" id="contact" aria-labelledby="crm-embed-heading"><div class="crm-embed-inner"><div class="final"><div data-crm-intro><h2 id="crm-embed-heading">Start with one part of the work that feels harder than it should.</h2><p>Bring one tracker, form or workflow. We’ll help you find a practical first step—whether that means a clearer process, a connected system or better use of what you already have.</p></div><div class="contact" data-crm-webform><div class="alt"><b>Not ready to get in touch yet?</b><a href="/sectors/">Browse all sector playbooks →</a><a href="/thinking/">Read how EdZola approaches the work →</a></div></div></div></div></section>
+  </main>
 
-<section class="section"><div class="wrap">
-  <div class="section-head">
-    <span class="eyebrow">Before you talk to anyone</span>
-    <h2>Read how we think.</h2>
-    <p class="lead">Free field guides from six years of building with the sector. Useful whether or not you ever work with us.</p>
-  </div>
-  <div class="reads">
-    <a class="read" href="https://edzola.ai/field-guides/technology-that-sticks/"><span>Field guide · 7 lessons</span><h3>Building technology that sticks</h3><p>Readiness, trust, delivery and leadership lessons from real implementations.</p></a>
-    <a class="read" href="https://edzola.ai/why/"><span>Founding thesis</span><h3>Systems built for the world's hardest work</h3><p>Six commitments behind what we build, and where AI fits.</p></a>
-    <a class="read" href="https://edzola.ai/thinking/how-nonprofits-operate/"><span>Field guide · 6 chapters</span><h3>How nonprofits actually work</h3><p>Follow the people, the money and the evidence through any organisation.</p></a>
-  </div>
-</div></section>
-
-<section class="section sunk" id="give"><div class="wrap">
-  <div class="section-head">
-    <span class="eyebrow">Get involved</span>
-    <h2>Help a nonprofit get systems that work.</h2>
-    <p class="lead">The organisations closest to communities are often the last to get good tools. The Built for Impact Fund pays for the systems they can't afford, and you can be part of it.</p>
-  </div>
-  <div class="give">
-    <a class="patron" href="https://edzola.ai/patrons/">
-      <span class="eyebrow">Built for Impact Fund · First campaign</span>
-      <h3>Become a Founding Digital Patron.</h3>
-      <p>100 people. $1,000 each. 100 nonprofits with a donor or programme system that's built, adopted and supported for a year. You follow one of them from baseline to before-and-after report.</p>
-      <div class="split" aria-hidden="true"><span style="flex:40;background:var(--coral)"></span><span style="flex:30;background:var(--ink)"></span><span style="flex:20;background:var(--teal)"></span><span style="flex:10;background:var(--yellow)"></span></div>
-      <div class="split-key"><span><i style="background:var(--coral)"></i>Patron $1,000</span><span><i style="background:var(--ink)"></i>EdZola $750</span><span><i style="background:var(--teal)"></i>Partners $500</span><span><i style="background:var(--yellow)"></i>Nonprofit $250</span></div>
-      <span class="pill primary">See how it works →</span>
-    </a>
-    <div class="ways">
-      <a class="way" href="https://edzola.ai/patrons/#join"><b>Pledge as a Patron</b><small>Say you're in by email. No payment until the fund opens with its fiscal sponsor.</small><span class="amt">$1,000</span></a>
-      <a class="way" href="https://edzola.ai/patrons/#tiers"><b>Fund five nonprofits, or a cohort</b><small>Digital Champion for individuals and families. Transformation Partner for foundations and companies.</small><span class="amt">$5k–$25k+</span></a>
-      <a class="way" href="mailto:reachus@edzola.com?subject=Technology%20credits%20for%20the%20Built%20for%20Impact%20Fund"><b>Offer technology credits</b><small>Software licences or cloud credits that cover part of every nonprofit's system.</small><span class="amt">In kind</span></a>
-      <a class="way" href="mailto:reachus@edzola.com?subject=Recommending%20someone%20for%20the%20Built%20for%20Impact%20Fund"><b>Bring one more person</b><small>Know someone who should back this, or a nonprofit that needs it? Tell us.</small><span class="amt">Free</span></a>
-    </div>
-  </div>
-</div></section>
-
-<section class="section" id="start"><div class="wrap">
-  <div class="cta">
-    <div>
-      <span class="eyebrow">Start small</span>
-      <h2 style="margin-top:14px">Bring us the messiest part of your work.</h2>
-      <p>A tracker, a form, a report nobody enjoys making, or a workflow that eats your team's week.</p>
-      <!-- TODO: replace mailto with CRM web form -->
-      <a class="pill primary" href="mailto:reachus@edzola.com?subject=Starting%20a%20conversation%20with%20EdZola">Start a conversation →</a>
-      <p class="pii">If you share a file, remove names, phone numbers and IDs of the people you serve first. Column headers and a few dummy rows are enough.</p>
-    </div>
-    <div class="next">
-      <div><p><b>Tell us what's going wrong</b><span>Two lines is enough. A sample file helps.</span></p></div>
-      <div><p><b>Someone who's built it looks</b><span>A practitioner from your sector, not a sales rep.</span></p></div>
-      <div><p><b>30-minute call</b><span>Build, run, custom AI, a mix, or nothing yet.</span></p></div>
-      <div><p><b>A clear next step</b><span>You pay only when something's worth acting on.</span></p></div>
-    </div>
-  </div>
-</div></section>
-</main>
-
-<footer class="footer"><div class="wrap">
-  <div><a class="logo" href="#top">edzola.ai</a><p>AI-powered operations for social impact. EdZola Technologies · Coimbatore, India.</p><div class="social"><a href="https://in.linkedin.com/company/edzola" rel="noopener" aria-label="EdZola on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a><a href="https://www.youtube.com/@edzola" rel="noopener" aria-label="EdZola on YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg></a><a href="https://instagram.com/edzolatech" rel="noopener" aria-label="EdZola on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 3.6c2.7 0 3 0 4.1.1 2.7.1 4 1.4 4.1 4.1.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 2.7-1.4 4-4.1 4.1-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-2.7-.1-4-1.4-4.1-4.1-.1-1.1-.1-1.4-.1-4.1s0-3 .1-4.1c.1-2.7 1.4-4 4.1-4.1 1.1-.1 1.4-.1 4.1-.1zM12 2c-2.7 0-3.1 0-4.1.1C4.2 2.3 2.3 4.2 2.1 7.9 2 8.9 2 9.3 2 12s0 3.1.1 4.1c.2 3.7 2.1 5.6 5.8 5.8 1 .1 1.4.1 4.1.1s3.1 0 4.1-.1c3.7-.2 5.6-2.1 5.8-5.8.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.2-3.7-2.1-5.6-5.8-5.8C15.1 2 14.7 2 12 2z"/></svg></a><a href="https://twitter.com/edzolatech" rel="noopener" aria-label="EdZola on X"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.2l-7 8 8.2 10h-6.4l-5-6.2L5 21H1.8l7.5-8.6L1.5 3h6.6l4.5 5.7zm-1.1 16.2h1.8L7.4 4.7H5.5z"/></svg></a></div></div>
-  <div><h3>What we do</h3><a href="#model">Data systems</a><a href="https://edzola.ai/crm/amplify/">Amplify CRM cohort</a><a href="https://edzola.ai/zolabs/">Zolabs</a><a href="https://edzola.ai/zolashield/">ZolaShield</a><a href="https://edzola.ai/dozai/">DozAI</a></div>
-  <div><h3>Explore</h3><a href="https://edzola.ai/verticals/">Verticals</a><a href="https://edzola.ai/sectors/">Sectors</a><a href="#work">Case studies</a><a href="#fix">What we fix</a></div>
-  <div><h3>Learn</h3><a href="https://edzola.ai/learn/">Implementation guides</a><a href="https://edzola.ai/resources/">Templates &amp; tools</a><a href="https://edzola.ai/thinking/">Thinking</a><a href="https://edzola.ai/why/">Founding thesis</a><a href="https://edzola.ai/impact-os/">ImpactOS</a><a href="https://edzola.ai/news/">News &amp; media</a></div>
-  <div><h3>EdZola</h3><a href="https://edzola.ai/about/">About &amp; team</a><a href="https://go.edzola.com/hiring">Careers</a><a href="https://edzola.ai/patrons/">Become a Patron</a><a href="mailto:reachus@edzola.com">Contact</a></div>
-</div>
-<div class="wrap legal"><span>© EdZola Technologies Private Limited</span><span><a href="https://www.edzola.com/privacy-policy-edzola">Privacy policy</a><a href="https://www.edzola.com/terms-of-use">Terms of use</a></span></div></footer>
-
-<script>
-/* ---------- smooth anchor links (works in file/data previews too) ---------- */
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-  const el=document.querySelector(a.getAttribute('href'));
-  if(el){e.preventDefault();const menu=a.closest('.gh-menu');if(menu)menu.open=false;el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
-}));
-
-/* ---------- logo cloud ---------- */
-(()=>{
-  const logos={"Simple Education Foundation":"sef","TAP India Foundation":"tap","TRRAIN":"trrain","Avanti Fellows":"avanti","The/Nudge Institute":"nudge","Aangan Trust":"aangan","The Antara Foundation":"antara","MukkaMaar":"mukkamaar","Mitti Cafe":"mitti","CRY":"cry","The Better India":"the-better-india","Navgurukul":"navgurukul","Bhumi":"bhumi","Global School Leaders":"global-school-leaders","Koita Foundation":"koita-foundation","Waste Warriors":"waste-warriors","ATREE":"atree","Adhyayan":"adhyayan","Antarang Foundation":"antarang-foundation","Mindhug":"mindhug","FMCH":"fmch","Tapasya Foundation":"tapasya-foundation","RightWalk":"rightwalk","The Circle India Foundation":"the-circle-india-foundation","NGO Story":"ngo-story","Kizazi":"kizazi","Vidhya Vidhai":"vidhya-vidhai","Yein Udaan":"yein-udaan","Caring with Colours":"caring-with-colours","Mudita":"mudita","Earth Focus":"earth-focus","Atma":"atma","CVHR":"cvhr","Stray Dog Institute":"stray-dog-institute","Center for Exponential Change":"center-for-exponential-change"};
-  const a=["Simple Education Foundation","CRY","TAP India Foundation","The Better India","TRRAIN","Navgurukul","Avanti Fellows","Bhumi","The/Nudge Institute","Global School Leaders","Aangan Trust","Koita Foundation","Waste Warriors","ATREE","Adhyayan","The Antara Foundation","Antarang Foundation","Mindhug"];
-  const b=["MukkaMaar","FMCH","Tapasya Foundation","RightWalk","Mitti Cafe","The Circle India Foundation","NGO Story","Kizazi","Vidhya Vidhai","Yein Udaan","Caring with Colours","Mudita","Earth Focus","Atma","CVHR","Stray Dog Institute","Center for Exponential Change"];
-  const card=n=>logos[n]?`<div class="org"><img src="/assets/logos/logo-${logos[n]}.png" alt="${n}" loading="lazy"></div>`:`<div class="org">${n}</div>`;
-  const fill=(id,list)=>{document.getElementById(id).innerHTML=list.map(card).join('')+`<span class="dup" style="display:contents" aria-hidden="true">${list.map(card).join('')}</span>`;};
-  fill('lane1',a);fill('lane2',b);
-})();
-
-/* ---------- zolabs wave ---------- */
-document.querySelectorAll('.wave').forEach(w=>{for(let i=0;i<34;i++){const b=document.createElement('i');b.style.height=(25+Math.abs(Math.sin(i*1.7))*75)+'%';b.style.animationDelay=(-i*.09)+'s';w.appendChild(b);}});
-
-/* ---------- picker tabs ---------- */
-(()=>{
-  const tabs=[...document.querySelectorAll('.tab')];
-  const select=t=>tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
-  tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(t));t.addEventListener('keydown',e=>{let k=null;if(e.key==='ArrowDown'||e.key==='ArrowRight')k=(i+1)%tabs.length;if(e.key==='ArrowUp'||e.key==='ArrowLeft')k=(i-1+tabs.length)%tabs.length;if(k!==null){e.preventDefault();tabs[k].focus();select(tabs[k]);}})});
-})();
-
-/* =====================================================================
-   ONE THREAD, THEN THOUSANDS — hero animation
-   01 The gap: one person's story scattered; the funder's question has no answer.
-   02 EdZola steps in: the system is designed, pieces land in one record,
-      a clean line connects field → record → funder (and back).
-   03 At scale: the same thread for thousands; the person stays highlighted.
-   ===================================================================== */
-(()=>{
-  const cv=document.getElementById('gap'),ctx=cv.getContext('2d'),stage=document.getElementById('stage');
-  const cap=document.getElementById('caption'),actBtns=[...document.querySelectorAll('.act')],ctrl=document.getElementById('ctrl');
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const K={ink:'26,26,26',muted:'107,99,96',line:'234,223,214',coral:'232,150,122',coralD:'180,85,58',peach:'250,232,220',teal:'142,207,202',tealD:'44,119,113',tealS:'226,243,241',yellow:'247,201,72',white:'255,255,255',sunk:'246,237,229'};
-  const c=(k,a=1)=>`rgba(${K[k]},${a})`;
-  const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
-  const ss=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
-  const lerp=(a,b,t)=>a+(b-a)*t;
-  const ACT=[0,5.5,11.5],END=18.5,HOLD=4.5;
-  const CAPS=[
-    "Meera's story is spread across a survey sheet, a paper register, a voice note and a WhatsApp thread. Two of the pieces that matter most are already slipping away. The funder asks a simple question nobody can answer.",
-    "EdZola steps in. We design the system around Meera, build it, and run it with AI and people. Every piece lands in one record, and a clean line connects the field to the funder, and back.",
-    "Then it scales. Thousands of people, each with one clear thread. Evidence flows up to funders, alerts flow back to the field, and Meera is still one person, not a number."
-  ];
-  const FR=[
-    {s:"Survey_sheet3.xlsx",row:"Enrolled · Govt PS",tag:"Done",u:.30,v:.16},
-    {s:"Register · pg 14",row:"Attendance",tag:"3 absent",warn:1,lost:1,u:.46,v:.78},
-    {s:"Voice note · Hindi",row:"Family check-in",tag:"Logged",u:.64,v:.22},
-    {s:"WhatsApp · 147 unread",row:"Moving for kiln work?",tag:"Flagged",warn:1,lost:1,u:.70,v:.64},
-    {s:"Baseline · on paper",row:"Reads words",tag:"Group B",u:.36,v:.36},
-    {s:"Report_v4_FINAL.docx",row:"Funder report",tag:"Auto",u:.57,v:.93}
-  ];
-  FR.forEach((f,i)=>{f.cap=5.9+i*.42;f.ph=i*1.7;f.rot=((i%2)?1:-1)*(.04+.02*i%3);});
-  let W,H,horiz,dpr,t=0,last=null,playing=!reduce,seen=true,G={},dots=[],pulses=[],meera=0;
-
-  const P=(u,v)=>horiz?[lerp(W*.05,W*.95,u),lerp(H*.06,H*.94,v)]:[lerp(W*.06,W*.94,v),lerp(H*.04,H*.96,u)];
-  function geo(){
-    const band=horiz?{cx:W*.5,cy:H*.5,w:Math.min(250,W*.35),h:H*.88}:{cx:W/2,cy:H*.5,w:W*.92,h:222};
-    band.x=band.cx-band.w/2;band.y=band.cy-band.h/2;
-    const cw=Math.min(214,band.w-22),ch=38+6*21;
-    const card={w:cw,h:ch,x:band.cx-cw/2,y:horiz?band.cy-ch/2+12:band.y+46};
-    const field=P(.08,.5);
-    const fw=horiz?Math.min(160,W*.23):Math.min(260,W*.8),fh=horiz?118:98;
-    const fc=P(.915,.5);
-    const funder={w:fw,h:fh,x:clamp(fc[0]-fw/2,6,W-fw-6),y:fc[1]-fh/2};
-    const zone=horiz?{x0:10,x1:band.x-16,y0:H*.08,y1:H*.92}:{x0:W*.05,x1:W*.95,y0:8,y1:band.y-14};
-    G={band,card,field,funder,zone};
-    // grid of people
-    dots=[];const s=horiz?11:11;
-    const cols=Math.floor((zone.x1-zone.x0)/s),rows=Math.floor((zone.y1-zone.y0)/s);
-    const ox=zone.x0+((zone.x1-zone.x0)-cols*s)/2+s/2,oy=zone.y0+((zone.y1-zone.y0)-rows*s)/2+s/2;
-    for(let r=0;r<rows;r++)for(let q=0;q<cols;q++)dots.push({x:ox+q*s,y:oy+r*s,rk:Math.random(),flash:-9});
-    // Meera = dot nearest the field avatar
-    let best=1e9;dots.forEach((d,i)=>{const dd=(d.x-field[0])**2+(d.y-field[1])**2;if(dd<best){best=dd;meera=i;}});
-    dots[meera].rk=0;
-    pulses=[];for(let i=0;i<(horiz?34:22);i++)pulses.push({d:(Math.random()*dots.length)|0,ph:Math.random(),sp:.28+Math.random()*.22,back:i%5===0,jy:(Math.random()-.5)});
-  }
-  function resize(){
-    const r=cv.getBoundingClientRect();dpr=Math.min(2,devicePixelRatio||1);
-    cv.width=r.width*dpr;cv.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
-    W=r.width;H=r.height;horiz=W>=600;geo();draw();
-  }
-  function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
-  function txt(s,x,y,font,col,align='left'){ctx.font=font;ctx.fillStyle=col;ctx.textAlign=align;ctx.fillText(s,x,y);}
-  function pill(s,x,y,warn,a){ctx.font='600 9.5px "JetBrains Mono",monospace';const w=ctx.measureText(s).width+12;rr(x-w,y-8,w,16,8);ctx.fillStyle=c(warn?'peach':'tealS',a);ctx.fill();txt(s,x-w+6,y+3.5,ctx.font,c(warn?'coralD':'tealD',a));}
-  function person(x,y,r,a){
-    ctx.beginPath();ctx.arc(x,y,r,0,6.283);ctx.fillStyle=c('peach',a);ctx.fill();ctx.lineWidth=2;ctx.strokeStyle=c('coral',a);ctx.stroke();
-    if(r>9){ctx.fillStyle=c('ink',.85*a);ctx.beginPath();ctx.arc(x,y-r*.26,r*.26,0,6.283);ctx.fill();ctx.beginPath();ctx.ellipse(x,y+r*.46,r*.45,r*.32,0,Math.PI,0);ctx.fill();}
-  }
-  const along=(pts,f)=>{ // position along polyline
-    let L=0;const seg=[];for(let i=1;i<pts.length;i++){const l=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);seg.push(l);L+=l;}
-    let d=f*L;for(let i=0;i<seg.length;i++){if(d<=seg[i]){const k=seg[i]?d/seg[i]:0;return [lerp(pts[i][0],pts[i+1][0],k),lerp(pts[i][1],pts[i+1][1],k)];}d-=seg[i];}
-    return pts[pts.length-1];
-  };
-  function line(a,b,prog,col,w,dash){ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(lerp(a[0],b[0],prog),lerp(a[1],b[1],prog));ctx.setLineDash(dash||[]);ctx.strokeStyle=col;ctx.lineWidth=w;ctx.stroke();ctx.setLineDash([]);}
-
-  function draw(){
-    if(!W)return;const T=t;const {band,card,field,funder,zone}=G;
-    const bandIn=ss(5.2,6.1,T),recDone=ss(8.6,9.2,T),l1=ss(9.0,9.6,T),l2=ss(9.5,10.2,T),sc=ss(11.4,13,T);
-    const fade=1-ss(END+HOLD-.7,END+HOLD,T);
-    ctx.clearRect(0,0,W,H);ctx.globalAlpha=fade;
-
-    // dotted paper
-    ctx.fillStyle=c('line',.8);for(let x=11;x<W;x+=22)for(let y=11;y<H;y+=22)ctx.fillRect(x,y,1.2,1.2);
-
-    // zone labels
-    const zl=horiz?[[field[0],H*.045,'THE FIELD'],[funder.x+funder.w/2,H*.045,'THE FUNDER']]:[[W*.5,0,'']];
-    if(horiz&&sc<.5){zl.forEach(([x,y,s])=>txt(s,x,y+8,'500 10px "JetBrains Mono",monospace',c('muted',.8*(1-sc*2)),'center'));}
-
-    const fL=[field[0]+28,field[1]],fR=horiz?[funder.x,funder.y+funder.h/2]:[funder.x+funder.w/2,funder.y];
-    const cL=horiz?[card.x,card.y+card.h/2]:[card.x+card.w/2,card.y],cR=horiz?[card.x+card.w,card.y+card.h/2]:[card.x+card.w/2,card.y+card.h];
-    const fTop=horiz?fL:[field[0],field[1]+28];
-
-    // ---- ACT 1: broken line with a question mark
-    const broken=1-bandIn;
-    if(broken>0){
-      const a=fTop,b=fR,m1=[lerp(a[0],b[0],.36),lerp(a[1],b[1],.36)],m2=[lerp(a[0],b[0],.64),lerp(a[1],b[1],.64)];
-      line(a,m1,1,c('muted',.35*broken),1.5,[4,6]);line(m2,b,1,c('muted',.35*broken),1.5,[4,6]);
-      const q=[lerp(a[0],b[0],.5),lerp(a[1],b[1],.5)];
-      ctx.beginPath();ctx.arc(q[0],q[1],14,0,6.283);ctx.fillStyle=c('white',broken);ctx.fill();ctx.strokeStyle=c('coral',.8*broken);ctx.lineWidth=1.5;ctx.stroke();
-      txt('?',q[0],q[1]+6,'700 17px "Bricolage Grotesque",sans-serif',c('coralD',broken),'center');
-    }
-
-    // ---- ACT 2: the EdZola band
-    if(bandIn>0){
-      const h=band.h*bandIn,w=band.w;const x=band.x,y=band.cy-h/2;
-      ctx.save();ctx.shadowColor=c('coral',.25);ctx.shadowBlur=30*bandIn;
-      rr(x,y,w,h,22);ctx.fillStyle=c('peach',.9*bandIn);ctx.fill();ctx.restore();
-      rr(x,y,w,h,22);ctx.strokeStyle=c('coral',bandIn);ctx.lineWidth=1.5;ctx.stroke();
-      const hy=horiz?y+30:y+22;
-      if(bandIn>.6){const a=ss(.6,1,bandIn);
-        txt('edzola',band.cx,hy,'700 19px "Bricolage Grotesque",sans-serif',c('ink',a),'center');
-        const sub=sc>.3?'design · build · run · every day':'design · build · run';
-        txt(sub,band.cx,hy+15,'500 9.5px "JetBrains Mono",monospace',c('coralD',a),'center');}
-    }
-
-    // connecting lines (act 2/3)
-    if(l1>0){line(sc>0?[lerp(fL[0],dots[meera].x+5,sc),lerp(fL[1],dots[meera].y,sc)]:fTop,cL,l1,c('tealD',.9),2.2);}
-    if(l2>0){line(cR,fR,l2,c('tealD',.9),2.2);}
-    // funnel lines from the crowd (act 3)
-    if(sc>0){const n=horiz?9:7;for(let i=0;i<n;i++){const f=i/(n-1);const a=horiz?[zone.x1,lerp(zone.y0+20,zone.y1-20,f)]:[lerp(zone.x0+20,zone.x1-20,f),zone.y1];line(a,cL,1,c('teal',.45*sc),1);}}
-
-    // ---- the record card
-    if(bandIn>.3){
-      const a=ss(.3,.9,bandIn);const chh=lerp(card.h,horiz?104:96,sc);const cy0=card.y+(horiz?(card.h-chh)/2:0);
-      if(sc>0){for(let k=2;k>=1;k--){rr(card.x+k*5,cy0+k*5,card.w,chh,12);ctx.fillStyle=c('white',.7*sc);ctx.fill();ctx.strokeStyle=c('line',sc);ctx.lineWidth=1;ctx.stroke();}}
-      ctx.save();ctx.shadowColor='rgba(74,48,32,.14)';ctx.shadowBlur=18;ctx.shadowOffsetY=6;rr(card.x,cy0,card.w,chh,12);ctx.fillStyle=c('white',a);ctx.fill();ctx.restore();
-      rr(card.x,cy0,card.w,chh,12);ctx.strokeStyle=c('line',a);ctx.lineWidth=1;ctx.stroke();
-      const rowsA=a*(1-ss(0,.35,sc));
-      txt('ED-1042 · Meera, 10',card.x+12,cy0+22,'600 10.5px "JetBrains Mono",monospace',c('tealD',rowsA),'left');
-      FR.forEach((f,i)=>{const fi=ss(f.cap+.45,f.cap+.75,T)*rowsA;if(fi<=0)return;const y=cy0+38+i*21+8;
-        ctx.beginPath();ctx.moveTo(card.x+10,y-12);ctx.lineTo(card.x+card.w-10,y-12);ctx.strokeStyle=c('line',fi);ctx.stroke();
-        txt(f.row,card.x+12,y+2,'500 11.5px "Figtree",sans-serif',c('ink',fi));pill(f.tag,card.x+card.w-10,y-2,f.warn,fi);});
-      if(sc>0){const ca=ss(.3,.8,sc);const n=Math.round(lerp(1,10000,Math.pow(ss(12.2,15.6,T),2)));
-        txt(n>=10000?'10,000+':n.toLocaleString('en-IN'),card.x+card.w/2,cy0+chh/2+4,'700 30px "Bricolage Grotesque",sans-serif',c('ink',ca),'center');
-        txt('records · one per person',card.x+card.w/2,cy0+chh/2+24,'500 10px "JetBrains Mono",monospace',c('muted',ca),'center');}
-    }
-
-    // ---- the crowd (act 3)
-    if(sc>0){
-      dots.forEach((d,i)=>{const ap=12.1+d.rk*3.4;const a=ss(ap,ap+.4,T);if(a<=0||i===meera)return;
-        const fl=clamp(1-(T-d.flash)/1.2);ctx.beginPath();ctx.arc(d.x,d.y,fl>0?3.4:2.6,0,6.283);ctx.fillStyle=fl>0?c('yellow',a):c('tealD',.5*a);ctx.fill();});
-      // pulses
-      pulses.forEach(p=>{const d=dots[p.d];const ap=12.1+d.rk*3.4;if(T<ap+.4)return;
-        let f=(T*p.sp+p.ph)%1;const mid=horiz?[cL[0],cL[1]+p.jy*40]:[cL[0]+p.jy*60,cL[1]];
-        if(!p.back){const pt=along([[d.x,d.y],mid,[cR[0],cR[1]],fR],f);ctx.beginPath();ctx.arc(pt[0],pt[1],2.4,0,6.283);ctx.fillStyle=c('tealD',.85*sc);ctx.fill();}
-        else{const pt=along([mid,[d.x,d.y]],f);ctx.beginPath();ctx.arc(pt[0],pt[1],2.8,0,6.283);ctx.fillStyle=c('yellow',sc);ctx.fill();if(f>.96)d.flash=T;}
-        if((T*p.sp+p.ph)%1<.02&&p.back===false&&Math.random()<.3)p.d=(Math.random()*dots.length)|0;
-      });
-      const fa=ss(15.2,15.8,T);
-      if(fa>0){const s='38 need a visit this week';ctx.font='600 11px "Figtree",sans-serif';const w=ctx.measureText(s).width+18;
-        const x=horiz?(zone.x0+zone.x1)/2-w/2:W/2-w/2,y=horiz?zone.y0-14:zone.y1-4;
-        rr(x,y-11,w,22,11);ctx.fillStyle=c('yellow',fa);ctx.fill();txt(s,x+9,y+4,ctx.font,c('ink',fa));}
-    }
-
-    // ---- act 1/2 pulses along the single thread
-    if(l2>=1&&sc<1){const a=1-sc;for(let k=0;k<3;k++){const f=(T*.35+k/3)%1;const pt=along([fTop,cL,cR,fR],f);ctx.beginPath();ctx.arc(pt[0],pt[1],3,0,6.283);ctx.fillStyle=c('tealD',a);ctx.fill();}
-      const f=(T*.3)%1;const pt=along([cL,fTop],f);ctx.beginPath();ctx.arc(pt[0],pt[1],3.2,0,6.283);ctx.fillStyle=c('yellow',a);ctx.fill();
-      const ba=ss(10.2,10.7,T)*a;if(ba>0){const s='Home visit today · Sunita';ctx.font='600 11px "Figtree",sans-serif';const w=ctx.measureText(s).width+18;
-        const x=horiz?clamp(field[0]-w/2,6,W-w-6):clamp(field[0]+36,6,W-w-6),y=horiz?field[1]-56:field[1];rr(x,y-11,w,22,11);ctx.fillStyle=c('yellow',ba);ctx.fill();txt(s,x+9,y+4,ctx.font,c('ink',ba));}}
-
-    // ---- Meera
-    {const d=dots[meera];const x=lerp(field[0],d.x,sc),y=lerp(field[1],d.y,sc),r=lerp(26,5.5,sc);
-      const pulse=sc>0?1+.25*Math.sin(T*3):1;
-      if(sc>0){ctx.beginPath();ctx.arc(x,y,12*pulse,0,6.283);ctx.strokeStyle=c('coral',.8*sc);ctx.lineWidth=2;ctx.stroke();}
-      person(x,y,r,1);
-      const la=1-ss(0,.4,sc);
-      if(la>0){txt('Meera, 10',x,y+(horiz?46:44),'700 13px "Figtree",sans-serif',c('ink',la),'center');txt('the person you serve',x,y+(horiz?61:59),'500 10.5px "Figtree",sans-serif',c('muted',la),'center');}
-      if(sc>.5){const a=ss(.5,1,sc);ctx.font='700 11px "Figtree",sans-serif';const w=ctx.measureText('Meera').width+14;rr(x+12,y-9,w,18,9);ctx.fillStyle=c('coral',a);ctx.fill();txt('Meera',x+19,y+4,ctx.font,c('ink',a));}
-    }
-
-    // ---- fragments (act 1 → fly into record in act 2)
-    FR.forEach((f,i)=>{
-      const fl=ss(f.cap,f.cap+.7,T);if(fl>=1)return;
-      let [x,y]=P(f.u,f.v);x+=Math.sin(T*.9+f.ph)*5;y+=Math.cos(T*.8+f.ph)*4;
-      let a=1,lostA=0;
-      if(f.lost){lostA=ss(1.4,4.2,T)*(1-ss(f.cap-.3,f.cap,T));const dir=horiz?(f.v>.5?1:-1):(f.u>.5?1:-1);if(horiz)y+=dir*22*lostA;else x+=(f.v>.5?1:-1)*18*lostA;a=1-.55*lostA;}
-      ctx.font='500 11.5px "Figtree",sans-serif';const w=ctx.measureText(f.s).width+32,h=28;
-      x=clamp(x,w/2+6,W-w/2-6);
-      const tx=card.x+card.w/2,ty=card.y+38+i*21+8;
-      x=lerp(x,tx,fl);y=lerp(y,ty,fl);const s=lerp(1,.55,fl);a*=1-ss(.75,1,fl);
-      ctx.save();ctx.translate(x,y);ctx.rotate(f.rot*(1-fl));ctx.scale(s,s);
-      ctx.shadowColor='rgba(74,48,32,.12)';ctx.shadowBlur=12;ctx.shadowOffsetY=4;
-      rr(-w/2,-h/2,w,h,9);ctx.fillStyle=c('white',a);ctx.fill();ctx.shadowColor='transparent';
-      if(lostA>.05){ctx.setLineDash([3,3]);ctx.strokeStyle=c('coral',a);}else ctx.strokeStyle=c('line',a);
-      ctx.lineWidth=1.2;ctx.stroke();ctx.setLineDash([]);
-      rr(-w/2+9,-5,10,10,2);ctx.fillStyle=c(f.warn?'coral':'muted',.55*a);ctx.fill();
-      txt(f.s,-w/2+24,4,'500 11.5px "Figtree",sans-serif',c('ink',a));
-      if(lostA>.3)txt('slipping away',0,h/2+13,'600 9.5px "JetBrains Mono",monospace',c('coralD',a*ss(.3,.8,lostA)),'center');
-      ctx.restore();
-    });
-
-    // ---- the funder panel
-    {const {x,y,w,h}=funder;
-      ctx.save();ctx.shadowColor='rgba(74,48,32,.12)';ctx.shadowBlur=18;ctx.shadowOffsetY=6;rr(x,y,w,h,14);ctx.fillStyle=c('white');ctx.fill();ctx.restore();
-      rr(x,y,w,h,14);ctx.strokeStyle=c(recDone>.5?'tealD':'line',recDone>.5?.6:1);ctx.lineWidth=1.2;ctx.stroke();
-      txt(sc>.5?'FUNDER · LIVE':'FUNDER',x+12,y+20,'600 9.5px "JetBrains Mono",monospace',c('muted'));
-      const a1=1-recDone,a2=recDone*(1-sc),a3=sc;
-      if(a1>0){txt('How many children',x+12,y+44,'600 12.5px "Figtree",sans-serif',c('ink',a1));txt('can actually read?',x+12,y+60,'600 12.5px "Figtree",sans-serif',c('ink',a1));
-        txt('No one can say.',x+12,y+(horiz?84:82),'italic 500 11px "Figtree",sans-serif',c('coralD',a1));}
-      if(a2>0){txt('Meera, 10',x+12,y+42,'700 12.5px "Figtree",sans-serif',c('ink',a2));txt('Reads words · Group B',x+12,y+59,'500 11.5px "Figtree",sans-serif',c('muted',a2));
-        txt('✓ Visit booked',x+12,y+(horiz?80:78),'600 11.5px "Figtree",sans-serif',c('tealD',a2));}
-      if(a3>0){const bars=[.42,.55,.61,.7,.78];const bw=(w-24-4*6)/5,bh=h-(horiz?64:54);
-        bars.forEach((b,i)=>{const g=ss(13+i*.25,14.6+i*.25,T);const hh=bh*b*g;rr(x+12+i*(bw+6),y+30+bh-hh,bw,Math.max(hh,1),3);ctx.fillStyle=c(i===4?'coral':'teal',a3);ctx.fill();});
-        txt('Reading at grade level ↑',x+12,y+h-12,'600 11px "Figtree",sans-serif',c('ink',a3));}
-    }
-    ctx.globalAlpha=1;
-
-    // UI
-    const act=T<ACT[1]?0:T<ACT[2]?1:2;
-    actBtns.forEach((b,i)=>{b.classList.toggle('on',i===act);const s=ACT[i],e=i<2?ACT[i+1]:END;b.querySelector('b').style.width=(clamp((T-s)/(e-s))*100)+'%';b.setAttribute('aria-pressed',i===act);});
-    if(cap.dataset.a!=act){cap.dataset.a=act;cap.textContent=CAPS[act];}
-  }
-
-  function frame(now){
-    if(last===null)last=now;const dt=Math.min(.05,(now-last)/1000);last=now;
-    if(playing&&seen){t+=dt;if(t>END+HOLD){t=0;dots.forEach(d=>d.flash=-9);}}
-    draw();requestAnimationFrame(frame);
-  }
-  actBtns.forEach((b,i)=>b.addEventListener('click',()=>{t=reduce?[3.5,10.6,17][i]:ACT[i]+.01;dots.forEach(d=>d.flash=-9);draw();}));
-  ctrl.addEventListener('click',()=>{playing=!playing;ctrl.textContent=playing?'Pause':'Play';});
-  new IntersectionObserver(es=>es.forEach(e=>{seen=e.isIntersecting})).observe(stage);
-  addEventListener('resize',resize);
-  resize();
-  if(reduce){t=17;ctrl.hidden=true;draw();}else requestAnimationFrame(frame);
-  document.fonts&&document.fonts.ready.then(()=>draw());
-})();
-</script>
-<script id="motion-toggle">document.querySelectorAll(".motion-toggle").forEach(function(b){var host=document.querySelector(b.dataset.target);b.addEventListener("click",function(){var p=host.classList.toggle("is-paused");b.setAttribute("aria-pressed",p);b.textContent=p?b.dataset.play:b.dataset.pause;});});</script>
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a554d343571244ed9f5a68d182583373"}'></script><!-- End Cloudflare Web Analytics -->
-<script id="lang-hint">
-(function(){
-  var dst="", offers={es:['¿Prefieres leer en español?','Ver en español'],pt:['Prefere ler em português?','Ver em português']};
-  function get(){try{return localStorage.getItem('edz-lang')}catch(e){return null}}
-  function set(v){try{localStorage.setItem('edz-lang',v)}catch(e){}}
-  document.querySelectorAll('.gh-lang a').forEach(function(a){a.addEventListener('click',function(){set(a.getAttribute('hreflang'))})});
-  if(document.documentElement.lang.slice(0,2)!=='en'||get())return;
-  var pref=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase();
-  if(!offers[pref]){
-    /* No es/pt browser language: fall back to the device time zone, which stays on the device. */
-    var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}
-    var PT=/^(America\/(Sao_Paulo|Bahia|Fortaleza|Recife|Belem|Manaus|Cuiaba|Campo_Grande|Porto_Velho|Boa_Vista|Rio_Branco|Araguaina|Maceio|Santarem|Noronha|Eirunepe)|Europe\/Lisbon|Atlantic\/(Azores|Madeira|Cape_Verde)|Africa\/(Maputo|Luanda|Bissau|Sao_Tome))$/;
-    var ES=/^(America\/(Argentina\/.*|Buenos_Aires|Mexico_City|Cancun|Merida|Monterrey|Matamoros|Chihuahua|Ciudad_Juarez|Ojinaga|Mazatlan|Bahia_Banderas|Hermosillo|Tijuana|Bogota|Lima|Santiago|Punta_Arenas|Caracas|Guayaquil|La_Paz|Asuncion|Montevideo|Guatemala|El_Salvador|Tegucigalpa|Managua|Costa_Rica|Panama|Havana|Santo_Domingo|Puerto_Rico)|Europe\/Madrid|Africa\/(Ceuta|Malabo)|Atlantic\/Canary|Pacific\/(Galapagos|Easter))$/;
-    pref=PT.test(tz)?'pt':ES.test(tz)?'es':'';
-  }
-  if(!offers[pref])return;
-  var d=document.createElement('div');d.className='lang-hint';d.setAttribute('role','region');d.setAttribute('aria-label','Language');
-  d.innerHTML='<span lang="'+pref+'">'+offers[pref][0]+'</span><a lang="'+pref+'" href="/'+pref+'/'+dst+'">'+offers[pref][1]+'</a><button aria-label="Dismiss">×</button>';
-  d.querySelector('a').addEventListener('click',function(){set(pref)});
-  d.querySelector('button').addEventListener('click',function(){set('en');d.remove()});
-  document.body.appendChild(d);
-})();
-</script>
-<script src="/assets/crm-webform.js?v=20261022a"></script>
+  <footer class="site-footer"><div class="shell footer-grid"><div class="footer-brand"><a class="brand" href="#top">edzola.ai</a><p>Systems built for the world’s hardest work.<br>Coimbatore, India.</p></div><div><b>Solutions</b><a href="/verticals/">Core systems</a><a href="/zolabs/">Zolabs</a><a href="/zolashield/">ZolaShield</a><a href="/dozai/">DozAI</a><a href="/patrons/">Built for Impact</a></div><div><b>Explore</b><a href="/sectors/">Sectors</a><a href="/work/">Work</a><a href="/impact-os/">ImpactOS</a><a href="/thinking/">Thinking</a></div><div><b>EdZola</b><a href="/about/">About</a><a href="/news/">News</a><a href="https://go.edzola.com/hiring">Careers</a><a href="#contact">Contact</a></div></div></footer>
+<script defer src="/assets/site-shell.js?v=20261023a"></script>
 </body>
 </html>

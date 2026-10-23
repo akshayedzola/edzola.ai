@@ -20,7 +20,7 @@ QUESTION_BANK = ROOT / "content" / "expansion" / "question-bank.csv"
 TODAY = "2026-10-20"
 DISPLAY_DATE = "20 October 2026"
 SITE = "https://edzola.ai"
-FORM_SCRIPT_VERSION = "20261022a"
+FORM_SCRIPT_VERSION = "20261023a"
 
 
 def parts(value: str) -> list[str]:
@@ -88,7 +88,7 @@ BRIEFS = {
         "next actions with owners|duplicate organisation and contact rate|pipeline records updated on time|relationship history retained across ownership changes",
         "relationship strategy and ask timing|handling a sensitive donor concern|merging disputed duplicates|changing communication consent",
         "donor and partner history lives in inboxes, and follow-ups are missed when ownership changes.",
-        help_default="CRM",
+        help_default="Zoho Consulting",
         form_question="Which relationship or fundraising workflow should the CRM make easier?"
     ),
     "AI voice surveys for NGOs": brief(
@@ -127,7 +127,7 @@ BRIEFS = {
         "cases completed correctly|exceptions handed over early|evidence attached to each output|review corrections declining without harm",
         "eligibility, rights, money or opportunity decisions|safeguarding and crisis judgement|approval of external communication|permission or policy changes",
         "we have a repetitive workflow that may suit AI, but need clear limits, evidence and human escalation.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Which bounded workflow would you like an AI agent to handle?"
     ),
     "Technology for CSR teams": brief(
@@ -150,7 +150,9 @@ BRIEFS = {
         "building screens before agreeing definitions|over-customising without release discipline|record permissions that are too broad|depending on one developer's memory",
         "workflow completion without workarounds|permission tests passed|automation failures resolved|documented changes and trained owners",
         "approval and policy decisions|access exceptions|merging disputed identities|accepting platform trade-offs",
-        "we are considering Zoho Creator for an MIS and need to test workflow fit, offline use, permissions and ownership."
+        "we are considering Zoho Creator for an MIS and need to test workflow fit, offline use, permissions and ownership.",
+        help_default="Zoho Consulting",
+        form_question="Which Zoho workflow or implementation decision should we understand?"
     ),
     "Custom MIS versus off-the-shelf NGO software": brief(
         "Compare operating fit, ownership and total change—not feature counts.",
@@ -283,7 +285,7 @@ BRIEFS = {
         "complete packets prepared|extraction errors by document type|exceptions routed correctly|review time without changed outcomes",
         "eligibility and selection|interpreting hardship or context|document fraud judgement|appeals and exceptions",
         "applications and documents arrive in volume, and reviewers need a consistent evidence packet without outsourcing decisions to AI.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Which part of scholarship review should the mission prepare?"
     ),
     "Employment placement verification": brief(
@@ -296,7 +298,7 @@ BRIEFS = {
         "cases reaching a clear state|evidence attached|nonresponse by subgroup|reviewer overturn and escalation rate",
         "final verification state|disputed evidence|employer contact exceptions|support after adverse findings",
         "we need to verify placement claims at scale while keeping every source, conflict and reviewer decision visible.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="What placement evidence and verification state do you need?"
     ),
     "90-day and 180-day retention follow-up": brief(
@@ -309,7 +311,7 @@ BRIEFS = {
         "contact and completion rate|verified retention by window|job change and exit reasons|unresolved and support cases",
         "responding to distress or exploitation|resolving employment conflict|offering programme support|approving the reported status",
         "we can report placement at course exit but cannot follow every graduate consistently at 90 and 180 days.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Which cohort and follow-up windows should the mission cover?"
     ),
     "MEL data quality assistant": brief(
@@ -322,7 +324,7 @@ BRIEFS = {
         "exceptions confirmed|time to resolution|false-positive rate|repeated error pattern reduced",
         "correcting source records|accepting a valid outlier|changing an indicator rule|deciding dataset fitness for reporting",
         "quality checks are manual and late, but automated corrections would create a new trust problem.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Which dataset and quality checks should the assistant prepare?"
     ),
     "Human escalation and override design": brief(
@@ -335,7 +337,7 @@ BRIEFS = {
         "high-risk cases stopped|review time and overdue escalation|override and overturn rate|recurring failure modes reduced",
         "consequential decision|accepting residual uncertainty|changing mission rules|expanding or reducing autonomy",
         "we need explicit stop conditions, reviewer ownership and an auditable override path before automating a workflow.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Where must AI stop and hand the work to a person?"
     ),
     "Nonprofit MIS requirements template": brief(

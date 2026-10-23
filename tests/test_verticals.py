@@ -172,16 +172,15 @@ class VerticalsRegressionTests(unittest.TestCase):
         for term in required:
             self.assertIn(term, page)
 
-    def test_homepages_use_collapsible_vertical_navigation_and_new_entry_paths(self):
+    def test_homepages_use_the_shared_navigation_and_new_entry_paths(self):
         expectations = {
-            "index.html": ('<details><summary>Verticals</summary>', "/verticals/"),
-            "es/index.html": ('<details><summary>Verticales</summary>', "/es/verticals/"),
-            "pt/index.html": ('<details><summary>Verticais</summary>', "/pt/verticals/"),
+            "index.html": "/verticals/",
+            "es/index.html": "/es/verticals/",
+            "pt/index.html": "/pt/verticals/",
         }
-        for relative, (mobile_group, vertical_route) in expectations.items():
+        for relative, vertical_route in expectations.items():
             page = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn(mobile_group, page, relative)
-            self.assertIn('class="entry-chooser"', page, relative)
+            self.assertIn('/assets/site-shell.js?v=20261023a', page, relative)
             self.assertIn(f'href="{vertical_route}"', page, relative)
 
 

@@ -272,6 +272,7 @@ html{scroll-padding-top:76px}
 </style>
 <style>.motion-toggle{font:600 12px/1 "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace;padding:8px 12px;border-radius:999px;border:1px solid #EADFD6;background:#fff;color:#1A1A1A;cursor:pointer}.motion-toggle:focus-visible{outline:3px solid #2C7771;outline-offset:2px}.is-paused .lane,.is-paused .org,.is-paused .reel-track{animation-play-state:paused!important}</style>
 <link rel="stylesheet" href="/assets/crm-webform.css?v=20261019a">
+<link rel="stylesheet" href="/assets/site-shell.css?v=20261023a">
 </head>
 <body>
 
@@ -431,6 +432,7 @@ document.querySelectorAll('.yt').forEach(function(b){
 </script>
 <script id="motion-toggle">document.querySelectorAll(".motion-toggle").forEach(function(b){var host=document.querySelector(b.dataset.target);b.addEventListener("click",function(){var p=host.classList.toggle("is-paused");b.setAttribute("aria-pressed",p);b.textContent=p?b.dataset.play:b.dataset.pause;});});</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a554d343571244ed9f5a68d182583373"}'></script><!-- End Cloudflare Web Analytics -->
-<script src="/assets/crm-webform.js?v=20261022a"></script>
+<script src="/assets/crm-webform.js?v=20261023a"></script>
+<script defer src="/assets/site-shell.js?v=20261023a"></script>
 </body>
 </html>
