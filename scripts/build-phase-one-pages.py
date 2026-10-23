@@ -20,7 +20,7 @@ QUESTION_BANK = ROOT / "content" / "expansion" / "question-bank.csv"
 TODAY = "2026-10-20"
 DISPLAY_DATE = "20 October 2026"
 SITE = "https://edzola.ai"
-FORM_SCRIPT_VERSION = "20261022a"
+FORM_SCRIPT_VERSION = "20261023b"
 
 
 def parts(value: str) -> list[str]:
@@ -88,7 +88,7 @@ BRIEFS = {
         "next actions with owners|duplicate organisation and contact rate|pipeline records updated on time|relationship history retained across ownership changes",
         "relationship strategy and ask timing|handling a sensitive donor concern|merging disputed duplicates|changing communication consent",
         "donor and partner history lives in inboxes, and follow-ups are missed when ownership changes.",
-        help_default="CRM",
+        help_default="Zoho Consulting",
         form_question="Which relationship or fundraising workflow should the CRM make easier?"
     ),
     "AI voice surveys for NGOs": brief(
@@ -127,7 +127,7 @@ BRIEFS = {
         "cases completed correctly|exceptions handed over early|evidence attached to each output|review corrections declining without harm",
         "eligibility, rights, money or opportunity decisions|safeguarding and crisis judgement|approval of external communication|permission or policy changes",
         "we have a repetitive workflow that may suit AI, but need clear limits, evidence and human escalation.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Which bounded workflow would you like an AI agent to handle?"
     ),
     "Technology for CSR teams": brief(
@@ -150,7 +150,9 @@ BRIEFS = {
         "building screens before agreeing definitions|over-customising without release discipline|record permissions that are too broad|depending on one developer's memory",
         "workflow completion without workarounds|permission tests passed|automation failures resolved|documented changes and trained owners",
         "approval and policy decisions|access exceptions|merging disputed identities|accepting platform trade-offs",
-        "we are considering Zoho Creator for an MIS and need to test workflow fit, offline use, permissions and ownership."
+        "we are considering Zoho Creator for an MIS and need to test workflow fit, offline use, permissions and ownership.",
+        help_default="Zoho Consulting",
+        form_question="Which Zoho workflow or implementation decision should we understand?"
     ),
     "Custom MIS versus off-the-shelf NGO software": brief(
         "Compare operating fit, ownership and total change—not feature counts.",
@@ -283,7 +285,7 @@ BRIEFS = {
         "complete packets prepared|extraction errors by document type|exceptions routed correctly|review time without changed outcomes",
         "eligibility and selection|interpreting hardship or context|document fraud judgement|appeals and exceptions",
         "applications and documents arrive in volume, and reviewers need a consistent evidence packet without outsourcing decisions to AI.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Which part of scholarship review should the mission prepare?"
     ),
     "Employment placement verification": brief(
@@ -296,7 +298,7 @@ BRIEFS = {
         "cases reaching a clear state|evidence attached|nonresponse by subgroup|reviewer overturn and escalation rate",
         "final verification state|disputed evidence|employer contact exceptions|support after adverse findings",
         "we need to verify placement claims at scale while keeping every source, conflict and reviewer decision visible.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="What placement evidence and verification state do you need?"
     ),
     "90-day and 180-day retention follow-up": brief(
@@ -309,7 +311,7 @@ BRIEFS = {
         "contact and completion rate|verified retention by window|job change and exit reasons|unresolved and support cases",
         "responding to distress or exploitation|resolving employment conflict|offering programme support|approving the reported status",
         "we can report placement at course exit but cannot follow every graduate consistently at 90 and 180 days.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Which cohort and follow-up windows should the mission cover?"
     ),
     "MEL data quality assistant": brief(
@@ -322,7 +324,7 @@ BRIEFS = {
         "exceptions confirmed|time to resolution|false-positive rate|repeated error pattern reduced",
         "correcting source records|accepting a valid outlier|changing an indicator rule|deciding dataset fitness for reporting",
         "quality checks are manual and late, but automated corrections would create a new trust problem.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Which dataset and quality checks should the assistant prepare?"
     ),
     "Human escalation and override design": brief(
@@ -335,7 +337,7 @@ BRIEFS = {
         "high-risk cases stopped|review time and overdue escalation|override and overturn rate|recurring failure modes reduced",
         "consequential decision|accepting residual uncertainty|changing mission rules|expanding or reducing autonomy",
         "we need explicit stop conditions, reviewer ownership and an auditable override path before automating a workflow.",
-        help_default="Custom AI Solutions",
+        help_default="DozAI",
         form_question="Where must AI stop and hand the work to a person?"
     ),
     "Nonprofit MIS requirements template": brief(
@@ -597,13 +599,13 @@ def render_page(page: dict[str, str], info: dict, questions: list[dict[str, str]
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/crm-webform.css?v=20261015h">
-<link rel="stylesheet" href="/assets/knowledge-page.css?v=20261019a">
+<link rel="stylesheet" href="/assets/crm-webform.css?v=20261023b">
+<link rel="stylesheet" href="/assets/knowledge-page.css?v=20261023b">
 <script type="application/ld+json">{json_ld}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top"><div class="wrap"><a class="logo" href="/" aria-label="EdZola home">edzola<i>.</i></a><nav aria-label="Primary navigation"><a href="/solutions/">Solutions</a><a href="/sectors/">Sectors</a><a href="/learn/">Learn</a><a href="/resources/">Resources</a></nav><a class="pill primary" href="#contact-form">Discuss this workflow</a></div></header>
+<!-- ez-shell:header:start --><!-- ez-shell:header:end -->
 <main id="main">
 <div class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="{esc(parent_path)}">{esc(parent_name)}</a><span aria-hidden="true">/</span><span aria-current="page">{esc(title)}</span></div>
 <section class="wrap hero knowledge-hero" aria-labelledby="page-title"><div><span class="status">{esc(type_label(page["content_type"]))} · Evidence-led</span><h1 id="page-title">{esc(title)}.<br><em>{esc(info["tagline"])}</em></h1><p class="lead">{esc(info["direct"])}</p><div class="hero-actions"><a class="pill dark" href="#framework">See the working model</a><a class="pill ghost" href="#questions">Read the Q&amp;A</a></div><div class="byline"><span>For {esc(page["primary_audience"])}</span><span>Updated {DISPLAY_DATE}</span></div></div>
@@ -620,7 +622,7 @@ def render_page(page: dict[str, str], info: dict, questions: list[dict[str, str]
 </article></div>
 <section class="crm-embed-section knowledge-crm" aria-labelledby="crm-embed-heading"><div class="crm-embed-inner"><div class="final crm-form-left"><div class="contact" data-crm-webform data-crm-form-title="Tell us about this workflow." data-crm-form-note="Five short questions. Plain language is perfect; you do not need to have the solution worked out." data-crm-question-label="{esc(info["form_question"])}" data-crm-placeholder="{esc(info["placeholder"])}" data-crm-help-default="{esc(info["help_default"])}" data-crm-submit-label="Share this workflow"></div><div data-crm-intro><h2 id="crm-embed-heading">{esc(form_title)}</h2><p>{esc(form_body)}</p></div></div></div></section>
 </main>
-<footer><div class="wrap"><span>© 2026 EdZola Technologies Private Limited · Coimbatore, India</span><span><a href="/solutions/">Solutions</a> · <a href="/learn/">Learn</a> · <a href="/resources/">Resources</a> · <a href="/about/">About</a></span></div></footer>
+<!-- ez-shell:footer:start --><!-- ez-shell:footer:end -->
 <script defer src="/assets/crm-webform.js?v={FORM_SCRIPT_VERSION}"></script>
 </body></html>'''
 
@@ -641,7 +643,7 @@ def render_hub(title: str, path: str, description: str, pages: list[dict[str, st
         "isPartOf": {"@type": "WebSite", "name": "EdZola", "url": SITE + "/"},
         "hasPart": [{"@type": "WebPage", "name": p["working_title"], "url": SITE + p["path"]} for p in pages],
     }, ensure_ascii=False, separators=(",", ":"))
-    return f'''<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>{esc(title)} | EdZola</title><meta name="description" content="{esc(description)}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><link rel="canonical" href="{url}"><link rel="alternate" hreflang="en" href="{url}"><link rel="alternate" hreflang="x-default" href="{url}"><meta property="og:type" content="website"><meta property="og:site_name" content="EdZola"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{url}"><meta property="og:locale" content="en_GB"><meta property="og:image" content="{SITE}/assets/og-edzola.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{SITE}/assets/og-edzola.png"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><link rel="stylesheet" href="/assets/crm-webform.css?v=20261015h"><link rel="stylesheet" href="/assets/knowledge-page.css?v=20261019a"><script type="application/ld+json">{schema}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="top"><div class="wrap"><a class="logo" href="/">edzola<i>.</i></a><nav aria-label="Primary navigation"><a href="/solutions/">Solutions</a><a href="/sectors/">Sectors</a><a href="/learn/">Learn</a><a href="/resources/">Resources</a></nav><a class="pill primary" href="#contact-form">Talk to us</a></div></header><main id="main"><section class="library-hero wrap"><p class="eyebrow">{esc(eyebrow)}</p><h1>{esc(title)}</h1><p>{esc(description)}</p></section><section class="wrap library-grid" aria-label="{esc(title)}">{cards}</section><section class="crm-embed-section knowledge-crm" aria-labelledby="crm-embed-heading"><div class="crm-embed-inner"><div class="final crm-form-left"><div class="contact" data-crm-webform data-crm-form-title="Tell us what you are trying to improve." data-crm-question-label="Which workflow or decision should we understand?" data-crm-placeholder="one workflow depends on several trackers, and we need a practical first step." data-crm-help-default="Data Systems – MIS / ERP"></div><div data-crm-intro><h2 id="crm-embed-heading">Start with one real workflow.</h2><p>Bring one tracker, form or decision. We’ll help identify which guide applies and what a useful first step could be.</p></div></div></div></section></main><footer><div class="wrap"><span>© 2026 EdZola Technologies Private Limited</span><span><a href="/">Home</a> · <a href="/about/">About</a></span></div></footer><script defer src="/assets/crm-webform.js?v={FORM_SCRIPT_VERSION}"></script></body></html>'''
+    return f'''<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>{esc(title)} | EdZola</title><meta name="description" content="{esc(description)}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><link rel="canonical" href="{url}"><link rel="alternate" hreflang="en" href="{url}"><link rel="alternate" hreflang="x-default" href="{url}"><meta property="og:type" content="website"><meta property="og:site_name" content="EdZola"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{url}"><meta property="og:locale" content="en_GB"><meta property="og:image" content="{SITE}/assets/og-edzola.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{SITE}/assets/og-edzola.png"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><link rel="stylesheet" href="/assets/crm-webform.css?v=20261023b"><link rel="stylesheet" href="/assets/knowledge-page.css?v=20261023b"><script type="application/ld+json">{schema}</script></head><body><a class="skip" href="#main">Skip to content</a><!-- ez-shell:header:start --><!-- ez-shell:header:end --><main id="main"><section class="library-hero wrap"><p class="eyebrow">{esc(eyebrow)}</p><h1>{esc(title)}</h1><p>{esc(description)}</p></section><section class="wrap library-grid" aria-label="{esc(title)}">{cards}</section><section class="crm-embed-section knowledge-crm" aria-labelledby="crm-embed-heading"><div class="crm-embed-inner"><div class="final crm-form-left"><div class="contact" data-crm-webform data-crm-form-title="Tell us what you are trying to improve." data-crm-question-label="Which workflow or decision should we understand?" data-crm-placeholder="one workflow depends on several trackers, and we need a practical first step." data-crm-help-default="Data Systems – MIS / ERP"></div><div data-crm-intro><h2 id="crm-embed-heading">Start with one real workflow.</h2><p>Bring one tracker, form or decision. We’ll help identify which guide applies and what a useful first step could be.</p></div></div></div></section></main><!-- ez-shell:footer:start --><!-- ez-shell:footer:end --><script defer src="/assets/crm-webform.js?v={FORM_SCRIPT_VERSION}"></script></body></html>'''
 
 
 def related_pages(page: dict[str, str], phase_one: list[dict[str, str]]) -> list[dict[str, str]]:

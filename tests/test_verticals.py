@@ -84,7 +84,7 @@ class VerticalsRegressionTests(unittest.TestCase):
             self.assertEqual((parsed.titles, parsed.h1s, parsed.descriptions), (1, 1, 1), route)
             self.assertEqual(parsed.canonicals, [f"https://edzola.ai{route}"], route)
             self.assertTrue(any(href and href.startswith("/assets/verticals.css?") for href in parsed.stylesheets), route)
-            self.assertIn("/assets/crm-webform.css?v=20261019a", parsed.stylesheets, route)
+            self.assertIn("/assets/crm-webform.css?v=20261023b", parsed.stylesheets, route)
             for payload in parsed.json_ld:
                 json.loads(payload)
 
@@ -98,7 +98,7 @@ class VerticalsRegressionTests(unittest.TestCase):
     def test_every_vertical_route_loads_shared_navigation_and_crm(self):
         for route in ALL_VERTICAL_ROUTES:
             page = route_file(route).read_text(encoding="utf-8")
-            self.assertIn("/assets/verticals-nav.js?", page, route)
+            self.assertNotIn("/assets/verticals-nav.js", page, route)
             self.assertIn("/assets/crm-webform.js?", page, route)
             self.assertNotIn("<details open>", page, route)
 
@@ -172,16 +172,15 @@ class VerticalsRegressionTests(unittest.TestCase):
         for term in required:
             self.assertIn(term, page)
 
-    def test_homepages_use_collapsible_vertical_navigation_and_new_entry_paths(self):
+    def test_homepages_use_the_shared_navigation_and_new_entry_paths(self):
         expectations = {
-            "index.html": ('<details><summary>Verticals</summary>', "/verticals/"),
-            "es/index.html": ('<details><summary>Verticales</summary>', "/es/verticals/"),
-            "pt/index.html": ('<details><summary>Verticais</summary>', "/pt/verticals/"),
+            "index.html": "/verticals/",
+            "es/index.html": "/es/verticals/",
+            "pt/index.html": "/pt/verticals/",
         }
-        for relative, (mobile_group, vertical_route) in expectations.items():
+        for relative, vertical_route in expectations.items():
             page = (ROOT / relative).read_text(encoding="utf-8")
-            self.assertIn(mobile_group, page, relative)
-            self.assertIn('class="entry-chooser"', page, relative)
+            self.assertIn('<header class="ez-site-shell', page, relative)
             self.assertIn(f'href="{vertical_route}"', page, relative)
 
 

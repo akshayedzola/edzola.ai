@@ -8,14 +8,20 @@
   var parts=path.split('/').filter(Boolean);
   var locale=parts[0]==='es'||parts[0]==='pt'?parts.shift():'en';
   var translations={
-    en:{formTitle:'Tell us a little about your work.',formNote:'Five short questions. Plain language is perfect; you do not need to have the solution worked out.',submit:'Tell us about your work',name:'Your name',namePlaceholder:'For example, Asha Menon',organisation:'Organisation name',organisationPlaceholder:'Your nonprofit or organisation',email:'Work email',help:'What would you like help with?',choose:'Choose the closest option',programme:'A programme data system or MIS',procurement:'A procurement, purchasing or inventory system',relationships:'Managing partners, donors or relationships',people:'People and HR systems',research:'Understanding interviews and qualitative data',protection:'Data protection and DPDP readiness',customAi:'A custom AI solution',aiAdvice:'AI workshops or advice',builtForImpact:'The Built for Impact Programme',barrier:'What is getting in the way today?',example:'For example: ',clear:'Clear',clearForm:'Clear form',privacy:'Your details go directly to EdZola’s CRM so our team can respond to this enquiry.',kicker:'Start with the work, not the software',points:['Start with one spreadsheet, form or process that is slowing the team down.','The first walkthrough is free and takes about 30 minutes.','If budget is tight, ask about the Built for Impact Programme.'],explore:'Not ready to get in touch yet?',browseSectors:'Browse all sector playbooks →',readApproach:'Read how EdZola approaches the work →',required:['your name','your organisation name','your work email','what you would like help with','what is getting in the way today'],complete:'Please complete ',validEmail:'Please enter a valid work email address.',sending:'Sending…',captcha:'Please complete the security check and try again.',thanks:'Thank you. Your note has been sent.',failed:'We could not send the form just now. Please try again in a moment.',contact:'Contact EdZola'},
-    es:{formTitle:'Cuéntanos un poco sobre tu trabajo.',formNote:'Cinco preguntas breves. Puedes responder con palabras sencillas; no necesitas tener la solución definida.',submit:'Cuéntanos sobre tu trabajo',name:'Tu nombre',namePlaceholder:'Por ejemplo, Asha Menon',organisation:'Nombre de la organización',organisationPlaceholder:'Tu organización sin fines de lucro',email:'Correo de trabajo',help:'¿Con qué te gustaría recibir ayuda?',choose:'Elige la opción más cercana',programme:'Un sistema de datos de programas o MIS',relationships:'Gestión de aliados, donantes o relaciones',people:'Sistemas de personas y RR. HH.',research:'Comprender entrevistas y datos cualitativos',protection:'Protección de datos y preparación para DPDP',customAi:'Una solución de IA a medida',aiAdvice:'Talleres o asesoría sobre IA',builtForImpact:'El programa Built for Impact',barrier:'¿Qué está dificultando el trabajo hoy?',example:'Por ejemplo: ',clear:'Borrar',clearForm:'Borrar formulario',privacy:'Tus datos van directamente al CRM de EdZola para que nuestro equipo pueda responder a esta consulta.',kicker:'Empieza por el trabajo, no por el software',points:['Empieza con una hoja, formulario o proceso que esté frenando al equipo.','La primera conversación es gratuita y dura unos 30 minutos.','Si el presupuesto es limitado, pregunta por el programa Built for Impact.'],explore:'¿Todavía no quieres ponerte en contacto?',browseSectors:'Explora los itinerarios por sector →',readApproach:'Lee cómo aborda EdZola el trabajo →',required:['tu nombre','el nombre de tu organización','tu correo de trabajo','el tipo de ayuda que buscas','lo que dificulta el trabajo hoy'],complete:'Completa ',validEmail:'Introduce un correo de trabajo válido.',sending:'Enviando…',captcha:'Completa la verificación de seguridad e inténtalo de nuevo.',thanks:'Gracias. Hemos recibido tu mensaje.',failed:'No pudimos enviar el formulario. Inténtalo de nuevo en un momento.',contact:'Contactar con EdZola'},
-    pt:{formTitle:'Conte um pouco sobre o seu trabalho.',formNote:'Cinco perguntas breves. Pode responder em linguagem simples; não precisa ter a solução pronta.',submit:'Conte sobre o seu trabalho',name:'Seu nome',namePlaceholder:'Por exemplo, Asha Menon',organisation:'Nome da organização',organisationPlaceholder:'Sua organização sem fins lucrativos',email:'E-mail de trabalho',help:'Em que você gostaria de receber ajuda?',choose:'Escolha a opção mais próxima',programme:'Um sistema de dados de programas ou MIS',relationships:'Gestão de parceiros, doadores ou relacionamentos',people:'Sistemas de pessoas e RH',research:'Compreender entrevistas e dados qualitativos',protection:'Proteção de dados e preparação para DPDP',customAi:'Uma solução de IA sob medida',aiAdvice:'Oficinas ou consultoria sobre IA',builtForImpact:'O programa Built for Impact',barrier:'O que está dificultando o trabalho hoje?',example:'Por exemplo: ',clear:'Limpar',clearForm:'Limpar formulário',privacy:'Seus dados vão diretamente para o CRM da EdZola para que nossa equipe possa responder a esta consulta.',kicker:'Comece pelo trabalho, não pelo software',points:['Comece com uma planilha, formulário ou processo que esteja atrasando a equipe.','A primeira conversa é gratuita e leva cerca de 30 minutos.','Se o orçamento for limitado, pergunte sobre o programa Built for Impact.'],explore:'Ainda não quer entrar em contato?',browseSectors:'Explore os roteiros por setor →',readApproach:'Leia como a EdZola aborda o trabalho →',required:['seu nome','o nome da sua organização','seu e-mail de trabalho','o tipo de ajuda que procura','o que está dificultando o trabalho hoje'],complete:'Preencha ',validEmail:'Informe um e-mail de trabalho válido.',sending:'Enviando…',captcha:'Conclua a verificação de segurança e tente novamente.',thanks:'Obrigado. Recebemos sua mensagem.',failed:'Não foi possível enviar o formulário agora. Tente novamente em instantes.',contact:'Falar com a EdZola'}
+    en:{formTitle:'Tell us a little about your work.',formNote:'Five short questions. Plain language is perfect; you do not need to have the solution worked out.',submit:'Tell us about your work',name:'Your name',namePlaceholder:'For example, Asha Menon',organisation:'Organisation name',organisationPlaceholder:'Your nonprofit or organisation',email:'Work email',help:'What would you like help with?',choose:'Choose the closest option',programme:'A programme data system or MIS',procurement:'A procurement, purchasing or inventory system',relationships:'Managing partners, donors or relationships',people:'People and HR systems',research:'Understanding interviews and qualitative data',protection:'Data protection and DPDP readiness',customAi:'A custom AI solution',dozai:'DozAI — AI agents for nonprofit workflows',zohoConsulting:'Zoho consulting and implementation',claudeConsulting:'Claude consulting and adoption',aiAdvice:'AI workshops or advice',builtForImpact:'The Built for Impact Programme',barrier:'What is getting in the way today?',example:'For example: ',clear:'Clear',clearForm:'Clear form',privacy:'Your details go directly to EdZola’s CRM so our team can respond to this enquiry.',kicker:'Start with the work, not the software',points:['Start with one spreadsheet, form or process that is slowing the team down.','The first walkthrough is free and takes about 30 minutes.','If budget is tight, ask about the Built for Impact Programme.'],explore:'Not ready to get in touch yet?',browseSectors:'Browse all sector playbooks →',readApproach:'Read how EdZola approaches the work →',required:['your name','your organisation name','your work email','what you would like help with','what is getting in the way today'],complete:'Please complete ',validEmail:'Please enter a valid work email address.',sending:'Sending…',captcha:'Please complete the security check and try again.',thanks:'Thank you. Your note has been sent.',failed:'We could not send the form just now. Please try again in a moment.',contact:'Contact EdZola'},
+    es:{formTitle:'Cuéntanos un poco sobre tu trabajo.',formNote:'Cinco preguntas breves. Puedes responder con palabras sencillas; no necesitas tener la solución definida.',submit:'Cuéntanos sobre tu trabajo',name:'Tu nombre',namePlaceholder:'Por ejemplo, Asha Menon',organisation:'Nombre de la organización',organisationPlaceholder:'Tu organización sin fines de lucro',email:'Correo de trabajo',help:'¿Con qué te gustaría recibir ayuda?',choose:'Elige la opción más cercana',programme:'Un sistema de datos de programas o MIS',relationships:'Gestión de aliados, donantes o relaciones',people:'Sistemas de personas y RR. HH.',research:'Comprender entrevistas y datos cualitativos',protection:'Protección de datos y preparación para DPDP',customAi:'Una solución de IA a medida',dozai:'DozAI — agentes de IA para flujos de trabajo sociales',zohoConsulting:'Consultoría e implementación de Zoho',claudeConsulting:'Consultoría y adopción de Claude',aiAdvice:'Talleres o asesoría sobre IA',builtForImpact:'El programa Built for Impact',barrier:'¿Qué está dificultando el trabajo hoy?',example:'Por ejemplo: ',clear:'Borrar',clearForm:'Borrar formulario',privacy:'Tus datos van directamente al CRM de EdZola para que nuestro equipo pueda responder a esta consulta.',kicker:'Empieza por el trabajo, no por el software',points:['Empieza con una hoja, formulario o proceso que esté frenando al equipo.','La primera conversación es gratuita y dura unos 30 minutos.','Si el presupuesto es limitado, pregunta por el programa Built for Impact.'],explore:'¿Todavía no quieres ponerte en contacto?',browseSectors:'Explora los itinerarios por sector →',readApproach:'Lee cómo aborda EdZola el trabajo →',required:['tu nombre','el nombre de tu organización','tu correo de trabajo','el tipo de ayuda que buscas','lo que dificulta el trabajo hoy'],complete:'Completa ',validEmail:'Introduce un correo de trabajo válido.',sending:'Enviando…',captcha:'Completa la verificación de seguridad e inténtalo de nuevo.',thanks:'Gracias. Hemos recibido tu mensaje.',failed:'No pudimos enviar el formulario. Inténtalo de nuevo en un momento.',contact:'Contactar con EdZola'},
+    pt:{formTitle:'Conte um pouco sobre o seu trabalho.',formNote:'Cinco perguntas breves. Pode responder em linguagem simples; não precisa ter a solução pronta.',submit:'Conte sobre o seu trabalho',name:'Seu nome',namePlaceholder:'Por exemplo, Asha Menon',organisation:'Nome da organização',organisationPlaceholder:'Sua organização sem fins lucrativos',email:'E-mail de trabalho',help:'Em que você gostaria de receber ajuda?',choose:'Escolha a opção mais próxima',programme:'Um sistema de dados de programas ou MIS',relationships:'Gestão de parceiros, doadores ou relacionamentos',people:'Sistemas de pessoas e RH',research:'Compreender entrevistas e dados qualitativos',protection:'Proteção de dados e preparação para DPDP',customAi:'Uma solução de IA sob medida',dozai:'DozAI — agentes de IA para fluxos sociais',zohoConsulting:'Consultoria e implementação Zoho',claudeConsulting:'Consultoria e adoção do Claude',aiAdvice:'Oficinas ou consultoria sobre IA',builtForImpact:'O programa Built for Impact',barrier:'O que está dificultando o trabalho hoje?',example:'Por exemplo: ',clear:'Limpar',clearForm:'Limpar formulário',privacy:'Seus dados vão diretamente para o CRM da EdZola para que nossa equipe possa responder a esta consulta.',kicker:'Comece pelo trabalho, não pelo software',points:['Comece com uma planilha, formulário ou processo que esteja atrasando a equipe.','A primeira conversa é gratuita e leva cerca de 30 minutos.','Se o orçamento for limitado, pergunte sobre o programa Built for Impact.'],explore:'Ainda não quer entrar em contato?',browseSectors:'Explore os roteiros por setor →',readApproach:'Leia como a EdZola aborda o trabalho →',required:['seu nome','o nome da sua organização','seu e-mail de trabalho','o tipo de ajuda que procura','o que está dificultando o trabalho hoje'],complete:'Preencha ',validEmail:'Informe um e-mail de trabalho válido.',sending:'Enviando…',captcha:'Conclua a verificação de segurança e tente novamente.',thanks:'Obrigado. Recebemos sua mensagem.',failed:'Não foi possível enviar o formulário agora. Tente novamente em instantes.',contact:'Falar com a EdZola'}
   };
   var ui=translations[locale];
   if(!ui.procurement)ui.procurement=locale==='es'?'Un sistema de compras, órdenes o inventario':'Um sistema de compras, pedidos ou estoque';
   var slug=(parts[0]||'home');
-  var contextKey=path.indexOf('/verticals/procurement-inventory-systems/')>-1?'procurement':(path.indexOf('/crm/amplify/')===0?'amplify':(path.indexOf('/team/impactos/')===0?'impactos':(path==='/zolabs/why/'?'why':slug)));
+  var contextKey=path.indexOf('/verticals/procurement-inventory-systems/')>-1?'procurement':
+    (path.indexOf('/verticals/people-hr-systems/')>-1?'people-hr':
+    (path.indexOf('/verticals/fundraising-donor-grant-systems/')>-1?'fundraising':
+    (path.indexOf('/crm/amplify/')===0?'amplify':
+    ((path.indexOf('/dozai/')===0||path.indexOf('/solutions/ai-agents-for-nonprofits/')===0)?'dozai':
+    ((path.indexOf('/learn/technology/zoho-creator-for-nonprofits/')===0||path.indexOf('/solutions/nonprofit-crm-implementation/')===0)?'zoho-consulting':
+    (path.indexOf('/team/impactos/')===0?'impactos':(path==='/zolabs/why/'?'why':slug)))))));
   var formContexts={
     'home':{
       title:'Start with one part of the work that feels harder than it should.',
@@ -24,6 +30,10 @@
     'dozai':{
       title:'Bring us one workflow where AI might help.',
       body:'Tell us what your team is trying to decide or do. We’ll help you judge whether AI is useful, what a safe pilot looks like and where people must stay in control.'
+    },
+    'zoho-consulting':{
+      title:'Tell us what you need Zoho to make easier.',
+      body:'Share the workflow, the Zoho product you use today and where the handoffs break. We’ll help you decide whether to configure, connect or rebuild the smallest useful part.'
     },
     'zolabs':{
       title:'Tell us what you need to learn from people’s voices.',
@@ -69,11 +79,37 @@
       title:'Bring us the workflow that is creating the most pressure.',
       body:'We’ll help you decide whether to repair one system, connect several handoffs or sequence organisation-wide digital transformation.'
     },
+    'people-hr':{
+      title:'Tell us where the employee journey breaks.',
+      body:'Share how hiring, onboarding, attendance, leave or payroll work today. We’ll help you find the first part of the journey to make reliable.'
+    },
+    'fundraising':{
+      title:'Tell us where donor and grant follow-up slips.',
+      body:'Share how prospects, donors, grants and reports are tracked today. We’ll help you decide what your CRM should hold and what it should remind people to do.'
+    },
     'procurement':{
       title:'Trace one real purchase from request to reconciliation.',
       body:'Bring a PR form, approval chain, PO, receiving problem or stock tracker. We’ll identify where context is lost and the first useful system change.'
     }
   };
+  /* helpKey picks the CRM offering; contextKey picks the copy. Translated verticals share one translated copy. */
+  var helpKey=contextKey;
+  if((contextKey==='people-hr'||contextKey==='fundraising')&&locale!=='en')contextKey='verticals';
+  var localisedContexts={
+    es:{
+      'home':{title:'Empieza por una parte del trabajo que resulta más difícil de lo que debería.',body:'Trae una hoja de cálculo, un formulario o un flujo de trabajo. Te ayudaremos a encontrar un primer paso práctico: un proceso más claro, un sistema conectado o un mejor uso de lo que ya tienes.'},
+      'impact-os':{title:'Cuéntanos qué debe aclarar tu sistema de programas.',body:'Comparte el modelo del programa, las decisiones que tu equipo necesita tomar y una hoja que usas hoy. Te ayudaremos a definir el plan mínimo útil para empezar.'},
+      'zolabs':{title:'Cuéntanos qué necesitas aprender de las voces de las personas.',body:'Comparte el estudio, la consulta o la evaluación que tienes en mente. Te ayudaremos a diseñar un piloto pequeño de investigación por voz en varios idiomas.'}
+    },
+    pt:{
+      'home':{title:'Comece por uma parte do trabalho que está mais difícil do que deveria.',body:'Traga uma planilha, um formulário ou um fluxo de trabalho. Vamos ajudar você a encontrar um primeiro passo prático: um processo mais claro, um sistema conectado ou um uso melhor do que você já tem.'},
+      'impact-os':{title:'Conte o que o seu sistema de programas precisa deixar mais claro.',body:'Compartilhe o modelo do programa, as decisões que sua equipe precisa tomar e uma planilha que usa hoje. Vamos ajudar a definir o menor plano útil para começar.'},
+      'zolabs':{title:'Conte o que você precisa aprender com a voz das pessoas.',body:'Compartilhe o estudo, a consulta ou a avaliação que tem em mente. Vamos ajudar a desenhar um pequeno piloto de pesquisa por voz em vários idiomas.'}
+    }
+  };
+  if(localisedContexts[locale]){
+    Object.keys(localisedContexts[locale]).forEach(function(key){formContexts[key]=localisedContexts[locale][key]});
+  }
   if(contextKey==='verticals'&&locale==='es')formContexts.verticals={title:'Trae el flujo de trabajo que genera más presión.',body:'Te ayudaremos a decidir si conviene reparar un sistema, conectar varios traspasos o secuenciar una transformación digital de toda la organización.'};
   if(contextKey==='verticals'&&locale==='pt')formContexts.verticals={title:'Traga o fluxo de trabalho que gera mais pressão.',body:'Ajudaremos a decidir se vale reparar um sistema, conectar várias passagens ou sequenciar uma transformação digital em toda a organização.'};
   if(contextKey==='procurement'&&locale==='es')formContexts.procurement={title:'Traza una compra real de principio a fin.',body:'Trae una solicitud, una cadena de aprobación, una orden o un problema de inventario. Identificaremos dónde se pierde el contexto y el primer cambio útil.'};
@@ -164,9 +200,19 @@
     'why':'technology is adding work for our team instead of helping them make better decisions.',
     'field-guides':'a tool or workflow was introduced, but the team is struggling to use it consistently.',
     'verticals':'programme, funding, people or operations data is split across tools, and we need to know what to fix first.',
+    'people-hr':'attendance, leave and payroll inputs come from different sheets, and managers cannot see who needs approval.',
+    'fundraising':'donor history lives in inboxes and spreadsheets, so grant reports and renewals depend on one person remembering.',
     'procurement':'purchase requests, approvals, POs, receipts, invoices and stock are tracked in separate places, so we cannot see the full commitment or what needs attention.',
     'contact':'our team spends too much time reconciling trackers and still cannot see what needs attention.'
   };
+  var localisedExamples={
+    es:{home:'tenemos un proceso que depende de varias hojas de cálculo y el equipo no ve qué necesita atención.',contact:'el equipo dedica demasiado tiempo a conciliar hojas y aun así no ve qué necesita atención.','impact-os':'necesitamos un plan de programa que conecte la ejecución, el seguimiento y los informes según cómo trabajamos de verdad.',zolabs:'necesitamos recoger y entender entrevistas o comentarios en varios idiomas y a escala.'},
+    pt:{home:'temos um processo que depende de várias planilhas e a equipe não consegue ver o que precisa de atenção.',contact:'a equipe gasta tempo demais conciliando planilhas e ainda não vê o que precisa de atenção.','impact-os':'precisamos de um plano de programa que conecte execução, acompanhamento e relatórios de acordo com a forma como trabalhamos.',zolabs:'precisamos coletar e entender entrevistas ou retornos em vários idiomas e em escala.'}
+  };
+  if(localisedExamples[locale]){
+    Object.keys(localisedExamples[locale]).forEach(function(key){examples[key]=localisedExamples[locale][key]});
+    if(contextKey!=='verticals'&&!localisedExamples[locale][contextKey])examples[contextKey]=localisedExamples[locale].home;
+  }
   if(contextKey==='verticals'&&locale==='es')examples.verticals='los datos de programas, financiación, personas u operaciones están repartidos entre varias herramientas y necesitamos saber qué corregir primero.';
   if(contextKey==='verticals'&&locale==='pt')examples.verticals='os dados de programas, captação, pessoas ou operações estão espalhados por várias ferramentas e precisamos saber o que corrigir primeiro.';
 
@@ -187,7 +233,7 @@
     +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Last_Name">'+ui.name+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="text" id="Last_Name" aria-required="true" name="Last Name" maxlength="80" autocomplete="name" placeholder="'+ui.namePlaceholder+'"></div></div>'
     +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Company">'+ui.organisation+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="text" id="Company" aria-required="true" name="Company" maxlength="200" autocomplete="organization" placeholder="'+ui.organisationPlaceholder+'"></div></div>'
     +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="Email">'+ui.email+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><input type="email" ftype="email" id="Email" aria-required="true" name="Email" maxlength="100" autocomplete="email" placeholder="you@yourorganisation.org"></div></div>'
-    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF41">'+ui.help+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><select class="zcwf_col_fld_slt" id="LEADCF41" aria-required="true" name="LEADCF41"><option value="-None-">'+ui.choose+'</option><option value="Data Systems – MIS / ERP">'+(contextKey==='procurement'?ui.procurement:ui.programme)+'</option><option value="CRM">'+ui.relationships+'</option><option value="HRMS">'+ui.people+'</option><option value="zolabs.ai – Qualitative Data Collection">'+ui.research+'</option><option value="zolashield – DPDP Compliance">'+ui.protection+'</option><option value="Custom AI Solutions">'+ui.customAi+'</option><option value="AI Workshops and Advisory">'+ui.aiAdvice+'</option><option value="Built for Impact program">'+ui.builtForImpact+'</option></select></div></div>'
+    +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF41">'+ui.help+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><select class="zcwf_col_fld_slt" id="LEADCF41" aria-required="true" name="LEADCF41"><option value="-None-">'+ui.choose+'</option><option value="Data Systems – MIS / ERP">'+(contextKey==='procurement'?ui.procurement:ui.programme)+'</option><option value="CRM">'+ui.relationships+'</option><option value="HRMS">'+ui.people+'</option><option value="zolabs.ai – Qualitative Data Collection">'+ui.research+'</option><option value="zolashield – DPDP Compliance">'+ui.protection+'</option><option value="DozAI">'+ui.dozai+'</option><option value="Zoho Consulting">'+ui.zohoConsulting+'</option><option value="Claude Consulting">'+ui.claudeConsulting+'</option><option value="Custom AI Solutions">'+ui.customAi+'</option><option value="AI Workshops and Advisory">'+ui.aiAdvice+'</option><option value="Built for Impact program">'+ui.builtForImpact+'</option></select></div></div>'
     +'<input type="hidden" id="LEADCF121" name="LEADCF121" value="">'
     +'<div class="zcwf_row"><div class="zcwf_col_lab"><label for="LEADCF40">'+questionLabel+' <span class="required" aria-hidden="true">*</span></label></div><div class="zcwf_col_fld"><textarea id="LEADCF40" aria-required="true" name="LEADCF40" placeholder="'+ui.example+(crmData.crmPlaceholder||examples[contextKey]||examples.contact)+'"></textarea></div></div>'
     +'<input type="hidden" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off">'
@@ -201,19 +247,22 @@
   landingField.value=landingUrl;
   var helpField=document.getElementById('LEADCF41');
   var helpDefaults={
-    'dozai':'Custom AI Solutions',
+    'dozai':'DozAI',
+    'zoho-consulting':'Zoho Consulting',
     'zolabs':'zolabs.ai – Qualitative Data Collection',
     'zolashield':'zolashield – DPDP Compliance',
     'patrons':'Built for Impact program',
     'impactos':'Data Systems – MIS / ERP',
     'impact-os':'Data Systems – MIS / ERP',
     'fundzola':'Data Systems – MIS / ERP',
-    'amplify':'CRM',
+    'amplify':'Claude Consulting',
     'verticals':'Data Systems – MIS / ERP',
+    'people-hr':'HRMS',
+    'fundraising':'CRM',
     'procurement':'Data Systems – MIS / ERP'
   };
-  if(crmData.crmHelpDefault)helpDefaults[contextKey]=crmData.crmHelpDefault;
-  if(helpDefaults[contextKey])helpField.value=helpDefaults[contextKey];
+  if(crmData.crmHelpDefault)helpDefaults[helpKey]=crmData.crmHelpDefault;
+  if(helpDefaults[helpKey])helpField.value=helpDefaults[helpKey];
   var preserveStatus=false;
 
   function showStatus(message,isError){
@@ -247,7 +296,7 @@
     var keepStatus=preserveStatus;
     window.setTimeout(function(){
       landingField.value=landingUrl;
-      helpField.value=helpDefaults[contextKey]||'-None-';
+      helpField.value=helpDefaults[helpKey]||'-None-';
       if(!keepStatus)showStatus('',false);
     },0);
   });
