@@ -5,6 +5,8 @@ series: "Field Essays, part 4 of 7"
 slug: problem-first-tool-last
 author: Akshay, Founder & CEO, EdZola
 reading_time: 7 min
+date_published: 2026-09-29
+date_modified: 2026-10-23
 meta_description: "Tool-first thinking causes scope creep, feature bloat and quiet implementation failure. How EdZola decides: problem first, early prototypes, small tests."
 excerpt: "Tools feel like progress. Problems feel like delay. That's exactly why the order of decisions matters."
 suggested_visuals: "Quote cards 08 and 09"

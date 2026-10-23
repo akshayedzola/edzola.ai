@@ -92,13 +92,15 @@ class CrmWebformRegressionTests(unittest.TestCase):
         self.assertIn("if(contextKey==='verticals'&&locale==='es')", source)
         self.assertIn("if(contextKey==='verticals'&&locale==='pt')", source)
 
-    def test_amplify_is_promoted_and_in_the_sitemap(self):
+    def test_amplify_is_promoted_but_excluded_from_the_sitemap_while_noindex(self):
         home = HOME_PAGE.read_text(encoding="utf-8")
         sitemap = SITEMAP.read_text(encoding="utf-8")
+        amplify = AMPLIFY_PAGE.read_text(encoding="utf-8")
 
         self.assertIn('href="https://edzola.ai/crm/amplify/"', home)
         self.assertIn('Amplify CRM cohort', home)
-        self.assertIn('<loc>https://edzola.ai/crm/amplify/</loc>', sitemap)
+        self.assertIn('name="robots" content="noindex,nofollow"', amplify)
+        self.assertNotIn('<loc>https://edzola.ai/crm/amplify/</loc>', sitemap)
 
     def test_contextual_forms_keep_canonical_landing_page_attribution(self):
         source = FORM_SCRIPT.read_text(encoding="utf-8")

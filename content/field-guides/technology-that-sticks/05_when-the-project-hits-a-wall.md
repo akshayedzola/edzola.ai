@@ -5,6 +5,8 @@ series: "Field Essays, part 5 of 7"
 slug: when-the-project-hits-a-wall
 author: Akshay, Founder & CEO, EdZola
 reading_time: 8 min
+date_published: 2026-09-29
+date_modified: 2026-10-23
 meta_description: "Nonprofit tech projects fail even when the code works. Five delivery instincts and a five-step blocker protocol that keep trust intact when reality changes."
 excerpt: "We once inherited a dashboard where every number was correct. Nobody used it. The system worked. The knowledge didn't survive."
 suggested_visuals: "Animation: five-instincts.mp4, Carousel: Blocker protocol, Quote card 10"

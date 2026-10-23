@@ -1,0 +1,29 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Allow GitHub Pages to publish the commit
+        if: github.event_name == 'push'
+        run: sleep 75
+      - name: Submit changed URLs
+        if: github.event_name == 'push'
+        run: node scripts/submit-indexnow.mjs --changed-from HEAD^
+      - name: Submit all sitemap URLs
+        if: github.event_name == 'workflow_dispatch'
+        run: node scripts/submit-indexnow.mjs --all

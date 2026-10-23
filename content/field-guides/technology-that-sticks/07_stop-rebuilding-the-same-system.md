@@ -5,6 +5,8 @@ series: "Field Essays, part 7 of 7"
 slug: stop-rebuilding-the-same-system
 author: Akshay, Founder & CEO, EdZola
 reading_time: 7 min
+date_published: 2026-09-29
+date_modified: 2026-10-23
 meta_description: "The impact sector rebuilds the same systems over and over. Why shared infrastructure, supported open tools and practical AI matter more than bespoke builds."
 excerpt: "A girls' education programme in one city and a literacy programme a thousand kilometres away face the same workflow problems. Both usually solve them from scratch."
 suggested_visuals: "Animation: ai-after-os.mp4, Quote cards 05 and 06"
