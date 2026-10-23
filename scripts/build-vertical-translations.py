@@ -2,6 +2,7 @@
 """Build the Spanish and Brazilian Portuguese vertical landing pages."""
 
 from html import escape
+import json
 from pathlib import Path
 
 
@@ -296,14 +297,75 @@ def navigation(locale, key):
 <details class="mobile-menu"><summary>{escape(c['menu'])}</summary><div class="mobile-panel">{language_links(locale, key, 'mobile-lang')}<a href="{c['home']}#model">{escape(c['what'])}</a><details><summary>{escape(c['verticals'])}</summary>{vertical_links}</details><a href="/sectors/">{escape(c['sectors'])}</a><a href="{c['home']}impact-os/">ImpactOS</a><a href="/thinking/">{escape(c['thinking'])}</a><a href="{c['home']}about/">{escape(c['about'])}</a><a href="#contact-form">{escape(c['talk'])}</a></div></details></div></header>'''
 
 
+def schema(locale, key, page, canonical):
+    language = "es-419" if locale == "es" else "pt-BR"
+    graph = [
+        {
+            "@type": "Organization",
+            "@id": "https://edzola.ai/#org",
+            "name": "EdZola",
+            "legalName": "EdZola Technologies Private Limited",
+            "url": "https://edzola.ai/",
+            "email": "reachus@edzola.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Coimbatore",
+                "addressRegion": "Tamil Nadu",
+                "addressCountry": "IN",
+            },
+        },
+        {
+            "@type": "CollectionPage" if key == "hub" else "WebPage",
+            "@id": canonical + "#page",
+            "url": canonical,
+            "name": page["title"],
+            "description": page["description"],
+            "inLanguage": language,
+            "dateModified": "2026-10-23",
+            "publisher": {"@id": "https://edzola.ai/#org"},
+        },
+    ]
+    if key == "hub":
+        graph[1]["hasPart"] = [
+            {"@type": "WebPage", "url": f"https://edzola.ai{route(locale, child)}"}
+            for child in ("programme", "funding", "people", "finance", "procurement")
+        ]
+    else:
+        service_id = canonical + "#service"
+        graph[1]["about"] = {"@id": service_id}
+        graph.append({
+            "@type": "Service",
+            "@id": service_id,
+            "name": page["h1"],
+            "serviceType": page["eyebrow"],
+            "description": page["lead"],
+            "url": canonical,
+            "provider": {"@id": "https://edzola.ai/#org"},
+            "areaServed": "Worldwide",
+            "audience": {"@type": "Audience", "audienceType": "Nonprofits and social-impact organisations"},
+        })
+        graph.append({
+            "@type": "BreadcrumbList",
+            "@id": canonical + "#breadcrumb",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": COMMON[locale]["verticals"], "item": f"https://edzola.ai{route(locale, 'hub')}"},
+                {"@type": "ListItem", "position": 2, "name": page["eyebrow"], "item": canonical},
+            ],
+        })
+        graph[1]["breadcrumb"] = {"@id": canonical + "#breadcrumb"}
+    return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, separators=(",", ":"))
+
+
 def head(locale, key, page):
     canonical = f"https://edzola.ai{route(locale, key)}"
     en_path = f"/verticals/{SLUGS[key] + '/' if SLUGS[key] else ''}"
     return f'''<!doctype html><html lang="{COMMON[locale]['html_lang']}"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'], quote=True)}"><link rel="canonical" href="{canonical}">
+<title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'], quote=True)}"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><link rel="canonical" href="{canonical}">
 <link rel="alternate" hreflang="en" href="https://edzola.ai{en_path}"><link rel="alternate" hreflang="es" href="https://edzola.ai{route('es', key)}"><link rel="alternate" hreflang="pt-BR" href="https://edzola.ai{route('pt', key)}"><link rel="alternate" hreflang="x-default" href="https://edzola.ai{en_path}">
-<meta property="og:type" content="website"><meta property="og:site_name" content="EdZola"><meta property="og:title" content="{escape(page['h1'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:url" content="{canonical}">
+<meta property="og:type" content="website"><meta property="og:locale" content="{'es_419' if locale == 'es' else 'pt_BR'}"><meta property="og:site_name" content="EdZola"><meta property="og:title" content="{escape(page['h1'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://edzola.ai/assets/og-edzola.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(page['h1'], quote=True)}"><meta name="twitter:description" content="{escape(page['description'], quote=True)}"><meta name="twitter:image" content="https://edzola.ai/assets/og-edzola.png">
+<script type="application/ld+json">{schema(locale, key, page, canonical)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&amp;family=Figtree:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="/assets/verticals.css?v=20261022a"><link rel="stylesheet" href="/assets/crm-webform.css?v=20261019a">
 </head><body><a class="skip" href="#main">{escape(COMMON[locale]['skip'])}</a>'''
 

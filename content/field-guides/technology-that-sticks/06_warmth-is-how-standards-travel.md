@@ -5,6 +5,8 @@ series: "Field Essays, part 6 of 7"
 slug: warmth-is-how-standards-travel
 author: Akshay, Founder & CEO, EdZola
 reading_time: 7 min
+date_published: 2026-09-29
+date_modified: 2026-10-23
 meta_description: "Mission-driven teams often swing between softness and rigour. How EdZola pairs warmth with high standards: context with direction, visible systems, accountability as planning."
 excerpt: "Many nonprofit leaders swing between warmth and rigour. We've found they're the same practice done well."
 suggested_visuals: "Quote card 11, Quote card 12"

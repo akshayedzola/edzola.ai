@@ -14,7 +14,10 @@ from bs4 import BeautifulSoup, NavigableString, Tag, Comment
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 HERE = os.path.dirname(os.path.abspath(__file__))
 PAGES = {'index.html': '', 'about/index.html': 'about/', 'impact-os/index.html': 'impact-os/', 'zolabs/index.html': 'zolabs/'}
-LANGS = {'es': {'html': 'es', 'og': 'es_419', 'name': 'Español'}, 'pt': {'html': 'pt-BR', 'og': 'pt_BR', 'name': 'Português'}}
+LANGS = {
+    'es': {'html': 'es', 'schema': 'es-419', 'og': 'es_419', 'name': 'Español'},
+    'pt': {'html': 'pt-BR', 'schema': 'pt-BR', 'og': 'pt_BR', 'name': 'Português'},
+}
 INLINE = {'a', 'b', 'strong', 'em', 'i', 'span', 'small', 'br', 'sup', 'sub', 'code', 'abbr', 'u', 'mark', 'cite', 'img', 'svg', 'time', 'q', 's'}
 SKIP = {'script', 'style', 'noscript', 'svg', 'template', 'canvas'}
 ATTRS = ('alt', 'aria-label', 'title', 'placeholder', 'data-pause', 'data-play')
@@ -137,6 +140,30 @@ def localise_href(href, lang):
     return href
 
 
+def localise_jsonld(value, lang, dst, schema_lang, parent_type=None, key=None):
+    """Point page-level schema at the translated canonical without forking the organisation entity."""
+    source = f'https://edzola.ai/{dst}'
+    target = f'https://edzola.ai/{lang}/{dst}'
+    if isinstance(value, list):
+        return [localise_jsonld(item, lang, dst, schema_lang, parent_type, key) for item in value]
+    if isinstance(value, dict):
+        node_type = value.get('@type')
+        return {
+            child_key: localise_jsonld(child, lang, dst, schema_lang, node_type, child_key)
+            for child_key, child in value.items()
+        }
+    if key == 'inLanguage' and isinstance(value, str):
+        return schema_lang
+    if isinstance(value, str) and key in {'@id', 'url', 'item'} and parent_type != 'Organization':
+        if value == source:
+            return target
+        if value.startswith(source + '#'):
+            fragment = value[len(source):]
+            if fragment not in {'#org', '#organisation'}:
+                return target + fragment
+    return value
+
+
 def alternates(dst):
     tags = [f'<link rel="alternate" hreflang="en" href="https://edzola.ai/{dst}">']
     for l, c in LANGS.items():
@@ -147,7 +174,11 @@ def alternates(dst):
 
 def switcher(dst, current, labels):
     links = [('en', f'/{dst}', 'EN')] + [(l, f'/{l}/{dst}', l.upper()) for l in LANGS]
-    a = ''.join(f'<a href="{h}" hreflang="{l}" lang="{l}"{" aria-current=\"true\"" if l == current else ""}>{t}</a>' for l, h, t in links)
+    anchors = []
+    for language, href, label in links:
+        current_attr = ' aria-current="true"' if language == current else ''
+        anchors.append(f'<a href="{href}" hreflang="{language}" lang="{language}"{current_attr}>{label}</a>')
+    a = ''.join(anchors)
     return f'<div class="gh-lang" data-i18n="skip" role="navigation" aria-label="{labels}">{a}</div>'
 
 
@@ -244,7 +275,16 @@ def build():
             soup.html['lang'] = conf['html']
             og = soup.find('meta', property='og:type')
             if og:
+                for existing_locale in soup.find_all('meta', property='og:locale'):
+                    existing_locale.decompose()
                 loc = soup.new_tag('meta', property='og:locale'); loc['content'] = conf['og']; og.insert_after(loc)
+            for script in soup.find_all('script', attrs={'type': 'application/ld+json'}):
+                try:
+                    data = json.loads(script.string or script.get_text())
+                except (TypeError, json.JSONDecodeError):
+                    continue
+                data = localise_jsonld(data, lang, dst, conf['schema'])
+                script.string = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
             html = str(soup)
             # JSON-LD and script strings: exact string replacement of known keys
             def sub_scripts(m):

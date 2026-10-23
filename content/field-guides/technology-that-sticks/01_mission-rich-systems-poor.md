@@ -5,6 +5,8 @@ series: "Field Essays, part 1 of 7"
 slug: mission-rich-systems-poor
 author: Akshay, Founder & CEO, EdZola
 reading_time: 6 min
+date_published: 2026-09-29
+date_modified: 2026-10-23
 meta_description: "Nonprofits don't lack software. They lack the process clarity and support that let systems stick. Why the gap between technology and impact is structural."
 excerpt: "A donor database goes live on time. The code is clean. Staff log in on day one and never come back. Here's why that keeps happening."
 suggested_visuals: "Quote card 01, Quote card 03, Carousel: Three jobs (slide 1)"

@@ -5,6 +5,8 @@ series: "Field Essays, part 2 of 7"
 slug: technology-three-jobs
 author: Akshay, Founder & CEO, EdZola
 reading_time: 7 min
+date_published: 2026-09-29
+date_modified: 2026-10-23
 meta_description: "Technology serves nonprofits as infrastructure, accelerator and insight engine, in that order. Skipping a step is where most tech investments fail."
 excerpt: "Automate a confused workflow and you get a confused workflow at scale. The order in which technology does its jobs matters more than the tool."
 suggested_visuals: "Carousel: Three jobs, Animation: three-jobs.mp4, Quote cards 02 and 04"

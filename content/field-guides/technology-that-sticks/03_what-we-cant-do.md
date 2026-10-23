@@ -5,6 +5,8 @@ series: "Field Essays, part 3 of 7"
 slug: why-we-name-our-limits
 author: Akshay, Founder & CEO, EdZola
 reading_time: 7 min
+date_published: 2026-09-29
+date_modified: 2026-10-23
 meta_description: "Nonprofits buy on trust. Honest qualification, naming limits and removing friction build more credibility than any product demo."
 excerpt: "The conversations that build the most durable partnerships are often the ones where we say what we can't do."
 suggested_visuals: "Quote cards 07 and 11, Carousel: Five conditions (readiness)"
