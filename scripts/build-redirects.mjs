@@ -5,8 +5,9 @@
 //   node scripts/build-redirects.mjs          write redirect pages
 //   node scripts/build-redirects.mjs --check  fail if any page is not a redirect page (CI / pre-merge)
 //
-// A page redirects to the same path on edzola.com. Pages listed in HOMEPAGE_ONLY have no
-// equivalent there, and 404.html (any unknown URL) is also sent to the homepage.
+// A page redirects to the same path on edzola.com, and 404.html (any unknown URL) is sent to
+// the homepage. Internal team pages (everything under team/) are left alone so the team can
+// keep using them on edzola.ai; they carry noindex and are not in the sitemaps.
 
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -14,15 +15,18 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const check = process.argv.includes('--check');
 const ORIGIN = 'https://edzola.com';
 
-// Internal pages that were never moved to edzola.com.
-const HOMEPAGE_ONLY = new Set(['team/', 'team/grove/', 'team/impactos/', 'team/impactos/playbooks/', 'team/insight/']);
+// Internal pages that stay live on edzola.ai and are never turned into redirects.
+const KEEP_PREFIXES = ['team/'];
 
-const files = execFileSync('git', ['ls-files', '*.html'], { encoding: 'utf8' }).trim().split('\n').filter(Boolean);
+const files = execFileSync('git', ['ls-files', '*.html'], { encoding: 'utf8' })
+  .trim()
+  .split('\n')
+  .filter(Boolean)
+  .filter((file) => !KEEP_PREFIXES.some((prefix) => file.startsWith(prefix)));
 
 const targetFor = (file) => {
   if (file === '404.html') return `${ORIGIN}/`;
   const route = file.replace(/index\.html$/, '');
-  if (HOMEPAGE_ONLY.has(route)) return `${ORIGIN}/`;
   return route === '' ? `${ORIGIN}/` : `${ORIGIN}/${route.replace(/\/$/, '')}`;
 };
 
